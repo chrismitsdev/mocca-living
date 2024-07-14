@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* App colors */
+    --app-white: #fff;
+    --app-background: #ddc8a2;
+    
+    /* Palettes */
+    --clr-accent-1: #c6c4c3;
+    --clr-accent-2: #c4bbb6;
+    --clr-accent-3: #c2ab9f;
+    --clr-accent-4: #bf9c88;
+    --clr-accent-5: #ba8c71;
+    --clr-accent-6: #af7c5f;
+    --clr-accent-7: #a26844;
+    --clr-accent-8: #934a16;
+    --clr-accent-9: #944f21;
+    --clr-accent-10: #873f03;
+    --clr-accent-11: #491400;
+    --clr-accent-12: #453227;
+
+    --clr-gray-1: #c5c3c3;
+    --clr-gray-2: #bdbcbb;
+    --clr-gray-3: #b1afae;
+    --clr-gray-4: #a5a4a3;
+    --clr-gray-5: #9b9998;
+    --clr-gray-6: #908e8d;
+    --clr-gray-7: #838180;
+    --clr-gray-8: #6f6d6c;
+    --clr-gray-9: #444140;
+    --clr-gray-10: #3b3837;
+    --clr-gray-11: #242221;
+    --clr-gray-12: #211f1e;
+
+    /* Semantics */
+    --foreground: var(--clr-accent-12);
+    --foreground-alt: var(--clr-gray-12);
+
+    --primary: var(--clr-accent-9);
+    --primary-alt: var(--clr-gray-9);
+    --primary-foreground: var(--app-white);
+ 
+    --border: var(--clr-accent-6);
+    --border-alt: var(--clr-gray-6);
+
+    --ring: var(--clr-accent-8);
+    --ring-alt: var(--clr-gray-8);
+    
+    --radius: 2px;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    /* @apply bg-app-background text-foreground; */
+    @apply relative bg-app-background text-foreground before:absolute before:-z-10 before:w-full before:h-[480px] before:bg-gradient-to-b from-accent-4 before:opacity-60;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+}
