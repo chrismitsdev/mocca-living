@@ -1,7 +1,9 @@
 import '@/globals.css'
 import type {Metadata} from 'next'
-import {unstable_setRequestLocale} from 'next-intl/server'
 import {Open_Sans} from 'next/font/google'
+import {unstable_setRequestLocale} from 'next-intl/server'
+import {Header} from '@/components/shared/header'
+import {Footer} from '@/components/shared/footer'
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -25,7 +27,11 @@ export default function LocaleLayout(
   
   return (
     <html lang={locale} className={openSans.className}>
-      <body>{children}</body>
+      <body className='h-screen grid grid-rows-[auto,1fr,auto]'>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }

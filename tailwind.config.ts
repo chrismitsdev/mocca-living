@@ -48,10 +48,17 @@ const config: Config = {
           DEFAULT: 'var(--primary)',
           alt: 'var(--primary-alt)',
           foreground: 'var(--primary-foreground)',
+          hover: 'var(--primary-hover)',
+        },
+        destructive: {
+          DEFAULT: 'var(--destructive)',
+          foreground: 'var(--destructive-foreground)',
+          hover: 'var(--destructive-hover)',
         },
         border: {
           DEFAULT: 'var(--border)',
-          alt: 'var(--border-alt)'
+          alt: 'var(--border-alt)',
+          hover: 'var(--border-hover)'
         },
         ring: {
           DEFAULT: 'var(--ring)',

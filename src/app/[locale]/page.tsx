@@ -1,9 +1,10 @@
+import {Button} from '@/components/ui/button'
+import {AvatarIcon} from '@radix-ui/react-icons'
+
 export default function Home() {
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <button className='p-2 block border rounded'>
-        Hello World
-      </button>
+    <main >
+
     </main>
   )
 }

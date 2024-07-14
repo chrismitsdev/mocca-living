@@ -9,18 +9,18 @@
     --app-background: #ddc8a2;
     
     /* Palettes */
-    --clr-accent-1: #c6c4c3;
-    --clr-accent-2: #c4bbb6;
-    --clr-accent-3: #c2ab9f;
-    --clr-accent-4: #bf9c88;
-    --clr-accent-5: #ba8c71;
-    --clr-accent-6: #af7c5f;
-    --clr-accent-7: #a26844;
-    --clr-accent-8: #934a16;
-    --clr-accent-9: #944f21;
-    --clr-accent-10: #873f03;
-    --clr-accent-11: #491400;
-    --clr-accent-12: #453227;
+    --clr-accent-1: #c6c4c3;  /* Backgrounds */
+    --clr-accent-2: #c4bbb6;  /* Backgrounds */
+    --clr-accent-3: #c2ab9f;  /* Interactive components */
+    --clr-accent-4: #bf9c88;  /* Interactive components */
+    --clr-accent-5: #ba8c71;  /* Interactive components */
+    --clr-accent-6: #af7c5f;  /* Borders and separator */
+    --clr-accent-7: #a26844;  /* Borders and separator */
+    --clr-accent-8: #934a16;  /* Borders and separator */
+    --clr-accent-9: #944f21;  /* Solid colors */
+    --clr-accent-10: #873f03; /* Solid colors */
+    --clr-accent-11: #491400; /* Accessible text */
+    --clr-accent-12: #453227; /* Accessible text */
 
     --clr-gray-1: #c5c3c3;
     --clr-gray-2: #bdbcbb;
@@ -35,6 +35,45 @@
     --clr-gray-11: #242221;
     --clr-gray-12: #211f1e;
 
+    --clr-green-1: #fbfefc;
+    --clr-green-2: #f4fbf6;
+    --clr-green-3: #e6f6eb;
+    --clr-green-4: #d6f1df;
+    --clr-green-5: #c4e8d1;
+    --clr-green-6: #adddc0;
+    --clr-green-7: #8eceaa;
+    --clr-green-8: #5bb98b;
+    --clr-green-9: #30a46c;
+    --clr-green-10: #2b9a66;
+    --clr-green-11: #218358;
+    --clr-green-12: #193b2d;
+
+    --clr-red-1: #fffcfc;
+    --clr-red-2: #fff7f7;
+    --clr-red-3: #feebec;
+    --clr-red-4: #ffdbdc;
+    --clr-red-5: #ffcdce;
+    --clr-red-6: #fdbdbe;
+    --clr-red-7: #f4a9aa;
+    --clr-red-8: #eb8e90;
+    --clr-red-9: #e5484d;
+    --clr-red-10: #dc3e42;
+    --clr-red-11: #ce2c31;
+    --clr-red-12: #641723;
+
+    --clr-blue-1: #fbfdff;
+    --clr-blue-2: #f4faff;
+    --clr-blue-3: #e6f4fe;
+    --clr-blue-4: #d5efff;
+    --clr-blue-5: #c2e5ff;
+    --clr-blue-6: #acd8fc;
+    --clr-blue-7: #8ec8f6;
+    --clr-blue-8: #5eb1ef;
+    --clr-blue-9: #0090ff;
+    --clr-blue-10: #0588f0;
+    --clr-blue-11: #0d74ce;
+    --clr-blue-12: #113264;
+
     /* Semantics */
     --foreground: var(--clr-accent-12);
     --foreground-alt: var(--clr-gray-12);
@@ -42,9 +81,15 @@
     --primary: var(--clr-accent-9);
     --primary-alt: var(--clr-gray-9);
     --primary-foreground: var(--app-white);
+    --primary-hover: var(--clr-accent-10);
  
+    --destructive: var(--clr-red-9);
+    --destructive-foreground: var(--app-white);
+    --destructive-hover: var(--clr-red-10);
+    
     --border: var(--clr-accent-6);
     --border-alt: var(--clr-gray-6);
+    --border-hover: var(--clr-accent-8);
 
     --ring: var(--clr-accent-8);
     --ring-alt: var(--clr-gray-8);

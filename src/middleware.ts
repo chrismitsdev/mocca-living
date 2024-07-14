@@ -1,6 +1,6 @@
 import type {MiddlewareConfig} from 'next/server'
 import createMiddleware from 'next-intl/middleware'
-import {locales, localePrefix} from '../lib/config'
+import {locales, localePrefix} from '#/lib/config'
  
 export default createMiddleware({
   // A list of all locales that are supported
