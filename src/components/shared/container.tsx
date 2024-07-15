@@ -1,9 +1,20 @@
+import {Slot} from '@radix-ui/react-slot'
 import {cn} from '#/lib/utils'
 
-export function Container({className, ...props}: React.HTMLAttributes<HTMLDivElement>) {
+type ContainerProps = React.HTMLAttributes<HTMLElement> & {
+  asChild?: boolean
+}
+
+function Container({className, asChild = false, ...props}: ContainerProps) {
+  const Comp = asChild ? Slot : 'div'
+
   return (
-    <div className={cn('container', className)} {...props} />
+    <Comp 
+      className={cn('container', className)} 
+      {...props} 
+    />
   )
 }
 
 Container.displayName = 'Container'
+export {Container}

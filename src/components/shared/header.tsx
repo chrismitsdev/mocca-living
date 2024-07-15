@@ -2,19 +2,20 @@ import Image from 'next/image'
 import {Link} from '@/navigation'
 import {Container} from '@/components/shared/container'
 import logo from '#/public/mocca-logo-simple.svg'
+import {buttonVariants} from '@/components/ui/button'
 
-export function Header() {
+function Header() {
   return (
-    <header>
-      <Container className='py-4'>
-        <div className='flex items-center justify-between'>
+    <header className='py-4'>
+      <Container>
+        <div className='flex flex-col items-center gap-4'>
           <Link href='/'>
-            <Image priority src={logo} width={41.45} alt='Mocca Living'/>
+            <Image priority src={logo} width={41} alt='Mocca Living'/>
           </Link>
-          <div className='flex items-center gap-2'>
-            <Link href='/'>Home</Link>
-            <Link href='/suites'>Suites</Link>
-            <Link href='/contact'>Contact</Link>
+          <div className='flex items-center gap-4'>
+            <Link className={buttonVariants({variant: 'link', size: 'small'})} href='/'>Home</Link>
+            <Link className={buttonVariants({variant: 'link', size: 'small'})} href='/suites'>Suites</Link>
+            <Link className={buttonVariants({variant: 'link', size: 'small'})} href='/contact'>Contact</Link>
           </div>
         </div>
       </Container>
@@ -23,3 +24,5 @@ export function Header() {
 }
 
 Header.displayName = 'Header'
+
+export {Header}

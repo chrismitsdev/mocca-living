@@ -1,6 +1,6 @@
 import type {MiddlewareConfig} from 'next/server'
 import createMiddleware from 'next-intl/middleware'
-import {locales, localePrefix} from '#/lib/config'
+import {locales, localePrefix} from '#/lib/next-intl-config'
  
 export default createMiddleware({
   // A list of all locales that are supported
@@ -10,7 +10,7 @@ export default createMiddleware({
   // Optionally remove the locale prefix or customize it per locale
   localePrefix,
   // Used as a fallback when none of the available locales match the user's request
-  defaultLocale: 'gr',
+  defaultLocale: locales[0]
 })
 
 export const config: MiddlewareConfig = {

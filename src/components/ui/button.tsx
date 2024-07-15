@@ -13,7 +13,7 @@ const buttonVariants = cva(
         'bordered-filled': 'border-2 hover:bg-primary hover:text-primary-foreground hover:border-primary',
         ghost: 'hover:bg-primary hover:text-primary-foreground',
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive-hover',
-        // link: 'underline-offset-4 hover:underline',
+        link: 'underline-offset-4 hover:underline',
       },
       size: {
         normal: 'px-4 py-2',
@@ -41,11 +41,9 @@ const buttonVariants = cva(
   }
 )
 
-export type ButtonProps = 
-  React.ButtonHTMLAttributes<HTMLButtonElement> & 
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-  }
+type ButtonProps = React.ComponentPropsWithoutRef<'button'> & VariantProps<typeof buttonVariants> & {
+  asChild?: boolean
+}
 
 const Button = React.forwardRef<
   HTMLButtonElement, 

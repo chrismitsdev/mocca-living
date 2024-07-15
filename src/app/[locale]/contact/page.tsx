@@ -1,5 +1,16 @@
-export default function Contact() {
+import {useTranslations} from 'next-intl'
+import {unstable_setRequestLocale} from 'next-intl/server'
+import {Container} from '@/components/shared/container'
+
+export default function ContactPage({params: {locale}}: Params) {
+  unstable_setRequestLocale(locale)
+  const t = useTranslations('Pages')
+
   return (
-    <section>Contact</section>
+    <Container asChild>
+      <section>
+        {t('Contact.placeholder')}
+      </section>
+    </Container>
   )
 }

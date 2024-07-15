@@ -1,5 +1,13 @@
 {
-  "HomePage": {
-    "title": "Hello world!"
+  "Pages": {
+    "Home": {
+      "placeholder": "Home page"
+    },
+    "Suites": {
+      "placeholder": "Suites page"
+    },
+    "Contact": {
+      "placeholder": "Contact page"
+    }
   }
 }

@@ -4,7 +4,7 @@ import {Open_Sans} from 'next/font/google'
 import {unstable_setRequestLocale} from 'next-intl/server'
 import {Header} from '@/components/shared/header'
 import {Footer} from '@/components/shared/footer'
-import {Container} from '@/components/shared/container'
+import {locales} from '#/lib/next-intl-config' 
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   }
 }
 
+export function generateStaticParams() {
+  return locales.map((locale) => ({locale}))
+}
+
 export default function LocaleLayout(
   {children, params: {locale}}: 
   {children: React.ReactNode, params: {locale: string}}
@@ -31,7 +35,7 @@ export default function LocaleLayout(
       <body className='h-screen grid grid-rows-[auto,1fr,auto]'>
         <Header />
         <main>
-          <Container>{children}</Container>
+          {children}
         </main>
         <Footer />
       </body>

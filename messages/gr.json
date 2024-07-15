@@ -1,5 +1,13 @@
 {
-  "HomePage": {
-    "title": "Γεια σου κόσμε!"
+  "Pages": {
+    "Home": {
+      "placeholder": "Αρχική σελίδα"
+    },
+    "Suites": {
+      "placeholder": "Σουίτες σελίδα"
+    },
+    "Contact": {
+      "placeholder": "Επικοινωνία σελίδα"
+    }
   }
 }
