@@ -1,5 +1,26 @@
 {
+  "Metadata": {
+    "Pages": {
+      "home": "Home",
+      "suites": "Suites",
+      "contact": "Contact"
+    }
+  },
+  "Components": {
+    "LocaleSwitcherSelect": {
+      "placeholder": "Select language",
+      "values": {
+        "en": "English",
+        "gr": "Greek"
+      }
+    }
+  },
   "Pages": {
+    "Header": {
+      "index": "Home",
+      "suites": "Suites",
+      "contact": "Contact"
+    },
     "Home": {
       "placeholder": "Home page"
     },

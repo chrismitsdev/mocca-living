@@ -9,6 +9,17 @@ const config: Config = {
       center: true,
       padding: '1rem'
     },
+    data: {
+      open: 'state="open"',
+      closed: 'state="closed"',
+      top: 'side="top"',
+      right: 'side="right"',
+      bottom: 'side="bottom"',
+      left: 'side="left"',
+      highlighted: 'highlighted',
+      placeholder: 'placeholder',
+      disabled: 'disabled',
+    },
     extend: {
       colors: {
         'app-background': 'var(--app-background)',
@@ -43,6 +54,7 @@ const config: Config = {
         foreground: {
           DEFAULT: 'var(--foreground)',
           alt: 'var(--foreground-alt)',
+          muted: 'var(--foreground-muted)'
         },
         primary: {
           DEFAULT: 'var(--primary)',
@@ -58,7 +70,10 @@ const config: Config = {
         border: {
           DEFAULT: 'var(--border)',
           alt: 'var(--border-alt)',
-          hover: 'var(--border-hover)'
+          muted: 'var(--border-muted)',
+          hover: 'var(--border-hover)',
+          'alt-hover': 'var(--border-alt-hover)',
+          'muted-hover': 'var(--border-muted-hover)',
         },
         ring: {
           DEFAULT: 'var(--ring)',
@@ -90,8 +105,10 @@ const config: Config = {
     },
     borderRadius: {
       DEFAULT: 'var(--radius)',
-      md: 'calc(var(--radius) + 2px)',
-      lg: 'calc(var(--radius) + 4px)',
+      md: 'calc(var(--radius) + 0.125rem)',
+      lg: 'calc(var(--radius) + 0.250rem)',
+      xl: 'calc(var(--radius) + 0,375rem)',
+      full: '9999px',
     },
   },
   plugins: [

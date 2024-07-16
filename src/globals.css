@@ -77,6 +77,7 @@
     /* Semantics */
     --foreground: var(--clr-accent-12);
     --foreground-alt: var(--clr-gray-12);
+    --foreground-muted: var(--clr-accent-5);
 
     --primary: var(--clr-accent-9);
     --primary-alt: var(--clr-gray-9);
@@ -89,12 +90,16 @@
     
     --border: var(--clr-accent-6);
     --border-alt: var(--clr-gray-6);
+    --border-muted: var(--clr-accent-3);
+    
     --border-hover: var(--clr-accent-8);
+    --border-alt-hover: var(--clr-gray-8);
+    --border-muted-hover: var(--clr-accent-5);
 
     --ring: var(--clr-accent-8);
     --ring-alt: var(--clr-gray-8);
     
-    --radius: 2px;
+    --radius: 0.125rem;
   }
 }
  
@@ -104,7 +109,7 @@
   }
   
   body {
-    @apply relative bg-app-background text-foreground-alt before:absolute before:-z-10 before:w-full before:h-[480px] before:bg-gradient-to-b from-accent-4 before:opacity-60;
+    @apply relative bg-app-background text-foreground before:absolute before:-z-10 before:w-full before:h-[480px] before:bg-gradient-to-b from-accent-4 before:opacity-60;
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
 }

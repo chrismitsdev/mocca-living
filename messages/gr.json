@@ -1,5 +1,26 @@
 {
+  "Metadata": {
+    "Pages": {
+      "home": "Αρχική",
+      "suites": "Σουίτες",
+      "contact": "Επικοινωνία"
+    }
+  },
+  "Components": {
+    "LocaleSwitcherSelect": {
+      "placeholder": "Επιλογή γλώσσας",
+      "values": {
+        "en": "Αγγλικά",
+        "gr": "Ελληνικά"
+      }
+    }
+  },
   "Pages": {
+    "Header": {
+      "index": "Αρχική",
+      "suites": "Σουίτες",
+      "contact": "Επικοινωνία"
+    },
     "Home": {
       "placeholder": "Αρχική σελίδα"
     },

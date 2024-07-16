@@ -2,3 +2,4 @@ import {LocalePrefix} from 'next-intl/routing'
 
 export const locales = ['gr', 'en'] as const
 export const localePrefix = 'always' satisfies LocalePrefix
+export const defaultLocale = 'gr' as const
