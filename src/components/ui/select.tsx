@@ -31,7 +31,7 @@ const SelectTrigger = React.forwardRef<
 >(({className, children, ...props}, ref) => (
   <Trigger
     className={cn(
-      'px-4 py-[7px] w-full flex items-center gap-2 bg-app-background border rounded text-sm focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&>span]:grow [&>span]:text-left [&>span]:leading-6',
+      'px-4 py-[7px] w-full flex items-center gap-2 bg-app-background text-foreground-alt font-semibold text-sm border rounded focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&>span]:grow [&>span]:text-left [&>span]:leading-6',
       className
     )}
     ref={ref}

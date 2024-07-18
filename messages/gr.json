@@ -22,13 +22,18 @@
       "contact": "Επικοινωνία"
     },
     "Home": {
-      "placeholder": "Αρχική σελίδα"
+      "placeholder": "Αρχική"
     },
     "Suites": {
-      "placeholder": "Σουίτες σελίδα"
+      "placeholder": "Σουίτες"
     },
     "Contact": {
-      "placeholder": "Επικοινωνία σελίδα"
+      "placeholder": "Επικοινωνία"
+    },
+    "NotFound": {
+      "title": "Δεν βρέθηκε",
+      "subtitle": "Η σελίδα που ζητήσατε δεν βρέθηκε",
+      "linkToHome": "Πίσω στην αρχική σελίδα"
     }
   }
 }

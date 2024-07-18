@@ -12,18 +12,14 @@ import {
   SelectItem
 } from '@/components/ui/select'
 
-type LocaleSwitcherSelectProps = {
-  defaultLocale: string 
+type LocaleSwitcherSelectProps = React.ComponentPropsWithoutRef<typeof Select> & {
   placeholder: string
-  children: React.ReactNode
+  className?: string
 }
 
-type LocaleSwitcherSelectItemProps = {
-  value: keyof IntlMessages['Components']['LocaleSwitcherSelect']['values']
-  children: React.ReactNode
-}
+type LocaleSwitcherSelectItemProps = React.ComponentPropsWithoutRef<typeof SelectItem>
 
-function LocaleSwitcherSelect({defaultLocale, placeholder, children}: LocaleSwitcherSelectProps) {
+function LocaleSwitcherSelect({className, defaultValue, placeholder, children}: LocaleSwitcherSelectProps) {
   const router = useRouter()
   const pathname = usePathname()
   const [isPending, startTransition] = React.useTransition()
@@ -36,11 +32,11 @@ function LocaleSwitcherSelect({defaultLocale, placeholder, children}: LocaleSwit
   
   return (
     <Select 
-      defaultValue={defaultLocale} 
+      defaultValue={defaultValue} 
       onValueChange={onSelectChange}
       disabled={isPending}
     >
-      <SelectTrigger>
+      <SelectTrigger className={className}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectPortal>
@@ -54,8 +50,8 @@ function LocaleSwitcherSelect({defaultLocale, placeholder, children}: LocaleSwit
   )
 }
 
-function LocaleSwitcherSelectItem({value, children}: LocaleSwitcherSelectItemProps) {
-  return <SelectItem value={value}>{children}</SelectItem>
+function LocaleSwitcherSelectItem({...props}: LocaleSwitcherSelectItemProps) {
+  return <SelectItem {...props} />
 }
 
 LocaleSwitcherSelect.displayName = 'LocaleSwitcherSelect'

@@ -1,11 +1,9 @@
 import Image from 'next/image'
-import {useTranslations, useLocale} from 'next-intl'
+import {useTranslations} from 'next-intl'
 import {Link} from '@/navigation'
 import {Container} from '@/components/shared/container'
 import {buttonVariants} from '@/components/ui/button'
-import {LocaleSwitcherSelect, LocaleSwitcherSelectItem} from '@/components/shared/locale-switcher-select'
-import logo from '#/public/mocca-logo-simple.svg'
-import {locales} from '#/lib/next-intl-config'
+import logo from '#/public/logos/mocca-logo-simple.svg'
 
 type HeaderLink = {
   label: keyof IntlMessages['Metadata']['Pages']
@@ -20,14 +18,18 @@ const links: HeaderLink[] = [
 
 function Header() {
   const t = useTranslations()
-  const defaultLocale = useLocale()
 
   return (
-    <header className='py-4'>
+    <header className='py-8'>
       <Container>
         <div className='flex flex-col items-center gap-4'>
           <Link href='/'>
-            <Image priority src={logo} width={41} alt='Mocca Living'/>
+            <Image 
+              priority 
+              src={logo} 
+              style={{width: 41.44}}
+              alt='Mocca Living header logo'
+            />
           </Link>
           <div className='flex items-center gap-4'>
             {links.map(link => (
@@ -40,16 +42,6 @@ function Header() {
               </Link>
             ))}
           </div>
-          <LocaleSwitcherSelect 
-            defaultLocale={defaultLocale}
-            placeholder={t('Components.LocaleSwitcherSelect.placeholder')}
-          >
-            {locales.map(locale => (
-              <LocaleSwitcherSelectItem key={locale} value={locale}>
-                {t(`Components.LocaleSwitcherSelect.values.${locale}`)}
-              </LocaleSwitcherSelectItem>
-            ))}
-          </LocaleSwitcherSelect>
         </div>
       </Container>
     </header>

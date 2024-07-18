@@ -22,13 +22,18 @@
       "contact": "Contact"
     },
     "Home": {
-      "placeholder": "Home page"
+      "placeholder": "Home"
     },
     "Suites": {
-      "placeholder": "Suites page"
+      "placeholder": "Suites"
     },
     "Contact": {
-      "placeholder": "Contact page"
+      "placeholder": "Contact"
+    },
+    "NotFound": {
+      "title": "Not found",
+      "subtitle": "The page you requested was not found",
+      "linkToHome": "Back to home page"
     }
   }
 }
