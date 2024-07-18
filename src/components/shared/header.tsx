@@ -17,7 +17,7 @@ const links: HeaderLink[] = [
 ]
 
 function Header() {
-  const t = useTranslations()
+  const t = useTranslations('Metadata.Pages')
 
   return (
     <header className='py-8'>
@@ -38,7 +38,7 @@ function Header() {
                 className={buttonVariants({variant: 'link', size: 'small'})} 
                 href={link.href}
               >
-                {t(`Metadata.Pages.${link.label}`)}
+                {t(link.label)}
               </Link>
             ))}
           </div>

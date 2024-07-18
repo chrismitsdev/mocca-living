@@ -2,9 +2,9 @@ import '@/globals.css'
 import type {Metadata} from 'next'
 import {Open_Sans} from 'next/font/google'
 import {unstable_setRequestLocale} from 'next-intl/server'
+import {locales} from '#/lib/next-intl-config' 
 import {Header} from '@/components/shared/header'
 import {Footer} from '@/components/shared/footer'
-import {locales} from '#/lib/next-intl-config' 
 
 const openSans = Open_Sans({
   subsets: ['latin'],

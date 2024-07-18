@@ -3,7 +3,18 @@
     "Pages": {
       "home": "Home",
       "suites": "Suites",
-      "contact": "Contact"
+      "contact": "Contact",
+      "notFound": "Page not found"
+    }
+  },
+  "Pages": {
+    "Home": {},
+    "Suites": {},
+    "Contact": {},
+    "NotFound": {
+      "title": "Not found",
+      "subtitle": "The page you requested was not found",
+      "linkToHome": "Back to home page"
     }
   },
   "Components": {
@@ -13,27 +24,6 @@
         "en": "English",
         "gr": "Greek"
       }
-    }
-  },
-  "Pages": {
-    "Header": {
-      "index": "Home",
-      "suites": "Suites",
-      "contact": "Contact"
-    },
-    "Home": {
-      "placeholder": "Home"
-    },
-    "Suites": {
-      "placeholder": "Suites"
-    },
-    "Contact": {
-      "placeholder": "Contact"
-    },
-    "NotFound": {
-      "title": "Not found",
-      "subtitle": "The page you requested was not found",
-      "linkToHome": "Back to home page"
     }
   }
 }

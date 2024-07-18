@@ -3,7 +3,18 @@
     "Pages": {
       "home": "Αρχική",
       "suites": "Σουίτες",
-      "contact": "Επικοινωνία"
+      "contact": "Επικοινωνία",
+      "notFound": "Η σελίδα δεν βρέθηκε"
+    }
+  },
+  "Pages": {
+    "Home": {},
+    "Suites": {},
+    "Contact": {},
+    "NotFound": {
+      "title": "Δεν βρέθηκε",
+      "subtitle": "Η σελίδα που ζητήσατε δεν βρέθηκε",
+      "linkToHome": "Πίσω στην αρχική σελίδα"
     }
   },
   "Components": {
@@ -13,27 +24,6 @@
         "en": "Αγγλικά",
         "gr": "Ελληνικά"
       }
-    }
-  },
-  "Pages": {
-    "Header": {
-      "index": "Αρχική",
-      "suites": "Σουίτες",
-      "contact": "Επικοινωνία"
-    },
-    "Home": {
-      "placeholder": "Αρχική"
-    },
-    "Suites": {
-      "placeholder": "Σουίτες"
-    },
-    "Contact": {
-      "placeholder": "Επικοινωνία"
-    },
-    "NotFound": {
-      "title": "Δεν βρέθηκε",
-      "subtitle": "Η σελίδα που ζητήσατε δεν βρέθηκε",
-      "linkToHome": "Πίσω στην αρχική σελίδα"
     }
   }
 }

@@ -1,4 +1,4 @@
-import {useTranslations} from 'next-intl';
+import {useTranslations} from 'next-intl'
 import {Link} from '@/navigation'
 import {Container} from '@/components/shared/container'
 import {buttonVariants} from '@/components/ui/button'

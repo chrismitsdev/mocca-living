@@ -16,7 +16,7 @@ function Footer() {
           <Image 
             priority 
             src={logoFullWhite} 
-            width={140} 
+            width={160} 
             alt='Mocca Living footer logo' 
           />
           <LocaleSwitcherSelect 
