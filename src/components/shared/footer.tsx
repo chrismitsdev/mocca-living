@@ -2,20 +2,22 @@ import Image from 'next/image'
 import {useTranslations, useLocale} from 'next-intl'
 import {Container} from '@/components/shared/container'
 import {LocaleSelect, LocaleSelectItem} from '@/components/shared/locale-switcher-select'
+import {Typography} from '@/components/ui/typography'
+import {Separator} from '@/components/ui/separator'
 import {locales} from '#/lib/next-intl-config'
-import logoFullWhite from '#/public/logos/mocca-logo-full-white.svg'
+import logoBox from '#/public/logos/mocca-logo-box.svg'
 
 function Footer() {
   const t = useTranslations('Components.LocaleSelect')
   const locale = useLocale()
 
   return (
-    <footer className='py-8 bg-primary text-primary-foreground'>
-      <Container>
+    <footer className='py-8 border-t-2'>
+      <Container className='space-y-8'>
         <div className='flex items-start justify-between'>
           <Image 
             priority 
-            src={logoFullWhite} 
+            src={logoBox} 
             width={160} 
             alt='Mocca Living footer logo' 
           />
@@ -31,6 +33,15 @@ function Footer() {
               </LocaleSelectItem>
             ))}
           </LocaleSelect>
+        </div>
+        <Separator />
+        <div className='flex justify-between'>
+          <Typography variant='mini'>
+            {`Copyright © ${new Date().getFullYear()} Mocca Living`}
+          </Typography>
+          <Typography variant='mini'>
+            {'Designed & Developed by CM'}
+          </Typography>
         </div>
       </Container>
     </footer>
