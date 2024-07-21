@@ -4,10 +4,13 @@ const config: Config = {
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  future: {
+    hoverOnlyWhenSupported: true
+  },
   theme: {
     container: {
       center: true,
-      padding: '1rem'
+      padding: '0.5rem'
     },
     data: {
       open: 'state="open"',
@@ -23,33 +26,33 @@ const config: Config = {
     extend: {
       colors: {
         'app-background': 'var(--app-background)',
-        accent: {
-          1: 'var(--clr-accent-1)',
-          2: 'var(--clr-accent-2)',
-          3: 'var(--clr-accent-3)',
-          4: 'var(--clr-accent-4)',
-          5: 'var(--clr-accent-5)',
-          6: 'var(--clr-accent-6)',
-          7: 'var(--clr-accent-7)',
-          8: 'var(--clr-accent-8)',
-          9: 'var(--clr-accent-9)',
-          10: 'var(--clr-accent-10)',
-          11: 'var(--clr-accent-11)',
-          12: 'var(--clr-accent-12)'
+        brand: {
+          1: 'var(--brand-1)',
+          2: 'var(--brand-2)',
+          3: 'var(--brand-3)',
+          4: 'var(--brand-4)',
+          5: 'var(--brand-5)',
+          6: 'var(--brand-6)',
+          7: 'var(--brand-7)',
+          8: 'var(--brand-8)',
+          9: 'var(--brand-9)',
+          10: 'var(--brand-10)',
+          11: 'var(--brand-11)',
+          12: 'var(--brand-12)'
         },
         gray: {
-          1: 'var(--clr-gray-1)',
-          2: 'var(--clr-gray-2)',
-          3: 'var(--clr-gray-3)',
-          4: 'var(--clr-gray-4)',
-          5: 'var(--clr-gray-5)',
-          6: 'var(--clr-gray-6)',
-          7: 'var(--clr-gray-7)',
-          8: 'var(--clr-gray-8)',
-          9: 'var(--clr-gray-9)',
-          10: 'var(--clr-gray-10)',
-          11: 'var(--clr-gray-11)',
-          12: 'var(--clr-gray-12)'
+          1: 'var(--gray-1)',
+          2: 'var(--gray-2)',
+          3: 'var(--gray-3)',
+          4: 'var(--gray-4)',
+          5: 'var(--gray-5)',
+          6: 'var(--gray-6)',
+          7: 'var(--gray-7)',
+          8: 'var(--gray-8)',
+          9: 'var(--gray-9)',
+          10: 'var(--gray-10)',
+          11: 'var(--gray-11)',
+          12: 'var(--gray-12)'
         },
         foreground: {
           DEFAULT: 'var(--foreground)',
@@ -62,10 +65,25 @@ const config: Config = {
           foreground: 'var(--primary-foreground)',
           hover: 'var(--primary-hover)',
         },
-        destructive: {
-          DEFAULT: 'var(--destructive)',
-          foreground: 'var(--destructive-foreground)',
-          hover: 'var(--destructive-hover)',
+        success: {
+          DEFAULT: 'var(--success)',
+          foreground: 'var(--success-foreground)',
+          hover: 'var(--success-hover)',
+        },
+        error: {
+          DEFAULT: 'var(--error)',
+          foreground: 'var(--error-foreground)',
+          hover: 'var(--error-hover)',
+        },
+        warning: {
+          DEFAULT: 'var(--warning)',
+          foreground: 'var(--warning-foreground)',
+          hover: 'var(--warning-hover)',
+        },
+        info: {
+          DEFAULT: 'var(--info)',
+          foreground: 'var(--info-foreground)',
+          hover: 'var(--info-hover)',
         },
         border: {
           DEFAULT: 'var(--border)',
@@ -103,11 +121,24 @@ const config: Config = {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
     },
+    fontSize: {
+      xs: ['12px', '16px'],
+      sm: ['14px', '24px'],
+      base: ['16px', '24px'],
+      lg: ['18px', '24px'],
+      xl: ['20px', '24px'],
+      '2xl': ['24px', '32px'],
+      '3xl': ['30px', '48px'],
+      '4xl': ['36px', '48px'],
+      '5xl': ['48px', '64px'],
+      '6xl': ['60px', '96px']
+    },
     borderRadius: {
-      DEFAULT: 'var(--radius)',
-      md: 'calc(var(--radius) + 0.125rem)',
-      lg: 'calc(var(--radius) + 0.250rem)',
-      xl: 'calc(var(--radius) + 0,375rem)',
+      DEFAULT: 'var(--radius)',               // 2px
+      md: 'calc(var(--radius) + 0.125rem)',   // 2 + 2px
+      lg: 'calc(var(--radius) + 0.250rem)',   // 2 + 4px
+      xl: 'calc(var(--radius) + 0,375rem)',   // 2 + 6px
+      '2xl': 'calc(var(--radius) + 0,5rem)',  // 2 + 8px
       full: '9999px',
     },
   },

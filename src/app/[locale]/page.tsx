@@ -2,6 +2,7 @@ import {getTranslations} from 'next-intl/server'
 import {useTranslations} from 'next-intl'
 import {unstable_setRequestLocale} from 'next-intl/server'
 import {Container} from '@/components/shared/container'
+import {HomeCarousel} from '@/components/page/HomeCarousel'
 
 export async function generateMetadata({params: {locale}}: Params) {
   const t = await getTranslations({locale, namespace: 'Metadata'})
@@ -18,7 +19,7 @@ export default function IndexPage({params: {locale}}: Params) {
   return (
     <Container asChild>
       <section>
-        
+        <HomeCarousel />
       </section>
     </Container>
   )

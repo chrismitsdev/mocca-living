@@ -4,32 +4,48 @@ import {cva, type VariantProps} from 'class-variance-authority'
 import {cn} from '#/lib/utils'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:pointer-events-none disabled:opacity-50 active:scale-95',
+  [
+    'inline-flex', 
+    'items-center', 
+    'justify-center', 
+    'gap-2', 
+    'whitespace-nowrap', 
+    'rounded', 
+    'font-bold', 
+    'ring-offset-background', 
+    'transition-colors', 
+    'focus-visible:outline-none', 
+    'focus-visible:ring-2', 
+    'focus-visible:ring-ring', 
+    'focus-visible:ring-offset-1', 
+    'disabled:pointer-events-none', 
+    'disabled:opacity-50', 
+    'active:scale-95'
+  ],
   {
     variants: {
       variant: {
-        primary: 'bg-primary text-primary-foreground hover:bg-primary-hover',
-        bordered: 'border-2 hover:border-border-hover',
-        'bordered-filled': 'border-2 hover:bg-primary hover:text-primary-foreground hover:border-primary',
-        ghost: 'hover:bg-primary hover:text-primary-foreground',
-        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive-hover',
-        link: 'underline-offset-4 hover:underline',
+        primary: ['bg-primary', 'text-primary-foreground', 'hover:bg-primary-hover'],
+        bordered: ['border-2', 'hover:border-border-hover'],
+        ghost: ['hover:bg-primary', 'hover:text-primary-foreground'],
+        destructive: ['bg-destructive', 'text-destructive-foreground', 'hover:bg-destructive-hover'],
+        link: ['underline-offset-4', 'hover:underline'],
       },
       size: {
-        normal: 'px-4 py-2',
-        small: 'px-2 py-1.5 text-sm',
-        'icon-normal': 'h-10 w-10',
-        'icon-small': 'h-8 w-8',
+        normal: ['px-4', 'py-2'],
+        small: ['px-2', 'py-1.5', 'text-sm'],
+        'icon-normal': ['h-10', 'w-10'],
+        'icon-small': ['h-8', 'w-8'],
       }
     },
     compoundVariants: [
       {
-        variant: ['bordered', 'bordered-filled'],
+        variant: ['bordered'],
         size: 'normal',
         className: 'py-1.5'
       },
       {
-        variant: ['bordered', 'bordered-filled'],
+        variant: ['bordered'],
         size: 'small',
         className: 'py-1'
       }
@@ -41,19 +57,22 @@ const buttonVariants = cva(
   }
 )
 
-type ButtonProps = React.ComponentPropsWithoutRef<'button'> & VariantProps<typeof buttonVariants> & {
-  asChild?: boolean
-}
+type ButtonProps = 
+  React.ButtonHTMLAttributes<HTMLButtonElement> 
+  & VariantProps<typeof buttonVariants> & {
+    asChild?: boolean
+  }
 
 const Button = React.forwardRef<
   HTMLButtonElement, 
   ButtonProps
->(({className, variant, size, asChild = false, ...props}, ref) => {
+>(({asChild = false, className, variant, size, type = 'button', ...props}, ref) => {
     const Comp = asChild ? Slot : 'button'
 
     return (
       <Comp
         className={cn(buttonVariants({variant, size, className}))}
+        type={type}
         ref={ref}
         {...props}
       />

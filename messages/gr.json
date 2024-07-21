@@ -18,8 +18,9 @@
     }
   },
   "Components": {
-    "LocaleSwitcherSelect": {
+    "LocaleSelect": {
       "placeholder": "Επιλογή γλώσσας",
+      "loadingText": "Loading",
       "values": {
         "en": "Αγγλικά",
         "gr": "Ελληνικά"

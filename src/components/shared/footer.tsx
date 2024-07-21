@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import {useTranslations, useLocale} from 'next-intl'
 import {Container} from '@/components/shared/container'
-import {LocaleSwitcherSelect, LocaleSwitcherSelectItem} from '@/components/shared/locale-switcher-select'
+import {LocaleSelect, LocaleSelectItem} from '@/components/shared/locale-switcher-select'
 import {locales} from '#/lib/next-intl-config'
 import logoFullWhite from '#/public/logos/mocca-logo-full-white.svg'
 
 function Footer() {
-  const t = useTranslations('Components.LocaleSwitcherSelect')
+  const t = useTranslations('Components.LocaleSelect')
   const locale = useLocale()
 
   return (
@@ -19,17 +19,18 @@ function Footer() {
             width={160} 
             alt='Mocca Living footer logo' 
           />
-          <LocaleSwitcherSelect 
-            className='max-w-32'
+          <LocaleSelect 
+            className='w-36'
             defaultValue={locale}
             placeholder={t('placeholder')}
+            loadingText={t('loadingText')}
           >
             {locales.map(locale => (
-              <LocaleSwitcherSelectItem key={locale} value={locale}>
+              <LocaleSelectItem key={locale} value={locale}>
                 {t(`values.${locale}`)}
-              </LocaleSwitcherSelectItem>
+              </LocaleSelectItem>
             ))}
-          </LocaleSwitcherSelect>
+          </LocaleSelect>
         </div>
       </Container>
     </footer>

@@ -9,95 +9,119 @@
     --app-background: #ddc8a2;
     
     /* Palettes */
-    --clr-accent-1: #c6c4c3;  /* Backgrounds */
-    --clr-accent-2: #c4bbb6;  /* Backgrounds */
-    --clr-accent-3: #c2ab9f;  /* Interactive components */
-    --clr-accent-4: #bf9c88;  /* Interactive components */
-    --clr-accent-5: #ba8c71;  /* Interactive components */
-    --clr-accent-6: #af7c5f;  /* Borders and separator */
-    --clr-accent-7: #a26844;  /* Borders and separator */
-    --clr-accent-8: #934a16;  /* Borders and separator */
-    --clr-accent-9: #944f21;  /* Solid colors */
-    --clr-accent-10: #873f03; /* Solid colors */
-    --clr-accent-11: #491400; /* Accessible text */
-    --clr-accent-12: #453227; /* Accessible text */
+    --brand-1: #c6c4c3;  /* Backgrounds */
+    --brand-2: #c4bbb6;  /* Backgrounds */
+    --brand-3: #c2ab9f;  /* Interactive components */
+    --brand-4: #bf9c88;  /* Interactive components */
+    --brand-5: #ba8c71;  /* Interactive components */
+    --brand-6: #af7c5f;  /* Borders and separator */
+    --brand-7: #a26844;  /* Borders and separator */
+    --brand-8: #934a16;  /* Borders and separator */
+    --brand-9: #944f21;  /* Solid colors */
+    --brand-10: #873f03; /* Solid colors */
+    --brand-11: #491400; /* Accessible text */
+    --brand-12: #453227; /* Accessible text */
 
-    --clr-gray-1: #c5c3c3;
-    --clr-gray-2: #bdbcbb;
-    --clr-gray-3: #b1afae;
-    --clr-gray-4: #a5a4a3;
-    --clr-gray-5: #9b9998;
-    --clr-gray-6: #908e8d;
-    --clr-gray-7: #838180;
-    --clr-gray-8: #6f6d6c;
-    --clr-gray-9: #444140;
-    --clr-gray-10: #3b3837;
-    --clr-gray-11: #242221;
-    --clr-gray-12: #211f1e;
+    --gray-1: #c5c3c3;
+    --gray-2: #bdbcbb;
+    --gray-3: #b1afae;
+    --gray-4: #a5a4a3;
+    --gray-5: #9b9998;
+    --gray-6: #908e8d;
+    --gray-7: #838180;
+    --gray-8: #6f6d6c;
+    --gray-9: #444140;
+    --gray-10: #3b3837;
+    --gray-11: #242221;
+    --gray-12: #211f1e;
 
-    --clr-green-1: #fbfefc;
-    --clr-green-2: #f4fbf6;
-    --clr-green-3: #e6f6eb;
-    --clr-green-4: #d6f1df;
-    --clr-green-5: #c4e8d1;
-    --clr-green-6: #adddc0;
-    --clr-green-7: #8eceaa;
-    --clr-green-8: #5bb98b;
-    --clr-green-9: #30a46c;
-    --clr-green-10: #2b9a66;
-    --clr-green-11: #218358;
-    --clr-green-12: #193b2d;
+    --green-1: #fbfefc;
+    --green-2: #f4fbf6;
+    --green-3: #e6f6eb;
+    --green-4: #d6f1df;
+    --green-5: #c4e8d1;
+    --green-6: #adddc0;
+    --green-7: #8eceaa;
+    --green-8: #5bb98b;
+    --green-9: #30a46c;
+    --green-10: #2b9a66;
+    --green-11: #218358;
+    --green-12: #193b2d;
 
-    --clr-red-1: #fffcfc;
-    --clr-red-2: #fff7f7;
-    --clr-red-3: #feebec;
-    --clr-red-4: #ffdbdc;
-    --clr-red-5: #ffcdce;
-    --clr-red-6: #fdbdbe;
-    --clr-red-7: #f4a9aa;
-    --clr-red-8: #eb8e90;
-    --clr-red-9: #e5484d;
-    --clr-red-10: #dc3e42;
-    --clr-red-11: #ce2c31;
-    --clr-red-12: #641723;
+    --red-1: #fffcfc;
+    --red-2: #fff7f7;
+    --red-3: #feebec;
+    --red-4: #ffdbdc;
+    --red-5: #ffcdce;
+    --red-6: #fdbdbe;
+    --red-7: #f4a9aa;
+    --red-8: #eb8e90;
+    --red-9: #e5484d;
+    --red-10: #dc3e42;
+    --red-11: #ce2c31;
+    --red-12: #641723;
 
-    --clr-blue-1: #fbfdff;
-    --clr-blue-2: #f4faff;
-    --clr-blue-3: #e6f4fe;
-    --clr-blue-4: #d5efff;
-    --clr-blue-5: #c2e5ff;
-    --clr-blue-6: #acd8fc;
-    --clr-blue-7: #8ec8f6;
-    --clr-blue-8: #5eb1ef;
-    --clr-blue-9: #0090ff;
-    --clr-blue-10: #0588f0;
-    --clr-blue-11: #0d74ce;
-    --clr-blue-12: #113264;
+    --yellow-1: #FDFDF9;
+    --yellow-2: #FEFCE9;
+    --yellow-3: #FFFAB8;
+    --yellow-4: #FFF394;
+    --yellow-5: #FFE770;
+    --yellow-6: #F3D768;
+    --yellow-7: #E4C767;
+    --yellow-8: #D5AE39;
+    --yellow-9: #FFE629;
+    --yellow-10: #FFDC00;
+    --yellow-11: #9E6C00;
+    --yellow-12: #473B1F;
+
+    --blue-1: #fbfdff;
+    --blue-2: #f4faff;
+    --blue-3: #e6f4fe;
+    --blue-4: #d5efff;
+    --blue-5: #c2e5ff;
+    --blue-6: #acd8fc;
+    --blue-7: #8ec8f6;
+    --blue-8: #5eb1ef;
+    --blue-9: #0090ff;
+    --blue-10: #0588f0;
+    --blue-11: #0d74ce;
+    --blue-12: #113264;
 
     /* Semantics */
-    --foreground: var(--clr-accent-12);
-    --foreground-alt: var(--clr-gray-12);
-    --foreground-muted: var(--clr-accent-5);
+    --foreground: var(--brand-12);
+    --foreground-alt: var(--gray-12);
+    --foreground-muted: var(--brand-5);
 
-    --primary: var(--clr-accent-9);
-    --primary-alt: var(--clr-gray-9);
+    --primary: var(--brand-9);
+    --primary-alt: var(--gray-9);
     --primary-foreground: var(--app-white);
-    --primary-hover: var(--clr-accent-10);
+    --primary-hover: var(--brand-10);
  
-    --destructive: var(--clr-red-9);
-    --destructive-foreground: var(--app-white);
-    --destructive-hover: var(--clr-red-10);
+    --success: var(--green-9);
+    --success-foreground: var(--app-white);
+    --success-hover: var(--green-10);
     
-    --border: var(--clr-accent-6);
-    --border-alt: var(--clr-gray-6);
-    --border-muted: var(--clr-accent-3);
+    --error: var(--red-9);
+    --error-foreground: var(--app-white);
+    --error-hover: var(--red-10);
     
-    --border-hover: var(--clr-accent-8);
-    --border-alt-hover: var(--clr-gray-8);
-    --border-muted-hover: var(--clr-accent-5);
+    --warning: var(--yellow-9);
+    --warning-foreground: var(--app-white);
+    --warning-hover: var(--yellow-10);
 
-    --ring: var(--clr-accent-8);
-    --ring-alt: var(--clr-gray-8);
+    --info: var(--blue-9);
+    --info-foreground: var(--app-white);
+    --info-hover: var(--blue-10);
+    
+    --border: var(--brand-6);
+    --border-alt: var(--gray-6);
+    --border-muted: var(--brand-3);
+    --border-hover: var(--brand-8);
+    --border-alt-hover: var(--gray-8);
+    --border-muted-hover: var(--brand-5);
+
+    --ring: var(--brand-8);
+    --ring-alt: var(--gray-8);
     
     --radius: 0.125rem;
   }
@@ -109,7 +133,7 @@
   }
   
   body {
-    @apply relative bg-app-background text-foreground-alt before:absolute before:-z-10 before:w-full before:h-[480px] before:bg-gradient-to-b from-accent-4 before:opacity-60;
+    @apply relative bg-app-background text-foreground-alt before:absolute before:-z-10 before:w-full before:h-[480px] before:bg-gradient-to-b from-brand-4 before:opacity-60;
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
 }

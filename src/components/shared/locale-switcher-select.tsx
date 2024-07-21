@@ -11,33 +11,37 @@ import {
   SelectViewport,
   SelectItem
 } from '@/components/ui/select'
+import {Spinner} from '@/components/ui/spinner'
 
-type LocaleSwitcherSelectProps = React.ComponentPropsWithoutRef<typeof Select> & {
-  placeholder: string
+type LocaleSelectProps = React.ComponentPropsWithoutRef<typeof Select> & {
+  loadingText: string
   className?: string
+  placeholder: string
 }
 
-type LocaleSwitcherSelectItemProps = React.ComponentPropsWithoutRef<typeof SelectItem>
-
-function LocaleSwitcherSelect({className, defaultValue, placeholder, children}: LocaleSwitcherSelectProps) {
+function LocaleSelect({loadingText, className, placeholder, children,...props}: LocaleSelectProps) {
   const router = useRouter()
   const pathname = usePathname()
   const [isPending, startTransition] = React.useTransition()
 
-  function onSelectChange(locale: keyof IntlMessages['Components']['LocaleSwitcherSelect']['values']) {
+  function onSelectChange(locale: keyof IntlMessages['Components']['LocaleSelect']['values']) {
     startTransition(function() {
       router.replace(pathname, {locale})
     })
   }
   
   return (
-    <Select 
-      defaultValue={defaultValue} 
-      onValueChange={onSelectChange}
-      disabled={isPending}
-    >
+    <Select disabled={isPending} onValueChange={onSelectChange} {...props}>
       <SelectTrigger className={className}>
-        <SelectValue placeholder={placeholder} />
+        {isPending
+          ? (
+            <span className='flex items-center gap-2'>
+              <Spinner className='h-4 w-4' />
+              <span>{loadingText}</span>
+            </span>
+          )
+          : <SelectValue placeholder={placeholder} />
+        }
       </SelectTrigger>
       <SelectPortal>
         <SelectContent>
@@ -50,11 +54,11 @@ function LocaleSwitcherSelect({className, defaultValue, placeholder, children}: 
   )
 }
 
-function LocaleSwitcherSelectItem({...props}: LocaleSwitcherSelectItemProps) {
+function LocaleSelectItem({...props}: React.ComponentPropsWithoutRef<typeof SelectItem>) {
   return <SelectItem {...props} />
 }
 
-LocaleSwitcherSelect.displayName = 'LocaleSwitcherSelect'
-LocaleSwitcherSelectItem.displayName = 'LocaleSwitcherSelectItem'
+LocaleSelect.displayName = 'LocaleSelect'
+LocaleSelectItem.displayName = 'LocaleSelectItem'
 
-export {LocaleSwitcherSelect, LocaleSwitcherSelectItem}
+export {LocaleSelect, LocaleSelectItem}

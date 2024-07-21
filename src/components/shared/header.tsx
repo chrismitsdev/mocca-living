@@ -22,7 +22,7 @@ function Header() {
   return (
     <header className='py-8'>
       <Container>
-        <div className='flex flex-col items-center gap-4'>
+        <div className='flex flex-col items-center gap-6'>
           <Link href='/'>
             <Image 
               priority 

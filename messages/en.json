@@ -18,8 +18,9 @@
     }
   },
   "Components": {
-    "LocaleSwitcherSelect": {
+    "LocaleSelect": {
       "placeholder": "Select language",
+      "loadingText": "Φορτώνει",
       "values": {
         "en": "English",
         "gr": "Greek"
