@@ -1,21 +1,29 @@
 'use client'
 
 import * as React from 'react'
-import cookie from 'js-cookie'
+import {getTranslations} from 'next-intl/server'
+import cookies from 'js-cookie'
 import {Button} from '@/components/ui/button'
 import {Typography} from '@/components/ui/typography'
 import {CookieIcon} from '@radix-ui/react-icons'
 
-const CONSENT_COOKIE = 'COOKIE_CONSENT'
+type CookieConsentProps = {
+  title: string
+  message: string
+  acceptLabel: string
+  rejectLabel: string
+}
+
+const CONSENT_COOKIE_NAME = 'COOKIE_CONSENT'
 const ACCEPTED_EXPIRE_DATE = 365
 const REJECTED_EXPIRE_DATE = 1
 
-function CookieConsent() {
+function CookieConsent({title, message, acceptLabel, rejectLabel}: CookieConsentProps) {
   const [showBanner, setShowBanner] = React.useState(false)
   
   React.useEffect(
     function() {
-      const consentCookie = cookie.get(CONSENT_COOKIE)
+      const consentCookie = cookies.get(CONSENT_COOKIE_NAME)
 
       if (!consentCookie) {
         setShowBanner(true)
@@ -24,13 +32,13 @@ function CookieConsent() {
     []
   )
 
-  function handleCookieConsent(hasConsented: boolean) {
+  function handleCookieConsent(consent: boolean) {
     setShowBanner(false)
     
-    cookie.set(
-      CONSENT_COOKIE, 
-      hasConsented ? 'accepted' : 'rejected', 
-      {expires: hasConsented ? ACCEPTED_EXPIRE_DATE : REJECTED_EXPIRE_DATE}
+    cookies.set(
+      CONSENT_COOKIE_NAME, 
+      consent ? 'accepted' : 'rejected',
+      {expires: consent ? ACCEPTED_EXPIRE_DATE : REJECTED_EXPIRE_DATE}
     )
   }
 
@@ -40,31 +48,21 @@ function CookieConsent() {
 
   /* eslint-disable react/jsx-no-literals */
   return (
-    <article className='px-4 py-8 space-y-6 bg-brand-12 text-primary-foreground rounded shadow-lg sm:w-96 sm:fixed sm:bottom-4 sm:right-4 sm:px-8'>
+    <section className='px-4 py-8 fixed inset-x-0 bottom-0 space-y-6 bg-brand-12 text-primary-foreground sm:px-8 sm:w-96 sm:inset-auto sm:bottom-4 sm:right-4 sm:rounded sm:shadow-lg'>
       <div className='flex items-center gap-2'>
         <CookieIcon width={32} height={32} />
-        <Typography variant='h3'>Cookies</Typography>
+        <Typography variant='h3'>{title}</Typography>
       </div>
-      <Typography>
-        By using our website, you agree to our cookie policy to provide a better user and website experience.
-      </Typography>
+      <Typography>{message}</Typography>
       <div className='flex flex-wrap gap-4'>
-        <Button
-          variant='successive'
-          className='grow' 
-          onClick={() => handleCookieConsent(true)}
-        >
-          {'Accept'}
+        <Button className='grow' onClick={() => handleCookieConsent(true)}>
+          {acceptLabel}
         </Button>
-        <Button 
-          variant='destructive'
-          className='grow' 
-          onClick={() => handleCookieConsent(false)}
-        >
-          {'Reject'}
+        <Button className='grow' onClick={() => handleCookieConsent(false)}>
+          {rejectLabel}
         </Button>
       </div>
-    </article>
+    </section>
   )
 }
 

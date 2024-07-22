@@ -1,5 +1,6 @@
 import '@/globals.css'
 import type {Metadata} from 'next'
+import {useTranslations} from 'next-intl'
 import {Open_Sans} from 'next/font/google'
 import {unstable_setRequestLocale} from 'next-intl/server'
 import {locales} from '#/lib/next-intl-config' 
@@ -30,17 +31,20 @@ export default function LocaleLayout(
   {children: React.ReactNode, params: {locale: string}}
 ) {
   unstable_setRequestLocale(locale)
+  const t = useTranslations('Components.CookieConsent')
   
   return (
     <html lang={locale} className={openSans.className}>
       <body className='h-screen grid grid-rows-[auto,1fr,auto]'>
         <Header />
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
         <Footer />
-
-        <CookieConsent />
+        <CookieConsent 
+          title={t('title')}
+          message={t('message')}
+          acceptLabel={t('accept-label')}
+          rejectLabel={t('reject-label')}
+        />
       </body>
     </html>
   )
