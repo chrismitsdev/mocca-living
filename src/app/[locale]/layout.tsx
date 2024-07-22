@@ -5,6 +5,7 @@ import {unstable_setRequestLocale} from 'next-intl/server'
 import {locales} from '#/lib/next-intl-config' 
 import {Header} from '@/components/shared/header'
 import {Footer} from '@/components/shared/footer'
+import {CookieConsent} from '@/components/shared/cookie-consent'
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -38,6 +39,8 @@ export default function LocaleLayout(
           {children}
         </main>
         <Footer />
+
+        <CookieConsent />
       </body>
     </html>
   )

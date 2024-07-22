@@ -23,7 +23,7 @@ function HomeCarousel() {
           {Object.values(outdoorImages).slice(0, 6).map((image, i) => (
             <CarouselSlide key={image.src}>
               <Image 
-                className='w-full h-full object-contain' 
+                className='w-full h-full object-cover' 
                 src={image} 
                 alt={`Carousel image ${i + 1}`} 
               />

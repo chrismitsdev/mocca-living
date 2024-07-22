@@ -28,7 +28,9 @@ const buttonVariants = cva(
         primary: ['bg-primary', 'text-primary-foreground', 'hover:bg-primary-hover'],
         bordered: ['border-2', 'hover:border-border-hover'],
         ghost: ['hover:bg-primary', 'hover:text-primary-foreground'],
-        destructive: ['bg-destructive', 'text-destructive-foreground', 'hover:bg-destructive-hover'],
+        successive: ['bg-success', 'text-success-foreground', 'hover:bg-success-hover'],
+        destructive: ['bg-error', 'text-error-foreground', 'hover:bg-error-hover'],
+        informative: ['bg-info', 'text-info-foreground', 'hover:bg-info-hover'],
         link: ['underline-offset-4', 'hover:underline'],
       },
       size: {
