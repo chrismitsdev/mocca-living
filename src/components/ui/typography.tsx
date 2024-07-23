@@ -44,7 +44,7 @@ const Typography = React.forwardRef<
 
   return (
     <Comp 
-      className={cn(typographyVariants({variant}))}
+      className={cn(typographyVariants({variant, className}))}
       ref={ref}
       {...props} 
     />
