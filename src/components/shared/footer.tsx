@@ -6,35 +6,44 @@ import {LocaleSelect, LocaleSelectItem} from '@/components/shared/locale-switche
 import {Typography} from '@/components/ui/typography'
 import {Separator} from '@/components/ui/separator'
 import {locales} from '#/lib/next-intl-config'
-import logoBox from '#/public/logos/mocca-logo-box.svg'
+import logoFull from '#/public/logos/mocca-logo-full.svg'
 
 function Footer() {
   const t = useTranslations()
   const locale = useLocale()
 
   return (
-    <footer className='py-8 border-t-2'>
-      <Container className='space-y-8'>
-        <div className='flex items-start justify-between'>
+    <footer className='py-12 border-t-2'>
+      <Container className='space-y-10'>
+        <div className='space-y-8 sm:space-y-0 sm:flex sm:justify-between sm:items-start'>
           <Image 
             priority 
-            src={logoBox} 
-            width={160} 
+            src={logoFull} 
+            height={160} 
             alt='Mocca Living footer logo' 
           />
-          <div className='flex flex-col gap-1'>
-            <Typography className='mb-2 uppercase' variant='large'>
-              {t('Components.Footer.title-1')}
+          <FooterColumn title={t('Components.Footer.first-column.title')}>
+            <Typography className='hover:underline' variant='small' asChild>
+              <Link href='/privacy'>{t('Components.Footer.first-column.first-link')}</Link>
             </Typography>
             <Typography className='hover:underline' variant='small' asChild>
-              <Link href='/privacy'>{t('Metadata.Pages.privacy')}</Link>
+              <Link href='/cookies'>{t('Components.Footer.first-column.second-link')}</Link>
+            </Typography>
+          </FooterColumn>
+          <FooterColumn title={t('Components.Footer.second-column.title')}>
+            <Typography className='hover:underline' variant='small' asChild>
+              <a href='https://maps.app.goo.gl/41UMZ9aS2DT1SDD88' target='_blank'>
+                {t('Components.Footer.second-column.first-link')}
+              </a>
             </Typography>
             <Typography className='hover:underline' variant='small' asChild>
-              <Link href='/cookies'>{t('Metadata.Pages.cookies')}</Link>
+              <a href='tel:+306973433980'>
+                {t('Components.Footer.second-column.second-link')}
+              </a>
             </Typography>
-          </div>
+          </FooterColumn>
           <LocaleSelect 
-            className='w-36'
+            className='w-full sm:w-36 justify-self-end'
             defaultValue={locale}
             placeholder={t('Components.LocaleSelect.placeholder')}
             loadingText={t('Components.LocaleSelect.loadingText')}
@@ -60,6 +69,18 @@ function Footer() {
   )
 }
 
+function FooterColumn({title, children}: React.PropsWithChildren<{title: string}>) {
+  return (
+    <div>
+      <Typography className='mb-2 uppercase font-semibold' >
+        {title}
+      </Typography>
+      {children}
+    </div>
+  )
+}
+
 Footer.displayName = 'Footer'
+FooterColumn.displayName = 'FooterColumn'
 
 export {Footer}

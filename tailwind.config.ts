@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: '0.5rem'
+      padding: '0.75rem'
     },
     data: {
       open: 'state="open"',

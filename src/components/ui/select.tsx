@@ -31,7 +31,7 @@ const SelectTrigger = React.forwardRef<
 >(({className, children, ...props}, ref) => (
   <Trigger
     className={cn(
-      'px-4 py-[7px] flex items-center gap-2 bg-app-background text-foreground-alt font-semibold text-sm border hover:border-border-hover data-open:border-border-hover rounded focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&>span]:grow [&>span]:text-left [&>span]:leading-6',
+      'px-4 py-[7px] flex items-center gap-2 bg-app-background text-foreground-alt font-semibold text-sm border hover:border-border-hover data-open:shadow-md data-open:border-border-hover rounded focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&>span]:grow [&>span]:text-left',
       className
     )}
     ref={ref}
@@ -47,10 +47,10 @@ const SelectTrigger = React.forwardRef<
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof Content>,
   React.ComponentPropsWithoutRef<typeof Content>
->(({className, children, position = 'popper', sideOffset = 4, ...props}, ref) => (
+>(({className, children, position = 'popper', sideOffset = 6, ...props}, ref) => (
   <Content
     className={cn(
-      'w-[var(--radix-select-trigger-width)] max-h-[var(--radix-select-content-available-height)] overflow-hidden bg-app-background border border-border-hover rounded shadow-lg data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-top:slide-in-from-bottom-2 data-right:slide-in-from-left-2 data-bottom:slide-in-from-top-2 data-left:slide-in-from-right-2',
+      'w-[var(--radix-select-trigger-width)] max-h-[var(--radix-select-content-available-height)] overflow-hidden bg-app-background border border-border-hover rounded shadow-md data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-top:slide-in-from-bottom-2 data-right:slide-in-from-left-2 data-bottom:slide-in-from-top-2 data-left:slide-in-from-right-2',
       className
     )}
     sideOffset={sideOffset}
@@ -82,7 +82,7 @@ const SelectItem = React.forwardRef<
 >(({className, children, ...props}, ref) => (
   <Item
     className={cn(
-      'pl-8 pr-4 py-2 flex items-center text-sm cursor-pointer select-none outline-none focus:bg-accent focus:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50 [&>span]:leading-6',
+      'pl-8 pr-4 py-2 flex items-center text-sm cursor-pointer select-none outline-none data-disabled:pointer-events-none data-disabled:opacity-50 [&>span]:leading-6',
       className
     )}
     ref={ref}

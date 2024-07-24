@@ -31,8 +31,16 @@
   },
   "Components": {
     "Footer": {
-      "title-1": "Useful links",
-      "title-2": "Information"
+      "first-column": {
+        "title": "Useful links",
+        "first-link": "Privacy policy",
+        "second-link": "Use of cookies"
+      },
+      "second-column": {
+        "title": "Information",
+        "first-link": "Beach of Agia Paraskevi",
+        "second-link": "+30 6973433980"
+      }
     },
     "LocaleSelect": {
       "placeholder": "Select language",
