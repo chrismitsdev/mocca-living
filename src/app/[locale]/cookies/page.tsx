@@ -18,13 +18,11 @@ export default function IndexPage({params: {locale}}: Params) {
   const t = useTranslations('Pages.Cookies')
 
   return (
-    <Container asChild>
-      <section>
-        <Article>
-          <Typography variant='h4'>{t('title')}</Typography>
-          <Typography>{t('content')}</Typography>
-        </Article>
-      </section>
+    <Container>
+      <Article>
+        <Typography variant='h4'>{t('title')}</Typography>
+        <Typography>{t('content')}</Typography>
+      </Article>
     </Container>
   )
 }

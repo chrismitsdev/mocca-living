@@ -16,10 +16,8 @@ export default function SuitesPage({params: {locale}}: Params) {
   const t = useTranslations('Pages.Suites')
 
   return (
-    <Container asChild>
-      <section>
-        
-      </section>
+    <Container>
+      {'SuitesPage'}
     </Container>
   )
 }

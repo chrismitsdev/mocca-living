@@ -16,10 +16,8 @@ export default function ContactPage({params: {locale}}: Params) {
   const t = useTranslations('Pages.Contact')
 
   return (
-    <Container asChild>
-      <section>
-        
-      </section>
+    <Container>
+      {'ContactPage'}
     </Container>
   )
 }

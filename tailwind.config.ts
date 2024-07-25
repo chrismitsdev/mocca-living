@@ -117,10 +117,21 @@ const config: Config = {
             height: '0'
           },
         },
+        'appear': {
+          from: {
+            'opacity': '0',
+            'transform': 'translateY(16px)'
+          },
+          to: {
+            'opacity': '1',
+            'transform': 'translateY(0)'
+          }
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'appear': 'appear 750ms cubic-bezier(0.390, 0.575, 0.565, 1.000) both'
       },
     },
     fontSize: {

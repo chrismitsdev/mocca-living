@@ -18,17 +18,15 @@ export default function IndexPage({params: {locale}}: Params) {
   const t = useTranslations('Pages.Privacy')
   
   return (
-    <Container asChild>
-      <section className='space-y-12'>
-        <Article>
-          <Typography variant='h4'>{t('title')}</Typography>
-          <Typography>{t('content')}</Typography>
-        </Article>
-        <Article>
-          <Typography variant='h4'>{t('sub-title')}</Typography>
-          <Typography>{t('sub-content')}</Typography>
-        </Article>
-      </section>
+    <Container className='space-y-12'>
+      <Article>
+        <Typography variant='h4'>{t('title')}</Typography>
+        <Typography>{t('content')}</Typography>
+      </Article>
+      <Article>
+        <Typography variant='h4'>{t('sub-title')}</Typography>
+        <Typography>{t('sub-content')}</Typography>
+      </Article>
     </Container>
   )
 }
