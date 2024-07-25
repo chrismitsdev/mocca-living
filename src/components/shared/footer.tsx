@@ -72,7 +72,7 @@ function Footer() {
 function FooterColumn({title, children}: React.PropsWithChildren<{title: string}>) {
   return (
     <div>
-      <Typography className='mb-2 uppercase font-semibold' >
+      <Typography className='mb-2 uppercase font-bold' >
         {title}
       </Typography>
       {children}

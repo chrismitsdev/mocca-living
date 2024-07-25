@@ -15,6 +15,8 @@ const config: Config = {
     data: {
       open: 'state="open"',
       closed: 'state="closed"',
+      checked: 'state=checked',
+      unchecked: 'state=unchecked',
       top: 'side="top"',
       right: 'side="right"',
       bottom: 'side="bottom"',

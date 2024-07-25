@@ -194,7 +194,7 @@ const CarouselDots = React.forwardRef<
         <button 
           key={index} 
           className={cn(
-            'shrink-0 h-4 w-4 border-2 rounded-full cursor-pointer transition-colors active:scale-95',
+            'shrink-0 h-4 w-4 border-2 rounded-full cursor-pointer transition-colors active:scale-90 hover:border-border-hover',
             selectedIndex === index && 'bg-primary border-primary'
           )} 
           type='button'

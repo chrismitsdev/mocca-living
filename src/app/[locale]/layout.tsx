@@ -35,7 +35,7 @@ export default function LocaleLayout(
   
   return (
     <html lang={locale} className={openSans.className}>
-      <body className='h-screen grid grid-rows-[auto,1fr,auto]'>
+      <body className='sm:h-screen sm:grid sm:grid-rows-[auto,1fr,auto]'>
         <Header />
         <main>{children}</main>
         <Footer />
