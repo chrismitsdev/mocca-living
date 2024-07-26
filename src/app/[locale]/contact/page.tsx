@@ -2,6 +2,7 @@ import {getTranslations} from 'next-intl/server'
 import {useTranslations} from 'next-intl'
 import {unstable_setRequestLocale} from 'next-intl/server'
 import {Container} from '@/components/shared/container'
+import {ContactMap} from '@/components/page/contact/contact-map'
 
 export async function generateMetadata({params: {locale}}: Params) {
   const t = await getTranslations({locale, namespace: 'Metadata'})
@@ -17,7 +18,13 @@ export default function ContactPage({params: {locale}}: Params) {
 
   return (
     <Container>
-      {'ContactPage'}
+      <ContactMap 
+        token={process.env.MAPBOX_TOKEN as string}
+        translations={{
+          title: t('ContactMap.title'),
+          directions: t('ContactMap.directions')
+        }}
+      />
     </Container>
   )
 }

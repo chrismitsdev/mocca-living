@@ -12,7 +12,12 @@
   "Pages": {
     "Home": {},
     "Suites": {},
-    "Contact": {},
+    "Contact": {
+      "ContactMap": {
+        "title": "Mocca Living",
+        "directions": "How to get here"
+      }
+    },
     "Privacy": {
       "title": "General terms",
       "content": "Our website mocca-living.gr safeguards the personal nature of your information and cannot disclose it to any third party (natural or legal entity) for any reason, except for relevant legal provisions and solely to the competent authorities. We reserve the right to disclose your personally identifiable information as required by law and when we believe that disclosure is necessary to protect our rights and/or comply with a judicial proceeding, court order, or legal process served on our website. Our website mocca-living.gr keeps records of personal information that visitors exclusively submit for communication purposes. Visitors can contact the appropriate department to verify the existence of their personal file, correct it, change it, or delete it. Visitors or users of our website mocca-living.gr who are minors have access to its services only with the consent of their parents or guardians and are not obliged to submit their personal information. In case such information is submitted by minors and if the fact becomes known to us, our company deletes all related information. Our business, particularly the marketing department, may process part or all of the information you have submitted for statistical and improvement purposes of the provided services and information. As our business continues to evolve by introducing new products, our Privacy Policy may be updated from time to time. We will only use your personal information in accordance with the Privacy Policy in effect at the time we collected your personal information.",

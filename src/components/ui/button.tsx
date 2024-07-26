@@ -31,6 +31,9 @@ const buttonVariants = cva(
         success: ['bg-success', 'text-success-foreground', 'hover:bg-success-hover'],
         error: ['bg-error', 'text-error-foreground', 'hover:bg-error-hover'],
         info: ['bg-info', 'text-info-foreground', 'hover:bg-info-hover'],
+        'ghost-success': ['hover:bg-success-hover', 'hover:text-success-foreground'],
+        'ghost-error': ['hover:bg-error-hover', 'hover:text-error-foreground'],
+        'ghost-info': ['hover:bg-info-hover', 'hover:text-info-foreground'],
         link: ['underline-offset-4', 'hover:underline'],
       },
       size: {
@@ -38,6 +41,7 @@ const buttonVariants = cva(
         small: ['px-2', 'py-1.5', 'text-sm'],
         'icon-normal': ['h-10', 'w-10'],
         'icon-small': ['h-8', 'w-8'],
+        'icon-mini': ['h-4', 'w-4']
       }
     },
     compoundVariants: [

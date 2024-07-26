@@ -153,6 +153,7 @@ const config: Config = {
       xl: 'calc(var(--radius) + 0,375rem)',   // 2 + 6px
       '2xl': 'calc(var(--radius) + 0,5rem)',  // 2 + 8px
       full: '9999px',
+      none: '0px'
     },
   },
   plugins: [
