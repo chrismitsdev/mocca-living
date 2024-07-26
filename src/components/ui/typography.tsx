@@ -13,10 +13,11 @@ const typographyVariants = cva(
         h2: ['pb-2', 'text-3xl', 'font-semibold', 'border-b', 'first:mt-0'],
         h3: ['text-2xl', 'font-semibold'],
         h4: ['text-xl', 'font-semibold'],
+        h5: ['text-base', 'font-semibold'],
         blockquote: ['pl-6', 'mt-6', 'italic', 'border-l-2'],
         lead: ['text-xl', 'text-muted-foreground'],
         large: ['text-lg', 'font-semibold'],
-        small: ['text-sm', 'font-medium'],
+        small: ['text-sm'],
         mini: ['text-xs', 'font-medium'],
         muted: ['text-sm', 'text-foreground-muted']
       }

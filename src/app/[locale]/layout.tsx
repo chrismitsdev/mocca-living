@@ -1,14 +1,14 @@
 import '@/globals.css'
 import type {Metadata} from 'next'
 import {useTranslations} from 'next-intl'
-import {Open_Sans} from 'next/font/google'
+import {Commissioner} from 'next/font/google'
 import {unstable_setRequestLocale} from 'next-intl/server'
 import {locales} from '#/lib/next-intl-config' 
 import {Header} from '@/components/shared/header'
 import {Footer} from '@/components/shared/footer'
 import {CookieConsent} from '@/components/shared/cookie-consent'
 
-const openSans = Open_Sans({
+const commissioner = Commissioner({
   subsets: ['latin'],
   display: 'swap'
 })
@@ -34,7 +34,7 @@ export default function LocaleLayout(
   const t = useTranslations('Components.CookieConsent')
   
   return (
-    <html lang={locale} className={openSans.className}>
+    <html lang={locale} className={commissioner.className}>
       <body className='sm:h-screen sm:grid sm:grid-rows-[auto,1fr,auto]'>
         <Header />
         <main>{children}</main>
