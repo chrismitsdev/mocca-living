@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import {Container} from '@/components/shared/container'
 import {
   Carousel, 
   CarouselViewport, 
@@ -27,6 +26,7 @@ function HomeCarousel() {
                 className='w-full h-full object-cover' 
                 src={image} 
                 alt={`Carousel image ${i + 1}`} 
+                priority
               />
             </CarouselSlide>  
           ))}
