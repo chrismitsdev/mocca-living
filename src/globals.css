@@ -131,9 +131,7 @@
   }
   
   body {
-    /* @apply relative bg-app-background text-foreground-alt before:absolute before:-z-10 before:w-full before:h-[480px] before:bg-gradient-to-b from-brand-4 before:opacity-60; */
     @apply relative bg-app-background text-foreground before:absolute before:inset-0 before:-z-10 before:bg-gradient-to-b from-brand-4 before:opacity-70 selection:bg-primary selection:text-primary-foreground;
-    /* @apply bg-app-background text-foreground-alt bg-gradient-to-b from-brand-4 selection:bg-primary selection:text-primary-foreground; */
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
 }

@@ -1,4 +1,5 @@
 import enMessages from '#/messages/en.json'
+import {locales} from '#/lib/next-intl-config'
 
 type Messages = typeof enMessages
 
@@ -7,7 +8,7 @@ declare global {
 
   type Params = {
     params: {
-      locale: string
+      locale: typeof locales[number]
     }
   }
 

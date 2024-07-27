@@ -14,7 +14,7 @@ const coords = {
   lon: 25.723552
 }
 
-type ContactMapProps = {
+type MapboxProps = {
   token: string
   translations: {
     title: string
@@ -22,7 +22,7 @@ type ContactMapProps = {
   }
 }
 
-function ContactMap({token, translations}: ContactMapProps) {
+function Mapbox({token, translations}: MapboxProps) {
   const [showPopup, setShowPopup] = React.useState<boolean>(true)
 
   return (
@@ -91,6 +91,6 @@ function ContactMap({token, translations}: ContactMapProps) {
   )
 }
 
-ContactMap.displayName = 'ContactMap'
+Mapbox.displayName = 'Mapbox'
 
-export {ContactMap}
+export {Mapbox}

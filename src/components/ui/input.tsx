@@ -10,7 +10,7 @@ const Input = React.forwardRef<
   return (
     <input
       className={cn(
-        'px-3 py-1.5 w-full bg-app-background border-2 rounded outline-0 font-medium transition placeholder:font-normal placeholder:text-foreground-muted placeholder:opacity-100 focus-within:border-border-hover focus-within:shadow-md disabled:cursor-not-allowed disabled:opacity-50',
+        'px-3 py-[7px] w-full bg-app-background border rounded font-semibold outline-0 transition placeholder:font-normal placeholder:text-foreground-muted placeholder:opacity-100 focus-within:border-border-hover focus-within:shadow disabled:cursor-not-allowed disabled:opacity-50',
         className
       )}
       type={type}

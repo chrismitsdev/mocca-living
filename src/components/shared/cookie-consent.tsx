@@ -1,7 +1,6 @@
 'use client'
 
 import * as React from 'react'
-import {getTranslations} from 'next-intl/server'
 import cookies from 'js-cookie'
 import {Button} from '@/components/ui/button'
 import {Typography} from '@/components/ui/typography'
@@ -48,7 +47,7 @@ function CookieConsent({title, message, acceptLabel, rejectLabel}: CookieConsent
 
   /* eslint-disable react/jsx-no-literals */
   return (
-    <section className='px-4 py-8 fixed inset-x-0 bottom-0 space-y-6 bg-brand-12 text-primary-foreground sm:px-8 sm:w-96 sm:inset-auto sm:bottom-4 sm:right-4 sm:rounded sm:shadow-lg'>
+    <section className='px-4 py-8 fixed inset-x-0 bottom-0 space-y-6 bg-brand-12 text-primary-foreground sm:px-8 sm:w-96 sm:inset-auto sm:bottom-4 sm:right-4 sm:rounded sm:shadow'>
       <div className='flex items-center gap-2'>
         <CookieIcon width={32} height={32} />
         <Typography variant='h3'>{title}</Typography>

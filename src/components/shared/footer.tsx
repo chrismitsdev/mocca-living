@@ -13,7 +13,7 @@ function Footer() {
   const locale = useLocale()
 
   return (
-    <footer className='py-12 border-t-2'>
+    <footer className='py-12 border-t'>
       <Container className='space-y-10'>
         <div className='space-y-8 sm:space-y-0 sm:flex sm:justify-between sm:items-start'>
           <Image 
@@ -22,23 +22,23 @@ function Footer() {
             height={160} 
             alt='Mocca Living footer logo' 
           />
-          <FooterColumn title={t('Components.Footer.first-column.title')}>
+          <FooterColumn title={t('Components.Footer.title-1')}>
             <Typography className='hover:underline' variant='small' asChild>
-              <Link href='/privacy'>{t('Components.Footer.first-column.first-link')}</Link>
+              <Link href='/privacy'>{t('Components.Footer.title-1-link-1')}</Link>
             </Typography>
             <Typography className='hover:underline' variant='small' asChild>
-              <Link href='/cookies'>{t('Components.Footer.first-column.second-link')}</Link>
+              <Link href='/cookies'>{t('Components.Footer.title-1-link-2')}</Link>
             </Typography>
           </FooterColumn>
-          <FooterColumn title={t('Components.Footer.second-column.title')}>
+          <FooterColumn title={t('Components.Footer.title-2')}>
             <Typography className='hover:underline' variant='small' asChild>
               <a href='https://maps.app.goo.gl/41UMZ9aS2DT1SDD88' target='_blank'>
-                {t('Components.Footer.second-column.first-link')}
+                {t('Metadata.Contact.location')}
               </a>
             </Typography>
             <Typography className='hover:underline' variant='small' asChild>
               <a href='tel:+306973433980'>
-                {t('Components.Footer.second-column.second-link')}
+                {t('Metadata.Contact.phone')}
               </a>
             </Typography>
           </FooterColumn>

@@ -2,6 +2,7 @@ import {getTranslations} from 'next-intl/server'
 import {useTranslations} from 'next-intl'
 import {unstable_setRequestLocale} from 'next-intl/server'
 import {Container} from '@/components/shared/container'
+import {DatePicker} from '@/components/ui/date-picker'
 
 export async function generateMetadata({params: {locale}}: Params) {
   const t = await getTranslations({locale, namespace: 'Metadata'})
@@ -17,7 +18,8 @@ export default function SuitesPage({params: {locale}}: Params) {
 
   return (
     <Container>
-      {'SuitesPage'}
+      <DatePicker locale={locale} />
+      {/* {'SuitesPage'} */}
     </Container>
   )
 }

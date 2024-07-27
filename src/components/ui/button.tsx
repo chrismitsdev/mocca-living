@@ -11,7 +11,7 @@ const buttonVariants = cva(
     'gap-2', 
     'whitespace-nowrap', 
     'rounded', 
-    'font-bold', 
+    'font-semibold', 
     'ring-offset-background', 
     'transition-colors', 
     'focus-visible:outline-none', 
@@ -20,13 +20,13 @@ const buttonVariants = cva(
     'focus-visible:ring-offset-1', 
     'disabled:pointer-events-none', 
     'disabled:opacity-50', 
-    'active:scale-95'
+    // 'active:scale-95'
   ],
   {
     variants: {
       variant: {
         primary: ['bg-primary', 'text-primary-foreground', 'hover:bg-primary-hover'],
-        bordered: ['border-2', 'hover:border-border-hover'],
+        bordered: ['border', 'hover:border-border-hover'],
         ghost: ['hover:bg-primary', 'hover:text-primary-foreground'],
         success: ['bg-success', 'text-success-foreground', 'hover:bg-success-hover'],
         error: ['bg-error', 'text-error-foreground', 'hover:bg-error-hover'],
@@ -48,12 +48,12 @@ const buttonVariants = cva(
       {
         variant: ['bordered'],
         size: 'normal',
-        className: 'py-1.5'
+        className: 'py-[7px]'
       },
       {
         variant: ['bordered'],
         size: 'small',
-        className: 'py-1'
+        className: 'py-[5px]'
       }
     ],
     defaultVariants: {

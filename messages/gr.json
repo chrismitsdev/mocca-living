@@ -7,6 +7,11 @@
       "privacy": "Πολιτική απορρήτου",
       "cookies": "Χρήση cookies",
       "not-found": "Η σελίδα δεν βρέθηκε"
+    },
+    "Contact": {
+      "name": "Mocca Living",
+      "location": "Παραλία Αγίας Παρασκευής",
+      "phone": "+30 6973433980"
     }
   },
   "Pages": {
@@ -36,16 +41,10 @@
   },
   "Components": {
     "Footer": {
-      "first-column": {
-        "title": "Χρησιμοι συνδεσμοι",
-        "first-link": "Πολιτική απορρήτου",
-        "second-link": "Χρήση cookies"
-      },
-      "second-column": {
-        "title": "Πληροφοριες",
-        "first-link": "Παραλία Αγίας Παρασκευής",
-        "second-link": "+30 6973433980"
-      }
+      "title-1": "Χρησιμοι συνδεσμοι",
+      "title-1-link-1": "Πολιτική απορρήτου",
+      "title-1-link-2": "Χρήση cookies",
+      "title-2": "Πληροφοριες"
     },
     "LocaleSelect": {
       "placeholder": "Επιλογή γλώσσας",

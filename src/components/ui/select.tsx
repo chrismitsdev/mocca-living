@@ -31,7 +31,7 @@ const SelectTrigger = React.forwardRef<
 >(({className, children, ...props}, ref) => (
   <Trigger
     className={cn(
-      'px-4 py-1.5 flex items-center gap-2 bg-app-background border-2 rounded font-semibold text-sm transition hover:border-border-hover data-open:shadow-md data-open:border-border-hover  focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&>span]:grow [&>span]:text-left [&>svg]:data-open:rotate-180',
+      'px-4 py-[7px] flex items-center gap-2 bg-app-background border rounded font-semibold text-sm transition hover:border-border-hover data-open:shadow data-open:border-border-hover  focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&>span]:grow [&>span]:text-left [&>svg]:data-open:rotate-180',
       className
     )}
     ref={ref}
@@ -50,7 +50,7 @@ const SelectContent = React.forwardRef<
 >(({className, children, position = 'popper', sideOffset = 6, ...props}, ref) => (
   <Content
     className={cn(
-      'w-[var(--radix-select-trigger-width)] max-h-[var(--radix-select-content-available-height)] overflow-hidden bg-app-background border-2 border-border-hover rounded shadow-md data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-top:slide-in-from-bottom-2 data-right:slide-in-from-left-2 data-bottom:slide-in-from-top-2 data-left:slide-in-from-right-2',
+      'w-[var(--radix-select-trigger-width)] max-h-[var(--radix-select-content-available-height)] overflow-hidden bg-app-background border border-border-hover rounded shadow data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-top:slide-in-from-bottom-2 data-right:slide-in-from-left-2 data-bottom:slide-in-from-top-2 data-left:slide-in-from-right-2',
       className
     )}
     sideOffset={sideOffset}
