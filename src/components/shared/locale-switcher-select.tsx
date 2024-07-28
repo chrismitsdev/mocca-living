@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import {GlobeIcon} from '@radix-ui/react-icons'
 import {useRouter, usePathname} from '@/navigation'
 import {
   Select,
@@ -40,7 +41,12 @@ function LocaleSelect({loadingText, className, placeholder, children,...props}: 
               <span>{loadingText}</span>
             </span>
           )
-          : <SelectValue placeholder={placeholder} />
+          : (
+            <span className='flex items-center gap-2'>
+              <GlobeIcon width={16} height={16} />
+              <SelectValue placeholder={placeholder} />
+            </span>
+          )
         }
       </SelectTrigger>
       <SelectPortal>
