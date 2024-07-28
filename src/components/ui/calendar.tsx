@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import {DayPicker} from 'react-day-picker'
+import {el, enUS} from 'date-fns/locale'
 import {buttonVariants} from '@/components/ui/button'
 import {
   ChevronUpIcon, 
@@ -18,15 +19,18 @@ const chevronMap = {
   left: <ChevronLeftIcon width={18} height={18} />,
 }
 
-type CalendarProps = React.ComponentProps<typeof DayPicker>
+type CalendarProps = React.ComponentProps<typeof DayPicker> & {
+  calendarLocale?: Params['params']['locale']
+}
 
 function Calendar(
   {
     className, 
-    classNames, 
-    showOutsideDays = true, 
+    classNames,
     weekStartsOn = 1, 
+    showOutsideDays = true, 
     disabled = {before: new Date()},
+    calendarLocale,
     ...props
   }: CalendarProps
 ) {
@@ -34,7 +38,7 @@ function Calendar(
 
   return (
     <DayPicker
-      className={cn('p-4', className)}
+      className={cn('mx-auto w-fit', className)}
       classNames={{
         months: 'relative',
         nav: 'absolute top-0 right-0 flex items-center gap-2',
@@ -65,6 +69,7 @@ function Calendar(
       weekStartsOn={weekStartsOn}
       showOutsideDays={showOutsideDays}
       disabled={disabled}
+      locale={calendarLocale === 'gr' ? el : enUS}
       {...props}
     />
   )

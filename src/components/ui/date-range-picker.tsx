@@ -1,15 +1,14 @@
 'use client'
 
 import * as React from 'react'
-import {addDays, format} from 'date-fns'
 import {CalendarIcon} from '@radix-ui/react-icons'
 import {type DateRange} from 'react-day-picker'
 import {Button} from '@/components/ui/button'
 import {Calendar} from '@/components/ui/calendar'
 import {Popover, PopoverContent, PopoverTrigger} from '@/components/ui/popover'
-import {cn} from '#/lib/utils'
+import {formatDate} from '#/lib/utils'
 
-function DateRangePicker() {
+function DateRangePicker({locale}: {locale: Params['params']['locale']}) {
   const [date, setDate] = React.useState<DateRange>({
     from: undefined
   })
@@ -23,20 +22,25 @@ function DateRangePicker() {
           variant='bordered'
         >
           <CalendarIcon width={16} height={16} />
-          {date?.from ? (
-            date.to ? (
-              <>
-                {format(date.from, 'LLL dd, y')} {'-'}{' '}
-                {format(date.to, 'LLL dd, y')}
-              </>
-            ) : format(date.from, 'LLL dd, y')
-          ) : (
-            <span>{'Pick a date'}</span>
-          )}
+          {date?.from 
+            ? (
+              <span>
+                {date.to 
+                  ? `${formatDate(date.from, locale)} - ${formatDate(date.to, locale)}`
+                  : formatDate(date.from, locale)
+                }
+              </span>
+            ) 
+            : <span>{'Pick a date'}</span>
+          }
         </Button>
       </PopoverTrigger>
-      <PopoverContent className='w-auto p-0' align='start'>
+      <PopoverContent 
+        className='w-[var(--radix-popover-trigger-width)] sm:w-auto' 
+        align='start'
+      >
         <Calendar
+          calendarLocale={locale}
           mode='range'
           selected={date}
           onSelect={setDate}

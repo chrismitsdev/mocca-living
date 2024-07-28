@@ -1,20 +1,14 @@
 'use client'
 
 import * as React from 'react'
-import {enUS, el} from 'date-fns/locale'
-import {format} from 'date-fns'
 import {CalendarIcon} from '@radix-ui/react-icons'
 import {Button} from '@/components/ui/button'
 import {Calendar} from '@/components/ui/calendar'
-import {Popover, PopoverTrigger, PopoverPortal, PopoverContent} from '@/components/ui/popover'
+import {Popover, PopoverTrigger, PopoverContent} from '@/components/ui/popover'
+import {formatDate} from '#/lib/utils'
 
-type DatePickerProps = {
-  locale: Params['params']['locale']
-}
-
-function DatePicker({locale}: DatePickerProps) {
+function DatePicker({locale}: {locale: Params['params']['locale']}) {
   const [date, setDate] = React.useState<Date>()
-  const dateFnsLocale = locale === 'en' ? enUS : el
 
   return (
     <Popover>
@@ -25,20 +19,21 @@ function DatePicker({locale}: DatePickerProps) {
         >
           <CalendarIcon width={16} height={16} />
           <span>
-            {date ? format(date, 'PPP', {locale: dateFnsLocale}) : 'Pick a date'}
+            {date ? formatDate(date, locale) : 'Pick a date'}
           </span>
         </Button>
       </PopoverTrigger>
-      <PopoverPortal>
-        <PopoverContent align='start' className='p-0 w-auto overflow-auto'>
-          <Calendar
-            locale={locale === 'en' ? enUS : el}
-            mode='single'
-            selected={date}
-            onSelect={setDate}
-          />
-        </PopoverContent>
-      </PopoverPortal>
+      <PopoverContent 
+        className='w-[var(--radix-popover-trigger-width)] sm:w-auto'
+        align='start' 
+      >
+        <Calendar
+          calendarLocale={locale}
+          mode='single'
+          selected={date}
+          onSelect={setDate}
+        />
+      </PopoverContent>
     </Popover>
   )
 }
