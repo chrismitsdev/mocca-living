@@ -10,7 +10,7 @@ export function cn(...inputs: ClassValue[]) {
 export function formatDate(
   date: Date, 
   locale: Params['params']['locale'],
-  formatPattern: string = 'PPP', 
+  formatPattern: string = 'PPP'
 ): string {
   return format(date, formatPattern, {locale : locale === 'gr' ? el : enUS})
 }

@@ -22,14 +22,6 @@ function Footer() {
             height={160} 
             alt='Mocca Living footer logo' 
           />
-          <FooterColumn title={t('Components.Footer.title-1')}>
-            <Typography className='hover:underline' variant='small' asChild>
-              <Link href='/privacy'>{t('Components.Footer.title-1-link-1')}</Link>
-            </Typography>
-            <Typography className='hover:underline' variant='small' asChild>
-              <Link href='/cookies'>{t('Components.Footer.title-1-link-2')}</Link>
-            </Typography>
-          </FooterColumn>
           <FooterColumn title={t('Components.Footer.title-2')}>
             <Typography className='hover:underline' variant='small' asChild>
               <a href='https://maps.app.goo.gl/41UMZ9aS2DT1SDD88' target='_blank'>
@@ -40,6 +32,14 @@ function Footer() {
               <a href='tel:+306973433980'>
                 {t('Metadata.Contact.phone')}
               </a>
+            </Typography>
+          </FooterColumn>
+          <FooterColumn title={t('Components.Footer.title-1')}>
+            <Typography className='hover:underline' variant='small' asChild>
+              <Link href='/privacy'>{t('Components.Footer.title-1-link-1')}</Link>
+            </Typography>
+            <Typography className='hover:underline' variant='small' asChild>
+              <Link href='/cookies'>{t('Components.Footer.title-1-link-2')}</Link>
             </Typography>
           </FooterColumn>
           <LocaleSelect 
