@@ -31,7 +31,6 @@ function Calendar(
   }: CalendarProps
 ) {
   const btnVariant = buttonVariants({variant: 'bordered', size: 'icon-small'})
-  const s = '[&:not([aria-selected]):not(:has(button[disabled]))]'
 
   return (
     <DayPicker
@@ -48,7 +47,7 @@ function Calendar(
         weekday: 'p-0 h-10 w-10 font-semibold',         // table > thead > tr > th element
         // weeks: '',                                   // table > tbody
         // week: '',                                    // table > tbody > tr
-        day: `p-0 transition rounded ${s}:hover:text-app-background ${s}:hover:bg-border`, // table > tbody > tr > td
+        day: `p-0 transition rounded [&:not([aria-selected]):not(:has(button[disabled]))]:hover:text-app-background [&:not([aria-selected]):not(:has(button[disabled]))]:hover:bg-border`, // table > tbody > tr > td
         day_button: 'h-10 w-10',                        // table > tbody > tr > td > button element
         today: 'font-semibold',                         // table > tbody > tr > td (that matches today)
         selected: 'bg-primary text-primary-foreground', // table > tbody > tr > td (that is selected)

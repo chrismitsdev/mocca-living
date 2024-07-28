@@ -19,8 +19,8 @@ export default function SuitesPage({params: {locale}}: Params) {
 
   return (
     <Container>
-      <DatePicker locale={locale} />
-      {/* <DateRangePicker /> */}
+      {/* <DatePicker locale={locale} /> */}
+      <DateRangePicker />
       {/* {'SuitesPage'} */}
     </Container>
   )
