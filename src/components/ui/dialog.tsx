@@ -1,0 +1,127 @@
+'use client'
+
+import * as React from 'react'
+import {
+  Root, 
+  Trigger, 
+  Overlay, 
+  Portal, 
+  Content, 
+  Title, 
+  Description, 
+  Close
+} from '@radix-ui/react-dialog'
+import {Cross1Icon} from '@radix-ui/react-icons'
+import {VisuallyHidden} from '@/components/ui/visually-hidden'
+import {cn} from '#/lib/utils'
+
+const Dialog = Root
+const DialogTrigger = Trigger
+const DialogPortal = Portal
+const DialogClose = Close
+
+const DialogOverlay = React.forwardRef<
+  React.ElementRef<typeof Overlay>,
+  React.ComponentPropsWithoutRef<typeof Overlay>
+>(({className, ...props}, ref) => (
+  <Overlay
+    className={cn(
+      'fixed inset-0 z-50 bg-black/50 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 data-open:backdrop-blur-[1px] data-closed:backdrop-blur-none',
+      className
+    )}
+    ref={ref}
+    {...props}
+  />
+))
+
+const DialogContent = React.forwardRef<
+  React.ElementRef<typeof Content>,
+  React.ComponentPropsWithoutRef<typeof Content>
+>(({className, children, ...props}, ref) => (
+  <Content
+    className={cn(
+      'p-6 w-full max-w-xl bg-app-background rounded fixed z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 data-open:animate-modal-open data-closed:animate-modal-closed',
+      className
+    )}
+    ref={ref}
+    {...props}
+  >
+    {children}
+    <Close className='absolute right-4 top-4 outline-0 disabled:pointer-events-none'>
+      <Cross1Icon width={16} height={16} />
+      <VisuallyHidden>{'Close'}</VisuallyHidden>
+    </Close>
+  </Content>
+))
+
+const DialogHeader = ({className, ...props}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn(
+      'flex flex-col space-y-1.5 text-center sm:text-left',
+      className
+    )}
+    {...props}
+  />
+)
+
+const DialogTitle = React.forwardRef<
+  React.ElementRef<typeof Title>,
+  React.ComponentPropsWithoutRef<typeof Title>
+>(({className, ...props}, ref) => (
+  <Title
+    className={cn(
+      'text-lg font-semibold leading-none tracking-tight',
+      className
+    )}
+    ref={ref}
+    {...props}
+  />
+))
+
+const DialogDescription = React.forwardRef<
+  React.ElementRef<typeof Description>,
+  React.ComponentPropsWithoutRef<typeof Description>
+>(({className, ...props}, ref) => (
+  <Description
+    className={cn(
+      'text-sm text-muted-foreground', 
+      className
+    )}
+    ref={ref}
+    {...props}
+  />
+))
+
+const DialogFooter = ({className, ...props}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn(
+      'flex flex-col-reverse sm:space-x-2 sm:flex-row sm:justify-end',
+      className
+    )}
+    {...props}
+  />
+)
+
+Dialog.displayName = 'Dialog'
+DialogTrigger.displayName = 'DialogTrigger'
+DialogPortal.displayName = 'DialogPortal'
+DialogOverlay.displayName = 'DialogOverlay'
+DialogContent.displayName = 'DialogContent'
+DialogHeader.displayName = 'DialogHeader'
+DialogTitle.displayName = 'DialogTitle'
+DialogDescription.displayName = 'DialogDescription'
+DialogFooter.displayName = 'DialogFooter'
+DialogClose.displayName = 'DialogClose'
+
+export {
+  Dialog,
+  DialogTrigger,
+  DialogPortal,
+  DialogOverlay,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogClose
+}

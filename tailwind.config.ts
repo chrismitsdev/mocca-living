@@ -101,23 +101,7 @@ const config: Config = {
         },
       },
       keyframes: {
-        'accordion-down': {
-          from: {
-            height: '0'
-          },
-          to: {
-            height: 'var(--radix-accordion-content-height)'
-          },
-        },
-        'accordion-up': {
-          from: {
-            height: 'var(--radix-accordion-content-height)'
-          },
-          to: {
-            height: '0'
-          },
-        },
-        'appear': {
+        'page-appear': {
           from: {
             'opacity': '0',
             'transform': 'translateY(16px)'
@@ -126,12 +110,32 @@ const config: Config = {
             'opacity': '1',
             'transform': 'translateY(0)'
           }
-        }
+        },
+        'modal-open': {
+          from: {
+            'opacity': '0',
+            'translate': '0 -16px'
+          },
+          to: {
+            'opacity': '1',
+            'translate': '0 0'
+          }
+        },
+        'modal-closed': {
+          from: {
+            'opacity': '1',
+            'translate': '0 0'
+          },
+          to: {
+            'opacity': '0',
+            'translate': '0 -16px'
+          }
+        },
       },
       animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
-        'appear': 'appear 750ms cubic-bezier(0.390, 0.575, 0.565, 1.000) both'
+        'page-appear': 'page-appear 750ms cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
+        'modal-open': 'modal-open 300ms cubic-bezier(0.390, 0.575, 0.565, 1.000)',
+        'modal-closed': 'modal-closed 220ms cubic-bezier(0.390, 0.575, 0.565, 1.000) '
       },
     },
     fontSize: {

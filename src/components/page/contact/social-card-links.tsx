@@ -10,26 +10,48 @@ type SocialCardLinksProps = {
 
 function SocialCardLinks({name, location, phone}: SocialCardLinksProps) {
   return (
-    <div className='grid gap-4 sm:grid-flow-col sm:auto-cols-fr'>
-      <Card className='p-8 hover:border-primary-hover hover:shadow-lg'>
-        <div className='flex flex-col gap-4 items-center'>
-          <InstagramLogoIcon width={72} height={72} />
-          <Typography variant='lead'>{name}</Typography>
-        </div>
-      </Card>
-      <Card className='p-8 hover:border-primary-hover hover:shadow-lg'>
-        <div className='flex flex-col gap-4 items-center'>
-          <DrawingPinIcon width={72} height={72} />
-          <Typography variant='lead'>{location}</Typography>
-        </div>
-      </Card>
-      <Card className='p-8 hover:border-primary-hover hover:shadow-lg'>
-        <div className='flex flex-col gap-4 items-center'>
-          <MobileIcon width={72} height={72} />
-          <Typography variant='lead'>{phone}</Typography>
-        </div>
-      </Card>
-    </div>
+    <article className='py-12'>
+      <div className='grid gap-8 sm:grid-flow-col sm:auto-cols-fr'>
+        <Card className='p-8 bg-brand-4 transition hover:border-primary-hover hover:shadow-lg'>
+          <div className='flex flex-col gap-4 items-center'>
+            <InstagramLogoIcon width={72} height={72} />
+            <Typography variant='large'>{name}</Typography>
+          </div>
+        </Card>
+        <Card className='p-8 bg-brand-4 transition hover:border-primary-hover hover:shadow-lg'>
+          <div className='flex flex-col gap-4 items-center'>
+            <DrawingPinIcon width={72} height={72} />
+            <Typography variant='large'>{location}</Typography>
+          </div>
+        </Card>
+        <Card className='p-8 bg-brand-4 transition hover:border-primary-hover hover:shadow-lg'>
+          <div className='flex flex-col gap-4 items-center'>
+            <MobileIcon width={72} height={72} />
+            <Typography variant='large'>{phone}</Typography>
+          </div>
+        </Card>
+      </div>
+      {/* <div className='flex flex-wrap justify-between gap-8'>
+        <Card className='p-8 flex-1 bg-brand-4 transition hover:border-primary-hover hover:shadow-lg'>
+          <div className='flex flex-col gap-4 items-center'>
+            <InstagramLogoIcon width={72} height={72} />
+            <Typography variant='large'>{name}</Typography>
+          </div>
+        </Card>
+        <Card className='p-8 flex-1 bg-brand-4 transition hover:border-primary-hover hover:shadow-lg'>
+          <div className='flex flex-col gap-4 items-center'>
+            <DrawingPinIcon width={72} height={72} />
+            <Typography variant='large'>{location}</Typography>
+          </div>
+        </Card>
+        <Card className='p-8 flex-1 bg-brand-4 transition hover:border-primary-hover hover:shadow-lg'>
+          <div className='flex flex-col gap-4 items-center'>
+            <MobileIcon width={72} height={72} />
+            <Typography variant='large'>{phone}</Typography>
+          </div>
+        </Card>
+      </div> */}
+    </article>
   )
 }
 
