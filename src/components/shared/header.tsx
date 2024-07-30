@@ -2,8 +2,8 @@ import Image from 'next/image'
 import {useTranslations} from 'next-intl'
 import {Link} from '@/navigation'
 import {Container} from '@/components/shared/container'
-import {buttonVariants} from '@/components/ui/button'
-import logo from '#/public/logos/mocca-logo-simple.svg'
+import {HeaderNavigation} from '@/components/shared/header-navigation'
+import logoBoxy from '#/public/logos/mocca-logo-box.svg'
 
 type HeaderLink = {
   label: keyof IntlMessages['Metadata']['Pages']
@@ -18,30 +18,24 @@ const links: HeaderLink[] = [
 
 function Header() {
   const t = useTranslations('Metadata.Pages')
+  const tLinks = links.map(({label, href}) => ({
+    label: t(label),
+    href
+  }))
 
   return (
-    <header className='py-8'>
+    <header className='py-8 '>
       <Container>
-        <div className='flex flex-col items-center gap-6'>
+        <div className='flex flex-col gap-4 items-center'>
           <Link href='/'>
             <Image 
               priority 
-              src={logo} 
-              style={{width: 41.44}}
+              src={logoBoxy} 
+              style={{width: 64}}
               alt='Mocca Living header logo'
             />
           </Link>
-          <div className='flex items-center gap-4'>
-            {links.map(link => (
-              <Link
-                key={link.href} 
-                className={buttonVariants({variant: 'link', size: 'small'})} 
-                href={link.href}
-              >
-                {t(link.label)}
-              </Link>
-            ))}
-          </div>
+          <HeaderNavigation links={tLinks} />
         </div>
       </Container>
     </header>
