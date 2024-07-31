@@ -47,6 +47,7 @@ function Calendar(
         caption_label: 'block font-semibold',           // div > span (month-year)
         button_previous: btnVariant,                    // nav button previous
         button_next: btnVariant,                        // nav button next
+        month_grid: 'border-collapse',                  // table
         // weekdays: '',                                // table > thead > tr element
         weekday: 'p-0 h-10 w-10 font-semibold',         // table > thead > tr > th element
         // weeks: '',                                   // table > tbody
@@ -55,12 +56,12 @@ function Calendar(
         day_button: 'h-10 w-10',                        // table > tbody > tr > td > button element
         today: 'font-semibold',                         // table > tbody > tr > td (that matches today)
         selected: 'bg-primary text-primary-foreground', // table > tbody > tr > td (that is selected)
-        range_start: 'rounded-r-none',
-        range_middle: '!bg-border rounded-none',
-        range_end: 'rounded-l-none',
-        outside: 'text-foreground-muted',               // table > tbody > tr > td
+        range_start: 'rounded-r-none',                  // table > tbody > tr > td (when mode = 'range')
+        range_middle: 'rounded-none',                   // table > tbody > tr > td (when mode = 'range')
+        range_end: 'rounded-l-none',                    // table > tbody > tr > td (when mode = 'range')
+        outside: '[&:not(:has(button[disabled]))]:text-primary',                        // table > tbody > tr > td
         hidden: 'invisible',                            // table > tbody > tr > td[aria-hidden="true"]
-        disabled: 'opacity-30',
+        disabled: 'opacity-50 font-bold bg-striped [&>button]:cursor-not-allowed',
         ...classNames,
       }}
       components={{

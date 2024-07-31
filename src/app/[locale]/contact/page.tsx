@@ -19,20 +19,24 @@ export default function ContactPage({params: {locale}}: Params) {
   const t = useTranslations()
 
   return (
-    <Container>
-      <ContactForm locale={locale} />
+    <>
+      <Container>
+        <ContactForm locale={locale} />
+      </Container>
       <SocialCardLinks 
         location={t('Metadata.Contact.location')}
         name={t('Metadata.Contact.name')}
         phone={t('Metadata.Contact.phone')}
       />
-      <Mapbox 
-        token={process.env.MAPBOX_TOKEN as string}
-        translations={{
-          title: t('Pages.Contact.ContactMap.title'),
-          directions: t('Pages.Contact.ContactMap.directions')
-        }}
-      />
-    </Container>
+      <Container>
+        <Mapbox 
+          token={process.env.MAPBOX_TOKEN as string}
+          translations={{
+            title: t('Pages.Contact.ContactMap.title'),
+            directions: t('Pages.Contact.ContactMap.directions')
+          }}
+        />
+      </Container>
+    </>
   )
 }

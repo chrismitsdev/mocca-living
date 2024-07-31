@@ -89,13 +89,15 @@
 
     /* Semantics */
     --foreground: var(--brand-12);
-    --foreground-alt: var(--gray-12);
     --foreground-muted: var(--brand-6);
 
     --primary: var(--brand-9);
-    --primary-alt: var(--gray-9);
     --primary-foreground: var(--app-white);
     --primary-hover: var(--brand-10);
+
+    --muted: var(--brand-4);
+    --muted-foreground: var(--brand-12);
+    --muted-hover: var(--brand-5);
  
     --success: var(--green-9);
     --success-foreground: var(--app-white);
@@ -114,14 +116,11 @@
     --info-hover: var(--blue-10);
     
     --border: var(--brand-6);
-    --border-alt: var(--gray-6);
-    --border-muted: var(--brand-4);
     --border-hover: var(--brand-8);
-    --border-alt-hover: var(--gray-8);
+    --border-muted: var(--brand-4);
     --border-muted-hover: var(--brand-5);
 
     --ring: var(--brand-8);
-    --ring-alt: var(--gray-8);
     
     --radius: 0.125rem;
   }
@@ -130,14 +129,24 @@
     @apply border-border;
   }
   
-  /* body {
-    @apply relative bg-app-background text-foreground selection:bg-primary selection:text-primary-foreground;
-    font-feature-settings: 'rlig' 1, 'calt' 1;
-  } */
   body {
     @apply relative bg-app-background text-foreground before:absolute before:inset-0 before:-z-10 before:bg-gradient-to-b from-brand-4 before:opacity-70 selection:bg-primary selection:text-primary-foreground;
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
+  /* body {
+    @apply relative bg-app-background text-foreground selection:bg-primary selection:text-primary-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  } */
+}
+
+.bg-striped {
+  background: repeating-linear-gradient(
+    -45deg,                      /* Diagonal direction */
+    var(--error) 0px,            /* Start color */
+    var(--error) 3px,            /* End color of the first stripe */
+    var(--app-background) 3px,   /* Start color of the next stripe */
+    var(--app-background) 6px    /* End color of the next stripe */
+  );
 }
 
 .mapboxgl-popup.mapboxgl-popup-anchor-bottom {

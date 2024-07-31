@@ -2,15 +2,15 @@ import * as React from 'react'
 import {cn} from '#/lib/utils'
 import {IconProps} from '@radix-ui/react-icons/dist/types'
 
-type InputProps = React.ComponentPropsWithoutRef<'input'> & {
+type TextareaProps = React.ComponentPropsWithoutRef<'textarea'> & {
   wrapperProps?: React.HTMLAttributes<HTMLDivElement>
   icon?: React.ComponentType<IconProps>
 }
 
-const Input = React.forwardRef<
-  HTMLInputElement, 
-  InputProps
->(({className, wrapperProps = {}, type = 'text', icon, ...props}, ref) => {
+const Textarea = React.forwardRef<
+  HTMLTextAreaElement,
+  TextareaProps
+>(({className, wrapperProps = {}, icon, rows = 3, ...props}, ref) => {
   const {className: wrapperClassName, ...restWrapperProps} = wrapperProps
   
   return (
@@ -21,18 +21,18 @@ const Input = React.forwardRef<
       )} 
       {...restWrapperProps}
     >
-      <input
+      <textarea 
         className={cn(
-          'py-[7px] w-full bg-app-background border rounded font-semibold outline-0 transition placeholder:font-normal placeholder:text-foreground-muted placeholder:opacity-100 focus-within:border-border-hover focus-within:shadow disabled:cursor-not-allowed disabled:opacity-50',
+          'py-[7px] w-full block bg-app-background border rounded font-semibold outline-0 transition placeholder:font-normal placeholder:text-foreground-muted placeholder:opacity-100 focus-within:border-border-hover focus-within:shadow disabled:cursor-not-allowed disabled:opacity-50',
           icon ? 'pl-9 pr-3' : 'px-3',
           className
         )}
-        type={type}
+        rows={rows}
         ref={ref}
         {...props}
       />
       {icon && (
-        <span className='absolute left-3 top-1/2 -translate-y-1/2'>
+        <span className='absolute left-3 top-[11px]'>
           {React.createElement(icon, {width: 16, height: 16})}
         </span>
       )}
@@ -40,6 +40,6 @@ const Input = React.forwardRef<
   )
 })
 
-Input.displayName = 'Input'
+Textarea.displayName = 'Textarea'
 
-export {Input}
+export {Textarea}

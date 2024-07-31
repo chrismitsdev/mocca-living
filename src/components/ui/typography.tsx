@@ -17,14 +17,14 @@ const typographyVariants = cva(
         blockquote: ['pl-6', 'mt-6', 'italic', 'border-l-2'],
         lead: ['text-xl', 'text-muted-foreground'],
         large: ['text-lg', 'font-semibold'],
-        small: ['text-sm'],
-        mini: ['text-xs', 'font-medium'],
+        small: ['text-sm', 'tracking-wide'],
+        mini: ['text-xs', 'font-semibold', 'tracking-wide'],
         muted: ['text-sm', 'text-foreground-muted']
       }
     },
     compoundVariants: [
       {
-        variant: ['h1', 'h2', 'h3', 'h4'],
+        variant: ['hero', 'h1', 'h2', 'h3', 'h4'],
         className: ['scroll-m-20', 'tracking-tight']
       }
     ]

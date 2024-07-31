@@ -82,7 +82,7 @@ const SelectItem = React.forwardRef<
 >(({className, children, ...props}, ref) => (
   <Item
     className={cn(
-      'pl-8 pr-4 py-2 flex items-center text-sm cursor-pointer select-none outline-none data-disabled:pointer-events-none data-disabled:opacity-50 [&>span]:leading-6',
+      'pl-8 pr-4 py-2 flex items-center cursor-pointer select-none outline-none data-disabled:pointer-events-none data-disabled:opacity-50',
       className
     )}
     ref={ref}

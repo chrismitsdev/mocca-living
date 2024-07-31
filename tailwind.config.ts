@@ -63,9 +63,13 @@ const config: Config = {
         },
         primary: {
           DEFAULT: 'var(--primary)',
-          alt: 'var(--primary-alt)',
           foreground: 'var(--primary-foreground)',
           hover: 'var(--primary-hover)',
+        },
+        muted: {
+          DEFAULT: 'var(--muted)',
+          foreground: 'var(--muted-foreground)',
+          hover: 'var(--muted-hover)',
         },
         success: {
           DEFAULT: 'var(--success)',
@@ -89,15 +93,12 @@ const config: Config = {
         },
         border: {
           DEFAULT: 'var(--border)',
-          alt: 'var(--border-alt)',
-          muted: 'var(--border-muted)',
           hover: 'var(--border-hover)',
-          'alt-hover': 'var(--border-alt-hover)',
+          muted: 'var(--border-muted)',
           'muted-hover': 'var(--border-muted-hover)',
         },
         ring: {
-          DEFAULT: 'var(--ring)',
-          alt: 'var(--ring-alt)'
+          DEFAULT: 'var(--ring)'
         },
       },
       keyframes: {

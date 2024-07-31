@@ -1,4 +1,3 @@
-import {Card} from '@/components/ui/card'
 import {Typography} from '@/components/ui/typography'
 import {DrawingPinIcon, InstagramLogoIcon,  MobileIcon} from '@radix-ui/react-icons'
 
@@ -10,47 +9,21 @@ type SocialCardLinksProps = {
 
 function SocialCardLinks({name, location, phone}: SocialCardLinksProps) {
   return (
-    <article className='py-12'>
-      <div className='grid gap-8 sm:grid-flow-col sm:auto-cols-fr'>
-        <Card className='p-8 bg-brand-4 transition hover:border-primary-hover hover:shadow-lg'>
-          <div className='flex flex-col gap-4 items-center'>
-            <InstagramLogoIcon width={72} height={72} />
-            <Typography variant='large'>{name}</Typography>
-          </div>
-        </Card>
-        <Card className='p-8 bg-brand-4 transition hover:border-primary-hover hover:shadow-lg'>
-          <div className='flex flex-col gap-4 items-center'>
-            <DrawingPinIcon width={72} height={72} />
-            <Typography variant='large'>{location}</Typography>
-          </div>
-        </Card>
-        <Card className='p-8 bg-brand-4 transition hover:border-primary-hover hover:shadow-lg'>
-          <div className='flex flex-col gap-4 items-center'>
-            <MobileIcon width={72} height={72} />
-            <Typography variant='large'>{phone}</Typography>
-          </div>
-        </Card>
+    <article className='py-16 bg-muted'>
+      <div className='container grid gap-12 sm:grid-cols-[auto_1fr_auto]'>
+        <div className='flex flex-col gap-2 items-center'>
+          <InstagramLogoIcon width={72} height={72} />
+          <Typography variant='h4'>{name}</Typography>
+        </div>
+        <div className='flex flex-col gap-2 items-center'>
+          <DrawingPinIcon width={72} height={72} />
+          <Typography variant='h4'>{location}</Typography>
+        </div>
+        <div className='flex flex-col gap-2 items-center'>
+          <MobileIcon width={72} height={72} />
+          <Typography variant='h4'>{phone}</Typography>
+        </div>
       </div>
-      {/* <div className='flex flex-wrap justify-between gap-8'>
-        <Card className='p-8 flex-1 bg-brand-4 transition hover:border-primary-hover hover:shadow-lg'>
-          <div className='flex flex-col gap-4 items-center'>
-            <InstagramLogoIcon width={72} height={72} />
-            <Typography variant='large'>{name}</Typography>
-          </div>
-        </Card>
-        <Card className='p-8 flex-1 bg-brand-4 transition hover:border-primary-hover hover:shadow-lg'>
-          <div className='flex flex-col gap-4 items-center'>
-            <DrawingPinIcon width={72} height={72} />
-            <Typography variant='large'>{location}</Typography>
-          </div>
-        </Card>
-        <Card className='p-8 flex-1 bg-brand-4 transition hover:border-primary-hover hover:shadow-lg'>
-          <div className='flex flex-col gap-4 items-center'>
-            <MobileIcon width={72} height={72} />
-            <Typography variant='large'>{phone}</Typography>
-          </div>
-        </Card>
-      </div> */}
     </article>
   )
 }
