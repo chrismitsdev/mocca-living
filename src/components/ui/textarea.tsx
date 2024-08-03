@@ -23,7 +23,7 @@ const Textarea = React.forwardRef<
     >
       <textarea 
         className={cn(
-          'py-[7px] w-full block bg-app-background border rounded font-semibold outline-0 transition placeholder:font-normal placeholder:text-foreground-muted placeholder:opacity-100 focus-within:border-border-hover focus-within:shadow disabled:cursor-not-allowed disabled:opacity-50',
+          'py-[7px] w-full block bg-app-background border rounded font-semibold outline-0 transition placeholder:text-sm placeholder:font-normal placeholder:text-foreground-muted placeholder:opacity-100 focus-within:border-border-hover focus-within:shadow disabled:cursor-not-allowed disabled:opacity-50',
           icon ? 'pl-9 pr-3' : 'px-3',
           className
         )}

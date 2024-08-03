@@ -11,16 +11,82 @@
     "Contact": {
       "name": "Mocca Living",
       "location": "Beach of Agia Paraskevi",
-      "phone": "+30 6973433980"
+      "phone": "Contact phone"
     }
   },
   "Pages": {
     "Home": {},
     "Suites": {},
     "Contact": {
-      "ContactMap": {
+      "Map": {
         "title": "Mocca Living",
         "directions": "How to get here"
+      },
+      "Form": {
+        "title": "Contact us",
+        "description": "Fill out the form below to make a booking, and we will contact you shortly.",
+        "fields": {
+          "name": {
+            "label": "Full name",
+            "placeholder": "Fill in your full name",
+            "validation": {
+              "required": "Mandatory field",
+              "length": "It must be between 5 and 25 characters"
+            }
+          },
+          "email": {
+            "label": "Email",
+            "placeholder": "Fill in your email",
+            "validation": {
+              "required": "Mandatory field",
+              "pattern": "Invalid email address",
+              "whitelistedProviders": "Email provider is not supported"
+            }
+          },
+          "phone": {
+            "label": "Phone number",
+            "placeholder": "Fill in your phone number",
+            "validation": {
+              "required": "Mandatory field",
+              "pattern": "Invalid phone number format"
+            }
+          },
+          "checkIn": {
+            "label": "Check-in date",
+            "placeholder": "Select a check-in date",
+            "validation": {
+              "required": "Mandatory field"
+            }
+          },
+          "checkOut": {
+            "label": "Check-out date",
+            "placeholder": "Select a check-out date",
+            "validation": {
+              "required": "Mandatory field"
+            }
+          },
+          "house": {
+            "label": "Selected house",
+            "placeholder": "Select your preferred house",
+            "validation": {
+              "required": "Mandatory field"
+            }
+          },
+          "message": {
+            "label": "Message",
+            "placeholder": "Optionally, leave your message here..."
+          }
+        },
+        "response": {
+          "success": {
+            "title": "Successful submission",
+            "message": "Form submission was successful. We will contact you shortly."
+          },
+          "error": {
+            "title": "Failed submission",
+            "message": "Form submission failed. Please try again later."
+          }
+        }
       }
     },
     "Privacy": {

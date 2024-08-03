@@ -6,6 +6,8 @@ import {SocialCardLinks} from '@/components/page/contact/social-card-links'
 import {ContactForm} from '@/components/page/contact/contact-form'
 import {Container} from '@/components/shared/container'
 
+const MAPBOX_TOKEN = process.env.MAPBOX_TOKEN as string
+
 export async function generateMetadata({params: {locale}}: Params) {
   const t = await getTranslations({locale, namespace: 'Metadata'})
  
@@ -21,22 +23,80 @@ export default function ContactPage({params: {locale}}: Params) {
   return (
     <>
       <Container>
-        <ContactForm locale={locale} />
+        <ContactForm 
+          locale={locale} 
+          formTitle={t('Pages.Contact.Form.title')}
+          formDescription={t('Pages.Contact.Form.description')}
+          fieldTranslations={{
+            name: {
+              label: t('Pages.Contact.Form.fields.name.label'),
+              placeholder: t('Pages.Contact.Form.fields.name.placeholder'),
+              validation: {
+                required: t('Pages.Contact.Form.fields.name.validation.required'),
+                length: t('Pages.Contact.Form.fields.name.validation.length')
+              }
+            },
+            email: {
+              label: t('Pages.Contact.Form.fields.email.label'),
+              placeholder: t('Pages.Contact.Form.fields.email.placeholder'),
+              validation: {
+                required: t('Pages.Contact.Form.fields.email.validation.required'),
+                pattern: t('Pages.Contact.Form.fields.email.validation.pattern'),
+                whitelistedProviders: t('Pages.Contact.Form.fields.email.validation.whitelistedProviders')
+              }
+            },
+            phone: {
+              label: t('Pages.Contact.Form.fields.phone.label'),
+              placeholder: t('Pages.Contact.Form.fields.phone.placeholder'),
+              validation: {
+                required: t('Pages.Contact.Form.fields.phone.validation.required'),
+                pattern: t('Pages.Contact.Form.fields.phone.validation.pattern'),
+              }
+            },
+            checkIn: {
+              label: t('Pages.Contact.Form.fields.checkIn.label'),
+              placeholder: t('Pages.Contact.Form.fields.checkIn.placeholder'),
+              validation: {
+                required: t('Pages.Contact.Form.fields.checkIn.validation.required')
+              }
+            },
+            checkOut: {
+              label: t('Pages.Contact.Form.fields.checkOut.label'),
+              placeholder: t('Pages.Contact.Form.fields.checkOut.placeholder'),
+              validation: {
+                required: t('Pages.Contact.Form.fields.checkOut.validation.required')
+              }
+            },
+            house: {
+              label: t('Pages.Contact.Form.fields.house.label'),
+              placeholder: t('Pages.Contact.Form.fields.house.placeholder'),
+              validation: {
+                required: t('Pages.Contact.Form.fields.house.validation.required')
+              }
+            },
+            message: {
+              label: t('Pages.Contact.Form.fields.message.label'),
+              placeholder: t('Pages.Contact.Form.fields.message.placeholder')
+            },
+          }} 
+        />
       </Container>
       <SocialCardLinks 
         location={t('Metadata.Contact.location')}
         name={t('Metadata.Contact.name')}
         phone={t('Metadata.Contact.phone')}
       />
-      <Container>
-        <Mapbox 
-          token={process.env.MAPBOX_TOKEN as string}
-          translations={{
-            title: t('Pages.Contact.ContactMap.title'),
-            directions: t('Pages.Contact.ContactMap.directions')
-          }}
-        />
-      </Container>
+      {MAPBOX_TOKEN && (
+        <Container>
+          <Mapbox 
+            token={MAPBOX_TOKEN}
+            translations={{
+              title: t('Pages.Contact.Map.title'),
+              directions: t('Pages.Contact.Map.directions')
+            }}
+          />
+        </Container>
+      )}
     </>
   )
 }

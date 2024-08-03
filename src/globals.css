@@ -99,26 +99,39 @@
     --muted-foreground: var(--brand-12);
     --muted-hover: var(--brand-5);
  
-    --success: var(--green-9);
-    --success-foreground: var(--app-white);
-    --success-hover: var(--green-10);
+    --success: var(--green-3);
+    --success-foreground: var(--green-12);
+    --success-hover: var(--green-5);
     
-    --error: var(--red-9);
-    --error-foreground: var(--app-white);
-    --error-hover: var(--red-10);
+    --error: var(--red-3);
+    --error-foreground: var(--red-12);
+    --error-hover: var(--red-5);
     
-    --warning: var(--yellow-9);
-    --warning-foreground: var(--app-white);
-    --warning-hover: var(--yellow-10);
+    --warning: var(--yellow-3);
+    --warning-foreground: var(--yellow-12);
+    --warning-hover: var(--yellow-5);
 
-    --info: var(--blue-9);
-    --info-foreground: var(--app-white);
-    --info-hover: var(--blue-10);
+    --info: var(--blue-3);
+    --info-foreground: var(--blue-12);
+    --info-hover: var(--blue-5);
     
     --border: var(--brand-6);
     --border-hover: var(--brand-8);
+
     --border-muted: var(--brand-4);
     --border-muted-hover: var(--brand-5);
+
+    --border-success: var(--green-6);
+    --border-success-hover: var(--green-8);
+
+    --border-error: var(--red-6);
+    --border-error-hover: var(--red-8);
+
+    --border-info: var(--blue-6);
+    --border-info-hover: var(--blue-8);
+
+    --border-warning: var(--yellow-6);
+    --border-warning-hover: var(--yellow-8);
 
     --ring: var(--brand-8);
     
@@ -142,8 +155,8 @@
 .bg-striped {
   background: repeating-linear-gradient(
     -45deg,                      /* Diagonal direction */
-    var(--error) 0px,            /* Start color */
-    var(--error) 3px,            /* End color of the first stripe */
+    var(--red-9) 0px,            /* Start color */
+    var(--red-9) 3px,            /* End color of the first stripe */
     var(--app-background) 3px,   /* Start color of the next stripe */
     var(--app-background) 6px    /* End color of the next stripe */
   );

@@ -22,7 +22,7 @@ const FormControl = React.forwardRef<
       {children}
       {error && (
         <Typography 
-          className='text-right text-error' 
+          className='text-right text-error-foreground' 
           variant='mini'
         >
           {error}

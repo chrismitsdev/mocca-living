@@ -30,7 +30,7 @@ function Mapbox({token, translations}: MapboxProps) {
   return (
     <article className='py-12'>
       <Map
-        style={{width: '100%', minHeight: 500, borderRadius: 'var(--radius)'}}
+        style={{width: '100%', minHeight: 400, borderRadius: 'var(--radius)'}}
         mapboxAccessToken={token}
         initialViewState={{
           latitude: coords.lat,

@@ -12,10 +12,15 @@ declare global {
     }
   }
 
-  type Admin = {
-    id: string
-    name: string
-    email: string
-    phone: string
+  type ContactFormValues<
+    T = Omit<
+      IntlMessages['Pages']['Contact']['Form']['fields'], 
+      'checkIn' | 'checkOut'
+    >
+  > = {
+    [K in keyof T]: string
+  } & {
+    checkIn: Date
+    checkOut: Date
   }
 }

@@ -14,10 +14,7 @@ import * as outdoorImages from '#/public/images/outdoors'
 
 function HomeCarousel() {
   return (
-    <Carousel
-      className='static mx-auto max-w-5xl space-y-2'
-      autoPlay
-    >
+    <Carousel className='space-y-2' autoPlay>
       <CarouselViewport>
         <CarouselContainer>
           {Object.values(outdoorImages).slice(0, 8).map((image, i) => (

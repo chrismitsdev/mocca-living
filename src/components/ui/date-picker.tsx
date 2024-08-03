@@ -10,6 +10,7 @@ import {formatDate} from '#/lib/utils'
 import {IconProps} from '@radix-ui/react-icons/dist/types'
 
 type DatePickerProps = {
+  id?: string
   locale: Params['params']['locale']
   placeholder?: string
   disabled?: Matcher | Matcher[]
@@ -18,7 +19,7 @@ type DatePickerProps = {
   onDateChange?: React.Dispatch<React.SetStateAction<Date | undefined>>
 }
 
-function DatePicker({locale, placeholder, disabled, icon, date, onDateChange}: DatePickerProps) {
+function DatePicker({id, locale, placeholder, disabled, icon, date, onDateChange}: DatePickerProps) {
   const [open, setOpen] = React.useState(false)
 
   function handleDateSelect(date: Date | undefined) {
@@ -29,9 +30,9 @@ function DatePicker({locale, placeholder, disabled, icon, date, onDateChange}: D
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
+      <PopoverTrigger id={id} asChild>
         <Button
-          className='px-3 w-full bg-app-background justify-start data-open:border-border-hover data-open:shadow'
+          className='px-3 w-full bg-app-background justify-start data-open:border-border-hover data-open:shadow focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-border-hover focus-visible:shadow'
           variant='bordered'
         >
           {!icon 
@@ -42,7 +43,7 @@ function DatePicker({locale, placeholder, disabled, icon, date, onDateChange}: D
             )
           }
           {(!date && placeholder) && (
-            <span className='font-normal text-foreground-muted'>
+            <span className='text-sm font-normal text-foreground-muted'>
               {placeholder}
             </span>
           )}

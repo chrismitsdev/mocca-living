@@ -7,6 +7,7 @@ import {locales} from '#/lib/next-intl-config'
 import {Header} from '@/components/shared/header'
 import {Footer} from '@/components/shared/footer'
 import {CookieConsent} from '@/components/shared/cookie-consent'
+import {Toaster} from '@/components/ui/toast'
 
 const commissioner = Commissioner({
   subsets: ['latin'],
@@ -45,6 +46,7 @@ export default function LocaleLayout(
           acceptLabel={t('accept-label')}
           rejectLabel={t('reject-label')}
         />
+        <Toaster position='top-right' />
       </body>
     </html>
   )
