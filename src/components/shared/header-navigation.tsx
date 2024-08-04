@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import {usePathname, Link} from '@/navigation'
-import {m, LazyMotion, domMax} from 'framer-motion'
+import {Typography} from '@/components/ui/typography'
 import {cn} from '#/lib/utils'
 
 type NavigationLink = {
@@ -18,35 +18,22 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
   const pathname = usePathname()
 
   return (
-    <LazyMotion features={domMax}>
-      <nav className='flex w-80 gap-2'>
-        {links.map(link => (
-          <Link 
-            key={link.href}
-            className={cn(
-              'py-1 relative flex-1 text-center duration-500',
-              pathname === link.href && 'font-semibold'
-            )}
-            href={link.href}
-          >
-            {pathname === link.href && (
-              <m.div 
-                layoutId='active-link' 
-                style={{borderRadius: 'var(--radius)'}}
-                className='absolute bottom-0 left-0 w-full h-0.5 bg-brand-12' 
-                transition={{
-                  type: 'spring',
-                  duration: 0.5
-                }}
-              />
-            )}
-            <span className='relative z-10 uppercase text-sm'>
-              {link.label}
-            </span>
-          </Link>
-        ))}
-      </nav>
-    </LazyMotion>
+    <nav className='flex gap-8'>
+      {links.map(link => (
+        <Link 
+          key={link.href}
+          className={cn(
+            'py-1 relative text-center duration-500 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-foreground after:scale-x-0 after:duration-300',
+            pathname === link.href && 'font-semibold after:scale-x-100'
+          )}
+          href={link.href}
+        >
+          <Typography variant='small' className='uppercase'>
+            {link.label}
+          </Typography>
+        </Link>
+      ))}
+    </nav>
   )
 }
 

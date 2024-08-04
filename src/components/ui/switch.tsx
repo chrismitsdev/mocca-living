@@ -10,7 +10,7 @@ const Switch = React.forwardRef<
 >(({className, ...props}, ref) => (
   <Root
     className={cn(
-      'h-6 w-11 inline-flex items-center shrink-0 bg-app-background border-2 rounded-full cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-checked:bg-primary',
+      'h-6 w-11 inline-flex items-center shrink-0 bg-surface-1 border-2 rounded-full cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-checked:bg-primary',
       className
     )}
     ref={ref}
@@ -18,7 +18,7 @@ const Switch = React.forwardRef<
   >
     <Thumb
       className={cn(
-        'h-[18px] w-[18px] block bg-primary rounded-full pointer-events-none ring-0 transition-transform data-unchecked:translate-x-px data-checked:translate-x-[21px] data-checked:bg-app-background'
+        'h-[18px] w-[18px] block bg-primary rounded-full pointer-events-none ring-0 transition-transform data-unchecked:translate-x-px data-checked:translate-x-[21px] data-checked:bg-surface-1'
       )}
     />
   </Root>

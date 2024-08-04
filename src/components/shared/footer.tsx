@@ -43,7 +43,7 @@ function Footer() {
             </Typography>
           </FooterColumn>
           <LocaleSelect 
-            className='w-full sm:w-40 justify-self-end'
+            className='sm:w-40 justify-self-end'
             defaultValue={locale}
             placeholder={t('Components.LocaleSelect.placeholder')}
             loadingText={t('Components.LocaleSelect.loadingText')}

@@ -10,20 +10,20 @@ type TextareaProps = React.ComponentPropsWithoutRef<'textarea'> & {
 const Textarea = React.forwardRef<
   HTMLTextAreaElement,
   TextareaProps
->(({className, wrapperProps = {}, icon, rows = 3, ...props}, ref) => {
+>(({className, wrapperProps = {}, icon, rows = 4, ...props}, ref) => {
   const {className: wrapperClassName, ...restWrapperProps} = wrapperProps
   
   return (
     <div 
       className={cn(
-        'relative', 
+        'relative group', 
         wrapperClassName
       )} 
       {...restWrapperProps}
     >
       <textarea 
         className={cn(
-          'py-[7px] w-full block bg-app-background border rounded font-semibold outline-0 transition placeholder:text-sm placeholder:font-normal placeholder:text-foreground-muted placeholder:opacity-100 focus-within:border-border-hover focus-within:shadow disabled:cursor-not-allowed disabled:opacity-50',
+          'py-[7px] w-full block bg-surface-1 border rounded font-semibold outline-0 transition placeholder:text-sm placeholder:font-normal placeholder:text-foreground-muted placeholder:opacity-100 focus-within:border-border-hover focus-within:shadow disabled:pointer-events-none disabled:opacity-35',
           icon ? 'pl-9 pr-3' : 'px-3',
           className
         )}
@@ -32,7 +32,10 @@ const Textarea = React.forwardRef<
         {...props}
       />
       {icon && (
-        <span className='absolute left-3 top-[11px]'>
+        <span className={cn(
+          'absolute left-3 top-[11px]',
+          props.disabled && 'opacity-35'
+        )}>
           {React.createElement(icon, {width: 16, height: 16})}
         </span>
       )}

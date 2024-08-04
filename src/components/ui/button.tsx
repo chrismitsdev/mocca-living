@@ -19,8 +19,7 @@ const buttonVariants = cva(
     'focus-visible:ring-ring', 
     'focus-visible:ring-offset-1', 
     'disabled:pointer-events-none', 
-    'disabled:opacity-50', 
-    // 'active:scale-95'
+    'disabled:opacity-35'
   ],
   {
     variants: {

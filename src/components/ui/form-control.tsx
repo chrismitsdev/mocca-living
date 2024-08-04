@@ -13,7 +13,7 @@ const FormControl = React.forwardRef<
   return (
     <div 
       className={cn(
-        'space-y-0 min-h-20', 
+        'space-y-0.5 min-h-[84px]', 
         className
       )} 
       ref={ref}

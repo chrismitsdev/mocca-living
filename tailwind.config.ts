@@ -31,7 +31,13 @@ const config: Config = {
     },
     extend: {
       colors: {
-        'app-background': 'var(--app-background)',
+        surface: {
+          1: 'var(--surface-1)',
+          2: 'var(--surface-2)',
+          3: 'var(--surface-3)',
+          4: 'var(--surface-4)',
+          5: 'var(--surface-5)',
+        },
         brand: {
           1: 'var(--brand-1)',
           2: 'var(--brand-2)',
@@ -211,6 +217,10 @@ const config: Config = {
         'modal-open': 'modal-open 300ms cubic-bezier(0.390, 0.575, 0.565, 1.000)',
         'modal-closed': 'modal-closed 220ms cubic-bezier(0.390, 0.575, 0.565, 1.000) '
       },
+    },
+    boxShadow: {
+      DEFAULT: '0px 0px 5px 1px rgba(69, 50, 39, 0.24)',
+      medium: '0px 0px 8px 3px rgba(69, 50, 39, 0.24)'
     },
     fontSize: {
       xs: ['12px', '16px'],

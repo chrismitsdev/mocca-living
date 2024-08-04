@@ -27,6 +27,8 @@ export default function ContactPage({params: {locale}}: Params) {
           locale={locale} 
           formTitle={t('Pages.Contact.Form.title')}
           formDescription={t('Pages.Contact.Form.description')}
+          submitBtnLabel={t('Pages.Contact.Form.submit-btn')}
+          resetBtnLabel={t('Pages.Contact.Form.reset-btn')}
           fieldTranslations={{
             name: {
               label: t('Pages.Contact.Form.fields.name.label'),

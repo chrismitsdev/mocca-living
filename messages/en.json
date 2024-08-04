@@ -10,7 +10,7 @@
     },
     "Contact": {
       "name": "Mocca Living",
-      "location": "Beach of Agia Paraskevi",
+      "location": "Beach of Kyani Akti",
       "phone": "Contact phone"
     }
   },
@@ -25,6 +25,8 @@
       "Form": {
         "title": "Contact us",
         "description": "Fill out the form below to make a booking, and we will contact you shortly.",
+        "submit-btn": "Submit",
+        "reset-btn": "Reset",
         "fields": {
           "name": {
             "label": "Full name",

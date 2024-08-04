@@ -18,7 +18,7 @@ function DateRangePicker({locale}: {locale: Params['params']['locale']}) {
       <PopoverTrigger asChild>
         <Button
           id='date'
-          className='px-3 w-full bg-app-background justify-start data-open:border-border-hover'
+          className='px-3 w-full bg-surface-1 justify-start data-open:border-border-hover'
           variant='bordered'
         >
           <CalendarIcon className='shrink-0' width={16} height={16} />

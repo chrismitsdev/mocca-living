@@ -1,5 +1,6 @@
 import enMessages from '#/messages/en.json'
 import {locales} from '#/lib/next-intl-config'
+import {ErrorResponse} from 'resend'
 
 type Messages = typeof enMessages
 
@@ -22,5 +23,11 @@ declare global {
   } & {
     checkIn: Date
     checkOut: Date
+  }
+
+  type ContactFormResponse = {
+    status: 'success' | 'error' | 'catch-error'
+    title: string
+    message: string
   }
 }

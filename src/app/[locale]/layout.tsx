@@ -46,7 +46,7 @@ export default function LocaleLayout(
           acceptLabel={t('accept-label')}
           rejectLabel={t('reject-label')}
         />
-        <Toaster position='top-right' />
+        <Toaster position='top-right' duration={5000} />
       </body>
     </html>
   )

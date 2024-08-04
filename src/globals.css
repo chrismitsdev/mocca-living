@@ -4,9 +4,12 @@
 
 @layer base {
   :root {
-    /* App colors */
-    --app-white: #fff;
-    --app-background: #ddc8a2;
+    /* Surface colors */
+    --surface-1: #e7d9be;
+    --surface-2: #ddc8a2;
+    --surface-3: #c7b492;
+    --surface-4: #b1a082;
+    --surface-5: #9b8c71;
     
     /* Palettes */
     --brand-1: #c6c4c3;  /* Backgrounds */
@@ -92,7 +95,7 @@
     --foreground-muted: var(--brand-6);
 
     --primary: var(--brand-9);
-    --primary-foreground: var(--app-white);
+    --primary-foreground: var(--surface-1);
     --primary-hover: var(--brand-10);
 
     --muted: var(--brand-4);
@@ -143,13 +146,9 @@
   }
   
   body {
-    @apply relative bg-app-background text-foreground before:absolute before:inset-0 before:-z-10 before:bg-gradient-to-b from-brand-4 before:opacity-70 selection:bg-primary selection:text-primary-foreground;
+    @apply relative bg-surface-1 text-foreground selection:bg-primary selection:text-primary-foreground;
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
-  /* body {
-    @apply relative bg-app-background text-foreground selection:bg-primary selection:text-primary-foreground;
-    font-feature-settings: 'rlig' 1, 'calt' 1;
-  } */
 }
 
 .bg-striped {
@@ -157,8 +156,8 @@
     -45deg,                      /* Diagonal direction */
     var(--red-9) 0px,            /* Start color */
     var(--red-9) 3px,            /* End color of the first stripe */
-    var(--app-background) 3px,   /* Start color of the next stripe */
-    var(--app-background) 6px    /* End color of the next stripe */
+    var(--surface-1) 3px,   /* Start color of the next stripe */
+    var(--surface-1) 6px    /* End color of the next stripe */
   );
 }
 
@@ -166,10 +165,10 @@
   @apply min-w-48;
 
   .mapboxgl-popup-content {
-    @apply px-4 py-2 relative bg-app-background rounded;
+    @apply px-4 py-2 relative bg-surface-1 rounded;
   }
 
   .mapboxgl-popup-tip {
-    @apply border-t-app-background;
+    @apply border-t-surface-1;
   }
 }

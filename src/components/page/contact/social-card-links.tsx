@@ -9,19 +9,19 @@ type SocialCardLinksProps = {
 
 function SocialCardLinks({name, location, phone}: SocialCardLinksProps) {
   return (
-    <article className='py-16 bg-muted'>
-      <div className='container grid gap-12 sm:grid-cols-[auto_1fr_auto]'>
-        <div className='flex flex-col gap-4 items-center'>
+    <article className='py-24 bg-surface-2'>
+      <div className='container flex flex-wrap justify-center gap-8'>
+        <div className='p-6 flex-1 inline-flex flex-col items-center gap-4 bg-surface-3 rounded'>
           <InstagramLogoIcon width={72} height={72} />
-          <Typography variant='h4'>{name}</Typography>
+          <Typography className='whitespace-nowrap' variant='h4'>{name}</Typography>
         </div>
-        <div className='flex flex-col gap-4 items-center'>
+        <div className='p-6 flex-1 inline-flex flex-col items-center gap-4 bg-surface-3 rounded'>
           <DrawingPinIcon width={72} height={72} />
-          <Typography variant='h4'>{location}</Typography>
+          <Typography className='whitespace-nowrap' variant='h4'>{location}</Typography>
         </div>
-        <div className='flex flex-col gap-4 items-center'>
+        <div className='p-6 flex-1 inline-flex flex-col items-center gap-4 bg-surface-3 rounded'>
           <MobileIcon width={72} height={72} />
-          <Typography variant='h4'>{phone}</Typography>
+          <Typography className='whitespace-nowrap' variant='h4'>{phone}</Typography>
         </div>
       </div>
     </article>

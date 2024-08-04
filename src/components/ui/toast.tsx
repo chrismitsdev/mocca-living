@@ -11,11 +11,11 @@ function Toaster({...props}: ToasterProps) {
       toastOptions={{
         unstyled: true,
         classNames: {
-          toast: 'shrink-0 p-6 w-full bg-app-background border border-muted rounded shadow-md group',
-          success: 'flex gap-2 items-center bg-success !border-border-success text-success-foreground',
-          error: 'flex gap-2 items-center bg-error !border-border-error text-error-foreground',
-          info: 'flex gap-2 items-center bg-info !border-border-info text-info-foreground',
-          warning: 'flex gap-2 items-center bg-warning !border-border-warning text-warning-foreground',
+          default: 'shrink-0 p-6 w-full bg-surface-2 border border-muted rounded shadow-medium group',
+          success: 'flex gap-2 items-center !bg-success !border-border-success text-success-foreground',
+          error: 'flex gap-2 items-center !bg-error !border-border-error text-error-foreground',
+          info: 'flex gap-2 items-center !bg-info !border-border-info text-info-foreground',
+          warning: 'flex gap-2 items-center !bg-warning !border-border-warning text-warning-foreground',
           closeButton: 'bg-primary text-primary-foreground border-primary hover:!bg-error hover:!text-error-foreground hover:!border-error left-[calc(100%-5px)] group-data-success:bg-red-9 group-data-error:bg-red-9 group-data-info:bg-red-9 group-data-warning:bg-red-9 group-data-success:border-red-9 group-data-error:border-red-9 group-data-info:border-red-9 group-data-warning:border-red-9',
           icon: 'm-0 mt-0.5 shrink-0 w-5 h-5 self-start',
           description: 'leading-normal'
@@ -26,6 +26,7 @@ function Toaster({...props}: ToasterProps) {
     />
   )
 }
+
 
 function toast(
   title: string, 

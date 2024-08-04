@@ -3,17 +3,16 @@
 import * as React from 'react'
 import dynamic from 'next/dynamic'
 import {useForm, Controller} from 'react-hook-form'
-import {addDays, subDays, isSameDay} from 'date-fns'
+import {addDays, subDays} from 'date-fns'
 import {
+  PaperPlaneIcon, 
   AvatarIcon, 
   EnvelopeClosedIcon, 
   MobileIcon, 
   EnterIcon, 
   ExitIcon, 
   HomeIcon,
-  ChatBubbleIcon,
-  PaperPlaneIcon, 
-  ResetIcon
+  ChatBubbleIcon
 } from '@radix-ui/react-icons'
 import {
   Card, 
@@ -38,22 +37,19 @@ import {Label} from '@/components/ui/label'
 import {Input} from '@/components/ui/input'
 import {Textarea} from '@/components/ui/textarea'
 import {DatePicker} from '@/components/ui/date-picker'
-import {toast} from '@/components/ui/toast'
+// import {toast} from '@/components/ui/toast'
 
 const DevTool: React.ElementType = dynamic(
   () => import('@hookform/devtools').then((module) => module.DevTool),
   { ssr: false }
 )
 
-type FormMessages = IntlMessages['Pages']['Contact']['Form']
-
-type ContactFormProps<T extends FormMessages = FormMessages> = {
+type ContactFormProps = {
   locale: Params['params']['locale'],
-  formTitle: T['title'] 
-  formDescription: T['description']
-  fieldTranslations:  T['fields']
-  submitBtnLabel: T['submit-btn']
-  resetBtnLabel: T['reset-btn']
+  formTitle: IntlMessages['Pages']['Contact']['Form']['title'] 
+  formDescription: IntlMessages['Pages']['Contact']['Form']['description']
+  fieldTranslations:  IntlMessages['Pages']['Contact']['Form']['fields']
+  submitBtnLabel: IntlMessages['Pages']['Contact']['Form']['submit-btn']
 }
 
 const emailProviders = [
@@ -66,27 +62,23 @@ const emailProviders = [
 
 const DEV_MODE = process.env.NODE_ENV === 'development'
 
-function ContactForm(
-  {
-    locale, 
-    formTitle, 
-    formDescription, 
-    fieldTranslations, 
-    submitBtnLabel, 
-    resetBtnLabel
-  }: ContactFormProps
-) {
+function ContactForm({locale, formTitle, formDescription, fieldTranslations, submitBtnLabel}: ContactFormProps) {
   const {
     formState, 
     register, 
     control, 
     handleSubmit, 
-    watch,
-    reset
+    watch
   } = useForm<ContactFormValues>()
   const [origin, setOrigin] = React.useState<string>('')
-  const watchCheckIn = watch('checkIn')
-  const watchCheckOut = watch('checkOut')
+
+  React.useEffect(
+    function() {
+      if (typeof window === 'undefined') return
+      setOrigin(DEV_MODE ? 'http://localhost:3000' : window.location.origin)
+    }, 
+    []
+  )
 
   async function onSubmit(data: ContactFormValues) {
     const res = await fetch(`${origin}/${locale}/api/contact-form`, {
@@ -97,39 +89,9 @@ function ContactForm(
       body: JSON.stringify(data)
     })
 
-    const {
-      title, 
-      message, 
-      status
-    } = await res.json() as ContactFormResponse
-    
-    toast(
-      title, 
-      message, 
-      status === 'success' ? 'success' : 'error'
-    )
+    const result = await res.json() as Response
+    console.log(result)
   }
-
-  // Sets origin depending on the enviroment (development or production)
-  React.useEffect(
-    function() {
-      if (typeof window === 'undefined') return
-      setOrigin(DEV_MODE ? 'http://localhost:3000' : window.location.origin)
-    }, 
-    []
-  )
-
-  // Resets form field values on successful submission
-  React.useEffect(
-    function() {
-      if (typeof window === 'undefined') return
-      
-      if(formState.isSubmitSuccessful) {
-        reset()
-      }
-    },
-    [formState.isSubmitSuccessful, reset]
-  )
 
   return (
     <article>
@@ -160,9 +122,8 @@ function ContactForm(
                     maxLength: {
                       value: 25,
                       message: fieldTranslations.name.validation.length
-                    },
+                    }
                   })} 
-                  disabled={formState.isSubmitting}
                 />
               </FormControl>  
 
@@ -183,12 +144,13 @@ function ContactForm(
                       value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
                       message: fieldTranslations.email.validation.pattern
                     },
-                    validate: (value) => (
-                      emailProviders.some(p => value.endsWith(p)) 
-                        || fieldTranslations.email.validation.whitelistedProviders
-                    ),
+                    validate: {
+                      whitelistedProviders: (value) => {
+                        return emailProviders.some(p => value.endsWith(p)) 
+                          || fieldTranslations.email.validation.whitelistedProviders
+                      },
+                    }
                   })}
-                  disabled={formState.isSubmitting}
                 />
               </FormControl>
 
@@ -209,7 +171,6 @@ function ContactForm(
                       message: fieldTranslations.phone.validation.pattern
                     }
                   })}
-                  disabled={formState.isSubmitting}
                 />
               </FormControl>
 
@@ -219,7 +180,7 @@ function ContactForm(
                   control={control} 
                   name='checkIn'
                   render={({field}) => (
-                    <DatePicker
+                    <DatePicker 
                       id='check-in'
                       locale={locale} 
                       date={field.value} 
@@ -227,13 +188,8 @@ function ContactForm(
                       placeholder={fieldTranslations.checkIn.placeholder} 
                       calendarDisabled={{
                         before: new Date(),
-                        after: !watchCheckOut 
-                          ? undefined 
-                          : isSameDay(watchCheckOut, addDays(new Date(), 1))
-                            ? new Date()
-                            : subDays(watchCheckOut, 1)
+                        after: !watch('checkOut') ? undefined : subDays(watch('checkOut'), 1)
                       }}
-                      disabled={formState.isSubmitting}
                       icon={EnterIcon}
                     />
                   )}
@@ -252,16 +208,15 @@ function ContactForm(
                   control={control} 
                   name='checkOut'
                   render={({field}) => (
-                    <DatePicker
+                    <DatePicker 
                       id='check-out'
                       locale={locale} 
                       date={field.value} 
                       onDateChange={field.onChange} 
                       placeholder={fieldTranslations.checkOut.placeholder} 
                       calendarDisabled={{
-                        before: !watchCheckIn ? addDays(new Date(), 1) : addDays(watchCheckIn, 1)
+                        before: !watch('checkIn') ? addDays(new Date(), 1) : addDays(watch('checkIn'), 1)
                       }}
-                      disabled={formState.isSubmitting}
                       icon={ExitIcon}
                     />
                   )}
@@ -269,7 +224,7 @@ function ContactForm(
                     required: {
                       value: true,
                       message: fieldTranslations.checkOut.validation.required
-                    }
+                    },
                   }}
                 />
               </FormControl>
@@ -279,13 +234,8 @@ function ContactForm(
                 <Controller 
                   control={control}
                   name='house'
-                  render={({field: {name, value = '', onChange}}) => (
-                    <Select 
-                      name={name} 
-                      value={value} 
-                      onValueChange={onChange}
-                      disabled={formState.isSubmitting}
-                    >
+                  render={({field: {name, value = '', onChange, disabled}}) => (
+                    <Select name={name} value={value} onValueChange={onChange} disabled={disabled}>
                       <SelectTrigger id='house' className='w-full'>
                         <span className='flex items-center gap-2'>
                           <HomeIcon width={16} height={16} />
@@ -308,7 +258,7 @@ function ContactForm(
                     required: {
                       value: true,
                       message: fieldTranslations.house.validation.required
-                    }
+                    },
                   }}
                 />
               </FormControl>
@@ -319,7 +269,6 @@ function ContactForm(
                   id='message' 
                   placeholder={fieldTranslations.message.placeholder} 
                   icon={ChatBubbleIcon}
-                  disabled={formState.isSubmitting}
                   {...register('message')}
                 />
               </FormControl>
@@ -327,22 +276,11 @@ function ContactForm(
           </form>
           {/* <DevTool placement='top-right' control={control} /> */}
         </CardContent>
-        <CardFooter className='sm:justify-end gap-4'>
-          <Button 
-            variant='bordered'
-            className='w-full sm:w-auto' 
-            form='contact-form' 
-            onClick={() => reset()}
-            disabled={formState.isSubmitting}
-          >
-            <ResetIcon width={16} height={16} />
-            <span>{resetBtnLabel}</span>
-          </Button>
+        <CardFooter className='sm:justify-end'>
           <Button 
             className='w-full sm:w-auto' 
             form='contact-form' 
             type='submit'
-            disabled={formState.isSubmitting}
           >
             <span>{submitBtnLabel}</span>
             <PaperPlaneIcon width={16} height={16} />
