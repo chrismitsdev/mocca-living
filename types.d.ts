@@ -16,17 +16,18 @@ declare global {
   type ContactFormValues<
     T = Omit<
       IntlMessages['Pages']['Contact']['Form']['fields'], 
-      'checkIn' | 'checkOut'
+      'checkIn' | 'checkOut' | 'consentData'
     >
   > = {
     [K in keyof T]: string
   } & {
     checkIn: Date
     checkOut: Date
+    consentData: boolean
   }
 
   type ContactFormResponse = {
-    status: 'success' | 'error' | 'catch-error'
+    status: 'success' | 'error'
     title: string
     message: string
   }

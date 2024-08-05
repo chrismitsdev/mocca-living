@@ -69,17 +69,23 @@ export default function ContactPage({params: {locale}}: Params) {
                 required: t('Pages.Contact.Form.fields.checkOut.validation.required')
               }
             },
-            house: {
-              label: t('Pages.Contact.Form.fields.house.label'),
-              placeholder: t('Pages.Contact.Form.fields.house.placeholder'),
+            suite: {
+              label: t('Pages.Contact.Form.fields.suite.label'),
+              placeholder: t('Pages.Contact.Form.fields.suite.placeholder'),
               validation: {
-                required: t('Pages.Contact.Form.fields.house.validation.required')
+                required: t('Pages.Contact.Form.fields.suite.validation.required')
               }
             },
             message: {
               label: t('Pages.Contact.Form.fields.message.label'),
               placeholder: t('Pages.Contact.Form.fields.message.placeholder')
             },
+            consentData:{
+              label: t('Pages.Contact.Form.fields.consentData.label'),
+              validation: {
+                required: t('Pages.Contact.Form.fields.consentData.validation.required') 
+              }
+            }
           }} 
         />
       </Container>

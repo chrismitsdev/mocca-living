@@ -38,12 +38,14 @@ import {Label} from '@/components/ui/label'
 import {Input} from '@/components/ui/input'
 import {Textarea} from '@/components/ui/textarea'
 import {DatePicker} from '@/components/ui/date-picker'
+import {Checkbox} from '@/components/ui/checkbox'
+import {Typography} from '@/components/ui/typography'
 import {toast} from '@/components/ui/toast'
 
-const DevTool: React.ElementType = dynamic(
-  () => import('@hookform/devtools').then((module) => module.DevTool),
-  { ssr: false }
-)
+// const DevTool: React.ElementType = dynamic(
+//   () => import('@hookform/devtools').then((module) => module.DevTool),
+//   { ssr: false }
+// )
 
 type FormMessages = IntlMessages['Pages']['Contact']['Form']
 
@@ -73,13 +75,13 @@ function ContactForm(
     formDescription, 
     fieldTranslations, 
     submitBtnLabel, 
-    resetBtnLabel
+    resetBtnLabel,
   }: ContactFormProps
 ) {
   const {
     formState, 
-    register, 
     control, 
+    register, 
     handleSubmit, 
     watch,
     reset
@@ -88,6 +90,22 @@ function ContactForm(
   const watchCheckIn = watch('checkIn')
   const watchCheckOut = watch('checkOut')
 
+  const explicitReset = React.useCallback(
+    function() {
+      reset({
+        name: '',
+        email: '',
+        phone: '',
+        checkIn: undefined,
+        checkOut: undefined,
+        suite: '',
+        message: '',
+        consentData: false
+      })
+    }, 
+    [reset]
+  )
+  
   async function onSubmit(data: ContactFormValues) {
     const res = await fetch(`${origin}/${locale}/api/contact-form`, {
       method: 'POST',
@@ -97,17 +115,9 @@ function ContactForm(
       body: JSON.stringify(data)
     })
 
-    const {
-      title, 
-      message, 
-      status
-    } = await res.json() as ContactFormResponse
+    const {title, message, status} = await res.json() as ContactFormResponse
     
-    toast(
-      title, 
-      message, 
-      status === 'success' ? 'success' : 'error'
-    )
+    toast(title, message, status)
   }
 
   // Sets origin depending on the enviroment (development or production)
@@ -123,12 +133,11 @@ function ContactForm(
   React.useEffect(
     function() {
       if (typeof window === 'undefined') return
-      
       if(formState.isSubmitSuccessful) {
-        reset()
+        explicitReset()
       }
     },
-    [formState.isSubmitSuccessful, reset]
+    [formState.isSubmitSuccessful, explicitReset]
   )
 
   return (
@@ -274,11 +283,11 @@ function ContactForm(
                 />
               </FormControl>
 
-              <FormControl error={formState.errors.house?.message}>
-                <Label htmlFor='house'>{fieldTranslations.house.label}</Label>
+              <FormControl error={formState.errors.suite?.message}>
+                <Label htmlFor='suite'>{fieldTranslations.suite.label}</Label>
                 <Controller 
                   control={control}
-                  name='house'
+                  name='suite'
                   render={({field: {name, value = '', onChange}}) => (
                     <Select 
                       name={name} 
@@ -286,11 +295,11 @@ function ContactForm(
                       onValueChange={onChange}
                       disabled={formState.isSubmitting}
                     >
-                      <SelectTrigger id='house' className='w-full'>
+                      <SelectTrigger id='suite' className='w-full'>
                         <span className='flex items-center gap-2'>
                           <HomeIcon width={16} height={16} />
                           <span className={!value ? 'text-sm font-normal text-foreground-muted' : ''}>
-                            <SelectValue placeholder={fieldTranslations.house.placeholder}  />
+                            <SelectValue placeholder={fieldTranslations.suite.placeholder}  />
                           </span>
                         </span>
                       </SelectTrigger>
@@ -307,7 +316,7 @@ function ContactForm(
                   rules={{
                     required: {
                       value: true,
-                      message: fieldTranslations.house.validation.required
+                      message: fieldTranslations.suite.validation.required
                     }
                   }}
                 />
@@ -323,16 +332,52 @@ function ContactForm(
                   {...register('message')}
                 />
               </FormControl>
+
+              <FormControl className='mt-2 min-h-fit space-y-0 flex gap-2 sm:col-span-3'>
+                <Controller 
+                  control={control}
+                  name='consentData'
+                  render={({field}) => (
+                    <Checkbox
+                      id='consentData'
+                      className='mt-[3px]'
+                      name={field.name}
+                      defaultChecked={field.value}
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                      onBlur={field.onBlur}
+                      disabled={formState.isSubmitting}
+                      ref={field.ref}
+                    />
+                  )}
+                  rules={{
+                    required: {
+                      value: true,
+                      message: fieldTranslations.consentData.validation.required
+                    }
+                  }}
+                />
+                <div className='space-y-0.5'>
+                  <Label htmlFor='consentData' className='grow'>
+                    {fieldTranslations.consentData.label}
+                  </Label>
+                  {formState.errors.consentData?.message && (
+                    <Typography variant='mini' className='text-right text-error-foreground sm:text-left'>
+                      {formState.errors.consentData.message}
+                    </Typography>
+                  )}
+                </div>
+              </FormControl>
             </div>
           </form>
           {/* <DevTool placement='top-right' control={control} /> */}
         </CardContent>
-        <CardFooter className='sm:justify-end gap-4'>
+        <CardFooter className='pt-4 sm:justify-end gap-4'>
           <Button 
             variant='bordered'
             className='w-full sm:w-auto' 
             form='contact-form' 
-            onClick={() => reset()}
+            onClick={explicitReset}
             disabled={formState.isSubmitting}
           >
             <ResetIcon width={16} height={16} />

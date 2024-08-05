@@ -5,7 +5,7 @@ import {ContactFormTemplate} from '@/components/page/contact/contact-form-templa
 const resend = new Resend(process.env.RESEND_ONBOARDING_API_KEY)
 
 export async function POST(request: Request) {
-  const formData = await request.json() as ContactFormValues
+  const formData = await request.json() as Omit<ContactFormValues, 'consentData'>
   const t = await getTranslations('Pages.Contact.Form.response')
 
   const successObj: ContactFormResponse = {
@@ -37,32 +37,10 @@ export async function POST(request: Request) {
   } catch (error) {
     return Response.json(
       {
-        status: 'catch-error',
+        status: 'error',
         title: 'Catch block error',
         message: 'An error occured in the catch-block of the contact form route handler.'
       } as ContactFormResponse
     )
   }
 }
-
-// export async function POST(request: Request) {
-//   const formData = await request.json() as ContactFormValues
-//   // const t = await getTranslations()
-
-//   try {
-//     const {data, error} = await resend.emails.send({
-//       from: 'Mocca Living <onboarding@resend.dev>',
-//       to: ['chrismits88@gmail.com'],
-//       subject: 'Test email',
-//       react: ContactFormTemplate({formData}),
-//     })
-
-//     if (error) {
-//       return Response.json({error}, {status: 500})
-//     }
-
-//     return Response.json(data)
-//   } catch (error) {
-//     return Response.json({error}, {status: 500})
-//   }
-// }

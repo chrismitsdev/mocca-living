@@ -67,9 +67,9 @@
               "required": "Mandatory field"
             }
           },
-          "house": {
-            "label": "Selected house",
-            "placeholder": "Select your preferred house",
+          "suite": {
+            "label": "Selected suite",
+            "placeholder": "Select your preferred suite",
             "validation": {
               "required": "Mandatory field"
             }
@@ -77,6 +77,12 @@
           "message": {
             "label": "Message",
             "placeholder": "Optionally, leave your message here..."
+          },
+          "consentData": {
+            "label": "I agree that my personal data will be used only to fulfill my request according to Privacy Policy statements",
+            "validation": {
+              "required": "Mandatory field"
+            }
           }
         },
         "response": {
