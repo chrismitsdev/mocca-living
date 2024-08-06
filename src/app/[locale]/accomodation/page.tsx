@@ -7,17 +7,17 @@ export async function generateMetadata({params: {locale}}: Params) {
   const t = await getTranslations({locale, namespace: 'Metadata'})
  
   return {
-    title: `${t('Pages.suites')} | Mocca Living`
+    title: `${t('Pages.accomodation')} | Mocca Living`
   }
 }
 
 export default function SuitesPage({params: {locale}}: Params) {
   unstable_setRequestLocale(locale)
-  const t = useTranslations('Pages.Suites')
+  const t = useTranslations('Pages.Accomodation')
 
   return (
     <Container>
-      {'SuitesPage'}
+      {'ΑccomodationPage'}
     </Container>
   )
 }

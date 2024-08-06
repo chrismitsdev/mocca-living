@@ -2,7 +2,7 @@
   "Metadata": {
     "Pages": {
       "home": "Αρχική",
-      "suites": "Σουίτες",
+      "accomodation": "Διαμονή",
       "contact": "Επικοινωνία",
       "privacy": "Πολιτική απορρήτου",
       "cookies": "Χρήση cookies",
@@ -16,7 +16,7 @@
   },
   "Pages": {
     "Home": {},
-    "Suites": {},
+    "Accomodation": {},
     "Contact": {
       "Map": {
         "title": "Mocca Living",

@@ -2,7 +2,7 @@
   "Metadata": {
     "Pages": {
       "home": "Home",
-      "suites": "Suites",
+      "accomodation": "Accomodation",
       "contact": "Contact",
       "privacy": "Privacy policy",
       "cookies": "Use of cookies",
@@ -16,7 +16,7 @@
   },
   "Pages": {
     "Home": {},
-    "Suites": {},
+    "Accomodation": {},
     "Contact": {
       "Map": {
         "title": "Mocca Living",

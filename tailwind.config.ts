@@ -219,8 +219,8 @@ const config: Config = {
       },
     },
     boxShadow: {
-      DEFAULT: '0px 0px 5px 1px rgba(69, 50, 39, 0.24)',
-      medium: '0px 0px 8px 3px rgba(69, 50, 39, 0.24)'
+      DEFAULT: 'var(--box-shadow-sm)',
+      medium: 'var(--box-shadow-md)'
     },
     fontSize: {
       xs: ['12px', '16px'],

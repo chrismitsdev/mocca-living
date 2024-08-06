@@ -3,7 +3,7 @@ import {useTranslations} from 'next-intl'
 import {Link} from '@/navigation'
 import {Container} from '@/components/shared/container'
 import {HeaderNavigation} from '@/components/shared/header-navigation'
-import logo from '#/public/logos/mocca-logo-full.svg'
+import logo from '#/public/logos/mocca-logo-simple.svg'
 
 type HeaderLink = {
   label: keyof IntlMessages['Metadata']['Pages']
@@ -12,7 +12,7 @@ type HeaderLink = {
 
 const links: HeaderLink[] = [
   {label: 'home', href: '/'},
-  {label: 'suites', href: '/suites'},
+  {label: 'accomodation', href: '/accomodation'},
   {label: 'contact', href: '/contact'}
 ]
 
@@ -31,7 +31,7 @@ function Header() {
             <Image 
               priority 
               src={logo} 
-              style={{width: 'auto', height: 120}}
+              style={{width: 'auto', height: 100}}
               alt='Mocca Living header logo'
             />
           </Link>
