@@ -2,7 +2,7 @@ import {getTranslations} from 'next-intl/server'
 import {useTranslations} from 'next-intl'
 import {unstable_setRequestLocale} from 'next-intl/server'
 import {Mapbox} from '@/components/page/contact/mapbox'
-import {SocialCardLinks} from '@/components/page/contact/social-card-links'
+import {SocialLinkCards} from '@/components/page/contact/social-link-cards'
 import {ContactForm} from '@/components/page/contact/contact-form'
 import {Container} from '@/components/shared/container'
 
@@ -10,7 +10,7 @@ const MAPBOX_TOKEN = process.env.MAPBOX_TOKEN as string
 
 export async function generateMetadata({params: {locale}}: Params) {
   const t = await getTranslations({locale, namespace: 'Metadata'})
- 
+
   return {
     title: `${t('Pages.contact')} | Mocca Living`
   }
@@ -23,8 +23,8 @@ export default function ContactPage({params: {locale}}: Params) {
   return (
     <>
       <Container>
-        <ContactForm 
-          locale={locale} 
+        <ContactForm
+          locale={locale}
           formTitle={t('Pages.Contact.Form.title')}
           formDescription={t('Pages.Contact.Form.description')}
           submitBtnLabel={t('Pages.Contact.Form.submit-btn')}
@@ -44,7 +44,9 @@ export default function ContactPage({params: {locale}}: Params) {
               validation: {
                 required: t('Pages.Contact.Form.fields.email.validation.required'),
                 pattern: t('Pages.Contact.Form.fields.email.validation.pattern'),
-                whitelistedProviders: t('Pages.Contact.Form.fields.email.validation.whitelistedProviders')
+                whitelistedProviders: t(
+                  'Pages.Contact.Form.fields.email.validation.whitelistedProviders'
+                )
               }
             },
             phone: {
@@ -52,7 +54,7 @@ export default function ContactPage({params: {locale}}: Params) {
               placeholder: t('Pages.Contact.Form.fields.phone.placeholder'),
               validation: {
                 required: t('Pages.Contact.Form.fields.phone.validation.required'),
-                pattern: t('Pages.Contact.Form.fields.phone.validation.pattern'),
+                pattern: t('Pages.Contact.Form.fields.phone.validation.pattern')
               }
             },
             checkIn: {
@@ -80,23 +82,23 @@ export default function ContactPage({params: {locale}}: Params) {
               label: t('Pages.Contact.Form.fields.message.label'),
               placeholder: t('Pages.Contact.Form.fields.message.placeholder')
             },
-            consentData:{
+            consentData: {
               label: t('Pages.Contact.Form.fields.consentData.label'),
               validation: {
-                required: t('Pages.Contact.Form.fields.consentData.validation.required') 
+                required: t('Pages.Contact.Form.fields.consentData.validation.required')
               }
             }
-          }} 
+          }}
         />
       </Container>
-      <SocialCardLinks 
+      <SocialLinkCards
         location={t('Metadata.Contact.location')}
         name={t('Metadata.Contact.name')}
         phone={t('Metadata.Contact.phone')}
       />
       {MAPBOX_TOKEN && (
         <Container>
-          <Mapbox 
+          <Mapbox
             token={MAPBOX_TOKEN}
             translations={{
               title: t('Pages.Contact.Map.title'),

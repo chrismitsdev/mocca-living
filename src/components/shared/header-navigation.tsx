@@ -19,12 +19,12 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
 
   return (
     <nav className='grid grid-cols-[auto,1fr,auto] gap-4'>
-      {links.map(link => (
-        <Link 
+      {links.map((link) => (
+        <Link
           key={link.href}
           className={cn(
-            'py-1 min-w-[72px] relative text-center duration-500 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-foreground after:scale-x-0 after:duration-300',
-            pathname === link.href && 'font-semibold after:scale-x-100',
+            'py-1 min-w-24 relative text-center duration-500 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-foreground after:scale-x-0 after:duration-300',
+            pathname === link.href && 'font-semibold after:scale-x-100'
           )}
           href={link.href}
         >

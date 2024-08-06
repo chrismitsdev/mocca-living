@@ -31,4 +31,8 @@ declare global {
     title: string
     message: string
   }
+
+  type CustomIconProps = React.SVGAttributes<SVGSVGElement> & {
+    size?: number
+  }
 }
