@@ -1,24 +1,23 @@
 import * as React from 'react'
 import {Slot} from '@radix-ui/react-slot'
 import {cva, type VariantProps} from 'class-variance-authority'
+import {Spinner} from '@/components/ui/spinner'
 import {cn} from '#/lib/utils'
 
 const buttonVariants = cva(
   [
-    'inline-flex', 
-    'items-center', 
-    'justify-center', 
-    'gap-2', 
-    'whitespace-nowrap', 
-    'rounded', 
-    'font-semibold', 
-    'ring-offset-background', 
-    'transition-colors', 
-    'focus-visible:outline-none', 
-    'focus-visible:ring-2', 
-    'focus-visible:ring-ring', 
-    'focus-visible:ring-offset-1', 
-    'disabled:pointer-events-none', 
+    'relative',
+    'inline-flex',
+    'justify-center',
+    'items-center',
+    'rounded',
+    'ring-offset-background',
+    'transition-colors',
+    'focus-visible:outline-none',
+    'focus-visible:ring-2',
+    'focus-visible:ring-ring',
+    'focus-visible:ring-offset-1',
+    'disabled:pointer-events-none',
     'disabled:opacity-35'
   ],
   {
@@ -30,10 +29,12 @@ const buttonVariants = cva(
         success: ['bg-success', 'text-success-foreground', 'hover:bg-success-hover'],
         error: ['bg-error', 'text-error-foreground', 'hover:bg-error-hover'],
         info: ['bg-info', 'text-info-foreground', 'hover:bg-info-hover'],
+        warning: ['bg-warning', 'text-warning-foreground', 'hover:bg-warning-hover'],
         'ghost-success': ['hover:bg-success-hover', 'hover:text-success-foreground'],
         'ghost-error': ['hover:bg-error-hover', 'hover:text-error-foreground'],
         'ghost-info': ['hover:bg-info-hover', 'hover:text-info-foreground'],
-        link: ['underline-offset-4', 'hover:underline'],
+        'ghost-warning': ['hover:bg-warning-hover', 'hover:text-warning-foreground'],
+        link: ['underline-offset-4', 'hover:underline']
       },
       size: {
         normal: ['px-4', 'py-2'],
@@ -57,21 +58,31 @@ const buttonVariants = cva(
     ],
     defaultVariants: {
       variant: 'primary',
-      size: 'normal',
+      size: 'normal'
     }
   }
 )
 
-type ButtonProps = 
-  React.ButtonHTMLAttributes<HTMLButtonElement> 
-  & VariantProps<typeof buttonVariants> & {
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof buttonVariants> & {
     asChild?: boolean
+    isLoading?: boolean
   }
 
-const Button = React.forwardRef<
-  HTMLButtonElement, 
-  ButtonProps
->(({asChild = false, className, variant, size, type = 'button', ...props}, ref) => {
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      asChild = false,
+      isLoading = false,
+      className,
+      variant,
+      size,
+      type = 'button',
+      children,
+      ...props
+    },
+    ref
+  ) => {
     const Comp = asChild ? Slot : 'button'
 
     return (
@@ -80,7 +91,21 @@ const Button = React.forwardRef<
         type={type}
         ref={ref}
         {...props}
-      />
+      >
+        {isLoading && (
+          <span className='absolute inset-0 flex items-center justify-center'>
+            <Spinner size={16} />
+          </span>
+        )}
+        <span
+          className={cn(
+            'inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold [&>*]:shrink-0',
+            isLoading && 'invisible'
+          )}
+        >
+          {children}
+        </span>
+      </Comp>
     )
   }
 )

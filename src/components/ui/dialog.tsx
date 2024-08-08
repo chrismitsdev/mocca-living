@@ -2,13 +2,13 @@
 
 import * as React from 'react'
 import {
-  Root, 
-  Trigger, 
-  Overlay, 
-  Portal, 
-  Content, 
-  Title, 
-  Description, 
+  Root,
+  Trigger,
+  Overlay,
+  Portal,
+  Content,
+  Title,
+  Description,
   Close
 } from '@radix-ui/react-dialog'
 import {Cross1Icon} from '@radix-ui/react-icons'
@@ -40,26 +40,26 @@ const DialogContent = React.forwardRef<
 >(({className, children, ...props}, ref) => (
   <Content
     className={cn(
-      'p-6 w-full max-w-xl bg-surface-2 rounded fixed z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 data-open:animate-modal-open data-closed:animate-modal-closed',
+      'p-6 w-full max-w-xl bg-surface-2 rounded shadow-medium fixed z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 data-open:animate-modal-open data-closed:animate-modal-closed',
       className
     )}
     ref={ref}
     {...props}
   >
     {children}
-    <Close className='absolute right-4 top-4 outline-0 disabled:pointer-events-none'>
-      <Cross1Icon width={16} height={16} />
-      <VisuallyHidden>{'Close'}</VisuallyHidden>
+    <Close className='absolute right-4 top-4 outline-0 disabled:pointer-events-none hover:text-red-9'>
+      <Cross1Icon
+        width={16}
+        height={16}
+      />
+      <VisuallyHidden>{'Close dialog'}</VisuallyHidden>
     </Close>
   </Content>
 ))
 
 const DialogHeader = ({className, ...props}: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn(
-      'flex flex-col space-y-1.5 text-center sm:text-left',
-      className
-    )}
+    className={cn('flex flex-col space-y-1.5 text-center sm:text-left', className)}
     {...props}
   />
 )
@@ -69,10 +69,7 @@ const DialogTitle = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof Title>
 >(({className, ...props}, ref) => (
   <Title
-    className={cn(
-      'text-lg font-semibold leading-none tracking-tight',
-      className
-    )}
+    className={cn('text-lg font-semibold tracking-tight', className)}
     ref={ref}
     {...props}
   />
@@ -83,10 +80,7 @@ const DialogDescription = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof Description>
 >(({className, ...props}, ref) => (
   <Description
-    className={cn(
-      'text-sm text-muted-foreground', 
-      className
-    )}
+    className={cn('text-sm text-muted-foreground tracking-wide', className)}
     ref={ref}
     {...props}
   />
@@ -94,10 +88,7 @@ const DialogDescription = React.forwardRef<
 
 const DialogFooter = ({className, ...props}: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn(
-      'flex flex-col-reverse sm:space-x-2 sm:flex-row sm:justify-end',
-      className
-    )}
+    className={cn('flex flex-col-reverse sm:space-x-2 sm:flex-row sm:justify-end', className)}
     {...props}
   />
 )

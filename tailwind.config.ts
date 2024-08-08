@@ -1,9 +1,7 @@
 import type {Config} from 'tailwindcss'
 
 const config: Config = {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   future: {
     hoverOnlyWhenSupported: true
   },
@@ -27,7 +25,7 @@ const config: Config = {
       success: 'type="success"',
       error: 'type="error"',
       info: 'type="info"',
-      warning: 'type="warning"',
+      warning: 'type="warning"'
     },
     extend: {
       colors: {
@@ -36,7 +34,7 @@ const config: Config = {
           2: 'var(--surface-2)',
           3: 'var(--surface-3)',
           4: 'var(--surface-4)',
-          5: 'var(--surface-5)',
+          5: 'var(--surface-5)'
         },
         brand: {
           1: 'var(--brand-1)',
@@ -130,32 +128,32 @@ const config: Config = {
         primary: {
           DEFAULT: 'var(--primary)',
           foreground: 'var(--primary-foreground)',
-          hover: 'var(--primary-hover)',
+          hover: 'var(--primary-hover)'
         },
         muted: {
           DEFAULT: 'var(--muted)',
           foreground: 'var(--muted-foreground)',
-          hover: 'var(--muted-hover)',
+          hover: 'var(--muted-hover)'
         },
         success: {
           DEFAULT: 'var(--success)',
           foreground: 'var(--success-foreground)',
-          hover: 'var(--success-hover)',
+          hover: 'var(--success-hover)'
         },
         error: {
           DEFAULT: 'var(--error)',
           foreground: 'var(--error-foreground)',
-          hover: 'var(--error-hover)',
+          hover: 'var(--error-hover)'
         },
         warning: {
           DEFAULT: 'var(--warning)',
           foreground: 'var(--warning-foreground)',
-          hover: 'var(--warning-hover)',
+          hover: 'var(--warning-hover)'
         },
         info: {
           DEFAULT: 'var(--info)',
           foreground: 'var(--info-foreground)',
-          hover: 'var(--info-hover)',
+          hover: 'var(--info-hover)'
         },
         border: {
           DEFAULT: 'var(--border)',
@@ -166,7 +164,7 @@ const config: Config = {
 
           success: 'var(--border-success)',
           'success-hover': 'var(--border-success-hover)',
-          
+
           error: 'var(--border-error)',
           'error-hover': 'var(--border-error-hover)',
 
@@ -174,49 +172,49 @@ const config: Config = {
           'info-hover': 'var(--border-info-hover)',
 
           warning: 'var(--border-warning)',
-          'warning-hover': 'var(--border-warning-hover)',
+          'warning-hover': 'var(--border-warning-hover)'
         },
         ring: {
           DEFAULT: 'var(--ring)'
-        },
+        }
       },
       keyframes: {
         'page-appear': {
           from: {
-            'opacity': '0',
-            'transform': 'translateY(16px)'
+            opacity: '0',
+            transform: 'translateY(16px)'
           },
           to: {
-            'opacity': '1',
-            'transform': 'translateY(0)'
+            opacity: '1',
+            transform: 'translateY(0)'
           }
         },
         'modal-open': {
           from: {
-            'opacity': '0',
-            'translate': '0 -16px'
+            opacity: '0',
+            translate: '0 24px'
           },
           to: {
-            'opacity': '1',
-            'translate': '0 0'
+            opacity: '1',
+            translate: '0 0'
           }
         },
         'modal-closed': {
           from: {
-            'opacity': '1',
-            'translate': '0 0'
+            opacity: '1',
+            translate: '0 0'
           },
           to: {
-            'opacity': '0',
-            'translate': '0 -16px'
+            opacity: '0',
+            translate: '0 24px'
           }
-        },
+        }
       },
       animation: {
         'page-appear': 'page-appear 750ms cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
         'modal-open': 'modal-open 300ms cubic-bezier(0.390, 0.575, 0.565, 1.000)',
-        'modal-closed': 'modal-closed 220ms cubic-bezier(0.390, 0.575, 0.565, 1.000) '
-      },
+        'modal-closed': 'modal-closed 220ms cubic-bezier(0.390, 0.575, 0.565, 1.000)'
+      }
     },
     boxShadow: {
       DEFAULT: 'var(--box-shadow-sm)',
@@ -235,18 +233,16 @@ const config: Config = {
       '6xl': ['60px', '96px']
     },
     borderRadius: {
-      DEFAULT: 'var(--radius)',               // 2px
-      md: 'calc(var(--radius) + 0.125rem)',   // 2 + 2px
-      lg: 'calc(var(--radius) + 0.250rem)',   // 2 + 4px
-      xl: 'calc(var(--radius) + 0,375rem)',   // 2 + 6px
-      '2xl': 'calc(var(--radius) + 0,5rem)',  // 2 + 8px
+      DEFAULT: 'var(--radius)', // 2px
+      md: 'calc(var(--radius) + 0.125rem)', // 2 + 2px
+      lg: 'calc(var(--radius) + 0.250rem)', // 2 + 4px
+      xl: 'calc(var(--radius) + 0.375rem)', // 2 + 6px
+      '2xl': 'calc(var(--radius) + 0.5rem)', // 2 + 8px
       full: '9999px',
       none: '0px'
-    },
+    }
   },
-  plugins: [
-    require('tailwindcss-animate')
-  ]
+  plugins: [require('tailwindcss-animate')]
 }
 
 export default config

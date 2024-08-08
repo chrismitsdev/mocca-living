@@ -10,17 +10,17 @@
     --surface-3: #c7b492;
     --surface-4: #b1a082;
     --surface-5: #9b8c71;
-    
+
     /* Palettes */
-    --brand-1: #c6c4c3;  /* Backgrounds */
-    --brand-2: #c4bbb6;  /* Backgrounds */
-    --brand-3: #c2ab9f;  /* Interactive components */
-    --brand-4: #bf9c88;  /* Interactive components */
-    --brand-5: #ba8c71;  /* Interactive components */
-    --brand-6: #af7c5f;  /* Borders and separator */
-    --brand-7: #a26844;  /* Borders and separator */
-    --brand-8: #934a16;  /* Borders and separator */
-    --brand-9: #944f21;  /* Solid colors */
+    --brand-1: #c6c4c3; /* Backgrounds */
+    --brand-2: #c4bbb6; /* Backgrounds */
+    --brand-3: #c2ab9f; /* Interactive components */
+    --brand-4: #bf9c88; /* Interactive components */
+    --brand-5: #ba8c71; /* Interactive components */
+    --brand-6: #af7c5f; /* Borders and separator */
+    --brand-7: #a26844; /* Borders and separator */
+    --brand-8: #934a16; /* Borders and separator */
+    --brand-9: #944f21; /* Solid colors */
     --brand-10: #873f03; /* Solid colors */
     --brand-11: #491400; /* Accessible text */
     --brand-12: #453227; /* Accessible text */
@@ -64,18 +64,18 @@
     --red-11: #ce2c31;
     --red-12: #641723;
 
-    --yellow-1: #FDFDF9;
-    --yellow-2: #FEFCE9;
-    --yellow-3: #FFFAB8;
-    --yellow-4: #FFF394;
-    --yellow-5: #FFE770;
-    --yellow-6: #F3D768;
-    --yellow-7: #E4C767;
-    --yellow-8: #D5AE39;
-    --yellow-9: #FFE629;
-    --yellow-10: #FFDC00;
-    --yellow-11: #9E6C00;
-    --yellow-12: #473B1F;
+    --yellow-1: #fdfdf9;
+    --yellow-2: #fefce9;
+    --yellow-3: #fffab8;
+    --yellow-4: #fff394;
+    --yellow-5: #ffe770;
+    --yellow-6: #f3d768;
+    --yellow-7: #e4c767;
+    --yellow-8: #d5ae39;
+    --yellow-9: #ffe629;
+    --yellow-10: #ffdc00;
+    --yellow-11: #9e6c00;
+    --yellow-12: #473b1f;
 
     --blue-1: #fbfdff;
     --blue-2: #f4faff;
@@ -101,23 +101,23 @@
     --muted: var(--brand-4);
     --muted-foreground: var(--brand-12);
     --muted-hover: var(--brand-5);
- 
-    --success: var(--green-3);
-    --success-foreground: var(--green-12);
-    --success-hover: var(--green-5);
-    
-    --error: var(--red-3);
-    --error-foreground: var(--red-12);
-    --error-hover: var(--red-5);
-    
-    --warning: var(--yellow-3);
-    --warning-foreground: var(--yellow-12);
-    --warning-hover: var(--yellow-5);
 
-    --info: var(--blue-3);
-    --info-foreground: var(--blue-12);
-    --info-hover: var(--blue-5);
-    
+    --success: var(--green-9);
+    --success-foreground: var(--green-3);
+    --success-hover: var(--green-10);
+
+    --error: var(--red-9);
+    --error-foreground: var(--red-3);
+    --error-hover: var(--red-10);
+
+    --warning: var(--yellow-9);
+    --warning-foreground: var(--yellow-3);
+    --warning-hover: var(--yellow-10);
+
+    --info: var(--blue-9);
+    --info-foreground: var(--blue-3);
+    --info-hover: var(--blue-10);
+
     --border: var(--brand-6);
     --border-hover: var(--brand-8);
 
@@ -140,27 +140,45 @@
 
     --box-shadow-sm: 0px 0px 5px 1px rgba(69, 50, 39, 0.24);
     --box-shadow-md: 0px 0px 8px 3px rgba(69, 50, 39, 0.24);
-    
+
     --radius: 0.125rem;
   }
 
   * {
     @apply border-border;
   }
-  
+
   body {
     @apply relative bg-surface-1 text-foreground selection:bg-primary selection:text-primary-foreground;
     font-feature-settings: 'rlig' 1, 'calt' 1;
+
+    &.yarl__no_scroll {
+      @apply h-screen;
+    }
+
+    .yarl__root {
+      .yarl__toolbar {
+        --yarl__toolbar_padding: 12px;
+      }
+
+      .yarl__container {
+        @apply bg-black/70 backdrop-blur-[1px];
+      }
+
+      .yarl__slide {
+        @apply p-3;
+      }
+    }
   }
 }
 
 .bg-striped {
   background: repeating-linear-gradient(
-    -45deg,                      /* Diagonal direction */
-    var(--red-9) 0px,            /* Start color */
-    var(--red-9) 3px,            /* End color of the first stripe */
-    var(--surface-1) 3px,   /* Start color of the next stripe */
-    var(--surface-1) 6px    /* End color of the next stripe */
+    -45deg,
+    var(--red-9) 0px,
+    var(--red-9) 3px,
+    var(--surface-1) 3px,
+    var(--surface-1) 6px
   );
 }
 

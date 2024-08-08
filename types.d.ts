@@ -9,13 +9,13 @@ declare global {
 
   type Params = {
     params: {
-      locale: typeof locales[number]
+      locale: (typeof locales)[number]
     }
   }
 
   type ContactFormValues<
     T = Omit<
-      IntlMessages['Pages']['Contact']['Form']['fields'], 
+      IntlMessages['Pages']['Contact']['Form']['fields'],
       'checkIn' | 'checkOut' | 'consentData'
     >
   > = {
@@ -32,7 +32,7 @@ declare global {
     message: string
   }
 
-  type CustomIconProps = React.SVGAttributes<SVGSVGElement> & {
+  type CustomIconProps = React.SVGProps<SVGSVGElement> & {
     size?: number
   }
 }
