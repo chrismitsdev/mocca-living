@@ -111,7 +111,7 @@
     --error-hover: var(--red-10);
 
     --warning: var(--yellow-9);
-    --warning-foreground: var(--yellow-3);
+    --warning-foreground: var(--brand-12);
     --warning-hover: var(--yellow-10);
 
     --info: var(--blue-9);

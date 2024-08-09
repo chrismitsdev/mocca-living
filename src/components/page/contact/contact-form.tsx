@@ -100,9 +100,9 @@ function ContactForm({
       body: JSON.stringify(data)
     })
 
-    const {title, message, status} = (await res.json()) as ContactFormResponse
+    const {title, message: description, status} = (await res.json()) as ContactFormResponse
 
-    toast(title, message, status)
+    toast({title, description, status})
   }
 
   // Sets origin depending on the enviroment (development or production)
@@ -390,6 +390,7 @@ function ContactForm({
             form='contact-form'
             type='submit'
             disabled={formState.isSubmitting}
+            isLoading={formState.isSubmitting}
           >
             <span>{submitBtnLabel}</span>
             <PaperPlaneIcon
