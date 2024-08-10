@@ -15,7 +15,37 @@
     }
   },
   "Pages": {
-    "Home": {},
+    "Home": {
+      "Introdution": {
+        "title": "Experience the epitome of luxury living",
+        "message": "Mocca Living embodies the essence of luxury living in one of Greece's most stunning coastal settings. Located in Agia Paraskevi, near the shores of Kyani Akti beach, Mocca Living offers an unparalleled experience for those who appreciate the finer things in life. Each detail, from the elegant design to the high-end amenities, has been carefully considered to provide guests with a sanctuary of comfort and style. Just a short stroll away, the renowned <nama>Nãma Beach Life Experience</nama> enhances the luxurious lifestyle, offering exquisite dining options that complement the serene beauty of the area. Whether you're here for a brief stay or an extended retreat, Mocca Living promises an experience that blends sophistication with the natural splendor of its surroundings."
+      },
+      "IdealReasons": {
+        "title": "Mocca Living is ideal for:",
+        "reasons": {
+          "reason1": {
+            "title": "Families",
+            "description": "Mocca Living offers spacious, comfortable accommodations, perfect for families seeking quality time together by the sea, with amenities designed for all ages."
+          },
+          "reason2": {
+            "title": "Friends",
+            "description": "Gather your friends for a luxurious getaway at Mocca Living, where shared moments and unforgettable memories are made in an idyllic coastal setting."
+          },
+          "reason3": {
+            "title": "VIP Guests",
+            "description": "Experience exclusive luxury and personalized services at Mocca Living, the ideal destination for VIP guests who demand privacy, comfort, and elegance."
+          },
+          "reason4": {
+            "title": "Honeymooners",
+            "description": "Celebrate your love at Mocca Living, a romantic haven where honeymooners can enjoy intimate moments in a serene and luxurious beachfront environment."
+          },
+          "reason5": {
+            "title": "Wellness Retreats",
+            "description": "Mocca Living is the perfect sanctuary for wellness enthusiasts, offering a serene environment ideal for yoga, meditation, and rejuvenating spa experiences by the sea."
+          }
+        }
+      }
+    },
     "Accomodation": {},
     "Contact": {
       "Map": {

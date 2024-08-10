@@ -38,13 +38,8 @@ function LightboxProvider({
   )
 }
 
-function LightboxThumbnails({className, ...props}: React.ComponentPropsWithoutRef<'div'>) {
-  return (
-    <div
-      className={cn('grid grid-cols-2 gap-4 sm:grid-cols-6', className)}
-      {...props}
-    />
-  )
+function LightboxThumbnails({...props}: React.ComponentPropsWithoutRef<'div'>) {
+  return <div {...props} />
 }
 
 function isNextJsImage(slide: Slide): slide is StaticImageData {
@@ -75,7 +70,7 @@ function LightboxImage({
   const {
     alt = '',
     loading = 'eager',
-    draggable = 'false',
+    draggable = false,
     placeholder = slide?.blurDataURL ? 'blur' : undefined,
     ...restImageProps
   } = imageProps || {}
@@ -83,7 +78,7 @@ function LightboxImage({
   return (
     <div
       className={cn(
-        'relative',
+        'relative cursor-pointer',
         withOverlay &&
           'before:absolute before:inset-0 hover:before:bg-black/70 before:duration-200 group',
         className
@@ -111,18 +106,31 @@ function LightboxImage({
   )
 }
 
+function LightboxButton({
+  variant = 'primary',
+  size = 'icon-small',
+  ...props
+}: React.ComponentPropsWithoutRef<typeof Button>) {
+  return (
+    <Button
+      variant={variant}
+      size={size}
+      {...props}
+    />
+  )
+}
+
 function Lightbox({controller, ...props}: React.ComponentProps<typeof YetAnotherReactLightbox>) {
   const {slides, selectedIndex, setSelectedIndex} = useLightboxContext()
   const ref = React.useRef<ControllerRef | null>(null)
   const closeButtonKey = React.useId()
-  const {closeOnBackdropClick = true, ...restController} = controller || {}
   const isOpen = selectedIndex >= 0
 
   return (
     <YetAnotherReactLightbox
       slides={slides}
       index={selectedIndex}
-      controller={{ref, closeOnBackdropClick, ...restController}}
+      controller={{ref, ...controller}}
       open={isOpen}
       close={() => setSelectedIndex(-1)}
       render={{
@@ -162,20 +170,6 @@ function Lightbox({controller, ...props}: React.ComponentProps<typeof YetAnother
           </LightboxButton>
         )
       }}
-      {...props}
-    />
-  )
-}
-
-function LightboxButton({
-  variant = 'primary',
-  size = 'icon-small',
-  ...props
-}: React.ComponentPropsWithoutRef<typeof Button>) {
-  return (
-    <Button
-      variant={variant}
-      size={size}
       {...props}
     />
   )

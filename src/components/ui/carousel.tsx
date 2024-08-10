@@ -14,15 +14,14 @@ const Carousel = React.forwardRef<
     autoPlay?: boolean
   }
 >(({className, options = {loop: true}, autoPlay = false, ...props}, ref) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    options, 
-    [Autoplay({delay: 5000, active: autoPlay})]
-  )
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [
+    Autoplay({delay: 5000, active: autoPlay})
+  ])
   const [selectedIndex, setSelectedIndex] = React.useState(0)
   const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([])
 
   const onPrevButtonClick = React.useCallback(
-    function() {
+    function () {
       if (!emblaApi) return
       emblaApi.scrollPrev()
       autoPlay && emblaApi.plugins().autoplay.stop()
@@ -31,7 +30,7 @@ const Carousel = React.forwardRef<
   )
 
   const onNextButtonClick = React.useCallback(
-    function() {
+    function () {
       if (!emblaApi) return
       emblaApi.scrollNext()
       autoPlay && emblaApi.plugins().autoplay.stop()
@@ -40,7 +39,7 @@ const Carousel = React.forwardRef<
   )
 
   const onDotButtonClick = React.useCallback(
-    function(index: number) {
+    function (index: number) {
       if (!emblaApi) return
       emblaApi.scrollTo(index)
       autoPlay && emblaApi.plugins().autoplay.stop()
@@ -48,25 +47,19 @@ const Carousel = React.forwardRef<
     [emblaApi, autoPlay]
   )
 
-  const onInit = React.useCallback(
-    function(emblaApi: ReturnType<typeof useEmblaCarousel>[1]) {
-      if (!emblaApi) return
-      setScrollSnaps(emblaApi.scrollSnapList())
-    }, 
-    []
-  )
+  const onInit = React.useCallback(function (emblaApi: ReturnType<typeof useEmblaCarousel>[1]) {
+    if (!emblaApi) return
+    setScrollSnaps(emblaApi.scrollSnapList())
+  }, [])
 
-  const onSelect = React.useCallback(
-    function(emblaApi: ReturnType<typeof useEmblaCarousel>[1]) {
-      if (!emblaApi) return
-      setSelectedIndex(emblaApi.selectedScrollSnap())
-    }, 
-    []
-  )
+  const onSelect = React.useCallback(function (emblaApi: ReturnType<typeof useEmblaCarousel>[1]) {
+    if (!emblaApi) return
+    setSelectedIndex(emblaApi.selectedScrollSnap())
+  }, [])
 
   React.useEffect(
-    function() {
-      if (!emblaApi) return 
+    function () {
+      if (!emblaApi) return
       console.log('%c EMBLA INIT ', 'background-color: #000; color: #26bfa5;')
 
       onInit(emblaApi)
@@ -77,27 +70,24 @@ const Carousel = React.forwardRef<
     },
     [emblaApi, onInit, onSelect]
   )
-  
+
   return (
-    <CarouselContext.Provider 
+    <CarouselContext.Provider
       value={{
-        emblaRef, 
+        emblaRef,
         emblaApi,
-        onPrevButtonClick, 
-        onNextButtonClick, 
+        onPrevButtonClick,
+        onNextButtonClick,
         onDotButtonClick,
         selectedIndex,
         scrollSnaps
       }}
     >
-      <div 
-        className={cn(
-          'relative', 
-          className
-        )}
+      <div
+        className={cn('relative', className)}
         ref={ref}
         {...props}
-      /> 
+      />
     </CarouselContext.Provider>
   )
 })
@@ -106,104 +96,87 @@ function CarouselViewport({className, ...props}: React.ComponentPropsWithoutRef<
   const {emblaRef} = useCarouselContext()
 
   return (
-    <div 
-      className={cn(
-        'overflow-hidden', 
-        className
-      )} 
-      ref={emblaRef} 
+    <div
+      className={cn('overflow-hidden', className)}
+      ref={emblaRef}
       {...props}
     />
   )
 }
 
-const CarouselContainer = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentPropsWithoutRef<'div'>
->(({className, ...props}, ref) => (
-  <div 
-    className={cn(
-      'flex',
-      className
-    )}
-    ref={ref}
-    {...props} 
-  /> 
-))
-
-const CarouselSlide = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentPropsWithoutRef<'div'>
->(({className, ...props}, ref) => (
-  <div 
-    className={cn(
-      'min-w-0 flex-[0_0_100%] mr-4',
-      className
-    )}
-    ref={ref}
-    {...props}
-  />
-))
-
-const CarouselPrevButton = React.forwardRef<
-  HTMLElement,
-  React.HTMLAttributes<HTMLElement>
->((props, ref) => {
-  const {onPrevButtonClick} = useCarouselContext()
-
-  return (
-    <Slot 
-      onClick={onPrevButtonClick} 
-      ref={ref} 
-      {...props} 
-    />
-  )
-}) 
-
-const CarouselNextButton = React.forwardRef<
-  HTMLElement,
-  React.HTMLAttributes<HTMLElement>
->((props, ref) => {
-  const {onNextButtonClick} = useCarouselContext()
-
-  return (
-    <Slot 
-      onClick={onNextButtonClick} 
-      ref={ref} 
-      {...props} 
-    />
-  )
-})
-
-const CarouselDots = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentPropsWithoutRef<'div'>
->(({className, ...props}, ref) => {
-  const {selectedIndex, scrollSnaps, onDotButtonClick} = useCarouselContext()
-
-  return (
-    <div 
-      className={cn(
-        'w-full flex justify-center items-center gap-2',
-        className
-      )} 
-      ref={ref} 
+const CarouselContainer = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
+  ({className, ...props}, ref) => (
+    <div
+      className={cn('flex', className)}
+      ref={ref}
       {...props}
-    >
-      {scrollSnaps.map((_, index) => (
-        <button 
-          key={index} 
-          className={cn(
-            'shrink-0 h-4 w-4 border-2 rounded-full cursor-pointer transition-colors active:scale-90 hover:border-border-hover',
-            selectedIndex === index && 'bg-primary border-primary'
-          )} 
-          type='button'
-          onClick={() => onDotButtonClick(index)}
-        />
-      ))}
-    </div>
+    />
   )
-})
+)
+
+const CarouselSlide = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
+  ({className, ...props}, ref) => (
+    <div
+      className={cn('mr-4 min-w-0 flex-[0_0_100%] select-none', className)}
+      ref={ref}
+      {...props}
+    />
+  )
+)
+
+const CarouselPrevButton = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
+  (props, ref) => {
+    const {onPrevButtonClick} = useCarouselContext()
+
+    return (
+      <Slot
+        onClick={onPrevButtonClick}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+
+const CarouselNextButton = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
+  (props, ref) => {
+    const {onNextButtonClick} = useCarouselContext()
+
+    return (
+      <Slot
+        onClick={onNextButtonClick}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+
+const CarouselDots = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
+  ({className, ...props}, ref) => {
+    const {selectedIndex, scrollSnaps, onDotButtonClick} = useCarouselContext()
+
+    return (
+      <div
+        className={cn('w-full flex justify-center items-center gap-1 sm:gap-2', className)}
+        ref={ref}
+        {...props}
+      >
+        {scrollSnaps.map((_, index) => (
+          <button
+            key={index}
+            className={cn(
+              'shrink-0 h-4 w-4 border-2 rounded-full cursor-pointer transition-colors active:scale-90 hover:border-border-hover',
+              selectedIndex === index && 'bg-primary border-primary'
+            )}
+            type='button'
+            onClick={() => onDotButtonClick(index)}
+          />
+        ))}
+      </div>
+    )
+  }
+)
 
 Carousel.displayName = 'Carousel'
 CarouselViewport.displayName = 'CarouselViewport'
@@ -214,9 +187,9 @@ CarouselNextButton.displayName = 'CarouselNextButton'
 CarouselDots.displayName = 'CarouselDots'
 
 export {
-  Carousel, 
-  CarouselViewport, 
-  CarouselContainer, 
+  Carousel,
+  CarouselViewport,
+  CarouselContainer,
   CarouselSlide,
   CarouselPrevButton,
   CarouselNextButton,
