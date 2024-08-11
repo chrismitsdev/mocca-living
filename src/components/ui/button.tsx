@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {Slot} from '@radix-ui/react-slot'
+import {Slot, Slottable} from '@radix-ui/react-slot'
 import {cva, type VariantProps} from 'class-variance-authority'
 import {Spinner} from '@/components/ui/spinner'
 import {cn} from '#/lib/utils'
@@ -24,6 +24,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: ['bg-primary', 'text-primary-foreground', 'hover:bg-primary-hover'],
+        'primary-alt': ['bg-surface-2', 'text-primary', 'hover:bg-surface-3'],
         bordered: ['border', 'hover:border-border-hover'],
         ghost: ['hover:bg-primary', 'hover:text-primary-foreground'],
         success: ['bg-success', 'text-success-foreground', 'hover:bg-success-hover'],
@@ -37,6 +38,7 @@ const buttonVariants = cva(
         link: ['underline-offset-4', 'hover:underline']
       },
       size: {
+        large: ['px-6', 'py-3', 'text-lg'],
         normal: ['px-4', 'py-2'],
         small: ['px-2', 'py-1.5', 'text-sm'],
         'icon-normal': ['h-10', 'w-10'],
@@ -94,17 +96,20 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {isLoading && (
           <span className='absolute inset-0 flex items-center justify-center'>
-            <Spinner size={16} />
+            <Spinner size={size === 'large' ? 24 : 16} />
           </span>
         )}
-        <span
-          className={cn(
-            'inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold [&>*]:shrink-0',
-            isLoading && 'invisible'
-          )}
-        >
-          {children}
-        </span>
+
+        <Slottable>
+          <span
+            className={cn(
+              'inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold [&>*]:shrink-0',
+              isLoading && 'invisible'
+            )}
+          >
+            {children}
+          </span>
+        </Slottable>
       </Comp>
     )
   }

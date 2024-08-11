@@ -28,7 +28,10 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
           )}
           href={link.href}
         >
-          <Typography variant='small' className='uppercase'>
+          <Typography
+            variant='small'
+            className='uppercase'
+          >
             {link.label}
           </Typography>
         </Link>

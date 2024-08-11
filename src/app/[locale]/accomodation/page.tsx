@@ -2,6 +2,7 @@ import {getTranslations} from 'next-intl/server'
 import {useTranslations} from 'next-intl'
 import {unstable_setRequestLocale} from 'next-intl/server'
 import {Container} from '@/components/shared/container'
+import {Introduction} from '@/components/page/accomodation/introduction'
 
 export async function generateMetadata({params: {locale}}: Params) {
   const t = await getTranslations({locale, namespace: 'Metadata'})
@@ -16,8 +17,8 @@ export default function AccomodationPage({params: {locale}}: Params) {
   const t = useTranslations('Pages.Accomodation')
 
   return (
-    <Container>
-      <span>{'Accomodation Page'}</span>
-    </Container>
+    <>
+      <Introduction />
+    </>
   )
 }

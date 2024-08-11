@@ -11,6 +11,8 @@ const config: Config = {
       padding: '0.75rem'
     },
     data: {
+      hidden: 'state="hidden"',
+      visible: 'state="visible"',
       open: 'state="open"',
       closed: 'state="closed"',
       checked: 'state=checked',
@@ -19,13 +21,18 @@ const config: Config = {
       right: 'side="right"',
       bottom: 'side="bottom"',
       left: 'side="left"',
+      active: 'active',
       highlighted: 'highlighted',
       placeholder: 'placeholder',
       disabled: 'disabled',
       success: 'type="success"',
       error: 'type="error"',
       info: 'type="info"',
-      warning: 'type="warning"'
+      warning: 'type="warning"',
+      'from-start': 'motion="from=start"',
+      'from-end': 'motion="from=end"',
+      'to-start': 'motion="to-start"',
+      'to-end': 'motion="to-end"'
     },
     extend: {
       colors: {
@@ -208,12 +215,52 @@ const config: Config = {
             opacity: '0',
             translate: '0 24px'
           }
+        },
+        'nav-link-open': {
+          from: {
+            transform: 'rotateX(-30deg) scale(0.95)',
+            opacity: '0'
+          },
+          to: {
+            transform: 'rotateX(0deg) scale(1)',
+            opacity: '1'
+          }
+        },
+        'nav-link-closed': {
+          from: {
+            transform: 'rotateX(0deg) scale(1)',
+            opacity: '1'
+          },
+          to: {
+            transform: 'rotateX(-30deg) scale(0.95)',
+            opacity: '0'
+          }
+        },
+        'ghost-in': {
+          from: {
+            opacity: '0'
+          },
+          to: {
+            opacity: '1'
+          }
+        },
+        'ghost-out': {
+          from: {
+            opacity: '1'
+          },
+          to: {
+            opacity: '0'
+          }
         }
       },
       animation: {
         'page-appear': 'page-appear 750ms cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
         'modal-open': 'modal-open 300ms cubic-bezier(0.390, 0.575, 0.565, 1.000)',
-        'modal-closed': 'modal-closed 220ms cubic-bezier(0.390, 0.575, 0.565, 1.000)'
+        'modal-closed': 'modal-closed 220ms cubic-bezier(0.390, 0.575, 0.565, 1.000)',
+        'nav-link-open': 'nav-link-open 220ms cubic-bezier(0.390, 0.575, 0.565, 1.000)',
+        'nav-link-closed': 'nav-link-closed 220ms cubic-bezier(0.390, 0.575, 0.565, 1.000)',
+        'ghost-in': 'ghost-in 220ms cubic-bezier(0.390, 0.575, 0.565, 1.000)',
+        'ghost-out': 'ghost-out 220ms cubic-bezier(0.390, 0.575, 0.565, 1.000)'
       }
     },
     boxShadow: {

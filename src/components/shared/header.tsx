@@ -28,13 +28,14 @@ function Header() {
       <Container>
         <div className='flex flex-col gap-4 items-center'>
           <Link href='/'>
-            <Image 
-              priority 
-              src={logo} 
+            <Image
+              priority
+              src={logo}
               style={{width: 'auto', height: 100}}
               alt='Mocca Living header logo'
             />
           </Link>
+
           <HeaderNavigation links={tLinks} />
         </div>
       </Container>
