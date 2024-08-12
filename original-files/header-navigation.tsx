@@ -18,12 +18,12 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
   const pathname = usePathname()
 
   return (
-    <nav className='flex items-center gap-4'>
+    <nav className='grid grid-cols-[auto,1fr,auto] gap-4'>
       {links.map((link) => (
         <Link
           key={link.href}
           className={cn(
-            'py-0.5 relative text-center after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-foreground after:scale-x-0 after:duration-300',
+            'py-1 min-w-24 relative text-center duration-500 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-foreground after:scale-x-0 after:duration-300',
             pathname === link.href && 'font-semibold after:scale-x-100'
           )}
           href={link.href}

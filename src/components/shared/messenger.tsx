@@ -4,6 +4,10 @@ import * as React from 'react'
 import {getMobileOS} from '#/lib/utils'
 import {ChatBubbleIcon} from '@radix-ui/react-icons'
 
+// Pre-populate sms body
+// Android: href="sms:/* phone number here */?body=/* body text here */"
+// iOS:     href="sms:/* phone number here */&body=/* body text here */"
+
 function Messenger() {
   const [device, setDevice] = React.useState<ReturnType<typeof getMobileOS>>('Other')
 

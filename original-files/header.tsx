@@ -3,7 +3,7 @@ import {useTranslations} from 'next-intl'
 import {Link} from '@/navigation'
 import {Container} from '@/components/shared/container'
 import {HeaderNavigation} from '@/components/shared/header-navigation'
-import logo from '#/public/logos/mocca-logo-full.svg'
+import logo from '#/public/logos/mocca-logo-simple.svg'
 
 type HeaderLink = {
   label: keyof IntlMessages['Metadata']['Pages']
@@ -24,14 +24,14 @@ function Header() {
   }))
 
   return (
-    <header className='py-8 sticky top-0 z-10'>
+    <header className='py-8'>
       <Container>
-        <div className='flex justify-between items-center gap-2'>
+        <div className='flex flex-col gap-4 items-center'>
           <Link href='/'>
             <Image
-              height={96}
               priority
               src={logo}
+              style={{width: 'auto', height: 100}}
               alt='Mocca Living header logo'
             />
           </Link>
