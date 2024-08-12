@@ -43,7 +43,7 @@ export default function LocaleLayout({
       lang={locale}
       className={commissioner.className}
     >
-      <body className='sm:h-screen sm:grid sm:grid-rows-[auto,1fr,auto]'>
+      <body>
         <Header />
         <main>{children}</main>
         <Footer />

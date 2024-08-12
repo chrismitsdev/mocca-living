@@ -164,7 +164,7 @@ const CarouselDots = React.forwardRef<HTMLDivElement, React.ComponentPropsWithou
 
     return (
       <div
-        className={cn('w-full flex justify-center items-center gap-1 sm:gap-2', className)}
+        className={cn('flex justify-center items-center gap-2', className)}
         ref={ref}
         {...props}
       >
@@ -172,7 +172,7 @@ const CarouselDots = React.forwardRef<HTMLDivElement, React.ComponentPropsWithou
           <button
             key={index}
             className={cn(
-              'shrink-0 h-4 w-4 border-2 rounded-full cursor-pointer transition-colors active:scale-90 hover:border-border-hover',
+              'shrink-0 h-3 w-3 border-2 rounded-full cursor-pointer transition-colors active:scale-90 hover:border-border-hover',
               selectedIndex === index && 'bg-primary border-primary'
             )}
             type='button'
