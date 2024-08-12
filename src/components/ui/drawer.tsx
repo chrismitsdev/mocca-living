@@ -3,7 +3,6 @@
 import * as React from 'react'
 import {Drawer as Vaul} from 'vaul'
 import {cn} from '#/lib/utils'
-import {Cross2Icon} from '@radix-ui/react-icons'
 
 const Drawer = Vaul.Root
 const DrawerPortal = Vaul.Portal

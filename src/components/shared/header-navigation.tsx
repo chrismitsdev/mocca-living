@@ -16,7 +16,7 @@ import {
   DrawerClose
 } from '@/components/ui/drawer'
 import {cn} from '#/lib/utils'
-import {Cross2Icon, HamburgerMenuIcon} from '@radix-ui/react-icons'
+import {HamburgerMenuIcon, Cross2Icon} from '@radix-ui/react-icons'
 import logoSimple from '#/public/logos/mocca-logo-simple.svg'
 
 type NavigationLink = {
