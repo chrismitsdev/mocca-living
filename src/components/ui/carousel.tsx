@@ -24,7 +24,9 @@ const Carousel = React.forwardRef<
     function () {
       if (!emblaApi) return
       emblaApi.scrollPrev()
-      autoPlay && emblaApi.plugins().autoplay.stop()
+      if (autoPlay) {
+        emblaApi.plugins().autoplay.stop()
+      }
     },
     [emblaApi, autoPlay]
   )
@@ -33,7 +35,9 @@ const Carousel = React.forwardRef<
     function () {
       if (!emblaApi) return
       emblaApi.scrollNext()
-      autoPlay && emblaApi.plugins().autoplay.stop()
+      if (autoPlay) {
+        emblaApi.plugins().autoplay.stop()
+      }
     },
     [emblaApi, autoPlay]
   )
@@ -42,7 +46,9 @@ const Carousel = React.forwardRef<
     function (index: number) {
       if (!emblaApi) return
       emblaApi.scrollTo(index)
-      autoPlay && emblaApi.plugins().autoplay.stop()
+      if (autoPlay) {
+        emblaApi.plugins().autoplay.stop()
+      }
     },
     [emblaApi, autoPlay]
   )

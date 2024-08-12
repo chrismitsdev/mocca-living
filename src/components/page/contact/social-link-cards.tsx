@@ -35,11 +35,7 @@ function SocialLinkCards({name, location, phone}: SocialLinkCardsProps) {
   )
 }
 
-function SocialLink({
-  className,
-  target = '_blank',
-  ...props
-}: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
+function SocialLink({target = '_blank', ...props}: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
     <a
       className='p-6 flex flex-col items-center gap-4 rounded transition hover:bg-surface-4 hover:-translate-y-0.5'

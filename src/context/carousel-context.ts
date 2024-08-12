@@ -17,9 +17,7 @@ function useCarouselContext() {
   const carouselContext = React.useContext(CarouselContext)
 
   if (!carouselContext) {
-    throw new Error(
-      'useCarouselContext has to be used within <CarouselContext.Provider>'
-    )
+    throw new Error('useCarouselContext has to be used within <CarouselContext.Provider>')
   }
 
   return carouselContext

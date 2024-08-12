@@ -1,7 +1,6 @@
 import {getTranslations} from 'next-intl/server'
 import {useTranslations} from 'next-intl'
 import {unstable_setRequestLocale} from 'next-intl/server'
-import {Container} from '@/components/shared/container'
 import {Introduction} from '@/components/page/accomodation/introduction'
 
 export async function generateMetadata({params: {locale}}: Params) {
