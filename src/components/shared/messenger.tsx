@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import {getMobileOS} from '#/lib/utils'
-import {PhoneIcon} from '@/components/social-icons/phone-icon'
+import {ChatBubbleIcon} from '@radix-ui/react-icons'
 
 function Messenger() {
   const [device, setDevice] = React.useState<ReturnType<typeof getMobileOS>>('Other')
@@ -18,12 +18,13 @@ function Messenger() {
 
   return (
     <a
-      className='p-2 sticky bottom-5 left-5 w-fit bg-success text-success-foreground rounded-full shadow hover:scale-105 duration-200 hover:shadow-medium'
-      href={`sms:+306973433980${
-        device === 'Android' ? '?' : '&'
-      }body=Παρακαλώ, επικοινωνήστε μαζί μου`}
+      className='p-2 flex fixed bottom-4 left-4 bg-success text-success-foreground rounded-full shadow hover:bg-success-hover hover:shadow-medium hover:scale-110 duration-200'
+      href={`sms:+306973433980`}
     >
-      <PhoneIcon size={24} />
+      <ChatBubbleIcon
+        width={24}
+        height={24}
+      />
     </a>
   )
 }

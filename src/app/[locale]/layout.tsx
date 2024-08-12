@@ -36,7 +36,7 @@ export default function LocaleLayout({
   params: {locale: string}
 }) {
   unstable_setRequestLocale(locale)
-  const t = useTranslations('Components.CookieConsent')
+  const t = useTranslations('Components')
 
   return (
     <html
@@ -48,10 +48,10 @@ export default function LocaleLayout({
         <main>{children}</main>
         <Footer />
         <CookieConsent
-          title={t('title')}
-          message={t('message')}
-          acceptLabel={t('accept-label')}
-          rejectLabel={t('reject-label')}
+          title={t('CookieConsent.title')}
+          message={t('CookieConsent.message')}
+          acceptLabel={t('CookieConsent.accept-label')}
+          rejectLabel={t('CookieConsent.reject-label')}
         />
         <Toaster
           position='top-right'
