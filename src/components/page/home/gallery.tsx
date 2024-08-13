@@ -19,7 +19,7 @@ function Gallery() {
       <article>
         <Typography variant='h3'>{'Mocca Living Gallery'}</Typography>
         <LightboxProvider slides={images}>
-          <LightboxThumbnails className='grid gap-2 grid-cols-2 sm:grid-cols-8 sm:grid-rows-8 sm:gap-4'>
+          <LightboxThumbnails className='gap-2 grid-cols-2 sm:grid-cols-8 sm:grid-rows-8'>
             <LightboxImage
               className='overflow-hidden rounded shadow sm:col-start-1 sm:col-end-3 sm:row-start-1 sm:row-end-3'
               slide={images[0]}
@@ -28,7 +28,6 @@ function Gallery() {
                 loading: 'lazy',
                 alt: 'Gallery image 1'
               }}
-              withOverlay
             />
             <LightboxImage
               className='overflow-hidden rounded shadow sm:col-start-3 sm:col-end-5 sm:row-start-1 sm:row-end-4'
@@ -38,7 +37,6 @@ function Gallery() {
                 loading: 'lazy',
                 alt: 'Gallery image 2'
               }}
-              withOverlay
             />
             <LightboxImage
               className='overflow-hidden rounded shadow sm:col-start-5 sm:col-end-9 sm:row-start-1 sm:row-end-6'
@@ -48,7 +46,6 @@ function Gallery() {
                 loading: 'lazy',
                 alt: 'Gallery image 3'
               }}
-              withOverlay
             />
             <LightboxImage
               className='overflow-hidden rounded shadow sm:col-start-1 sm:col-end-3 sm:row-start-3 sm:row-end-9'
@@ -58,7 +55,6 @@ function Gallery() {
                 loading: 'lazy',
                 alt: 'Gallery image 4'
               }}
-              withOverlay
             />
             <LightboxImage
               className='overflow-hidden rounded shadow sm:col-start-3 sm:col-end-5 sm:row-start-4 sm:row-end-7'
@@ -68,7 +64,6 @@ function Gallery() {
                 loading: 'lazy',
                 alt: 'Gallery image 5'
               }}
-              withOverlay
             />
             <LightboxImage
               className='overflow-hidden rounded shadow sm:col-start-3 sm:col-end-5 sm:row-start-7 sm:row-end-9'
@@ -78,7 +73,6 @@ function Gallery() {
                 loading: 'lazy',
                 alt: 'Gallery image 6'
               }}
-              withOverlay
             />
             <LightboxImage
               className='overflow-hidden rounded shadow sm:col-start-5 sm:col-end-6 sm:row-start-6 sm:row-end-9'
@@ -88,7 +82,6 @@ function Gallery() {
                 loading: 'lazy',
                 alt: 'Gallery image 7'
               }}
-              withOverlay
             />
             <LightboxImage
               className='overflow-hidden rounded shadow sm:col-start-6 sm:col-end-9 sm:row-start-6 sm:row-end-9'
@@ -98,7 +91,6 @@ function Gallery() {
                 loading: 'lazy',
                 alt: 'Gallery image 8'
               }}
-              withOverlay
             />
           </LightboxThumbnails>
           <Lightbox />

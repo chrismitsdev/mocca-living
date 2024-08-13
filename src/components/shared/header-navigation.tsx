@@ -29,8 +29,8 @@ type HeaderNavigationProps = {
 }
 
 function HeaderNavigation({links}: HeaderNavigationProps) {
-  const pathname = usePathname()
   const [drawerOpen, setDrawerOpen] = React.useState(false)
+  const pathname = usePathname()
 
   const headerLinks = links.map(({href, label}) => (
     <HeaderLink
@@ -73,7 +73,7 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
               </DrawerTrigger>
               <DrawerPortal>
                 <DrawerOverlay className='z-10' />
-                <DrawerContent className='p-8 fixed top-0 right-0 z-10 w-full h-full bg-surface-1'>
+                <DrawerContent className='p-8 fixed top-0 right-0 z-10 w-full h-full bg-surface-2'>
                   <VisuallyHidden>
                     <DrawerTitle>{'Header navigation menu'}</DrawerTitle>
                   </VisuallyHidden>

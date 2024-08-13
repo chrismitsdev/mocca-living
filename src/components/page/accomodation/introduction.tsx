@@ -8,7 +8,7 @@ import indoorImage from '#/public/images/indoor/4.webp'
 function Introduction() {
   return (
     <>
-      <div className='relative h-[calc(100svh-128px)] before:absolute before:inset-0 before:bg-black/40'>
+      <div className='relative h-[calc(100vh-128px)] before:absolute before:inset-0 before:bg-black/40'>
         <Image
           priority
           draggable={false}

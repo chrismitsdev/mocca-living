@@ -123,7 +123,7 @@ const CarouselContainer = React.forwardRef<HTMLDivElement, React.ComponentPropsW
 const CarouselSlide = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
   ({className, ...props}, ref) => (
     <div
-      className={cn('mr-4 min-w-0 flex-[0_0_100%] select-none', className)}
+      className={cn('min-w-0 flex-[0_0_100%] select-none', className)}
       ref={ref}
       {...props}
     />
