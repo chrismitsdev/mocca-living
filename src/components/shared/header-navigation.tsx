@@ -1,11 +1,14 @@
 'use client'
 
 import * as React from 'react'
-import Image from 'next/image'
+import {motion, useTransform, useMotionTemplate} from 'framer-motion'
+import {HamburgerMenuIcon, Cross2Icon} from '@radix-ui/react-icons'
+import {useBoundedScroll} from '@/hooks/useBoundedScroll'
 import {usePathname, Link} from '@/navigation'
 import {Typography} from '@/components/ui/typography'
 import {Container} from '@/components/shared/container'
 import {VisuallyHidden} from '@/components/ui/visually-hidden'
+import {LogoSimple} from '@/components/ui/logo-simple'
 import {
   Drawer,
   DrawerTrigger,
@@ -16,8 +19,6 @@ import {
   DrawerClose
 } from '@/components/ui/drawer'
 import {cn} from '#/lib/utils'
-import {HamburgerMenuIcon, Cross2Icon} from '@radix-ui/react-icons'
-import logoSimple from '#/public/logos/mocca-logo-simple.svg'
 
 type NavigationLink = {
   label: string
@@ -28,9 +29,25 @@ type HeaderNavigationProps = {
   links: NavigationLink[]
 }
 
+const HEADER_MAX_HEIGHT = 128
+const HEADER_MIN_HEIGHT = 64
+const LOGO_MAX_SCALE = 1
+const LOGO_MIN_SCALE = 0.5
+
+// Start: box-shadow: 0px 0px 0px -4px rgba(69, 50, 39, 0.24);
+// End: box-shadow: 0px 4px 12px -4px rgba(69, 50, 39, 0.24);
+
+// surface-1: rgba(231, 217, 190, 1)
+// surface-2: rgba(221, 200, 162, 1)
+// surface-3: rgba(199, 180, 146, 1)
+// surface-4: rgba(177, 160, 130, 1)
+// surface-5: rgba(155, 140, 113, 1)
+// brand-9: rgba(148, 79, 33, 1)
+
 function HeaderNavigation({links}: HeaderNavigationProps) {
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   const pathname = usePathname()
+  const {scrollYBoundedProgress} = useBoundedScroll(200)
 
   const headerLinks = links.map(({href, label}) => (
     <HeaderLink
@@ -38,61 +55,130 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
       href={href}
       isActive={pathname === href}
       onClick={() => setDrawerOpen(false)}
+      role='menuitem'
     >
       {label}
     </HeaderLink>
   ))
 
   return (
-    <header className='py-6 sticky top-0 z-[1] bg-surface-1'>
-      <Container>
-        <div className='flex justify-between items-center gap-2'>
+    <motion.header
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        position: 'fixed',
+        insetInline: '0px',
+        zIndex: '1',
+        backdropFilter: 'blur(4px)',
+        color: useMotionTemplate`rgb(
+          ${useTransform(scrollYBoundedProgress, [0, 1], [231, 148])}
+          ${useTransform(scrollYBoundedProgress, [0, 1], [217, 79])}
+          ${useTransform(scrollYBoundedProgress, [0, 1], [190, 33])}
+        )`,
+        backgroundColor: useMotionTemplate`rgb(
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 231])}
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 217])}
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 190])} / 
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0.24, 1])} 
+        )`,
+        borderBottom: '1px solid rgb(0 0 0 / 0.08)',
+        boxShadow: useMotionTemplate`
+          0px
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 4])}px
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 12])}px
+          -4px
+          rgba(69, 50, 39, 0.24)
+        `,
+        height: useTransform(scrollYBoundedProgress, [0, 1], [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT])
+      }}
+    >
+      <Container className='px-4 h-[inherit] flex justify-between items-center gap-2 md:px-3'>
+        <motion.div
+          style={{
+            scale: useTransform(scrollYBoundedProgress, [0, 1], [LOGO_MAX_SCALE, LOGO_MIN_SCALE])
+          }}
+        >
           <Link href='/'>
-            <Image
-              className='w-auto h-20'
-              priority
-              src={logoSimple}
-              alt='Mocca Living header logo'
+            <LogoSimple
+              width={51}
+              height={80}
             />
           </Link>
+        </motion.div>
 
-          <nav className='flex self-start md:self-auto'>
-            <div className='hidden items-center gap-4 md:flex'>{headerLinks}</div>
-            <Drawer
-              direction='right'
-              open={drawerOpen}
-              onOpenChange={setDrawerOpen}
+        <nav className='hidden sm:block'>
+          <ul
+            className='hidden items-center gap-4 md:flex'
+            role='menubar'
+          >
+            {links.map(({href, label}) => (
+              <li
+                key={href}
+                role='none'
+              >
+                <HeaderLink
+                  href={href}
+                  isActive={pathname === href}
+                  onClick={() => setDrawerOpen(false)}
+                  role='menuitem'
+                  {...(pathname === href ? {'aria-current': 'page'} : {})}
+                >
+                  {label}
+                </HeaderLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <Drawer
+          direction='right'
+          open={drawerOpen}
+          onOpenChange={setDrawerOpen}
+          noBodyStyles
+        >
+          <DrawerTrigger asChild>
+            <motion.button
+              className='sm:hidden'
+              style={{
+                padding: '8px',
+                translateY: useTransform(scrollYBoundedProgress, [0, 1], [-20, 0])
+              }}
             >
-              <DrawerTrigger asChild>
-                <button className='p-2 block text-primary md:hidden'>
-                  <HamburgerMenuIcon
+              <HamburgerMenuIcon
+                width={24}
+                height={24}
+              />
+            </motion.button>
+          </DrawerTrigger>
+          <DrawerPortal>
+            <DrawerOverlay className='z-10' />
+            <DrawerContent className='p-8 fixed top-0 right-0 z-10 w-full h-full bg-surface-2'>
+              <VisuallyHidden>
+                <DrawerTitle>{'Header navigation menu'}</DrawerTitle>
+              </VisuallyHidden>
+              <div className='h-full grid grid-rows-[repeat(3,_min-content)] place-content-center'>
+                {headerLinks}
+              </div>
+              <DrawerClose asChild>
+                <motion.button
+                  style={{
+                    padding: '8px',
+                    position: 'absolute',
+                    right: '16px',
+                    top: useTransform(scrollYBoundedProgress, [0, 1], [24, 12])
+                  }}
+                >
+                  <Cross2Icon
                     width={24}
                     height={24}
                   />
-                </button>
-              </DrawerTrigger>
-              <DrawerPortal>
-                <DrawerOverlay className='z-10' />
-                <DrawerContent className='p-8 fixed top-0 right-0 z-10 w-full h-full bg-surface-2'>
-                  <VisuallyHidden>
-                    <DrawerTitle>{'Header navigation menu'}</DrawerTitle>
-                  </VisuallyHidden>
-                  <div className='h-full grid grid-rows-[repeat(3,_min-content)] place-content-center'>
-                    {headerLinks}
-                  </div>
-                  <DrawerClose className='p-2 absolute top-6 right-3 block text-primary'>
-                    <Cross2Icon
-                      width={24}
-                      height={24}
-                    />
-                  </DrawerClose>
-                </DrawerContent>
-              </DrawerPortal>
-            </Drawer>
-          </nav>
-        </div>
+                </motion.button>
+              </DrawerClose>
+            </DrawerContent>
+          </DrawerPortal>
+        </Drawer>
       </Container>
-    </header>
+    </motion.header>
   )
 }
 
@@ -105,7 +191,7 @@ function HeaderLink({
 }) {
   return (
     <Link
-      className={cn('py-1 text-center', isActive && 'font-semibold')}
+      className={cn('py-1 text-center', isActive && 'font-bold')}
       {...props}
     >
       <Typography

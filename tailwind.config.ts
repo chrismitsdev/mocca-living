@@ -189,7 +189,7 @@ const config: Config = {
       keyframes: {
         'page-appear': {
           from: {
-            opacity: '0',
+            opacity: '0.8',
             transform: 'translateY(16px)'
           },
           to: {
@@ -255,7 +255,7 @@ const config: Config = {
         }
       },
       animation: {
-        'page-appear': 'page-appear 750ms cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
+        'page-appear': 'page-appear 750ms cubic-bezier(0.390, 0.575, 0.565, 1.000)',
         'modal-open': 'modal-open 300ms cubic-bezier(0.390, 0.575, 0.565, 1.000)',
         'modal-closed': 'modal-closed 220ms cubic-bezier(0.390, 0.575, 0.565, 1.000)',
         'nav-link-open': 'nav-link-open 220ms cubic-bezier(0.390, 0.575, 0.565, 1.000)',

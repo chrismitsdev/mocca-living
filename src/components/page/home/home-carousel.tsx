@@ -18,7 +18,7 @@ const images = Object.values(outdoorImages)
 function HomeCarousel() {
   return (
     <Carousel autoPlay>
-      <CarouselViewport className='h-[calc(100vh-128px)]'>
+      <CarouselViewport className='h-screen'>
         <CarouselContainer className='h-full'>
           {images.map((image, i) => (
             <CarouselSlide

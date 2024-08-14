@@ -22,7 +22,7 @@ export default function ContactPage({params: {locale}}: Params) {
 
   return (
     <>
-      <Container className='pt-16'>
+      <Container className='pt-56'>
         <ContactForm
           locale={locale}
           formTitle={t('Pages.Contact.Form.title')}

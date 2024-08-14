@@ -3,12 +3,12 @@ import Image from 'next/image'
 import {Container} from '@/components/shared/container'
 import {Typography} from '@/components/ui/typography'
 import {Button} from '@/components/ui/button'
-import indoorImage from '#/public/images/indoor/4.webp'
+import indoorImage from '#/public/images/indoor/1.webp'
 
 function Introduction() {
   return (
     <>
-      <div className='relative h-[calc(100vh-128px)] before:absolute before:inset-0 before:bg-black/40'>
+      <div className='relative h-screen before:absolute before:inset-0 before:bg-black/40'>
         <Image
           priority
           draggable={false}

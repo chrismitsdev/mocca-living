@@ -77,3 +77,7 @@ export function shimmer(w: number, h: number) {
 export function toBase64(str: string) {
   return typeof window === 'undefined' ? Buffer.from(str).toString('base64') : window.btoa(str)
 }
+
+export function clamp(num: number, min: number, max: number) {
+  return Math.min(Math.max(num, min), max)
+}
