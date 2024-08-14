@@ -9,7 +9,7 @@ export function useBoundedScroll(bounds: number) {
   React.useEffect(
     function () {
       return scrollY.on('change', (currScrollY) => {
-        scrollYBounded.set(currScrollY)
+        scrollYBounded.set(currScrollY < 0 ? 0 : currScrollY)
       })
     },
     [bounds, scrollY, scrollYBounded]
