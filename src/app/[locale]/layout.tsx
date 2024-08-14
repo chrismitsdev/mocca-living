@@ -41,9 +41,9 @@ export default function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={commissioner.className}
+      className={`${commissioner.className} !overscroll-y-none`}
     >
-      <body className='overscroll-y-none'>
+      <body>
         <Header />
         <main>{children}</main>
         <Footer />
