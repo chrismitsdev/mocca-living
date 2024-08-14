@@ -60,7 +60,7 @@ function HomeCarousel() {
           />
         </Button>
       </CarouselNextButton>
-      <div className='px-4 py-[9px] absolute bottom-2 left-1/2 -translate-x-1/2 bg-[rgb(0,0,0)]/[0.24] border border-[rgb(0,0,0)]/[0.08] rounded-full shadow backdrop-blur-sm'>
+      <div className='px-4 py-[9px] absolute bottom-2 left-1/2 -translate-x-1/2 bg-[rgb(0,0,0)]/[0.24] border border-[rgb(0,0,0)]/[0.08] rounded-full shadow-[0_0_12px_-4px_rgba(69,50,39,0.24)] backdrop-blur-sm'>
         <CarouselDots />
       </div>
     </Carousel>

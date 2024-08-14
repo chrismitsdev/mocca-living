@@ -40,7 +40,7 @@ const DialogContent = React.forwardRef<
 >(({className, children, 'aria-describedby': ariaDescribedBy = undefined, ...props}, ref) => (
   <Content
     className={cn(
-      'p-6 w-full max-w-xl bg-surface-2 rounded shadow-medium fixed z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 data-open:animate-modal-open data-closed:animate-modal-closed',
+      'p-6 w-full max-w-xl bg-surface-2 rounded shadow-medium fixed z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 data-open:animate-dialog-open data-closed:animate-dialog-closed',
       className
     )}
     aria-describedby={ariaDescribedBy}
