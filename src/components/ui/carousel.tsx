@@ -123,7 +123,7 @@ const CarouselContainer = React.forwardRef<HTMLDivElement, React.ComponentPropsW
 const CarouselSlide = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
   ({className, ...props}, ref) => (
     <div
-      className={cn('mr-4 min-w-0 flex-[0_0_100%] select-none', className)}
+      className={cn('min-w-0 flex-[0_0_100%] select-none', className)}
       ref={ref}
       {...props}
     />
@@ -164,7 +164,7 @@ const CarouselDots = React.forwardRef<HTMLDivElement, React.ComponentPropsWithou
 
     return (
       <div
-        className={cn('w-full flex justify-center items-center gap-1 sm:gap-2', className)}
+        className={cn('flex justify-center items-center gap-2', className)}
         ref={ref}
         {...props}
       >
@@ -172,8 +172,8 @@ const CarouselDots = React.forwardRef<HTMLDivElement, React.ComponentPropsWithou
           <button
             key={index}
             className={cn(
-              'shrink-0 h-4 w-4 border-2 rounded-full cursor-pointer transition-colors active:scale-90 hover:border-border-hover',
-              selectedIndex === index && 'bg-primary border-primary'
+              'shrink-0 h-3 w-3 border-2 border-surface-1 rounded-full cursor-pointer transition-colors active:scale-90',
+              selectedIndex === index && 'bg-surface-1'
             )}
             type='button'
             onClick={() => onDotButtonClick(index)}

@@ -1,3 +1,4 @@
+import {Container} from '@/components/shared/container'
 import {Typography} from '@/components/ui/typography'
 import {FacebookIcon} from '@/components/social-icons/facebook-icon'
 import {InstagramIcon} from '@/components/social-icons/instagram-icon'
@@ -13,24 +14,26 @@ type SocialLinkCardsProps = {
 function SocialLinkCards({name, location, phone}: SocialLinkCardsProps) {
   return (
     <article className='py-24 bg-surface-3'>
-      <div className='container grid gap-8 sm:grid-cols-4'>
-        <SocialLink href='https://www.google.com/maps?saddr=My+Location&daddr=40.849038,25.723552'>
-          <PinIcon size={72} />
-          <Typography variant='h4'>{location}</Typography>
-        </SocialLink>
-        <SocialLink href='https://www.instagram.com/'>
-          <InstagramIcon size={72} />
-          <Typography variant='h4'>{name}</Typography>
-        </SocialLink>
-        <SocialLink href='https://www.facebook.com/'>
-          <FacebookIcon size={72} />
-          <Typography variant='h4'>{name}</Typography>
-        </SocialLink>
-        <SocialLink href='tel:+306973433980'>
-          <PhoneIcon size={72} />
-          <Typography variant='h4'>{phone}</Typography>
-        </SocialLink>
-      </div>
+      <Container>
+        <div className='grid gap-8 sm:grid-cols-4'>
+          <SocialLink href='https://www.google.com/maps?saddr=My+Location&daddr=40.849038,25.723552'>
+            <PinIcon size={72} />
+            <Typography variant='h4'>{location}</Typography>
+          </SocialLink>
+          <SocialLink href='https://www.instagram.com/'>
+            <InstagramIcon size={72} />
+            <Typography variant='h4'>{name}</Typography>
+          </SocialLink>
+          <SocialLink href='https://www.facebook.com/'>
+            <FacebookIcon size={72} />
+            <Typography variant='h4'>{name}</Typography>
+          </SocialLink>
+          <SocialLink href='tel:+306973433980'>
+            <PhoneIcon size={72} />
+            <Typography variant='h4'>{phone}</Typography>
+          </SocialLink>
+        </div>
+      </Container>
     </article>
   )
 }

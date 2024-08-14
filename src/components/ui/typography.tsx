@@ -3,7 +3,7 @@ import {Slot} from '@radix-ui/react-slot'
 import {cva, type VariantProps} from 'class-variance-authority'
 import {cn} from '#/lib/utils'
 
-const typographyVariants = cva(['block', 'text-inherit'], {
+const typographyVariants = cva(['block'], {
   variants: {
     variant: {
       hero: ['text-5xl', 'font-extrabold', 'lg:text-6xl'],

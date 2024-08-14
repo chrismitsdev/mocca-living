@@ -43,3 +43,41 @@ export function getMobileOS(): 'Android' | 'iOS' | 'Other' {
   // Default to 'Other' if no match or if navigator is not available
   return 'Other'
 }
+
+export function shimmer(w: number, h: number) {
+  return `
+    <svg 
+      width='${w}' 
+      height='${h}' 
+      version='1.1' 
+      xmlns='http://www.w3.org/2000/svg' 
+      xmlns:xlink='http://www.w3.org/1999/xlink'
+    >
+      <defs>
+        <linearGradient id='g'>
+          <stop stop-color='#c7b492' offset='20%' />
+          <stop stop-color='#9b8c71' offset='50%' />
+          <stop stop-color='#c7b492' offset='70%' />
+        </linearGradient>
+      </defs>
+      <rect width='${w}' height='${h}' fill='#c7b492' />
+      <rect id="r" width='${w}' height='${h}' fill='url(#g)' />
+      <animate 
+        xlink:href='#r' 
+        attributeName='x' 
+        from='-${w}' 
+        to='${w}'
+        dur='2s' 
+        repeatCount='indefinite'  
+      />
+    </svg>
+  `
+}
+
+export function toBase64(str: string) {
+  return typeof window === 'undefined' ? Buffer.from(str).toString('base64') : window.btoa(str)
+}
+
+export function clamp(num: number, min: number, max: number) {
+  return Math.min(Math.max(num, min), max)
+}

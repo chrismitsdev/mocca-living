@@ -10,10 +10,10 @@ import {
   isImageSlide,
   Lightbox as YetAnotherReactLightbox
 } from 'yet-another-react-lightbox'
-import {cn} from '#/lib/utils'
 import {Button} from '@/components/ui/button'
 import {ArrowLeftIcon, ArrowRightIcon, Cross1Icon, EnterFullScreenIcon} from '@radix-ui/react-icons'
 import {LightboxContext, useLightboxContext} from '@/context/lightbox-context'
+import {cn, shimmer, toBase64} from '#/lib/utils'
 
 function LightboxProvider({
   slides,
@@ -38,8 +38,13 @@ function LightboxProvider({
   )
 }
 
-function LightboxThumbnails({...props}: React.ComponentPropsWithoutRef<'div'>) {
-  return <div {...props} />
+function LightboxThumbnails({className, ...props}: React.ComponentPropsWithoutRef<'div'>) {
+  return (
+    <div
+      className={cn('grid', className)}
+      {...props}
+    />
+  )
 }
 
 function isNextJsImage(slide: Slide): slide is StaticImageData {
@@ -50,7 +55,7 @@ function LightboxImage({
   slide,
   className,
   imageProps,
-  withOverlay = false
+  withOverlay = true
 }: Partial<RenderSlideProps> &
   React.ComponentPropsWithoutRef<'div'> & {
     imageProps?: Omit<ImageProps, 'src' | 'width' | 'height'>
@@ -69,26 +74,26 @@ function LightboxImage({
 
   const {
     alt = '',
-    loading = 'eager',
     draggable = false,
-    placeholder = slide?.blurDataURL ? 'blur' : undefined,
+    placeholder = slide?.blurDataURL
+      ? `data:image/svg+xml;base64,${toBase64(shimmer(slide.width, slide.height))}`
+      : undefined,
     ...restImageProps
   } = imageProps || {}
 
   return (
     <div
       className={cn(
-        'relative cursor-pointer',
+        'relative cursor-grab active:cursor-grabbing',
         withOverlay &&
-          'before:absolute before:inset-0 hover:before:bg-black/70 before:duration-200 group',
+          'before:absolute before:inset-0 hover:before:bg-black/70 before:duration-200 cursor-pointer active:cursor-pointer group',
         className
       )}
-      onClick={() => handleOpenImage(slides.findIndex((s) => s.src === slide.src))}
+      onClick={() => handleOpenImage(slides.findIndex(({src}) => src === slide.src))}
     >
       <Image
         src={slide}
         alt={alt}
-        loading={loading}
         draggable={draggable}
         placeholder={placeholder}
         {...restImageProps}
@@ -134,7 +139,12 @@ function Lightbox({controller, ...props}: React.ComponentProps<typeof YetAnother
       open={isOpen}
       close={() => setSelectedIndex(-1)}
       render={{
-        slide: LightboxImage,
+        slide: ({slide}) =>
+          LightboxImage({
+            slide,
+            withOverlay: false,
+            imageProps: {loading: 'eager', alt: '', className: 'rounded'}
+          }),
         buttonPrev: () => (
           <LightboxButton
             className='absolute left-3'

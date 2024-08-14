@@ -10,74 +10,60 @@ import {
 } from '@/components/ui/carousel'
 import {Button} from '@/components/ui/button'
 import {ArrowLeftIcon, ArrowRightIcon} from '@radix-ui/react-icons'
-import {Container} from '@/components/shared/container'
+import {shimmer, toBase64} from '#/lib/utils'
 import * as outdoorImages from '#/public/images/outdoor'
 
 const images = Object.values(outdoorImages)
 
 function HomeCarousel() {
   return (
-    <Container>
-      <Carousel
-        className='p-2 space-y-2 bg-surface-2 rounded shadow-medium sm:p-4'
-        autoPlay
-      >
-        <CarouselViewport>
-          <CarouselContainer>
-            {images.slice(0, 8).map((image, i) => (
-              <CarouselSlide key={image.src}>
-                <Image
-                  className='w-full h-full object-cover'
-                  src={image}
-                  alt={`Carousel image ${i + 1}`}
-                  priority
-                />
-              </CarouselSlide>
-            ))}
-          </CarouselContainer>
-        </CarouselViewport>
-        <div className='flex gap-2'>
-          <CarouselPrevButton className='shrink-0'>
-            <Button size='icon-small'>
-              <ArrowLeftIcon
-                width={16}
-                height={16}
+    <Carousel autoPlay>
+      <CarouselViewport className='h-[100svh]'>
+        <CarouselContainer className='h-full'>
+          {images.map((image, i) => (
+            <CarouselSlide
+              key={image.src}
+              className='mr-2'
+            >
+              <Image
+                className='w-full h-full object-cover'
+                src={image}
+                placeholder={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(image.width, image.height)
+                )}`}
+                draggable={false}
+                alt={`Carousel image ${i + 1}`}
               />
-            </Button>
-          </CarouselPrevButton>
-          <CarouselDots className='grow' />
-          <CarouselNextButton className='shrink-0'>
-            <Button size='icon-small'>
-              <ArrowRightIcon
-                width={16}
-                height={16}
-              />
-            </Button>
-          </CarouselNextButton>
-        </div>
-        {/* <div className='grid grid-cols-[auto,1fr]'>
-          <div className='space-x-2'>
-            <CarouselPrevButton>
-              <Button size='icon-small'>
-                <ArrowLeftIcon
-                  width={16}
-                  height={16}
-                />
-              </Button>
-            </CarouselPrevButton>
-            <CarouselNextButton>
-              <Button size='icon-small'>
-                <ArrowRightIcon
-                  width={16}
-                  height={16}
-                />
-              </Button>
-            </CarouselNextButton>
-          </div>
-          <CarouselDots className='justify-end' />
-        </div> */}
-      </Carousel>
-    </Container>
+            </CarouselSlide>
+          ))}
+        </CarouselContainer>
+      </CarouselViewport>
+      <CarouselPrevButton className='!absolute top-1/2 left-2 -translate-y-1/2'>
+        <Button
+          variant='primary-alt'
+          size='icon-small'
+        >
+          <ArrowLeftIcon
+            width={24}
+            height={24}
+          />
+        </Button>
+      </CarouselPrevButton>
+      <CarouselNextButton className='!absolute top-1/2 right-2 -translate-y-1/2'>
+        <Button
+          variant='primary-alt'
+          size='icon-small'
+        >
+          <ArrowRightIcon
+            width={24}
+            height={24}
+          />
+        </Button>
+      </CarouselNextButton>
+      <div className='px-4 py-[9px] absolute bottom-2 left-1/2 -translate-x-1/2 bg-[rgb(0,0,0)]/[0.24] border border-[rgb(0,0,0)]/[0.08] rounded-full shadow backdrop-blur-sm'>
+        <CarouselDots />
+      </div>
+    </Carousel>
   )
 }
 
