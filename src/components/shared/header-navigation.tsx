@@ -134,7 +134,7 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
           direction='right'
           open={drawerOpen}
           onOpenChange={setDrawerOpen}
-          noBodyStyles
+          // noBodyStyles
         >
           <DrawerTrigger asChild>
             <motion.button
