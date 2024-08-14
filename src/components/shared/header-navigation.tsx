@@ -10,14 +10,14 @@ import {Container} from '@/components/shared/container'
 import {VisuallyHidden} from '@/components/ui/visually-hidden'
 import {LogoSimple} from '@/components/ui/logo-simple'
 import {
-  Drawer,
-  DrawerTrigger,
-  DrawerPortal,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerTitle,
-  DrawerClose
-} from '@/components/ui/drawer'
+  Sheet,
+  SheetTrigger,
+  SheetPortal,
+  SheetOverlay,
+  SheetContent,
+  SheetTitle,
+  SheetClose
+} from '@/components/ui/sheet'
 import {cn} from '#/lib/utils'
 
 type NavigationLink = {
@@ -67,6 +67,7 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
         display: 'flex',
         alignItems: 'center',
         position: 'fixed',
+        insetBlockStart: '0px',
         insetInline: '0px',
         zIndex: '1',
         backdropFilter: 'blur(4px)',
@@ -130,13 +131,11 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
           </ul>
         </nav>
 
-        <Drawer
-          direction='right'
+        <Sheet
           open={drawerOpen}
           onOpenChange={setDrawerOpen}
-          // noBodyStyles
         >
-          <DrawerTrigger asChild>
+          <SheetTrigger asChild>
             <motion.button
               className='sm:hidden'
               style={{
@@ -149,17 +148,17 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
                 height={24}
               />
             </motion.button>
-          </DrawerTrigger>
-          <DrawerPortal>
-            <DrawerOverlay className='z-10' />
-            <DrawerContent className='p-8 fixed top-0 right-0 z-10 w-full h-full bg-surface-2'>
+          </SheetTrigger>
+          <SheetPortal>
+            <SheetOverlay />
+            <SheetContent>
               <VisuallyHidden>
-                <DrawerTitle>{'Header navigation menu'}</DrawerTitle>
+                <SheetTitle>{'Header navigation menu'}</SheetTitle>
               </VisuallyHidden>
               <div className='h-full grid grid-rows-[repeat(3,_min-content)] place-content-center'>
                 {headerLinks}
               </div>
-              <DrawerClose asChild>
+              <SheetClose asChild>
                 <motion.button
                   style={{
                     padding: '8px',
@@ -173,10 +172,10 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
                     height={24}
                   />
                 </motion.button>
-              </DrawerClose>
-            </DrawerContent>
-          </DrawerPortal>
-        </Drawer>
+              </SheetClose>
+            </SheetContent>
+          </SheetPortal>
+        </Sheet>
       </Container>
     </motion.header>
   )

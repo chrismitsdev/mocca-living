@@ -24,7 +24,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: ['bg-primary', 'text-primary-foreground', 'hover:bg-primary-hover'],
-        'primary-alt': ['bg-surface-2', 'text-primary', 'hover:bg-surface-3'],
+        'primary-alt': ['bg-surface-1', 'text-primary', 'hover:bg-surface-2'],
         bordered: ['border', 'hover:border-border-hover'],
         ghost: ['hover:bg-primary', 'hover:text-primary-foreground'],
         success: ['bg-success', 'text-success-foreground', 'hover:bg-success-hover'],

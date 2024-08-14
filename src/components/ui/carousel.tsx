@@ -172,8 +172,8 @@ const CarouselDots = React.forwardRef<HTMLDivElement, React.ComponentPropsWithou
           <button
             key={index}
             className={cn(
-              'shrink-0 h-3 w-3 border-2 rounded-full cursor-pointer transition-colors active:scale-90 hover:border-border-hover',
-              selectedIndex === index && 'bg-primary border-primary'
+              'shrink-0 h-3 w-3 border-2 border-surface-1 rounded-full cursor-pointer transition-colors active:scale-90',
+              selectedIndex === index && 'bg-surface-1'
             )}
             type='button'
             onClick={() => onDotButtonClick(index)}

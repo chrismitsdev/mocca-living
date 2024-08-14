@@ -43,7 +43,7 @@ export default function LocaleLayout({
       lang={locale}
       className={commissioner.className}
     >
-      <body>
+      <body className='overscroll-y-none'>
         <Header />
         <main>{children}</main>
         <Footer />
