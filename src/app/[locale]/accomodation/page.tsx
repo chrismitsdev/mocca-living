@@ -1,7 +1,7 @@
 import {getTranslations} from 'next-intl/server'
 import {useTranslations} from 'next-intl'
 import {unstable_setRequestLocale} from 'next-intl/server'
-// import {Introduction} from '@/components/page/accomodation/introduction'
+import {Introduction} from '@/components/page/accomodation/introduction'
 import {FramerCarousel} from '@/components/ui/framer-carousel'
 
 export async function generateMetadata({params: {locale}}: Params) {

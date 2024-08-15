@@ -209,8 +209,11 @@ const config: Config = {
         }
       },
       animation: {
-        'dialog-open': 'dialog-open 300ms cubic-bezier(0.390, 0.575, 0.565, 1.000)',
-        'dialog-closed': 'dialog-closed 220ms cubic-bezier(0.390, 0.575, 0.565, 1.000)'
+        'dialog-open': 'dialog-open 300ms cubic-bezier(0.32,0.72,0,1)',
+        'dialog-closed': 'dialog-closed 220ms cubic-bezier(0.32,0.72,0,1)'
+      },
+      transitionTimingFunction: {
+        mocca: 'cubic-bezier(0.32,0.72,0,1)'
       }
     },
     boxShadow: {

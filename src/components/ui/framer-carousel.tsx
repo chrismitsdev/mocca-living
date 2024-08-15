@@ -20,9 +20,9 @@ function FramerCarousel() {
 
   return (
     <MotionConfig transition={{duration: 0.75, ease: [0.32, 0.72, 0, 1]}}>
-      <div className='relative h-screen bg-black'>
+      <div className='relative h-[100svh] bg-black'>
         <div className='mx-auto h-full max-w-7xl flex-col flex justify-center'>
-          {/* Image slides */}
+          {/* Slides */}
           <div className='relative overflow-hidden w-full'>
             <motion.div
               className='flex'
@@ -32,7 +32,7 @@ function FramerCarousel() {
                 <Image
                   key={image.src}
                   className={cn(
-                    'shrink-0 w-full h-full object-cover select-none ease-[cubic-bezier(0.32,0.72,0,1)] duration-1000',
+                    'shrink-0 w-full h-full object-cover select-none ease-mocca duration-1000',
                     i === index ? 'opacity-100' : 'opacity-10'
                   )}
                   src={image}
@@ -42,7 +42,6 @@ function FramerCarousel() {
                 />
               ))}
             </motion.div>
-
             {/* Slide control buttons */}
             <AnimatePresence initial={false}>
               {index > 0 && (
@@ -89,8 +88,7 @@ function FramerCarousel() {
               )}
             </AnimatePresence>
           </div>
-
-          {/* Image thumbnails */}
+          {/* Slide thumbnails */}
           <div className='absolute bottom-6 inset-x-0 h-14 flex justify-center overflow-hidden'>
             <motion.div
               className='flex h-[inherit]'
