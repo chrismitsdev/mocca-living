@@ -27,9 +27,9 @@ const sheetContentVariants = cva(
     'transition',
     'ease-in-out',
     'data-open:animate-in',
-    'data-open:duration-500',
+    'data-open:duration-300',
     'data-closed:animate-out',
-    'data-closed:duration-300'
+    'data-closed:duration-150'
   ],
   {
     variants: {
