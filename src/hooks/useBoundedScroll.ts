@@ -3,17 +3,17 @@ import {useMotionValue, useScroll, useTransform} from 'framer-motion'
 
 export function useBoundedScroll(bounds: number) {
   const {scrollY} = useScroll()
-  const scrollYBounded = useMotionValue(0)
-  const scrollYBoundedProgress = useTransform(scrollYBounded, [0, bounds], [0, 1])
+  const scrollYValue = useMotionValue(0)
+  const scrollYBoundedProgress = useTransform(scrollYValue, [0, bounds], [0, 1])
 
   React.useEffect(
     function () {
       return scrollY.on('change', (currScrollY) => {
-        scrollYBounded.set(currScrollY)
+        scrollYValue.set(currScrollY)
       })
     },
-    [bounds, scrollY, scrollYBounded]
+    [bounds, scrollY, scrollYValue]
   )
 
-  return {scrollYBounded, scrollYBoundedProgress}
+  return {scrollYValue, scrollYBoundedProgress}
 }

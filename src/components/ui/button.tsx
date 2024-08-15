@@ -10,6 +10,10 @@ const buttonVariants = cva(
     'inline-flex',
     'justify-center',
     'items-center',
+    'gap-2',
+    'whitespace-nowrap',
+    'font-semibold',
+    '[&>*]:shrink-0',
     'rounded',
     'ring-offset-background',
     'transition-colors',
@@ -74,11 +78,11 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      asChild = false,
-      isLoading = false,
-      className,
       variant,
       size,
+      className,
+      asChild = false,
+      isLoading = false,
       type = 'button',
       children,
       ...props
@@ -89,27 +93,23 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <Comp
-        className={cn(buttonVariants({variant, size, className}))}
+        className={cn(
+          buttonVariants({
+            variant,
+            size,
+            className: cn(isLoading && '[&>*:not(span:last-child)]:invisible', className)
+          })
+        )}
         type={type}
         ref={ref}
         {...props}
       >
+        <Slottable>{children}</Slottable>
         {isLoading && (
           <span className='absolute inset-0 flex items-center justify-center'>
             <Spinner size={size === 'large' ? 24 : 16} />
           </span>
         )}
-
-        <Slottable>
-          <span
-            className={cn(
-              'inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold [&>*]:shrink-0',
-              isLoading && 'invisible'
-            )}
-          >
-            {children}
-          </span>
-        </Slottable>
       </Comp>
     )
   }
