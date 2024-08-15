@@ -93,7 +93,7 @@ function FramerCarousel() {
           {/* Image thumbnails */}
           <div className='absolute bottom-6 inset-x-0 h-14 flex justify-center overflow-hidden'>
             <motion.div
-              className='flex'
+              className='flex h-[inherit]'
               initial={false}
               style={{
                 aspectRatio: fullAspectRatio,
