@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import Image, {type StaticImageData} from 'next/image'
-import {motion, AnimatePresence, MotionConfig, MotionConfigContext} from 'framer-motion'
+import {motion, AnimatePresence, MotionConfig} from 'framer-motion'
 import {ChevronLeftIcon, ChevronRightIcon} from '@radix-ui/react-icons'
 import {Button} from '@/components/ui/button'
 import {FramerCarouselContext, useCarouselContext} from '@/context/framer-carousel-context'
