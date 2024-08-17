@@ -39,17 +39,22 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
   const pathname = usePathname()
   const {scrollYBoundedProgress} = useBoundedScroll(200)
 
-  const headerLinks = links.map(({href, label}) => (
-    <HeaderLink
-      key={href}
-      href={href}
-      isActive={pathname === href}
-      onClick={() => setDrawerOpen(false)}
-      role='menuitem'
-    >
-      {label}
-    </HeaderLink>
-  ))
+  const headerLinks = React.useMemo(
+    function () {
+      return links.map(({href, label}) => (
+        <HeaderLink
+          key={href}
+          href={href}
+          isActive={pathname === href}
+          onClick={() => setDrawerOpen(false)}
+          role='menuitem'
+        >
+          {label}
+        </HeaderLink>
+      ))
+    },
+    [links, pathname]
+  )
 
   return (
     <motion.header
@@ -60,19 +65,26 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
         insetBlockStart: '0px',
         insetInline: '0px',
         zIndex: '1',
-        backdropFilter: 'blur(4px)',
+        backdropFilter: 'blur(8px)',
+        borderBottomStyle: 'solid',
+        borderBottomWidth: '1px',
+        borderBottomColor: useMotionTemplate`rgb(
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 231])}
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 217])}
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 190])} /
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0.08, 1])}
+        )`,
+        backgroundColor: useMotionTemplate`rgb(
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 231])}
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 217])}
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 190])} /
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0.24, 1])}
+        )`,
         color: useMotionTemplate`rgb(
           ${useTransform(scrollYBoundedProgress, [0, 1], [231, 148])}
           ${useTransform(scrollYBoundedProgress, [0, 1], [217, 79])}
           ${useTransform(scrollYBoundedProgress, [0, 1], [190, 33])}
         )`,
-        backgroundColor: useMotionTemplate`rgb(
-          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 231])}
-          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 217])}
-          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 190])} / 
-          ${useTransform(scrollYBoundedProgress, [0, 1], [0.24, 1])} 
-        )`,
-        borderBottom: '1px solid rgb(0 0 0 / 0.08)',
         boxShadow: useMotionTemplate`
           0px
           ${useTransform(scrollYBoundedProgress, [0, 1], [0, 4])}px
@@ -99,7 +111,7 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
 
         <nav className='hidden sm:block'>
           <ul
-            className='hidden items-center gap-4 md:flex'
+            className='flex items-center gap-4'
             role='menubar'
           >
             {links.map(({href, label}) => (

@@ -8,11 +8,13 @@ export function useBoundedScroll(bounds: number) {
 
   React.useEffect(
     function () {
-      return scrollY.on('change', (currScrollY) => {
+      const unsubscribe = scrollY.on('change', (currScrollY) => {
         scrollYValue.set(currScrollY)
       })
+
+      return () => unsubscribe()
     },
-    [bounds, scrollY, scrollYValue]
+    [scrollY, scrollYValue]
   )
 
   return {scrollYValue, scrollYBoundedProgress}

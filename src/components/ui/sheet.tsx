@@ -22,7 +22,7 @@ const sheetContentVariants = cva(
     'fixed',
     'z-50',
     'gap-4',
-    'bg-surface-1',
+    'bg-surface-2',
     'shadow',
     'transition',
     'ease-in-out',
@@ -64,6 +64,7 @@ const sheetContentVariants = cva(
           'h-full',
           'w-4/5',
           'border-l',
+          'rounded-l-md',
           'data-open:slide-in-from-right',
           'data-closed:slide-out-to-right',
           'sm:max-w-sm'
