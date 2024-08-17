@@ -3,8 +3,7 @@
 import * as React from 'react'
 import {motion, useTransform, useMotionTemplate} from 'framer-motion'
 import {HamburgerMenuIcon, Cross2Icon} from '@radix-ui/react-icons'
-// import {useBoundedScroll} from '@/hooks/useBoundedScroll'
-import {useBoundedScrollDiff} from '@/hooks/useBoundedScrollDiff'
+import {useBoundedScroll} from '@/hooks/useBoundedScroll'
 import {usePathname, Link} from '@/navigation'
 import {Typography} from '@/components/ui/typography'
 import {Container} from '@/components/shared/container'
@@ -35,20 +34,10 @@ const HEADER_MIN_HEIGHT = 64
 const LOGO_MAX_SCALE = 1
 const LOGO_MIN_SCALE = 0.5
 
-// Start: box-shadow: 0px 0px 0px -4px rgba(69, 50, 39, 0.24);
-// End: box-shadow: 0px 4px 12px -4px rgba(69, 50, 39, 0.24);
-
-// surface-1: rgba(231, 217, 190, 1)
-// surface-2: rgba(221, 200, 162, 1)
-// surface-3: rgba(199, 180, 146, 1)
-// surface-4: rgba(177, 160, 130, 1)
-// surface-5: rgba(155, 140, 113, 1)
-// brand-9: rgba(148, 79, 33, 1)
-
 function HeaderNavigation({links}: HeaderNavigationProps) {
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   const pathname = usePathname()
-  const {scrollYBoundedProgress} = useBoundedScrollDiff(200)
+  const {scrollYBoundedProgress} = useBoundedScroll(200)
 
   const headerLinks = links.map(({href, label}) => (
     <HeaderLink

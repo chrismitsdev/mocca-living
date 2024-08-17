@@ -8,21 +8,23 @@ import indoorImage from '#/public/images/indoor/1.webp'
 function Introduction() {
   return (
     <>
-      <div className='relative h-[100svh] before:absolute before:inset-0 before:bg-black/75'>
+      <div className='relative h-[100svh]'>
         <Image
-          priority
-          draggable={false}
           className='w-full h-full object-cover'
           src={indoorImage}
           alt='Hero image'
+          draggable={false}
+          priority
         />
         <Button
           className='absolute bottom-10 left-1/2 -translate-x-1/2'
-          variant='primary-alt'
+          variant='primary'
           size='large'
           asChild
         >
-          <Link href='/contact'>{'Book now'}</Link>
+          <Link href='/contact'>
+            <span>{'Book now'}</span>
+          </Link>
         </Button>
       </div>
       <Container

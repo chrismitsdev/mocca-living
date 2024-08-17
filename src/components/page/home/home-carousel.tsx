@@ -18,10 +18,7 @@ const images = Object.values(outdoorImages)
 
 function HomeCarousel() {
   return (
-    <CarouselProvider
-      images={images}
-      loop
-    >
+    <CarouselProvider images={images}>
       <CarouselRoot className='max-w-full'>
         <CarouselViewport className='h-full'>
           <CarouselImageContainer className='h-full'>
