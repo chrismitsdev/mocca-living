@@ -7,7 +7,7 @@ import {
   CarouselPrevButton,
   CarouselNextButton,
   CarouselDots
-} from '@/components/ui/carousel'
+} from '#/other/carousel'
 import {Button} from '@/components/ui/button'
 import {ArrowLeftIcon, ArrowRightIcon} from '@radix-ui/react-icons'
 import {shimmer, toBase64} from '#/lib/utils'
