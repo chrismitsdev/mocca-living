@@ -3,12 +3,13 @@
 import * as React from 'react'
 import {motion, useTransform, useMotionTemplate} from 'framer-motion'
 import {HamburgerMenuIcon, Cross2Icon} from '@radix-ui/react-icons'
-import {useBoundedScroll} from '@/hooks/useBoundedScroll'
+// import {useBoundedScroll} from '@/hooks/useBoundedScroll'
+import {useBoundedScrollDiff} from '@/hooks/useBoundedScrollDiff'
 import {usePathname, Link} from '@/navigation'
 import {Typography} from '@/components/ui/typography'
 import {Container} from '@/components/shared/container'
 import {VisuallyHidden} from '@/components/ui/visually-hidden'
-import {LogoSimple} from '@/components/ui/logo-simple'
+import {LogoSimple} from '@/components/logos/logo-simple'
 import {
   Sheet,
   SheetTrigger,
@@ -47,7 +48,7 @@ const LOGO_MIN_SCALE = 0.5
 function HeaderNavigation({links}: HeaderNavigationProps) {
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   const pathname = usePathname()
-  const {scrollYBoundedProgress} = useBoundedScroll(200)
+  const {scrollYBoundedProgress} = useBoundedScrollDiff(200)
 
   const headerLinks = links.map(({href, label}) => (
     <HeaderLink

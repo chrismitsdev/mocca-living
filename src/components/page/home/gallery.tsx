@@ -29,7 +29,7 @@ import {
   CarouselThumbnailButton,
   CarouselThumbnailImage,
   CarouselCount
-} from '@/components/ui/framer-carousel'
+} from '@/components/ui/carousel'
 import {cn} from '#/lib/utils'
 import * as outdoorImages from '#/public/images/outdoor'
 
@@ -175,7 +175,7 @@ function GalleryItem({
   return (
     <DialogTrigger
       className={cn(
-        'relative overflow-hidden rounded shadow before:absolute before:inset-0 hover:before:bg-black/70 before:duration-700 before:ease-mocca focus-visible:outline-0 group',
+        'relative overflow-hidden rounded shadow before:absolute before:inset-0 hover:before:bg-black/75 before:duration-700 before:ease-mocca focus-visible:outline-0 group',
         className
       )}
       onClick={onClick}

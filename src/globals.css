@@ -177,7 +177,7 @@
       }
 
       .yarl__container {
-        @apply bg-black/70 backdrop-blur-[1px];
+        @apply bg-black/75 backdrop-blur-[1px];
       }
 
       .yarl__slide {

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import {DotFilledIcon} from '@radix-ui/react-icons'
-import {AspectRatio} from '@/components/ui/aspect-ration'
+import {AspectRatio} from '@/components/ui/aspect-ratio'
 import {Typography} from '@/components/ui/typography'
 import {Container} from '@/components/shared/container'
 import * as outdoorImages from '#/public/images/outdoor'

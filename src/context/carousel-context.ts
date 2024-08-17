@@ -1,26 +1,27 @@
 import * as React from 'react'
-import useEmblaCarousel from 'embla-carousel-react'
+import {type StaticImageData} from 'next/image'
 
-type CarouselContextType = {
-  emblaRef: ReturnType<typeof useEmblaCarousel>['0']
-  emblaApi: ReturnType<typeof useEmblaCarousel>['1']
-  onPrevButtonClick: () => void
-  onNextButtonClick: () => void
-  onDotButtonClick: (index: number) => void
-  selectedIndex: number
-  scrollSnaps: number[]
+type FramerCarouselContextType = {
+  currentIndex: number
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>
+  loop: boolean
+  inactiveThumbnailRatio: number
+  activeThumbnailRatio: number
+  activeThumbMargin: number
+  thumbGap: number
+  images: StaticImageData[]
 }
 
-const CarouselContext = React.createContext<CarouselContextType | null>(null)
+const FramerCarouselContext = React.createContext<FramerCarouselContextType | null>(null)
 
 function useCarouselContext() {
-  const carouselContext = React.useContext(CarouselContext)
+  const context = React.useContext(FramerCarouselContext)
 
-  if (!carouselContext) {
-    throw new Error('useCarouselContext has to be used within <CarouselContext.Provider>')
+  if (!context) {
+    throw new Error('useCarouselContext must be used within a <CarouselProvider>')
   }
 
-  return carouselContext
+  return context
 }
 
-export {CarouselContext, useCarouselContext}
+export {FramerCarouselContext, useCarouselContext}

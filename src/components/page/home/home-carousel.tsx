@@ -10,7 +10,7 @@ import {
   CarouselThumbnailContainer,
   CarouselThumbnailButton,
   CarouselThumbnailImage
-} from '@/components/ui/framer-carousel'
+} from '@/components/ui/carousel'
 import {shimmer, toBase64} from '#/lib/utils'
 import * as outdoorImages from '#/public/images/outdoor'
 
@@ -18,7 +18,10 @@ const images = Object.values(outdoorImages)
 
 function HomeCarousel() {
   return (
-    <CarouselProvider images={images}>
+    <CarouselProvider
+      images={images}
+      loop
+    >
       <CarouselRoot className='max-w-full'>
         <CarouselViewport className='h-full'>
           <CarouselImageContainer className='h-full'>

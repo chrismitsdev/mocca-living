@@ -4,7 +4,7 @@ import {
   LightboxThumbnails,
   LightboxImage,
   Lightbox
-} from '@/components/ui/lightbox'
+} from '#/other/lightbox'
 import {Typography} from '@/components/ui/typography'
 import * as outdoorImages from '#/public/images/outdoor'
 
