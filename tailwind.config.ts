@@ -209,8 +209,8 @@ const config: Config = {
         }
       },
       animation: {
-        'dialog-open': 'dialog-open 300ms cubic-bezier(0.32,0.72,0,1)',
-        'dialog-closed': 'dialog-closed 220ms cubic-bezier(0.32,0.72,0,1)'
+        'dialog-open': 'dialog-open 750ms cubic-bezier(0.32,0.72,0,1)',
+        'dialog-closed': 'dialog-closed 375ms cubic-bezier(0.32,0.72,0,1)'
       },
       transitionTimingFunction: {
         mocca: 'cubic-bezier(0.32,0.72,0,1)'
@@ -218,7 +218,8 @@ const config: Config = {
     },
     boxShadow: {
       DEFAULT: 'var(--box-shadow-sm)',
-      medium: 'var(--box-shadow-md)'
+      medium: 'var(--box-shadow-md)',
+      none: 'none'
     },
     fontSize: {
       xs: ['12px', '16px'],

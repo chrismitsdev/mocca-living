@@ -86,7 +86,7 @@ const SheetOverlay = React.forwardRef<
 >(({className, ...props}, ref) => (
   <Overlay
     className={cn(
-      'fixed inset-0 z-50 bg-black/50 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 data-open:backdrop-blur-[1px] data-closed:backdrop-blur-none',
+      'fixed inset-0 z-50 bg-black/75 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 data-open:backdrop-blur-[1px] data-closed:backdrop-blur-none',
       className
     )}
     ref={ref}

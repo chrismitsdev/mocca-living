@@ -7,6 +7,7 @@ import {ChevronLeftIcon, ChevronRightIcon} from '@radix-ui/react-icons'
 import {Button} from '@/components/ui/button'
 import {FramerCarouselContext, useCarouselContext} from '@/context/framer-carousel-context'
 import {cn} from '#/lib/utils'
+import {Typography} from './typography'
 
 type CarouselProviderProps = {
   activeIndex?: number
@@ -299,6 +300,27 @@ const CarouselThumbnailImage = React.forwardRef<
   />
 ))
 
+const CarouselCount = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
+  ({className, ...props}, ref) => {
+    const {currentIndex, images} = useCarouselContext()
+
+    return (
+      <div
+        className={cn(
+          'absolute top-2 left-2 flex items-center gap-2 text-primary-foreground p-1',
+          className
+        )}
+        ref={ref}
+        {...props}
+      >
+        <Typography variant='large'>{currentIndex + 1}</Typography>
+        <Typography variant='large'>{'/'}</Typography>
+        <Typography variant='large'>{images.length}</Typography>
+      </div>
+    )
+  }
+)
+
 CarouselProvider.displayName = 'CarouselProvider'
 CarouselRoot.displayName = 'CarouselRoot'
 CarouselViewport.displayName = 'CarouselViewport'
@@ -310,6 +332,7 @@ CarouselThumbnailViewport.displayName = 'CarouselThumbnailViewport'
 CarouselThumbnailContainer.displayName = 'CarouselThumbnailContainer'
 CarouselThumbnailButton.displayName = 'CarouselThumbnailButton'
 CarouselThumbnailImage.displayName = 'CarouselThumbnailImage'
+CarouselCount.displayName = 'CarouselCount'
 
 export {
   CarouselProvider,
@@ -322,5 +345,6 @@ export {
   CarouselThumbnailViewport,
   CarouselThumbnailContainer,
   CarouselThumbnailButton,
-  CarouselThumbnailImage
+  CarouselThumbnailImage,
+  CarouselCount
 }

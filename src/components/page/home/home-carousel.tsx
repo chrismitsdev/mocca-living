@@ -27,17 +27,17 @@ function HomeCarousel() {
                 key={image.src}
                 index={i}
                 src={image}
-                alt={`Home page carousel image ${++i}`}
+                alt={`Home page carousel image ${i + 1}`}
                 placeholder={`data:image/svg+xml;base64,${toBase64(
                   shimmer(image.width, image.height)
                 )}`}
               />
             ))}
           </CarouselImageContainer>
-          <CarouselPrevButton />
-          <CarouselNextButton />
+          <CarouselPrevButton size='icon-small' />
+          <CarouselNextButton size='icon-small' />
         </CarouselViewport>
-        <CarouselThumbnailViewport>
+        <CarouselThumbnailViewport className='hidden sm:flex'>
           <CarouselThumbnailContainer>
             {images.map((image, i) => (
               <CarouselThumbnailButton
@@ -46,7 +46,7 @@ function HomeCarousel() {
               >
                 <CarouselThumbnailImage
                   src={image}
-                  alt={`Carousel thumbnail iamge ${++i}`}
+                  alt={`Carousel thumbnail iamge ${i + 1}`}
                 />
               </CarouselThumbnailButton>
             ))}

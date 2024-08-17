@@ -11,8 +11,6 @@ import {
   Description,
   Close
 } from '@radix-ui/react-dialog'
-import {Cross1Icon} from '@radix-ui/react-icons'
-import {VisuallyHidden} from '@/components/ui/visually-hidden'
 import {cn} from '#/lib/utils'
 
 const Dialog = Root
@@ -26,7 +24,7 @@ const DialogOverlay = React.forwardRef<
 >(({className, ...props}, ref) => (
   <Overlay
     className={cn(
-      'fixed inset-0 z-50 bg-black/50 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 data-open:backdrop-blur-[1px] data-closed:backdrop-blur-none',
+      'fixed inset-0 z-50 bg-black/75 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 data-open:backdrop-blur-[1px] data-closed:backdrop-blur-none',
       className
     )}
     ref={ref}
@@ -48,13 +46,6 @@ const DialogContent = React.forwardRef<
     {...props}
   >
     {children}
-    <Close className='absolute right-4 top-4 outline-0 disabled:pointer-events-none hover:text-red-9'>
-      <Cross1Icon
-        width={16}
-        height={16}
-      />
-      <VisuallyHidden>{'Close dialog'}</VisuallyHidden>
-    </Close>
   </Content>
 ))
 
