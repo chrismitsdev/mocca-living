@@ -1,5 +1,4 @@
 import {getTranslations} from 'next-intl/server'
-import {useTranslations} from 'next-intl'
 import {unstable_setRequestLocale} from 'next-intl/server'
 import {HeroImage} from '@/components/page/accomodation/hero-image'
 import {Introduction} from '@/components/page/accomodation/introduction'
@@ -15,17 +14,11 @@ export async function generateMetadata({params: {locale}}: Params) {
 
 export default function AccomodationPage({params: {locale}}: Params) {
   unstable_setRequestLocale(locale)
-  const t = useTranslations('Pages.Accomodation')
 
   return (
     <>
       <HeroImage />
-      <Introduction
-        translations={{
-          title: t('Introdution.title'),
-          message: t('Introdution.message')
-        }}
-      />
+      <Introduction />
       <Villas />
     </>
   )

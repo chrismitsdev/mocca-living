@@ -10,6 +10,10 @@ type ParamsWithSlug<T extends Params = Params> = {
   }
 }
 
+export function generateStaticParams() {
+  return [{villa: 'georgia'}, {villa: 'dimitra'}]
+}
+
 export async function generateMetadata({params: {locale, villa}}: ParamsWithSlug) {
   const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
 
@@ -18,7 +22,7 @@ export async function generateMetadata({params: {locale, villa}}: ParamsWithSlug
   }
 }
 
-export default function DimitraPage({params: {locale, villa}}: ParamsWithSlug) {
+export default function VillaPage({params: {locale, villa}}: ParamsWithSlug) {
   unstable_setRequestLocale(locale)
   const t = useTranslations(`Pages.Accomodation`)
 

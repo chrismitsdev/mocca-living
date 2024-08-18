@@ -190,11 +190,11 @@ const config: Config = {
       keyframes: {
         'page-transition': {
           from: {
-            opacity: '0.25',
+            // opacity: '0.75',
             transform: 'translateY(-16px)'
           },
           to: {
-            opacity: '1',
+            // opacity: '1',
             transform: 'translateY(0)'
           }
         },

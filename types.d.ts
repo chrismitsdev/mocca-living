@@ -6,6 +6,10 @@ type Messages = typeof enMessages
 declare global {
   interface IntlMessages extends Messages {}
 
+  type PickOnly<T, K extends keyof T> = {
+    [P in K]: T[P]
+  }
+
   type Params = {
     params: {
       locale: (typeof locales)[number]

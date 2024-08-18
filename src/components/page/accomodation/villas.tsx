@@ -1,4 +1,5 @@
-import Image from 'next/image'
+import {useTranslations} from 'next-intl'
+import Image, {type StaticImageData} from 'next/image'
 import {Link} from '@/navigation'
 import {UsersIcon, BedDoubleIcon, BathIcon} from 'lucide-react'
 import {Container} from '@/components/shared/container'
@@ -15,68 +16,80 @@ import {Button} from '@/components/ui/button'
 import georgiaIndoor from '#/public/images/indoor/4.webp'
 import dimitraIndoor from '#/public/images/indoor/11.webp'
 
-export const villaCards = [
-  {
-    label: 'georgia',
-    guests: 4,
-    bedrooms: 2,
-    bathrooms: 1,
-    image: georgiaIndoor
-  },
-  {
-    label: 'dimitra',
-    guests: 5,
-    bedrooms: 2,
-    bathrooms: 2,
-    image: dimitraIndoor
-  }
+type VillaCards = IntlMessages['Pages']['Accomodation']['root']['Cards']
+
+type VillaGeneralInfo<K extends 'dimitra' | 'georgia' = 'dimitra'> = {
+  label: keyof VillaCards
+  title: VillaCards[K]['title']
+  description: VillaCards[K]['description']
+  guests: VillaCards[K]['guests']
+  bedrooms: VillaCards[K]['bedrooms']
+  bathrooms: VillaCards[K]['bathrooms']
+  image: StaticImageData
+}
+
+const villaInfo: PickOnly<VillaGeneralInfo, 'label' | 'image'>[] = [
+  {label: 'georgia', image: georgiaIndoor},
+  {label: 'dimitra', image: dimitraIndoor}
 ]
 
 function Villas() {
+  const t = useTranslations('Pages.Accomodation.root.Cards')
+
+  const villas: VillaGeneralInfo[] = villaInfo.map(({label, image}) => ({
+    label,
+    image,
+    title: t(`${label}.title`),
+    description: t(`${label}.description`),
+    guests: t(`${label}.guests`),
+    bedrooms: t(`${label}.bedrooms`),
+    bathrooms: t(`${label}.bathrooms`)
+  }))
+
   return (
     <article>
       <Container asChild>
         <div className='grid gap-12 sm:grid-cols-2'>
-          {villaCards.map((card) => (
+          {villas.map((villa) => (
             <Card
-              key={card.label}
+              key={villa.label}
               className='p-0 space-y-0 overflow-hidden'
             >
               <Image
                 className='min-h-80 w-full object-cover'
-                src={card.image}
+                src={villa.image}
                 alt='Georgia indoor image within a card'
                 priority
               />
-              <CardHeader className='p-4 sm:p-6'>
-                <CardTitle>
-                  {card.label.replace(card.label[0], card.label[0].toUpperCase())}
-                </CardTitle>
-                <CardDescription className='h-6 flex justify-between gap-2 sm:justify-end sm:gap-4'>
+              <CardHeader className='p-4 space-y-4 sm:p-6 sm:space-y-2'>
+                <CardTitle>{villa.title}</CardTitle>
+                <CardDescription className='flex flex-col gap-0.5 sm:h-6 sm:flex-row sm:justify-end sm:gap-4'>
                   <VillaDetail>
                     <UsersIcon size={16} />
-                    <span>{`${card.guests} Guests`}</span>
+                    <span>{villa.guests}</span>
                   </VillaDetail>
-                  <Separator orientation='vertical' />
+                  <Separator
+                    className='hidden sm:block'
+                    orientation='vertical'
+                  />
                   <VillaDetail>
                     <BedDoubleIcon size={16} />
-                    <span>{`${card.bedrooms} Bedrooms`}</span>
+                    <span>{villa.bedrooms}</span>
                   </VillaDetail>
-                  <Separator orientation='vertical' />
+                  <Separator
+                    className='hidden sm:block'
+                    orientation='vertical'
+                  />
                   <VillaDetail>
                     <BathIcon size={16} />
-                    <span>{`${card.bathrooms} Bathrooms`}</span>
+                    <span>{villa.bathrooms}</span>
                   </VillaDetail>
                 </CardDescription>
               </CardHeader>
-              <CardContent className='px-4 text-justify sm:px-6'>
-                {
-                  'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate facere, asperiores aliquam quisquam iste eos doloribus amet nam. Aspernatur cupiditate eligendi esse quas adipisci odio!'
-                }
-              </CardContent>
+              <CardContent className='px-4 text-justify sm:px-6'>{villa.description}</CardContent>
               <CardFooter className='p-4 justify-end sm:p-6'>
                 <Button asChild>
-                  <Link href={`/accomodation/${card.label}`}>{'Show me more'}</Link>
+                  <Link href={`/accomodation/${villa.label}`}>{'Show me more'}</Link>
                 </Button>
               </CardFooter>
             </Card>
@@ -88,9 +101,10 @@ function Villas() {
 }
 
 function VillaDetail({children}: {children: React.ReactNode}) {
-  return <div className='flex items-center justify-start gap-1'>{children}</div>
+  return <div className='shrink-0 flex items-center justify-start gap-1'>{children}</div>
 }
 
 Villas.displayName = 'Villas'
+VillaDetail.displayNaem = 'VillaDetail'
 
 export {Villas}
