@@ -63,7 +63,7 @@ function CarouselProvider({
     <MotionConfig transition={{duration: 0.75, ease: [0.32, 0.72, 0, 1]}}>
       <FramerCarouselContext.Provider value={contextValue}>
         <div
-          className={cn('relative h-[100svh] bg-black', className)}
+          className={cn('relative h-svh bg-black', className)}
           {...props}
         >
           {children}

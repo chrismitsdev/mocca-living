@@ -7,7 +7,7 @@ import {Typography} from '@/components/ui/typography'
 
 export async function generateMetadata({params: {locale}}: Params) {
   const t = await getTranslations({locale, namespace: 'Metadata'})
- 
+
   return {
     title: `${t('Pages.privacy')} | Mocca Living`
   }
@@ -16,9 +16,9 @@ export async function generateMetadata({params: {locale}}: Params) {
 export default function IndexPage({params: {locale}}: Params) {
   unstable_setRequestLocale(locale)
   const t = useTranslations('Pages.Privacy')
-  
+
   return (
-    <Container className='space-y-12'>
+    <Container className='pt-56 space-y-12'>
       <Article>
         <Typography variant='h4'>{t('title')}</Typography>
         <Typography>{t('content')}</Typography>

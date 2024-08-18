@@ -15,7 +15,7 @@ const links: HeaderLink[] = [
 function Header() {
   const t = useTranslations('Metadata.Pages')
   const tLinks = links.map(({label, href}) => ({
-    label: t(label),
+    label: t(label === 'accomodation' ? 'accomodation.root' : label),
     href
   }))
 

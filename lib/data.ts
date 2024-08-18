@@ -1,6 +1,4 @@
-type Villa = {
-  name: string
-  guests: [number, number]
-  area: number
-  bedrooms: number
-}
+export const villaCards = [
+  {label: 'georgia', guests: 4, bedrooms: 2, bathrooms: 1},
+  {label: 'dimitra', guests: 5, bedrooms: 2, bathrooms: 2}
+]

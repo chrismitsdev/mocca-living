@@ -9,7 +9,7 @@ export async function generateMetadata({params: {locale}}: Params) {
   const t = await getTranslations({locale, namespace: 'Metadata'})
 
   return {
-    title: `${t('Pages.accomodation')} | Mocca Living`
+    title: `${t('Pages.accomodation.root')} | Mocca Living`
   }
 }
 

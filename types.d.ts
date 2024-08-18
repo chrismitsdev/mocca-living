@@ -1,6 +1,5 @@
 import enMessages from '#/messages/en.json'
 import {locales} from '#/lib/next-intl-config'
-import {ErrorResponse} from 'resend'
 
 type Messages = typeof enMessages
 
@@ -34,5 +33,14 @@ declare global {
 
   type CustomIconProps = React.SVGProps<SVGSVGElement> & {
     size?: number
+  }
+
+  type Villa = {
+    name: string
+    guests: number
+    area: number
+    bedrooms: number
+    bathrooms: number
+    features: string[]
   }
 }

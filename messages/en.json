@@ -2,7 +2,11 @@
   "Metadata": {
     "Pages": {
       "home": "Home",
-      "accomodation": "Accomodation",
+      "accomodation": {
+        "root": "Accomodation",
+        "dimitra": "Dimitra",
+        "georgia": "Georgia"
+      },
       "contact": "Contact",
       "privacy": "Privacy policy",
       "cookies": "Use of cookies",

@@ -9,8 +9,9 @@ export default function NotFound() {
 
   return (
     <Container asChild>
-      <article className='pt-52 h-full flex flex-col items-center justify-center gap-8'>
+      <article className='pt-56 grid place-content-center gap-8'>
         <TriangleAlertIcon
+          className='mx-auto'
           width={64}
           height={64}
         />

@@ -2,7 +2,11 @@
   "Metadata": {
     "Pages": {
       "home": "Αρχική",
-      "accomodation": "Διαμονή",
+      "accomodation": {
+        "root": "Διαμονή",
+        "dimitra": "Δήμητρα",
+        "georgia": "Γεωργία"
+      },
       "contact": "Επικοινωνία",
       "privacy": "Πολιτική απορρήτου",
       "cookies": "Χρήση cookies",
