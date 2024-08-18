@@ -1,10 +1,10 @@
 import {getTranslations} from 'next-intl/server'
 import {useTranslations} from 'next-intl'
 import {unstable_setRequestLocale} from 'next-intl/server'
-import {Mapbox} from '@/components/page/contact/mapbox'
-import {SocialLinkCards} from '@/components/page/contact/social-link-cards'
-import {ContactForm} from '@/components/page/contact/contact-form'
 import {Container} from '@/components/shared/container'
+import {ContactForm} from '@/components/page/contact/contact-form'
+import {SocialLinkCards} from '@/components/page/contact/social-link-cards'
+import {Mapbox} from '@/components/page/contact/mapbox'
 
 const MAPBOX_TOKEN = process.env.MAPBOX_TOKEN as string
 

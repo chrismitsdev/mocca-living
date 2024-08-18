@@ -1,33 +1,33 @@
 import {useTranslations} from 'next-intl'
 import {Link} from '@/navigation'
 import {Container} from '@/components/shared/container'
-import {buttonVariants} from '@/components/ui/button'
-import {ExclamationTriangleIcon, HomeIcon} from '@radix-ui/react-icons'
+import {Button} from '@/components/ui/button'
+import {HouseIcon, TriangleAlertIcon} from 'lucide-react'
 
 export default function NotFound() {
   const t = useTranslations('Pages.NotFound')
 
   return (
     <Container asChild>
-      <section>
-        <div className='my-8 flex flex-col items-center gap-4'>
-          <ExclamationTriangleIcon width={64} height={64} />
-          <div>
-            <h2 className='text-xl font-semibold text-center'>{t('title')}</h2>
-            <p className='text-center'>{t('subtitle')}</p>
-          </div>
-          <Link 
-            className={buttonVariants({
-              variant: 'primary', 
-              size: 'normal'
-            })} 
-            href='/'
-          >
-            <HomeIcon />
+      <article className='pt-52 h-full flex flex-col items-center justify-center gap-8'>
+        <TriangleAlertIcon
+          width={64}
+          height={64}
+        />
+        <div>
+          <h2 className='text-xl font-semibold text-center'>{t('title')}</h2>
+          <p className='text-center'>{t('subtitle')}</p>
+        </div>
+        <Button
+          variant='primary'
+          asChild
+        >
+          <Link href='/'>
+            <HouseIcon size={16} />
             <span>{t('linkToHome')}</span>
           </Link>
-        </div>
-      </section>
+        </Button>
+      </article>
     </Container>
   )
 }

@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import {getMobileOS} from '#/lib/utils'
-import {ChatBubbleIcon} from '@radix-ui/react-icons'
+import {MessageCircleMoreIcon} from 'lucide-react'
 import {useScrollPosition} from '@/hooks/useScrollPosition'
 import {cn} from '#/lib/utils'
 
@@ -36,10 +36,7 @@ function Messenger() {
       href='sms:+306973433980'
       aria-label='Open messaging app to send a text'
     >
-      <ChatBubbleIcon
-        width={24}
-        height={24}
-      />
+      <MessageCircleMoreIcon size={24} />
     </a>
   )
 }

@@ -5,16 +5,16 @@ import * as React from 'react'
 import {useForm, Controller} from 'react-hook-form'
 import {addDays, subDays, isSameDay} from 'date-fns'
 import {
-  AvatarIcon,
-  EnvelopeClosedIcon,
-  MobileIcon,
-  EnterIcon,
-  ExitIcon,
+  UserIcon,
+  AtSignIcon,
+  SmartphoneIcon,
+  LogInIcon,
+  LogOutIcon,
   HomeIcon,
-  ChatBubbleIcon,
-  PaperPlaneIcon,
-  ResetIcon
-} from '@radix-ui/react-icons'
+  MessageCircleIcon,
+  SendHorizonalIcon,
+  RotateCcwIcon
+} from 'lucide-react'
 import {
   Card,
   CardContent,
@@ -141,7 +141,7 @@ function ContactForm({
                 <Input
                   id='name'
                   placeholder={fieldTranslations.name.placeholder}
-                  icon={AvatarIcon}
+                  icon={UserIcon}
                   autoComplete='name'
                   {...register('name', {
                     required: {
@@ -167,7 +167,7 @@ function ContactForm({
                   id='email'
                   type='email'
                   placeholder={fieldTranslations.email.placeholder}
-                  icon={EnvelopeClosedIcon}
+                  icon={AtSignIcon}
                   autoComplete='email'
                   {...register('email', {
                     required: {
@@ -191,7 +191,7 @@ function ContactForm({
                 <Input
                   id='phone'
                   placeholder={fieldTranslations.phone.placeholder}
-                  icon={MobileIcon}
+                  icon={SmartphoneIcon}
                   autoComplete='mobile tel'
                   {...register('phone', {
                     required: {
@@ -228,7 +228,7 @@ function ContactForm({
                           : subDays(watchCheckOut, 1)
                       }}
                       disabled={formState.isSubmitting}
-                      icon={EnterIcon}
+                      icon={LogInIcon}
                     />
                   )}
                   rules={{
@@ -256,7 +256,7 @@ function ContactForm({
                         before: !watchCheckIn ? addDays(new Date(), 1) : addDays(watchCheckIn, 1)
                       }}
                       disabled={formState.isSubmitting}
-                      icon={ExitIcon}
+                      icon={LogOutIcon}
                     />
                   )}
                   rules={{
@@ -285,10 +285,7 @@ function ContactForm({
                         className='w-full'
                       >
                         <span className='flex items-center gap-2'>
-                          <HomeIcon
-                            width={16}
-                            height={16}
-                          />
+                          <HomeIcon size={16} />
                           <span
                             className={!value ? 'text-sm font-normal text-foreground-muted' : ''}
                           >
@@ -320,7 +317,7 @@ function ContactForm({
                 <Textarea
                   id='message'
                   placeholder={fieldTranslations.message.placeholder}
-                  icon={ChatBubbleIcon}
+                  icon={MessageCircleIcon}
                   disabled={formState.isSubmitting}
                   {...register('message')}
                 />
@@ -379,10 +376,7 @@ function ContactForm({
             onClick={explicitReset}
             disabled={formState.isSubmitting}
           >
-            <ResetIcon
-              width={16}
-              height={16}
-            />
+            <RotateCcwIcon size={16} />
             <span>{resetBtnLabel}</span>
           </Button>
           <Button
@@ -393,10 +387,7 @@ function ContactForm({
             isLoading={formState.isSubmitting}
           >
             <span>{submitBtnLabel}</span>
-            <PaperPlaneIcon
-              width={16}
-              height={16}
-            />
+            <SendHorizonalIcon size={16} />
           </Button>
         </CardFooter>
       </Card>

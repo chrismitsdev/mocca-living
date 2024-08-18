@@ -22,7 +22,8 @@ const config: Config = {
       right: 'side="right"',
       bottom: 'side="bottom"',
       left: 'side="left"',
-      active: 'active',
+      active: 'state="active"',
+      inactive: 'state="inactive"',
       highlighted: 'highlighted',
       placeholder: 'placeholder',
       disabled: 'disabled',
@@ -187,6 +188,16 @@ const config: Config = {
         }
       },
       keyframes: {
+        'page-transition': {
+          from: {
+            opacity: '0.25',
+            transform: 'translateY(-16px)'
+          },
+          to: {
+            opacity: '1',
+            transform: 'translateY(0)'
+          }
+        },
         'dialog-open': {
           from: {
             opacity: '0',
@@ -209,8 +220,12 @@ const config: Config = {
         }
       },
       animation: {
+        'page-transition': 'page-transition 1500ms cubic-bezier(0.32,0.72,0,1)',
         'dialog-open': 'dialog-open 750ms cubic-bezier(0.32,0.72,0,1)',
         'dialog-closed': 'dialog-closed 375ms cubic-bezier(0.32,0.72,0,1)'
+      },
+      transitionDuration: {
+        '750': '750ms'
       },
       transitionTimingFunction: {
         mocca: 'cubic-bezier(0.32,0.72,0,1)'

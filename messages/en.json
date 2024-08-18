@@ -46,7 +46,12 @@
         }
       }
     },
-    "Accomodation": {},
+    "Accomodation": {
+      "Introdution": {
+        "title": "Our Exclusive Villas",
+        "message": "Experience ultimate luxury at Mocca Living, where our exclusive villas perfectly blend modern comfort with timeless elegance. Each villa is carefully designed to offer an unforgettable stay, whether you're here for a family vacation, a getaway with friends, or a romantic retreat. Indulge in luxury and discover the perfect balance between relaxation and refined aesthetics in a space that promises to make every moment unique."
+      }
+    },
     "Contact": {
       "Map": {
         "title": "Mocca Living",

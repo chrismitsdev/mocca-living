@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import {Root, Indicator} from '@radix-ui/react-checkbox'
-import {CheckIcon} from '@radix-ui/react-icons'
+import {CheckIcon} from 'lucide-react'
 import {cn} from '#/lib/utils'
 
 const Checkbox = React.forwardRef<
@@ -18,7 +18,7 @@ const Checkbox = React.forwardRef<
     {...props}
   >
     <Indicator className='absolute inset-0'>
-      <CheckIcon width={18} height={18} />
+      <CheckIcon size={18} />
     </Indicator>
   </Root>
 ))

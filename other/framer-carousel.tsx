@@ -3,7 +3,7 @@
 import * as React from 'react'
 import Image from 'next/image'
 import {motion, AnimatePresence, MotionConfig} from 'framer-motion'
-import {ChevronLeftIcon, ChevronRightIcon} from '@radix-ui/react-icons'
+import {ChevronLeftIcon, ChevronRightIcon} from 'lucide-react'
 import {cn} from '#/lib/utils'
 import {Button} from '@/components/ui/button'
 import * as indoorImages from '#/public/images/indoor'
@@ -58,10 +58,7 @@ function FramerCarousel() {
                     animate={{opacity: 1}}
                     exit={{opacity: 0, pointerEvents: 'none'}}
                   >
-                    <ChevronLeftIcon
-                      width={24}
-                      height={24}
-                    />
+                    <ChevronLeftIcon size={24} />
                   </motion.button>
                 </Button>
               )}
@@ -80,10 +77,7 @@ function FramerCarousel() {
                     animate={{opacity: 1}}
                     exit={{opacity: 0, pointerEvents: 'none'}}
                   >
-                    <ChevronRightIcon
-                      width={24}
-                      height={24}
-                    />
+                    <ChevronRightIcon size={24} />
                   </motion.button>
                 </Button>
               )}

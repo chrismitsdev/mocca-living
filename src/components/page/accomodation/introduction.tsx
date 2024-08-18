@@ -1,46 +1,24 @@
-import {Link} from '@/navigation'
-import Image from 'next/image'
 import {Container} from '@/components/shared/container'
 import {Typography} from '@/components/ui/typography'
-import {Button} from '@/components/ui/button'
-import indoorImage from '#/public/images/indoor/1.webp'
 
-function Introduction() {
+type IntroductionProps = {
+  translations: {
+    title: IntlMessages['Pages']['Accomodation']['Introdution']['title']
+    message: IntlMessages['Pages']['Accomodation']['Introdution']['message']
+  }
+}
+
+function Introduction({translations: {title, message}}: IntroductionProps) {
   return (
-    <>
-      <div className='relative h-[100svh]'>
-        <Image
-          className='w-full h-full object-cover'
-          src={indoorImage}
-          alt='Hero image'
-          draggable={false}
-          priority
-        />
-        <Button
-          className='absolute bottom-10 left-1/2 -translate-x-1/2'
-          variant='primary'
-          size='large'
-          asChild
-        >
-          <Link href='/contact'>
-            <span>{'Book now'}</span>
-          </Link>
-        </Button>
-      </div>
-      <Container
-        className='space-y-6'
-        asChild
-      >
-        <article>
-          <Typography variant='h3'>{'Our Exclusive Villas'}</Typography>
-          <Typography className='leading-8'>
-            {
-              'Experience unparalleled luxury at Mocca Living, where our exclusive villas offer a perfect blend of modern comfort and timeless elegance. Each villa is designed to provide an unforgettable stay, whether you’re here for a family vacation, a getaway with friends, or a romantic retreat.'
-            }
-          </Typography>
-        </article>
-      </Container>
-    </>
+    <Container
+      className='space-y-6'
+      asChild
+    >
+      <article>
+        <Typography variant='h3'>{title}</Typography>
+        <Typography className='leading-8'>{message}</Typography>
+      </article>
+    </Container>
   )
 }
 

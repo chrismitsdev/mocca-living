@@ -10,8 +10,8 @@ import {
   isImageSlide,
   Lightbox as YetAnotherReactLightbox
 } from 'yet-another-react-lightbox'
+import {ArrowLeftIcon, ArrowRightIcon, XIcon, ExpandIcon} from 'lucide-react'
 import {Button} from '@/components/ui/button'
-import {ArrowLeftIcon, ArrowRightIcon, Cross1Icon, EnterFullScreenIcon} from '@radix-ui/react-icons'
 import {LightboxContext, useLightboxContext} from '@/context/lightbox-context'
 import {cn, shimmer, toBase64} from '#/lib/utils'
 
@@ -100,10 +100,9 @@ function LightboxImage({
       />
       {withOverlay && (
         <span className='hidden absolute inset-0 group-hover:flex items-center justify-center'>
-          <EnterFullScreenIcon
+          <ExpandIcon
             className='text-primary-foreground'
-            width={32}
-            height={32}
+            size={32}
           />
         </span>
       )}
@@ -150,10 +149,7 @@ function Lightbox({controller, ...props}: React.ComponentProps<typeof YetAnother
             className='absolute left-3'
             onClick={() => ref.current?.prev()}
           >
-            <ArrowLeftIcon
-              width={24}
-              height={24}
-            />
+            <ArrowLeftIcon size={24} />
           </LightboxButton>
         ),
         buttonNext: () => (
@@ -161,10 +157,7 @@ function Lightbox({controller, ...props}: React.ComponentProps<typeof YetAnother
             className='absolute right-3'
             onClick={() => ref.current?.next()}
           >
-            <ArrowRightIcon
-              width={24}
-              height={24}
-            />
+            <ArrowRightIcon size={24} />
           </LightboxButton>
         ),
         buttonClose: () => (
@@ -173,10 +166,7 @@ function Lightbox({controller, ...props}: React.ComponentProps<typeof YetAnother
             variant='error'
             onClick={() => ref.current?.close()}
           >
-            <Cross1Icon
-              width={24}
-              height={24}
-            />
+            <XIcon size={24} />
           </LightboxButton>
         )
       }}

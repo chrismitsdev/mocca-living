@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import {GlobeIcon} from '@radix-ui/react-icons'
+import {GlobeIcon} from 'lucide-react'
 import {useRouter, usePathname} from '@/navigation'
 import {
   Select,
@@ -20,40 +20,45 @@ type LocaleSelectProps = React.ComponentPropsWithoutRef<typeof Select> & {
   placeholder: string
 }
 
-function LocaleSelect({loadingText, className, placeholder, children,...props}: LocaleSelectProps) {
+function LocaleSelect({
+  loadingText,
+  className,
+  placeholder,
+  children,
+  ...props
+}: LocaleSelectProps) {
   const router = useRouter()
   const pathname = usePathname()
   const [isPending, startTransition] = React.useTransition()
 
   function onSelectChange(locale: keyof IntlMessages['Components']['LocaleSelect']['values']) {
-    startTransition(function() {
+    startTransition(function () {
       router.replace(pathname, {locale})
     })
   }
-  
+
   return (
-    <Select disabled={isPending} onValueChange={onSelectChange} {...props}>
+    <Select
+      disabled={isPending}
+      onValueChange={onSelectChange}
+      {...props}
+    >
       <SelectTrigger className={className}>
-        {isPending
-          ? (
-            <span className='flex items-center gap-2'>
-              <Spinner className='h-4 w-4' />
-              <span>{loadingText}</span>
-            </span>
-          )
-          : (
-            <span className='flex items-center gap-2'>
-              <GlobeIcon width={16} height={16} />
-              <SelectValue placeholder={placeholder} />
-            </span>
-          )
-        }
+        {isPending ? (
+          <span className='flex items-center gap-2'>
+            <Spinner className='h-4 w-4' />
+            <span>{loadingText}</span>
+          </span>
+        ) : (
+          <span className='flex items-center gap-2'>
+            <GlobeIcon size={16} />
+            <SelectValue placeholder={placeholder} />
+          </span>
+        )}
       </SelectTrigger>
       <SelectPortal>
         <SelectContent>
-          <SelectViewport>
-            {children}
-          </SelectViewport>
+          <SelectViewport>{children}</SelectViewport>
         </SelectContent>
       </SelectPortal>
     </Select>

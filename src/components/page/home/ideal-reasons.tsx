@@ -1,6 +1,5 @@
 import Image from 'next/image'
-import {DotFilledIcon} from '@radix-ui/react-icons'
-import {AspectRatio} from '@/components/ui/aspect-ratio'
+import {CornerDownRightIcon} from 'lucide-react'
 import {Typography} from '@/components/ui/typography'
 import {Container} from '@/components/shared/container'
 import * as outdoorImages from '#/public/images/outdoor'
@@ -16,32 +15,26 @@ function IdealReasons({title, reasons}: IdealReasonsProps) {
       <Container>
         <div className='grid gap-16 sm:grid-cols-2'>
           <div className='sm:hidden'>
-            <AspectRatio>
+            <Image
+              className='h-full object-cover rounded shadow'
+              src={outdoorImages.OutdoorImage5}
+              alt='Hello'
+            />
+          </div>
+          <div className='hidden grid-cols-2 grid-rows-2 gap-2 sm:grid'>
+            <div className='col-start-2'>
               <Image
                 className='h-full object-cover rounded shadow'
                 src={outdoorImages.OutdoorImage5}
                 alt='Hello'
               />
-            </AspectRatio>
-          </div>
-          <div className='hidden grid-cols-2 grid-rows-2 gap-2 sm:grid'>
-            <div className='col-start-2'>
-              <AspectRatio>
-                <Image
-                  className='h-full object-cover rounded shadow'
-                  src={outdoorImages.OutdoorImage5}
-                  alt='Hello'
-                />
-              </AspectRatio>
             </div>
             <div className='row-start-2'>
-              <AspectRatio>
-                <Image
-                  className='h-full object-cover rounded shadow'
-                  src={outdoorImages.OutdoorImage11}
-                  alt='Hello'
-                />
-              </AspectRatio>
+              <Image
+                className='h-full object-cover rounded shadow'
+                src={outdoorImages.OutdoorImage11}
+                alt='Hello'
+              />
             </div>
           </div>
           <div>
@@ -83,10 +76,9 @@ function IdealReasons({title, reasons}: IdealReasonsProps) {
 function Reason({title, description}: {title: string; description: string}) {
   return (
     <div className='flex gap-2'>
-      <DotFilledIcon
+      <CornerDownRightIcon
         className='shrink-0'
-        width={24}
-        height={24}
+        size={24}
       />
       <div className='space-y-2'>
         <Typography variant='large'>{title}</Typography>

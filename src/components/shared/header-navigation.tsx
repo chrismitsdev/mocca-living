@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import {motion, useTransform, useMotionTemplate} from 'framer-motion'
-import {HamburgerMenuIcon, Cross2Icon} from '@radix-ui/react-icons'
+import {MenuIcon, XIcon} from 'lucide-react'
 import {useBoundedScroll} from '@/hooks/useBoundedScroll'
 import {usePathname, Link} from '@/navigation'
 import {Typography} from '@/components/ui/typography'
@@ -80,11 +80,6 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
           ${useTransform(scrollYBoundedProgress, [0, 1], [0, 190])} /
           ${useTransform(scrollYBoundedProgress, [0, 1], [0.24, 1])}
         )`,
-        color: useMotionTemplate`rgb(
-          ${useTransform(scrollYBoundedProgress, [0, 1], [231, 148])}
-          ${useTransform(scrollYBoundedProgress, [0, 1], [217, 79])}
-          ${useTransform(scrollYBoundedProgress, [0, 1], [190, 33])}
-        )`,
         boxShadow: useMotionTemplate`
           0px
           ${useTransform(scrollYBoundedProgress, [0, 1], [0, 4])}px
@@ -98,7 +93,12 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
       <Container className='px-4 h-[inherit] flex justify-between items-center gap-2 md:px-3'>
         <motion.div
           style={{
-            scale: useTransform(scrollYBoundedProgress, [0, 1], [LOGO_MAX_SCALE, LOGO_MIN_SCALE])
+            scale: useTransform(scrollYBoundedProgress, [0, 1], [LOGO_MAX_SCALE, LOGO_MIN_SCALE]),
+            color: useMotionTemplate`rgb(
+              ${useTransform(scrollYBoundedProgress, [0, 1], [231, 148])}
+              ${useTransform(scrollYBoundedProgress, [0, 1], [217, 79])}
+              ${useTransform(scrollYBoundedProgress, [0, 1], [190, 33])}
+            )`
           }}
         >
           <Link href='/'>
@@ -109,7 +109,16 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
           </Link>
         </motion.div>
 
-        <nav className='hidden sm:block'>
+        <motion.nav
+          className='hidden sm:block'
+          style={{
+            color: useMotionTemplate`rgb(
+              ${useTransform(scrollYBoundedProgress, [0, 1], [231, 69])}
+              ${useTransform(scrollYBoundedProgress, [0, 1], [217, 50])}
+              ${useTransform(scrollYBoundedProgress, [0, 1], [190, 39])}
+            )`
+          }}
+        >
           <ul
             className='flex items-center gap-4'
             role='menubar'
@@ -131,7 +140,7 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
               </li>
             ))}
           </ul>
-        </nav>
+        </motion.nav>
 
         <Sheet
           open={drawerOpen}
@@ -142,13 +151,15 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
               className='sm:hidden'
               style={{
                 padding: '8px',
+                color: useMotionTemplate`rgb(
+                  ${useTransform(scrollYBoundedProgress, [0, 1], [231, 69])}
+                  ${useTransform(scrollYBoundedProgress, [0, 1], [217, 50])}
+                  ${useTransform(scrollYBoundedProgress, [0, 1], [190, 39])}
+                )`,
                 translateY: useTransform(scrollYBoundedProgress, [0, 1], [-20, 0])
               }}
             >
-              <HamburgerMenuIcon
-                width={24}
-                height={24}
-              />
+              <MenuIcon size={24} />
             </motion.button>
           </SheetTrigger>
           <SheetPortal>
@@ -169,10 +180,7 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
                     top: useTransform(scrollYBoundedProgress, [0, 1], [24, 12])
                   }}
                 >
-                  <Cross2Icon
-                    width={24}
-                    height={24}
-                  />
+                  <XIcon size={24} />
                 </motion.button>
               </SheetClose>
             </SheetContent>
@@ -192,7 +200,7 @@ function HeaderLink({
 }) {
   return (
     <Link
-      className={cn('py-1 text-center', isActive && 'font-bold')}
+      className={cn('py-2 inline-block text-center', isActive && 'font-bold')}
       {...props}
     >
       <Typography

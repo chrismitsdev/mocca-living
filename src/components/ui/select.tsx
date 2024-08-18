@@ -2,21 +2,21 @@
 
 import * as React from 'react'
 import {
-  Root, 
+  Root,
   Portal,
   Viewport,
-  Group, 
-  Value, 
-  Trigger, 
-  Content, 
+  Group,
+  Value,
+  Trigger,
+  Content,
   Label,
-  Item, 
-  ItemIndicator, 
-  ItemText, 
+  Item,
+  ItemIndicator,
+  ItemText,
   Separator,
   Icon
 } from '@radix-ui/react-select'
-import {CheckIcon, ChevronDownIcon} from '@radix-ui/react-icons'
+import {CheckIcon, ChevronDownIcon} from 'lucide-react'
 import {cn} from '#/lib/utils'
 
 const Select = Root
@@ -38,8 +38,11 @@ const SelectTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <Icon asChild className='shrink-0 transition'>
-      <ChevronDownIcon width={16} height={16} />
+    <Icon
+      asChild
+      className='shrink-0 transition'
+    >
+      <ChevronDownIcon size={16} />
     </Icon>
   </Trigger>
 ))
@@ -67,10 +70,7 @@ const SelectLabel = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof Label>
 >(({className, ...props}, ref) => (
   <Label
-    className={cn(
-      'py-1.5 pl-8 pr-2 text-sm font-semibold', 
-      className
-    )}
+    className={cn('py-1.5 pl-8 pr-2 text-sm font-semibold', className)}
     ref={ref}
     {...props}
   />
@@ -90,7 +90,7 @@ const SelectItem = React.forwardRef<
   >
     <div className='absolute left-2'>
       <ItemIndicator asChild>
-        <CheckIcon width={16} height={16} />
+        <CheckIcon size={16} />
       </ItemIndicator>
     </div>
 
@@ -103,10 +103,7 @@ const SelectSeparator = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof Separator>
 >(({className, ...props}, ref) => (
   <Separator
-    className={cn(
-      'my-1 h-px bg-border',
-      className
-    )}
+    className={cn('my-1 h-px bg-border', className)}
     ref={ref}
     {...props}
   />

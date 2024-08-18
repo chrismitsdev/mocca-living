@@ -1,13 +1,12 @@
 'use client'
 
-import * as React from 'react'
-import Image from 'next/image'
-import Map, {Marker, Popup} from 'react-map-gl'
-import {DrawingPinFilledIcon, CrossCircledIcon} from '@radix-ui/react-icons'
-import {Typography} from '@/components/ui/typography'
-import logoBox from '#/public/logos/mocca-logo-box.svg'
-import {useMediaQuery} from '@/hooks/useMediaQuery'
 import 'mapbox-gl/dist/mapbox-gl.css'
+import * as React from 'react'
+import Map, {Marker, Popup} from 'react-map-gl'
+import {MapPinIcon, XIcon} from 'lucide-react'
+import {useMediaQuery} from '@/hooks/useMediaQuery'
+import {Typography} from '@/components/ui/typography'
+import {LogoSimple} from '@/components/logos/logo-simple'
 
 type MapboxProps = {
   token: string
@@ -30,9 +29,9 @@ function Mapbox({token, translations}: MapboxProps) {
     <article className='py-12'>
       <Map
         style={{
-          width: '100%', 
-          minHeight: 450, 
-          borderRadius: 'var(--radius)', 
+          width: '100%',
+          minHeight: 450,
+          borderRadius: 'var(--radius)',
           boxShadow: 'var(--box-shadow-sm)'
         }}
         mapboxAccessToken={token}
@@ -49,43 +48,58 @@ function Mapbox({token, translations}: MapboxProps) {
         dragPan={matches}
         reuseMaps
       >
-        <Marker 
+        <Marker
           className='cursor-pointer'
-          latitude={coords.lat} 
+          latitude={coords.lat}
           longitude={coords.lon}
-          onClick={() => setShowPopup(prevState => !prevState)}
+          onClick={() => setShowPopup((prevState) => !prevState)}
         >
-          <DrawingPinFilledIcon width={32} height={32} />
+          <MapPinIcon
+            className='fill-surface-1 text-primary'
+            size={32}
+          />
         </Marker>
         {showPopup && (
-          <Popup 
-            latitude={coords.lat} 
-            longitude={coords.lon} 
-            offset={15}
+          <Popup
+            className='min-w-52 drop-shadow-md'
+            latitude={coords.lat}
+            longitude={coords.lon}
+            offset={20}
             closeOnClick={false}
             anchor='bottom'
             closeButton={false}
             focusAfterOpen={false}
             onClose={() => setShowPopup(false)}
           >
-            <div 
-              className='absolute top-1 right-1 cursor-pointer hover:text-red-9'
+            <div
+              className='absolute top-2 right-2 cursor-pointer hover:text-red-9'
               onClick={() => setShowPopup(false)}
             >
-              <CrossCircledIcon width={16} height={16} />
+              <XIcon size={16} />
             </div>
-            <div className='flex gap-3'>
-              <Image height={64} src={logoBox} alt='logo' />
+            <div className='inline-flex items-center gap-4'>
+              <LogoSimple
+                className='text-primary'
+                width={25.5}
+                height={40}
+              />
               <div className='mr-4'>
-                <Typography className='mb-1 font-semibold' variant='small'>
+                <Typography
+                  className='mb-1 font-semibold'
+                  variant='small'
+                >
                   {translations.title}
                 </Typography>
-                <Typography variant='small' className='underline' asChild>
-                  <a 
+                <Typography
+                  variant='small'
+                  className='underline'
+                  asChild
+                >
+                  <a
                     href='https://www.google.com/maps?saddr=My+Location&daddr=40.849038,25.723552'
                     target='_blank'
                   >
-                  {translations.directions}
+                    {translations.directions}
                   </a>
                 </Typography>
               </div>

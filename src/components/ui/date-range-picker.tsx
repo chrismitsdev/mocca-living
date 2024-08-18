@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import {CalendarIcon} from '@radix-ui/react-icons'
+import {CalendarIcon} from 'lucide-react'
 import {type DateRange} from 'react-day-picker'
 import {Button} from '@/components/ui/button'
 import {Calendar} from '@/components/ui/calendar'
@@ -21,23 +21,24 @@ function DateRangePicker({locale}: {locale: Params['params']['locale']}) {
           className='px-3 w-full bg-surface-1 justify-start data-open:border-border-hover'
           variant='bordered'
         >
-          <CalendarIcon className='shrink-0' width={16} height={16} />
-          {date?.from 
-            ? (
-              <span>
-                {date.to 
-                  ? `${formatDate(date.from, locale, 'PP')} - ${formatDate(date.to, locale, 'PP')}`
-                  : formatDate(date.from, locale, 'PP')
-                }
-              </span>
-            ) 
-            : <span>{'Pick a date'}</span>
-          }
+          <CalendarIcon
+            className='shrink-0'
+            size={16}
+          />
+          {date?.from ? (
+            <span>
+              {date.to
+                ? `${formatDate(date.from, locale, 'PP')} - ${formatDate(date.to, locale, 'PP')}`
+                : formatDate(date.from, locale, 'PP')}
+            </span>
+          ) : (
+            <span>{'Pick a date'}</span>
+          )}
         </Button>
       </PopoverTrigger>
       <PopoverPortal>
-        <PopoverContent 
-          className='w-[var(--radix-popover-trigger-width)] sm:w-auto' 
+        <PopoverContent
+          className='w-[var(--radix-popover-trigger-width)] sm:w-auto'
           align='start'
         >
           <Calendar

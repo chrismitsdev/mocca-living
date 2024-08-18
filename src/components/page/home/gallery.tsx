@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import Image, {StaticImageData} from 'next/image'
-import {Cross1Icon, EnterFullScreenIcon} from '@radix-ui/react-icons'
+import {XIcon, ExpandIcon} from 'lucide-react'
 import {Container} from '@/components/shared/container'
 import {Typography} from '@/components/ui/typography'
 import {Button} from '@/components/ui/button'
@@ -98,7 +98,10 @@ function Gallery() {
           </div>
           <DialogPortal>
             <DialogOverlay />
-            <DialogContent className='p-0 max-w-full h-full bg-[unset] shadow-none'>
+            <DialogContent
+              className='p-0 max-w-full h-full bg-[unset] shadow-none'
+              onCloseAutoFocus={(e) => e.preventDefault()}
+            >
               <VisuallyHidden>
                 <DialogTitle>{'Gallery carousel'}</DialogTitle>
               </VisuallyHidden>
@@ -144,13 +147,10 @@ function Gallery() {
               <DialogClose asChild>
                 <Button
                   className='absolute top-2 right-2'
-                  variant='error'
+                  variant='primary-alt'
                   size='icon-small'
                 >
-                  <Cross1Icon
-                    width={24}
-                    height={24}
-                  />
+                  <XIcon size={24} />
                 </Button>
               </DialogClose>
             </DialogContent>
@@ -186,10 +186,7 @@ function GalleryItem({
         alt={alt}
       />
       <div className='hidden absolute inset-0 group-hover:flex items-center justify-center text-primary-foreground'>
-        <EnterFullScreenIcon
-          width={32}
-          height={32}
-        />
+        <ExpandIcon size={32} />
       </div>
     </DialogTrigger>
   )
