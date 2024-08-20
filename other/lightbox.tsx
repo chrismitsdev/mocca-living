@@ -12,7 +12,7 @@ import {
 } from 'yet-another-react-lightbox'
 import {ArrowLeftIcon, ArrowRightIcon, XIcon, ExpandIcon} from 'lucide-react'
 import {Button} from '@/components/ui/button'
-import {LightboxContext, useLightboxContext} from '@/context/lightbox-context'
+import {LightboxContext, useLightboxContext} from './lightbox-context'
 import {cn, shimmer, toBase64} from '#/lib/utils'
 
 function LightboxProvider({
