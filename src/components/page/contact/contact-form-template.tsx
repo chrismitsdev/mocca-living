@@ -65,7 +65,7 @@ function ContactFormTemplate({formData}: ContactFormTemplateProps) {
                   <Text className='my-0 mt-1'>Τηλέφωνο:</Text>
                   <Text className='my-0 mt-1'>Check-in:</Text>
                   <Text className='my-0 mt-1'>Check-out:</Text>
-                  <Text className='my-0 mt-1'>Σουίτα:</Text>
+                  <Text className='my-0 mt-1'>Βίλα:</Text>
                   <Text className='my-0 mt-1'>Μήνυμα:</Text>
                 </Column>
                 <Column>
