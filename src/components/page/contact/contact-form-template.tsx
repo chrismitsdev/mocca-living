@@ -1,15 +1,18 @@
+/* eslint-disable react/jsx-no-literals */
+
 import {
-  Html, 
-  Head, 
-  Font, 
+  Html,
+  Head,
+  Font,
   Tailwind,
-  Body, 
-  Container, 
+  Body,
+  Container,
+  Img,
   Hr,
-  Section, 
+  Section,
   Row,
   Column,
-  Heading, 
+  Heading,
   Text
 } from '@react-email/components'
 import {formatDate} from '#/lib/utils'
@@ -20,14 +23,13 @@ type ContactFormTemplateProps = {
 }
 
 function ContactFormTemplate({formData}: ContactFormTemplateProps) {
-  /* eslint-disable react/jsx-no-literals */
   return (
     <Html>
       <Head>
         <Font
           webFont={{
             url: 'https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Commissioner:wght@100..900&display=swap',
-            format: 'woff2',
+            format: 'woff2'
           }}
           fontFamily='Commissioner'
           fallbackFontFamily='Verdana'
@@ -39,8 +41,19 @@ function ContactFormTemplate({formData}: ContactFormTemplateProps) {
         <Body className='py-6 bg-[#ddc8a2] text-[#453227]'>
           <Container className='max-w-[576px]'>
             <Section className='p-4'>
+              <Row className='mb-6'>
+                <Img
+                  src='https://4y4jwmfhzutn57mw.myfritz.net:47971/nas/filelink.lua?id=ff38a08ccd9e4aa9'
+                  alt='Mocca Living logo'
+                  width={100}
+                  height={100}
+                />
+              </Row>
               <Row>
-                <Heading className='my-0 text-[16px]' as='h4'>
+                <Heading
+                  className='my-0 text-[16px]'
+                  as='h4'
+                >
                   Mocca Living - Φόρμα επικοινωνίας
                 </Heading>
               </Row>
@@ -61,7 +74,7 @@ function ContactFormTemplate({formData}: ContactFormTemplateProps) {
                   <Text className='my-0 mt-1 font-[700]'>{formData.phone}</Text>
                   <Text className='my-0 mt-1 font-[700]'>{formatDate(formData.checkIn, 'gr')}</Text>
                   <Text className='my-0 mt-1 font-[700]'>{formatDate(formData.checkOut, 'gr')}</Text>
-                  <Text className='my-0 mt-1 font-[700]'>{formData.suite}</Text>
+                  <Text className='my-0 mt-1 font-[700]'>{formData.villa}</Text>
                   <Text className='my-0 mt-1 font-[700]'>{formData.message || 'Κανένα μήνυμα'}</Text>
                 </Column>
               </Row>

@@ -83,7 +83,7 @@ function ContactForm({
         phone: '',
         checkIn: undefined,
         checkOut: undefined,
-        suite: '',
+        villa: '',
         message: '',
         consentData: false
       })
@@ -268,11 +268,11 @@ function ContactForm({
                 />
               </FormControl>
 
-              <FormControl error={formState.errors.suite?.message}>
-                <Label htmlFor='suite'>{fieldTranslations.suite.label}</Label>
+              <FormControl error={formState.errors.villa?.message}>
+                <Label htmlFor='villa'>{fieldTranslations.villa.label}</Label>
                 <Controller
                   control={control}
-                  name='suite'
+                  name='villa'
                   render={({field: {name, value = '', onChange}}) => (
                     <Select
                       name={name}
@@ -281,7 +281,7 @@ function ContactForm({
                       disabled={formState.isSubmitting}
                     >
                       <SelectTrigger
-                        id='suite'
+                        id='villa'
                         className='w-full'
                       >
                         <span className='flex items-center gap-2'>
@@ -289,7 +289,7 @@ function ContactForm({
                           <span
                             className={!value ? 'text-sm font-normal text-foreground-muted' : ''}
                           >
-                            <SelectValue placeholder={fieldTranslations.suite.placeholder} />
+                            <SelectValue placeholder={fieldTranslations.villa.placeholder} />
                           </span>
                         </span>
                       </SelectTrigger>
@@ -306,7 +306,7 @@ function ContactForm({
                   rules={{
                     required: {
                       value: true,
-                      message: fieldTranslations.suite.validation.required
+                      message: fieldTranslations.villa.validation.required
                     }
                   }}
                 />

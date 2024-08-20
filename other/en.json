@@ -51,12 +51,12 @@
       }
     },
     "Accomodation": {
-      "Index": {
-        "Introdution": {
+      "root": {
+        "introduction": {
           "title": "Our Exclusive Villas",
           "message": "Experience ultimate luxury at Mocca Living, where our exclusive villas perfectly blend modern comfort with timeless elegance. Each villa is carefully designed to offer an unforgettable stay, whether you're here for a family vacation, a getaway with friends, or a romantic retreat. Indulge in luxury and discover the perfect balance between relaxation and refined aesthetics in a space that promises to make every moment unique."
         },
-        "Villas": {
+        "villas": {
           "georgia": {
             "title": "Georgia",
             "description": "Step into Villa Georgia, a charming 45m² haven for 4 adults and 1 child. Featuring 2 bedrooms and a modern bathroom, it's the perfect cozy escape near the sea.",
@@ -75,46 +75,82 @@
           }
         }
       },
-      "Slug": {
-        "georgia": {
-          "name": "Georgia",
-          "guests": "4 Guests",
-          "child": "1 Child",
-          "bedrooms": "2 Bedrooms",
-          "bathrooms": "1 Bathroom",
-          "area": "45m² Area",
-          "layout": "One main entrance, Big living room area, Fully provisioned smart-equipped kitchen, Dining room area, Two master bedrooms with double-sized beds (COCOMAT mattress and bed cover), One shared bathroom, Direct access to big private outdoor area",
-          "amenities": {
-            "indoor": "Free Wi-Fi, One 55\" Smart TV, One ceiling fan, Air fryer, Mini bar, Fridge, Clothes washer, Clothes iron & ironing board, Nespresso machine, Sound system (Marshall Acton III), Safe box",
-            "outdoor": "Private area with pergola, Sitting area, Mini pool with hydromassage & color-therapy, Private garden with tropical plants and flowers, Shower area"
-          },
-          "complementary": "Welcome assistance procedure, Check-in/out assistance",
-          "request": "Two SUP boards for rental"
+      "georgia": {
+        "name": "Georgia",
+        "guests": "4 Guests",
+        "child": "1 Child",
+        "bedrooms": "2 Bedrooms",
+        "bathrooms": "1 Bathroom",
+        "layout": [
+          "One main entrance",
+          "Big living room area",
+          "Fully provisioned smart-equipped kitchen",
+          "Dining room area",
+          "Two master bedroom with double-sized beds (COCOMAT mattress and bed cover)",
+          "One shared bathroom",
+          "Direct access to big private outdoor area"
+        ],
+        "comforts": {
+          "indoors": [
+            "Free Wi-Fi",
+            "One 55\" Smart TV",
+            "One ceiling fan",
+            "Air fryer",
+            "Mini bar",
+            "Fridge",
+            "Clothes washer",
+            "Clothes iron & ironing board",
+            "Nespresso machine",
+            "Sound system (Marshall Acton III)",
+            "Safe box"
+          ],
+          "outdoors": [
+            "Private area with pergola, sitting area, mini pool with hydromassage & color-therapy",
+            "Private garden with tropical plants and flowers",
+            "Shower area"
+          ]
         },
-        "dimitra": {
-          "name": "Dimitra",
-          "guests": "5 Guests",
-          "child": "1 Child",
-          "bedrooms": "2 Bedrooms",
-          "bathrooms": "2 Bathrooms",
-          "area": "80m² Area",
-          "layout": "One main entrance, Big living room area, Fully provisioned smart-equipped kitchen, Dining room area, One master bedroom with king-sized bed (COCOMAT mattress and bed cover) and en-suite bathroom, One master bedroom with queen-sized bed (COCOMAT mattress and bed cover), One shared bathroom, Direct access to big private outdoor area",
-          "amenities": {
-            "indoor": "Free Wi-Fi, Three 55\" Smart TV, Three ceiling fans, Air fryer, Mini bar, Fridge, Clothes washer, Clothes iron & ironing board, Nespresso machine, Sound system (Marshall Acton III), Safe box",
-            "outdoor": "Private area with pergola, Sunbeds with umbrella, Mini pool with hydromassage & color-therapy, Private garden with tropical plants and flowers, Shower area"
-          },
-          "complementary": "Welcome assistance procedure, Check-in/out assistance",
-          "request": "Two SUP boards for rental"
-        }
+        "complementary": ["Welcome assistance procedure", "Check-in/out assistance"],
+        "request": ["2 SUP boards for rental"]
       },
-      "SlugHeaders": {
-        "layout": "Villa Layout",
-        "amenities": {
-          "indoor": "Indoor amenities",
-          "outdoor": "Outdoor amenities"
+      "dimitra": {
+        "name": "Dimitra",
+        "guests": "5 Guests",
+        "child": "1 Child",
+        "bedrooms": "2 Bedrooms",
+        "bathrooms": "2 Bathroom",
+        "layout": [
+          "One main entrance",
+          "Big living room area",
+          "Fully provisioned smart-equipped kitchen",
+          "Dining room area",
+          "One master bedroom with king-sized bed (COCOMAT mattress and bed cover) and en-suite bathroom",
+          "One master bedroom with queen-sized bed (COCOMAT mattress and bed cover)",
+          "One shared bathroom",
+          "Direct access to big private outdoor area"
+        ],
+        "comforts": {
+          "indoors": [
+            "Free Wi-Fi",
+            "Three 55\" Smart TV",
+            "Three ceiling fans",
+            "Air fryer",
+            "Mini bar",
+            "Fridge",
+            "Clothes washer",
+            "Clothes iron & ironing board",
+            "Nespresso machine",
+            "Sound system (Marshall Acton III)",
+            "Safe box"
+          ],
+          "outdoors": [
+            "Private area with pergola, sunbeds with umbrella, mini pool with hydromassage & color-therapy",
+            "Private garden with tropical plants and flowers",
+            "Shower area"
+          ]
         },
-        "complementary": "Complementary services",
-        "request": "Services upon request"
+        "complementary": ["Welcome assistance procedure", "Check-in/out assistance"],
+        "request": ["2 SUP boards for rental"]
       }
     },
     "Contact": {

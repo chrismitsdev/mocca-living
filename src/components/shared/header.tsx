@@ -2,7 +2,7 @@ import {useTranslations} from 'next-intl'
 import {HeaderNavigation} from '@/components/shared/header-navigation'
 
 type HeaderLink = {
-  label: keyof IntlMessages['Metadata']['Pages']
+  label: keyof Pick<IntlMessages['Metadata']['Pages'], 'home' | 'accomodation' | 'contact'>
   href: string
 }
 
@@ -12,14 +12,18 @@ const links: HeaderLink[] = [
   {label: 'contact', href: '/contact'}
 ]
 
-function Header() {
-  const t = useTranslations('Metadata.Pages')
-  const tLinks = links.map(({label, href}) => ({
-    label: t(label === 'accomodation' ? 'accomodation.root' : label),
+const tLinks = function (t: ReturnType<typeof useTranslations>): HeaderLink[] {
+  return links.map(({label, href}) => ({
+    label: t(label === 'accomodation' ? 'accomodation.root' : label) as HeaderLink['label'],
     href
   }))
+}
 
-  return <HeaderNavigation links={tLinks} />
+function Header() {
+  const t = useTranslations('Metadata.Pages')
+  const links = tLinks(t)
+
+  return <HeaderNavigation links={links} />
 }
 
 Header.displayName = 'Header'

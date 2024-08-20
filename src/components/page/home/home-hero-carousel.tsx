@@ -16,7 +16,7 @@ import * as outdoorImages from '#/public/images/outdoor'
 
 const images = Object.values(outdoorImages)
 
-function HomeCarousel() {
+function HomeHeroCarousel() {
   return (
     <CarouselProvider images={images}>
       <CarouselRoot className='max-w-full'>
@@ -57,6 +57,6 @@ function HomeCarousel() {
   )
 }
 
-HomeCarousel.displayName = 'HomeCarousel'
+HomeHeroCarousel.displayName = 'HomeHeroCarousel'
 
-export {HomeCarousel}
+export {HomeHeroCarousel}

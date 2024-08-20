@@ -56,7 +56,7 @@ function Mapbox({token, translations}: MapboxProps) {
         >
           <MapPinIcon
             className='fill-surface-1 text-primary'
-            size={32}
+            size={24}
           />
         </Marker>
         {showPopup && (
@@ -64,7 +64,7 @@ function Mapbox({token, translations}: MapboxProps) {
             className='min-w-52 drop-shadow-md'
             latitude={coords.lat}
             longitude={coords.lon}
-            offset={20}
+            offset={15}
             closeOnClick={false}
             anchor='bottom'
             closeButton={false}

@@ -4,7 +4,6 @@ import * as React from 'react'
 import Image, {StaticImageData} from 'next/image'
 import {XIcon, ExpandIcon} from 'lucide-react'
 import {Container} from '@/components/shared/container'
-import {Typography} from '@/components/ui/typography'
 import {Button} from '@/components/ui/button'
 import {VisuallyHidden} from '@/components/ui/visually-hidden'
 import {
@@ -44,7 +43,6 @@ function Gallery() {
       asChild
     >
       <article>
-        <Typography variant='h3'>{'Mocca Living Gallery'}</Typography>
         <Dialog>
           <div className='grid grid-cols-2 gap-2 sm:grid-cols-8 sm:grid-rows-8'>
             <GalleryItem
@@ -56,43 +54,43 @@ function Gallery() {
             <GalleryItem
               className='s sm:col-start-3 sm:col-end-5 sm:row-start-1 sm:row-end-4'
               src={images[1]}
-              alt='Carousel preview image 1'
+              alt='Carousel preview image 2'
               onClick={() => setIndex(1)}
             />
             <GalleryItem
               className='sm:col-start-5 sm:col-end-9 sm:row-start-1 sm:row-end-6'
               src={images[2]}
-              alt='Carousel preview image 1'
+              alt='Carousel preview image 3'
               onClick={() => setIndex(2)}
             />
             <GalleryItem
               className='sm:col-start-1 sm:col-end-3 sm:row-start-3 sm:row-end-9'
               src={images[3]}
-              alt='Carousel preview image 1'
+              alt='Carousel preview image 4'
               onClick={() => setIndex(3)}
             />
             <GalleryItem
               className='sm:col-start-3 sm:col-end-5 sm:row-start-4 sm:row-end-7'
               src={images[4]}
-              alt='Carousel preview image 1'
+              alt='Carousel preview image 5'
               onClick={() => setIndex(4)}
             />
             <GalleryItem
               className='sm:col-start-3 sm:col-end-5 sm:row-start-7 sm:row-end-9'
               src={images[5]}
-              alt='Carousel preview image 1'
+              alt='Carousel preview image 6'
               onClick={() => setIndex(5)}
             />
             <GalleryItem
               className='sm:col-start-5 sm:col-end-6 sm:row-start-6 sm:row-end-9'
               src={images[6]}
-              alt='Carousel preview image 1'
+              alt='Carousel preview image 7'
               onClick={() => setIndex(6)}
             />
             <GalleryItem
               className='sm:col-start-6 sm:col-end-9 sm:row-start-6 sm:row-end-9'
               src={images[7]}
-              alt='Carousel preview image 1'
+              alt='Carousel preview image 8'
               onClick={() => setIndex(7)}
             />
           </div>

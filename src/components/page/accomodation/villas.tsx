@@ -1,7 +1,8 @@
+import * as React from 'react'
 import {useTranslations} from 'next-intl'
 import Image, {type StaticImageData} from 'next/image'
-import {Link} from '@/navigation'
 import {UsersIcon, BedDoubleIcon, BathIcon} from 'lucide-react'
+import {Link} from '@/navigation'
 import {Container} from '@/components/shared/container'
 import {Separator} from '@/components/ui/separator'
 import {
@@ -16,49 +17,54 @@ import {Button} from '@/components/ui/button'
 import georgiaIndoor from '#/public/images/indoor/4.webp'
 import dimitraIndoor from '#/public/images/indoor/11.webp'
 
-type VillaCards = IntlMessages['Pages']['Accomodation']['root']['Cards']
+type Villas = IntlMessages['Pages']['Accomodation']['Index']['Villas']
 
-type VillaGeneralInfo<K extends 'dimitra' | 'georgia' = 'dimitra'> = {
-  label: keyof VillaCards
-  title: VillaCards[K]['title']
-  description: VillaCards[K]['description']
-  guests: VillaCards[K]['guests']
-  bedrooms: VillaCards[K]['bedrooms']
-  bathrooms: VillaCards[K]['bathrooms']
+type VillaInfo = {
+  key: keyof Villas
+  title: Villas[keyof Villas]['title']
+  description: Villas[keyof Villas]['description']
+  guests: Villas[keyof Villas]['guests']
+  bedrooms: Villas[keyof Villas]['bedrooms']
+  bathrooms: Villas[keyof Villas]['bathrooms']
+  button: Villas[keyof Villas]['button']
   image: StaticImageData
 }
 
-const villaInfo: PickOnly<VillaGeneralInfo, 'label' | 'image'>[] = [
-  {label: 'georgia', image: georgiaIndoor},
-  {label: 'dimitra', image: dimitraIndoor}
+const villaInfo: Pick<VillaInfo, 'key' | 'image'>[] = [
+  {key: 'georgia', image: georgiaIndoor},
+  {key: 'dimitra', image: dimitraIndoor}
 ]
 
-function Villas() {
-  const t = useTranslations('Pages.Accomodation.root.Cards')
-
-  const villas: VillaGeneralInfo[] = villaInfo.map(({label, image}) => ({
-    label,
+const tInfo = function (t: ReturnType<typeof useTranslations<'Pages.Accomodation.Index.Villas'>>) {
+  return villaInfo.map(({key, image}) => ({
+    key,
     image,
-    title: t(`${label}.title`),
-    description: t(`${label}.description`),
-    guests: t(`${label}.guests`),
-    bedrooms: t(`${label}.bedrooms`),
-    bathrooms: t(`${label}.bathrooms`)
+    title: t(`${key}.title`),
+    description: t(`${key}.description`),
+    guests: t(`${key}.guests`),
+    bedrooms: t(`${key}.bedrooms`),
+    bathrooms: t(`${key}.bathrooms`),
+    button: t(`${key}.button`)
   }))
+}
+
+function Villas() {
+  const t = useTranslations('Pages.Accomodation.Index.Villas')
+  const info = tInfo(t)
 
   return (
     <article>
       <Container asChild>
         <div className='grid gap-12 sm:grid-cols-2'>
-          {villas.map((villa) => (
+          {info.map((villa) => (
             <Card
-              key={villa.label}
+              key={villa.key}
               className='p-0 space-y-0 overflow-hidden'
             >
               <Image
                 className='min-h-80 w-full object-cover'
                 src={villa.image}
-                alt='Georgia indoor image within a card'
+                alt={`${villa.key} indoor image`}
                 priority
               />
               <CardHeader className='p-4 space-y-4 sm:p-6 sm:space-y-2'>
@@ -89,7 +95,7 @@ function Villas() {
               <CardContent className='px-4 text-justify sm:px-6'>{villa.description}</CardContent>
               <CardFooter className='p-4 justify-end sm:p-6'>
                 <Button asChild>
-                  <Link href={`/accomodation/${villa.label}`}>{'Show me more'}</Link>
+                  <Link href={`/accomodation/${villa.key}`}>{villa.button}</Link>
                 </Button>
               </CardFooter>
             </Card>
@@ -105,6 +111,6 @@ function VillaDetail({children}: {children: React.ReactNode}) {
 }
 
 Villas.displayName = 'Villas'
-VillaDetail.displayNaem = 'VillaDetail'
+VillaDetail.displayName = 'VillaDetail'
 
 export {Villas}

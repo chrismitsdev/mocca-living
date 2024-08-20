@@ -1,7 +1,7 @@
 import {getTranslations} from 'next-intl/server'
 import {useTranslations} from 'next-intl'
 import {unstable_setRequestLocale} from 'next-intl/server'
-import {HomeCarousel} from '@/components/page/home/home-carousel'
+import {HomeHeroCarousel} from '@/components/page/home/home-hero-carousel'
 import {Introduction} from '@/components/page/home/intoduction'
 import {IdealReasons} from '@/components/page/home/ideal-reasons'
 import {Gallery} from '@/components/page/home/gallery'
@@ -20,7 +20,7 @@ export default function IndexPage({params: {locale}}: Params) {
 
   return (
     <>
-      <HomeCarousel />
+      <HomeHeroCarousel />
       <Introduction
         title={t('Introdution.title')}
         message={t.rich('Introdution.message', {

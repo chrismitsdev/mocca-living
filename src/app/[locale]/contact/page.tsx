@@ -71,11 +71,11 @@ export default function ContactPage({params: {locale}}: Params) {
                 required: t('Pages.Contact.Form.fields.checkOut.validation.required')
               }
             },
-            suite: {
-              label: t('Pages.Contact.Form.fields.suite.label'),
-              placeholder: t('Pages.Contact.Form.fields.suite.placeholder'),
+            villa: {
+              label: t('Pages.Contact.Form.fields.villa.label'),
+              placeholder: t('Pages.Contact.Form.fields.villa.placeholder'),
               validation: {
-                required: t('Pages.Contact.Form.fields.suite.validation.required')
+                required: t('Pages.Contact.Form.fields.villa.validation.required')
               }
             },
             message: {

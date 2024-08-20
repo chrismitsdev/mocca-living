@@ -3,7 +3,7 @@ import {Container} from '@/components/shared/container'
 import {Typography} from '@/components/ui/typography'
 
 function Introduction() {
-  const t = useTranslations('Pages.Accomodation.root.Introdution')
+  const t = useTranslations('Pages.Accomodation.Index.Introdution')
 
   return (
     <Container

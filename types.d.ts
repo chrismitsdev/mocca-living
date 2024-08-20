@@ -6,10 +6,6 @@ type Messages = typeof enMessages
 declare global {
   interface IntlMessages extends Messages {}
 
-  type PickOnly<T, K extends keyof T> = {
-    [P in K]: T[P]
-  }
-
   type Params = {
     params: {
       locale: (typeof locales)[number]
@@ -39,12 +35,5 @@ declare global {
     size?: number
   }
 
-  type Villa = {
-    name: string
-    guests: number
-    area: number
-    bedrooms: number
-    bathrooms: number
-    features: string[]
-  }
+  type Slug = keyof IntlMessages['Pages']['Accomodation']['Slug']
 }
