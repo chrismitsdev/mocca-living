@@ -2,25 +2,29 @@ import * as React from 'react'
 import {useTranslations} from 'next-intl'
 import {DotIcon, UsersIcon, BabyIcon, BedDoubleIcon, BathIcon, LandPlotIcon} from 'lucide-react'
 import {Container} from '@/components/shared/container'
-import {Link} from '@/navigation'
-import {Button} from '@/components/ui/button'
 import {Separator} from '@/components/ui/separator'
 import {Typography} from '@/components/ui/typography'
+import {VillaDetailsControls} from '@/components/page/accomodation/villa/villa-details-controls'
 
 type VillaDetailsProps = {
   slug: Slug
 }
 
 function VillaDetails({slug}: VillaDetailsProps) {
+  const t = useTranslations('Pages.Accomodation.Slug')
   const tSLug = useTranslations(`Pages.Accomodation.Slug.${slug}`)
   const tHead = useTranslations('Pages.Accomodation.SlugHeaders')
 
   return (
     <Container asChild>
       <article>
-        <Button asChild>
-          <Link href='/accomodation'>{'Go back'}</Link>
-        </Button>
+        <VillaDetailsControls
+          leftButtonLabel={tHead('button')}
+          rightButtonLabel={{
+            route: slug === 'dimitra' ? 'georgia' : 'dimitra',
+            name: slug === 'dimitra' ? t('georgia.name') : t('dimitra.name')
+          }}
+        />
         <div className='mt-8 space-y-8'>
           <Typography variant='h1'>{tSLug('name')}</Typography>
           <div className='flex flex-col gap-4 sm:gap-8 sm:flex-row'>
@@ -46,15 +50,25 @@ function VillaDetails({slug}: VillaDetailsProps) {
             </VillaFeature>
           </div>
           <Separator />
-          <VillaDataRow data={tSLug('layout')}>{tHead('layout')}</VillaDataRow>
+          <VillaDataRow data={tSLug('layout')}>
+            <Typography variant='large'>{tHead('layout')}</Typography>
+          </VillaDataRow>
           <Separator />
-          <VillaDataRow data={tSLug('amenities.indoor')}>{tHead('amenities.indoor')}</VillaDataRow>
+          <VillaDataRow data={tSLug('amenities.indoor')}>
+            <Typography variant='large'>{tHead('amenities.indoor')}</Typography>
+          </VillaDataRow>
           <Separator />
-          <VillaDataRow data={tSLug('amenities.outdoor')}>{tHead('amenities.outdoor')}</VillaDataRow>
+          <VillaDataRow data={tSLug('amenities.outdoor')}>
+            <Typography variant='large'>{tHead('amenities.outdoor')}</Typography>
+          </VillaDataRow>
           <Separator />
-          <VillaDataRow data={tSLug('complementary')}>{tHead('complementary')}</VillaDataRow>
+          <VillaDataRow data={tSLug('complementary')}>
+            <Typography variant='large'>{tHead('complementary')}</Typography>
+          </VillaDataRow>
           <Separator />
-          <VillaDataRow data={tSLug('request')}>{tHead('request')}</VillaDataRow>
+          <VillaDataRow data={tSLug('request')}>
+            <Typography variant='large'>{tHead('request')}</Typography>
+          </VillaDataRow>
         </div>
       </article>
     </Container>
@@ -68,8 +82,8 @@ function VillaFeature({children}: {children: React.ReactNode}) {
 function VillaDataRow({children, data}: {children: React.ReactNode; data: string}) {
   return (
     <div className='space-y-4'>
-      <Typography variant='large'>{children}</Typography>
-      <ul className='space-y-0.5'>
+      {children}
+      <ul className='space-y-2'>
         {data.split(',').map((entry) => (
           <li
             key={entry}

@@ -2,7 +2,6 @@ import {getTranslations} from 'next-intl/server'
 import {useTranslations} from 'next-intl'
 import {unstable_setRequestLocale} from 'next-intl/server'
 import {Container} from '@/components/shared/container'
-import {Article} from '@/components/shared/article'
 import {Typography} from '@/components/ui/typography'
 
 export async function generateMetadata({params: {locale}}: Params) {
@@ -19,14 +18,14 @@ export default function IndexPage({params: {locale}}: Params) {
 
   return (
     <Container className='pt-56 space-y-12'>
-      <Article>
+      <article className='space-y-4'>
         <Typography variant='h4'>{t('title')}</Typography>
         <Typography>{t('content')}</Typography>
-      </Article>
-      <Article>
+      </article>
+      <article className='space-y-4'>
         <Typography variant='h4'>{t('sub-title')}</Typography>
         <Typography>{t('sub-content')}</Typography>
-      </Article>
+      </article>
     </Container>
   )
 }

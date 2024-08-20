@@ -44,7 +44,7 @@ const buttonVariants = cva(
       size: {
         large: ['px-6', 'py-3', 'text-lg'],
         normal: ['px-4', 'py-2'],
-        small: ['px-2', 'py-1.5', 'text-sm'],
+        small: ['px-2', 'py-1.5', 'text-sm', 'gap-1'],
         'icon-normal': ['h-10', 'w-10'],
         'icon-small': ['h-8', 'w-8'],
         'icon-mini': ['h-4', 'w-4']
@@ -77,16 +77,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    {
-      variant,
-      size,
-      className,
-      asChild = false,
-      isLoading = false,
-      type = 'button',
-      children,
-      ...props
-    },
+    {variant, size, className, asChild = false, isLoading = false, type = 'button', children, ...props},
     ref
   ) => {
     const Comp = asChild ? Slot : 'button'

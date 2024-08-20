@@ -114,7 +114,8 @@
           "outdoor": "Outdoor amenities"
         },
         "complementary": "Complementary services",
-        "request": "Services upon request"
+        "request": "Services upon request",
+        "button": "Back"
       }
     },
     "Contact": {
