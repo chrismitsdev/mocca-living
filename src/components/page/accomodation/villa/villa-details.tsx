@@ -1,10 +1,20 @@
 import * as React from 'react'
 import {useTranslations} from 'next-intl'
-import {DotIcon, UsersIcon, BabyIcon, BedDoubleIcon, BathIcon, LandPlotIcon} from 'lucide-react'
+import {Link} from '@/navigation'
+import {
+  DotIcon,
+  UsersIcon,
+  BabyIcon,
+  BedDoubleIcon,
+  BathIcon,
+  LandPlotIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon
+} from 'lucide-react'
 import {Container} from '@/components/shared/container'
 import {Separator} from '@/components/ui/separator'
 import {Typography} from '@/components/ui/typography'
-import {VillaDetailsControls} from '@/components/page/accomodation/villa/villa-details-controls'
+import {Button} from '@/components/ui/button'
 
 type VillaDetailsProps = {
   slug: Slug
@@ -17,15 +27,31 @@ function VillaDetails({slug}: VillaDetailsProps) {
 
   return (
     <Container asChild>
-      <article>
-        <VillaDetailsControls
-          leftButtonLabel={tHead('button')}
-          rightButtonLabel={{
-            route: slug === 'dimitra' ? 'georgia' : 'dimitra',
-            name: slug === 'dimitra' ? t('georgia.name') : t('dimitra.name')
-          }}
-        />
-        <div className='mt-8 space-y-8'>
+      <article className='space-y-8'>
+        <div className='flex justify-between'>
+          <Button
+            size='small'
+            asChild
+          >
+            <Link href='/accomodation'>
+              <ChevronLeftIcon size={16} />
+              <span>{tHead('button')}</span>
+            </Link>
+          </Button>
+          <Button
+            size='small'
+            asChild
+          >
+            <Link
+              scroll={false}
+              href={`/accomodation/${slug === 'dimitra' ? 'georgia' : 'dimitra'}`}
+            >
+              <span className='capitalize'>{slug === 'dimitra' ? t('georgia.name') : t('dimitra.name')}</span>
+              <ChevronRightIcon size={16} />
+            </Link>
+          </Button>
+        </div>
+        <div className='space-y-8'>
           <Typography variant='h1'>{tSLug('name')}</Typography>
           <div className='flex flex-col gap-4 sm:gap-8 sm:flex-row'>
             <VillaFeature>
@@ -81,7 +107,7 @@ function VillaFeature({children}: {children: React.ReactNode}) {
 
 function VillaDataRow({children, data}: {children: React.ReactNode; data: string}) {
   return (
-    <div className='space-y-4'>
+    <div className='space-y-6'>
       {children}
       <ul className='space-y-2'>
         {data.split(',').map((entry) => (
