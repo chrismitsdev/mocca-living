@@ -1,7 +1,6 @@
 'use client'
 
 import * as React from 'react'
-// import dynamic from 'next/dynamic'
 import {useForm, Controller} from 'react-hook-form'
 import {addDays, subDays, isSameDay} from 'date-fns'
 import {
@@ -15,14 +14,7 @@ import {
   SendHorizonalIcon,
   RotateCcwIcon
 } from 'lucide-react'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle
-} from '@/components/ui/card'
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from '@/components/ui/card'
 import {
   Select,
   SelectTrigger,
@@ -41,11 +33,6 @@ import {DatePicker} from '@/components/ui/date-picker'
 import {Checkbox} from '@/components/ui/checkbox'
 import {Typography} from '@/components/ui/typography'
 import {toast} from '@/components/ui/toast'
-
-// const DevTool: React.ElementType = dynamic(
-//   () => import('@hookform/devtools').then((module) => module.DevTool),
-//   { ssr: false }
-// )
 
 type FormMessages = IntlMessages['Pages']['Contact']['Form']
 
@@ -286,9 +273,7 @@ function ContactForm({
                       >
                         <span className='flex items-center gap-2'>
                           <HomeIcon size={16} />
-                          <span
-                            className={!value ? 'text-sm font-normal text-foreground-muted' : ''}
-                          >
+                          <span className={!value ? 'text-sm font-normal text-foreground-muted' : ''}>
                             <SelectValue placeholder={fieldTranslations.villa.placeholder} />
                           </span>
                         </span>
@@ -366,7 +351,6 @@ function ContactForm({
               </FormControl>
             </div>
           </form>
-          {/* <DevTool placement='top-right' control={control} /> */}
         </CardContent>
         <CardFooter className='pt-4 sm:justify-end gap-4'>
           <Button

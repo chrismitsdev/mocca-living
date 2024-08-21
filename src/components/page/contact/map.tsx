@@ -2,7 +2,7 @@
 
 import 'mapbox-gl/dist/mapbox-gl.css'
 import * as React from 'react'
-import Map, {Marker, Popup} from 'react-map-gl'
+import {Map as ReactMapGl, Marker, Popup} from 'react-map-gl'
 import {MapPinIcon, XIcon} from 'lucide-react'
 import {useMediaQuery} from '@/hooks/useMediaQuery'
 import {Typography} from '@/components/ui/typography'
@@ -21,13 +21,13 @@ const coords = {
   lon: 25.723552
 }
 
-function Mapbox({token, translations}: MapboxProps) {
+function Map({token, translations}: MapboxProps) {
   const [showPopup, setShowPopup] = React.useState<boolean>(true)
   const matches = useMediaQuery('(min-width: 640px)')
 
   return (
     <article className='py-12'>
-      <Map
+      <ReactMapGl
         style={{
           width: '100%',
           minHeight: 450,
@@ -106,11 +106,11 @@ function Mapbox({token, translations}: MapboxProps) {
             </div>
           </Popup>
         )}
-      </Map>
+      </ReactMapGl>
     </article>
   )
 }
 
-Mapbox.displayName = 'Mapbox'
+Map.displayName = 'Map'
 
-export {Mapbox}
+export {Map}

@@ -1,16 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import {
-  Root,
-  Trigger,
-  Overlay,
-  Portal,
-  Content,
-  Title,
-  Description,
-  Close
-} from '@radix-ui/react-dialog'
+import {Root, Trigger, Overlay, Portal, Content, Title, Description, Close} from '@radix-ui/react-dialog'
 import {cn} from '#/lib/utils'
 
 const Dialog = Root
@@ -24,7 +15,7 @@ const DialogOverlay = React.forwardRef<
 >(({className, ...props}, ref) => (
   <Overlay
     className={cn(
-      'fixed inset-0 z-50 bg-black/75 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 data-open:backdrop-blur-[1px] data-closed:backdrop-blur-none',
+      'fixed inset-0 z-[1] bg-black/75 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 data-open:backdrop-blur-[1px] data-closed:backdrop-blur-none',
       className
     )}
     ref={ref}
@@ -38,7 +29,7 @@ const DialogContent = React.forwardRef<
 >(({className, children, 'aria-describedby': ariaDescribedBy = undefined, ...props}, ref) => (
   <Content
     className={cn(
-      'p-6 w-full max-w-xl bg-surface-2 rounded shadow-medium fixed z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 data-open:animate-dialog-open data-closed:animate-dialog-closed',
+      'p-6 w-full max-w-xl bg-surface-2 rounded shadow-medium fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1] data-open:animate-dialog-open data-closed:animate-dialog-closed',
       className
     )}
     aria-describedby={ariaDescribedBy}

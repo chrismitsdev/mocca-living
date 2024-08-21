@@ -44,6 +44,17 @@ function VillaDetails({slug}: VillaDetailsProps) {
           >
             <Link
               scroll={false}
+              href='/contact'
+            >
+              {'Contact page'}
+            </Link>
+          </Button>
+          <Button
+            size='small'
+            asChild
+          >
+            <Link
+              scroll={false}
               href={`/accomodation/${slug === 'dimitra' ? 'georgia' : 'dimitra'}`}
             >
               <span className='capitalize'>{slug === 'dimitra' ? t('georgia.name') : t('dimitra.name')}</span>
