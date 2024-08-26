@@ -75,7 +75,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
         onSubmit={form.handleSubmit(onSubmit)}
         noValidate
       >
-        <div className='grid grid-cols-3 gap-y-6 gap-x-10'>
+        <div className='grid gap-y-2 sm:grid-cols-3 sm:gap-y-6 sm:gap-x-10'>
           <FormField
             disabled={form.formState.isSubmitting}
             control={form.control}
@@ -234,8 +234,8 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
             control={form.control}
             name='consentData'
             render={({field}) => (
-              <FormItem className='space-y-0 flex items-center gap-2 col-span-3'>
-                <FormControl>
+              <FormItem className='space-y-0 flex gap-2 sm:col-span-3'>
+                <FormControl className='mt-1'>
                   <Checkbox
                     checked={field.value}
                     onCheckedChange={field.onChange}
@@ -256,7 +256,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
             control={form.control}
             name='message'
             render={({field}) => (
-              <FormItem className='col-span-3'>
+              <FormItem className='sm:col-span-3'>
                 <FormLabel>{'Message'}</FormLabel>
                 <FormControl>
                   <Textarea
@@ -273,6 +273,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
       </form>
       <div className='mt-8 flex justify-end gap-4'>
         <Button
+          className='grow sm:grow-0'
           form='contact-page-form'
           variant='bordered'
           onClick={() => form.reset()}
@@ -282,6 +283,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
           <span>{'Reset'}</span>
         </Button>
         <Button
+          className='grow sm:grow-0'
           form='contact-page-form'
           type='submit'
           disabled={form.formState.isSubmitting}
