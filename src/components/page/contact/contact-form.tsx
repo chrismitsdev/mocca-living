@@ -77,6 +77,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
       >
         <div className='grid grid-cols-3 gap-y-6 gap-x-10'>
           <FormField
+            disabled={form.formState.isSubmitting}
             control={form.control}
             name='fullName'
             render={({field}) => (
@@ -95,6 +96,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
           />
 
           <FormField
+            disabled={form.formState.isSubmitting}
             control={form.control}
             name='email'
             render={({field}) => (
@@ -113,6 +115,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
           />
 
           <FormField
+            disabled={form.formState.isSubmitting}
             control={form.control}
             name='phone'
             render={({field}) => (
@@ -151,7 +154,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
                         ? new Date()
                         : subDays(watchCheckOut, 1)
                     }}
-                    // disabled={form.formState.isSubmitting}
+                    disabled={form.formState.isSubmitting}
                   />
                 </FormControl>
                 <FormMessage />
@@ -177,7 +180,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
                         ? addDays(new Date(), 1)
                         : addDays(watchCheckIn, 1)
                     }}
-                    // disabled={form.formState.isSubmitting}
+                    disabled={form.formState.isSubmitting}
                   />
                 </FormControl>
                 <FormMessage />
@@ -186,6 +189,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
           />
 
           <FormField
+            disabled={form.formState.isSubmitting}
             control={form.control}
             name='villa'
             render={({field}) => (
@@ -196,7 +200,10 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
                   onValueChange={field.onChange}
                 >
                   <FormControl>
-                    <SelectTrigger className='w-full'>
+                    <SelectTrigger
+                      className='w-full'
+                      {...field}
+                    >
                       <span className='flex items-center gap-2'>
                         <HomeIcon size={16} />
                         {!field.value ? (
@@ -232,6 +239,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
                   <Checkbox
                     checked={field.value}
                     onCheckedChange={field.onChange}
+                    disabled={form.formState.isSubmitting}
                   />
                 </FormControl>
                 <FormLabel>
@@ -244,6 +252,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
           />
 
           <FormField
+            disabled={form.formState.isSubmitting}
             control={form.control}
             name='message'
             render={({field}) => (
@@ -267,6 +276,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
           form='contact-page-form'
           variant='bordered'
           onClick={() => form.reset()}
+          disabled={form.formState.isSubmitting}
         >
           <RotateCcwIcon size={16} />
           <span>{'Reset'}</span>
@@ -274,6 +284,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
         <Button
           form='contact-page-form'
           type='submit'
+          disabled={form.formState.isSubmitting}
           isLoading={form.formState.isSubmitting}
         >
           <span>{'Submit'}</span>
