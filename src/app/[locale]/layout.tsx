@@ -29,11 +29,10 @@ export function generateStaticParams() {
 }
 
 type LocaleLayoutProps = Params & {
-  modal: React.ReactNode
   children: React.ReactNode
 }
 
-export default function LocaleLayout({params: {locale}, modal, children}: LocaleLayoutProps) {
+export default function LocaleLayout({params: {locale}, children}: LocaleLayoutProps) {
   unstable_setRequestLocale(locale)
   const t = useTranslations('Components')
 
@@ -44,9 +43,7 @@ export default function LocaleLayout({params: {locale}, modal, children}: Locale
     >
       <body className='min-h-svh grid grid-rows-[1fr,_auto]'>
         <Header />
-        <main>
-          <section className='pb-32 space-y-28 h-full'>{children}</section>
-        </main>
+        <main>{children}</main>
         <Footer />
         <CookieConsent
           title={t('CookieConsent.title')}
@@ -59,7 +56,6 @@ export default function LocaleLayout({params: {locale}, modal, children}: Locale
           duration={5000}
         />
         <Messenger />
-        {modal}
       </body>
     </html>
   )

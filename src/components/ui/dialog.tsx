@@ -29,7 +29,7 @@ const DialogContent = React.forwardRef<
 >(({className, children, 'aria-describedby': ariaDescribedBy = undefined, ...props}, ref) => (
   <Content
     className={cn(
-      'p-6 w-full max-w-xl bg-surface-2 rounded shadow-medium fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1] data-open:animate-dialog-open data-closed:animate-dialog-closed',
+      'p-6 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1] w-full max-w-xl bg-surface-2 rounded shadow-medium data-open:animate-dialog-open data-closed:animate-dialog-closed',
       className
     )}
     aria-describedby={ariaDescribedBy}
@@ -42,7 +42,7 @@ const DialogContent = React.forwardRef<
 
 const DialogHeader = ({className, ...props}: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn('flex flex-col space-y-1.5 text-center sm:text-left', className)}
+    className={cn('flex flex-col space-y-1.5', className)}
     {...props}
   />
 )

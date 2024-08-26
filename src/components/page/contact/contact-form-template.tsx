@@ -19,7 +19,7 @@ import {formatDate} from '#/lib/utils'
 import config from '#/tailwind.config'
 
 type ContactFormTemplateProps = {
-  formData: Omit<ContactFormValues, 'consentData'>
+  formData: Omit<ContactFormData, 'consentData'>
 }
 
 function ContactFormTemplate({formData}: ContactFormTemplateProps) {
@@ -57,25 +57,37 @@ function ContactFormTemplate({formData}: ContactFormTemplateProps) {
                   Mocca Living - Φόρμα επικοινωνίας
                 </Heading>
               </Row>
-              <Hr className='my-6 border-t-[#af7c5f]' />
+              <Hr className='my-6 !border-t-[#af7c5f]' />
               <Row>
                 <Column>
-                  <Text className='my-0'>Όνομα:</Text>
-                  <Text className='my-0 mt-1'>Email:</Text>
-                  <Text className='my-0 mt-1'>Τηλέφωνο:</Text>
-                  <Text className='my-0 mt-1'>Check-in:</Text>
-                  <Text className='my-0 mt-1'>Check-out:</Text>
-                  <Text className='my-0 mt-1'>Βίλα:</Text>
-                  <Text className='my-0 mt-1'>Μήνυμα:</Text>
+                  <Text className='!my-0'>Όνομα:</Text>
+                  <Text className='!my-0 !mt-1'>Email:</Text>
+                  <Text className='!my-0 !mt-1'>Τηλέφωνο:</Text>
+                  <Text className='!my-0 !mt-1'>Check-in:</Text>
+                  <Text className='!my-0 !mt-1'>Check-out:</Text>
+                  <Text className='!my-0 !mt-1'>Βίλα:</Text>
+                  <Text className='!my-0 !mt-1'>Μήνυμα:</Text>
                 </Column>
                 <Column>
-                  <Text className='my-0 font-[700]'>{formData.name}</Text>
-                  <Text className='my-0 mt-1 font-[700]'>{formData.email}</Text>
-                  <Text className='my-0 mt-1 font-[700]'>{formData.phone}</Text>
-                  <Text className='my-0 mt-1 font-[700]'>{formatDate(formData.checkIn, 'gr')}</Text>
-                  <Text className='my-0 mt-1 font-[700]'>{formatDate(formData.checkOut, 'gr')}</Text>
-                  <Text className='my-0 mt-1 font-[700]'>{formData.villa}</Text>
-                  <Text className='my-0 mt-1 font-[700]'>{formData.message || 'Κανένα μήνυμα'}</Text>
+                  <Text className='!my-0 font-[700]'>{formData.fullName}</Text>
+                  <Text className='!my-0 !mt-1 font-[700]'>
+                    {formData.email}
+                  </Text>
+                  <Text className='!my-0 !mt-1 font-[700]'>
+                    {formData.phone}
+                  </Text>
+                  <Text className='!my-0 !mt-1 font-[700]'>
+                    {formatDate(formData.checkIn, 'gr')}
+                  </Text>
+                  <Text className='!my-0 !mt-1 font-[700]'>
+                    {formatDate(formData.checkOut, 'gr')}
+                  </Text>
+                  <Text className='!my-0 !mt-1 font-[700]'>
+                    {formData.villa}
+                  </Text>
+                  <Text className='!my-0 !mt-1 font-[700]'>
+                    {formData.message || 'Κανένα μήνυμα'}
+                  </Text>
                 </Column>
               </Row>
             </Section>

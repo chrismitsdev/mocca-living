@@ -2,19 +2,23 @@
 
 import * as React from 'react'
 import {type Matcher} from 'react-day-picker'
-import {CalendarIcon} from 'lucide-react'
 import {type LucideProps} from 'lucide-react'
 import {Button} from '@/components/ui/button'
 import {Calendar} from '@/components/ui/calendar'
-import {Popover, PopoverTrigger, PopoverPortal, PopoverContent} from '@/components/ui/popover'
-import {formatDate} from '#/lib/utils'
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverPortal,
+  PopoverContent
+} from '@/components/ui/popover'
+import {cn, formatDate} from '#/lib/utils'
 
 type DatePickerProps = {
   id?: string
   locale: Params['params']['locale']
   placeholder?: string
   disabled?: boolean
-  calendarDisabled?: Matcher | Matcher[]
+  disabledDates?: Matcher | Matcher[]
   icon?: React.ComponentType<LucideProps>
   date?: Date
   onDateChange?: React.Dispatch<React.SetStateAction<Date | undefined>>
@@ -25,7 +29,7 @@ function DatePicker({
   locale,
   placeholder,
   disabled,
-  calendarDisabled,
+  disabledDates,
   icon,
   date,
   onDateChange
@@ -52,16 +56,15 @@ function DatePicker({
           className='px-3 w-full bg-surface-1 justify-start data-open:border-border-hover data-open:shadow focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-border-hover focus-visible:shadow'
           variant='bordered'
         >
-          {!icon ? (
-            <CalendarIcon
-              className='shrink-0'
-              size={16}
-            />
-          ) : (
-            React.createElement(icon, {className: 'shrink-0', width: 16, height: 16})
+          {icon && (
+            <span className={cn('shrink-0', disabled && 'opacity-35')}>
+              {React.createElement(icon, {width: 16, height: 16})}
+            </span>
           )}
           {!date && placeholder && (
-            <span className='text-sm font-normal text-foreground-muted'>{placeholder}</span>
+            <span className='text-sm font-normal text-foreground-muted'>
+              {placeholder}
+            </span>
           )}
           {date && <span>{formatDate(date, locale)}</span>}
         </Button>
@@ -77,7 +80,7 @@ function DatePicker({
             mode='single'
             selected={date}
             onSelect={handleDateSelect}
-            disabled={calendarDisabled}
+            disabled={disabledDates}
           />
         </PopoverContent>
       </PopoverPortal>

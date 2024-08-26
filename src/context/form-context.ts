@@ -1,9 +1,5 @@
 import * as React from 'react'
-import {
-  type FieldValues, 
-  type FieldPath, 
-  useFormContext
-} from 'react-hook-form'
+import {FieldValues, FieldPath, useFormContext} from 'react-hook-form'
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
@@ -43,12 +39,8 @@ const useFormField = () => {
     formItemId: `${id}-form-item`,
     formDescriptionId: `${id}-form-item-description`,
     formMessageId: `${id}-form-item-message`,
-    ...fieldState,
+    ...fieldState
   }
 }
 
-export {
-  FormFieldContext,
-  FormItemContext,
-  useFormField
-}
+export {FormFieldContext, FormItemContext, useFormField}

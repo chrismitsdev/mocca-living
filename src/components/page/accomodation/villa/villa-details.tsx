@@ -1,4 +1,3 @@
-import * as React from 'react'
 import {useTranslations} from 'next-intl'
 import {Link} from '@/navigation'
 import {
@@ -12,6 +11,7 @@ import {
   ChevronRightIcon
 } from 'lucide-react'
 import {Container} from '@/components/shared/container'
+import {Card, CardHeader, CardTitle, CardContent} from '@/components/ui/card'
 import {Separator} from '@/components/ui/separator'
 import {Typography} from '@/components/ui/typography'
 import {Button} from '@/components/ui/button'
@@ -26,10 +26,14 @@ function VillaDetails({slug}: VillaDetailsProps) {
   const tHead = useTranslations('Pages.Accomodation.SlugHeaders')
 
   return (
-    <Container asChild>
-      <article className='space-y-8'>
+    <Container
+      className='px-0 sm:px-3'
+      asChild
+    >
+      <article>
         <div className='flex justify-between'>
           <Button
+            variant='ghost'
             size='small'
             asChild
           >
@@ -39,96 +43,100 @@ function VillaDetails({slug}: VillaDetailsProps) {
             </Link>
           </Button>
           <Button
+            variant='ghost'
             size='small'
             asChild
           >
             <Link
               scroll={false}
-              href='/contact'
+              href={`/accomodation/${
+                slug === 'dimitra' ? 'georgia' : 'dimitra'
+              }`}
             >
-              {'Contact page'}
-            </Link>
-          </Button>
-          <Button
-            size='small'
-            asChild
-          >
-            <Link
-              scroll={false}
-              href={`/accomodation/${slug === 'dimitra' ? 'georgia' : 'dimitra'}`}
-            >
-              <span className='capitalize'>{slug === 'dimitra' ? t('georgia.name') : t('dimitra.name')}</span>
+              <span className='capitalize'>
+                {slug === 'dimitra' ? t('georgia.name') : t('dimitra.name')}
+              </span>
               <ChevronRightIcon size={16} />
             </Link>
           </Button>
         </div>
-        <div className='space-y-8'>
-          <Typography variant='h1'>{tSLug('name')}</Typography>
-          <div className='flex flex-col gap-4 sm:gap-8 sm:flex-row'>
-            <VillaFeature>
-              <UsersIcon size={20} />
-              <Typography variant='lead'>{tSLug('guests')}</Typography>
-            </VillaFeature>
-            <VillaFeature>
-              <BabyIcon size={20} />
-              <Typography variant='lead'>{tSLug('child')}</Typography>
-            </VillaFeature>
-            <VillaFeature>
-              <BedDoubleIcon size={20} />
-              <Typography variant='lead'>{tSLug('bedrooms')}</Typography>
-            </VillaFeature>
-            <VillaFeature>
-              <BathIcon size={20} />
-              <Typography variant='lead'>{tSLug('bathrooms')}</Typography>
-            </VillaFeature>
-            <VillaFeature>
-              <LandPlotIcon size={20} />
-              <Typography variant='lead'>{tSLug('area')}</Typography>
-            </VillaFeature>
-          </div>
-          <Separator />
-          <VillaDataRow data={tSLug('layout')}>
-            <Typography variant='large'>{tHead('layout')}</Typography>
-          </VillaDataRow>
-          <Separator />
-          <VillaDataRow data={tSLug('amenities.indoor')}>
-            <Typography variant='large'>{tHead('amenities.indoor')}</Typography>
-          </VillaDataRow>
-          <Separator />
-          <VillaDataRow data={tSLug('amenities.outdoor')}>
-            <Typography variant='large'>{tHead('amenities.outdoor')}</Typography>
-          </VillaDataRow>
-          <Separator />
-          <VillaDataRow data={tSLug('complementary')}>
-            <Typography variant='large'>{tHead('complementary')}</Typography>
-          </VillaDataRow>
-          <Separator />
-          <VillaDataRow data={tSLug('request')}>
-            <Typography variant='large'>{tHead('request')}</Typography>
-          </VillaDataRow>
-        </div>
+        <Separator className='mt-2 mb-6' />
+        <Card className='p-0 space-y-0 shadow-none sm:shadow-medium'>
+          <CardHeader className='px-3 py-8 space-y-6 sm:p-8'>
+            <CardTitle>{tSLug('name')}</CardTitle>
+            <div className='grid grid-cols-2 gap-y-4 gap-x-6 sm:grid-cols-none sm:grid-flow-col sm:auto-cols-max sm:gap-8'>
+              <VillaFeature>
+                <UsersIcon size={20} />
+                <Typography variant='large'>{tSLug('guests')}</Typography>
+              </VillaFeature>
+              <VillaFeature>
+                <BabyIcon size={20} />
+                <Typography variant='large'>{tSLug('child')}</Typography>
+              </VillaFeature>
+              <VillaFeature>
+                <BedDoubleIcon size={20} />
+                <Typography variant='large'>{tSLug('bedrooms')}</Typography>
+              </VillaFeature>
+              <VillaFeature>
+                <BathIcon size={20} />
+                <Typography variant='large'>{tSLug('bathrooms')}</Typography>
+              </VillaFeature>
+              <VillaFeature>
+                <LandPlotIcon size={20} />
+                <Typography variant='large'>{tSLug('area')}</Typography>
+              </VillaFeature>
+            </div>
+          </CardHeader>
+          <CardContent className='px-3 py-8 space-y-8 sm:p-8'>
+            <VillaDataRow data={tSLug('layout')}>
+              <Typography variant='h5'>{tHead('layout')}</Typography>
+            </VillaDataRow>
+            <VillaDataRow data={tSLug('amenities.indoor')}>
+              <Typography variant='h5'>{tHead('amenities.indoor')}</Typography>
+            </VillaDataRow>
+            <VillaDataRow data={tSLug('amenities.outdoor')}>
+              <Typography variant='h5'>{tHead('amenities.outdoor')}</Typography>
+            </VillaDataRow>
+            <VillaDataRow data={tSLug('complementary')}>
+              <Typography variant='h5'>{tHead('complementary')}</Typography>
+            </VillaDataRow>
+            <VillaDataRow data={tSLug('request')}>
+              <Typography variant='h5'>{tHead('request')}</Typography>
+            </VillaDataRow>
+          </CardContent>
+        </Card>
       </article>
     </Container>
   )
 }
 
 function VillaFeature({children}: {children: React.ReactNode}) {
-  return <div className='inline-flex items-center gap-1.5'>{children}</div>
+  return (
+    <div className='inline-flex items-center gap-1.5 [&>*]:shrink-0'>
+      {children}
+    </div>
+  )
 }
 
-function VillaDataRow({children, data}: {children: React.ReactNode; data: string}) {
+function VillaDataRow({
+  children,
+  data
+}: {
+  children: React.ReactNode
+  data: string
+}) {
   return (
-    <div className='space-y-6'>
+    <div className='space-y-4'>
       {children}
-      <ul className='space-y-2'>
+      <ul className='space-y-1.5'>
         {data.split(',').map((entry) => (
           <li
             key={entry}
             className='flex items-start gap-1'
           >
             <DotIcon
-              className='shrink-0'
-              size={24}
+              className='shrink-0 mt-0.5'
+              size={20}
             />
             <Typography>{entry}</Typography>
           </li>

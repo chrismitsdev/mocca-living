@@ -13,15 +13,14 @@ function InterceptorModal({children}: {children: React.ReactNode}) {
 
   return (
     <Dialog
-      defaultOpen={true}
-      // open={true}
+      defaultOpen
       onOpenChange={handleOpenChange}
     >
       <DialogPortal>
         <DialogOverlay />
         <DialogContent>
           <VisuallyHidden>
-            <DialogTitle>{'Contact form modal'}</DialogTitle>
+            <DialogTitle>{'Interceptor modal'}</DialogTitle>
           </VisuallyHidden>
           {children}
         </DialogContent>

@@ -44,7 +44,13 @@ type ContactFormProps<T extends FormMessages = FormMessages> = {
   submitBtnLabel: T['submit-btn']
 }
 
-const emailProviders = ['@gmail.com', '@yahoo.com', '@outlook.com', '@hotmail.com', '@icloud.com']
+const emailProviders = [
+  '@gmail.com',
+  '@yahoo.com',
+  '@outlook.com',
+  '@hotmail.com',
+  '@icloud.com'
+]
 
 const DEV_MODE = process.env.NODE_ENV === 'development'
 
@@ -56,7 +62,8 @@ function Form({
   submitBtnLabel,
   resetBtnLabel
 }: ContactFormProps) {
-  const {formState, control, register, handleSubmit, watch, reset} = useForm<ContactFormValues>()
+  const {formState, control, register, handleSubmit, watch, reset} =
+    useForm<ContactFormData>()
   const [origin, setOrigin] = React.useState<string>('')
   const watchCheckIn = watch('checkIn')
   const watchCheckOut = watch('checkOut')
@@ -64,7 +71,7 @@ function Form({
   const explicitReset = React.useCallback(
     function () {
       reset({
-        name: '',
+        fullName: '',
         email: '',
         phone: '',
         checkIn: undefined,
@@ -77,7 +84,7 @@ function Form({
     [reset]
   )
 
-  async function onSubmit(data: ContactFormValues) {
+  async function onSubmit(data: ContactFormData) {
     const res = await fetch(`${origin}/${locale}/api/contact-form`, {
       method: 'POST',
       headers: {
@@ -86,7 +93,11 @@ function Form({
       body: JSON.stringify(data)
     })
 
-    const {title, message: description, status} = (await res.json()) as ContactFormResponse
+    const {
+      title,
+      message: description,
+      status
+    } = (await res.json()) as ContactFormResponse
 
     toast({title, description, status})
   }
@@ -114,25 +125,25 @@ function Form({
       noValidate
     >
       <div className={wrapperClassName}>
-        <FormControl error={formState.errors.name?.message}>
-          <Label htmlFor='name'>{fieldTranslations.name.label}</Label>
+        <FormControl error={formState.errors.fullName?.message}>
+          <Label htmlFor='fullName'>{fieldTranslations.fullName.label}</Label>
           <Input
-            id='name'
-            placeholder={fieldTranslations.name.placeholder}
+            id='fullName'
+            placeholder={fieldTranslations.fullName.placeholder}
             icon={UserIcon}
             autoComplete='name'
-            {...register('name', {
+            {...register('fullName', {
               required: {
                 value: true,
-                message: fieldTranslations.name.validation.required
+                message: fieldTranslations.fullName.validation.required
               },
               minLength: {
                 value: 5,
-                message: fieldTranslations.name.validation.length
+                message: fieldTranslations.fullName.validation.length
               },
               maxLength: {
                 value: 25,
-                message: fieldTranslations.name.validation.length
+                message: fieldTranslations.fullName.validation.length
               }
             })}
             disabled={formState.isSubmitting}
@@ -197,7 +208,7 @@ function Form({
                 date={field.value}
                 onDateChange={field.onChange}
                 placeholder={fieldTranslations.checkIn.placeholder}
-                calendarDisabled={{
+                disabledDates={{
                   before: new Date(),
                   after: !watchCheckOut
                     ? undefined
@@ -230,8 +241,10 @@ function Form({
                 date={field.value}
                 onDateChange={field.onChange}
                 placeholder={fieldTranslations.checkOut.placeholder}
-                calendarDisabled={{
-                  before: !watchCheckIn ? addDays(new Date(), 1) : addDays(watchCheckIn, 1)
+                disabledDates={{
+                  before: !watchCheckIn
+                    ? addDays(new Date(), 1)
+                    : addDays(watchCheckIn, 1)
                 }}
                 disabled={formState.isSubmitting}
                 icon={LogOutIcon}
@@ -264,8 +277,16 @@ function Form({
                 >
                   <span className='flex items-center gap-2'>
                     <HomeIcon size={16} />
-                    <span className={!value ? 'text-sm font-normal text-foreground-muted' : ''}>
-                      <SelectValue placeholder={fieldTranslations.villa.placeholder} />
+                    <span
+                      className={
+                        !value
+                          ? 'text-sm font-normal text-foreground-muted'
+                          : ''
+                      }
+                    >
+                      <SelectValue
+                        placeholder={fieldTranslations.villa.placeholder}
+                      />
                     </span>
                   </span>
                 </SelectTrigger>
