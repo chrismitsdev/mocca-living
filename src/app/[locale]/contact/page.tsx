@@ -1,4 +1,3 @@
-import pick from 'lodash/pick'
 import {getTranslations} from 'next-intl/server'
 import {useTranslations, NextIntlClientProvider, useMessages} from 'next-intl'
 import {unstable_setRequestLocale} from 'next-intl/server'

@@ -47,9 +47,6 @@ importers:
       '@types/js-cookie':
         specifier: ^3.0.6
         version: 3.0.6
-      '@types/lodash':
-        specifier: ^4.17.7
-        version: 4.17.7
       '@types/mapbox-gl':
         specifier: ^3.4.0
         version: 3.4.0
@@ -89,9 +86,6 @@ importers:
       js-cookie:
         specifier: ^3.0.5
         version: 3.0.5
-      lodash:
-        specifier: ^4.17.21
-        version: 4.17.21
       lucide-react:
         specifier: ^0.435.0
         version: 0.435.0(react@18.3.1)
