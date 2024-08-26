@@ -2,13 +2,13 @@ import {Container} from '@/components/shared/container'
 import {Typography} from '@/components/ui/typography'
 import {MapPin, InstagramIcon, FacebookIcon, PhoneIcon} from 'lucide-react'
 
-type SocialLinkCardsProps = {
+type SocialProps = {
   location: string
   name: string
   phone: string
 }
 
-function SocialLinkCards({name, location, phone}: SocialLinkCardsProps) {
+function Social({name, location, phone}: SocialProps) {
   return (
     <article className='py-24 bg-surface-3'>
       <Container>
@@ -45,7 +45,7 @@ function SocialLink({target = '_blank', ...props}: React.AnchorHTMLAttributes<HT
   )
 }
 
-SocialLinkCards.displayName = 'SocialLinkCards'
+Social.displayName = 'Social'
 SocialLink.displayName = 'SocialLink'
 
-export {SocialLinkCards}
+export {Social}

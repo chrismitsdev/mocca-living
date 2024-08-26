@@ -12,6 +12,17 @@ declare global {
     }
   }
 
+  type ContactFormData = {
+    fullName: string
+    email: string
+    phone: string
+    checkIn: Date
+    checkOut: Date
+    villa: string
+    message: string
+    consentData: boolean
+  }
+
   type ContactFormValues<
     T = Omit<
       IntlMessages['Pages']['Contact']['Form']['fields'],

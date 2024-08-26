@@ -14,7 +14,9 @@ export function generateStaticParams() {
   return [{slug: 'georgia'}, {slug: 'dimitra'}]
 }
 
-export async function generateMetadata({params: {locale, slug}}: ParamsWithSlug) {
+export async function generateMetadata({
+  params: {locale, slug}
+}: ParamsWithSlug) {
   const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
 
   return {
@@ -22,7 +24,9 @@ export async function generateMetadata({params: {locale, slug}}: ParamsWithSlug)
   }
 }
 
-export default async function VillaPage({params: {locale, slug}}: ParamsWithSlug) {
+export default async function VillaPage({
+  params: {locale, slug}
+}: ParamsWithSlug) {
   unstable_setRequestLocale(locale)
 
   if (slug !== 'georgia' && slug !== 'dimitra') {

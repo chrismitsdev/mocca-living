@@ -2,25 +2,16 @@
 
 import * as React from 'react'
 import {Slottable} from '@radix-ui/react-slot'
-import {
-  Root,
-  Trigger,
-  Portal,
-  Overlay,
-  Content,
-  Title,
-  Description,
-  Close
-} from '@radix-ui/react-dialog'
+import {Root, Trigger, Portal, Overlay, Content, Title, Description, Close} from '@radix-ui/react-dialog'
 import {cva, type VariantProps} from 'class-variance-authority'
 import {VisuallyHidden} from '@/components/ui/visually-hidden'
 import {cn} from '#/lib/utils'
 
-const sheetContentVariants = cva(
+const drawerContentVariants = cva(
   [
     'p-6',
     'fixed',
-    'z-50',
+    'z-[1]',
     'gap-4',
     'bg-surface-2',
     'shadow',
@@ -64,7 +55,6 @@ const sheetContentVariants = cva(
           'h-full',
           'w-4/5',
           'border-l',
-          'rounded-l-md',
           'data-open:slide-in-from-right',
           'data-closed:slide-out-to-right',
           'sm:max-w-sm'
@@ -77,17 +67,17 @@ const sheetContentVariants = cva(
   }
 )
 
-const Sheet = Root
-const SheetTrigger = Trigger
-const SheetPortal = Portal
+const Drawer = Root
+const DrawerTrigger = Trigger
+const DrawerPortal = Portal
 
-const SheetOverlay = React.forwardRef<
+const DrawerOverlay = React.forwardRef<
   React.ElementRef<typeof Overlay>,
   React.ComponentPropsWithoutRef<typeof Overlay>
 >(({className, ...props}, ref) => (
   <Overlay
     className={cn(
-      'fixed inset-0 z-50 bg-black/75 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 data-open:backdrop-blur-[1px] data-closed:backdrop-blur-none',
+      'fixed inset-0 z-[1] bg-black/75 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 data-open:backdrop-blur-[1px] data-closed:backdrop-blur-none',
       className
     )}
     ref={ref}
@@ -95,19 +85,19 @@ const SheetOverlay = React.forwardRef<
   />
 ))
 
-const SheetContent = React.forwardRef<
+const DrawerContent = React.forwardRef<
   React.ElementRef<typeof Content>,
-  React.ComponentPropsWithoutRef<typeof Content> & VariantProps<typeof sheetContentVariants>
+  React.ComponentPropsWithoutRef<typeof Content> & VariantProps<typeof drawerContentVariants>
 >(({side = 'right', className, 'aria-describedby': ariaDescribedBy = undefined, ...props}, ref) => (
   <Content
-    className={cn(sheetContentVariants({side}), className)}
+    className={cn(drawerContentVariants({side}), className)}
     aria-describedby={ariaDescribedBy}
     ref={ref}
     {...props}
   />
 ))
 
-const SheetTitle = React.forwardRef<
+const DrawerTitle = React.forwardRef<
   React.ElementRef<typeof Title>,
   React.ComponentPropsWithoutRef<typeof Title>
 >(({className, ...props}, ref) => (
@@ -118,7 +108,7 @@ const SheetTitle = React.forwardRef<
   />
 ))
 
-const SheetDescription = React.forwardRef<
+const DrawerDescription = React.forwardRef<
   React.ElementRef<typeof Description>,
   React.ComponentPropsWithoutRef<typeof Description>
 >(({className, ...props}, ref) => (
@@ -129,7 +119,7 @@ const SheetDescription = React.forwardRef<
   />
 ))
 
-const SheetClose = React.forwardRef<
+const DrawerClose = React.forwardRef<
   React.ElementRef<typeof Close>,
   React.ComponentPropsWithoutRef<typeof Close>
 >(({children, ...props}, ref) => (
@@ -142,36 +132,22 @@ const SheetClose = React.forwardRef<
   </Close>
 ))
 
-// const SheetHeader = ({className, ...props}: React.HTMLAttributes<HTMLDivElement>) => (
-//   <div
-//     className={cn('flex flex-col space-y-2 text-center sm:text-left', className)}
-//     {...props}
-//   />
-// )
-
-// const SheetFooter = ({className, ...props}: React.HTMLAttributes<HTMLDivElement>) => (
-//   <div
-//     className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2', className)}
-//     {...props}
-//   />
-// )
-
-Sheet.displayName = 'Sheet'
-SheetTrigger.displayName = 'SheetTrigger'
-SheetPortal.displayName = 'SheetPortal'
-SheetOverlay.displayName = 'SheetOverlay'
-SheetContent.displayName = 'SheetContent'
-SheetTitle.displayName = 'SheetTitle'
-SheetDescription.displayName = 'SheetDescription'
-SheetClose.displayName = 'SheetClose'
+Drawer.displayName = 'Drawer'
+DrawerTrigger.displayName = 'DrawerTrigger'
+DrawerPortal.displayName = 'DrawerPortal'
+DrawerOverlay.displayName = 'DrawerOverlay'
+DrawerContent.displayName = 'DrawerContent'
+DrawerTitle.displayName = 'DrawerTitle'
+DrawerDescription.displayName = 'DrawerDescription'
+DrawerClose.displayName = 'DrawerClose'
 
 export {
-  Sheet,
-  SheetTrigger,
-  SheetPortal,
-  SheetOverlay,
-  SheetContent,
-  SheetTitle,
-  SheetDescription,
-  SheetClose
+  Drawer,
+  DrawerTrigger,
+  DrawerPortal,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerClose
 }

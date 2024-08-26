@@ -129,7 +129,7 @@
         "submit-btn": "Submit",
         "reset-btn": "Reset",
         "fields": {
-          "name": {
+          "fullName": {
             "label": "Full name",
             "placeholder": "Fill in your full name",
             "validation": {

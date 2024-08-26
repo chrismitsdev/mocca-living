@@ -237,6 +237,7 @@ const config: Config = {
       none: 'none'
     },
     fontSize: {
+      xxs: ['10px', '14px'],
       xs: ['12px', '16px'],
       sm: ['14px', '24px'],
       base: ['16px', '24px'],

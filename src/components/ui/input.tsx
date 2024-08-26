@@ -13,7 +13,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div
-        className={cn('relative group', wrapperClassName)}
+        className={cn('relative', wrapperClassName)}
         {...restWrapperProps}
       >
         <input
@@ -27,7 +27,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {icon && (
-          <span className={cn('absolute left-3 top-1/2 -translate-y-1/2', props.disabled && 'opacity-35')}>
+          <span
+            className={cn(
+              'absolute left-3 top-1/2 -translate-y-1/2',
+              props.disabled && 'opacity-35'
+            )}
+          >
             {React.createElement(icon, {width: 16, height: 16})}
           </span>
         )}

@@ -10,14 +10,14 @@ import {Container} from '@/components/shared/container'
 import {VisuallyHidden} from '@/components/ui/visually-hidden'
 import {LogoSimple} from '@/components/logos/logo-simple'
 import {
-  Sheet,
-  SheetTrigger,
-  SheetPortal,
-  SheetOverlay,
-  SheetContent,
-  SheetTitle,
-  SheetClose
-} from '@/components/ui/sheet'
+  Drawer,
+  DrawerTrigger,
+  DrawerPortal,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerTitle,
+  DrawerClose
+} from '@/components/ui/drawer'
 import {cn} from '#/lib/utils'
 
 type NavigationLink = {
@@ -37,7 +37,7 @@ const LOGO_MIN_SCALE = 0.5
 function HeaderNavigation({links}: HeaderNavigationProps) {
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   const pathname = usePathname()
-  const {scrollYBoundedProgress} = useBoundedScroll(200)
+  const {scrollYBoundedProgress} = useBoundedScroll(250)
 
   const headerLinks = React.useMemo(
     function () {
@@ -69,15 +69,15 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
         borderBottomStyle: 'solid',
         borderBottomWidth: '1px',
         borderBottomColor: useMotionTemplate`rgb(
-          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 231])}
-          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 217])}
-          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 190])} /
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 221])}
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 200])}
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 162])} /
           ${useTransform(scrollYBoundedProgress, [0, 1], [0.08, 1])}
         )`,
         backgroundColor: useMotionTemplate`rgb(
-          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 231])}
-          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 217])}
-          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 190])} /
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 221])}
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 200])}
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 162])} /
           ${useTransform(scrollYBoundedProgress, [0, 1], [0.24, 1])}
         )`,
         boxShadow: useMotionTemplate`
@@ -87,13 +87,21 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
           -4px
           rgba(69, 50, 39, 0.24)
         `,
-        height: useTransform(scrollYBoundedProgress, [0, 1], [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT])
+        height: useTransform(
+          scrollYBoundedProgress,
+          [0, 1],
+          [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT]
+        )
       }}
     >
       <Container className='px-4 h-[inherit] flex justify-between items-center gap-2 md:px-3'>
         <motion.div
           style={{
-            scale: useTransform(scrollYBoundedProgress, [0, 1], [LOGO_MAX_SCALE, LOGO_MIN_SCALE]),
+            scale: useTransform(
+              scrollYBoundedProgress,
+              [0, 1],
+              [LOGO_MAX_SCALE, LOGO_MIN_SCALE]
+            ),
             color: useMotionTemplate`rgb(
               ${useTransform(scrollYBoundedProgress, [0, 1], [231, 148])}
               ${useTransform(scrollYBoundedProgress, [0, 1], [217, 79])}
@@ -142,11 +150,11 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
           </ul>
         </motion.nav>
 
-        <Sheet
+        <Drawer
           open={drawerOpen}
           onOpenChange={setDrawerOpen}
         >
-          <SheetTrigger asChild>
+          <DrawerTrigger asChild>
             <motion.button
               className='sm:hidden'
               style={{
@@ -156,22 +164,26 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
                   ${useTransform(scrollYBoundedProgress, [0, 1], [217, 50])}
                   ${useTransform(scrollYBoundedProgress, [0, 1], [190, 39])}
                 )`,
-                translateY: useTransform(scrollYBoundedProgress, [0, 1], [-20, 0])
+                translateY: useTransform(
+                  scrollYBoundedProgress,
+                  [0, 1],
+                  [-20, 0]
+                )
               }}
             >
               <MenuIcon size={24} />
             </motion.button>
-          </SheetTrigger>
-          <SheetPortal>
-            <SheetOverlay />
-            <SheetContent>
+          </DrawerTrigger>
+          <DrawerPortal>
+            <DrawerOverlay />
+            <DrawerContent>
               <VisuallyHidden>
-                <SheetTitle>{'Header navigation menu'}</SheetTitle>
+                <DrawerTitle>{'Header navigation menu'}</DrawerTitle>
               </VisuallyHidden>
               <div className='h-full grid grid-rows-[repeat(3,_min-content)] place-content-center'>
                 {headerLinks}
               </div>
-              <SheetClose asChild>
+              <DrawerClose asChild>
                 <motion.button
                   style={{
                     padding: '8px',
@@ -182,10 +194,10 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
                 >
                   <XIcon size={24} />
                 </motion.button>
-              </SheetClose>
-            </SheetContent>
-          </SheetPortal>
-        </Sheet>
+              </DrawerClose>
+            </DrawerContent>
+          </DrawerPortal>
+        </Drawer>
       </Container>
     </motion.header>
   )
