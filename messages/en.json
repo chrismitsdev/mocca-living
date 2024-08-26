@@ -126,8 +126,6 @@
       "Form": {
         "title": "Contact us",
         "description": "Fill out the form below to make a booking, and we will contact you shortly.",
-        "submit-btn": "Submit",
-        "reset-btn": "Reset",
         "fields": {
           "fullName": {
             "label": "Full name",
@@ -156,14 +154,14 @@
           },
           "checkIn": {
             "label": "Check-in date",
-            "placeholder": "Select a check-in date",
+            "placeholder": "Select your arrival date",
             "validation": {
               "required": "Mandatory field"
             }
           },
           "checkOut": {
             "label": "Check-out date",
-            "placeholder": "Select a check-out date",
+            "placeholder": "Select your departure date",
             "validation": {
               "required": "Mandatory field"
             }
@@ -185,6 +183,10 @@
               "required": "Mandatory field"
             }
           }
+        },
+        "buttons": {
+          "submit": "Submit",
+          "reset": "Reset"
         },
         "response": {
           "success": {

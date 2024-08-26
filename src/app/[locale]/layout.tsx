@@ -28,14 +28,10 @@ export function generateStaticParams() {
   return locales.map((locale) => ({locale}))
 }
 
-type LocaleLayoutProps = Params & {
-  children: React.ReactNode
-}
-
 export default function LocaleLayout({
   params: {locale},
   children
-}: LocaleLayoutProps) {
+}: React.PropsWithChildren<Params>) {
   unstable_setRequestLocale(locale)
   const t = useTranslations('Components')
 

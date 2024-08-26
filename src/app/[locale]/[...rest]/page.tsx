@@ -8,7 +8,7 @@ export async function generateMetadata({params: {locale}}: Params) {
     title: t('Pages.not-found')
   }
 }
- 
-export default function NotFoundPage() {
+
+export default function CatchAllPage() {
   notFound()
 }

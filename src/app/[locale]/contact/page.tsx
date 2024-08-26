@@ -1,5 +1,6 @@
+import pick from 'lodash/pick'
 import {getTranslations} from 'next-intl/server'
-import {useTranslations} from 'next-intl'
+import {useTranslations, NextIntlClientProvider, useMessages} from 'next-intl'
 import {unstable_setRequestLocale} from 'next-intl/server'
 import {Container} from '@/components/shared/container'
 import {
@@ -26,6 +27,7 @@ export async function generateMetadata({params: {locale}}: Params) {
 export default function ContactPage({params: {locale}}: Params) {
   unstable_setRequestLocale(locale)
   const t = useTranslations()
+  const messages = useMessages() as IntlMessages
 
   return (
     <>
@@ -38,7 +40,9 @@ export default function ContactPage({params: {locale}}: Params) {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <ContactForm locale={locale} />
+            <NextIntlClientProvider messages={messages.Pages.Contact.Form}>
+              <ContactForm locale={locale} />
+            </NextIntlClientProvider>
           </CardContent>
         </Card>
       </Container>

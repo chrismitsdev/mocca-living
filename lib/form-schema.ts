@@ -8,7 +8,8 @@ const emailProviders = [
   '@icloud.com'
 ]
 
-const greekMobileRegex = /^(2\d|69)\d{8}$/g
+// const greekMobileRegex = /^(2\d|69)\d{8}$/g
+const greekPhoneRegex = /^(\+30\s?)?(2\d|69)\d{8}$/g
 
 export const formSchema: ZodType<ContactFormData> = z.object({
   fullName: z
@@ -29,7 +30,7 @@ export const formSchema: ZodType<ContactFormData> = z.object({
     .string()
     .trim()
     .min(1, {message: 'Mandatory field'})
-    .regex(greekMobileRegex, {message: 'Invalid phone number format'}),
+    .regex(greekPhoneRegex, {message: 'Invalid phone number format'}),
   checkIn: z.date({required_error: 'Mandatory field'}),
   checkOut: z.date({required_error: 'Mandatory field'}),
   villa: z.string().trim().min(1, {message: 'Mandatory field'}),

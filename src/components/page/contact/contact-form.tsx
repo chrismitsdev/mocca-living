@@ -1,5 +1,6 @@
 'use client'
 
+import {useTranslations} from 'next-intl'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {useForm} from 'react-hook-form'
 import {addDays, subDays, isSameDay} from 'date-fns'
@@ -31,7 +32,7 @@ import {Button} from '@/components/ui/button'
 import {
   UserIcon,
   AtSignIcon,
-  SmartphoneIcon,
+  PhoneIcon,
   LogInIcon,
   LogOutIcon,
   HomeIcon,
@@ -52,6 +53,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
       consentData: false
     }
   })
+  const t = useTranslations<'Pages.Contact.Form'>()
   const watchCheckIn = form.watch('checkIn')
   const watchCheckOut = form.watch('checkOut')
 
@@ -82,10 +84,10 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
             name='fullName'
             render={({field}) => (
               <FormItem className='min-h-[82px]'>
-                <FormLabel>{'Full name'}</FormLabel>
+                <FormLabel>{t('fields.fullName.label')}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder='Fill in your full name'
+                    placeholder={t('fields.fullName.placeholder')}
                     icon={UserIcon}
                     {...field}
                   />
@@ -101,10 +103,10 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
             name='email'
             render={({field}) => (
               <FormItem className='min-h-[82px]'>
-                <FormLabel>{'Email'}</FormLabel>
+                <FormLabel>{t('fields.email.label')}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder='Fill in your email'
+                    placeholder={t('fields.email.placeholder')}
                     icon={AtSignIcon}
                     {...field}
                   />
@@ -120,11 +122,11 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
             name='phone'
             render={({field}) => (
               <FormItem className='min-h-[82px]'>
-                <FormLabel>{'Phone number'}</FormLabel>
+                <FormLabel>{t('fields.phone.label')}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder='Fill in your phone number'
-                    icon={SmartphoneIcon}
+                    placeholder={t('fields.phone.placeholder')}
+                    icon={PhoneIcon}
                     {...field}
                   />
                 </FormControl>
@@ -138,10 +140,10 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
             name='checkIn'
             render={({field}) => (
               <FormItem className='min-h-[82px]'>
-                <FormLabel>{'Check-in date'}</FormLabel>
+                <FormLabel>{t('fields.checkIn.label')}</FormLabel>
                 <FormControl>
                   <DatePicker
-                    placeholder='Select a check-in date'
+                    placeholder={t('fields.checkIn.placeholder')}
                     icon={LogInIcon}
                     locale={locale}
                     date={field.value}
@@ -167,10 +169,10 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
             name='checkOut'
             render={({field}) => (
               <FormItem className='min-h-[82px]'>
-                <FormLabel>{'Check-out date'}</FormLabel>
+                <FormLabel>{t('fields.checkOut.label')}</FormLabel>
                 <FormControl>
                   <DatePicker
-                    placeholder='Select a check-out date'
+                    placeholder={t('fields.checkOut.placeholder')}
                     icon={LogOutIcon}
                     locale={locale}
                     date={field.value}
@@ -194,7 +196,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
             name='villa'
             render={({field}) => (
               <FormItem className='min-h-[82px]'>
-                <FormLabel>{'Select a villa'}</FormLabel>
+                <FormLabel>{t('fields.villa.label')}</FormLabel>
                 <Select
                   value={field.value}
                   onValueChange={field.onChange}
@@ -208,7 +210,9 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
                         <HomeIcon size={16} />
                         {!field.value ? (
                           <span className='text-sm font-normal text-foreground-muted'>
-                            <SelectValue placeholder='Select your preferred villa' />
+                            <SelectValue
+                              placeholder={t('fields.villa.placeholder')}
+                            />
                           </span>
                         ) : (
                           <SelectValue />
@@ -242,11 +246,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
                     disabled={form.formState.isSubmitting}
                   />
                 </FormControl>
-                <FormLabel>
-                  {
-                    'I agree that my personal data will be used only to fulfill my request according to Privacy Policy statements'
-                  }
-                </FormLabel>
+                <FormLabel>{t('fields.consentData.label')}</FormLabel>
               </FormItem>
             )}
           />
@@ -257,10 +257,10 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
             name='message'
             render={({field}) => (
               <FormItem className='sm:col-span-3'>
-                <FormLabel>{'Message'}</FormLabel>
+                <FormLabel>{t('fields.message.label')}</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder='Optionally, leave your message here...'
+                    placeholder={t('fields.message.placeholder')}
                     icon={MessageCircle}
                     {...field}
                   />
@@ -280,7 +280,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
           disabled={form.formState.isSubmitting}
         >
           <RotateCcwIcon size={16} />
-          <span>{'Reset'}</span>
+          <span>{t('buttons.reset')}</span>
         </Button>
         <Button
           className='grow sm:grow-0'
@@ -289,7 +289,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
           disabled={form.formState.isSubmitting}
           isLoading={form.formState.isSubmitting}
         >
-          <span>{'Submit'}</span>
+          <span>{t('buttons.submit')}</span>
           <SendHorizonalIcon size={16} />
         </Button>
       </div>
