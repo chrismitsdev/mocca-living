@@ -76,7 +76,7 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
           </div>
           <Separator />
           <ScrollArea type='always'>
-            <ScrollAreaViewport className='max-h-[calc(100vh-144px-104px-3px)]'>
+            <ScrollAreaViewport className='max-h-[calc(100svh-144px-104px-3px)]'>
               <Form {...form}>
                 <form>
                   <div className='pl-3 pr-3 py-4 grid gap-y-2 sm:py-12 sm:px-16 sm:gap-y-4 sm:gap-x-8 sm:grid-cols-6'>
