@@ -89,7 +89,7 @@
             "outdoor": "Private area with pergola, Sitting area, Mini pool with hydromassage & color-therapy, Private garden with tropical plants and flowers, Shower area"
           },
           "complementary": "Welcome assistance procedure, Check-in/out assistance",
-          "request": "Two SUP boards for rental"
+          "request": "Two SUP boards for rental, One electric-bike for rental"
         },
         "dimitra": {
           "name": "Dimitra",
@@ -104,7 +104,7 @@
             "outdoor": "Private area with pergola, Sunbeds with umbrella, Mini pool with hydromassage & color-therapy, Private garden with tropical plants and flowers, Shower area"
           },
           "complementary": "Welcome assistance procedure, Check-in/out assistance",
-          "request": "Two SUP boards for rental"
+          "request": "Two SUP boards for rental, One electric-bike for rental"
         }
       },
       "SlugHeaders": {
@@ -114,7 +114,7 @@
           "outdoor": "Outdoor amenities"
         },
         "complementary": "Complementary services",
-        "request": "Services upon request",
+        "request": "Rental services",
         "button": "Back"
       }
     },
@@ -129,60 +129,44 @@
         "fields": {
           "fullName": {
             "label": "Full name",
-            "placeholder": "Fill in your full name",
-            "validation": {
-              "required": "Mandatory field",
-              "length": "It must be between 5 and 25 characters"
-            }
+            "placeholder": "Fill in your full name"
           },
           "email": {
             "label": "Email",
-            "placeholder": "Fill in your email",
-            "validation": {
-              "required": "Mandatory field",
-              "pattern": "Invalid email address",
-              "whitelistedProviders": "Email provider is not supported"
-            }
+            "placeholder": "Fill in your email"
           },
           "phone": {
             "label": "Phone number",
-            "placeholder": "Fill in your phone number",
-            "validation": {
-              "required": "Mandatory field",
-              "pattern": "Invalid phone number format"
-            }
+            "placeholder": "Fill in your phone number"
           },
           "checkIn": {
             "label": "Check-in date",
-            "placeholder": "Select your arrival date",
-            "validation": {
-              "required": "Mandatory field"
-            }
+            "placeholder": "Select your arrival date"
           },
           "checkOut": {
             "label": "Check-out date",
-            "placeholder": "Select your departure date",
-            "validation": {
-              "required": "Mandatory field"
-            }
+            "placeholder": "Select your departure date"
           },
           "villa": {
             "label": "Selected villa",
-            "placeholder": "Select your preferred villa",
-            "validation": {
-              "required": "Mandatory field"
-            }
+            "placeholder": "Select your preferred villa"
           },
           "message": {
             "label": "Message",
             "placeholder": "Optionally, leave your message here..."
           },
           "consentData": {
-            "label": "I agree that my personal data will be used only to fulfill my request according to Privacy Policy statements",
-            "validation": {
-              "required": "Mandatory field"
-            }
+            "label": "I agree that my personal data will be used only to fulfill my request according to Privacy Policy statements"
           }
+        },
+        "validation": {
+          "required": "Mandatory field",
+          "fullName": "Must be between 5 and 25 characters long",
+          "email": {
+            "invalid": "Invalid email address",
+            "providers": "Email provider is not supported"
+          },
+          "phone": "Invalid phone number format"
         },
         "buttons": {
           "submit": "Submit",

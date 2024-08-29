@@ -36,7 +36,10 @@ export default async function VillaPage({
   return (
     <>
       <VillaHeroCarousel slug={slug} />
-      <VillaDetails slug={slug} />
+      <VillaDetails
+        slug={slug}
+        locale={locale}
+      />
     </>
   )
 }

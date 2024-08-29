@@ -2,25 +2,32 @@
 
 import * as React from 'react'
 import {Slottable} from '@radix-ui/react-slot'
-import {Root, Trigger, Portal, Overlay, Content, Title, Description, Close} from '@radix-ui/react-dialog'
+import {
+  Root,
+  Trigger,
+  Portal,
+  Overlay,
+  Content,
+  Title,
+  Description,
+  Close
+} from '@radix-ui/react-dialog'
 import {cva, type VariantProps} from 'class-variance-authority'
 import {VisuallyHidden} from '@/components/ui/visually-hidden'
 import {cn} from '#/lib/utils'
 
 const drawerContentVariants = cva(
   [
-    'p-6',
     'fixed',
     'z-[1]',
-    'gap-4',
     'bg-surface-2',
     'shadow',
     'transition',
     'ease-in-out',
     'data-open:animate-in',
-    'data-open:duration-300',
+    'data-open:duration-500',
     'data-closed:animate-out',
-    'data-closed:duration-150'
+    'data-closed:duration-300'
   ],
   {
     variants: {
@@ -77,7 +84,7 @@ const DrawerOverlay = React.forwardRef<
 >(({className, ...props}, ref) => (
   <Overlay
     className={cn(
-      'fixed inset-0 z-[1] bg-black/75 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 data-open:backdrop-blur-[1px] data-closed:backdrop-blur-none',
+      'fixed inset-0 z-[1] bg-black/75 data-open:animate-in data-open:fade-in-0 data-open:backdrop-blur-[1px] data-open:duration-500 data-closed:animate-out data-closed:fade-out-0 data-closed:backdrop-blur-none data-closed:duration-300',
       className
     )}
     ref={ref}
@@ -87,15 +94,26 @@ const DrawerOverlay = React.forwardRef<
 
 const DrawerContent = React.forwardRef<
   React.ElementRef<typeof Content>,
-  React.ComponentPropsWithoutRef<typeof Content> & VariantProps<typeof drawerContentVariants>
->(({side = 'right', className, 'aria-describedby': ariaDescribedBy = undefined, ...props}, ref) => (
-  <Content
-    className={cn(drawerContentVariants({side}), className)}
-    aria-describedby={ariaDescribedBy}
-    ref={ref}
-    {...props}
-  />
-))
+  React.ComponentPropsWithoutRef<typeof Content> &
+    VariantProps<typeof drawerContentVariants>
+>(
+  (
+    {
+      side = 'right',
+      className,
+      'aria-describedby': ariaDescribedBy = undefined,
+      ...props
+    },
+    ref
+  ) => (
+    <Content
+      className={cn(drawerContentVariants({side}), className)}
+      aria-describedby={ariaDescribedBy}
+      ref={ref}
+      {...props}
+    />
+  )
+)
 
 const DrawerTitle = React.forwardRef<
   React.ElementRef<typeof Title>,

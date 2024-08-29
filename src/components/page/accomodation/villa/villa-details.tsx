@@ -1,4 +1,4 @@
-import {useTranslations} from 'next-intl'
+import {NextIntlClientProvider, useTranslations} from 'next-intl'
 import {Link} from '@/navigation'
 import {
   DotIcon,
@@ -11,16 +11,24 @@ import {
   ChevronRightIcon
 } from 'lucide-react'
 import {Container} from '@/components/shared/container'
-import {Card, CardHeader, CardTitle, CardContent} from '@/components/ui/card'
-import {Separator} from '@/components/ui/separator'
-import {Typography} from '@/components/ui/typography'
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter
+} from '@/components/ui/card'
 import {Button} from '@/components/ui/button'
+import {Typography} from '@/components/ui/typography'
+import {Separator} from '@/components/ui/separator'
+import {VillaEnquireForm} from '@/components/page/accomodation/villa/villa-enquire-form'
 
 type VillaDetailsProps = {
   slug: Slug
+  locale: Params['params']['locale']
 }
 
-function VillaDetails({slug}: VillaDetailsProps) {
+function VillaDetails({slug, locale}: VillaDetailsProps) {
   const t = useTranslations('Pages.Accomodation.Slug')
   const tSLug = useTranslations(`Pages.Accomodation.Slug.${slug}`)
   const tHead = useTranslations('Pages.Accomodation.SlugHeaders')
@@ -104,6 +112,14 @@ function VillaDetails({slug}: VillaDetailsProps) {
               <Typography variant='h5'>{tHead('request')}</Typography>
             </VillaDataRow>
           </CardContent>
+          <CardFooter className='px-3 pb-8 pt-4 sm:px-8 justify-end'>
+            <NextIntlClientProvider>
+              <VillaEnquireForm
+                slug={slug}
+                locale={locale}
+              />
+            </NextIntlClientProvider>
+          </CardFooter>
         </Card>
       </article>
     </Container>

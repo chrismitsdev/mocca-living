@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "rimraf .next dist pnpm-lock.yaml node_modules"
+    "clean": "rimraf .next dist node_modules pnpm-lock.yaml"
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",
@@ -38,7 +38,7 @@
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.435.0",
     "mapbox-gl": "^3.6.0",
-    "next": "14.2.6",
+    "next": "14.2.7",
     "next-intl": "^3.17.6",
     "postcss": "^8",
     "react": "^18.3.1",

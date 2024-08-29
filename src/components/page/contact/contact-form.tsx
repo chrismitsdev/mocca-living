@@ -4,9 +4,8 @@ import {useTranslations} from 'next-intl'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {useForm} from 'react-hook-form'
 import {addDays, subDays, isSameDay} from 'date-fns'
-import {formSchema, type FormSchema} from '#/lib/form-schema'
+import {type ContactFormSchema, getContactFormSchema} from '#/lib/schema'
 import {sendContactForm} from '@/actions'
-import {toast} from '@/components/ui/toast'
 import {
   Form,
   FormControl,
@@ -29,6 +28,7 @@ import {DatePicker} from '@/components/ui/date-picker'
 import {Textarea} from '@/components/ui/textarea'
 import {Checkbox} from '@/components/ui/checkbox'
 import {Button} from '@/components/ui/button'
+import {toast} from '@/components/ui/toast'
 import {
   UserIcon,
   AtSignIcon,
@@ -42,8 +42,8 @@ import {
 } from 'lucide-react'
 
 function ContactForm({locale}: {locale: Params['params']['locale']}) {
-  const form = useForm<FormSchema>({
-    resolver: zodResolver(formSchema),
+  const t = useTranslations<'Pages.Contact.Form'>()
+  const form = useForm<ContactFormSchema>({
     defaultValues: {
       fullName: '',
       email: '',
@@ -51,13 +51,15 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
       villa: '',
       message: '',
       consentData: false
-    }
+    },
+    mode: 'onSubmit',
+    reValidateMode: 'onChange',
+    resolver: zodResolver(getContactFormSchema(t))
   })
-  const t = useTranslations<'Pages.Contact.Form'>()
   const watchCheckIn = form.watch('checkIn')
   const watchCheckOut = form.watch('checkOut')
 
-  async function onSubmit(values: FormSchema) {
+  async function onSubmit(values: ContactFormSchema) {
     const {title, message, status} = await sendContactForm(values)
     const isSuccess = status === 'success'
 
@@ -79,8 +81,8 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
       >
         <div className='grid gap-y-2 sm:grid-cols-3 sm:gap-y-6 sm:gap-x-10'>
           <FormField
-            disabled={form.formState.isSubmitting}
             control={form.control}
+            disabled={form.formState.isSubmitting}
             name='fullName'
             render={({field}) => (
               <FormItem className='min-h-[82px]'>
@@ -88,6 +90,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
                 <FormControl>
                   <Input
                     placeholder={t('fields.fullName.placeholder')}
+                    autoComplete='name'
                     icon={UserIcon}
                     {...field}
                   />
@@ -98,15 +101,17 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
           />
 
           <FormField
-            disabled={form.formState.isSubmitting}
             control={form.control}
+            disabled={form.formState.isSubmitting}
             name='email'
             render={({field}) => (
               <FormItem className='min-h-[82px]'>
                 <FormLabel>{t('fields.email.label')}</FormLabel>
                 <FormControl>
                   <Input
+                    autoComplete='email'
                     placeholder={t('fields.email.placeholder')}
+                    type='email'
                     icon={AtSignIcon}
                     {...field}
                   />
@@ -117,14 +122,15 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
           />
 
           <FormField
-            disabled={form.formState.isSubmitting}
             control={form.control}
+            disabled={form.formState.isSubmitting}
             name='phone'
             render={({field}) => (
               <FormItem className='min-h-[82px]'>
                 <FormLabel>{t('fields.phone.label')}</FormLabel>
                 <FormControl>
                   <Input
+                    autoComplete='mobile tel'
                     placeholder={t('fields.phone.placeholder')}
                     icon={PhoneIcon}
                     {...field}
@@ -191,13 +197,14 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
           />
 
           <FormField
-            disabled={form.formState.isSubmitting}
             control={form.control}
+            disabled={form.formState.isSubmitting}
             name='villa'
             render={({field}) => (
               <FormItem className='min-h-[82px]'>
                 <FormLabel>{t('fields.villa.label')}</FormLabel>
                 <Select
+                  name='villa'
                   value={field.value}
                   onValueChange={field.onChange}
                 >
@@ -241,6 +248,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
               <FormItem className='space-y-0 flex gap-2 sm:col-span-3'>
                 <FormControl className='mt-1'>
                   <Checkbox
+                    name='consentData'
                     checked={field.value}
                     onCheckedChange={field.onChange}
                     disabled={form.formState.isSubmitting}
@@ -252,8 +260,8 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
           />
 
           <FormField
-            disabled={form.formState.isSubmitting}
             control={form.control}
+            disabled={form.formState.isSubmitting}
             name='message'
             render={({field}) => (
               <FormItem className='sm:col-span-3'>

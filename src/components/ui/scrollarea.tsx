@@ -1,7 +1,13 @@
 'use client'
 
 import * as React from 'react'
-import {Root, Viewport, Scrollbar, Thumb, Corner} from '@radix-ui/react-scroll-area'
+import {
+  Root,
+  Viewport,
+  Scrollbar,
+  Thumb,
+  Corner
+} from '@radix-ui/react-scroll-area'
 import {cn} from '#/lib/utils'
 
 const ScrollArea = React.forwardRef<
@@ -34,7 +40,8 @@ const ScrollAreaBar = React.forwardRef<
     className={cn(
       'flex touch-none select-none transition-colors',
       orientation === 'vertical' && 'h-full w-2.5 p-px',
-      orientation === 'horizontal' && 'h-2.5 flex-col border-t border-t-transparent p-px',
+      orientation === 'horizontal' &&
+        'h-2.5 flex-col border-t border-t-transparent p-px',
       className
     )}
     orientation={orientation}
