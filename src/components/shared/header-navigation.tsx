@@ -5,8 +5,8 @@ import {motion, useTransform, useMotionTemplate} from 'framer-motion'
 import {MenuIcon, XIcon} from 'lucide-react'
 import {useBoundedScroll} from '@/hooks/useBoundedScroll'
 import {usePathname, Link} from '@/navigation'
-import {Typography} from '@/components/ui/typography'
 import {Container} from '@/components/shared/container'
+import {Typography} from '@/components/ui/typography'
 import {VisuallyHidden} from '@/components/ui/visually-hidden'
 import {LogoSimple} from '@/components/logos/logo-simple'
 import {
@@ -68,6 +68,7 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
         backdropFilter: 'blur(8px)',
         borderBottomStyle: 'solid',
         borderBottomWidth: '1px',
+        willChange: 'border-bottom-color, background-color, box-shadow, height',
         borderBottomColor: useMotionTemplate`rgb(
           ${useTransform(scrollYBoundedProgress, [0, 1], [0, 221])}
           ${useTransform(scrollYBoundedProgress, [0, 1], [0, 200])}
@@ -97,6 +98,7 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
       <Container className='px-4 h-[inherit] flex justify-between items-center gap-2 md:px-3'>
         <motion.div
           style={{
+            willChange: 'scale, color',
             scale: useTransform(
               scrollYBoundedProgress,
               [0, 1],
@@ -120,6 +122,7 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
         <motion.nav
           className='hidden sm:block'
           style={{
+            willChange: 'color',
             color: useMotionTemplate`rgb(
               ${useTransform(scrollYBoundedProgress, [0, 1], [231, 69])}
               ${useTransform(scrollYBoundedProgress, [0, 1], [217, 50])}
@@ -159,6 +162,7 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
               className='sm:hidden'
               style={{
                 padding: '8px',
+                willChange: 'color, transform',
                 color: useMotionTemplate`rgb(
                   ${useTransform(scrollYBoundedProgress, [0, 1], [231, 69])}
                   ${useTransform(scrollYBoundedProgress, [0, 1], [217, 50])}
@@ -189,6 +193,7 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
                     padding: '8px',
                     position: 'absolute',
                     right: '16px',
+                    willChange: 'top',
                     top: useTransform(scrollYBoundedProgress, [0, 1], [24, 12])
                   }}
                 >
