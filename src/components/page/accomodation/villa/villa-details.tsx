@@ -1,4 +1,4 @@
-import {NextIntlClientProvider, useTranslations} from 'next-intl'
+import {NextIntlClientProvider, useTranslations, useMessages} from 'next-intl'
 import {Link} from '@/navigation'
 import {
   DotIcon,
@@ -32,6 +32,7 @@ function VillaDetails({slug, locale}: VillaDetailsProps) {
   const t = useTranslations('Pages.Accomodation.Slug')
   const tSLug = useTranslations(`Pages.Accomodation.Slug.${slug}`)
   const tHead = useTranslations('Pages.Accomodation.SlugHeaders')
+  const messages = useMessages() as IntlMessages
 
   return (
     <Container
@@ -113,7 +114,7 @@ function VillaDetails({slug, locale}: VillaDetailsProps) {
             </VillaDataRow>
           </CardContent>
           <CardFooter className='px-3 pb-8 pt-4 sm:px-8 justify-end'>
-            <NextIntlClientProvider>
+            <NextIntlClientProvider messages={messages.Components.Form}>
               <VillaEnquireForm
                 slug={slug}
                 locale={locale}

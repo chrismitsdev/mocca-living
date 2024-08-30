@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import {useTranslations} from 'next-intl'
 import {useForm} from 'react-hook-form'
 import {addDays, subDays, isSameDay} from 'date-fns'
 import {
@@ -48,8 +49,9 @@ type VillaEnquireFormProps = {
 }
 
 function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
-  const form = useForm()
   const [open, setOpen] = React.useState(false)
+  const form = useForm()
+  const t = useTranslations<'Components.Form'>()
   const watchCheckIn = form.watch('checkIn')
   const watchCheckOut = form.watch('checkOut')
 
@@ -86,10 +88,11 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                       name='fullName'
                       render={({field}) => (
                         <FormItem className='min-h-[82px] sm:col-span-2'>
-                          <FormLabel>{'Full name'}</FormLabel>
+                          <FormLabel>{t('fields.fullName.label')}</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder={'Fill in your full name'}
+                              autoComplete='name'
+                              placeholder={t('fields.fullName.placeholder')}
                               icon={UserIcon}
                               {...field}
                             />
@@ -104,10 +107,11 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                       name='email'
                       render={({field}) => (
                         <FormItem className='min-h-[82px] sm:col-span-2'>
-                          <FormLabel>{'Email'}</FormLabel>
+                          <FormLabel>{t('fields.email.label')}</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder={'Fill in your email'}
+                              autoComplete='email'
+                              placeholder={t('fields.email.placeholder')}
                               icon={AtSignIcon}
                               {...field}
                             />
@@ -122,10 +126,11 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                       name='phone'
                       render={({field}) => (
                         <FormItem className='min-h-[82px] sm:col-span-2'>
-                          <FormLabel>{'Phone'}</FormLabel>
+                          <FormLabel>{t('fields.phone.label')}</FormLabel>
                           <FormControl>
                             <Input
-                              placeholder={'Fill in your phone number'}
+                              autoComplete='mobile tel'
+                              placeholder={t('fields.phone.placeholder')}
                               icon={PhoneIcon}
                               {...field}
                             />
@@ -139,10 +144,10 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                       name='check-in'
                       render={({field}) => (
                         <FormItem className='min-h-[82px] sm:col-span-3'>
-                          <FormLabel>{'Check-in date'}</FormLabel>
+                          <FormLabel>{t('fields.checkIn.label')}</FormLabel>
                           <FormControl>
                             <DatePicker
-                              placeholder='Select your arrival date'
+                              placeholder={t('fields.checkIn.placeholder')}
                               icon={LogInIcon}
                               locale={locale}
                               date={field.value}
@@ -169,10 +174,10 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                       name='check-out'
                       render={({field}) => (
                         <FormItem className='min-h-[82px] sm:col-span-3'>
-                          <FormLabel>{'Check-out date'}</FormLabel>
+                          <FormLabel>{t('fields.checkOut.label')}</FormLabel>
                           <FormControl>
                             <DatePicker
-                              placeholder={'Select your departure date'}
+                              placeholder={t('fields.checkOut.placeholder')}
                               icon={LogOutIcon}
                               locale={locale}
                               date={field.value}
@@ -193,7 +198,7 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                       name='consentData'
                       render={({field}) => (
                         <FormItem className='space-y-0 flex gap-2 sm:col-span-full'>
-                          <FormControl className='mt-1'>
+                          <FormControl className='mt-[3px]'>
                             <Checkbox
                               name='consentData'
                               checked={field.value}
@@ -201,11 +206,7 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                               disabled={form.formState.isSubmitting}
                             />
                           </FormControl>
-                          <FormLabel>
-                            {
-                              'I agree that my personal data will be used only to fulfill my request according to Privacy Policy statements'
-                            }
-                          </FormLabel>
+                          <FormLabel>{t('fields.consentData.label')}</FormLabel>
                         </FormItem>
                       )}
                     />
@@ -219,14 +220,14 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
           <div className='px-3 py-8 flex justify-end sm:pb-16 sm:pt-10 sm:px-16'>
             <Button>
               <span>{'Submit'}</span>
-              <SendHorizonalIcon />
+              <SendHorizonalIcon size={16} />
             </Button>
           </div>
           <DrawerClose asChild>
             <Button
-              className='absolute top-3 right-3'
+              className='absolute top-3 right-4'
               variant='ghost-error'
-              size='icon-mini'
+              size='icon-normal'
             >
               <VisuallyHidden>{'Close drawer'}</VisuallyHidden>
               <XIcon />

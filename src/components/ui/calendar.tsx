@@ -4,7 +4,12 @@ import * as React from 'react'
 import {DayPicker} from 'react-day-picker'
 import {el, enUS} from 'date-fns/locale'
 import {buttonVariants} from '@/components/ui/button'
-import {ChevronUpIcon, ChevronRightIcon, ChevronDownIcon, ChevronLeftIcon} from 'lucide-react'
+import {
+  ChevronUpIcon,
+  ChevronRightIcon,
+  ChevronDownIcon,
+  ChevronLeftIcon
+} from 'lucide-react'
 import {cn} from '#/lib/utils'
 
 const chevronMap = {
@@ -52,9 +57,12 @@ function Calendar({
         range_start: 'rounded-r-none', // table > tbody > tr > td (when mode = 'range')
         range_middle: 'rounded-none', // table > tbody > tr > td (when mode = 'range')
         range_end: 'rounded-l-none', // table > tbody > tr > td (when mode = 'range')
-        outside: '[&:not(:has(button[disabled]))]:text-primary', // table > tbody > tr > td
+        // outside: '[&:not(:has(button[disabled]))]:text-primary', // table > tbody > tr > td
+        // outside: '[&:not(:has(button[disabled]))]:text-primary', // table > tbody > tr > td
+        outside: 'text-primary', // table > tbody > tr > td
         hidden: 'invisible', // table > tbody > tr > td[aria-hidden="true"]
-        disabled: 'opacity-50 font-bold bg-striped [&>button]:cursor-not-allowed',
+        disabled:
+          'opacity-50 bg-striped !text-inherit font-bold [&>button]:cursor-not-allowed',
         ...classNames
       }}
       components={{

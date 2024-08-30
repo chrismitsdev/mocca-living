@@ -246,7 +246,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
             name='consentData'
             render={({field}) => (
               <FormItem className='space-y-0 flex gap-2 sm:col-span-3'>
-                <FormControl className='mt-1'>
+                <FormControl className='mt-[3px]'>
                   <Checkbox
                     name='consentData'
                     checked={field.value}
