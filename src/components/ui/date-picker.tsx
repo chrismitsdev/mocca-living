@@ -46,6 +46,7 @@ function DatePicker({
     <Popover
       open={open}
       onOpenChange={setOpen}
+      modal
     >
       <PopoverTrigger
         id={id}

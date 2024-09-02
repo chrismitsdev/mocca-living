@@ -7,6 +7,17 @@ import {addDays, subDays, isSameDay} from 'date-fns'
 import {type ContactFormSchema, getContactFormSchema} from '#/lib/schema'
 import {sendContactForm} from '@/actions'
 import {
+  UserIcon,
+  AtSignIcon,
+  PhoneIcon,
+  LogInIcon,
+  LogOutIcon,
+  HomeIcon,
+  MessageCircle,
+  SendHorizonalIcon,
+  RotateCcwIcon
+} from 'lucide-react'
+import {
   Form,
   FormControl,
   FormField,
@@ -29,17 +40,6 @@ import {Textarea} from '@/components/ui/textarea'
 import {Checkbox} from '@/components/ui/checkbox'
 import {Button} from '@/components/ui/button'
 import {toast} from '@/components/ui/toast'
-import {
-  UserIcon,
-  AtSignIcon,
-  PhoneIcon,
-  LogInIcon,
-  LogOutIcon,
-  HomeIcon,
-  MessageCircle,
-  SendHorizonalIcon,
-  RotateCcwIcon
-} from 'lucide-react'
 
 function ContactForm({locale}: {locale: Params['params']['locale']}) {
   const t = useTranslations<'Pages.Contact.Form'>()

@@ -10,6 +10,7 @@ import {
   PhoneIcon,
   LogInIcon,
   LogOutIcon,
+  Calendar,
   XIcon,
   SendHorizonalIcon
 } from 'lucide-react'
@@ -65,8 +66,11 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
       </DrawerTrigger>
       <DrawerPortal>
         <DrawerOverlay />
-        <DrawerContent side='bottom'>
-          <div className='px-3 py-8 sm:pt-16 sm:pb-10 space-y-2 sm:px-16'>
+        <DrawerContent
+          side='left'
+          className='w-full sm:max-w-xl'
+        >
+          <div className='px-3 py-8 space-y-2 sm:px-8 sm:py-16'>
             <DrawerTitle>
               {'Enquire about'} <span className='capitalize'>{slug}</span>
             </DrawerTitle>
@@ -78,16 +82,16 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
           </div>
           <Separator />
           <ScrollArea type='always'>
-            <ScrollAreaViewport className='max-h-[calc(100dvh-144px-104px-3px)]'>
+            <ScrollAreaViewport className='max-h-[calc(100dvh-144px-1px)]'>
               <Form {...form}>
                 <form>
-                  <div className='pl-3 pr-3 py-4 grid gap-y-2 sm:py-12 sm:px-16 sm:gap-y-4 sm:gap-x-8 sm:grid-cols-6'>
+                  <div className='pl-3 pr-3 py-4 space-y-4 sm:p-8'>
                     <FormField
                       control={form.control}
                       disabled={form.formState.isSubmitting}
                       name='fullName'
                       render={({field}) => (
-                        <FormItem className='min-h-[82px] sm:col-span-2'>
+                        <FormItem className='min-h-[82px]'>
                           <FormLabel>{t('fields.fullName.label')}</FormLabel>
                           <FormControl>
                             <Input
@@ -106,7 +110,7 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                       disabled={form.formState.isSubmitting}
                       name='email'
                       render={({field}) => (
-                        <FormItem className='min-h-[82px] sm:col-span-2'>
+                        <FormItem className='min-h-[82px]'>
                           <FormLabel>{t('fields.email.label')}</FormLabel>
                           <FormControl>
                             <Input
@@ -125,7 +129,7 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                       disabled={form.formState.isSubmitting}
                       name='phone'
                       render={({field}) => (
-                        <FormItem className='min-h-[82px] sm:col-span-2'>
+                        <FormItem className='min-h-[82px]'>
                           <FormLabel>{t('fields.phone.label')}</FormLabel>
                           <FormControl>
                             <Input
@@ -143,7 +147,7 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                       control={form.control}
                       name='check-in'
                       render={({field}) => (
-                        <FormItem className='min-h-[82px] sm:col-span-3'>
+                        <FormItem className='min-h-[82px]'>
                           <FormLabel>{t('fields.checkIn.label')}</FormLabel>
                           <FormControl>
                             <DatePicker
@@ -173,7 +177,7 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                       control={form.control}
                       name='check-out'
                       render={({field}) => (
-                        <FormItem className='min-h-[82px] sm:col-span-3'>
+                        <FormItem className='min-h-[82px]'>
                           <FormLabel>{t('fields.checkOut.label')}</FormLabel>
                           <FormControl>
                             <DatePicker
@@ -197,7 +201,7 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                       control={form.control}
                       name='consentData'
                       render={({field}) => (
-                        <FormItem className='space-y-0 flex gap-2 sm:col-span-full'>
+                        <FormItem className='space-y-0 flex gap-2'>
                           <FormControl className='mt-[3px]'>
                             <Checkbox
                               name='consentData'
@@ -211,18 +215,17 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                       )}
                     />
                   </div>
+                  <div className='px-3 py-4 flex sm:justify-end sm:pl-8 sm:pb-8 sm:pr-8'>
+                    <Button className='w-full sm:w-auto'>
+                      <span>{'Submit'}</span>
+                      <SendHorizonalIcon size={16} />
+                    </Button>
+                  </div>
                 </form>
               </Form>
             </ScrollAreaViewport>
             <ScrollAreaBar className='w-2 sm:w-2.5' />
           </ScrollArea>
-          <Separator />
-          <div className='px-3 py-8 flex justify-end sm:pb-16 sm:pt-10 sm:px-16'>
-            <Button>
-              <span>{'Submit'}</span>
-              <SendHorizonalIcon size={16} />
-            </Button>
-          </div>
           <DrawerClose asChild>
             <Button
               className='absolute top-3 right-4'

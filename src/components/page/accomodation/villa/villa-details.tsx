@@ -70,7 +70,7 @@ function VillaDetails({slug, locale}: VillaDetailsProps) {
           </Button>
         </div>
         <Separator className='mt-2 mb-6' />
-        <Card className='p-0 space-y-0 shadow-none sm:shadow-medium'>
+        <Card className='p-0 space-y-0 shadow-none  sm:shadow-medium'>
           <CardHeader className='px-3 py-8 space-y-6 sm:p-8'>
             <CardTitle>{tSLug('name')}</CardTitle>
             <div className='grid grid-cols-2 gap-y-4 gap-x-6 sm:grid-cols-none sm:grid-flow-col sm:auto-cols-max sm:gap-8'>

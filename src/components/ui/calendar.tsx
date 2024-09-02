@@ -57,8 +57,6 @@ function Calendar({
         range_start: 'rounded-r-none', // table > tbody > tr > td (when mode = 'range')
         range_middle: 'rounded-none', // table > tbody > tr > td (when mode = 'range')
         range_end: 'rounded-l-none', // table > tbody > tr > td (when mode = 'range')
-        // outside: '[&:not(:has(button[disabled]))]:text-primary', // table > tbody > tr > td
-        // outside: '[&:not(:has(button[disabled]))]:text-primary', // table > tbody > tr > td
         outside: 'text-primary', // table > tbody > tr > td
         hidden: 'invisible', // table > tbody > tr > td[aria-hidden="true"]
         disabled:
