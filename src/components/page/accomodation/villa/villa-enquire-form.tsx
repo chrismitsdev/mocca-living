@@ -10,7 +10,6 @@ import {
   PhoneIcon,
   LogInIcon,
   LogOutIcon,
-  Calendar,
   XIcon,
   SendHorizonalIcon
 } from 'lucide-react'
