@@ -222,8 +222,8 @@
       "reject-label": "Reject"
     },
     "Form": {
-      "title": "Contact us",
-      "description": "Fill out the form below to make a booking, and we will contact you shortly.",
+      "title": "Make a reservartion for villa {slug, select, georgia {Georgia} dimitra {Dimitra} other {Unknown}}",
+      "description": "Fill out the form below and we will contact you shortly.",
       "fields": {
         "fullName": {
           "label": "Full name",

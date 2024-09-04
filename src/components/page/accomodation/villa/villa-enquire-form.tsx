@@ -70,14 +70,8 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
           className='w-full sm:max-w-xl'
         >
           <div className='px-3 py-8 space-y-2 sm:px-8 sm:py-16'>
-            <DrawerTitle>
-              {'Enquire about'} <span className='capitalize'>{slug}</span>
-            </DrawerTitle>
-            <DrawerDescription>
-              {
-                'Fill out the form below to make a booking, and we will contact you shortly.'
-              }
-            </DrawerDescription>
+            <DrawerTitle>{t('title', {slug})}</DrawerTitle>
+            <DrawerDescription>{t('description')}</DrawerDescription>
           </div>
           <Separator />
           <ScrollArea type='always'>
@@ -216,7 +210,7 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                   </div>
                   <div className='px-3 py-4 flex sm:justify-end sm:pl-8 sm:pb-8 sm:pr-8'>
                     <Button className='w-full sm:w-auto'>
-                      <span>{'Submit'}</span>
+                      <span>{t('buttons.submit')}</span>
                       <SendHorizonalIcon size={16} />
                     </Button>
                   </div>
