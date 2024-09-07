@@ -3,6 +3,7 @@
 import * as React from 'react'
 import {useTranslations} from 'next-intl'
 import {useForm} from 'react-hook-form'
+import {zodResolver} from '@hookform/resolvers/zod'
 import {addDays, subDays, isSameDay} from 'date-fns'
 import {
   UserIcon,
@@ -13,6 +14,7 @@ import {
   XIcon,
   SendHorizonalIcon
 } from 'lucide-react'
+import {type SlugFormSchema, getSlugFormSchema} from '#/lib/schema'
 import {
   Drawer,
   DrawerTrigger,
@@ -43,17 +45,31 @@ import {
   ScrollAreaBar
 } from '@/components/ui/scrollarea'
 
-type VillaEnquireFormProps = {
+type SlugFormProps = {
   slug: Slug
   locale: Params['params']['locale']
 }
 
-function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
+function SlugForm({slug, locale}: SlugFormProps) {
   const [open, setOpen] = React.useState(false)
-  const form = useForm()
   const t = useTranslations<'Components.Form'>()
+  const form = useForm<SlugFormSchema>({
+    defaultValues: {
+      fullName: '',
+      email: '',
+      phone: '',
+      consentData: false
+    },
+    mode: 'onSubmit',
+    reValidateMode: 'onChange',
+    resolver: zodResolver(getSlugFormSchema(t))
+  })
   const watchCheckIn = form.watch('checkIn')
   const watchCheckOut = form.watch('checkOut')
+
+  function onSubmit(values: SlugFormSchema) {
+    console.log(values)
+  }
 
   return (
     <Drawer
@@ -67,9 +83,9 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
         <DrawerOverlay />
         <DrawerContent
           side='left'
-          className='w-full sm:max-w-xl'
+          className='w-full border-r-0 sm:max-w-xl'
         >
-          <div className='px-3 py-8 space-y-2 sm:px-8 sm:py-16'>
+          <div className='px-3 pt-12 pb-4 space-y-2 sm:px-8 sm:py-16'>
             <DrawerTitle>{t('title', {slug})}</DrawerTitle>
             <DrawerDescription>{t('description')}</DrawerDescription>
           </div>
@@ -77,11 +93,14 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
           <ScrollArea type='always'>
             <ScrollAreaViewport className='max-h-[calc(100dvh-144px-1px)]'>
               <Form {...form}>
-                <form>
+                <form
+                  id='slug-page-form'
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  noValidate
+                >
                   <div className='pl-3 pr-3 py-4 space-y-4 sm:p-8'>
                     <FormField
                       control={form.control}
-                      disabled={form.formState.isSubmitting}
                       name='fullName'
                       render={({field}) => (
                         <FormItem className='min-h-[82px]'>
@@ -91,6 +110,7 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                               autoComplete='name'
                               placeholder={t('fields.fullName.placeholder')}
                               icon={UserIcon}
+                              disabled={form.formState.isSubmitting}
                               {...field}
                             />
                           </FormControl>
@@ -100,7 +120,6 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                     />
                     <FormField
                       control={form.control}
-                      disabled={form.formState.isSubmitting}
                       name='email'
                       render={({field}) => (
                         <FormItem className='min-h-[82px]'>
@@ -110,6 +129,7 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                               autoComplete='email'
                               placeholder={t('fields.email.placeholder')}
                               icon={AtSignIcon}
+                              disabled={form.formState.isSubmitting}
                               {...field}
                             />
                           </FormControl>
@@ -119,7 +139,6 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                     />
                     <FormField
                       control={form.control}
-                      disabled={form.formState.isSubmitting}
                       name='phone'
                       render={({field}) => (
                         <FormItem className='min-h-[82px]'>
@@ -129,6 +148,7 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                               autoComplete='mobile tel'
                               placeholder={t('fields.phone.placeholder')}
                               icon={PhoneIcon}
+                              disabled={form.formState.isSubmitting}
                               {...field}
                             />
                           </FormControl>
@@ -138,7 +158,7 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                     />
                     <FormField
                       control={form.control}
-                      name='check-in'
+                      name='checkIn'
                       render={({field}) => (
                         <FormItem className='min-h-[82px]'>
                           <FormLabel>{t('fields.checkIn.label')}</FormLabel>
@@ -168,7 +188,7 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                     />
                     <FormField
                       control={form.control}
-                      name='check-out'
+                      name='checkOut'
                       render={({field}) => (
                         <FormItem className='min-h-[82px]'>
                           <FormLabel>{t('fields.checkOut.label')}</FormLabel>
@@ -209,7 +229,13 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
                     />
                   </div>
                   <div className='px-3 py-4 flex sm:justify-end sm:pl-8 sm:pb-8 sm:pr-8'>
-                    <Button className='w-full sm:w-auto'>
+                    <Button
+                      form='slug-page-form'
+                      type='submit'
+                      className='w-full sm:w-auto'
+                      isLoading={form.formState.isSubmitting}
+                      disabled={form.formState.isSubmitting}
+                    >
                       <span>{t('buttons.submit')}</span>
                       <SendHorizonalIcon size={16} />
                     </Button>
@@ -235,6 +261,6 @@ function VillaEnquireForm({slug, locale}: VillaEnquireFormProps) {
   )
 }
 
-VillaEnquireForm.displayName = 'VillaEnquireForm'
+SlugForm.displayName = 'SlugForm'
 
-export {VillaEnquireForm}
+export {SlugForm}

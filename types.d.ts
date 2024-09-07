@@ -36,7 +36,7 @@ declare global {
     consentData: boolean
   }
 
-  type ContactFormResponse = {
+  type FormResponse = {
     status: 'success' | 'error'
     title: string
     message: string

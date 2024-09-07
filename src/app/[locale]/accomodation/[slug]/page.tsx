@@ -1,8 +1,8 @@
 import {getTranslations} from 'next-intl/server'
 import {notFound} from 'next/navigation'
 import {unstable_setRequestLocale} from 'next-intl/server'
-import {VillaHeroCarousel} from '@/components/page/accomodation/villa/villa-hero-carousel'
-import {VillaDetails} from '@/components/page/accomodation/villa/villa-details'
+import {SlugCarousel} from '@/components/page/accomodation/slug/slug-carousel'
+import {SlugDetails} from '@/components/page/accomodation/slug/slug-details'
 
 type ParamsWithSlug<T extends Params = Params> = {
   [K in keyof T]: T[K] & {
@@ -24,7 +24,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function VillaPage({
+export default async function SlugPage({
   params: {locale, slug}
 }: ParamsWithSlug) {
   unstable_setRequestLocale(locale)
@@ -35,8 +35,8 @@ export default async function VillaPage({
 
   return (
     <>
-      <VillaHeroCarousel slug={slug} />
-      <VillaDetails
+      <SlugCarousel slug={slug} />
+      <SlugDetails
         slug={slug}
         locale={locale}
       />

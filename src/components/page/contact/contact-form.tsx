@@ -4,8 +4,6 @@ import {useTranslations} from 'next-intl'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {useForm} from 'react-hook-form'
 import {addDays, subDays, isSameDay} from 'date-fns'
-import {type ContactFormSchema, getContactFormSchema} from '#/lib/schema'
-import {sendContactForm} from '@/actions'
 import {
   UserIcon,
   AtSignIcon,
@@ -17,6 +15,8 @@ import {
   SendHorizonalIcon,
   RotateCcwIcon
 } from 'lucide-react'
+import {type ContactFormSchema, getContactFormSchema} from '#/lib/schema'
+import {sendContactForm} from '@/actions'
 import {
   Form,
   FormControl,
@@ -82,7 +82,6 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
         <div className='grid gap-y-2 sm:grid-cols-3 sm:gap-y-6 sm:gap-x-10'>
           <FormField
             control={form.control}
-            disabled={form.formState.isSubmitting}
             name='fullName'
             render={({field}) => (
               <FormItem className='min-h-[82px]'>
@@ -92,6 +91,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
                     placeholder={t('fields.fullName.placeholder')}
                     autoComplete='name'
                     icon={UserIcon}
+                    disabled={form.formState.isSubmitting}
                     {...field}
                   />
                 </FormControl>
@@ -102,7 +102,6 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
 
           <FormField
             control={form.control}
-            disabled={form.formState.isSubmitting}
             name='email'
             render={({field}) => (
               <FormItem className='min-h-[82px]'>
@@ -113,6 +112,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
                     placeholder={t('fields.email.placeholder')}
                     type='email'
                     icon={AtSignIcon}
+                    disabled={form.formState.isSubmitting}
                     {...field}
                   />
                 </FormControl>
@@ -123,7 +123,6 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
 
           <FormField
             control={form.control}
-            disabled={form.formState.isSubmitting}
             name='phone'
             render={({field}) => (
               <FormItem className='min-h-[82px]'>
@@ -133,6 +132,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
                     autoComplete='mobile tel'
                     placeholder={t('fields.phone.placeholder')}
                     icon={PhoneIcon}
+                    disabled={form.formState.isSubmitting}
                     {...field}
                   />
                 </FormControl>
@@ -198,7 +198,6 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
 
           <FormField
             control={form.control}
-            disabled={form.formState.isSubmitting}
             name='villa'
             render={({field}) => (
               <FormItem className='min-h-[82px]'>
@@ -207,6 +206,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
                   name='villa'
                   value={field.value}
                   onValueChange={field.onChange}
+                  disabled={form.formState.isSubmitting}
                 >
                   <FormControl>
                     <SelectTrigger
@@ -261,7 +261,6 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
 
           <FormField
             control={form.control}
-            disabled={form.formState.isSubmitting}
             name='message'
             render={({field}) => (
               <FormItem className='sm:col-span-3'>
@@ -270,6 +269,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
                   <Textarea
                     placeholder={t('fields.message.placeholder')}
                     icon={MessageCircle}
+                    disabled={form.formState.isSubmitting}
                     {...field}
                   />
                 </FormControl>

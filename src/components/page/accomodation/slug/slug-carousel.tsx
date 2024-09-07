@@ -10,7 +10,7 @@ import {
 import * as georgiaImages from '#/public/images/georgia'
 import * as dimitraImages from '#/public/images/dimitra'
 
-type VillaHeroCarouselProps = {
+type SlugCarouselProps = {
   slug: Slug
 }
 
@@ -19,7 +19,7 @@ const slugImages = {
   dimitra: Object.values(dimitraImages)
 }
 
-function VillaHeroCarousel({slug}: VillaHeroCarouselProps) {
+function SlugCarousel({slug}: SlugCarouselProps) {
   const images = slugImages[slug]
 
   return (
@@ -44,6 +44,6 @@ function VillaHeroCarousel({slug}: VillaHeroCarouselProps) {
   )
 }
 
-VillaHeroCarousel.displayName = 'VillaHeroCarousel'
+SlugCarousel.displayName = 'SlugCarousel'
 
-export {VillaHeroCarousel}
+export {SlugCarousel}

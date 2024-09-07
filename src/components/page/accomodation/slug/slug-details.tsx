@@ -21,14 +21,14 @@ import {
 import {Button} from '@/components/ui/button'
 import {Typography} from '@/components/ui/typography'
 import {Separator} from '@/components/ui/separator'
-import {VillaEnquireForm} from '@/components/page/accomodation/villa/villa-enquire-form'
+import {SlugForm} from '@/components/page/accomodation/slug/slug-form'
 
-type VillaDetailsProps = {
+type SlugDetailsProps = {
   slug: Slug
   locale: Params['params']['locale']
 }
 
-function VillaDetails({slug, locale}: VillaDetailsProps) {
+function SlugDetails({slug, locale}: SlugDetailsProps) {
   const t = useTranslations('Pages.Accomodation.Slug')
   const tSLug = useTranslations(`Pages.Accomodation.Slug.${slug}`)
   const tHead = useTranslations('Pages.Accomodation.SlugHeaders')
@@ -74,48 +74,48 @@ function VillaDetails({slug, locale}: VillaDetailsProps) {
           <CardHeader className='px-3 py-8 space-y-6 sm:p-8'>
             <CardTitle>{tSLug('name')}</CardTitle>
             <div className='grid grid-cols-2 gap-y-4 gap-x-6 sm:grid-cols-none sm:grid-flow-col sm:auto-cols-max sm:gap-8'>
-              <VillaFeature>
+              <SlugFeature>
                 <UsersIcon size={20} />
                 <Typography variant='large'>{tSLug('guests')}</Typography>
-              </VillaFeature>
-              <VillaFeature>
+              </SlugFeature>
+              <SlugFeature>
                 <BabyIcon size={20} />
                 <Typography variant='large'>{tSLug('child')}</Typography>
-              </VillaFeature>
-              <VillaFeature>
+              </SlugFeature>
+              <SlugFeature>
                 <BedDoubleIcon size={20} />
                 <Typography variant='large'>{tSLug('bedrooms')}</Typography>
-              </VillaFeature>
-              <VillaFeature>
+              </SlugFeature>
+              <SlugFeature>
                 <BathIcon size={20} />
                 <Typography variant='large'>{tSLug('bathrooms')}</Typography>
-              </VillaFeature>
-              <VillaFeature>
+              </SlugFeature>
+              <SlugFeature>
                 <LandPlotIcon size={20} />
                 <Typography variant='large'>{tSLug('area')}</Typography>
-              </VillaFeature>
+              </SlugFeature>
             </div>
           </CardHeader>
           <CardContent className='px-3 py-8 space-y-8 sm:p-8'>
-            <VillaDataRow data={tSLug('layout')}>
+            <SlugDataRow data={tSLug('layout')}>
               <Typography variant='h5'>{tHead('layout')}</Typography>
-            </VillaDataRow>
-            <VillaDataRow data={tSLug('amenities.indoor')}>
+            </SlugDataRow>
+            <SlugDataRow data={tSLug('amenities.indoor')}>
               <Typography variant='h5'>{tHead('amenities.indoor')}</Typography>
-            </VillaDataRow>
-            <VillaDataRow data={tSLug('amenities.outdoor')}>
+            </SlugDataRow>
+            <SlugDataRow data={tSLug('amenities.outdoor')}>
               <Typography variant='h5'>{tHead('amenities.outdoor')}</Typography>
-            </VillaDataRow>
-            <VillaDataRow data={tSLug('complementary')}>
+            </SlugDataRow>
+            <SlugDataRow data={tSLug('complementary')}>
               <Typography variant='h5'>{tHead('complementary')}</Typography>
-            </VillaDataRow>
-            <VillaDataRow data={tSLug('request')}>
+            </SlugDataRow>
+            <SlugDataRow data={tSLug('request')}>
               <Typography variant='h5'>{tHead('request')}</Typography>
-            </VillaDataRow>
+            </SlugDataRow>
           </CardContent>
           <CardFooter className='px-3 pb-8 pt-4 sm:px-8 justify-end'>
             <NextIntlClientProvider messages={messages.Components.Form}>
-              <VillaEnquireForm
+              <SlugForm
                 slug={slug}
                 locale={locale}
               />
@@ -127,7 +127,7 @@ function VillaDetails({slug, locale}: VillaDetailsProps) {
   )
 }
 
-function VillaFeature({children}: {children: React.ReactNode}) {
+function SlugFeature({children}: {children: React.ReactNode}) {
   return (
     <div className='inline-flex items-center gap-1.5 [&>*]:shrink-0'>
       {children}
@@ -135,7 +135,7 @@ function VillaFeature({children}: {children: React.ReactNode}) {
   )
 }
 
-function VillaDataRow({
+function SlugDataRow({
   children,
   data
 }: {
@@ -163,8 +163,8 @@ function VillaDataRow({
   )
 }
 
-VillaDetails.displayName = 'VillaDetails'
-VillaFeature.displayName = 'VillaFeature'
-VillaDataRow.displayName = 'VillaDataRow'
+SlugDetails.displayName = 'SlugDetails'
+SlugFeature.displayName = 'SlugFeature'
+SlugDataRow.displayName = 'SlugDataRow'
 
-export {VillaDetails}
+export {SlugDetails}
