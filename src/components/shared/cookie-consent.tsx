@@ -2,27 +2,28 @@
 
 import * as React from 'react'
 import cookies from 'js-cookie'
+import {useTranslations} from 'next-intl'
 import {CookieIcon} from 'lucide-react'
 import {Button} from '@/components/ui/button'
 import {Typography} from '@/components/ui/typography'
 import {useScrollLock} from '@/hooks/useScrollLock'
 
-type CookieConsentProps = {
-  title: string
-  message: string
-  acceptLabel: string
-  rejectLabel: string
-}
-
 const COOKIE_NAME = 'COOKIE_CONSENT'
-const ACCEPTED_EXPIRE_DAYS = 365
-const REJECTED_EXPIRE_DAYS = 1
+const EXPIRES_DAYS = 365
 
-function CookieConsent({title, message, acceptLabel, rejectLabel}: CookieConsentProps) {
+function CookieConsent() {
+  const t = useTranslations<'Components.CookieConsent'>()
   const [showConsentBanner, setShowConsentBanner] = React.useState(false)
   useScrollLock({autoLock: showConsentBanner})
 
+  function handleCookieConsent() {
+    setShowConsentBanner(false)
+
+    cookies.set(COOKIE_NAME, 'accepted', {expires: EXPIRES_DAYS})
+  }
+
   React.useEffect(function () {
+    if (typeof window === 'undefined') return
     const consentCookie = cookies.get(COOKIE_NAME)
 
     if (!consentCookie) {
@@ -30,39 +31,23 @@ function CookieConsent({title, message, acceptLabel, rejectLabel}: CookieConsent
     }
   }, [])
 
-  function handleCookieConsent(consent: boolean) {
-    setShowConsentBanner(false)
-
-    cookies.set(COOKIE_NAME, consent ? 'accepted' : 'rejected', {
-      expires: consent ? ACCEPTED_EXPIRE_DAYS : REJECTED_EXPIRE_DAYS
-    })
-  }
-
   if (!showConsentBanner) {
     return null
   }
 
   return (
-    <section className='px-4 py-8 fixed inset-x-0 bottom-0 space-y-6 bg-brand-12 text-primary-foreground sm:px-8 sm:w-96 sm:inset-auto sm:bottom-4 sm:right-4 sm:rounded sm:shadow'>
+    <section className='px-4 py-8 fixed inset-x-0 bottom-0 space-y-6 bg-brand-12 text-primary-foreground sm:px-8 sm:w-96 sm:inset-auto sm:bottom-8 sm:right-8 sm:rounded sm:shadow'>
       <div className='flex items-center gap-2'>
         <CookieIcon size={32} />
-        <Typography variant='h3'>{title}</Typography>
+        <Typography variant='h3'>{t('title')}</Typography>
       </div>
-      <Typography>{message}</Typography>
-      <div className='flex flex-wrap gap-4'>
-        <Button
-          className='grow'
-          onClick={() => handleCookieConsent(true)}
-        >
-          {acceptLabel}
-        </Button>
-        <Button
-          className='grow'
-          onClick={() => handleCookieConsent(false)}
-        >
-          {rejectLabel}
-        </Button>
-      </div>
+      <Typography variant={'small'}>{t('message')}</Typography>
+      <Button
+        className='w-full sm:w-auto'
+        onClick={handleCookieConsent}
+      >
+        {t('button-label')}
+      </Button>
     </section>
   )
 }

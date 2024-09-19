@@ -1,6 +1,6 @@
 import '@/globals.css'
 import type {Metadata} from 'next'
-import {useTranslations} from 'next-intl'
+import {NextIntlClientProvider, useMessages} from 'next-intl'
 import {Commissioner} from 'next/font/google'
 import {unstable_setRequestLocale} from 'next-intl/server'
 import {locales} from '#/lib/next-intl-config'
@@ -33,7 +33,7 @@ export default function LocaleLayout({
   children
 }: React.PropsWithChildren<Params>) {
   unstable_setRequestLocale(locale)
-  const t = useTranslations('Components')
+  const messages = useMessages() as IntlMessages
 
   return (
     <html
@@ -44,12 +44,9 @@ export default function LocaleLayout({
         <Header />
         <main>{children}</main>
         <Footer />
-        <CookieConsent
-          title={t('CookieConsent.title')}
-          message={t('CookieConsent.message')}
-          acceptLabel={t('CookieConsent.accept-label')}
-          rejectLabel={t('CookieConsent.reject-label')}
-        />
+        <NextIntlClientProvider messages={messages.Components.CookieConsent}>
+          <CookieConsent />
+        </NextIntlClientProvider>
         <Toaster
           position='top-right'
           duration={5000}

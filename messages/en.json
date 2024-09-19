@@ -218,8 +218,7 @@
     "CookieConsent": {
       "title": "Cookies",
       "message": "This site uses services that use cookies to deliver a better user experience and analyze traffic. You can learn more about the services we use at our privacy policy page.",
-      "accept-label": "Accept",
-      "reject-label": "Reject"
+      "button-label": "Understood"
     },
     "Form": {
       "title": "Make a reservartion for villa {slug, select, georgia {Georgia} dimitra {Dimitra} other {Unknown}}",
