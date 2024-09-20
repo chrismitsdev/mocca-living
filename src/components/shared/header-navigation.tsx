@@ -18,6 +18,7 @@ import {
   DrawerTitle,
   DrawerClose
 } from '@/components/ui/drawer'
+import {InView} from '@/components/motion/in-view'
 import {cn} from '#/lib/utils'
 
 type NavigationLink = {
@@ -38,23 +39,6 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   const pathname = usePathname()
   const {scrollYBoundedProgress} = useBoundedScroll(250)
-
-  const headerLinks = React.useMemo(
-    function () {
-      return links.map(({href, label}) => (
-        <HeaderLink
-          key={href}
-          href={href}
-          isActive={pathname === href}
-          onClick={() => setDrawerOpen(false)}
-          role='menuitem'
-        >
-          {label}
-        </HeaderLink>
-      ))
-    },
-    [links, pathname]
-  )
 
   return (
     <motion.header
@@ -184,8 +168,31 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
               <VisuallyHidden>
                 <DrawerTitle>{'Header navigation menu'}</DrawerTitle>
               </VisuallyHidden>
-              <div className='h-full grid grid-rows-[repeat(3,_min-content)] place-content-center'>
-                {headerLinks}
+              <div className='p-8 h-full flex flex-col justify-center gap-4'>
+                {links.map(({href, label}) => (
+                  <InView
+                    key={href}
+                    className={cn(
+                      'text-right',
+                      pathname === href && 'font-bold'
+                    )}
+                    variants={{
+                      hidden: {opacity: 0, x: '100%', filter: 'blur(4px)'},
+                      visible: {opacity: 1, x: 0, filter: 'blur(0px)'}
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      ease: 'easeInOut'
+                    }}
+                  >
+                    <Link
+                      href={href}
+                      onClick={() => setDrawerOpen(false)}
+                    >
+                      {label}
+                    </Link>
+                  </InView>
+                ))}
               </div>
               <DrawerClose asChild>
                 <motion.button
