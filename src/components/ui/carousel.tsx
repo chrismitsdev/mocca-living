@@ -1,13 +1,17 @@
 'use client'
 
 import * as React from 'react'
-import Image, {type StaticImageData} from 'next/image'
+import {type StaticImageData} from 'next/image'
 import {motion, AnimatePresence, MotionConfig} from 'framer-motion'
 import {ChevronLeftIcon, ChevronRightIcon} from 'lucide-react'
-import {Button} from '@/components/ui/button'
-import {FramerCarouselContext, useCarouselContext} from '@/context/carousel-context'
+import {
+  FramerCarouselContext,
+  useCarouselContext
+} from '@/context/carousel-context'
 import {cn} from '#/lib/utils'
-import {Typography} from './typography'
+import {CustomImage} from '@/components/ui/custom-image'
+import {Button} from '@/components/ui/button'
+import {Typography} from '@/components/ui/typography'
 
 type CarouselProviderProps = {
   activeIndex?: number
@@ -73,29 +77,34 @@ function CarouselProvider({
   )
 }
 
-const CarouselRoot = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
-  ({className, ...props}, ref) => {
-    return (
-      <div
-        className={cn('mx-auto h-full max-w-7xl flex-col flex justify-center', className)}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
+const CarouselRoot = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<'div'>
+>(({className, ...props}, ref) => {
+  return (
+    <div
+      className={cn(
+        'mx-auto h-full max-w-7xl flex-col flex justify-center',
+        className
+      )}
+      ref={ref}
+      {...props}
+    />
+  )
+})
 
-const CarouselViewport = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
-  ({className, ...props}, ref) => {
-    return (
-      <div
-        className={cn('relative overflow-hidden w-full', className)}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
+const CarouselViewport = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<'div'>
+>(({className, ...props}, ref) => {
+  return (
+    <div
+      className={cn('relative overflow-hidden w-full', className)}
+      ref={ref}
+      {...props}
+    />
+  )
+})
 
 const CarouselImageContainer = React.forwardRef<
   React.ElementRef<typeof motion.div>,
@@ -115,15 +124,15 @@ const CarouselImageContainer = React.forwardRef<
 })
 
 const CarouselImage = React.forwardRef<
-  React.ElementRef<typeof Image>,
-  React.ComponentPropsWithoutRef<typeof Image> & {
+  React.ElementRef<typeof CustomImage>,
+  React.ComponentPropsWithoutRef<typeof CustomImage> & {
     index: number
   }
 >(({className, src, alt, index, draggable = false, ...props}, ref) => {
   const {currentIndex} = useCarouselContext()
 
   return (
-    <Image
+    <CustomImage
       className={cn(
         'shrink-0 w-full h-full object-cover select-none ease-mocca duration-1000',
         currentIndex === index ? 'opacity-100' : 'opacity-10',
@@ -141,80 +150,96 @@ const CarouselImage = React.forwardRef<
 const CarouselPrevButton = React.forwardRef<
   React.ElementRef<typeof Button>,
   React.ComponentPropsWithoutRef<typeof Button>
->(({className, variant = 'primary-alt', size = 'icon-normal', ...props}, ref) => {
-  const {images, currentIndex, setCurrentIndex, loop} = useCarouselContext()
+>(
+  (
+    {className, variant = 'primary-alt', size = 'icon-normal', ...props},
+    ref
+  ) => {
+    const {images, currentIndex, setCurrentIndex, loop} = useCarouselContext()
 
-  function handlePrevImage() {
-    if (loop && currentIndex === 0) {
-      setCurrentIndex(images.length - 1)
-    } else if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1)
+    function handlePrevImage() {
+      if (loop && currentIndex === 0) {
+        setCurrentIndex(images.length - 1)
+      } else if (currentIndex > 0) {
+        setCurrentIndex(currentIndex - 1)
+      }
     }
-  }
 
-  return (
-    <AnimatePresence initial={false}>
-      {(loop || currentIndex > 0) && (
-        <Button
-          className={cn('absolute left-2 top-1/2 -translate-y-1/2 transition-none', className)}
-          variant={variant}
-          size={size}
-          onClick={handlePrevImage}
-          asChild
-          ref={ref}
-          {...props}
-        >
-          <motion.button
-            initial={{opacity: 0}}
-            animate={{opacity: 1}}
-            exit={{opacity: 0, pointerEvents: 'none'}}
+    return (
+      <AnimatePresence initial={false}>
+        {(loop || currentIndex > 0) && (
+          <Button
+            className={cn(
+              'absolute left-2 top-1/2 -translate-y-1/2 transition-none',
+              className
+            )}
+            variant={variant}
+            size={size}
+            onClick={handlePrevImage}
+            asChild
+            ref={ref}
+            {...props}
           >
-            <ChevronLeftIcon size={24} />
-          </motion.button>
-        </Button>
-      )}
-    </AnimatePresence>
-  )
-})
+            <motion.button
+              initial={{opacity: 0}}
+              animate={{opacity: 1}}
+              exit={{opacity: 0, pointerEvents: 'none'}}
+            >
+              <ChevronLeftIcon size={24} />
+            </motion.button>
+          </Button>
+        )}
+      </AnimatePresence>
+    )
+  }
+)
 
 const CarouselNextButton = React.forwardRef<
   React.ElementRef<typeof Button>,
   React.ComponentPropsWithoutRef<typeof Button>
->(({className, variant = 'primary-alt', size = 'icon-normal', ...props}, ref) => {
-  const {images, currentIndex, setCurrentIndex, loop} = useCarouselContext()
+>(
+  (
+    {className, variant = 'primary-alt', size = 'icon-normal', ...props},
+    ref
+  ) => {
+    const {images, currentIndex, setCurrentIndex, loop} = useCarouselContext()
 
-  function handleNextImage() {
-    if (loop && currentIndex + 1 === images.length) {
-      setCurrentIndex(0)
-    } else if (currentIndex + 1 < images.length) {
-      setCurrentIndex(currentIndex + 1)
+    function handleNextImage() {
+      if (loop && currentIndex + 1 === images.length) {
+        setCurrentIndex(0)
+      } else if (currentIndex + 1 < images.length) {
+        setCurrentIndex(currentIndex + 1)
+      }
     }
-  }
 
-  return (
-    <AnimatePresence initial={false}>
-      {(loop || currentIndex + 1 < images.length) && (
-        <Button
-          className={cn('absolute right-2 top-1/2 -translate-y-1/2 transition-none', className)}
-          variant={variant}
-          size={size}
-          onClick={handleNextImage}
-          asChild
-          ref={ref}
-          {...props}
-        >
-          <motion.button
-            initial={{opacity: 0}}
-            animate={{opacity: 1}}
-            exit={{opacity: 0, pointerEvents: 'none'}}
+    return (
+      <AnimatePresence initial={false}>
+        {(loop || currentIndex + 1 < images.length) && (
+          <Button
+            className={cn(
+              'absolute right-2 top-1/2 -translate-y-1/2 transition-none',
+              className
+            )}
+            variant={variant}
+            size={size}
+            onClick={handleNextImage}
+            asChild
+            ref={ref}
+            {...props}
           >
-            <ChevronRightIcon size={24} />
-          </motion.button>
-        </Button>
-      )}
-    </AnimatePresence>
-  )
-})
+            <motion.button
+              initial={{opacity: 0}}
+              animate={{opacity: 1}}
+              exit={{opacity: 0, pointerEvents: 'none'}}
+            >
+              <ChevronRightIcon size={24} />
+            </motion.button>
+          </Button>
+        )}
+      </AnimatePresence>
+    )
+  }
+)
 
 const CarouselThumbnailViewport = React.forwardRef<
   HTMLDivElement,
@@ -234,8 +259,13 @@ const CarouselThumbnailContainer = React.forwardRef<
   React.ElementRef<typeof motion.div>,
   React.ComponentPropsWithoutRef<typeof motion.div>
 >(({initial = false, className, ...props}, ref) => {
-  const {activeThumbnailRatio, thumbGap, currentIndex, inactiveThumbnailRatio, activeThumbMargin} =
-    useCarouselContext()
+  const {
+    activeThumbnailRatio,
+    thumbGap,
+    currentIndex,
+    inactiveThumbnailRatio,
+    activeThumbMargin
+  } = useCarouselContext()
 
   return (
     <motion.div
@@ -300,10 +330,10 @@ const CarouselThumbnailButton = React.forwardRef<
 })
 
 const CarouselThumbnailImage = React.forwardRef<
-  React.ElementRef<typeof Image>,
-  React.ComponentPropsWithoutRef<typeof Image>
+  React.ElementRef<typeof CustomImage>,
+  React.ComponentPropsWithoutRef<typeof CustomImage>
 >(({className, src, alt = '', draggable = false, ...props}, ref) => (
-  <Image
+  <CustomImage
     className={cn('w-full h-full object-cover select-none', className)}
     src={src}
     draggable={draggable}
@@ -313,26 +343,27 @@ const CarouselThumbnailImage = React.forwardRef<
   />
 ))
 
-const CarouselCount = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
-  ({className, ...props}, ref) => {
-    const {currentIndex, images} = useCarouselContext()
+const CarouselCount = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<'div'>
+>(({className, ...props}, ref) => {
+  const {currentIndex, images} = useCarouselContext()
 
-    return (
-      <div
-        className={cn(
-          'absolute top-2 left-2 flex items-center gap-2 text-primary-foreground p-1',
-          className
-        )}
-        ref={ref}
-        {...props}
-      >
-        <Typography variant='large'>{currentIndex + 1}</Typography>
-        <Typography variant='large'>{'/'}</Typography>
-        <Typography variant='large'>{images.length}</Typography>
-      </div>
-    )
-  }
-)
+  return (
+    <div
+      className={cn(
+        'absolute top-2 left-2 flex items-center gap-2 text-primary-foreground p-1',
+        className
+      )}
+      ref={ref}
+      {...props}
+    >
+      <Typography variant='large'>{currentIndex + 1}</Typography>
+      <Typography variant='large'>{'/'}</Typography>
+      <Typography variant='large'>{images.length}</Typography>
+    </div>
+  )
+})
 
 CarouselProvider.displayName = 'CarouselProvider'
 CarouselRoot.displayName = 'CarouselRoot'

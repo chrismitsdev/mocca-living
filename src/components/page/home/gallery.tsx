@@ -1,9 +1,11 @@
 'use client'
 
 import * as React from 'react'
-import Image, {StaticImageData} from 'next/image'
+import {type StaticImageData} from 'next/image'
 import {XIcon, ExpandIcon} from 'lucide-react'
+import {cn} from '#/lib/utils'
 import {Container} from '@/components/shared/container'
+import {CustomImage} from '@/components/ui/custom-image'
 import {Button} from '@/components/ui/button'
 import {VisuallyHidden} from '@/components/ui/visually-hidden'
 import {
@@ -29,7 +31,7 @@ import {
   CarouselThumbnailImage,
   CarouselCount
 } from '@/components/ui/carousel'
-import {cn} from '#/lib/utils'
+
 import * as outdoorImages from '#/public/images/outdoor'
 
 const images = Object.values(outdoorImages).slice(0, 8)
@@ -178,7 +180,7 @@ function GalleryItem({
       )}
       onClick={onClick}
     >
-      <Image
+      <CustomImage
         className='h-full object-cover'
         src={src}
         alt={alt}

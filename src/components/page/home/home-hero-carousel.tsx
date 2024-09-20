@@ -11,7 +11,6 @@ import {
   CarouselThumbnailButton,
   CarouselThumbnailImage
 } from '@/components/ui/carousel'
-import {shimmer, toBase64} from '#/lib/utils'
 import * as outdoorImages from '#/public/images/outdoor'
 
 const images = Object.values(outdoorImages)
@@ -28,9 +27,7 @@ function HomeHeroCarousel() {
                 index={i}
                 src={image}
                 alt={`Home page carousel image ${i + 1}`}
-                placeholder={`data:image/svg+xml;base64,${toBase64(
-                  shimmer(image.width, image.height)
-                )}`}
+                priority
               />
             ))}
           </CarouselImageContainer>

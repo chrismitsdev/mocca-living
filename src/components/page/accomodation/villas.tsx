@@ -1,9 +1,10 @@
 import * as React from 'react'
 import {useTranslations} from 'next-intl'
-import Image, {type StaticImageData} from 'next/image'
+import {type StaticImageData} from 'next/image'
 import {UsersIcon, BedDoubleIcon, BathIcon} from 'lucide-react'
 import {Link} from '@/navigation'
 import {Container} from '@/components/shared/container'
+import {CustomImage} from '@/components/ui/custom-image'
 import {Separator} from '@/components/ui/separator'
 import {
   Card,
@@ -35,7 +36,9 @@ const villaInfo: Pick<VillaInfo, 'key' | 'image'>[] = [
   {key: 'dimitra', image: dimitraIndoor}
 ]
 
-const tInfo = function (t: ReturnType<typeof useTranslations<'Pages.Accomodation.Index.Villas'>>) {
+const tInfo = function (
+  t: ReturnType<typeof useTranslations<'Pages.Accomodation.Index.Villas'>>
+) {
   return villaInfo.map(({key, image}) => ({
     key,
     image,
@@ -61,7 +64,7 @@ function Villas() {
               key={villa.key}
               className='p-0 space-y-0 overflow-hidden'
             >
-              <Image
+              <CustomImage
                 className='min-h-80 w-full object-cover'
                 src={villa.image}
                 alt={`${villa.key} indoor image`}
@@ -92,10 +95,14 @@ function Villas() {
                   </VillaDetail>
                 </CardDescription>
               </CardHeader>
-              <CardContent className='px-4 text-justify sm:px-6'>{villa.description}</CardContent>
+              <CardContent className='px-4 text-justify sm:px-6'>
+                {villa.description}
+              </CardContent>
               <CardFooter className='p-4 justify-end sm:p-6'>
                 <Button asChild>
-                  <Link href={`/accomodation/${villa.key}`}>{villa.button}</Link>
+                  <Link href={`/accomodation/${villa.key}`}>
+                    {villa.button}
+                  </Link>
                 </Button>
               </CardFooter>
             </Card>
@@ -107,7 +114,11 @@ function Villas() {
 }
 
 function VillaDetail({children}: {children: React.ReactNode}) {
-  return <div className='shrink-0 flex items-center justify-start gap-1'>{children}</div>
+  return (
+    <div className='shrink-0 flex items-center justify-start gap-1'>
+      {children}
+    </div>
+  )
 }
 
 Villas.displayName = 'Villas'

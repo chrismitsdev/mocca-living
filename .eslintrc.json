@@ -13,8 +13,18 @@
       },
       {
         "name": "next/navigation",
-        "importNames": ["redirect", "permanentRedirect", "useRouter", "usePathname"],
+        "importNames": [
+          "redirect",
+          "permanentRedirect",
+          "useRouter",
+          "usePathname"
+        ],
         "message": "Please import from `@/navigation` instead."
+      },
+      {
+        "name": "next/image",
+        "message": "Please use the named import from `@/components/ui/custom-image` instead.",
+        "importNames": ["default"]
       }
     ]
   }

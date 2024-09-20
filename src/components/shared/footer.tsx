@@ -1,8 +1,12 @@
-import Image from 'next/image'
 import {useTranslations, useLocale} from 'next-intl'
+/* eslint-disable-next-line no-restricted-imports */
+import Image from 'next/image'
 import {Link} from '@/navigation'
 import {Container} from '@/components/shared/container'
-import {LocaleSelect, LocaleSelectItem} from '@/components/shared/locale-switcher-select'
+import {
+  LocaleSelect,
+  LocaleSelectItem
+} from '@/components/shared/locale-switcher-select'
 import {Typography} from '@/components/ui/typography'
 import {Separator} from '@/components/ui/separator'
 import {locales} from '#/lib/next-intl-config'
@@ -17,7 +21,6 @@ function Footer() {
       <Container className='space-y-10'>
         <div className='space-y-8 sm:space-y-0 sm:flex sm:justify-between sm:items-start'>
           <Image
-            priority
             src={logoFull}
             height={160}
             alt='Mocca Living footer logo'
@@ -49,14 +52,18 @@ function Footer() {
               variant='small'
               asChild
             >
-              <Link href='/privacy'>{t('Components.Footer.title-1-link-1')}</Link>
+              <Link href='/privacy'>
+                {t('Components.Footer.title-1-link-1')}
+              </Link>
             </Typography>
             <Typography
               className='hover:underline'
               variant='small'
               asChild
             >
-              <Link href='/cookies'>{t('Components.Footer.title-1-link-2')}</Link>
+              <Link href='/cookies'>
+                {t('Components.Footer.title-1-link-2')}
+              </Link>
             </Typography>
           </FooterColumn>
           <LocaleSelect
@@ -87,7 +94,10 @@ function Footer() {
   )
 }
 
-function FooterColumn({title, children}: React.PropsWithChildren<{title: string}>) {
+function FooterColumn({
+  title,
+  children
+}: React.PropsWithChildren<{title: string}>) {
   return (
     <div>
       <Typography

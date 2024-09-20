@@ -55,19 +55,19 @@ export function shimmer(w: number, h: number) {
     >
       <defs>
         <linearGradient id='g'>
-          <stop stop-color='#c7b492' offset='20%' />
+          <stop stop-color='#b1a082' offset='20%' />
           <stop stop-color='#9b8c71' offset='50%' />
-          <stop stop-color='#c7b492' offset='70%' />
+          <stop stop-color='#b1a082' offset='70%' />
         </linearGradient>
       </defs>
-      <rect width='${w}' height='${h}' fill='#c7b492' />
+      <rect width='${w}' height='${h}' fill='#b1a082' />
       <rect id="r" width='${w}' height='${h}' fill='url(#g)' />
       <animate 
         xlink:href='#r' 
         attributeName='x' 
         from='-${w}' 
         to='${w}'
-        dur='2s' 
+        dur='1s' 
         repeatCount='indefinite'  
       />
     </svg>
@@ -75,7 +75,9 @@ export function shimmer(w: number, h: number) {
 }
 
 export function toBase64(str: string) {
-  return typeof window === 'undefined' ? Buffer.from(str).toString('base64') : window.btoa(str)
+  return typeof window === 'undefined'
+    ? Buffer.from(str).toString('base64')
+    : window.btoa(str)
 }
 
 export function clamp(num: number, min: number, max: number) {

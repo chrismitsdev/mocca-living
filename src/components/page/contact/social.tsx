@@ -10,7 +10,7 @@ type SocialProps = {
 
 function Social({name, location, phone}: SocialProps) {
   return (
-    <article className='py-24 bg-surface-3'>
+    <article className='py-24 bg-surface-2'>
       <Container>
         <div className='grid gap-8 sm:grid-cols-4'>
           <SocialLink href='https://www.google.com/maps?saddr=My+Location&daddr=40.849038,25.723552'>
@@ -35,10 +35,13 @@ function Social({name, location, phone}: SocialProps) {
   )
 }
 
-function SocialLink({target = '_blank', ...props}: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
+function SocialLink({
+  target = '_blank',
+  ...props
+}: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
     <a
-      className='p-6 flex flex-col items-center gap-4 rounded transition hover:bg-surface-4 hover:-translate-y-0.5'
+      className='p-6 flex flex-col items-center gap-4 rounded transition hover:bg-surface-3 hover:-translate-y-0.5'
       target={target}
       {...props}
     />
