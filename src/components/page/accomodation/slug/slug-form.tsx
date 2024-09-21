@@ -101,6 +101,7 @@ function SlugForm({slug, locale}: SlugFormProps) {
         <DrawerContent
           side='left'
           className='w-full border-r-0 sm:max-w-2xl'
+          onOpenAutoFocus={(e) => e.preventDefault()}
         >
           <div className='px-[28px] pt-14 pb-4 space-y-2 sm:px-8 sm:py-16'>
             <DrawerTitle>{t('slug-page-title', {slug})}</DrawerTitle>
@@ -108,7 +109,7 @@ function SlugForm({slug, locale}: SlugFormProps) {
           </div>
           <Separator />
           <ScrollArea type='always'>
-            <ScrollAreaViewport className='max-h-[calc(100svh-152px-1px)]'>
+            <ScrollAreaViewport className='max-h-[calc(100dvh-152px-1px)]'>
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
