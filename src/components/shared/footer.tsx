@@ -17,7 +17,7 @@ function Footer() {
   const locale = useLocale()
 
   return (
-    <footer className='py-12 bg-surface-2 border-t'>
+    <footer className='py-12 bg-surface-2 border-t border-t-surface-3'>
       <Container className='space-y-10'>
         <div className='space-y-8 sm:space-y-0 sm:flex sm:justify-between sm:items-start'>
           <Image
@@ -82,7 +82,7 @@ function Footer() {
             ))}
           </LocaleSelect>
         </div>
-        <Separator />
+        <Separator className='' />
         <div className='flex flex-col justify-between gap-2 sm:flex-row'>
           <Typography variant='mini'>
             {`Copyright © ${new Date().getFullYear()} Mocca Living`}

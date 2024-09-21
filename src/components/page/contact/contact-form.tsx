@@ -42,7 +42,7 @@ import {Button} from '@/components/ui/button'
 import {toast} from '@/components/ui/toast'
 
 function ContactForm({locale}: {locale: Params['params']['locale']}) {
-  const t = useTranslations<'Pages.Contact.Form'>()
+  const t = useTranslations<'Components.Form'>()
   const form = useForm<ContactFormSchema>({
     defaultValues: {
       fullName: '',
@@ -79,7 +79,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
         onSubmit={form.handleSubmit(onSubmit)}
         noValidate
       >
-        <div className='grid gap-y-2 sm:grid-cols-3 sm:gap-y-6 sm:gap-x-10'>
+        <div className='grid gap-y-4 sm:grid-cols-3 sm:gap-y-6 sm:gap-x-10'>
           <FormField
             control={form.control}
             name='fullName'
@@ -230,8 +230,12 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
                   <SelectPortal>
                     <SelectContent>
                       <SelectViewport>
-                        <SelectItem value='Γεωργία'>{'Georgia'}</SelectItem>
-                        <SelectItem value='Δήμητρα'>{'Dimitra'}</SelectItem>
+                        <SelectItem value='Γεωργία'>
+                          {t('metadata.villa.georgia')}
+                        </SelectItem>
+                        <SelectItem value='Δήμητρα'>
+                          {t('metadata.villa.dimitra')}
+                        </SelectItem>
                       </SelectViewport>
                     </SelectContent>
                   </SelectPortal>

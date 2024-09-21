@@ -44,6 +44,8 @@ import {
   ScrollAreaViewport,
   ScrollAreaBar
 } from '@/components/ui/scrollarea'
+import {sendContactForm} from '@/actions'
+import {toast} from '@/components/ui/toast'
 
 type SlugFormProps = {
   slug: Slug
@@ -67,8 +69,23 @@ function SlugForm({slug, locale}: SlugFormProps) {
   const watchCheckIn = form.watch('checkIn')
   const watchCheckOut = form.watch('checkOut')
 
-  function onSubmit(values: SlugFormSchema) {
-    console.log(values)
+  async function onSubmit(values: SlugFormSchema) {
+    const villa = slug === 'dimitra' ? 'Δήμητρα' : 'Γεωργία'
+    const formData = {...values, villa} as ContactFormData
+
+    const {title, message, status} = await sendContactForm(formData)
+    const isSuccess = status === 'success'
+
+    toast({
+      title,
+      description: message,
+      status
+    })
+
+    if (isSuccess) {
+      form.reset()
+      setOpen(false)
+    }
   }
 
   return (
@@ -77,28 +94,27 @@ function SlugForm({slug, locale}: SlugFormProps) {
       onOpenChange={setOpen}
     >
       <DrawerTrigger asChild>
-        <Button>{'Enquire'}</Button>
+        <Button>{t(`buttons.trigger.${slug}`)}</Button>
       </DrawerTrigger>
       <DrawerPortal>
         <DrawerOverlay />
         <DrawerContent
           side='left'
-          className='w-full border-r-0 sm:max-w-xl'
+          className='w-full border-r-0 sm:max-w-2xl'
         >
-          <div className='px-3 pt-12 pb-4 space-y-2 sm:px-8 sm:py-16'>
-            <DrawerTitle>{t('title', {slug})}</DrawerTitle>
-            <DrawerDescription>{t('description')}</DrawerDescription>
+          <div className='px-[28px] pt-14 pb-4 space-y-2 sm:px-8 sm:py-16'>
+            <DrawerTitle>{t('slug-page-title', {slug})}</DrawerTitle>
+            <DrawerDescription>{t('slug-page-description')}</DrawerDescription>
           </div>
           <Separator />
           <ScrollArea type='always'>
-            <ScrollAreaViewport className='max-h-[calc(100dvh-144px-1px)]'>
+            <ScrollAreaViewport className='max-h-[calc(100svh-152px-1px)]'>
               <Form {...form}>
                 <form
-                  id='slug-page-form'
                   onSubmit={form.handleSubmit(onSubmit)}
                   noValidate
                 >
-                  <div className='pl-3 pr-3 py-4 space-y-4 sm:p-8'>
+                  <div className='px-[28px] py-4 space-y-4 sm:p-8'>
                     <FormField
                       control={form.control}
                       name='fullName'
@@ -111,7 +127,10 @@ function SlugForm({slug, locale}: SlugFormProps) {
                               placeholder={t('fields.fullName.placeholder')}
                               icon={UserIcon}
                               disabled={form.formState.isSubmitting}
-                              {...field}
+                              name={field.name}
+                              value={field.value}
+                              onChange={field.onChange}
+                              ref={field.ref}
                             />
                           </FormControl>
                           <FormMessage />
@@ -130,7 +149,10 @@ function SlugForm({slug, locale}: SlugFormProps) {
                               placeholder={t('fields.email.placeholder')}
                               icon={AtSignIcon}
                               disabled={form.formState.isSubmitting}
-                              {...field}
+                              name={field.name}
+                              value={field.value}
+                              onChange={field.onChange}
+                              ref={field.ref}
                             />
                           </FormControl>
                           <FormMessage />
@@ -149,7 +171,10 @@ function SlugForm({slug, locale}: SlugFormProps) {
                               placeholder={t('fields.phone.placeholder')}
                               icon={PhoneIcon}
                               disabled={form.formState.isSubmitting}
-                              {...field}
+                              name={field.name}
+                              value={field.value}
+                              onChange={field.onChange}
+                              ref={field.ref}
                             />
                           </FormControl>
                           <FormMessage />
@@ -183,6 +208,7 @@ function SlugForm({slug, locale}: SlugFormProps) {
                               disabled={form.formState.isSubmitting}
                             />
                           </FormControl>
+                          <FormMessage />
                         </FormItem>
                       )}
                     />
@@ -207,6 +233,7 @@ function SlugForm({slug, locale}: SlugFormProps) {
                               disabled={form.formState.isSubmitting}
                             />
                           </FormControl>
+                          <FormMessage />
                         </FormItem>
                       )}
                     />
@@ -227,18 +254,17 @@ function SlugForm({slug, locale}: SlugFormProps) {
                         </FormItem>
                       )}
                     />
-                  </div>
-                  <div className='px-3 py-4 flex sm:justify-end sm:pl-8 sm:pb-8 sm:pr-8'>
-                    <Button
-                      form='slug-page-form'
-                      type='submit'
-                      className='w-full sm:w-auto'
-                      isLoading={form.formState.isSubmitting}
-                      disabled={form.formState.isSubmitting}
-                    >
-                      <span>{t('buttons.submit')}</span>
-                      <SendHorizonalIcon size={16} />
-                    </Button>
+                    <div className='pt-4'>
+                      <Button
+                        type='submit'
+                        className='w-full flex ml-auto sm:w-auto'
+                        isLoading={form.formState.isSubmitting}
+                        disabled={form.formState.isSubmitting}
+                      >
+                        <span>{t('buttons.submit')}</span>
+                        <SendHorizonalIcon size={16} />
+                      </Button>
+                    </div>
                   </div>
                 </form>
               </Form>
@@ -264,3 +290,20 @@ function SlugForm({slug, locale}: SlugFormProps) {
 SlugForm.displayName = 'SlugForm'
 
 export {SlugForm}
+
+{
+  /*
+  <div className='px-[28px] py-4 flex sm:justify-end sm:pl-8 sm:pb-8 sm:pr-8'>
+    <Button
+      form='slug-page-form'
+      type='submit'
+      className='w-full sm:w-auto'
+      isLoading={form.formState.isSubmitting}
+      disabled={form.formState.isSubmitting}
+    >
+      <span>{t('buttons.submit')}</span>
+      <SendHorizonalIcon size={16} />
+    </Button>
+  </div> 
+*/
+}

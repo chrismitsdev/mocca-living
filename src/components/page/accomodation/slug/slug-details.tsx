@@ -20,7 +20,6 @@ import {
 } from '@/components/ui/card'
 import {Button} from '@/components/ui/button'
 import {Typography} from '@/components/ui/typography'
-import {Separator} from '@/components/ui/separator'
 import {SlugForm} from '@/components/page/accomodation/slug/slug-form'
 
 type SlugDetailsProps = {
@@ -39,7 +38,7 @@ function SlugDetails({slug, locale}: SlugDetailsProps) {
       className='px-0 sm:px-3'
       asChild
     >
-      <article>
+      <article className='space-y-2'>
         <div className='flex justify-between'>
           <Button
             variant='ghost'
@@ -69,7 +68,6 @@ function SlugDetails({slug, locale}: SlugDetailsProps) {
             </Link>
           </Button>
         </div>
-        <Separator className='mt-2 mb-6' />
         <Card className='p-0 space-y-0 shadow-none  sm:shadow-medium'>
           <CardHeader className='px-3 py-8 space-y-6 sm:p-8'>
             <CardTitle>{tSLug('name')}</CardTitle>

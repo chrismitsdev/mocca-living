@@ -122,66 +122,6 @@
       "Map": {
         "title": "Mocca Living",
         "directions": "How to get here"
-      },
-      "Form": {
-        "title": "Contact us",
-        "description": "Fill out the form below to make a booking, and we will contact you shortly.",
-        "fields": {
-          "fullName": {
-            "label": "Full name",
-            "placeholder": "Fill in your full name"
-          },
-          "email": {
-            "label": "Email",
-            "placeholder": "Fill in your email"
-          },
-          "phone": {
-            "label": "Phone number",
-            "placeholder": "Fill in your phone number"
-          },
-          "checkIn": {
-            "label": "Check-in date",
-            "placeholder": "Select your arrival date"
-          },
-          "checkOut": {
-            "label": "Check-out date",
-            "placeholder": "Select your departure date"
-          },
-          "villa": {
-            "label": "Selected villa",
-            "placeholder": "Select your preferred villa"
-          },
-          "message": {
-            "label": "Message",
-            "placeholder": "Optionally, leave your message here..."
-          },
-          "consentData": {
-            "label": "I agree that my personal data will be used only to fulfill my request according to Privacy Policy statements"
-          }
-        },
-        "validation": {
-          "required": "Mandatory field",
-          "fullName": "Must be between 5 and 25 characters long",
-          "email": {
-            "invalid": "Invalid email address",
-            "providers": "Email provider is not supported"
-          },
-          "phone": "Invalid phone number format"
-        },
-        "buttons": {
-          "submit": "Submit",
-          "reset": "Reset"
-        },
-        "response": {
-          "success": {
-            "title": "Successful submission",
-            "message": "Form submission was successful. We will contact you shortly."
-          },
-          "error": {
-            "title": "Failed submission",
-            "message": "Form submission failed. Please try again later."
-          }
-        }
       }
     },
     "Privacy": {
@@ -221,8 +161,10 @@
       "button-label": "Understood"
     },
     "Form": {
-      "title": "Make a reservartion for villa {slug, select, georgia {Georgia} dimitra {Dimitra} other {Unknown}}",
-      "description": "Fill out the form below and we will contact you shortly.",
+      "contact-page-title": "Contact us",
+      "contact-page-description": "Fill out the form below to make a booking, and we will contact you shortly.",
+      "slug-page-title": "Make a reservartion for villa {slug, select, georgia {Georgia} dimitra {Dimitra} other {Unknown}}",
+      "slug-page-description": "Fill out the form below and we will contact you shortly.",
       "fields": {
         "fullName": {
           "label": "Full name",
@@ -267,7 +209,11 @@
       },
       "buttons": {
         "submit": "Submit",
-        "reset": "Reset"
+        "reset": "Reset",
+        "trigger": {
+          "georgia": "Enquire about Georgia",
+          "dimitra": "Enquire about Dimitra"
+        }
       },
       "response": {
         "success": {
@@ -277,6 +223,12 @@
         "error": {
           "title": "Failed submission",
           "message": "Form submission failed. Please try again later."
+        }
+      },
+      "metadata": {
+        "villa": {
+          "georgia": "Georgia",
+          "dimitra": "Dimitra"
         }
       }
     }

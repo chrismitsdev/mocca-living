@@ -54,9 +54,9 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
         borderBottomWidth: '1px',
         willChange: 'border-bottom-color, background-color, box-shadow, height',
         borderBottomColor: useMotionTemplate`rgb(
-          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 221])}
-          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 200])}
-          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 162])} /
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 199])}
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 180])}
+          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 146])} /
           ${useTransform(scrollYBoundedProgress, [0, 1], [0.08, 1])}
         )`,
         backgroundColor: useMotionTemplate`rgb(
@@ -65,13 +65,6 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
           ${useTransform(scrollYBoundedProgress, [0, 1], [0, 162])} /
           ${useTransform(scrollYBoundedProgress, [0, 1], [0.24, 1])}
         )`,
-        boxShadow: useMotionTemplate`
-          0px
-          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 4])}px
-          ${useTransform(scrollYBoundedProgress, [0, 1], [0, 12])}px
-          -4px
-          rgba(69, 50, 39, 0.24)
-        `,
         height: useTransform(
           scrollYBoundedProgress,
           [0, 1],

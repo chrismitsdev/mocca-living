@@ -40,8 +40,7 @@ const ScrollAreaBar = React.forwardRef<
     className={cn(
       'flex touch-none select-none transition-colors',
       orientation === 'vertical' && 'h-full w-2.5 p-px',
-      orientation === 'horizontal' &&
-        'h-2.5 flex-col border-t border-t-transparent p-px',
+      orientation === 'horizontal' && 'h-2.5 flex-col p-px',
       className
     )}
     orientation={orientation}

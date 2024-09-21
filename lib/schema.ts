@@ -14,7 +14,7 @@ const emailProviders = [
 const greekPhoneRegex = /^(\+30\s?)?(2\d|69)\d{8}$/g
 
 export function getContactFormSchema(
-  t: ReturnType<typeof useTranslations<'Pages.Contact.Form'>>
+  t: ReturnType<typeof useTranslations<'Components.Form'>>
 ) {
   const schema: ZodType<ContactFormData> = z.object({
     fullName: z
@@ -50,7 +50,7 @@ export function getContactFormSchema(
 }
 
 export function getSlugFormSchema(
-  t: ReturnType<typeof useTranslations<'Pages.Contact.Form'>>
+  t: ReturnType<typeof useTranslations<'Components.Form'>>
 ) {
   const schema: ZodType<SlugFormData> = z.object({
     fullName: z

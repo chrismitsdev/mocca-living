@@ -30,15 +30,15 @@ export default function ContactPage({params: {locale}}: Params) {
   return (
     <>
       <Container className='pt-56'>
-        <Card className='px-4 py-8 space-y-8 sm:p-16'>
+        <Card className='px-4 py-8 space-y-8 sm:p-16 w-full'>
           <CardHeader>
-            <CardTitle>{t('Pages.Contact.Form.title')}</CardTitle>
+            <CardTitle>{t('Components.Form.contact-page-title')}</CardTitle>
             <CardDescription>
-              {t('Pages.Contact.Form.description')}
+              {t('Components.Form.contact-page-description')}
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <NextIntlClientProvider messages={messages.Pages.Contact.Form}>
+            <NextIntlClientProvider messages={messages.Components.Form}>
               <ContactForm locale={locale} />
             </NextIntlClientProvider>
           </CardContent>

@@ -9,7 +9,7 @@ const resend = new Resend(process.env.RESEND_ONBOARDING_API_KEY)
 function generateResponse(
   status: 'success' | 'error',
   result:
-    | Awaited<ReturnType<typeof getTranslations<'Pages.Contact.Form.response'>>>
+    | Awaited<ReturnType<typeof getTranslations<'Components.Form.response'>>>
     | {title: string; message: string}
 ) {
   if (typeof result === 'function') {
@@ -28,7 +28,7 @@ function generateResponse(
 }
 
 export async function sendContactForm(formData: ContactFormData) {
-  const t = await getTranslations('Pages.Contact.Form.response')
+  const t = await getTranslations('Components.Form.response')
 
   try {
     const {error} = await resend.emails.send({
