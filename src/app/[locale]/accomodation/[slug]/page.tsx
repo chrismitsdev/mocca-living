@@ -10,17 +10,16 @@ type ParamsWithSlug<T extends Params = Params> = {
   }
 }
 
-export function generateStaticParams() {
-  return [{slug: 'georgia'}, {slug: 'dimitra'}]
-}
-
 export async function generateMetadata({
   params: {locale, slug}
 }: ParamsWithSlug) {
-  const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
+  const t = await getTranslations({
+    locale,
+    namespace: 'Metadata.Pages.accomodation'
+  })
 
   return {
-    title: `${t(`accomodation.${slug}`)} | Mocca Living`
+    title: `${t(slug)} | Mocca Living`
   }
 }
 
@@ -42,4 +41,8 @@ export default async function SlugPage({
       />
     </>
   )
+}
+
+export function generateStaticParams() {
+  return [{slug: 'georgia'}, {slug: 'dimitra'}]
 }

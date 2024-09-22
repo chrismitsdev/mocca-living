@@ -1,7 +1,16 @@
 'use client'
 
 import * as React from 'react'
-import {Root, Trigger, Overlay, Portal, Content, Title, Description, Close} from '@radix-ui/react-dialog'
+import {
+  Root,
+  Trigger,
+  Overlay,
+  Portal,
+  Content,
+  Title,
+  Description,
+  Close
+} from '@radix-ui/react-dialog'
 import {cn} from '#/lib/utils'
 
 const Dialog = Root
@@ -15,7 +24,7 @@ const DialogOverlay = React.forwardRef<
 >(({className, ...props}, ref) => (
   <Overlay
     className={cn(
-      'fixed inset-0 z-[1] bg-black/75 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 data-open:backdrop-blur-[1px] data-closed:backdrop-blur-none',
+      'fixed inset-0 z-[1] bg-black/75 data-open:animate-in data-open:fade-in-0 data-open:duration-750 data-open:backdrop-blur-[1px] data-closed:animate-out data-closed:fade-out-0 data-closed:duration-350 data-closed:backdrop-blur-none ease-mocca',
       className
     )}
     ref={ref}
@@ -26,21 +35,34 @@ const DialogOverlay = React.forwardRef<
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof Content>,
   React.ComponentPropsWithoutRef<typeof Content>
->(({className, children, 'aria-describedby': ariaDescribedBy = undefined, ...props}, ref) => (
-  <Content
-    className={cn(
-      'p-6 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1] w-full max-w-xl bg-surface-2 rounded shadow-medium data-open:animate-dialog-open data-closed:animate-dialog-closed',
-      className
-    )}
-    aria-describedby={ariaDescribedBy}
-    ref={ref}
-    {...props}
-  >
-    {children}
-  </Content>
-))
+>(
+  (
+    {
+      className,
+      children,
+      'aria-describedby': ariaDescribedBy = undefined,
+      ...props
+    },
+    ref
+  ) => (
+    <Content
+      className={cn(
+        'p-6 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1] w-full max-w-xl bg-surface-2 rounded shadow-medium data-open:animate-dialog-open data-closed:animate-dialog-closed',
+        className
+      )}
+      aria-describedby={ariaDescribedBy}
+      ref={ref}
+      {...props}
+    >
+      {children}
+    </Content>
+  )
+)
 
-const DialogHeader = ({className, ...props}: React.HTMLAttributes<HTMLDivElement>) => (
+const DialogHeader = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn('flex flex-col space-y-1.5', className)}
     {...props}
@@ -69,9 +91,15 @@ const DialogDescription = React.forwardRef<
   />
 ))
 
-const DialogFooter = ({className, ...props}: React.HTMLAttributes<HTMLDivElement>) => (
+const DialogFooter = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn('flex flex-col-reverse sm:space-x-2 sm:flex-row sm:justify-end', className)}
+    className={cn(
+      'flex flex-col-reverse sm:space-x-2 sm:flex-row sm:justify-end',
+      className
+    )}
     {...props}
   />
 )

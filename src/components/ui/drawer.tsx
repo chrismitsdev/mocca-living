@@ -25,9 +25,10 @@ const drawerContentVariants = cva(
     'transition',
     'ease-in-out',
     'data-open:animate-in',
-    'data-open:duration-500',
+    'data-open:duration-750',
     'data-closed:animate-out',
-    'data-closed:duration-300'
+    'data-closed:duration-375',
+    'ease-mocca'
   ],
   {
     variants: {
@@ -84,7 +85,7 @@ const DrawerOverlay = React.forwardRef<
 >(({className, ...props}, ref) => (
   <Overlay
     className={cn(
-      'fixed inset-0 z-[1] bg-black/75 data-open:animate-in data-open:fade-in-0 data-open:backdrop-blur-[1px] data-open:duration-500 data-closed:animate-out data-closed:fade-out-0 data-closed:backdrop-blur-none data-closed:duration-300',
+      'fixed inset-0 z-[1] bg-black/75 data-open:animate-in data-open:fade-in-0 data-open:duration-750 data-open:backdrop-blur-[1px] data-closed:animate-out data-closed:fade-out-0 data-closed:duration-375 data-closed:backdrop-blur-none ease-mocca',
       className
     )}
     ref={ref}

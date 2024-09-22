@@ -4,6 +4,7 @@ import * as React from 'react'
 import {useTranslations} from 'next-intl'
 import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
+import {Link} from '@/navigation'
 import {addDays, subDays, isSameDay} from 'date-fns'
 import {
   UserIcon,
@@ -251,7 +252,18 @@ function SlugForm({slug, locale}: SlugFormProps) {
                               disabled={form.formState.isSubmitting}
                             />
                           </FormControl>
-                          <FormLabel>{t('fields.consentData.label')}</FormLabel>
+                          <FormLabel>
+                            {t.rich('fields.consentData.label', {
+                              link: (chunks) => (
+                                <Link
+                                  className='underline font-bold text-brand-10'
+                                  href='/privacy'
+                                >
+                                  {chunks}
+                                </Link>
+                              )
+                            })}
+                          </FormLabel>
                         </FormItem>
                       )}
                     />
@@ -291,20 +303,3 @@ function SlugForm({slug, locale}: SlugFormProps) {
 SlugForm.displayName = 'SlugForm'
 
 export {SlugForm}
-
-{
-  /*
-  <div className='px-[28px] py-4 flex sm:justify-end sm:pl-8 sm:pb-8 sm:pr-8'>
-    <Button
-      form='slug-page-form'
-      type='submit'
-      className='w-full sm:w-auto'
-      isLoading={form.formState.isSubmitting}
-      disabled={form.formState.isSubmitting}
-    >
-      <span>{t('buttons.submit')}</span>
-      <SendHorizonalIcon size={16} />
-    </Button>
-  </div> 
-*/
-}

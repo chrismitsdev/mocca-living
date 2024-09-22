@@ -195,8 +195,8 @@ packages:
     resolution: {integrity: sha512-/l42B1qxpG6RdfYf343Uw1vmDjeNhneUXtzhojE7pDgfpEypmRhI6j1kr17XCVv4Cgl9HdAiQY2x0GwKm7rWCw==}
     engines: {node: '>=6.9.0'}
 
-  '@date-fns/tz@1.0.2':
-    resolution: {integrity: sha512-iKxj0kXMy7Qe6vjK+flz33cpy2j0dnTKT5i54p3fFlB411J47aSs6HBg7LOO5X9LjDi2iNlctD9rFn738ySOGQ==}
+  '@date-fns/tz@1.1.0':
+    resolution: {integrity: sha512-ebywM7KeJY5cm13Aq037FmjjghyOAMxccqQn0BIpHkvdAZe+gb7V18Sz2usKECguMcSrvy49TR1gR7Y9naGseQ==}
 
   '@emnapi/runtime@1.2.0':
     resolution: {integrity: sha512-bV21/9LQmcQeCPEg3BDFtvwL6cwiTMksYNWQQ4KOxCZikEGalWtenoZ0wCiukJINlGCIi2KXx01g4FoH/LxpzQ==}
@@ -3036,7 +3036,7 @@ snapshots:
       '@babel/helper-validator-identifier': 7.24.7
       to-fast-properties: 2.0.0
 
-  '@date-fns/tz@1.0.2': {}
+  '@date-fns/tz@1.1.0': {}
 
   '@emnapi/runtime@1.2.0':
     dependencies:
@@ -5483,7 +5483,7 @@ snapshots:
 
   react-day-picker@9.1.1(react@18.3.1):
     dependencies:
-      '@date-fns/tz': 1.0.2
+      '@date-fns/tz': 1.1.0
       date-fns: 4.1.0
       react: 18.3.1
 

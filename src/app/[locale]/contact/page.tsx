@@ -15,10 +15,10 @@ import {Map} from '@/components/page/contact/map'
 const MAPBOX_TOKEN = process.env.MAPBOX_TOKEN as string
 
 export async function generateMetadata({params: {locale}}: Params) {
-  const t = await getTranslations({locale, namespace: 'Metadata'})
+  const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
 
   return {
-    title: `${t('Pages.contact')} | Mocca Living`
+    title: `${t('contact')} | Mocca Living`
   }
 }
 

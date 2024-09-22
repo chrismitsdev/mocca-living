@@ -23,25 +23,6 @@ declare global {
     consentData: boolean
   }
 
-  type ContactFormValues<
-    T = Omit<
-      IntlMessages['Pages']['Contact']['Form']['fields'],
-      'checkIn' | 'checkOut' | 'consentData'
-    >
-  > = {
-    [K in keyof T]: string
-  } & {
-    checkIn: Date
-    checkOut: Date
-    consentData: boolean
-  }
-
-  type FormResponse = {
-    status: 'success' | 'error'
-    title: string
-    message: string
-  }
-
   type CustomIconProps = React.SVGProps<SVGSVGElement> & {
     size?: number
   }

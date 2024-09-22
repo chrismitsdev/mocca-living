@@ -24,10 +24,6 @@ export const metadata: Metadata = {
   }
 }
 
-export function generateStaticParams() {
-  return locales.map((locale) => ({locale}))
-}
-
 export default function LocaleLayout({
   params: {locale},
   children
@@ -55,4 +51,8 @@ export default function LocaleLayout({
       </body>
     </html>
   )
+}
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({locale}))
 }

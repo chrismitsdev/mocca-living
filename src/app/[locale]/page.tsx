@@ -7,10 +7,10 @@ import {IdealReasons} from '@/components/page/home/ideal-reasons'
 import {Gallery} from '@/components/page/home/gallery'
 
 export async function generateMetadata({params: {locale}}: Params) {
-  const t = await getTranslations({locale, namespace: 'Metadata'})
+  const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
 
   return {
-    title: `${t('Pages.home')} | Mocca Living`
+    title: `${t('home')} | Mocca Living`
   }
 }
 

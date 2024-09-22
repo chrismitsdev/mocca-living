@@ -18,7 +18,6 @@ import {
   DrawerTitle,
   DrawerClose
 } from '@/components/ui/drawer'
-import {InView} from '@/components/motion/in-view'
 import {cn} from '#/lib/utils'
 
 type NavigationLink = {
@@ -157,34 +156,20 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
           </DrawerTrigger>
           <DrawerPortal>
             <DrawerOverlay />
-            <DrawerContent>
+            <DrawerContent className='w-full border-l-0'>
               <VisuallyHidden>
                 <DrawerTitle>{'Header navigation menu'}</DrawerTitle>
               </VisuallyHidden>
-              <div className='p-8 h-full flex flex-col justify-center gap-4'>
+              <div className='p-8 h-full flex flex-col justify-center items-end gap-4'>
                 {links.map(({href, label}) => (
-                  <InView
+                  <Link
                     key={href}
-                    className={cn(
-                      'text-right',
-                      pathname === href && 'font-bold'
-                    )}
-                    variants={{
-                      hidden: {opacity: 0, x: '100%', filter: 'blur(4px)'},
-                      visible: {opacity: 1, x: 0, filter: 'blur(0px)'}
-                    }}
-                    transition={{
-                      duration: 0.3,
-                      ease: 'easeInOut'
-                    }}
+                    href={href}
+                    className={cn(pathname === href && 'font-bold')}
+                    onClick={() => setDrawerOpen(false)}
                   >
-                    <Link
-                      href={href}
-                      onClick={() => setDrawerOpen(false)}
-                    >
-                      {label}
-                    </Link>
-                  </InView>
+                    {label}
+                  </Link>
                 ))}
               </div>
               <DrawerClose asChild>

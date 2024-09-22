@@ -8,8 +8,8 @@
         "georgia": "Georgia"
       },
       "contact": "Contact",
-      "privacy": "Privacy policy",
-      "cookies": "Use of cookies",
+      "privacy": "Privacy",
+      "cookies": "Cookies",
       "not-found": "Page not found"
     },
     "Contact": {
@@ -195,7 +195,7 @@
           "placeholder": "Optionally, leave your message here..."
         },
         "consentData": {
-          "label": "I agree that my personal data will be used only to fulfill my request according to Privacy Policy statements"
+          "label": "I agree that my personal data will be used only to fulfill my request according to <link>Privacy Policy statements</link>"
         }
       },
       "validation": {

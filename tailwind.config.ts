@@ -190,11 +190,9 @@ const config: Config = {
       keyframes: {
         'page-transition': {
           from: {
-            // opacity: '0.75',
             transform: 'translateY(-16px)'
           },
           to: {
-            // opacity: '1',
             transform: 'translateY(0)'
           }
         },
@@ -225,7 +223,8 @@ const config: Config = {
         'dialog-closed': 'dialog-closed 375ms cubic-bezier(0.32,0.72,0,1)'
       },
       transitionDuration: {
-        '750': '750ms'
+        '750': '750ms',
+        '375': '375ms'
       },
       transitionTimingFunction: {
         mocca: 'cubic-bezier(0.32,0.72,0,1)'
@@ -259,7 +258,6 @@ const config: Config = {
       none: '0px'
     }
   },
-  // plugins: [require('tailwindcss-animate')]
   plugins: [tailwindcssAnimate]
 }
 

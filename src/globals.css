@@ -180,6 +180,10 @@
 }
 
 /* Mapbox popup styling */
+.mapboxgl-control-container .mapboxgl-ctrl-bottom-left {
+  @apply z-auto;
+}
+
 .mapboxgl-popup.mapboxgl-popup-anchor-bottom {
   .mapboxgl-popup-content {
     @apply p-4 relative bg-surface-2 rounded shadow-none;
@@ -189,17 +193,3 @@
     @apply border-t-surface-2 shadow-none;
   }
 }
-
-/* .yarl__root {
-  .yarl__toolbar {
-    --yarl__toolbar_padding: 12px;
-  }
-
-  .yarl__container {
-    @apply bg-black/75 backdrop-blur-[1px];
-  }
-
-  .yarl__slide {
-    @apply p-3;
-  }
-} */

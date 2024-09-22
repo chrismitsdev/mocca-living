@@ -5,10 +5,13 @@ import {Introduction} from '@/components/page/accomodation/introduction'
 import {Villas} from '@/components/page/accomodation/villas'
 
 export async function generateMetadata({params: {locale}}: Params) {
-  const t = await getTranslations({locale, namespace: 'Metadata'})
+  const t = await getTranslations({
+    locale,
+    namespace: 'Metadata.Pages.accomodation'
+  })
 
   return {
-    title: `${t('Pages.accomodation.root')} | Mocca Living`
+    title: `${t('root')} | Mocca Living`
   }
 }
 

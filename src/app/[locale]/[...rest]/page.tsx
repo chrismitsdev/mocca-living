@@ -2,10 +2,10 @@ import {notFound} from 'next/navigation'
 import {getTranslations} from 'next-intl/server'
 
 export async function generateMetadata({params: {locale}}: Params) {
-  const t = await getTranslations({locale, namespace: 'Metadata'})
+  const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
 
   return {
-    title: t('Pages.not-found')
+    title: t('not-found')
   }
 }
 

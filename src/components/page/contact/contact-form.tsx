@@ -2,6 +2,7 @@
 
 import {useTranslations} from 'next-intl'
 import {zodResolver} from '@hookform/resolvers/zod'
+import {Link} from '@/navigation'
 import {useForm} from 'react-hook-form'
 import {addDays, subDays, isSameDay} from 'date-fns'
 import {
@@ -258,7 +259,18 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
                     disabled={form.formState.isSubmitting}
                   />
                 </FormControl>
-                <FormLabel>{t('fields.consentData.label')}</FormLabel>
+                <FormLabel>
+                  {t.rich('fields.consentData.label', {
+                    link: (chunks) => (
+                      <Link
+                        className='underline font-bold text-brand-10'
+                        href='/privacy'
+                      >
+                        {chunks}
+                      </Link>
+                    )
+                  })}
+                </FormLabel>
               </FormItem>
             )}
           />

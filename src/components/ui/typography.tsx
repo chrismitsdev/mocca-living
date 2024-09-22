@@ -12,6 +12,7 @@ const typographyVariants = cva(['block'], {
       h3: ['text-2xl', 'font-semibold'],
       h4: ['text-xl', 'font-semibold'],
       h5: ['text-base', 'font-semibold'],
+      h6: ['text-sm', 'font-semibold'],
       blockquote: ['pl-6', 'mt-6', 'italic', 'border-l-2'],
       lead: ['text-xl', 'text-muted-foreground'],
       large: ['text-lg', 'font-semibold'],
