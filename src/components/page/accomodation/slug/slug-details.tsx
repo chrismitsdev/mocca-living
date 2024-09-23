@@ -32,6 +32,11 @@ function SlugDetails({slug, locale}: SlugDetailsProps) {
   const tSLug = useTranslations(`Pages.Accomodation.Slug.${slug}`)
   const tHead = useTranslations('Pages.Accomodation.SlugHeaders')
   const messages = useMessages() as IntlMessages
+  const scopedMessages = {
+    ...messages.Components.Form,
+    ...messages.Metadata.Pages,
+    ...messages.Pages.Privacy
+  }
 
   return (
     <Container
@@ -112,7 +117,7 @@ function SlugDetails({slug, locale}: SlugDetailsProps) {
             </SlugDataRow>
           </CardContent>
           <CardFooter className='px-3 pb-8 pt-4 sm:px-8 justify-end'>
-            <NextIntlClientProvider messages={messages.Components.Form}>
+            <NextIntlClientProvider messages={scopedMessages}>
               <SlugForm
                 slug={slug}
                 locale={locale}

@@ -1,0 +1,72 @@
+import {useTranslations} from 'next-intl'
+import {XIcon} from 'lucide-react'
+import {
+  Dialog,
+  DialogTrigger,
+  DialogPortal,
+  DialogOverlay,
+  DialogContent,
+  DialogTitle,
+  DialogClose
+} from '@/components/ui/dialog'
+import {Separator} from '@/components/ui/separator'
+import {
+  ScrollArea,
+  ScrollAreaViewport,
+  ScrollAreaBar
+} from '@/components/ui/scrollarea'
+import {Typography} from '@/components/ui/typography'
+import {VisuallyHidden} from '@/components/ui/visually-hidden'
+import {Button} from '@/components/ui/button'
+
+function PrivacyModal({children}: React.PropsWithChildren) {
+  const m = useTranslations<'Metadata.Pages'>()
+  const p = useTranslations<'Pages.Privacy'>()
+
+  return (
+    <Dialog>
+      <DialogTrigger className='underline font-bold text-brand-10'>
+        {children}
+      </DialogTrigger>
+      <DialogPortal>
+        <DialogOverlay />
+        <DialogContent className='p-0 w-[calc(100%-32px)] h-[calc(100dvh-32px)] sm:h-auto sm:w-full sm:max-w-3xl'>
+          <DialogTitle className='p-4'>{m('privacy')}</DialogTitle>
+          <Separator />
+          <ScrollArea
+            type='always'
+            className='h-[calc(100%-56px-1px)]'
+          >
+            <ScrollAreaViewport>
+              <div className='p-4 space-y-4'>
+                <article className='space-y-0.5'>
+                  <Typography variant='h6'>{p('title')}</Typography>
+                  <Typography variant='small'>{p('content')}</Typography>
+                </article>
+                <article className='space-y-0.5'>
+                  <Typography variant='h6'>{p('sub-title')}</Typography>
+                  <Typography variant='small'>{p('sub-content')}</Typography>
+                </article>
+              </div>
+            </ScrollAreaViewport>
+            <ScrollAreaBar />
+          </ScrollArea>
+          <DialogClose asChild>
+            <Button
+              className='absolute top-3 right-3'
+              variant='ghost-error'
+              size='icon-small'
+            >
+              <VisuallyHidden>{'Close modal'}</VisuallyHidden>
+              <XIcon />
+            </Button>
+          </DialogClose>
+        </DialogContent>
+      </DialogPortal>
+    </Dialog>
+  )
+}
+
+PrivacyModal.displayName = 'PrivacyModal'
+
+export {PrivacyModal}

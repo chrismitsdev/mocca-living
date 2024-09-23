@@ -4,7 +4,6 @@ import * as React from 'react'
 import {useTranslations} from 'next-intl'
 import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
-import {Link} from '@/i18n/routing'
 import {addDays, subDays, isSameDay} from 'date-fns'
 import {
   UserIcon,
@@ -46,6 +45,7 @@ import {
   ScrollAreaBar
 } from '@/components/ui/scrollarea'
 import {sendContactForm} from '#/lib/actions'
+import {PrivacyModal} from '@/components/shared/privacy-modal'
 import {toast} from '@/components/ui/toast'
 
 type SlugFormProps = {
@@ -254,13 +254,8 @@ function SlugForm({slug, locale}: SlugFormProps) {
                           </FormControl>
                           <FormLabel>
                             {t.rich('fields.consentData.label', {
-                              link: (chunks) => (
-                                <Link
-                                  className='underline font-bold text-brand-10'
-                                  href='/privacy'
-                                >
-                                  {chunks}
-                                </Link>
+                              link: (string) => (
+                                <PrivacyModal>{string}</PrivacyModal>
                               )
                             })}
                           </FormLabel>

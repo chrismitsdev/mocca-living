@@ -2,7 +2,6 @@
 
 import {useTranslations} from 'next-intl'
 import {zodResolver} from '@hookform/resolvers/zod'
-import {Link} from '@/i18n/routing'
 import {useForm} from 'react-hook-form'
 import {addDays, subDays, isSameDay} from 'date-fns'
 import {
@@ -41,6 +40,7 @@ import {Textarea} from '@/components/ui/textarea'
 import {Checkbox} from '@/components/ui/checkbox'
 import {Button} from '@/components/ui/button'
 import {toast} from '@/components/ui/toast'
+import {PrivacyModal} from '@/components/shared/privacy-modal'
 
 function ContactForm({locale}: {locale: Params['params']['locale']}) {
   const t = useTranslations<'Components.Form'>()
@@ -261,14 +261,7 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
                 </FormControl>
                 <FormLabel>
                   {t.rich('fields.consentData.label', {
-                    link: (chunks) => (
-                      <Link
-                        className='underline font-bold text-brand-10'
-                        href='/privacy'
-                      >
-                        {chunks}
-                      </Link>
-                    )
+                    link: (string) => <PrivacyModal>{string}</PrivacyModal>
                   })}
                 </FormLabel>
               </FormItem>

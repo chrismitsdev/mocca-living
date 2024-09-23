@@ -26,6 +26,11 @@ export default function ContactPage({params: {locale}}: Params) {
   unstable_setRequestLocale(locale)
   const t = useTranslations()
   const messages = useMessages() as IntlMessages
+  const scopedMessages = {
+    ...messages.Components.Form,
+    ...messages.Metadata.Pages,
+    ...messages.Pages.Privacy
+  }
 
   return (
     <>
@@ -38,7 +43,7 @@ export default function ContactPage({params: {locale}}: Params) {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <NextIntlClientProvider messages={messages.Components.Form}>
+            <NextIntlClientProvider messages={scopedMessages}>
               <ContactForm locale={locale} />
             </NextIntlClientProvider>
           </CardContent>

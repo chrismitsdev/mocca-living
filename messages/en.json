@@ -195,7 +195,7 @@
           "placeholder": "Optionally, leave your message here..."
         },
         "consentData": {
-          "label": "I agree that my personal data will be used only to fulfill my request according to <link>Privacy Policy statements</link>"
+          "label": "I agree that my personal data will be used only to fulfill my request according to <link>Privacy Policy statement</link>"
         }
       },
       "validation": {
