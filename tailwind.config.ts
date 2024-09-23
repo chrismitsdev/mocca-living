@@ -190,7 +190,7 @@ const config: Config = {
       keyframes: {
         'page-transition': {
           from: {
-            transform: 'translateY(-16px)'
+            transform: 'translateY(-24px)'
           },
           to: {
             transform: 'translateY(0)'

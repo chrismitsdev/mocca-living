@@ -23,14 +23,16 @@ const coords = {
 
 function Map({token, translations}: MapboxProps) {
   const [showPopup, setShowPopup] = React.useState<boolean>(true)
-  const matches = useMediaQuery('(min-width: 640px)')
+  const matches = useMediaQuery('(min-width: 640px)', {
+    initializeWithValue: false
+  })
 
   return (
     <article className='py-12'>
       <ReactMapGl
         style={{
           width: '100%',
-          minHeight: 450,
+          minHeight: matches ? 696 : 500,
           borderRadius: 'var(--radius)',
           boxShadow: 'var(--box-shadow-sm)'
         }}
@@ -38,7 +40,7 @@ function Map({token, translations}: MapboxProps) {
         initialViewState={{
           latitude: coords.lat,
           longitude: coords.lon,
-          zoom: 14
+          zoom: 15
         }}
         projection={{name: 'globe'}}
         mapStyle='mapbox://styles/mapbox/streets-v12'
