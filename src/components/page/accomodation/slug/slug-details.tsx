@@ -28,9 +28,7 @@ type SlugDetailsProps = {
 }
 
 function SlugDetails({slug, locale}: SlugDetailsProps) {
-  const t = useTranslations('Pages.Accomodation.Slug')
-  const tSLug = useTranslations(`Pages.Accomodation.Slug.${slug}`)
-  const tHead = useTranslations('Pages.Accomodation.SlugHeaders')
+  const t = useTranslations('Pages.Accomodation')
   const messages = useMessages() as IntlMessages
   const scopedMessages = {
     ...messages.Components.Form,
@@ -40,11 +38,11 @@ function SlugDetails({slug, locale}: SlugDetailsProps) {
 
   return (
     <Container
-      className='px-0 sm:px-3'
+      className='px-3'
       asChild
     >
-      <article className='space-y-2'>
-        <div className='flex justify-between'>
+      <article className='space-y-4'>
+        <div className='p-0.5 flex justify-between bg-surface-2 border border-surface-3 rounded shadow'>
           <Button
             variant='ghost'
             size='small'
@@ -52,7 +50,7 @@ function SlugDetails({slug, locale}: SlugDetailsProps) {
           >
             <Link href='/accomodation'>
               <ChevronLeftIcon size={16} />
-              <span>{tHead('button')}</span>
+              <span>{t('SlugHeaders.button')}</span>
             </Link>
           </Button>
           <Button
@@ -67,56 +65,68 @@ function SlugDetails({slug, locale}: SlugDetailsProps) {
               }`}
             >
               <span className='capitalize'>
-                {slug === 'dimitra' ? t('georgia.name') : t('dimitra.name')}
+                {slug === 'dimitra'
+                  ? t('Slug.georgia.name')
+                  : t('Slug.dimitra.name')}
               </span>
               <ChevronRightIcon size={16} />
             </Link>
           </Button>
         </div>
-        <Card className='p-0 space-y-0'>
-          <CardHeader className='px-3 py-8 space-y-6 sm:p-8'>
-            <CardTitle>{tSLug('name')}</CardTitle>
-            <div className='grid grid-cols-2 gap-y-4 gap-x-6 sm:grid-cols-none sm:grid-flow-col sm:auto-cols-max sm:gap-8'>
+        <Card className='px-4 py-8 space-y-8 sm:p-8'>
+          <CardHeader className='space-y-6'>
+            <CardTitle>{t(`Slug.${slug}.name`)}</CardTitle>
+            <div className='grid grid-cols-2 gap-y-2 gap-x-6 sm:grid-cols-none sm:grid-flow-col sm:auto-cols-max sm:gap-8'>
               <SlugFeature>
-                <UsersIcon size={20} />
-                <Typography variant='large'>{tSLug('guests')}</Typography>
+                <UsersIcon size={18} />
+                <Typography variant='h5'>{t(`Slug.${slug}.guests`)}</Typography>
               </SlugFeature>
               <SlugFeature>
-                <BabyIcon size={20} />
-                <Typography variant='large'>{tSLug('child')}</Typography>
+                <BabyIcon size={18} />
+                <Typography variant='h5'>{t(`Slug.${slug}.child`)}</Typography>
               </SlugFeature>
               <SlugFeature>
-                <BedDoubleIcon size={20} />
-                <Typography variant='large'>{tSLug('bedrooms')}</Typography>
+                <BedDoubleIcon size={18} />
+                <Typography variant='h5'>
+                  {t(`Slug.${slug}.bedrooms`)}
+                </Typography>
               </SlugFeature>
               <SlugFeature>
-                <BathIcon size={20} />
-                <Typography variant='large'>{tSLug('bathrooms')}</Typography>
+                <BathIcon size={18} />
+                <Typography variant='h5'>
+                  {t(`Slug.${slug}.bathrooms`)}
+                </Typography>
               </SlugFeature>
               <SlugFeature>
-                <LandPlotIcon size={20} />
-                <Typography variant='large'>{tSLug('area')}</Typography>
+                <LandPlotIcon size={18} />
+                <Typography variant='h5'>{t(`Slug.${slug}.area`)}</Typography>
               </SlugFeature>
             </div>
           </CardHeader>
-          <CardContent className='px-3 py-8 space-y-8 sm:p-8'>
-            <SlugDataRow data={tSLug('layout')}>
-              <Typography variant='h5'>{tHead('layout')}</Typography>
+          <CardContent className='space-y-6'>
+            <SlugDataRow data={t(`Slug.${slug}.layout`)}>
+              <Typography variant='h5'>{t('SlugHeaders.layout')}</Typography>
             </SlugDataRow>
-            <SlugDataRow data={tSLug('amenities.indoor')}>
-              <Typography variant='h5'>{tHead('amenities.indoor')}</Typography>
+            <SlugDataRow data={t(`Slug.${slug}.amenities.indoor`)}>
+              <Typography variant='h5'>
+                {t('SlugHeaders.amenities.indoor')}
+              </Typography>
             </SlugDataRow>
-            <SlugDataRow data={tSLug('amenities.outdoor')}>
-              <Typography variant='h5'>{tHead('amenities.outdoor')}</Typography>
+            <SlugDataRow data={t(`Slug.${slug}.amenities.outdoor`)}>
+              <Typography variant='h5'>
+                {t('SlugHeaders.amenities.outdoor')}
+              </Typography>
             </SlugDataRow>
-            <SlugDataRow data={tSLug('complementary')}>
-              <Typography variant='h5'>{tHead('complementary')}</Typography>
+            <SlugDataRow data={t(`Slug.${slug}.complementary`)}>
+              <Typography variant='h5'>
+                {t('SlugHeaders.complementary')}
+              </Typography>
             </SlugDataRow>
-            <SlugDataRow data={tSLug('request')}>
-              <Typography variant='h5'>{tHead('request')}</Typography>
+            <SlugDataRow data={t(`Slug.${slug}.request`)}>
+              <Typography variant='h5'>{t('SlugHeaders.request')}</Typography>
             </SlugDataRow>
           </CardContent>
-          <CardFooter className='px-3 pb-8 pt-4 sm:px-8 justify-end'>
+          <CardFooter className='justify-end'>
             <NextIntlClientProvider messages={scopedMessages}>
               <SlugForm
                 slug={slug}
@@ -146,17 +156,17 @@ function SlugDataRow({
   data: string
 }) {
   return (
-    <div className='space-y-4'>
+    <div className='space-y-3'>
       {children}
       <ul className='space-y-1.5'>
         {data.split(',').map((entry) => (
           <li
             key={entry}
-            className='flex items-start gap-1'
+            className='flex gap-1 -ml-1.5'
           >
             <DotIcon
-              className='shrink-0 mt-0.5'
-              size={20}
+              className='shrink-0 mt-1'
+              size={16}
             />
             <Typography>{entry}</Typography>
           </li>
