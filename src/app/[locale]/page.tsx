@@ -1,6 +1,5 @@
-import {getTranslations} from 'next-intl/server'
+import {getTranslations, unstable_setRequestLocale} from 'next-intl/server'
 import {useTranslations} from 'next-intl'
-import {unstable_setRequestLocale} from 'next-intl/server'
 import {HomeHeroCarousel} from '@/components/page/home/home-hero-carousel'
 import {Introduction} from '@/components/page/home/intoduction'
 import {IdealReasons} from '@/components/page/home/ideal-reasons'

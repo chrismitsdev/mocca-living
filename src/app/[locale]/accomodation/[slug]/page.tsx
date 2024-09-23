@@ -1,6 +1,5 @@
-import {getTranslations} from 'next-intl/server'
+import {getTranslations, unstable_setRequestLocale} from 'next-intl/server'
 import {notFound} from 'next/navigation'
-import {unstable_setRequestLocale} from 'next-intl/server'
 import {SlugCarousel} from '@/components/page/accomodation/slug/slug-carousel'
 import {SlugDetails} from '@/components/page/accomodation/slug/slug-details'
 

@@ -1,6 +1,5 @@
-import {getTranslations} from 'next-intl/server'
+import {getTranslations, unstable_setRequestLocale} from 'next-intl/server'
 import {useTranslations} from 'next-intl'
-import {unstable_setRequestLocale} from 'next-intl/server'
 import {Typography} from '@/components/ui/typography'
 import {InterceptorModal} from '@/components/shared/interceptor-modal'
 import {DialogTitle} from '@/components/ui/dialog'

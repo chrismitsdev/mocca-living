@@ -5,7 +5,10 @@ const VisuallyHidden = React.forwardRef<
   React.ElementRef<typeof Root>,
   React.ComponentPropsWithoutRef<typeof Root>
 >((props, ref) => (
-  <Root ref={ref} {...props} />
+  <Root
+    ref={ref}
+    {...props}
+  />
 ))
 
 VisuallyHidden.displayName = 'VisuallyHidden'

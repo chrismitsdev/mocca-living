@@ -1,5 +1,5 @@
 import {useTranslations} from 'next-intl'
-import {Link} from '@/navigation'
+import {Link} from '@/i18n/routing'
 import {Container} from '@/components/shared/container'
 import {Button} from '@/components/ui/button'
 import {HouseIcon, TriangleAlertIcon} from 'lucide-react'
@@ -15,7 +15,7 @@ export default function NotFound() {
           width={64}
           height={64}
         />
-        <div>
+        <div className='space-y-2'>
           <h2 className='text-xl font-semibold text-center'>{t('title')}</h2>
           <p className='text-center'>{t('subtitle')}</p>
         </div>

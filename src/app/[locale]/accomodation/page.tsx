@@ -1,5 +1,4 @@
-import {getTranslations} from 'next-intl/server'
-import {unstable_setRequestLocale} from 'next-intl/server'
+import {getTranslations, unstable_setRequestLocale} from 'next-intl/server'
 import {HeroImage} from '@/components/page/accomodation/hero-image'
 import {Introduction} from '@/components/page/accomodation/introduction'
 import {Villas} from '@/components/page/accomodation/villas'

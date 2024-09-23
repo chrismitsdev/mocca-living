@@ -9,9 +9,9 @@ function Container({className, asChild = false, ...props}: ContainerProps) {
   const Comp = asChild ? Slot : 'div'
 
   return (
-    <Comp 
-      className={cn('container', className)} 
-      {...props} 
+    <Comp
+      className={cn('container', className)}
+      {...props}
     />
   )
 }

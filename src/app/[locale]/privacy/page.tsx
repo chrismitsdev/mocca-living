@@ -1,6 +1,5 @@
-import {getTranslations} from 'next-intl/server'
+import {getTranslations, unstable_setRequestLocale} from 'next-intl/server'
 import {useTranslations} from 'next-intl'
-import {unstable_setRequestLocale} from 'next-intl/server'
 import {Container} from '@/components/shared/container'
 import {Typography} from '@/components/ui/typography'
 

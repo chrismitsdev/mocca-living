@@ -1,7 +1,7 @@
 import {useTranslations, useLocale} from 'next-intl'
 /* eslint-disable-next-line no-restricted-imports */
 import Image from 'next/image'
-import {Link} from '@/navigation'
+import {Link, locales} from '@/i18n/routing'
 import {Container} from '@/components/shared/container'
 import {
   LocaleSelect,
@@ -9,7 +9,6 @@ import {
 } from '@/components/shared/locale-switcher-select'
 import {Typography} from '@/components/ui/typography'
 import {Separator} from '@/components/ui/separator'
-import {locales} from '#/lib/next-intl-config'
 import logoFull from '#/public/logos/mocca-logo-full.svg'
 
 function Footer() {

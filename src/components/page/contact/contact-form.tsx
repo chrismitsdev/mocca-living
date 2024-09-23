@@ -2,7 +2,7 @@
 
 import {useTranslations} from 'next-intl'
 import {zodResolver} from '@hookform/resolvers/zod'
-import {Link} from '@/navigation'
+import {Link} from '@/i18n/routing'
 import {useForm} from 'react-hook-form'
 import {addDays, subDays, isSameDay} from 'date-fns'
 import {
@@ -17,7 +17,7 @@ import {
   RotateCcwIcon
 } from 'lucide-react'
 import {type ContactFormSchema, getContactFormSchema} from '#/lib/schema'
-import {sendContactForm} from '@/actions'
+import {sendContactForm} from '#/lib/actions'
 import {
   Form,
   FormControl,

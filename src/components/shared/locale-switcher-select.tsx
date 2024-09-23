@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import {GlobeIcon} from 'lucide-react'
-import {useRouter, usePathname} from '@/navigation'
+import {useRouter, usePathname} from '@/i18n/routing'
 import {
   Select,
   SelectTrigger,
@@ -31,7 +31,9 @@ function LocaleSelect({
   const pathname = usePathname()
   const [isPending, startTransition] = React.useTransition()
 
-  function onSelectChange(locale: keyof IntlMessages['Components']['LocaleSelect']['values']) {
+  function onSelectChange(
+    locale: keyof IntlMessages['Components']['LocaleSelect']['values']
+  ) {
     startTransition(function () {
       router.replace(pathname, {locale})
     })
@@ -65,7 +67,9 @@ function LocaleSelect({
   )
 }
 
-function LocaleSelectItem({...props}: React.ComponentPropsWithoutRef<typeof SelectItem>) {
+function LocaleSelectItem({
+  ...props
+}: React.ComponentPropsWithoutRef<typeof SelectItem>) {
   return <SelectItem {...props} />
 }
 

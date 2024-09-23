@@ -27,18 +27,36 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: ['bg-primary', 'text-primary-foreground', 'hover:bg-primary-hover'],
+        primary: [
+          'bg-primary',
+          'text-primary-foreground',
+          'hover:bg-primary-hover'
+        ],
         'primary-alt': ['bg-surface-1', 'text-primary', 'hover:bg-surface-2'],
         bordered: ['border', 'hover:border-border-hover'],
         ghost: ['hover:bg-primary', 'hover:text-primary-foreground'],
-        success: ['bg-success', 'text-success-foreground', 'hover:bg-success-hover'],
+        success: [
+          'bg-success',
+          'text-success-foreground',
+          'hover:bg-success-hover'
+        ],
         error: ['bg-error', 'text-error-foreground', 'hover:bg-error-hover'],
         info: ['bg-info', 'text-info-foreground', 'hover:bg-info-hover'],
-        warning: ['bg-warning', 'text-warning-foreground', 'hover:bg-warning-hover'],
-        'ghost-success': ['hover:bg-success-hover', 'hover:text-success-foreground'],
+        warning: [
+          'bg-warning',
+          'text-warning-foreground',
+          'hover:bg-warning-hover'
+        ],
+        'ghost-success': [
+          'hover:bg-success-hover',
+          'hover:text-success-foreground'
+        ],
         'ghost-error': ['hover:bg-error-hover', 'hover:text-error-foreground'],
         'ghost-info': ['hover:bg-info-hover', 'hover:text-info-foreground'],
-        'ghost-warning': ['hover:bg-warning-hover', 'hover:text-warning-foreground'],
+        'ghost-warning': [
+          'hover:bg-warning-hover',
+          'hover:text-warning-foreground'
+        ],
         link: ['underline-offset-4', 'hover:underline']
       },
       size: {
@@ -77,7 +95,16 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    {variant, size, className, asChild = false, isLoading = false, type = 'button', children, ...props},
+    {
+      variant,
+      size,
+      className,
+      asChild = false,
+      isLoading = false,
+      type = 'button',
+      children,
+      ...props
+    },
     ref
   ) => {
     const Comp = asChild ? Slot : 'button'
@@ -88,7 +115,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           buttonVariants({
             variant,
             size,
-            className: cn(isLoading && '[&>*:not(span:last-child)]:invisible', className)
+            className: cn(
+              isLoading && '[&>*:not(span:last-child)]:invisible',
+              className
+            )
           })
         )}
         type={type}

@@ -1,5 +1,3 @@
-'use client'
-
 import * as React from 'react'
 import {Root} from '@radix-ui/react-label'
 import {cn} from '#/lib/utils'

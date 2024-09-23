@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import {useRouter} from '@/navigation'
+import {useRouter} from '@/i18n/routing'
 import {cn} from '#/lib/utils'
 import {XIcon} from 'lucide-react'
 import {

@@ -1,4 +1,4 @@
-import {Link} from '@/navigation'
+import {Link} from '@/i18n/routing'
 import {CustomImage} from '@/components/ui/custom-image'
 import {Button} from '@/components/ui/button'
 import indoorImage from '#/public/images/indoor/4.webp'

@@ -27,7 +27,12 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           {...props}
         />
         {icon && (
-          <span className={cn('absolute left-3 top-[11px]', props.disabled && 'opacity-35')}>
+          <span
+            className={cn(
+              'absolute left-3 top-[11px]',
+              props.disabled && 'opacity-35'
+            )}
+          >
             {React.createElement(icon, {width: 16, height: 16})}
           </span>
         )}

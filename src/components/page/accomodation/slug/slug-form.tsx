@@ -4,7 +4,7 @@ import * as React from 'react'
 import {useTranslations} from 'next-intl'
 import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
-import {Link} from '@/navigation'
+import {Link} from '@/i18n/routing'
 import {addDays, subDays, isSameDay} from 'date-fns'
 import {
   UserIcon,
@@ -45,7 +45,7 @@ import {
   ScrollAreaViewport,
   ScrollAreaBar
 } from '@/components/ui/scrollarea'
-import {sendContactForm} from '@/actions'
+import {sendContactForm} from '#/lib/actions'
 import {toast} from '@/components/ui/toast'
 
 type SlugFormProps = {

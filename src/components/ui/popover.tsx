@@ -1,11 +1,18 @@
 'use client'
 
 import * as React from 'react'
-import {Root, Trigger, Content, Portal, Close, Anchor} from '@radix-ui/react-popover'
+import {
+  Root,
+  Trigger,
+  Content,
+  Portal,
+  Close,
+  Anchor
+} from '@radix-ui/react-popover'
 import {cn} from '#/lib/utils'
 
 const Popover = Root
-const PopoverPortal =  Portal
+const PopoverPortal = Portal
 const PopoverTrigger = Trigger
 const PopoverAnchor = Anchor
 const PopoverClose = Close
@@ -34,10 +41,10 @@ PopoverContent.displayName = 'PopoverContent'
 PopoverClose.displayName = 'PopoverClose'
 
 export {
-  Popover, 
-  PopoverTrigger, 
-  PopoverAnchor, 
-  PopoverPortal, 
-  PopoverContent, 
+  Popover,
+  PopoverTrigger,
+  PopoverAnchor,
+  PopoverPortal,
+  PopoverContent,
   PopoverClose
 }
