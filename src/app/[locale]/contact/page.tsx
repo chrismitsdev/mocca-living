@@ -12,8 +12,6 @@ import {ContactForm} from '@/components/page/contact/contact-form'
 import {Social} from '@/components/page/contact/social'
 import {Map} from '@/components/page/contact/map'
 
-const MAPBOX_TOKEN = process.env.MAPBOX_TOKEN as string
-
 export async function generateMetadata({params: {locale}}: Params) {
   const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
 
@@ -49,15 +47,11 @@ export default function ContactPage({params: {locale}}: Params) {
           </CardContent>
         </Card>
       </Container>
-      <Social
-        location={t('Metadata.Contact.location')}
-        name={t('Metadata.Contact.name')}
-        phone={t('Metadata.Contact.phone')}
-      />
-      {MAPBOX_TOKEN && (
+      <Social />
+      {process.env.MAPBOX_TOKEN && (
         <Container>
           <Map
-            token={MAPBOX_TOKEN}
+            token={process.env.MAPBOX_TOKEN}
             translations={{
               title: t('Pages.Contact.Map.title'),
               directions: t('Pages.Contact.Map.directions')

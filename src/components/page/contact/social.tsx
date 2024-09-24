@@ -1,33 +1,30 @@
+import {useTranslations} from 'next-intl'
 import {Container} from '@/components/shared/container'
 import {Typography} from '@/components/ui/typography'
 import {MapPin, InstagramIcon, FacebookIcon, PhoneIcon} from 'lucide-react'
 
-type SocialProps = {
-  location: string
-  name: string
-  phone: string
-}
+function Social() {
+  const t = useTranslations('Metadata.Contact')
 
-function Social({name, location, phone}: SocialProps) {
   return (
     <article className='py-24 bg-surface-2'>
       <Container>
-        <div className='grid gap-8 sm:grid-cols-4'>
+        <div className='grid gap-8 sm:grid-cols-2'>
           <SocialLink href='https://www.google.com/maps?saddr=My+Location&daddr=40.849038,25.723552'>
             <MapPin size={64} />
-            <Typography variant='h4'>{location}</Typography>
+            <Typography variant='h4'>{t('location')}</Typography>
           </SocialLink>
           <SocialLink href='https://www.instagram.com/'>
             <InstagramIcon size={64} />
-            <Typography variant='h4'>{name}</Typography>
+            <Typography variant='h4'>{t('name')}</Typography>
           </SocialLink>
           <SocialLink href='https://www.facebook.com/'>
             <FacebookIcon size={64} />
-            <Typography variant='h4'>{name}</Typography>
+            <Typography variant='h4'>{t('name')}</Typography>
           </SocialLink>
           <SocialLink href='tel:+306973433980'>
             <PhoneIcon size={64} />
-            <Typography variant='h4'>{phone}</Typography>
+            <Typography variant='h4'>{t('phone')}</Typography>
           </SocialLink>
         </div>
       </Container>

@@ -1,6 +1,5 @@
 'use client'
 
-import 'mapbox-gl/dist/mapbox-gl.css'
 import * as React from 'react'
 import {Map as ReactMapGl, Marker, Popup} from 'react-map-gl'
 import {MapPinIcon, XIcon} from 'lucide-react'

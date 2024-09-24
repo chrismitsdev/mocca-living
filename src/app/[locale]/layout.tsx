@@ -1,4 +1,5 @@
 import '@/globals.css'
+import 'mapbox-gl/dist/mapbox-gl.css'
 import type {Metadata} from 'next'
 import {unstable_setRequestLocale} from 'next-intl/server'
 import {useMessages, NextIntlClientProvider} from 'next-intl'
