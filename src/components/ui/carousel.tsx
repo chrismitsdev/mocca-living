@@ -270,7 +270,7 @@ const CarouselThumbnailContainer = React.forwardRef<
   return (
     <motion.div
       initial={initial}
-      className={cn('w-auto h-[inherit] flex', className)}
+      className={cn('w-[-webkit-min-content] h-[inherit] flex', className)}
       style={{
         aspectRatio: activeThumbnailRatio,
         gap: `${thumbGap}%`
