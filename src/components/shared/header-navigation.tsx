@@ -3,8 +3,9 @@
 import * as React from 'react'
 import {motion, useTransform, useMotionTemplate} from 'framer-motion'
 import {MenuIcon, XIcon} from 'lucide-react'
-import {useBoundedScroll} from '@/hooks/useBoundedScroll'
+import {cn} from '#/lib/utils'
 import {usePathname, Link} from '@/i18n/routing'
+import {useBoundedScroll} from '@/hooks/useBoundedScroll'
 import {Container} from '@/components/shared/container'
 import {Typography} from '@/components/ui/typography'
 import {VisuallyHidden} from '@/components/ui/visually-hidden'
@@ -18,15 +19,12 @@ import {
   DrawerTitle,
   DrawerClose
 } from '@/components/ui/drawer'
-import {cn} from '#/lib/utils'
-
-type NavigationLink = {
-  label: string
-  href: string
-}
 
 type HeaderNavigationProps = {
-  links: NavigationLink[]
+  links: {
+    label: string
+    href: string
+  }[]
 }
 
 const HEADER_MAX_HEIGHT = 128
@@ -51,7 +49,7 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
         backdropFilter: 'blur(8px)',
         borderBottomStyle: 'solid',
         borderBottomWidth: '1px',
-        willChange: 'border-bottom-color, background-color, box-shadow, height',
+        willChange: 'border-bottom-color, background-color, height',
         borderBottomColor: useMotionTemplate`rgb(
           ${useTransform(scrollYBoundedProgress, [0, 1], [0, 199])}
           ${useTransform(scrollYBoundedProgress, [0, 1], [0, 180])}
@@ -112,18 +110,17 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
           >
             {links.map(({href, label}) => (
               <li
-                key={href}
+                key={label}
                 role='none'
               >
-                <HeaderLink
+                <NavLink
                   href={href}
                   isActive={pathname === href}
-                  onClick={() => setDrawerOpen(false)}
                   role='menuitem'
                   {...(pathname === href ? {'aria-current': 'page'} : {})}
                 >
                   {label}
-                </HeaderLink>
+                </NavLink>
               </li>
             ))}
           </ul>
@@ -160,18 +157,18 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
               <VisuallyHidden>
                 <DrawerTitle>{'Header navigation menu'}</DrawerTitle>
               </VisuallyHidden>
-              <div className='p-8 h-full flex flex-col justify-center items-end gap-4'>
+              <nav className='p-8 h-full flex flex-col justify-center items-end gap-4'>
                 {links.map(({href, label}) => (
-                  <Link
-                    key={href}
+                  <NavLink
+                    key={label}
                     href={href}
-                    className={cn(pathname === href && 'font-bold')}
+                    isActive={pathname === href}
                     onClick={() => setDrawerOpen(false)}
                   >
                     {label}
-                  </Link>
+                  </NavLink>
                 ))}
-              </div>
+              </nav>
               <DrawerClose asChild>
                 <motion.button
                   style={{
@@ -193,7 +190,7 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
   )
 }
 
-function HeaderLink({
+function NavLink({
   isActive,
   children,
   ...props
@@ -202,7 +199,7 @@ function HeaderLink({
 }) {
   return (
     <Link
-      className={cn('py-2 inline-block text-center', isActive && 'font-bold')}
+      className={cn('p-1 inline-block', isActive && 'font-bold underline')}
       {...props}
     >
       <Typography
@@ -216,5 +213,6 @@ function HeaderLink({
 }
 
 HeaderNavigation.displayName = 'HeaderNavigation'
+NavLink.displayName = 'NavLink'
 
 export {HeaderNavigation}
