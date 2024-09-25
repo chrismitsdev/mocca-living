@@ -35,7 +35,8 @@ export default function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${commissioner.className} overscroll-y-none`}
+      // className={`${commissioner.className} overscroll-y-none`}
+      className={`${commissioner.className}`}
     >
       <body className='min-h-screen grid grid-rows-[1fr,_auto]'>
         <Header />
