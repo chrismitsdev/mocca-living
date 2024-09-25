@@ -76,6 +76,16 @@
         }
       },
       "Slug": {
+        "headers": {
+          "layout": "Villa Layout",
+          "amenities": {
+            "indoor": "Indoor amenities",
+            "outdoor": "Outdoor amenities"
+          },
+          "complementary": "Complementary services",
+          "request": "Rental services",
+          "button": "Back"
+        },
         "georgia": {
           "name": "Georgia",
           "guests": "4 Guests",
@@ -106,16 +116,6 @@
           "complementary": "Welcome assistance procedure, Check-in/out assistance",
           "request": "Two SUP boards for rental, One electric-bike for rental"
         }
-      },
-      "SlugHeaders": {
-        "layout": "Villa Layout",
-        "amenities": {
-          "indoor": "Indoor amenities",
-          "outdoor": "Outdoor amenities"
-        },
-        "complementary": "Complementary services",
-        "request": "Rental services",
-        "button": "Back"
       }
     },
     "Contact": {

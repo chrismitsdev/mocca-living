@@ -1,3 +1,4 @@
+import * as React from 'react'
 import {NextIntlClientProvider, useTranslations, useMessages} from 'next-intl'
 import {Link} from '@/i18n/routing'
 import {
@@ -8,7 +9,8 @@ import {
   BathIcon,
   LandPlotIcon,
   ChevronLeftIcon,
-  ChevronRightIcon
+  ChevronRightIcon,
+  LucideProps
 } from 'lucide-react'
 import {Container} from '@/components/shared/container'
 import {
@@ -50,7 +52,7 @@ function SlugDetails({slug, locale}: SlugDetailsProps) {
           >
             <Link href='/accomodation'>
               <ChevronLeftIcon size={16} />
-              <span>{t('SlugHeaders.button')}</span>
+              <span>{t('Slug.headers.button')}</span>
             </Link>
           </Button>
           <Button
@@ -77,54 +79,35 @@ function SlugDetails({slug, locale}: SlugDetailsProps) {
           <CardHeader className='space-y-6'>
             <CardTitle>{t(`Slug.${slug}.name`)}</CardTitle>
             <div className='grid grid-cols-2 gap-y-2 gap-x-6 sm:grid-cols-none sm:grid-flow-col sm:auto-cols-max sm:gap-8'>
-              <SlugFeature>
-                <UsersIcon size={18} />
-                <Typography variant='h5'>{t(`Slug.${slug}.guests`)}</Typography>
-              </SlugFeature>
-              <SlugFeature>
-                <BabyIcon size={18} />
-                <Typography variant='h5'>{t(`Slug.${slug}.child`)}</Typography>
-              </SlugFeature>
-              <SlugFeature>
-                <BedDoubleIcon size={18} />
-                <Typography variant='h5'>
-                  {t(`Slug.${slug}.bedrooms`)}
-                </Typography>
-              </SlugFeature>
-              <SlugFeature>
-                <BathIcon size={18} />
-                <Typography variant='h5'>
-                  {t(`Slug.${slug}.bathrooms`)}
-                </Typography>
-              </SlugFeature>
-              <SlugFeature>
-                <LandPlotIcon size={18} />
-                <Typography variant='h5'>{t(`Slug.${slug}.area`)}</Typography>
-              </SlugFeature>
+              <SlugBadge icon={UsersIcon}>{t(`Slug.${slug}.guests`)}</SlugBadge>
+              <SlugBadge icon={BabyIcon}>{t(`Slug.${slug}.child`)}</SlugBadge>
+              <SlugBadge icon={BedDoubleIcon}>
+                {t(`Slug.${slug}.bedrooms`)}
+              </SlugBadge>
+              <SlugBadge icon={BathIcon}>
+                {t(`Slug.${slug}.bathrooms`)}
+              </SlugBadge>
+              <SlugBadge icon={LandPlotIcon}>
+                {t(`Slug.${slug}.area`)}
+              </SlugBadge>
             </div>
           </CardHeader>
           <CardContent className='space-y-6'>
-            <SlugDataRow data={t(`Slug.${slug}.layout`)}>
-              <Typography variant='h5'>{t('SlugHeaders.layout')}</Typography>
-            </SlugDataRow>
-            <SlugDataRow data={t(`Slug.${slug}.amenities.indoor`)}>
-              <Typography variant='h5'>
-                {t('SlugHeaders.amenities.indoor')}
-              </Typography>
-            </SlugDataRow>
-            <SlugDataRow data={t(`Slug.${slug}.amenities.outdoor`)}>
-              <Typography variant='h5'>
-                {t('SlugHeaders.amenities.outdoor')}
-              </Typography>
-            </SlugDataRow>
-            <SlugDataRow data={t(`Slug.${slug}.complementary`)}>
-              <Typography variant='h5'>
-                {t('SlugHeaders.complementary')}
-              </Typography>
-            </SlugDataRow>
-            <SlugDataRow data={t(`Slug.${slug}.request`)}>
-              <Typography variant='h5'>{t('SlugHeaders.request')}</Typography>
-            </SlugDataRow>
+            <SlugList data={t(`Slug.${slug}.layout`)}>
+              {t('Slug.headers.layout')}
+            </SlugList>
+            <SlugList data={t(`Slug.${slug}.amenities.indoor`)}>
+              {t('Slug.headers.amenities.indoor')}
+            </SlugList>
+            <SlugList data={t(`Slug.${slug}.amenities.outdoor`)}>
+              {t('Slug.headers.amenities.outdoor')}
+            </SlugList>
+            <SlugList data={t(`Slug.${slug}.complementary`)}>
+              {t('Slug.headers.complementary')}
+            </SlugList>
+            <SlugList data={t(`Slug.${slug}.request`)}>
+              {t('Slug.headers.request')}
+            </SlugList>
           </CardContent>
           <CardFooter className='justify-end'>
             <NextIntlClientProvider messages={scopedMessages}>
@@ -140,25 +123,31 @@ function SlugDetails({slug, locale}: SlugDetailsProps) {
   )
 }
 
-function SlugFeature({children}: {children: React.ReactNode}) {
+function SlugBadge({
+  icon,
+  children
+}: {
+  icon?: React.ComponentType<LucideProps>
+  children: React.ReactNode
+}) {
   return (
     <div className='inline-flex items-center gap-1.5 [&>*]:shrink-0'>
-      {children}
+      {icon && <span>{React.createElement(icon, {size: 18})}</span>}
+      <Typography variant='h5'>{children}</Typography>
     </div>
   )
 }
 
-function SlugDataRow({
-  children,
-  data
-}: {
-  children: React.ReactNode
-  data: string
-}) {
+function SlugList({children, data}: {children: React.ReactNode; data: string}) {
   return (
-    <div className='space-y-3'>
-      {children}
-      <ul className='space-y-1.5'>
+    <section className='space-y-2'>
+      <Typography
+        variant='h5'
+        asChild
+      >
+        <h5>{children}</h5>
+      </Typography>
+      <ul className='space-y-1'>
         {data.split(',').map((entry) => (
           <li
             key={entry}
@@ -172,12 +161,12 @@ function SlugDataRow({
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   )
 }
 
 SlugDetails.displayName = 'SlugDetails'
-SlugFeature.displayName = 'SlugFeature'
-SlugDataRow.displayName = 'SlugDataRow'
+SlugBadge.displayName = 'SlugBadge'
+SlugList.displayName = 'SlugList'
 
 export {SlugDetails}

@@ -27,5 +27,8 @@ declare global {
     size?: number
   }
 
-  type Slug = keyof IntlMessages['Pages']['Accomodation']['Slug']
+  type Slug = keyof Omit<
+    IntlMessages['Pages']['Accomodation']['Slug'],
+    'headers'
+  >
 }
