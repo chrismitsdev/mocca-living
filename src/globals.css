@@ -165,7 +165,9 @@
 
   body {
     @apply relative bg-surface-1 text-foreground selection:bg-primary selection:text-primary-foreground;
-    font-feature-settings: 'rlig' 1, 'calt' 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
 }
 
