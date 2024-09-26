@@ -1,15 +1,13 @@
+import {useTranslations} from 'next-intl'
 import {CornerDownRightIcon} from 'lucide-react'
 import {CustomImage} from '@/components/ui/custom-image'
 import {Typography} from '@/components/ui/typography'
 import {Container} from '@/components/shared/container'
 import * as outdoorImages from '#/public/images/outdoor'
 
-type IdealReasonsProps = {
-  title: IntlMessages['Pages']['Home']['IdealReasons']['title']
-  reasons: IntlMessages['Pages']['Home']['IdealReasons']['reasons']
-}
+function IdealReasons() {
+  const t = useTranslations('Pages.Home.IdealReasons')
 
-function IdealReasons({title, reasons}: IdealReasonsProps) {
   return (
     <article className='py-24 space-y-6 bg-surface-2'>
       <Container>
@@ -42,28 +40,28 @@ function IdealReasons({title, reasons}: IdealReasonsProps) {
               variant='h3'
               className='pb-3'
             >
-              {title}
+              {t('title')}
             </Typography>
             <div className='mt-12 space-y-14'>
               <Reason
-                title={reasons.reason1.title}
-                description={reasons.reason1.description}
+                title={t('reasons.reason1.title')}
+                description={t('reasons.reason1.description')}
               />
               <Reason
-                title={reasons.reason2.title}
-                description={reasons.reason2.description}
+                title={t('reasons.reason2.title')}
+                description={t('reasons.reason2.description')}
               />
               <Reason
-                title={reasons.reason3.title}
-                description={reasons.reason3.description}
+                title={t('reasons.reason3.title')}
+                description={t('reasons.reason3.description')}
               />
               <Reason
-                title={reasons.reason4.title}
-                description={reasons.reason4.description}
+                title={t('reasons.reason4.title')}
+                description={t('reasons.reason4.description')}
               />
               <Reason
-                title={reasons.reason5.title}
-                description={reasons.reason5.description}
+                title={t('reasons.reason5.title')}
+                description={t('reasons.reason5.description')}
               />
             </div>
           </div>
