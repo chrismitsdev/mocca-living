@@ -1,5 +1,5 @@
 import enMessages from '#/messages/en.json'
-import {locales} from '@/i18n/next-intl-config'
+import {locales} from '@/i18n/routing'
 
 type Messages = typeof enMessages
 

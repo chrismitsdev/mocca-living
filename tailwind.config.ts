@@ -188,7 +188,7 @@ const config: Config = {
         }
       },
       keyframes: {
-        'page-transition': {
+        'page-appear': {
           from: {
             transform: 'translateY(-24px)'
           },
@@ -215,12 +215,30 @@ const config: Config = {
             opacity: '0',
             translate: '0 24px'
           }
+        },
+        'accordion-open': {
+          from: {
+            height: '0'
+          },
+          to: {
+            height: 'var(--radix-accordion-content-height)'
+          }
+        },
+        'accordion-close': {
+          from: {
+            height: 'var(--radix-accordion-content-height)'
+          },
+          to: {
+            height: '0'
+          }
         }
       },
       animation: {
-        'page-transition': 'page-transition 1500ms cubic-bezier(0.32,0.72,0,1)',
+        'page-appear': 'page-appear 1500ms cubic-bezier(0.32,0.72,0,1)',
         'dialog-open': 'dialog-open 750ms cubic-bezier(0.32,0.72,0,1)',
-        'dialog-closed': 'dialog-closed 375ms cubic-bezier(0.32,0.72,0,1)'
+        'dialog-closed': 'dialog-closed 375ms cubic-bezier(0.32,0.72,0,1)',
+        'accordion-open': 'accordion-open 750ms cubic-bezier(0.32,0.72,0,1)',
+        'accordion-close': 'accordion-close 375ms cubic-bezier(0.32,0.72,0,1)'
       },
       transitionDuration: {
         '750': '750ms',
