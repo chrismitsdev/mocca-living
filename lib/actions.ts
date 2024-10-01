@@ -3,6 +3,7 @@
 import {getTranslations} from 'next-intl/server'
 import {Resend} from 'resend'
 import {ContactFormTemplate} from '@/components/page/contact/contact-form-template'
+import {createUser} from '#/services/create-user'
 
 const resend = new Resend(process.env.RESEND_ONBOARDING_API_KEY)
 
@@ -37,6 +38,8 @@ export async function sendContactForm(formData: ContactFormData) {
       subject: 'Test email',
       react: ContactFormTemplate({formData})
     })
+
+    await createUser(formData.fullName, formData.email)
 
     if (error) {
       return generateResponse('error', t)
