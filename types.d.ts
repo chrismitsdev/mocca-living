@@ -31,4 +31,11 @@ declare global {
     IntlMessages['Pages']['Accomodation']['Slug'],
     'headers'
   >
+
+  type User = {
+    id: number
+    created_at: string
+    name: string
+    email: string
+  }
 }
