@@ -34,8 +34,8 @@ const AccordionHeader = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof Header>
 >(({asChild = true, children, ...props}, ref) => (
   <Header
-    ref={ref}
     asChild={asChild}
+    ref={ref}
     {...props}
   >
     <h6>{children}</h6>

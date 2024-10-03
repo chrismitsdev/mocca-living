@@ -141,12 +141,6 @@
     }
   },
   "Components": {
-    "Footer": {
-      "title-1": "Χρησιμοι συνδεσμοι",
-      "title-1-link-1": "Πολιτική απορρήτου",
-      "title-1-link-2": "Χρήση cookies",
-      "title-2": "Πληροφοριες"
-    },
     "LocaleSelect": {
       "placeholder": "Επιλογή γλώσσας",
       "loadingText": "Loading",
@@ -230,6 +224,30 @@
           "georgia": "Γεωργία",
           "dimitra": "Δήμητρα"
         }
+      }
+    },
+    "Footer": {
+      "row-1": {
+        "column-1": {
+          "header": "Πληροφοριες",
+          "link-1": "Παραλία Αγίας Παρασκευής",
+          "link-2": "Τηλέφωνο επικοινωνίας"
+        },
+        "column-2": {
+          "header": "Χρησιμοι συνδεσμοι",
+          "link-1": "Πολιτική απορρήτου",
+          "link-2": "Χρήση cookies"
+        },
+        "column-3": {
+          "header": "Λοιπές υπηρεσίες",
+          "link-1": "Yuppii Luna Park",
+          "link-2": "Start Pilates"
+        }
+      },
+      "row-2": {
+        "copyright": "Πνευματική ιδιοκτησία © {created, date, ::yyyy} Mocca Living",
+        "manufacturer": "Κατασκευαστής έργου <a>KYRCOM</a>",
+        "developer": "Σχεδιάστηκε & αναπτύχθηκε από τον CM"
       }
     }
   }

@@ -12,105 +12,135 @@ import {Separator} from '@/components/ui/separator'
 import logoFull from '#/public/logos/mocca-logo-full.svg'
 
 function Footer() {
-  const t = useTranslations()
+  const t = useTranslations('Components')
   const locale = useLocale()
 
   return (
-    <footer className='py-12 bg-surface-2 border-t border-t-surface-3'>
-      <Container className='space-y-10'>
+    <footer className='py-12 space-y-12 bg-surface-2 border-t border-t-surface-3 '>
+      <Container>
         <div className='space-y-8 sm:space-y-0 sm:flex sm:justify-between sm:items-start'>
           <Image
             src={logoFull}
             height={160}
             alt='Mocca Living footer logo'
           />
-          <FooterColumn title={t('Components.Footer.title-2')}>
-            <Typography
-              className='hover:underline'
-              variant='small'
-              asChild
-            >
-              <a
-                href='https://maps.app.goo.gl/41UMZ9aS2DT1SDD88'
-                target='_blank'
+          <div className='space-y-4'>
+            <Typography className='font-semibold uppercase'>
+              {t('Footer.row-1.column-1.header')}
+            </Typography>
+            <div>
+              <Typography
+                variant='link'
+                asChild
               >
-                {t('Metadata.Contact.location')}
-              </a>
+                <a
+                  href='https://maps.app.goo.gl/41UMZ9aS2DT1SDD88'
+                  target='_blank'
+                >
+                  {t('Footer.row-1.column-1.link-1')}
+                </a>
+              </Typography>
+              <Typography
+                variant='link'
+                asChild
+              >
+                <a href='tel:+306973433980'>
+                  {t('Footer.row-1.column-1.link-2')}
+                </a>
+              </Typography>
+            </div>
+          </div>
+          <div className='space-y-4'>
+            <Typography className='font-semibold uppercase'>
+              {t('Footer.row-1.column-2.header')}
             </Typography>
-            <Typography
-              className='hover:underline'
-              variant='small'
-              asChild
-            >
-              <a href='tel:+306973433980'>{t('Metadata.Contact.phone')}</a>
+            <div>
+              <Typography
+                variant='link'
+                asChild
+              >
+                <Link href='/privacy'>{t('Footer.row-1.column-2.link-1')}</Link>
+              </Typography>
+              <Typography
+                variant='link'
+                asChild
+              >
+                <Link href='/cookies'>{t('Footer.row-1.column-2.link-2')}</Link>
+              </Typography>
+            </div>
+          </div>
+          <div className='space-y-4'>
+            <Typography className='font-semibold uppercase'>
+              {t('Footer.row-1.column-3.header')}
             </Typography>
-          </FooterColumn>
-          <FooterColumn title={t('Components.Footer.title-1')}>
-            <Typography
-              className='hover:underline'
-              variant='small'
-              asChild
-            >
-              <Link href='/privacy'>
-                {t('Components.Footer.title-1-link-1')}
-              </Link>
-            </Typography>
-            <Typography
-              className='hover:underline'
-              variant='small'
-              asChild
-            >
-              <Link href='/cookies'>
-                {t('Components.Footer.title-1-link-2')}
-              </Link>
-            </Typography>
-          </FooterColumn>
+            <div>
+              <Typography
+                variant='link'
+                asChild
+              >
+                <a
+                  href='https://yuppii.gr/'
+                  target='_blank'
+                >
+                  {t('Footer.row-1.column-3.link-1')}
+                </a>
+              </Typography>
+              <Typography
+                variant='link'
+                asChild
+              >
+                <a
+                  href='https://startpilates.gr/'
+                  target='_blank'
+                >
+                  {t('Footer.row-1.column-3.link-2')}
+                </a>
+              </Typography>
+            </div>
+          </div>
           <LocaleSelect
             className='sm:w-40 justify-self-end'
             defaultValue={locale}
-            placeholder={t('Components.LocaleSelect.placeholder')}
-            loadingText={t('Components.LocaleSelect.loadingText')}
+            placeholder={t('LocaleSelect.placeholder')}
+            loadingText={t('LocaleSelect.loadingText')}
           >
             {locales.map((locale) => (
               <LocaleSelectItem
                 key={locale}
                 value={locale}
               >
-                {t(`Components.LocaleSelect.values.${locale}`)}
+                {t(`LocaleSelect.values.${locale}`)}
               </LocaleSelectItem>
             ))}
           </LocaleSelect>
         </div>
-        <Separator className='' />
+      </Container>
+      <Separator />
+      <Container>
         <div className='flex flex-col justify-between gap-2 sm:flex-row'>
           <Typography variant='mini'>
-            {`Copyright © ${new Date().getFullYear()} Mocca Living`}
+            {t('Footer.row-2.copyright', {created: new Date()})}
           </Typography>
-          <Typography variant='mini'>{'Designed & Developed by CM'}</Typography>
+          <Typography variant='mini'>
+            {t.rich('Footer.row-2.manufacturer', {
+              a: (chunks) => (
+                <a
+                  className='hover:underline'
+                  href='https://kyrcom.com/el/'
+                  target='_blank'
+                >
+                  {chunks}
+                </a>
+              )
+            })}
+          </Typography>
+          <Typography variant='mini'>{t('Footer.row-2.developer')}</Typography>
         </div>
       </Container>
     </footer>
   )
 }
 
-function FooterColumn({
-  title,
-  children
-}: React.PropsWithChildren<{title: string}>) {
-  return (
-    <div>
-      <Typography
-        variant='h5'
-        className='mb-2 uppercase'
-      >
-        {title}
-      </Typography>
-      {children}
-    </div>
-  )
-}
-
 Footer.displayName = 'Footer'
-FooterColumn.displayName = 'FooterColumn'
 
 export {Footer}

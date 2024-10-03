@@ -31,6 +31,8 @@ const config: Config = {
       error: 'type="error"',
       info: 'type="info"',
       warning: 'type="warning"',
+      horizontal: 'orientation="horizontal"',
+      vertical: 'orientation="vertical"',
       'from-start': 'motion="from=start"',
       'from-end': 'motion="from=end"',
       'to-start': 'motion="to-start"',

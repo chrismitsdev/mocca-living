@@ -141,12 +141,6 @@
     }
   },
   "Components": {
-    "Footer": {
-      "title-1": "Useful links",
-      "title-1-link-1": "Privacy policy",
-      "title-1-link-2": "Use of cookies",
-      "title-2": "Information"
-    },
     "LocaleSelect": {
       "placeholder": "Select language",
       "loadingText": "Φορτώνει",
@@ -230,6 +224,30 @@
           "georgia": "Georgia",
           "dimitra": "Dimitra"
         }
+      }
+    },
+    "Footer": {
+      "row-1": {
+        "column-1": {
+          "header": "Information",
+          "link-1": "Agia Paraskevi Beach",
+          "link-2": "Contact phone"
+        },
+        "column-2": {
+          "header": "Useful links",
+          "link-1": "Privacy policy",
+          "link-2": "Use of cookies"
+        },
+        "column-3": {
+          "header": "Οther services",
+          "link-1": "Yuppii Luna Park",
+          "link-2": "Start Pilates"
+        }
+      },
+      "row-2": {
+        "copyright": "Copyright © {created, date, ::yyyy} Mocca Living",
+        "manufacturer": "Project manufacturer <a>KYRCOM</a>",
+        "developer": "Designed & developed by CM"
       }
     }
   }
