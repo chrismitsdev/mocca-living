@@ -160,8 +160,8 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
                       after: !watchCheckOut
                         ? undefined
                         : isSameDay(watchCheckOut, addDays(new Date(), 1))
-                        ? new Date()
-                        : subDays(watchCheckOut, 1)
+                          ? new Date()
+                          : subDays(watchCheckOut, 1)
                     }}
                     disabled={form.formState.isSubmitting}
                   />

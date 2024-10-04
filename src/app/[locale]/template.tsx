@@ -1,4 +1,4 @@
-export default function Template({
+export default function RootTemplate({
   children
 }: {
   children: Readonly<React.ReactNode>
