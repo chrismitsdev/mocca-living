@@ -1,4 +1,4 @@
-import {useTranslations} from 'next-intl'
+import {NextIntlClientProvider, useTranslations, useMessages} from 'next-intl'
 import {HeaderNavigation} from '@/components/shared/header-navigation'
 
 type HeaderLink = {
@@ -25,10 +25,16 @@ const tLinks = function (t: ReturnType<typeof useTranslations>): HeaderLink[] {
 }
 
 function Header() {
-  // const t = useTranslations('Metadata.Pages')
   const links = tLinks(useTranslations('Metadata.Pages'))
+  const messages = useMessages() as IntlMessages
 
-  return <HeaderNavigation links={links} />
+  return (
+    <NextIntlClientProvider messages={messages.Components.LocaleSelect}>
+      <HeaderNavigation links={links} />
+    </NextIntlClientProvider>
+  )
+
+  // return <HeaderNavigation links={links} />
 }
 
 Header.displayName = 'Header'

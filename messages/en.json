@@ -246,7 +246,7 @@
       },
       "row-2": {
         "copyright": "Copyright © {created, date, ::yyyy} Mocca Living",
-        "manufacturer": "Project manufacturer <a>KYRCOM</a>",
+        "manufacturer": "Project implementation by <a>KYRCOM</a>",
         "developer": "Designed & developed by CM"
       }
     }

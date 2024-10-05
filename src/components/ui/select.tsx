@@ -16,7 +16,7 @@ import {
   Separator,
   Icon
 } from '@radix-ui/react-select'
-import {CheckIcon, ChevronDownIcon} from 'lucide-react'
+import {CheckIcon, ChevronsUpDownIcon} from 'lucide-react'
 import {cn} from '#/lib/utils'
 
 const Select = Root
@@ -31,7 +31,7 @@ const SelectTrigger = React.forwardRef<
 >(({className, children, ...props}, ref) => (
   <Trigger
     className={cn(
-      'px-3 py-[7px] flex items-center gap-2 bg-surface-1 border rounded font-semibold transition hover:border-border-hover focus:outline-none disabled:border-border disabled:pointer-events-none disabled:opacity-35 data-open:border-border-hover data-open:shadow [&>span]:grow [&>span]:text-left [&>svg]:data-open:rotate-180 group',
+      'px-3 py-[7px] flex items-center gap-2 bg-surface-1 border rounded font-semibold transition hover:border-border-hover focus:outline-none disabled:border-border disabled:pointer-events-none disabled:opacity-35 data-open:border-border-hover data-open:shadow [&>span]:grow [&>span]:text-left group',
       className
     )}
     ref={ref}
@@ -42,7 +42,7 @@ const SelectTrigger = React.forwardRef<
       asChild
       className='shrink-0 transition'
     >
-      <ChevronDownIcon size={16} />
+      <ChevronsUpDownIcon size={16} />
     </Icon>
   </Trigger>
 ))

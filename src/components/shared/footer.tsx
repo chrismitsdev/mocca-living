@@ -1,14 +1,11 @@
-import {useTranslations, useLocale} from 'next-intl'
 /* eslint-disable-next-line no-restricted-imports */
 import Image from 'next/image'
+import {useLocale, useTranslations} from 'next-intl'
 import {Link, locales} from '@/i18n/routing'
 import {Container} from '@/components/shared/container'
-import {
-  LocaleSelect,
-  LocaleSelectItem
-} from '@/components/shared/locale-switcher-select'
-import {Typography} from '@/components/ui/typography'
+import {LocaleSelect, LocaleSelectItem} from '@/components/shared/locale-select'
 import {Separator} from '@/components/ui/separator'
+import {Typography} from '@/components/ui/typography'
 import logoFull from '#/public/logos/mocca-logo-full.svg'
 
 function Footer() {
@@ -99,17 +96,17 @@ function Footer() {
             </div>
           </div>
           <LocaleSelect
-            className='sm:w-40 justify-self-end'
+            className='min-w-40'
             defaultValue={locale}
             placeholder={t('LocaleSelect.placeholder')}
             loadingText={t('LocaleSelect.loadingText')}
           >
-            {locales.map((locale) => (
+            {locales.map((localeEntry) => (
               <LocaleSelectItem
-                key={locale}
-                value={locale}
+                key={localeEntry}
+                value={localeEntry}
               >
-                {t(`LocaleSelect.values.${locale}`)}
+                {t(`LocaleSelect.values.${localeEntry}`)}
               </LocaleSelectItem>
             ))}
           </LocaleSelect>
@@ -118,10 +115,10 @@ function Footer() {
       <Separator />
       <Container>
         <div className='flex flex-col justify-between gap-2 sm:flex-row'>
-          <Typography variant='mini'>
+          <Typography variant='small'>
             {t('Footer.row-2.copyright', {created: new Date()})}
           </Typography>
-          <Typography variant='mini'>
+          <Typography variant='small'>
             {t.rich('Footer.row-2.manufacturer', {
               a: (chunks) => (
                 <a
@@ -134,7 +131,7 @@ function Footer() {
               )
             })}
           </Typography>
-          <Typography variant='mini'>{t('Footer.row-2.developer')}</Typography>
+          <Typography variant='small'>{t('Footer.row-2.developer')}</Typography>
         </div>
       </Container>
     </footer>

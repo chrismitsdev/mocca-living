@@ -246,8 +246,8 @@
       },
       "row-2": {
         "copyright": "Πνευματική ιδιοκτησία © {created, date, ::yyyy} Mocca Living",
-        "manufacturer": "Κατασκευαστής έργου <a>KYRCOM</a>",
-        "developer": "Σχεδιάστηκε & αναπτύχθηκε από τον CM"
+        "manufacturer": "Υλοποίηση έργου από <a>KYRCOM</a>",
+        "developer": "Σχεδιάστηκε & αναπτύχθηκε από CM"
       }
     }
   }

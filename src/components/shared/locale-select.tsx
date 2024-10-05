@@ -18,12 +18,14 @@ type LocaleSelectProps = React.ComponentPropsWithoutRef<typeof Select> & {
   loadingText: string
   className?: string
   placeholder: string
+  noScroll?: boolean
 }
 
 function LocaleSelect({
   loadingText,
   className,
   placeholder,
+  noScroll = false,
   children,
   ...props
 }: LocaleSelectProps) {
@@ -33,7 +35,7 @@ function LocaleSelect({
 
   function onSelectChange(locale: (typeof locales)[number]) {
     startTransition(function () {
-      router.replace(pathname, {locale})
+      router.replace(pathname, {locale, scroll: !noScroll})
     })
   }
 

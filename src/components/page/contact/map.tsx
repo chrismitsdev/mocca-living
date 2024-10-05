@@ -27,7 +27,7 @@ function Map({token, translations}: MapboxProps) {
   })
 
   return (
-    <article className='py-12'>
+    <article>
       <ReactMapGl
         style={{
           width: '100%',

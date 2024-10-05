@@ -1,14 +1,14 @@
 'use client'
 
 import * as React from 'react'
+import {useTranslations, useLocale} from 'next-intl'
 import {motion, useTransform, useMotionTemplate} from 'framer-motion'
+import {Link, usePathname, locales} from '@/i18n/routing'
 import {MenuIcon, XIcon} from 'lucide-react'
-import {cn} from '#/lib/utils'
-import {usePathname, Link} from '@/i18n/routing'
 import {useBoundedScroll} from '@/hooks/useBoundedScroll'
+import {cn} from '#/lib/utils'
 import {Container} from '@/components/shared/container'
 import {Typography} from '@/components/ui/typography'
-import {VisuallyHidden} from '@/components/ui/visually-hidden'
 import {LogoSimple} from '@/components/logos/logo-simple'
 import {
   Drawer,
@@ -19,6 +19,8 @@ import {
   DrawerTitle,
   DrawerClose
 } from '@/components/ui/drawer'
+import {LocaleSelect, LocaleSelectItem} from '@/components/shared/locale-select'
+import {VisuallyHidden} from '@/components/ui/visually-hidden'
 
 type HeaderNavigationProps = {
   links: {
@@ -34,6 +36,8 @@ const LOGO_MIN_SCALE = 0.5
 
 function HeaderNavigation({links}: HeaderNavigationProps) {
   const [drawerOpen, setDrawerOpen] = React.useState(false)
+  const t = useTranslations<'Components.LocaleSelect'>()
+  const locale = useLocale()
   const pathname = usePathname()
   const {scrollYBoundedProgress} = useBoundedScroll(250)
 
@@ -154,21 +158,51 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
           <DrawerPortal>
             <DrawerOverlay />
             <DrawerContent className='w-full border-l-0'>
-              <VisuallyHidden>
-                <DrawerTitle>{'Header navigation menu'}</DrawerTitle>
-              </VisuallyHidden>
-              <nav className='p-8 h-full flex flex-col justify-center items-end gap-4'>
-                {links.map(({href, label}) => (
-                  <NavLink
-                    key={label}
-                    href={href}
-                    isActive={pathname === href}
-                    onClick={() => setDrawerOpen(false)}
+              <div className='p-8 h-full grid grid-rows-[1fr,auto]'>
+                <VisuallyHidden>
+                  <DrawerTitle>{'Sidebar navigation menu'}</DrawerTitle>
+                </VisuallyHidden>
+                <nav className='py-8 flex'>
+                  <ul
+                    className='my-auto space-y-6 w-full'
+                    role='menubar'
                   >
-                    {label}
-                  </NavLink>
-                ))}
-              </nav>
+                    {links.map(({href, label}) => (
+                      <li
+                        className='text-right'
+                        role='none'
+                        key={label}
+                      >
+                        <NavLink
+                          href={href}
+                          isActive={pathname === href}
+                          onClick={() => setDrawerOpen(false)}
+                          {...(pathname === href
+                            ? {'aria-current': 'page'}
+                            : {})}
+                        >
+                          {label}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+                <LocaleSelect
+                  defaultValue={locale}
+                  loadingText={t('loadingText')}
+                  placeholder={t('placeholder')}
+                  noScroll
+                >
+                  {locales.map((localeEntry) => (
+                    <LocaleSelectItem
+                      key={localeEntry}
+                      value={localeEntry}
+                    >
+                      {t(`values.${localeEntry}`)}
+                    </LocaleSelectItem>
+                  ))}
+                </LocaleSelect>
+              </div>
               <DrawerClose asChild>
                 <motion.button
                   style={{
