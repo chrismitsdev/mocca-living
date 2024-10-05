@@ -63,7 +63,7 @@
             "guests": "4 Guests",
             "bedrooms": "2 Bedrooms",
             "bathrooms": "1 Bathroom",
-            "button": "More"
+            "button": "Information"
           },
           "dimitra": {
             "title": "Dimitra",
@@ -71,7 +71,7 @@
             "guests": "5 Guests",
             "bedrooms": "2 Bedrooms",
             "bathrooms": "2 Bathrooms",
-            "button": "More"
+            "button": "Information"
           }
         }
       },

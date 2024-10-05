@@ -15,13 +15,13 @@ function Footer() {
   return (
     <footer className='py-12 space-y-12 bg-surface-2 border-t border-t-surface-3 '>
       <Container>
-        <div className='space-y-8 sm:space-y-0 sm:flex sm:justify-between sm:items-start'>
+        <div className='space-y-10 sm:space-y-0 sm:flex sm:justify-between sm:items-start'>
           <Image
             src={logoFull}
             height={160}
             alt='Mocca Living footer logo'
           />
-          <div className='space-y-4'>
+          <div className='space-y-2 sm:space-y-4'>
             <Typography className='font-semibold uppercase'>
               {t('Footer.row-1.column-1.header')}
             </Typography>
@@ -47,7 +47,7 @@ function Footer() {
               </Typography>
             </div>
           </div>
-          <div className='space-y-4'>
+          <div className='space-y-2 sm:space-y-4'>
             <Typography className='font-semibold uppercase'>
               {t('Footer.row-1.column-2.header')}
             </Typography>
@@ -66,7 +66,7 @@ function Footer() {
               </Typography>
             </div>
           </div>
-          <div className='space-y-4'>
+          <div className='space-y-2 sm:space-y-4'>
             <Typography className='font-semibold uppercase'>
               {t('Footer.row-1.column-3.header')}
             </Typography>

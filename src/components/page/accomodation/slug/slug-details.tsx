@@ -44,7 +44,7 @@ function SlugDetails({slug, locale}: SlugDetailsProps) {
       asChild
     >
       <article className='space-y-4'>
-        <div className='p-0.5 flex justify-between bg-surface-2 border border-surface-3 rounded shadow'>
+        <div className='p-0.5 flex justify-between bg-surface-2 border border-surface-3 rounded'>
           <Button
             variant='ghost'
             size='small'

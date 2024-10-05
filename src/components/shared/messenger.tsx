@@ -32,8 +32,8 @@ function Messenger() {
   return (
     <a
       className={cn(
-        'p-2 flex fixed -bottom-20 left-3 bg-success text-success-foreground rounded-full shadow duration-750 ease-mocca hover:bg-success-hover hover:shadow-medium hover:scale-110',
-        scrollPosition > 100 && '-translate-y-24'
+        'p-2 flex fixed -bottom-20 left-2 bg-success text-success-foreground rounded-full shadow duration-750 ease-mocca hover:bg-success-hover hover:shadow-medium hover:scale-110',
+        scrollPosition > 100 && '-translate-y-[88px]'
       )}
       href='sms:+306973433980'
       aria-label='Open messaging app to send a text'

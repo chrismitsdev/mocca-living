@@ -188,6 +188,7 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
                   </ul>
                 </nav>
                 <LocaleSelect
+                  className='w-40 place-self-end'
                   defaultValue={locale}
                   loadingText={t('loadingText')}
                   placeholder={t('placeholder')}

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {useTranslations} from 'next-intl'
 import {type StaticImageData} from 'next/image'
-import {UsersIcon, BedDoubleIcon, BathIcon} from 'lucide-react'
+import {UsersIcon, BedDoubleIcon, BathIcon, ChevronRight} from 'lucide-react'
 import {Link} from '@/i18n/routing'
 import {Container} from '@/components/shared/container'
 import {CustomImage} from '@/components/ui/custom-image'
@@ -101,7 +101,11 @@ function Villas() {
               <CardFooter className='p-4 justify-end sm:p-6'>
                 <Button asChild>
                   <Link href={`/accomodation/${villa.key}`}>
-                    {villa.button}
+                    <span>{villa.button}</span>
+                    <ChevronRight
+                      className='mt-1'
+                      size={16}
+                    />
                   </Link>
                 </Button>
               </CardFooter>
