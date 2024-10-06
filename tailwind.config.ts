@@ -4,7 +4,7 @@ import tailwindcssAnimate from 'tailwindcss-animate'
 const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   future: {
-    // hoverOnlyWhenSupported: true
+    hoverOnlyWhenSupported: true
   },
   theme: {
     container: {
