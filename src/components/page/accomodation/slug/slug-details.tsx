@@ -75,7 +75,7 @@ function SlugDetails({slug, locale}: SlugDetailsProps) {
             </Link>
           </Button>
         </div>
-        <Card className='px-4 py-8 space-y-8 sm:p-8'>
+        <Card className='px-4 py-8 space-y-10 sm:p-8'>
           <CardHeader className='space-y-6'>
             <CardTitle>{t(`Slug.${slug}.name`)}</CardTitle>
             <div className='grid grid-cols-2 gap-y-2 gap-x-6 sm:grid-cols-none sm:grid-flow-col sm:auto-cols-max sm:gap-8'>
@@ -92,7 +92,7 @@ function SlugDetails({slug, locale}: SlugDetailsProps) {
               </SlugBadge>
             </div>
           </CardHeader>
-          <CardContent className='space-y-6'>
+          <CardContent className='space-y-10'>
             <SlugList data={t(`Slug.${slug}.layout`)}>
               {t('Slug.headers.layout')}
             </SlugList>
