@@ -4,7 +4,7 @@ import tailwindcssAnimate from 'tailwindcss-animate'
 const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   future: {
-    hoverOnlyWhenSupported: true
+    // hoverOnlyWhenSupported: true
   },
   theme: {
     container: {
@@ -235,6 +235,22 @@ const config: Config = {
           to: {
             height: '0'
           }
+        },
+        'collapsible-open': {
+          from: {
+            height: '0'
+          },
+          to: {
+            height: 'var(--radix-collapsible-content-height)'
+          }
+        },
+        'collapsible-close': {
+          from: {
+            height: 'var(--radix-collapsible-content-height)'
+          },
+          to: {
+            height: '0'
+          }
         }
       },
       animation: {
@@ -242,7 +258,11 @@ const config: Config = {
         'dialog-open': 'dialog-open 750ms cubic-bezier(0.32,0.72,0,1)',
         'dialog-closed': 'dialog-closed 375ms cubic-bezier(0.32,0.72,0,1)',
         'accordion-open': 'accordion-open 750ms cubic-bezier(0.32,0.72,0,1)',
-        'accordion-close': 'accordion-close 375ms cubic-bezier(0.32,0.72,0,1)'
+        'accordion-close': 'accordion-close 375ms cubic-bezier(0.32,0.72,0,1)',
+        'collapsible-open':
+          'collapsible-open 750ms cubic-bezier(0.32,0.72,0,1)',
+        'collapsible-close':
+          'collapsible-close 375ms cubic-bezier(0.32,0.72,0,1)'
       },
       transitionDuration: {
         '750': '750ms',

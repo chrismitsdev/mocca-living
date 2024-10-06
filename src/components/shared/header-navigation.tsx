@@ -4,7 +4,7 @@ import * as React from 'react'
 import {useTranslations, useLocale} from 'next-intl'
 import {motion, useTransform, useMotionTemplate} from 'framer-motion'
 import {Link, usePathname, locales} from '@/i18n/routing'
-import {MenuIcon, XIcon} from 'lucide-react'
+import {MenuIcon, XIcon, ChevronRight} from 'lucide-react'
 import {useBoundedScroll} from '@/hooks/useBoundedScroll'
 import {cn} from '#/lib/utils'
 import {Container} from '@/components/shared/container'
@@ -21,6 +21,12 @@ import {
 } from '@/components/ui/drawer'
 import {LocaleSelect, LocaleSelectItem} from '@/components/shared/locale-select'
 import {VisuallyHidden} from '@/components/ui/visually-hidden'
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent
+} from '@/components/ui/collapsible'
+import {Button} from '@/components/ui/button'
 
 type HeaderNavigationProps = {
   links: {
@@ -37,6 +43,7 @@ const LOGO_MIN_SCALE = 0.5
 function HeaderNavigation({links}: HeaderNavigationProps) {
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   const t = useTranslations<'Components.LocaleSelect'>()
+  const m = useTranslations<'Metadata.Pages'>()
   const locale = useLocale()
   const pathname = usePathname()
   const {scrollYBoundedProgress} = useBoundedScroll(250)
@@ -120,8 +127,6 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
                 <NavLink
                   href={href}
                   isActive={pathname === href}
-                  role='menuitem'
-                  {...(pathname === href ? {'aria-current': 'page'} : {})}
                 >
                   {label}
                 </NavLink>
@@ -157,38 +162,99 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
           </DrawerTrigger>
           <DrawerPortal>
             <DrawerOverlay />
-            <DrawerContent className='w-full border-l-0'>
+            <DrawerContent className='w-2/3'>
               <div className='p-8 h-full grid grid-rows-[1fr,auto]'>
                 <VisuallyHidden>
                   <DrawerTitle>{'Sidebar navigation menu'}</DrawerTitle>
                 </VisuallyHidden>
-                <nav className='py-8 flex'>
+                <nav className='flex'>
                   <ul
-                    className='my-auto space-y-6 w-full'
+                    className='my-auto w-full space-y-6'
                     role='menubar'
                   >
-                    {links.map(({href, label}) => (
-                      <li
-                        className='text-right'
-                        role='none'
-                        key={label}
+                    <li role='none'>
+                      <NavLink
+                        isActive={pathname === '/'}
+                        href='/'
+                        onClick={() => setDrawerOpen(false)}
                       >
-                        <NavLink
-                          href={href}
-                          isActive={pathname === href}
-                          onClick={() => setDrawerOpen(false)}
-                          {...(pathname === href
-                            ? {'aria-current': 'page'}
-                            : {})}
+                        {m('home')}
+                      </NavLink>
+                    </li>
+                    <Collapsible
+                      className='group'
+                      defaultOpen={
+                        pathname === '/accomodation/georgia' ||
+                        pathname === '/accomodation/dimitra'
+                      }
+                      asChild
+                    >
+                      <li role='none'>
+                        <div className='flex items-center justify-between'>
+                          <NavLink
+                            isActive={pathname === '/accomodation'}
+                            href='/accomodation'
+                            onClick={() => setDrawerOpen(false)}
+                          >
+                            {m('accomodation.root')}
+                          </NavLink>
+                          <CollapsibleTrigger asChild>
+                            <Button
+                              variant='link'
+                              size='icon-mini'
+                            >
+                              <ChevronRight
+                                className='group-data-open:rotate-90 group-data-open:duration-750 group-data-closed:duration-375'
+                                size={16}
+                              />
+                            </Button>
+                          </CollapsibleTrigger>
+                        </div>
+                        <CollapsibleContent
+                          className='overflow-hidden group-data-open:animate-collapsible-open group-data-closed:animate-collapsible-close'
+                          asChild
                         >
-                          {label}
-                        </NavLink>
+                          <ul
+                            className='ml-2 pl-3 relative before:absolute before:h-[calc(100%-16px)] before:w-px before:top-1/2 before:-translate-y-1/2 before:left-0 before:bg-surface-3'
+                            role='menu'
+                          >
+                            <li
+                              className='pt-1'
+                              role='none'
+                            >
+                              <NavLink
+                                isActive={pathname === '/accomodation/georgia'}
+                                href='/accomodation/georgia'
+                                onClick={() => setDrawerOpen(false)}
+                              >
+                                {m('accomodation.georgia')}
+                              </NavLink>
+                            </li>
+                            <li role='none'>
+                              <NavLink
+                                isActive={pathname === '/accomodation/dimitra'}
+                                href='/accomodation/dimitra'
+                                onClick={() => setDrawerOpen(false)}
+                              >
+                                {m('accomodation.dimitra')}
+                              </NavLink>
+                            </li>
+                          </ul>
+                        </CollapsibleContent>
                       </li>
-                    ))}
+                    </Collapsible>
+                    <li role='none'>
+                      <NavLink
+                        isActive={pathname === '/contact'}
+                        href='/contact'
+                        onClick={() => setDrawerOpen(false)}
+                      >
+                        {m('contact')}
+                      </NavLink>
+                    </li>
                   </ul>
                 </nav>
                 <LocaleSelect
-                  className='w-40 place-self-end'
                   defaultValue={locale}
                   loadingText={t('loadingText')}
                   placeholder={t('placeholder')}
@@ -228,6 +294,7 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
 function NavLink({
   isActive,
   draggable = false,
+  role = 'menuitem',
   children,
   ...props
 }: React.ComponentPropsWithoutRef<typeof Link> & {
@@ -235,16 +302,13 @@ function NavLink({
 }) {
   return (
     <Link
-      className={cn('p-1 inline-block', isActive && 'font-bold underline')}
+      className={cn('p-1 inline-block', isActive && 'font-bold')}
       draggable={draggable}
+      role={role}
+      {...(role === 'menuitem' && isActive ? {'aria-current': 'page'} : {})}
       {...props}
     >
-      <Typography
-        variant='small'
-        className='uppercase'
-      >
-        {children}
-      </Typography>
+      <Typography>{children}</Typography>
     </Link>
   )
 }

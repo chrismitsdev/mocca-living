@@ -27,14 +27,16 @@ const tLinks = function (t: ReturnType<typeof useTranslations>): HeaderLink[] {
 function Header() {
   const links = tLinks(useTranslations('Metadata.Pages'))
   const messages = useMessages() as IntlMessages
+  const combinedMessages = {
+    ...messages.Metadata.Pages,
+    ...messages.Components.LocaleSelect
+  }
 
   return (
-    <NextIntlClientProvider messages={messages.Components.LocaleSelect}>
+    <NextIntlClientProvider messages={combinedMessages}>
       <HeaderNavigation links={links} />
     </NextIntlClientProvider>
   )
-
-  // return <HeaderNavigation links={links} />
 }
 
 Header.displayName = 'Header'
