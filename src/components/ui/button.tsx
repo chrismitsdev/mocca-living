@@ -102,6 +102,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       asChild = false,
       isLoading = false,
       type = 'button',
+      draggable = false,
       children,
       ...props
     },
@@ -123,6 +124,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         type={type}
         ref={ref}
+        draggable={draggable}
         {...props}
       >
         <Slottable>{children}</Slottable>

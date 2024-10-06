@@ -17,15 +17,21 @@ const commissioner = Commissioner({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mocca-living.gr'),
   title: 'Mocca Living | Premium • Stay • Philosophy',
-  description: '',
+  description:
+    'Luxury villas Georgia & Dimitra for seaside escapes at Mocca Living.',
   formatDetection: {
     email: true,
     telephone: true
   }
 }
 
-export default function LocaleLayout({
+export function generateStaticParams() {
+  return locales.map((locale) => ({locale}))
+}
+
+export default function RootLayout({
   params: {locale},
   children
 }: React.PropsWithChildren<Params>) {
@@ -44,16 +50,9 @@ export default function LocaleLayout({
         <NextIntlClientProvider messages={messages.Components.CookieConsent}>
           <CookieConsent />
         </NextIntlClientProvider>
-        <Toaster
-          position='top-right'
-          duration={5000}
-        />
+        <Toaster position='top-right' />
         <Messenger />
       </body>
     </html>
   )
-}
-
-export function generateStaticParams() {
-  return locales.map((locale) => ({locale}))
 }

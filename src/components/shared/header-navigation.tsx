@@ -226,6 +226,7 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
 }
 
 function NavLink({
+  draggable = false,
   isActive,
   children,
   ...props
@@ -235,6 +236,7 @@ function NavLink({
   return (
     <Link
       className={cn('p-1 inline-block', isActive && 'font-bold underline')}
+      draggable={draggable}
       {...props}
     >
       <Typography

@@ -22,6 +22,10 @@ export async function generateMetadata({
   }
 }
 
+export function generateStaticParams() {
+  return [{slug: 'georgia'}, {slug: 'dimitra'}]
+}
+
 export default async function SlugPage({
   params: {locale, slug}
 }: ParamsWithSlug) {
@@ -40,8 +44,4 @@ export default async function SlugPage({
       />
     </>
   )
-}
-
-export function generateStaticParams() {
-  return [{slug: 'georgia'}, {slug: 'dimitra'}]
 }

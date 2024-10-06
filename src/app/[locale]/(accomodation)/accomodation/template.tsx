@@ -1,4 +1,4 @@
-export default function RootTemplate({
+export default function AccomodationTemplate({
   children
 }: {
   children: Readonly<React.ReactNode>
