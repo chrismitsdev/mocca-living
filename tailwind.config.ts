@@ -192,9 +192,11 @@ const config: Config = {
       keyframes: {
         'page-appear': {
           from: {
+            opacity: '0',
             transform: 'translateY(-24px)'
           },
           to: {
+            opacity: '1',
             transform: 'translateY(0)'
           }
         },
@@ -236,7 +238,7 @@ const config: Config = {
         }
       },
       animation: {
-        'page-appear': 'page-appear 1500ms cubic-bezier(0.32,0.72,0,1)',
+        'page-appear': 'page-appear 2250ms cubic-bezier(0.32,0.72,0,1)',
         'dialog-open': 'dialog-open 750ms cubic-bezier(0.32,0.72,0,1)',
         'dialog-closed': 'dialog-closed 375ms cubic-bezier(0.32,0.72,0,1)',
         'accordion-open': 'accordion-open 750ms cubic-bezier(0.32,0.72,0,1)',

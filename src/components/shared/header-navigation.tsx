@@ -226,8 +226,8 @@ function HeaderNavigation({links}: HeaderNavigationProps) {
 }
 
 function NavLink({
-  draggable = false,
   isActive,
+  draggable = false,
   children,
   ...props
 }: React.ComponentPropsWithoutRef<typeof Link> & {
