@@ -1,6 +1,6 @@
+import {useLocale, useTranslations} from 'next-intl'
 /* eslint-disable-next-line no-restricted-imports */
 import Image from 'next/image'
-import {useLocale, useTranslations} from 'next-intl'
 import {Link, locales} from '@/i18n/routing'
 import {Container} from '@/components/shared/container'
 import {LocaleSelect, LocaleSelectItem} from '@/components/shared/locale-select'
@@ -115,10 +115,10 @@ function Footer() {
       <Separator />
       <Container>
         <div className='flex flex-col justify-between gap-2 sm:flex-row'>
-          <Typography variant='small'>
+          <Typography variant='mini'>
             {t('Footer.row-2.copyright', {created: new Date()})}
           </Typography>
-          <Typography variant='small'>
+          <Typography variant='mini'>
             {t.rich('Footer.row-2.manufacturer', {
               a: (chunks) => (
                 <a
@@ -131,7 +131,7 @@ function Footer() {
               )
             })}
           </Typography>
-          <Typography variant='small'>{t('Footer.row-2.developer')}</Typography>
+          <Typography variant='mini'>{t('Footer.row-2.developer')}</Typography>
         </div>
       </Container>
     </footer>
