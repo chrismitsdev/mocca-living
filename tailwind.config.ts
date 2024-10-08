@@ -277,6 +277,11 @@ const config: Config = {
       medium: 'var(--box-shadow-md)',
       none: 'none'
     },
+    dropShadow: {
+      DEFAULT: 'var(--drop-shadow-sm)',
+      medium: 'var(--drop-shadow-md)',
+      none: 'none'
+    },
     fontSize: {
       xxs: ['10px', '14px'],
       xs: ['12px', '16px'],

@@ -156,6 +156,9 @@
     --box-shadow-sm: 0px 0px 5px 1px rgba(69, 50, 39, 0.24);
     --box-shadow-md: 0px 0px 8px 3px rgba(69, 50, 39, 0.24);
 
+    --drop-shadow-sm: 0px 0px 4px rgba(69, 50, 39, 0.24);
+    --drop-shadow-md: 0px 0px 8px rgba(69, 50, 39, 0.24);
+
     --radius: 0.125rem;
   }
 
