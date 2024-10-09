@@ -12,7 +12,8 @@ import {LogoWhatsApp} from '@/components/logos/logo-whatsapp'
 const TRANSITION: Transition = {
   bounce: 0.05,
   duration: 0.3,
-  type: 'spring'
+  type: 'spring',
+  delay: 0
 }
 
 function MessagePopover() {
@@ -74,6 +75,7 @@ function MessagePopover() {
                 href='viber://chat?number=+306936998859'
                 className='flex items-center gap-2'
                 aria-label='Viber messaging'
+                target='_blank'
               >
                 <span>
                   <LogoViber />
