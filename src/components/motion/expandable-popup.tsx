@@ -18,17 +18,22 @@ const transition: Transition = {
 
 function ExpandablePopup() {
   const [isOpen, setIsOpen] = React.useState(false)
-  const divRef = React.useRef<HTMLDivElement>(null)
-  useClickOutside(divRef, function () {
+  const contentRef = React.useRef<HTMLDivElement>(null)
+  useClickOutside(contentRef, function () {
     setIsOpen(false)
   })
 
   return (
     <MotionConfig transition={transition}>
-      <motion.div className='fixed bottom-2 right-2'>
+      <motion.div
+        // className='fixed bottom-2 right-2'
+        style={{position: 'fixed', bottom: 8, right: 8}}
+      >
         <motion.button
           layoutId='popup'
-          className='p-2 bg-primary absolute bottom-0 right-0 text-primary-foreground rounded'
+          // className='p-2 bg-primary absolute bottom-0 right-0 text-primary-foreground rounded'
+          className='p-2 bg-primary text-primary-foreground rounded'
+          style={{position: 'absolute', bottom: 8, right: 8}}
           onClick={() => setIsOpen(true)}
         >
           <MessageCircleMoreIcon size={24} />
@@ -39,7 +44,7 @@ function ExpandablePopup() {
             <motion.div
               layoutId='popup'
               className='p-4 space-y-4 bg-surface-1 border outline-none rounded'
-              ref={divRef}
+              ref={contentRef}
             >
               <a
                 href='viber://chat?number=+306936998859'
