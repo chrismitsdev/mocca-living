@@ -61,56 +61,56 @@ function MessagePopover() {
           <MessageCircleMoreIcon size={24} />
         </motion.button>
 
-        {/* <AnimatePresence> */}
-        {isOpen && (
-          <motion.div
-            layoutId={`popover-${uniqueId}`}
-            className='p-4 space-y-4 bg-surface-1 border outline-none'
-            style={{
-              borderRadius: 4
-            }}
-            ref={ref}
-          >
-            <a
-              href='viber://chat?number=+306936998859'
-              className='flex items-center gap-2'
-              aria-label='Viber messaging'
-              target='_blank'
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              layoutId={`popover-${uniqueId}`}
+              className='p-4 space-y-4 bg-surface-1 border outline-none'
+              style={{
+                borderRadius: 4
+              }}
+              ref={ref}
             >
-              <span>
-                <LogoViber />
-              </span>
-              <Typography variant='large'>{'Viber'}</Typography>
-            </a>
-            <a
-              href='whatsapp://send?phone=+306936998859'
-              className='flex items-center gap-2'
-              aria-label='WhatsApp messaging'
-            >
-              <span>
-                <LogoWhatsApp />
-              </span>
-              <Typography variant='large'>{'WhatsApp'}</Typography>
-            </a>
-            <a
-              className='flex items-center gap-2'
-              href='sms:+306936998859'
-              aria-label='Open messaging app to send a text message'
-            >
-              <Button
-                className='rounded-md'
-                size='icon-small'
-                asChild
+              <a
+                href='viber://chat?number=+306936998859'
+                className='flex items-center gap-2'
+                aria-label='Viber messaging'
+                target='_blank'
               >
                 <span>
-                  <MessageCircleIcon size={24} />
+                  <LogoViber />
                 </span>
-              </Button>
-              <Typography variant='large'>{'SMS'}</Typography>
-            </a>
-          </motion.div>
-        )}
-        {/* </AnimatePresence> */}
+                <Typography variant='large'>{'Viber'}</Typography>
+              </a>
+              <a
+                href='whatsapp://send?phone=+306936998859'
+                className='flex items-center gap-2'
+                aria-label='WhatsApp messaging'
+              >
+                <span>
+                  <LogoWhatsApp />
+                </span>
+                <Typography variant='large'>{'WhatsApp'}</Typography>
+              </a>
+              <a
+                className='flex items-center gap-2'
+                href='sms:+306936998859'
+                aria-label='Open messaging app to send a text message'
+              >
+                <Button
+                  className='rounded-md'
+                  size='icon-small'
+                  asChild
+                >
+                  <span>
+                    <MessageCircleIcon size={24} />
+                  </span>
+                </Button>
+                <Typography variant='large'>{'SMS'}</Typography>
+              </a>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </MotionConfig>
   )

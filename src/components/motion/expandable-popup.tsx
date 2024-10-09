@@ -26,13 +26,12 @@ function ExpandablePopup() {
 
   return (
     <MotionConfig transition={transition}>
-      <motion.div className='fixed bottom-2 right-2'>
-        <AnimatePresence>
+      <AnimatePresence>
+        <motion.div className='fixed bottom-2 right-2'>
           {!isOpen ? (
             <motion.button
               key='popup-trigger'
               layoutId={`popup-${uniqueID}`}
-              // className='p-2 bg-primary text-primary-foreground rounded'
               className='p-2 absolute bottom-0 right-0 bg-primary text-primary-foreground rounded'
               onClick={() => setIsOpen(true)}
             >
@@ -50,6 +49,7 @@ function ExpandablePopup() {
                 className='flex items-center gap-2'
                 aria-label='Viber messaging'
                 target='_blank'
+                rel='noopener noreferrer'
               >
                 <span>
                   <LogoViber />
@@ -60,6 +60,8 @@ function ExpandablePopup() {
                 href='whatsapp://send?phone=+306936998859'
                 className='flex items-center gap-2'
                 aria-label='WhatsApp messaging'
+                target='_blank'
+                rel='noopener noreferrer'
               >
                 <span>
                   <LogoWhatsApp />
@@ -70,6 +72,8 @@ function ExpandablePopup() {
                 className='flex items-center gap-2'
                 href='sms:+306936998859'
                 aria-label='Open messaging app to send a text message'
+                target='_blank'
+                rel='noopener noreferrer'
               >
                 <Button
                   className='rounded-md'
@@ -84,8 +88,8 @@ function ExpandablePopup() {
               </a>
             </motion.div>
           )}
-        </AnimatePresence>
-      </motion.div>
+        </motion.div>
+      </AnimatePresence>
     </MotionConfig>
   )
 }
