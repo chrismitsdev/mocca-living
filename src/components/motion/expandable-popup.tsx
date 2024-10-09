@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import {motion, MotionConfig, AnimatePresence, Transition} from 'framer-motion'
+import {motion, MotionConfig, Transition} from 'framer-motion'
 import {MessageCircleMoreIcon, MessageCircleIcon} from 'lucide-react'
 import {useClickOutside} from '@/hooks/useClickOutside'
 import {Typography} from '@/components/ui/typography'
@@ -25,130 +25,63 @@ function ExpandablePopup() {
 
   return (
     <MotionConfig transition={transition}>
-      <motion.div
-        // className='fixed bottom-2 right-2'
-        style={{position: 'fixed', bottom: 8, right: 8}}
-      >
-        <motion.button
-          layoutId='popup'
-          // className='p-2 bg-primary absolute bottom-0 right-0 text-primary-foreground rounded'
-          className='p-2 bg-primary text-primary-foreground rounded'
-          style={{position: 'absolute', bottom: 8, right: 8}}
-          onClick={() => setIsOpen(true)}
-        >
-          <MessageCircleMoreIcon size={24} />
-        </motion.button>
-
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              layoutId='popup'
-              className='p-4 space-y-4 bg-surface-1 border outline-none rounded'
-              ref={contentRef}
+      <motion.div className='fixed bottom-2 right-2'>
+        {!isOpen ? (
+          <motion.button
+            layoutId='popup'
+            className='p-2 bg-primary text-primary-foreground rounded'
+            onClick={() => setIsOpen(true)}
+          >
+            <MessageCircleMoreIcon size={24} />
+          </motion.button>
+        ) : (
+          <motion.div
+            layoutId='popup'
+            className='p-4 space-y-4 bg-surface-1 border outline-none rounded'
+            ref={contentRef}
+          >
+            <a
+              href='viber://chat?number=+306936998859'
+              className='flex items-center gap-2'
+              aria-label='Viber messaging'
+              target='_blank'
             >
-              <a
-                href='viber://chat?number=+306936998859'
-                className='flex items-center gap-2'
-                aria-label='Viber messaging'
-                target='_blank'
+              <span>
+                <LogoViber />
+              </span>
+              <Typography variant='large'>{'Viber'}</Typography>
+            </a>
+            <a
+              href='whatsapp://send?phone=+306936998859'
+              className='flex items-center gap-2'
+              aria-label='WhatsApp messaging'
+            >
+              <span>
+                <LogoWhatsApp />
+              </span>
+              <Typography variant='large'>{'WhatsApp'}</Typography>
+            </a>
+            <a
+              className='flex items-center gap-2'
+              href='sms:+306936998859'
+              aria-label='Open messaging app to send a text message'
+            >
+              <Button
+                className='rounded-md'
+                size='icon-small'
+                asChild
               >
                 <span>
-                  <LogoViber />
+                  <MessageCircleIcon size={24} />
                 </span>
-                <Typography variant='large'>{'Viber'}</Typography>
-              </a>
-              <a
-                href='whatsapp://send?phone=+306936998859'
-                className='flex items-center gap-2'
-                aria-label='WhatsApp messaging'
-              >
-                <span>
-                  <LogoWhatsApp />
-                </span>
-                <Typography variant='large'>{'WhatsApp'}</Typography>
-              </a>
-              <a
-                className='flex items-center gap-2'
-                href='sms:+306936998859'
-                aria-label='Open messaging app to send a text message'
-              >
-                <Button
-                  className='rounded-md'
-                  size='icon-small'
-                  asChild
-                >
-                  <span>
-                    <MessageCircleIcon size={24} />
-                  </span>
-                </Button>
-                <Typography variant='large'>{'SMS'}</Typography>
-              </a>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              </Button>
+              <Typography variant='large'>{'SMS'}</Typography>
+            </a>
+          </motion.div>
+        )}
       </motion.div>
     </MotionConfig>
   )
-
-  // return (
-  //   <MotionConfig transition={transition}>
-  //     <motion.div className='fixed bottom-2 right-2'>
-  //       {!isOpen ? (
-  //         <motion.button
-  //           layoutId={`popup-${uniqueID}`}
-  //           className='p-2 bg-primary absolute bottom-0 right-0 text-primary-foreground rounded'
-  //           onClick={() => setIsOpen(true)}
-  //         >
-  //           <MessageCircleMoreIcon size={24} />
-  //         </motion.button>
-  //       ) : (
-  //         <motion.div
-  //           layoutId={`popup-${uniqueID}`}
-  //           className='p-4 space-y-4 bg-surface-1 border outline-none rounded'
-  //           ref={divRef}
-  //         >
-  //           <a
-  //             href='viber://chat?number=+306936998859'
-  //             className='flex items-center gap-2'
-  //             aria-label='Viber messaging'
-  //             target='_blank'
-  //           >
-  //             <span>
-  //               <LogoViber />
-  //             </span>
-  //             <Typography variant='large'>{'Viber'}</Typography>
-  //           </a>
-  //           <a
-  //             href='whatsapp://send?phone=+306936998859'
-  //             className='flex items-center gap-2'
-  //             aria-label='WhatsApp messaging'
-  //           >
-  //             <span>
-  //               <LogoWhatsApp />
-  //             </span>
-  //             <Typography variant='large'>{'WhatsApp'}</Typography>
-  //           </a>
-  //           <a
-  //             className='flex items-center gap-2'
-  //             href='sms:+306936998859'
-  //             aria-label='Open messaging app to send a text message'
-  //           >
-  //             <Button
-  //               className='rounded-md'
-  //               size='icon-small'
-  //               asChild
-  //             >
-  //               <span>
-  //                 <MessageCircleIcon size={24} />
-  //               </span>
-  //             </Button>
-  //             <Typography variant='large'>{'SMS'}</Typography>
-  //           </a>
-  //         </motion.div>
-  //       )}
-  //     </motion.div>
-  //   </MotionConfig>
-  // )
 }
 
 ExpandablePopup.displayName = 'ExpandablePopup'
