@@ -25,10 +25,13 @@ function ExpandablePopup() {
 
   return (
     <MotionConfig transition={transition}>
-      <motion.div className='fixed bottom-2 right-2'>
+      <motion.div
+        layout
+        className='fixed bottom-2 right-2'
+      >
         {!isOpen ? (
           <motion.button
-            layoutId='popup'
+            // layoutId='popup'
             className='p-2 bg-primary text-primary-foreground rounded'
             onClick={() => setIsOpen(true)}
           >
@@ -36,7 +39,7 @@ function ExpandablePopup() {
           </motion.button>
         ) : (
           <motion.div
-            layoutId='popup'
+            // layoutId='popup'
             className='p-4 space-y-4 bg-surface-1 border outline-none rounded'
             ref={contentRef}
           >
