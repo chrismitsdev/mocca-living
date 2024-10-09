@@ -5,16 +5,6 @@ import {getMobileOS} from '#/lib/utils'
 import {MessageCircleMoreIcon} from 'lucide-react'
 import {useScrollPosition} from '@/hooks/useScrollPosition'
 import {cn} from '#/lib/utils'
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogTitle,
-  DialogImage,
-  DialogSubtitle,
-  DialogClose,
-  DialogContainer
-} from '@/components/motion/dialog'
 
 // Pre-populate sms body
 // Android: href="sms:<phone number here>?body=<body text here>"

@@ -9,8 +9,8 @@ import {Header} from '@/components/shared/header'
 import {Footer} from '@/components/shared/footer'
 import {CookieConsent} from '@/components/shared/cookie-consent'
 import {Toaster} from '@/components/ui/toast'
-import {Messenger} from '@/components/shared/messenger'
 import {MessagePopover} from '@/components/motion/message-popover'
+// import {Messenger} from '@/components/shared/messenger'
 
 const commissioner = Commissioner({
   subsets: ['latin'],
