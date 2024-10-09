@@ -141,6 +141,12 @@
     }
   },
   "Components": {
+    "MessagePopup": {
+      "viber": "Viber message",
+      "whatsapp": "WhatsApp message",
+      "sms": "Sms message",
+      "call": "Call us"
+    },
     "LocaleSelect": {
       "placeholder": "Select language",
       "loadingText": "Φορτώνει",

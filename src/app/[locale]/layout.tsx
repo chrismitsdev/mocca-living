@@ -47,11 +47,16 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
-        <NextIntlClientProvider messages={messages.Components.CookieConsent}>
+        <NextIntlClientProvider
+          messages={{
+            ...messages.Components.CookieConsent,
+            ...messages.Components.MessagePopup
+          }}
+        >
           <CookieConsent />
+          <MessagePopup />
         </NextIntlClientProvider>
         <Toaster position='top-right' />
-        <MessagePopup />
       </body>
     </html>
   )

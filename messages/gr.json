@@ -141,6 +141,12 @@
     }
   },
   "Components": {
+    "MessagePopup": {
+      "viber": "Μήνυμα Viber",
+      "whatsapp": "Μήνυμα WhatsApp",
+      "sms": "Μήνυμα sms",
+      "call": "Καλέστε μας"
+    },
     "LocaleSelect": {
       "placeholder": "Επιλογή γλώσσας",
       "loadingText": "Loading",
