@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "rimraf .next dist node_modules pnpm-lock.yaml"
+    "clean": "rimraf .next .swc dist node_modules pnpm-lock.yaml",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",
@@ -26,6 +28,10 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-visually-hidden": "^1.1.0",
     "@react-email/components": "^0.0.25",
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.13",
     "@types/js-cookie": "^3.0.6",
     "@types/mapbox-gl": "^3.4.0",
     "@types/node": "^20",
@@ -38,7 +44,11 @@
     "date-fns": "^4.1.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.14",
+    "eslint-plugin-jest-dom": "^5.4.0",
+    "eslint-plugin-testing-library": "^6.3.0",
     "framer-motion": "^11.11.4",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.451.0",
     "mapbox-gl": "^3.7.0",
@@ -58,6 +68,7 @@
     "tailwind-merge": "^2.5.3",
     "tailwindcss": "^3.4.13",
     "tailwindcss-animate": "^1.0.7",
+    "ts-node": "^10.9.2",
     "typescript": "5.6.2",
     "zod": "^3.23.8"
   }
