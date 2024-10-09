@@ -18,7 +18,7 @@ const images = Object.values(outdoorImages)
 function HomeHeroCarousel() {
   return (
     <CarouselProvider images={images}>
-      <CarouselRoot id='home-hero-carousel' className='max-w-full'>
+      <CarouselRoot className='max-w-full'>
         <CarouselViewport className='h-full'>
           <CarouselImageContainer className='h-full'>
             {images.map((image, i) => (
