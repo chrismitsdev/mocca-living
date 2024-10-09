@@ -10,6 +10,7 @@ import {Footer} from '@/components/shared/footer'
 import {CookieConsent} from '@/components/shared/cookie-consent'
 import {Toaster} from '@/components/ui/toast'
 import {Messenger} from '@/components/shared/messenger'
+import {MessagePopover} from '@/components/motion/message-popover'
 
 const commissioner = Commissioner({
   subsets: ['latin'],
@@ -51,7 +52,8 @@ export default function RootLayout({
           <CookieConsent />
         </NextIntlClientProvider>
         <Toaster position='top-right' />
-        <Messenger />
+        <MessagePopover />
+        {/* <Messenger /> */}
       </body>
     </html>
   )

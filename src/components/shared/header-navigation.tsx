@@ -133,7 +133,7 @@ function HeaderNavigation() {
             <HoverCard
               open={hoverCardOpen}
               onOpenChange={setHoverCardOpen}
-              openDelay={150}
+              openDelay={50}
             >
               <li
                 className='flex items-center'

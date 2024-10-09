@@ -14,7 +14,7 @@
     },
     "Contact": {
       "name": "Mocca Living",
-      "location": "Beach of Kyani Akti",
+      "location": "Kyani Akti Beach",
       "phone": "Contact phone"
     }
   },
@@ -230,8 +230,9 @@
       "row-1": {
         "column-1": {
           "header": "Information",
-          "link-1": "Agia Paraskevi Beach",
-          "link-2": "Contact phone"
+          "link-1": "Kyani Akti Beach",
+          "link-2": "Contact phone",
+          "link-3": "Contact email"
         },
         "column-2": {
           "header": "Useful links",

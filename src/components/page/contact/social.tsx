@@ -14,15 +14,15 @@ function Social() {
             <MapPin size={64} />
             <Typography variant='h4'>{t('location')}</Typography>
           </SocialLink>
-          <SocialLink href='https://www.instagram.com/'>
+          <SocialLink href='https://www.instagram.com/moccaliving.premiumstay'>
             <InstagramIcon size={64} />
             <Typography variant='h4'>{t('name')}</Typography>
           </SocialLink>
-          <SocialLink href='https://www.facebook.com/'>
+          <SocialLink href='https://www.facebook.com/profile.php?id=61566665200042'>
             <FacebookIcon size={64} />
             <Typography variant='h4'>{t('name')}</Typography>
           </SocialLink>
-          <SocialLink href='tel:+306973433980'>
+          <SocialLink href='tel:+306936998859'>
             <PhoneIcon size={64} />
             <Typography variant='h4'>{t('phone')}</Typography>
           </SocialLink>

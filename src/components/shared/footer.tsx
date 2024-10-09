@@ -41,8 +41,19 @@ function Footer() {
                 variant='link'
                 asChild
               >
-                <a href='tel:+306973433980'>
+                <a href='tel:+306936998859'>
                   {t('Footer.row-1.column-1.link-2')}
+                </a>
+              </Typography>
+              <Typography
+                variant='link'
+                asChild
+              >
+                <a
+                  href='mailto:info@moccaliving.com'
+                  target='_blank'
+                >
+                  {t('Footer.row-1.column-1.link-3')}
                 </a>
               </Typography>
             </div>
