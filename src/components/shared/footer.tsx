@@ -31,18 +31,10 @@ function Footer() {
                 asChild
               >
                 <a
-                  href='https://maps.app.goo.gl/41UMZ9aS2DT1SDD88'
+                  href='tel:+306936998859'
                   target='_blank'
                 >
                   {t('Footer.row-1.column-1.link-1')}
-                </a>
-              </Typography>
-              <Typography
-                variant='link'
-                asChild
-              >
-                <a href='tel:+306936998859'>
-                  {t('Footer.row-1.column-1.link-2')}
                 </a>
               </Typography>
               <Typography
@@ -53,7 +45,21 @@ function Footer() {
                   href='mailto:info@moccaliving.com'
                   target='_blank'
                 >
-                  {t('Footer.row-1.column-1.link-3')}
+                  {t('Footer.row-1.column-1.link-2')}
+                </a>
+              </Typography>
+              <Typography
+                variant='link'
+                asChild
+              >
+                <a
+                  // href='https://maps.app.goo.gl/41UMZ9aS2DT1SDD88'
+                  href='https://maps.app.goo.gl/L6JEySni2t8jnb5m9'
+                  target='_blank'
+                >
+                  {t.rich('Footer.row-1.column-1.link-3', {
+                    br: () => <br />
+                  })}
                 </a>
               </Typography>
             </div>

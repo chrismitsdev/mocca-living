@@ -97,7 +97,7 @@ function Map({token, translations}: MapboxProps) {
                   asChild
                 >
                   <a
-                    href='https://www.google.com/maps?saddr=My+Location&daddr=40.849038,25.723552'
+                    href='https://www.google.com/maps?saddr=My+Location&daddr=40.848948,25.723508'
                     target='_blank'
                   >
                     {translations.directions}

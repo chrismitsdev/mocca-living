@@ -14,7 +14,7 @@
     },
     "Contact": {
       "name": "Mocca Living",
-      "location": "Agia Paraskeyui Beach, Makri",
+      "location": "Agia Paraskevi Beach, Makri",
       "phone": "Contact phone"
     }
   },
@@ -93,10 +93,10 @@
           "bedrooms": "2 Bedrooms",
           "bathrooms": "1 Bathroom",
           "area": "45m² Area",
-          "layout": "One main entrance, Big living room area, Fully provisioned smart-equipped kitchen, Dining room area, Two master bedrooms with double-sized beds (COCOMAT mattress and bed cover), One shared bathroom, Direct access to big private outdoor area",
+          "layout": "One main entrance, Big living room area, Dining room area, Two master bedrooms with double-sized beds, One shared bathroom, Direct access to big private outdoor area",
           "amenities": {
-            "indoor": "Free Wi-Fi, One 55\" Smart TV, One ceiling fan, Air fryer, Mini bar, Fridge, Clothes washer, Clothes iron & ironing board, Nespresso machine, Sound system (Marshall Acton III), Safe box",
-            "outdoor": "Private area with pergola, Sitting area, Mini pool with hydromassage & color-therapy, Private garden with tropical plants and flowers, Shower area"
+            "indoor": "Free Wi-Fi, One 55\" Smart TV, One ceiling fan, Fully provisioned smart-equipped kitchen, Electric oven, Kitchen extractor hood, Fridge, Clothes washer, Clothes iron & ironing board, Nespresso machine, Sound system Marshall, Safe box",
+            "outdoor": "Private area with pergola, Sunbeds with umbrella, Sitting area, Mini pool with hydromassage & color-therapy, Private garden with tropical plants and flowers, Shower area"
           },
           "complementary": "Welcome assistance procedure, Check-in/out assistance",
           "request": "Two SUP boards for rental, One electric-bike for rental"
@@ -108,10 +108,10 @@
           "bedrooms": "2 Bedrooms",
           "bathrooms": "2 Bathrooms",
           "area": "80m² Area",
-          "layout": "One main entrance, Big living room area, Fully provisioned smart-equipped kitchen, Dining room area, One master bedroom with king-sized bed (COCOMAT mattress and bed cover) and en-suite bathroom, One master bedroom with queen-sized bed (COCOMAT mattress and bed cover), One shared bathroom, Direct access to big private outdoor area",
+          "layout": "One main entrance, Big living room area, Dining room area, One master bedroom with king-sized bed (COCOMAT mattress and bed cover) and en-suite bathroom, One bedroom with queen-sized bed (COCOMAT mattress and bed cover) and en-suite bathroom, Direct access to big private outdoor area",
           "amenities": {
-            "indoor": "Free Wi-Fi, Three 55\" Smart TV, Three ceiling fans, Air fryer, Mini bar, Fridge, Clothes washer, Clothes iron & ironing board, Nespresso machine, Sound system (Marshall Acton III), Safe box",
-            "outdoor": "Private area with pergola, Sunbeds with umbrella, Mini pool with hydromassage & color-therapy, Private garden with tropical plants and flowers, Shower area"
+            "indoor": "Free Wi-Fi, Three 55\" Smart TV, Three ceiling fans, Kitchen, Kitchen extractor hood, Air fryer, Fridge, Clothes washer, Clothes iron & ironing board, Nespresso machine, Sound system (Marshall Acton III), Safe box",
+            "outdoor": "Private area with two pergolas and two sitting areas, Sunbeds with umbrella, Mini pool with hydromassage & color-therapy, Private garden with tropical plants and flowers, Shower area"
           },
           "complementary": "Welcome assistance procedure, Check-in/out assistance",
           "request": "Two SUP boards for rental, One electric-bike for rental"
@@ -150,8 +150,8 @@
     "MessagePopup": {
       "viber": "Viber",
       "whatsapp": "WhatsApp",
-      "sms": "Sms message",
-      "call": "Call us"
+      "sms": "SMS",
+      "call": "Call"
     },
     "LocaleSelect": {
       "placeholder": "Select language",
@@ -242,9 +242,9 @@
       "row-1": {
         "column-1": {
           "header": "Information",
-          "link-1": "Agia Paraskeyui Beach, Makri",
-          "link-2": "Contact phone",
-          "link-3": "Contact email"
+          "link-1": "Contact phone",
+          "link-2": "Contact email",
+          "link-3": "Agia Paraskevi Beach, <br></br> Makri Alexandroupolis, Greece"
         },
         "column-2": {
           "header": "Useful links",

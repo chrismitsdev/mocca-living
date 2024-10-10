@@ -10,7 +10,7 @@ function Social() {
     <article className='py-24 bg-surface-2'>
       <Container>
         <div className='grid gap-8 sm:grid-cols-2'>
-          <SocialLink href='https://www.google.com/maps?saddr=My+Location&daddr=40.849038,25.723552'>
+          <SocialLink href='https://www.google.com/maps?saddr=My+Location&daddr=40.848948,25.723508'>
             <MapPin size={64} />
             <Typography variant='h4'>{t('location')}</Typography>
           </SocialLink>

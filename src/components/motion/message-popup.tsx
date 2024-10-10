@@ -8,11 +8,11 @@ import {
   MessageCircleIcon,
   PhoneOutgoingIcon
 } from 'lucide-react'
+import {cn} from '#/lib/utils'
 import {useClickOutside} from '@/hooks/useClickOutside'
 import {Typography} from '@/components/ui/typography'
 import {LogoViber} from '@/components/logos/logo-viber'
 import {LogoWhatsApp} from '@/components/logos/logo-whatsapp'
-import {cn} from '#/lib/utils'
 
 function MessagePopup() {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -32,16 +32,13 @@ function MessagePopup() {
         type: 'spring'
       }}
     >
-      <motion.div className='fixed bottom-4 right-4'>
+      <motion.div className='fixed bottom-4 right-4 sm:hidden'>
         <AnimatePresence initial={false}>
           <motion.button
             id='popup-trigger'
             key='popup-trigger'
             layoutId={`popup-${uniqueID}`}
-            className='p-2 absolute bottom-0 right-0 bg-success text-success-foreground shadow'
-            style={{
-              borderRadius: '4px'
-            }}
+            className='p-2 absolute bottom-0 right-0 bg-success text-success-foreground shadow rounded'
             aria-label='Open contact menu'
             aria-haspopup='true'
             aria-controls='popup-content'
@@ -56,13 +53,13 @@ function MessagePopup() {
               id='popup-content'
               key='popup-content'
               layoutId={`popup-${uniqueID}`}
-              className='p-4 relative space-y-2 bg-surface-1 outline-none shadow'
+              className='p-4 relative space-y-2 bg-surface-1 outline-none shadow rounded'
               role='menu'
               aria-labelledby='popup-trigger'
               ref={contentRef}
             >
               <ContactLink
-                className='bg-[#C3B3DB]'
+                className='bg-gradient-to-l from-[#C3B3DB] to-transparent'
                 href='viber://chat?number=+306936998859'
                 aria-label='Viber messaging'
               >
@@ -71,8 +68,9 @@ function MessagePopup() {
                 </span>
                 <Typography variant='large'>{t('viber')}</Typography>
               </ContactLink>
+
               <ContactLink
-                className='bg-[#C2DAA7]'
+                className='bg-gradient-to-l from-[#C2DAA7] to-transparent'
                 href='whatsapp://send?phone=+306936998859'
                 aria-label='WhatsApp messaging'
               >
@@ -82,7 +80,7 @@ function MessagePopup() {
                 <Typography variant='large'>{t('whatsapp')}</Typography>
               </ContactLink>
               <ContactLink
-                className='bg-[#B2D2FC]'
+                className='bg-gradient-to-l from-[#B2D2FC] to-transparent'
                 href='sms:+306936998859'
                 aria-label='Open messaging app to send a text message'
               >
@@ -92,7 +90,7 @@ function MessagePopup() {
                 <Typography variant='large'>{t('sms')}</Typography>
               </ContactLink>
               <ContactLink
-                className='bg-[#d1baaa]'
+                className='bg-gradient-to-l from-[#d1baaa] to-transparent'
                 href='tel:+306936998859'
                 aria-label='Open messaging app to send a text message'
               >
