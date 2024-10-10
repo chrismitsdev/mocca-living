@@ -8,7 +8,7 @@ import {
   MessageCircleIcon,
   PhoneOutgoingIcon
 } from 'lucide-react'
-import {useOnClickOutside} from '@/hooks/useOnClickOutside'
+import {useClickOutside} from '@/hooks/useClickOutside'
 import {Typography} from '@/components/ui/typography'
 import {Button} from '@/components/ui/button'
 import {LogoViber} from '@/components/logos/logo-viber'
@@ -19,7 +19,7 @@ function MessagePopup() {
   const contentRef = React.useRef<HTMLDivElement>(null)
   const uniqueID = React.useId()
   const t = useTranslations<'Components.MessagePopup'>()
-  useOnClickOutside(contentRef, function () {
+  useClickOutside(contentRef, function () {
     setIsOpen(false)
   })
 
@@ -39,9 +39,11 @@ function MessagePopup() {
             key='popup-trigger'
             layoutId={`popup-${uniqueID}`}
             className='p-2 absolute bottom-0 right-0 bg-success text-success-foreground rounded shadow'
-            onClick={() => setIsOpen(true)}
-            aria-controls='popup-content'
+            aria-label='Open contact menu'
             aria-haspopup='true'
+            aria-controls='popup-content'
+            aria-expanded={isOpen}
+            onClick={() => setIsOpen(true)}
           >
             <MessageCircleMoreIcon size={24} />
           </motion.button>
