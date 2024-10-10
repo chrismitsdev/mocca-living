@@ -110,7 +110,7 @@ function SlugForm({slug, locale}: SlugFormProps) {
           </div>
           <Separator />
           <ScrollArea type='always'>
-            <ScrollAreaViewport className='max-h-[calc(100dvh-152px-1px)]'>
+            <ScrollAreaViewport className='max-h-[calc(100svh-152px-1px)]'>
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
@@ -201,11 +201,11 @@ function SlugForm({slug, locale}: SlugFormProps) {
                                 after: !watchCheckOut
                                   ? undefined
                                   : isSameDay(
-                                      watchCheckOut,
-                                      addDays(new Date(), 1)
-                                    )
-                                  ? new Date()
-                                  : subDays(watchCheckOut, 1)
+                                        watchCheckOut,
+                                        addDays(new Date(), 1)
+                                      )
+                                    ? new Date()
+                                    : subDays(watchCheckOut, 1)
                               }}
                               disabled={form.formState.isSubmitting}
                             />

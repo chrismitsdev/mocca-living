@@ -30,7 +30,7 @@ function PrivacyModal({children}: React.PropsWithChildren) {
       </DialogTrigger>
       <DialogPortal>
         <DialogOverlay />
-        <DialogContent className='p-0 w-[calc(100%-32px)] h-[calc(100dvh-32px)] sm:h-auto sm:w-full sm:max-w-3xl'>
+        <DialogContent className='p-0 w-[calc(100%-32px)] h-[calc(100svh-32px)] sm:h-auto sm:w-full sm:max-w-3xl'>
           <DialogTitle className='p-4'>{m('privacy')}</DialogTitle>
           <Separator />
           <ScrollArea
