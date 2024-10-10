@@ -43,7 +43,7 @@ export default function RootLayout({
       lang={locale}
       className={`${commissioner.className}`}
     >
-      <body className='min-h-dvh grid grid-rows-[1fr,_auto]'>
+      <body className='h-dvh grid grid-rows-[1fr,_auto]'>
         <Header />
         <main>{children}</main>
         <Footer />
