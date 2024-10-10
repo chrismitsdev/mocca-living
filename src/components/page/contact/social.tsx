@@ -4,7 +4,7 @@ import {Typography} from '@/components/ui/typography'
 import {MapPin, InstagramIcon, FacebookIcon, PhoneIcon} from 'lucide-react'
 
 function Social() {
-  const t = useTranslations('Metadata.Contact')
+  const t = useTranslations('Pages.Contact.Social')
 
   return (
     <article className='py-24 bg-surface-2'>
@@ -16,11 +16,11 @@ function Social() {
           </SocialLink>
           <SocialLink href='https://www.instagram.com/moccaliving.premiumstay'>
             <InstagramIcon size={64} />
-            <Typography variant='h4'>{t('name')}</Typography>
+            <Typography variant='h4'>{t('instagram')}</Typography>
           </SocialLink>
           <SocialLink href='https://www.facebook.com/profile.php?id=61566665200042'>
             <FacebookIcon size={64} />
-            <Typography variant='h4'>{t('name')}</Typography>
+            <Typography variant='h4'>{t('facebook')}</Typography>
           </SocialLink>
           <SocialLink href='tel:+306936998859'>
             <PhoneIcon size={64} />

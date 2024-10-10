@@ -14,7 +14,7 @@
     },
     "Contact": {
       "name": "Mocca Living",
-      "location": "Kyani Akti Beach",
+      "location": "Agia Paraskeyui Beach, Makri",
       "phone": "Contact phone"
     }
   },
@@ -122,6 +122,12 @@
       "Map": {
         "title": "Mocca Living",
         "directions": "How to get here"
+      },
+      "Social": {
+        "location": "Location",
+        "instagram": "Instagram",
+        "facebook": "Facebook",
+        "phone": "Call us"
       }
     },
     "Privacy": {
@@ -142,8 +148,8 @@
   },
   "Components": {
     "MessagePopup": {
-      "viber": "Viber message",
-      "whatsapp": "WhatsApp message",
+      "viber": "Viber",
+      "whatsapp": "WhatsApp",
       "sms": "Sms message",
       "call": "Call us"
     },
@@ -236,7 +242,7 @@
       "row-1": {
         "column-1": {
           "header": "Information",
-          "link-1": "Kyani Akti Beach",
+          "link-1": "Agia Paraskeyui Beach, Makri",
           "link-2": "Contact phone",
           "link-3": "Contact email"
         },

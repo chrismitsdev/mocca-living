@@ -14,7 +14,7 @@
     },
     "Contact": {
       "name": "Mocca Living",
-      "location": "Παραλία Κυανής Ακτής",
+      "location": "Παραλία Aγίας Παρασκευής, Μάκρη",
       "phone": "Τηλέφωνο επικοινωνίας"
     }
   },
@@ -122,6 +122,12 @@
       "Map": {
         "title": "Mocca Living",
         "directions": "Πως θα έρθετε"
+      },
+      "Social": {
+        "location": "Τοποθεσία",
+        "instagram": "Instagram",
+        "facebook": "Facebook",
+        "phone": "Καλέστε μας"
       }
     },
     "Privacy": {
@@ -142,8 +148,8 @@
   },
   "Components": {
     "MessagePopup": {
-      "viber": "Μήνυμα Viber",
-      "whatsapp": "Μήνυμα WhatsApp",
+      "viber": "Viber",
+      "whatsapp": "WhatsApp",
       "sms": "Μήνυμα sms",
       "call": "Καλέστε μας"
     },
@@ -236,7 +242,7 @@
       "row-1": {
         "column-1": {
           "header": "Πληροφοριες",
-          "link-1": "Παραλία Κυανής Ακτής",
+          "link-1": "Παραλία Aγίας Παρασκευής, Μάκρη",
           "link-2": "Τηλέφωνο επικοινωνίας",
           "link-3": "Email επικοινωνίας"
         },

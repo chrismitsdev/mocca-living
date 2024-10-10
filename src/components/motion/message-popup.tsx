@@ -10,9 +10,9 @@ import {
 } from 'lucide-react'
 import {useClickOutside} from '@/hooks/useClickOutside'
 import {Typography} from '@/components/ui/typography'
-import {Button} from '@/components/ui/button'
 import {LogoViber} from '@/components/logos/logo-viber'
 import {LogoWhatsApp} from '@/components/logos/logo-whatsapp'
+import {cn} from '#/lib/utils'
 
 function MessagePopup() {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -38,7 +38,10 @@ function MessagePopup() {
             id='popup-trigger'
             key='popup-trigger'
             layoutId={`popup-${uniqueID}`}
-            className='p-2 absolute bottom-0 right-0 bg-success text-success-foreground rounded shadow'
+            className='p-2 absolute bottom-0 right-0 bg-success text-success-foreground shadow'
+            style={{
+              borderRadius: '4px'
+            }}
             aria-label='Open contact menu'
             aria-haspopup='true'
             aria-controls='popup-content'
@@ -53,69 +56,68 @@ function MessagePopup() {
               id='popup-content'
               key='popup-content'
               layoutId={`popup-${uniqueID}`}
-              className='relative p-4 space-y-6 bg-surface-2 outline-none rounded shadow'
+              className='p-4 relative space-y-2 bg-surface-1 outline-none shadow'
               role='menu'
               aria-labelledby='popup-trigger'
               ref={contentRef}
             >
-              <a
+              <ContactLink
+                className='bg-[#C3B3DB]'
                 href='viber://chat?number=+306936998859'
-                className='flex items-center gap-2'
                 aria-label='Viber messaging'
               >
                 <span>
                   <LogoViber />
                 </span>
                 <Typography variant='large'>{t('viber')}</Typography>
-              </a>
-              <a
+              </ContactLink>
+              <ContactLink
+                className='bg-[#C2DAA7]'
                 href='whatsapp://send?phone=+306936998859'
-                className='flex items-center gap-2'
                 aria-label='WhatsApp messaging'
               >
                 <span>
                   <LogoWhatsApp />
                 </span>
                 <Typography variant='large'>{t('whatsapp')}</Typography>
-              </a>
-              <a
-                className='flex items-center gap-2'
+              </ContactLink>
+              <ContactLink
+                className='bg-[#B2D2FC]'
                 href='sms:+306936998859'
                 aria-label='Open messaging app to send a text message'
               >
-                <Button
-                  variant='info'
-                  className='rounded-md'
-                  size='icon-small'
-                  asChild
-                >
-                  <span>
-                    <MessageCircleIcon size={24} />
-                  </span>
-                </Button>
+                <span className='w-8 h-8 bg-info text-info-foreground flex items-center justify-center rounded-full'>
+                  <MessageCircleIcon size={17} />
+                </span>
                 <Typography variant='large'>{t('sms')}</Typography>
-              </a>
-              <a
-                className='flex items-center gap-2'
+              </ContactLink>
+              <ContactLink
+                className='bg-[#d1baaa]'
                 href='tel:+306936998859'
                 aria-label='Open messaging app to send a text message'
               >
-                <Button
-                  className='rounded-md'
-                  size='icon-small'
-                  asChild
-                >
-                  <span>
-                    <PhoneOutgoingIcon size={24} />
-                  </span>
-                </Button>
+                <span className='w-8 h-8 bg-primary text-primary-foreground flex items-center justify-center rounded-full'>
+                  <PhoneOutgoingIcon size={17} />
+                </span>
                 <Typography variant='large'>{t('call')}</Typography>
-              </a>
+              </ContactLink>
             </motion.div>
           )}
         </AnimatePresence>
       </motion.div>
     </MotionConfig>
+  )
+}
+
+function ContactLink({
+  className,
+  ...props
+}: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
+  return (
+    <a
+      className={cn('py-1 px-2 flex items-center gap-3 rounded', className)}
+      {...props}
+    />
   )
 }
 

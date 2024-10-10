@@ -25,7 +25,7 @@ function Footer() {
             <Typography className='font-semibold uppercase'>
               {t('Footer.row-1.column-1.header')}
             </Typography>
-            <div>
+            <div className='space-y-1'>
               <Typography
                 variant='link'
                 asChild
@@ -62,7 +62,7 @@ function Footer() {
             <Typography className='font-semibold uppercase'>
               {t('Footer.row-1.column-2.header')}
             </Typography>
-            <div>
+            <div className='space-y-1'>
               <Typography
                 variant='link'
                 asChild
@@ -81,7 +81,7 @@ function Footer() {
             <Typography className='font-semibold uppercase'>
               {t('Footer.row-1.column-3.header')}
             </Typography>
-            <div>
+            <div className='space-y-1'>
               <Typography
                 variant='link'
                 asChild
