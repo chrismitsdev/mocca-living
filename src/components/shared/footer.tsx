@@ -44,6 +44,7 @@ function Footer() {
                 <a
                   href='mailto:info@moccaliving.com'
                   target='_blank'
+                  rel='noopener'
                 >
                   {t('Footer.row-1.column-1.link-2')}
                 </a>
