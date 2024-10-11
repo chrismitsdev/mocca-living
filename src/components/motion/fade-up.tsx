@@ -10,8 +10,8 @@ type FadeUpProps = {
 }
 
 function FadeUp({
-  delay = 0,
-  duration = 0.5,
+  delay = 0.35,
+  duration = 0.75,
   once = true,
   children
 }: FadeUpProps) {
