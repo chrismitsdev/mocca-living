@@ -53,7 +53,7 @@ function MessagePopup() {
               id='popup-content'
               key='popup-content'
               layoutId={`popup-${uniqueID}`}
-              className='p-4 relative space-y-2 bg-surface-1 outline-none shadow rounded'
+              className='pl-2 pr-4 py-4 relative space-y-2 bg-surface-1 outline-none shadow rounded'
               role='menu'
               aria-labelledby='popup-trigger'
               ref={contentRef}

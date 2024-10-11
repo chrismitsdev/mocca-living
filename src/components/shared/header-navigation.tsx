@@ -20,6 +20,7 @@ import {Button} from '@/components/ui/button'
 import {CustomImage} from '@/components/ui/custom-image'
 import {AnimatedBackground} from '@/components/motion/animated-background'
 import {LocaleSelect, LocaleSelectItem} from '@/components/shared/locale-select'
+import {Separator} from '@/components/ui/separator'
 import {
   HoverCard,
   HoverCardTrigger,
@@ -108,6 +109,7 @@ function HeaderNavigation() {
           </Link>
         </motion.div>
         <motion.nav
+          aria-label='Desktop navigation bar'
           className='hidden sm:block'
           style={{
             willChange: 'color',
@@ -119,7 +121,8 @@ function HeaderNavigation() {
           }}
         >
           <ul
-            className='flex items-center gap-6'
+            aria-label='Desktop navigation bar'
+            className='flex gap-4'
             role='menubar'
           >
             <li role='none'>
@@ -130,6 +133,10 @@ function HeaderNavigation() {
                 {m('home')}
               </NavLink>
             </li>
+            <Separator
+              orientation='vertical'
+              className='h-auto'
+            />
             <HoverCard
               open={hoverCardOpen}
               onOpenChange={setHoverCardOpen}
@@ -211,6 +218,10 @@ function HeaderNavigation() {
                 </HoverCardContent>
               </HoverCardPortal>
             </HoverCard>
+            <Separator
+              orientation='vertical'
+              className='h-auto'
+            />
             <li role='none'>
               <NavLink
                 href='/contact'
@@ -250,8 +261,12 @@ function HeaderNavigation() {
                 <VisuallyHidden>
                   <DrawerTitle>{'Sidebar navigation menu'}</DrawerTitle>
                 </VisuallyHidden>
-                <nav className='flex'>
+                <nav
+                  aria-label='Mobile navigation bar'
+                  className='flex'
+                >
                   <ul
+                    aria-label='Mobile navigation bar'
                     className='my-auto w-full space-y-6'
                     role='menubar'
                   >
@@ -298,11 +313,11 @@ function HeaderNavigation() {
                           asChild
                         >
                           <ul
-                            className='ml-2 pl-3 relative before:absolute before:h-[calc(100%-16px)] before:w-px before:top-1/2 before:-translate-y-1/2 before:left-0 before:bg-surface-3'
+                            className='ml-2 pl-4 space-y-2 relative before:absolute before:h-[calc(100%-16px)] before:w-px before:top-1/2 before:-translate-y-1/2 before:left-0 before:bg-surface-3'
                             role='menu'
                           >
                             <li
-                              className='pt-1'
+                              className='pt-2'
                               role='none'
                             >
                               <NavLink
