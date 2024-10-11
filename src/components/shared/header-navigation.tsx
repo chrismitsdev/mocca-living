@@ -52,8 +52,8 @@ const LOGO_MIN_SCALE = 0.5
 function HeaderNavigation() {
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   const [hoverCardOpen, setHoverCardOpen] = React.useState(false)
-  const t = useTranslations<'Components.LocaleSelect'>()
   const m = useTranslations<'Metadata.Pages'>()
+  const t = useTranslations<'Components.LocaleSelect'>()
   const locale = useLocale()
   const pathname = usePathname()
   const {scrollYBoundedProgress} = useBoundedScroll(250)

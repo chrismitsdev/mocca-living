@@ -21,7 +21,7 @@ function Footer() {
             height={160}
             alt='Mocca Living footer logo'
           />
-          <div className='space-y-2 sm:space-y-4'>
+          <div className='w-fit space-y-2 sm:space-y-4'>
             <Typography className='font-semibold uppercase'>
               {t('Footer.row-1.column-1.header')}
             </Typography>
@@ -53,7 +53,6 @@ function Footer() {
                 asChild
               >
                 <a
-                  // href='https://maps.app.goo.gl/41UMZ9aS2DT1SDD88'
                   href='https://maps.app.goo.gl/L6JEySni2t8jnb5m9'
                   target='_blank'
                 >
@@ -64,7 +63,7 @@ function Footer() {
               </Typography>
             </div>
           </div>
-          <div className='space-y-2 sm:space-y-4'>
+          <div className='w-fit space-y-2 sm:space-y-4'>
             <Typography className='font-semibold uppercase'>
               {t('Footer.row-1.column-2.header')}
             </Typography>
@@ -83,7 +82,7 @@ function Footer() {
               </Typography>
             </div>
           </div>
-          <div className='space-y-2 sm:space-y-4'>
+          <div className='w-fit space-y-2 sm:space-y-4'>
             <Typography className='font-semibold uppercase'>
               {t('Footer.row-1.column-3.header')}
             </Typography>
