@@ -4,8 +4,10 @@
       "home": "Home",
       "accomodation": {
         "root": "Accomodation",
+        "georgia": "Georgia",
+        "georgia-caption": "Discover villa Georgia, a charming 45m² retreat for 4 guests near the sea.",
         "dimitra": "Dimitra",
-        "georgia": "Georgia"
+        "dimitra-caption": "Experience luxury at villa Dimitra, an 80m² retreat for 5 guests."
       },
       "contact": "Contact",
       "privacy": "Privacy",

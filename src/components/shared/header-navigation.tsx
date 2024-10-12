@@ -187,9 +187,10 @@ function HeaderNavigation() {
                           />
                           <Typography variant='h5'>{'Georgia'}</Typography>
                           <Typography variant='small'>
-                            {
+                            {/* {
                               'Discover Villa Georgia, a charming 45m² retreat for 4 guests near the sea.'
-                            }
+                            } */}
+                            {m('accomodation.georgia-caption')}
                           </Typography>
                         </article>
                       </Link>
@@ -206,9 +207,10 @@ function HeaderNavigation() {
                           />
                           <Typography variant='h5'>{'Dimitra'}</Typography>
                           <Typography variant='small'>
-                            {
+                            {/* {
                               'Experience luxury at Villa Dimitra, an 80m² retreat for 5 guests.'
-                            }
+                            } */}
+                            {m('accomodation.dimitra-caption')}
                           </Typography>
                         </article>
                       </Link>

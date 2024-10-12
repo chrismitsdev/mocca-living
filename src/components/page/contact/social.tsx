@@ -1,7 +1,7 @@
 import {useTranslations} from 'next-intl'
 import {Container} from '@/components/shared/container'
 import {Typography} from '@/components/ui/typography'
-import {MapPin, InstagramIcon, FacebookIcon, PhoneIcon} from 'lucide-react'
+import {MapPin, PhoneIcon, FacebookIcon, InstagramIcon} from 'lucide-react'
 
 function Social() {
   const t = useTranslations('Pages.Contact.Social')
@@ -14,6 +14,13 @@ function Social() {
             <MapPin size={64} />
             <Typography variant='h4'>{t('location')}</Typography>
           </SocialLink>
+          <SocialLink
+            href='tel:+306936998859'
+            target='_self'
+          >
+            <PhoneIcon size={64} />
+            <Typography variant='h4'>{t('phone')}</Typography>
+          </SocialLink>
           <SocialLink href='https://www.instagram.com/moccaliving.premiumstay'>
             <InstagramIcon size={64} />
             <Typography variant='h4'>{t('instagram')}</Typography>
@@ -21,10 +28,6 @@ function Social() {
           <SocialLink href='https://www.facebook.com/profile.php?id=61566665200042'>
             <FacebookIcon size={64} />
             <Typography variant='h4'>{t('facebook')}</Typography>
-          </SocialLink>
-          <SocialLink href='tel:+306936998859'>
-            <PhoneIcon size={64} />
-            <Typography variant='h4'>{t('phone')}</Typography>
           </SocialLink>
         </div>
       </Container>
@@ -38,7 +41,7 @@ function SocialLink({
 }: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
     <a
-      className='p-6 flex flex-col items-center gap-4 rounded transition hover:bg-surface-3 hover:-translate-y-0.5'
+      className='p-6 mx-auto w-fit flex flex-col items-center gap-4 rounded transition hover:bg-surface-3 hover:-translate-y-0.5 sm:w-full'
       target={target}
       {...props}
     />
