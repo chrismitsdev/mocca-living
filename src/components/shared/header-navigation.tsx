@@ -2,7 +2,12 @@
 
 import * as React from 'react'
 import {useTranslations, useLocale} from 'next-intl'
-import {motion, useTransform, useMotionTemplate} from 'framer-motion'
+import {
+  motion,
+  useTransform,
+  useMotionTemplate,
+  MotionStyle
+} from 'framer-motion'
 import {Link, usePathname, locales} from '@/i18n/routing'
 import {
   MenuIcon,
@@ -58,8 +63,21 @@ function HeaderNavigation() {
   const locale = useLocale()
   const pathname = usePathname()
   const {scrollYBoundedProgress} = useBoundedScroll(250)
-  const useBoundTransform = (output: [number, number]) =>
+  const useBoundedTransform = (output: [number, number]) =>
     useTransform(scrollYBoundedProgress, [0, 1], output)
+
+  const triggerColors: MotionStyle = {
+    color: useMotionTemplate`rgb(
+      ${useBoundedTransform([148, 231])}
+      ${useBoundedTransform([79, 217])}
+      ${useBoundedTransform([33, 190])}
+    )`,
+    backgroundColor: useMotionTemplate`rgb(
+      ${useBoundedTransform([221, 148])},
+      ${useBoundedTransform([200, 79])},
+      ${useBoundedTransform([162, 33])}
+    )`
+  }
 
   return (
     <motion.header
@@ -75,29 +93,29 @@ function HeaderNavigation() {
         borderBottomWidth: '1px',
         willChange: 'border-bottom-color, background-color, height',
         borderBottomColor: useMotionTemplate`rgb(
-          ${useBoundTransform([0, 199])}
-          ${useBoundTransform([0, 180])}
-          ${useBoundTransform([0, 146])} /
-          ${useBoundTransform([0.08, 1])}
+          ${useBoundedTransform([0, 199])}
+          ${useBoundedTransform([0, 180])}
+          ${useBoundedTransform([0, 146])} /
+          ${useBoundedTransform([0.08, 1])}
         )`,
         backgroundColor: useMotionTemplate`rgb(
-          ${useBoundTransform([0, 221])}
-          ${useBoundTransform([0, 200])}
-          ${useBoundTransform([0, 162])} /
-          ${useBoundTransform([0.24, 1])}
+          ${useBoundedTransform([0, 221])}
+          ${useBoundedTransform([0, 200])}
+          ${useBoundedTransform([0, 162])} /
+          ${useBoundedTransform([0.24, 1])}
         )`,
-        height: useBoundTransform([HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT])
+        height: useBoundedTransform([HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT])
       }}
     >
       <Container className='px-4 h-[inherit] flex justify-between items-center gap-2 md:px-3'>
         <motion.div
           style={{
             willChange: 'scale, color',
-            scale: useBoundTransform([LOGO_MAX_SCALE, LOGO_MIN_SCALE]),
+            scale: useBoundedTransform([LOGO_MAX_SCALE, LOGO_MIN_SCALE]),
             color: useMotionTemplate`rgb(
-              ${useBoundTransform([231, 148])}
-              ${useBoundTransform([217, 79])}
-              ${useBoundTransform([190, 33])}
+              ${useBoundedTransform([231, 148])}
+              ${useBoundedTransform([217, 79])}
+              ${useBoundedTransform([190, 33])}
             )`
           }}
         >
@@ -114,9 +132,9 @@ function HeaderNavigation() {
           style={{
             willChange: 'color',
             color: useMotionTemplate`rgb(
-              ${useBoundTransform([231, 69])}
-              ${useBoundTransform([217, 50])}
-              ${useBoundTransform([190, 39])}
+              ${useBoundedTransform([231, 69])}
+              ${useBoundedTransform([217, 50])}
+              ${useBoundedTransform([190, 39])}
             )`
           }}
         >
@@ -153,13 +171,16 @@ function HeaderNavigation() {
                   {m('accomodation.root')}
                 </NavLink>
                 <HoverCardTrigger asChild>
-                  <Button
-                    className='data-open:bg-surface-2 data-open:text-foreground transition-none'
-                    variant='ghost-alt'
-                    size='icon-mini'
+                  <motion.button
+                    className='w-6 h-6 flex items-center justify-center rounded'
+                    style={
+                      hoverCardOpen
+                        ? {...triggerColors}
+                        : {color: 'unset', backgroundColor: 'unset'}
+                    }
                   >
                     <EllipsisVerticalIcon size={16} />
-                  </Button>
+                  </motion.button>
                 </HoverCardTrigger>
               </li>
               <HoverCardPortal>
@@ -240,11 +261,11 @@ function HeaderNavigation() {
                 padding: '8px',
                 willChange: 'color, transform',
                 color: useMotionTemplate`rgb(
-                  ${useBoundTransform([231, 69])}
-                  ${useBoundTransform([217, 50])}
-                  ${useBoundTransform([190, 39])}
+                  ${useBoundedTransform([231, 69])}
+                  ${useBoundedTransform([217, 50])}
+                  ${useBoundedTransform([190, 39])}
                 )`,
-                translateY: useBoundTransform([-20, 0])
+                translateY: useBoundedTransform([-20, 0])
               }}
             >
               <MenuIcon size={24} />
@@ -371,7 +392,7 @@ function HeaderNavigation() {
                     position: 'absolute',
                     right: '16px',
                     willChange: 'top',
-                    top: useBoundTransform([24, 12])
+                    top: useBoundedTransform([24, 12])
                   }}
                 >
                   <XIcon size={24} />
