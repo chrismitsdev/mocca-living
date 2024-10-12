@@ -3,10 +3,10 @@
 import * as React from 'react'
 import {useTranslations, useLocale} from 'next-intl'
 import {
+  type MotionStyle,
   motion,
   useTransform,
-  useMotionTemplate,
-  MotionStyle
+  useMotionTemplate
 } from 'framer-motion'
 import {Link, usePathname, locales} from '@/i18n/routing'
 import {
