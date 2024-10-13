@@ -87,3 +87,15 @@ export function clamp(num: number, min: number, max: number) {
 export function splitByComma(str: string) {
   return str.split(',')
 }
+
+// Helper to format duration to mm:ss
+export function formatDuration(durationInSeconds: number | null) {
+  if (durationInSeconds === null) return null
+
+  const minutes = Math.floor(durationInSeconds / 60)
+  const seconds = Math.floor(durationInSeconds % 60)
+    .toString()
+    .padStart(2, '0')
+
+  return `${minutes}:${seconds}`
+}

@@ -297,7 +297,6 @@ function HeaderNavigation() {
                       </NavLink>
                     </li>
                     <Collapsible
-                      className='group'
                       defaultOpen={
                         pathname === '/accomodation/georgia' ||
                         pathname === '/accomodation/dimitra'
@@ -325,10 +324,7 @@ function HeaderNavigation() {
                             </Button>
                           </CollapsibleTrigger>
                         </div>
-                        <CollapsibleContent
-                          className='overflow-hidden group-data-open:animate-collapsible-open group-data-closed:animate-collapsible-close'
-                          asChild
-                        >
+                        <CollapsibleContent asChild>
                           <ul
                             className='ml-2 pl-4 space-y-2 relative before:absolute before:h-[calc(100%-16px)] before:w-px before:top-1/2 before:-translate-y-1/2 before:left-0 before:bg-surface-3'
                             role='menu'
