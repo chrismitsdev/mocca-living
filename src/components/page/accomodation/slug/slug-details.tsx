@@ -23,6 +23,7 @@ import {
 import {Button} from '@/components/ui/button'
 import {Typography} from '@/components/ui/typography'
 import {SlugForm} from '@/components/page/accomodation/slug/slug-form'
+import {FadeUp} from '@/components/motion/fade-up'
 
 type SlugDetailsProps = {
   slug: Slug
@@ -141,26 +142,28 @@ function SlugBadge({
 function SlugList({children, data}: {children: React.ReactNode; data: string}) {
   return (
     <section className='space-y-2'>
-      <Typography
-        variant='h5'
-        asChild
-      >
-        <h5>{children}</h5>
-      </Typography>
-      <ul className='space-y-1'>
-        {data.split(',').map((entry) => (
-          <li
-            key={entry}
-            className='flex gap-1 -ml-1.5'
-          >
-            <DotIcon
-              className='shrink-0 mt-1'
-              size={16}
-            />
-            <Typography>{entry}</Typography>
-          </li>
-        ))}
-      </ul>
+      <FadeUp>
+        <Typography
+          variant='h5'
+          asChild
+        >
+          <h5>{children}</h5>
+        </Typography>
+        <ul className='space-y-1'>
+          {data.split(',').map((entry) => (
+            <li
+              key={entry}
+              className='flex gap-1 -ml-1.5'
+            >
+              <DotIcon
+                className='shrink-0 mt-1'
+                size={16}
+              />
+              <Typography>{entry}</Typography>
+            </li>
+          ))}
+        </ul>
+      </FadeUp>
     </section>
   )
 }

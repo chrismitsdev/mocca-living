@@ -168,8 +168,9 @@
 
   body {
     @apply relative bg-surface-2 text-foreground selection:bg-primary selection:text-primary-foreground;
-    /* @apply relative bg-surface-1 text-foreground selection:bg-primary selection:text-primary-foreground; */
-    font-feature-settings: 'rlig' 1, 'calt' 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
 }
 
@@ -195,41 +196,5 @@
 
   .mapboxgl-popup-tip {
     @apply border-t-surface-2 shadow-none;
-  }
-}
-
-/* React audio player */
-.rhap_container {
-  /* @apply !p-4 !bg-inherit !shadow-none !border !border-surface-3 !rounded; */
-  @apply !p-4 !bg-inherit !shadow-none !border-none !rounded;
-
-  .rhap_progress-section {
-    .rhap_progress-container {
-      @apply ml-0;
-
-      .rhap_progress-bar {
-        @apply bg-surface-3;
-
-        .rhap_progress-indicator {
-          @apply bg-primary transition active:scale-75;
-        }
-
-        .rhap_progress-filled {
-          @apply bg-primary;
-        }
-
-        .rhap_download-progress {
-          @apply bg-surface-4;
-        }
-      }
-    }
-  }
-
-  .rhap_controls-section {
-    .rhap_main-controls {
-      .rhap_main-controls-button {
-        @apply p-2 m-0 w-auto h-auto text-inherit active:scale-75;
-      }
-    }
   }
 }

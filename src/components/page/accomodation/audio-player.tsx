@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import AudioPlayer, {RHAP_UI} from 'react-h5-audio-player'
+import ReactAudioPlayer, {RHAP_UI} from 'react-h5-audio-player'
 import {
   PlayIcon,
   PauseIcon,
@@ -21,7 +21,8 @@ import {
   CollapsibleTrigger,
   CollapsibleContent
 } from '@/components/ui/collapsible'
-import 'react-h5-audio-player/lib/styles.css'
+// import 'react-h5-audio-player/lib/styles.css'
+import '@/custom-styles/audio-player.css'
 
 type Song = {
   id: number
@@ -80,7 +81,7 @@ function reducerFn(state: State, action: Action): State {
   }
 }
 
-function MusicPlayer({playlist}: {playlist: Song[]}) {
+function AudioPlayer({playlist}: {playlist: Song[]}) {
   const [state, dispatch] = React.useReducer(reducerFn, {
     playlist,
     currentTrackIndex: 0,
@@ -95,7 +96,7 @@ function MusicPlayer({playlist}: {playlist: Song[]}) {
             open={state.showPlaylist}
             onOpenChange={() => dispatch({type: 'TOGGLE_PLAYLIST_VISIBLE'})}
           >
-            <AudioPlayer
+            <ReactAudioPlayer
               layout='stacked-reverse'
               showSkipControls
               showJumpControls={false}
@@ -103,6 +104,7 @@ function MusicPlayer({playlist}: {playlist: Song[]}) {
               src={state.playlist[state.currentTrackIndex].src}
               onClickPrevious={() => dispatch({type: 'GO_PREV_SONG'})}
               onClickNext={() => dispatch({type: 'GO_NEXT_SONG'})}
+              customAdditionalControls={[]}
               customVolumeControls={[
                 <CollapsibleTrigger
                   key={crypto.randomUUID()}
@@ -116,7 +118,6 @@ function MusicPlayer({playlist}: {playlist: Song[]}) {
                   </Button>
                 </CollapsibleTrigger>
               ]}
-              customAdditionalControls={[]}
               customProgressBarSection={[
                 RHAP_UI.PROGRESS_BAR,
                 RHAP_UI.CURRENT_TIME,
@@ -146,7 +147,7 @@ function MusicPlayer({playlist}: {playlist: Song[]}) {
             <CollapsibleContent>
               <Separator />
               {playlist.map((song) => (
-                <MusicPlayerTrack
+                <AudioPlayerTrack
                   key={song.id}
                   onClick={() =>
                     dispatch({type: 'GO_TO_SONG', payload: song.id})
@@ -162,7 +163,7 @@ function MusicPlayer({playlist}: {playlist: Song[]}) {
   )
 }
 
-function MusicPlayerTrack({
+function AudioPlayerTrack({
   id,
   artist,
   title,
@@ -187,7 +188,6 @@ function MusicPlayerTrack({
       }
 
       audio.addEventListener('loadedmetadata', onMetadataLoaded)
-
       return function () {
         audio.removeEventListener('loadedmetadata', onMetadataLoaded)
       }
@@ -228,7 +228,7 @@ function MusicPlayerTrack({
   )
 }
 
-MusicPlayer.displayName = 'MusicPlayer'
-MusicPlayerTrack.displayName = 'MusicPlayerTrack'
+AudioPlayer.displayName = 'AudioPlayer'
+AudioPlayerTrack.displayName = 'AudioPlayerTrack'
 
-export {MusicPlayer}
+export {AudioPlayer}
