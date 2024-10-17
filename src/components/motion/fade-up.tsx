@@ -18,7 +18,7 @@ function FadeUp({
   return (
     <motion.div
       variants={{
-        hidden: {opacity: 0, y: 16},
+        hidden: {opacity: 0, y: 24},
         visible: {opacity: 1, y: 0}
       }}
       initial='hidden'

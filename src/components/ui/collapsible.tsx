@@ -7,9 +7,8 @@ import {cn} from '#/lib/utils'
 const Collapsible = React.forwardRef<
   React.ElementRef<typeof Root>,
   React.ComponentPropsWithoutRef<typeof Root>
->(({className, ...props}, ref) => (
+>(({...props}, ref) => (
   <Root
-    className={cn('group', className)}
     ref={ref}
     {...props}
   />
@@ -23,7 +22,7 @@ const CollapsibleContent = React.forwardRef<
 >(({className, ...props}, ref) => (
   <Content
     className={cn(
-      'overflow-hidden group-data-open:animate-collapsible-open group-data-closed:animate-collapsible-close',
+      'overflow-hidden data-open:animate-collapsible-open data-closed:animate-collapsible-close',
       className
     )}
     ref={ref}

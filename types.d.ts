@@ -38,4 +38,12 @@ declare global {
     name: string
     email: string
   }
+
+  type Song = {
+    id: number
+    artist: string
+    title: string
+    src: string
+    duration?: number
+  }
 }
