@@ -25,7 +25,8 @@ function DialogAudioPlayerRe({children}: {children: React.ReactNode}) {
           aria-describedby={undefined}
           className={cn(
             'fixed z-[1] top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[calc(100%-32px)] bg-surface-2 rounded shadow-medium data-open:animate-in data-open:fade-in data-open:slide-in-from-bottom-[calc(32px-50%)] data-open:slide-in-from-left-[50%] data-open:duration-750 data-closed:animate-out data-closed:fade-out data-closed:slide-out-to-bottom-[calc(32px-50%)] data-closed:slide-out-to-left-[50%] data-closed:duration-500 ease-mocca sm:w-full sm:max-w-3xl',
-            'max-h-[calc(100svh-128px-32px)] sm:h-auto',
+            // 'max-h-[calc(100svh-128px-32px)] sm:h-auto',
+            'max-h-[calc(100dvh-128px-32px)] sm:h-auto',
             !open && 'invisible -z-[1]'
           )}
         >

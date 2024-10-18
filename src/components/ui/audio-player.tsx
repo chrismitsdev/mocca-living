@@ -120,8 +120,8 @@ function AudioPlayer({playlist, ...props}: AudioPlayerProps) {
       <Separator className={cn('hidden', state.showPlaylist && 'block')} />
       <CollapsibleContent>
         <ScrollArea type='always'>
-          <ScrollAreaViewport className='max-h-[calc(100svh-208px-128px-32px)] sm:max-h-[calc(100vh-280px-32px-300px)]'>
-            {/* <ScrollAreaViewport className='max-h-[calc(100vh-208px-32px)] sm:max-h-[calc(100vh-280px-32px-300px)]'> */}
+          <ScrollAreaViewport className='max-h-[calc(100dvh-208px-128px-32px)] sm:max-h-[calc(100dvh-280px-32px-300px)]'>
+            {/* <ScrollAreaViewport className='max-h-[calc(100svh-208px-128px-32px)] sm:max-h-[calc(100vh-280px-32px-300px)]'> */}
             <Playlist>
               {playlist.map((song) => (
                 <PlaylistTrack
