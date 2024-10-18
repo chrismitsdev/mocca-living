@@ -121,7 +121,6 @@ function AudioPlayer({playlist, ...props}: AudioPlayerProps) {
       <CollapsibleContent>
         <ScrollArea type='always'>
           <ScrollAreaViewport className='max-h-[calc(100dvh-208px-128px-32px)] sm:max-h-[calc(100dvh-280px-32px-300px)]'>
-            {/* <ScrollAreaViewport className='max-h-[calc(100svh-208px-128px-32px)] sm:max-h-[calc(100vh-280px-32px-300px)]'> */}
             <Playlist>
               {playlist.map((song) => (
                 <PlaylistTrack
@@ -145,13 +144,13 @@ function AudioPlayer({playlist, ...props}: AudioPlayerProps) {
 function CurrentTrack({artist, title, isPlaying}: CurretntTrackProps) {
   return (
     <div className='sm:mb-0 sm:p-4'>
-      <div className='flex items-start gap-4'>
+      <div className='flex items-start gap-2 sm:gap-4'>
         <CustomImage
-          className='w-16 h-16 sm:w-24 sm:h-24 object-cover rounded'
+          className='w-[72px] h-[72px] sm:w-24 sm:h-24 object-cover rounded'
           src={image}
           alt='Playlist image'
         />
-        <div className='space-y-2'>
+        <div className='sm:space-y-3'>
           <div className='flex gap-2'>
             <MusicIcon className='mt-1 w-4 h-4' />
             {isPlaying ? (
