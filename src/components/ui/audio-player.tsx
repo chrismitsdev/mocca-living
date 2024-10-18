@@ -60,7 +60,6 @@ function AudioPlayer({playlist, ...props}: AudioPlayerProps) {
 
   return (
     <Collapsible
-      id='collapsible-root'
       open={state.showPlaylist}
       onOpenChange={() => dispatch({type: 'TOGGLE_PLAYLIST_VISIBLE'})}
     >

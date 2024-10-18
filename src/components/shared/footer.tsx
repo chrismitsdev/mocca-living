@@ -6,7 +6,8 @@ import {Container} from '@/components/shared/container'
 import {LocaleSelect, LocaleSelectItem} from '@/components/shared/locale-select'
 import {Separator} from '@/components/ui/separator'
 import {Typography} from '@/components/ui/typography'
-import {DialogAudioPlayer} from '@/components/shared/dialog-audio-player'
+// import {DialogAudioPlayer} from '@/components/shared/dialog-audio-player'
+import {DialogAudioPlayerRe} from '@/components/shared/dialog-audio-player-re'
 import logoFull from '#/public/logos/mocca-logo-full.svg'
 
 function Footer() {
@@ -82,11 +83,11 @@ function Footer() {
               >
                 <Link href='/cookies'>{t('Footer.row-1.column-2.link-2')}</Link>
               </Typography>
-              <DialogAudioPlayer>
+              <DialogAudioPlayerRe>
                 <Typography variant='link'>
                   {t('Footer.row-1.column-2.link-3')}
                 </Typography>
-              </DialogAudioPlayer>
+              </DialogAudioPlayerRe>
             </div>
           </div>
           <div className='w-fit space-y-2 sm:space-y-4'>
