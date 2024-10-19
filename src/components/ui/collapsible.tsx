@@ -7,8 +7,9 @@ import {cn} from '#/lib/utils'
 const Collapsible = React.forwardRef<
   React.ElementRef<typeof Root>,
   React.ComponentPropsWithoutRef<typeof Root>
->(({...props}, ref) => (
+>(({className, ...props}, ref) => (
   <Root
+    className={cn('group', className)}
     ref={ref}
     {...props}
   />

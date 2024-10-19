@@ -22,17 +22,17 @@ import {
   CollapsibleTrigger,
   CollapsibleContent
 } from '@/components/ui/collapsible'
+import {
+  ScrollArea,
+  ScrollAreaViewport,
+  ScrollAreaBar
+} from '@/components/ui/scrollarea'
 import {Typography} from '@/components/ui/typography'
 import {Spinner} from '@/components/ui/spinner'
 import {Separator} from '@/components/ui/separator'
 import {Button} from '@/components/ui/button'
 import {CustomImage} from '@/components/ui/custom-image'
 import {TextEffect} from '@/components/motion/text-effect'
-import {
-  ScrollArea,
-  ScrollAreaViewport,
-  ScrollAreaBar
-} from '@/components/ui/scrollarea'
 import image from '#/public/images/other/playlst-image.jpg'
 import '@/custom-styles/audio-player.css'
 
