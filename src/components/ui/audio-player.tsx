@@ -46,7 +46,7 @@ type CurretntTrackProps = Song & {isPlaying: boolean}
 
 type PlaylistProps = React.HTMLAttributes<HTMLUListElement>
 
-type PlaylistTrackProps = Omit<React.HTMLAttributes<HTMLLIElement>, 'id'> &
+type PlaylistTrackProps = React.HTMLAttributes<HTMLLIElement> &
   Song & {isActive: boolean}
 
 function AudioPlayer({playlist, ...props}: AudioPlayerProps) {
@@ -124,10 +124,10 @@ function AudioPlayer({playlist, ...props}: AudioPlayerProps) {
             <Playlist>
               {playlist.map((song) => (
                 <PlaylistTrack
-                  key={song.id}
-                  isActive={currentTrack.id === song.id}
+                  key={song.trackId}
+                  isActive={currentTrack.trackId === song.trackId}
                   onClick={() =>
-                    dispatch({type: 'GO_TO_SONG', payload: song.id})
+                    dispatch({type: 'GO_TO_SONG', payload: song.trackId})
                   }
                   {...song}
                 />
@@ -195,7 +195,7 @@ function Playlist({className, ...props}: PlaylistProps) {
 }
 
 function PlaylistTrack({
-  id,
+  trackId,
   artist,
   title,
   src,
@@ -237,7 +237,7 @@ function PlaylistTrack({
         variant='small'
         className='hidden sm:block'
       >
-        {id}
+        {trackId}
         {'.'}
       </Typography>
       <Typography

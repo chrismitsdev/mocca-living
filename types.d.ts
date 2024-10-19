@@ -40,7 +40,7 @@ declare global {
   }
 
   type Song = {
-    id: number
+    trackId: number
     artist: string
     title: string
     src: string

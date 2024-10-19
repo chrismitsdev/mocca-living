@@ -75,6 +75,6 @@ const playlist = [
     title: 'Cozy Coffeehouse',
     src: '/music/cozy-coffeehouse.mp3'
   }
-].map((entry, i) => ({id: i + 1, ...entry})) as Song[]
+].map((entry, i) => ({trackId: i + 1, ...entry})) as Song[]
 
 export {playlist}
