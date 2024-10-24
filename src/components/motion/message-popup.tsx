@@ -70,7 +70,7 @@ function MessagePopup() {
               </ContactLink>
               <ContactLink
                 className='bg-gradient-to-l from-[#C2DAA7] to-transparent'
-                href='whatsapp://send?phone=+306936998859'
+                href='https://wa.me/+306936998859'
                 aria-label='WhatsApp messaging'
               >
                 <span>
