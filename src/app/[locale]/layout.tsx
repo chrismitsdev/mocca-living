@@ -2,7 +2,7 @@ import '@/globals.css'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import type {Metadata} from 'next'
 import {Commissioner} from 'next/font/google'
-import {unstable_setRequestLocale} from 'next-intl/server'
+import {setRequestLocale} from 'next-intl/server'
 import {useMessages, NextIntlClientProvider} from 'next-intl'
 import {locales} from '@/i18n/routing'
 import {Header} from '@/components/shared/header'
@@ -35,7 +35,7 @@ export default function RootLayout({
   params: {locale},
   children
 }: React.PropsWithChildren<Params>) {
-  unstable_setRequestLocale(locale)
+  setRequestLocale(locale)
   const messages = useMessages() as IntlMessages
 
   return (

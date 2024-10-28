@@ -1,4 +1,4 @@
-import {getTranslations, unstable_setRequestLocale} from 'next-intl/server'
+import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {useTranslations} from 'next-intl'
 import {Container} from '@/components/shared/container'
 import {Typography} from '@/components/ui/typography'
@@ -12,7 +12,7 @@ export async function generateMetadata({params: {locale}}: Params) {
 }
 
 export default function PrivacyPage({params: {locale}}: Params) {
-  unstable_setRequestLocale(locale)
+  setRequestLocale(locale)
   const t = useTranslations('Pages.Privacy')
 
   return (

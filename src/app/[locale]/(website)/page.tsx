@@ -1,4 +1,4 @@
-import {getTranslations, unstable_setRequestLocale} from 'next-intl/server'
+import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {HomeHeroCarousel} from '@/components/page/home/home-hero-carousel'
 import {Introduction} from '@/components/page/home/intoduction'
 import {IdealReasons} from '@/components/page/home/ideal-reasons'
@@ -13,7 +13,7 @@ export async function generateMetadata({params: {locale}}: Params) {
 }
 
 export default function IndexPage({params: {locale}}: Params) {
-  unstable_setRequestLocale(locale)
+  setRequestLocale(locale)
 
   return (
     <>

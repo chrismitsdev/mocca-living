@@ -1,4 +1,4 @@
-import {getTranslations, unstable_setRequestLocale} from 'next-intl/server'
+import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {HeroImage} from '@/components/page/accomodation/hero-image'
 import {Introduction} from '@/components/page/accomodation/introduction'
 import {Villas} from '@/components/page/accomodation/villas'
@@ -15,7 +15,7 @@ export async function generateMetadata({params: {locale}}: Params) {
 }
 
 export default function AccomodationPage({params: {locale}}: Params) {
-  unstable_setRequestLocale(locale)
+  setRequestLocale(locale)
 
   return (
     <>

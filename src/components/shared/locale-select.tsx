@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import {GlobeIcon} from 'lucide-react'
-import {locales, useRouter, usePathname} from '@/i18n/routing'
+import {useRouter, usePathname} from '@/i18n/routing'
 import {
   Select,
   SelectTrigger,
@@ -33,7 +33,7 @@ function LocaleSelect({
   const pathname = usePathname()
   const [isPending, startTransition] = React.useTransition()
 
-  function onSelectChange(locale: (typeof locales)[number]) {
+  function onSelectChange(locale: Locale) {
     startTransition(function () {
       router.replace(pathname, {locale, scroll: !noScroll})
     })

@@ -1,14 +1,16 @@
 import enMessages from '#/messages/en.json'
-import {locales} from '@/i18n/routing'
+import {routing} from '@/i18n/routing'
 
 type Messages = typeof enMessages
 
 declare global {
   interface IntlMessages extends Messages {}
 
+  type Locale = (typeof routing.locales)[number]
+
   type Params = {
     params: {
-      locale: (typeof locales)[number]
+      locale: Locale
     }
   }
 

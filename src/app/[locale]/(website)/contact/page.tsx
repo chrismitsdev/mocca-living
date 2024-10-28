@@ -1,4 +1,4 @@
-import {getTranslations, unstable_setRequestLocale} from 'next-intl/server'
+import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {useTranslations, useMessages, NextIntlClientProvider} from 'next-intl'
 import {Container} from '@/components/shared/container'
 import {
@@ -21,7 +21,7 @@ export async function generateMetadata({params: {locale}}: Params) {
 }
 
 export default function ContactPage({params: {locale}}: Params) {
-  unstable_setRequestLocale(locale)
+  setRequestLocale(locale)
   const t = useTranslations()
   const messages = useMessages() as IntlMessages
   const scopedMessages = {

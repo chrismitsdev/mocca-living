@@ -1,4 +1,4 @@
-import {getTranslations, unstable_setRequestLocale} from 'next-intl/server'
+import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {notFound} from 'next/navigation'
 import {SlugCarousel} from '@/components/page/accomodation/slug/slug-carousel'
 import {SlugDetails} from '@/components/page/accomodation/slug/slug-details'
@@ -29,7 +29,7 @@ export function generateStaticParams() {
 export default async function SlugPage({
   params: {locale, slug}
 }: ParamsWithSlug) {
-  unstable_setRequestLocale(locale)
+  setRequestLocale(locale)
 
   if (slug !== 'georgia' && slug !== 'dimitra') {
     notFound()
