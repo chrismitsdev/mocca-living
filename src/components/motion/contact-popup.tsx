@@ -60,7 +60,6 @@ function ContactPopup() {
             >
               <ContactLink
                 className='bg-gradient-to-l from-[#C3B3DB] to-transparent'
-                // href='viber://contact?number=%2B306936998859'
                 href='viber://chat/?number=%2B306936998859'
                 aria-label='Viber messaging'
               >
