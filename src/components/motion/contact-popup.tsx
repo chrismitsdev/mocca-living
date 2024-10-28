@@ -14,11 +14,11 @@ import {Typography} from '@/components/ui/typography'
 import {LogoViber} from '@/components/logos/logo-viber'
 import {LogoWhatsApp} from '@/components/logos/logo-whatsapp'
 
-function MessagePopup() {
+function ContactPopup() {
   const [isOpen, setIsOpen] = React.useState(false)
   const contentRef = React.useRef<HTMLDivElement>(null)
   const uniqueID = React.useId()
-  const t = useTranslations<'Components.MessagePopup'>()
+  const t = useTranslations<'Components.ContactPopup'>()
   useClickOutside(contentRef, function () {
     setIsOpen(false)
   })
@@ -60,7 +60,8 @@ function MessagePopup() {
             >
               <ContactLink
                 className='bg-gradient-to-l from-[#C3B3DB] to-transparent'
-                href='viber://contact?number=%2B306936998859'
+                // href='viber://contact?number=%2B306936998859'
+                href='viber://chat/?number=%2B306936998859'
                 aria-label='Viber messaging'
               >
                 <span>
@@ -118,6 +119,6 @@ function ContactLink({
   )
 }
 
-MessagePopup.displayName = 'MessagePopup'
+ContactPopup.displayName = 'ContactPopup'
 
-export {MessagePopup}
+export {ContactPopup}

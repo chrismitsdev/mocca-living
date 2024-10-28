@@ -149,7 +149,7 @@
     }
   },
   "Components": {
-    "MessagePopup": {
+    "ContactPopup": {
       "viber": "Viber",
       "whatsapp": "WhatsApp",
       "sms": "SMS",
