@@ -2,14 +2,15 @@ import '@/globals.css'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import type {Metadata} from 'next'
 import {Commissioner} from 'next/font/google'
-import {setRequestLocale} from 'next-intl/server'
-import {useMessages, NextIntlClientProvider} from 'next-intl'
-import {locales} from '@/i18n/routing'
+import {notFound} from 'next/navigation'
+import {setRequestLocale, getMessages} from 'next-intl/server'
+import {NextIntlClientProvider} from 'next-intl'
+import {routing} from '@/i18n/routing'
 import {Header} from '@/components/shared/header'
 import {Footer} from '@/components/shared/footer'
 import {CookieConsent} from '@/components/shared/cookie-consent'
-import {Toaster} from '@/components/ui/toast'
 import {ContactPopup} from '@/components/motion/contact-popup'
+import {Toaster} from '@/components/ui/toast'
 
 const commissioner = Commissioner({
   subsets: ['latin'],
@@ -28,15 +29,19 @@ export const metadata: Metadata = {
 }
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({locale}))
+  return routing.locales.map((locale) => ({locale}))
 }
 
-export default function RootLayout({
+export default async function LocaleLayout({
   params: {locale},
   children
 }: React.PropsWithChildren<Params>) {
+  if (!routing.locales.includes(locale)) {
+    notFound()
+  }
+
   setRequestLocale(locale)
-  const messages = useMessages() as IntlMessages
+  const messages = (await getMessages()) as IntlMessages
 
   return (
     <html

@@ -26,9 +26,7 @@ export function generateStaticParams() {
   return [{slug: 'georgia'}, {slug: 'dimitra'}]
 }
 
-export default async function SlugPage({
-  params: {locale, slug}
-}: ParamsWithSlug) {
+export default function SlugPage({params: {locale, slug}}: ParamsWithSlug) {
   setRequestLocale(locale)
 
   if (slug !== 'georgia' && slug !== 'dimitra') {
