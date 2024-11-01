@@ -1,3 +1,4 @@
+export {default as OutdoorImage0} from './0.webp'
 export {default as OutdoorImage1} from './1.webp'
 export {default as OutdoorImage2} from './2.webp'
 export {default as OutdoorImage3} from './3.webp'

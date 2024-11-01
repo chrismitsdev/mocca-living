@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/carousel'
 import * as outdoorImages from '#/public/images/outdoor'
 
-const images = Object.values(outdoorImages)
+const images = Object.values(outdoorImages).slice(0, 8)
 
 function HomeHeroCarousel() {
   return (

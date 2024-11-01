@@ -34,7 +34,7 @@ import {
 
 import * as outdoorImages from '#/public/images/outdoor'
 
-const images = Object.values(outdoorImages).slice(0, 8)
+const images = Object.values(outdoorImages).slice(1, 9)
 
 function Gallery() {
   const [index, setIndex] = React.useState(0)
