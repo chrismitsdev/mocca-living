@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import {Map as ReactMapGl, Marker, Popup} from 'react-map-gl'
+import {Map as ReactMapGl, Marker, Popup} from 'react-map-gl/mapbox'
 import {MapPinIcon, XIcon} from 'lucide-react'
 import {useMediaQuery} from '@/hooks/useMediaQuery'
 import {Typography} from '@/components/ui/typography'
