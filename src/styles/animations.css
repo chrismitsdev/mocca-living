@@ -1,0 +1,303 @@
+@theme {
+  --ease-mocca: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --animate-page-appear: page-appear 2250ms var(--ease-mocca);
+  --animate-overlay-open: overlay-open 750ms var(--ease-mocca);
+  --animate-overlay-close: overlay-close 375ms var(--ease-mocca);
+  --animate-dialog-open: dialog-open 750ms var(--ease-mocca);
+  --animate-dialog-close: dialog-close 375ms var(--ease-mocca);
+  --animate-accordion-open: accordion-open 750ms var(--ease-mocca);
+  --animate-accordion-close: accordion-close 375ms var(--ease-mocca);
+  --animate-collapsible-open: collapsible-open 750ms var(--ease-mocca);
+  --animate-collapsible-close: collapsible-close 375ms var(--ease-mocca);
+  --animate-slide-top-show: slide-top-show 375ms var(--ease-mocca);
+  --animate-slide-right-show: slide-right-show 375ms var(--ease-mocca);
+  --animate-slide-bottom-show: slide-bottom-show 375ms var(--ease-mocca);
+  --animate-slide-left-show: slide-left-show 375ms var(--ease-mocca);
+  --animate-slide-top-hide: slide-top-hide 375ms var(--ease-mocca);
+  --animate-slide-right-hide: slide-right-hide 375ms var(--ease-mocca);
+  --animate-slide-bottom-hide: slide-bottom-hide 375ms var(--ease-mocca);
+  --animate-slide-left-hide: slide-left-hide 375ms var(--ease-mocca);
+
+  --animate-drawer-top-open: drawer-top-open 750ms var(--ease-mocca);
+  --animate-drawer-right-open: drawer-right-open 750ms var(--ease-mocca);
+  --animate-drawer-bottom-open: drawer-bottom-open 750ms var(--ease-mocca);
+  --animate-drawer-left-open: drawer-left-open 750ms var(--ease-mocca);
+  --animate-drawer-top-close: drawer-top-close 375ms var(--ease-mocca);
+  --animate-drawer-right-close: drawer-right-close 375ms var(--ease-mocca);
+  --animate-drawer-bottom-close: drawer-bottom-close 375ms var(--ease-mocca);
+  --animate-drawer-left-close: drawer-left-close 375ms var(--ease-mocca);
+
+  @keyframes page-appear {
+    from {
+      opacity: 0;
+      transform: translateY(-24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Overlay */
+  @keyframes overlay-open {
+    from {
+      opacity: 0;
+      backdrop-filter: blur(0);
+    }
+    to {
+      opacity: 1;
+      backdrop-filter: blur(1px);
+    }
+  }
+
+  @keyframes overlay-close {
+    from {
+      opacity: 1;
+      backdrop-filter: blur(1px);
+    }
+    to {
+      opacity: 0;
+      backdrop-filter: blur(0);
+    }
+  }
+
+  /* Dialog */
+  @keyframes dialog-open {
+    from {
+      opacity: 0;
+      transform: translate(0, 24px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+
+  @keyframes dialog-close {
+    from {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+    to {
+      opacity: 0;
+      transform: translate(0, 24px);
+    }
+  }
+
+  /* Accordion */
+  @keyframes accordion-open {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-close {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  /* Collapsible */
+  @keyframes collapsible-open {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-collapsible-content-height);
+    }
+  }
+
+  @keyframes collapsible-close {
+    from {
+      height: var(--radix-collapsible-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  /* Popover, Hover Card, Select */
+  @keyframes slide-top-show {
+    from {
+      opacity: 0;
+      scale: 0.98;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-top-hide {
+    from {
+      opacity: 1;
+      scale: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      scale: 0.98;
+      transform: translateY(16px);
+    }
+  }
+
+  @keyframes slide-right-show {
+    from {
+      opacity: 0;
+      scale: 0.98;
+      transform: translateX(-16px);
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-right-hide {
+    from {
+      opacity: 1;
+      scale: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      scale: 0.98;
+      transform: translateX(-16px);
+    }
+  }
+
+  @keyframes slide-bottom-show {
+    from {
+      opacity: 0;
+      scale: 0.98;
+      transform: translateY(-16px);
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-bottom-hide {
+    from {
+      opacity: 1;
+      scale: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      scale: 0.98;
+      transform: translateY(-16px);
+    }
+  }
+
+  @keyframes slide-left-show {
+    from {
+      opacity: 0;
+      scale: 0.98;
+      transform: translateX(16px);
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-left-hide {
+    from {
+      opacity: 1;
+      scale: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      scale: 0.98;
+      transform: translateX(16px);
+    }
+  }
+
+  /* Drawer */
+  @keyframes drawer-top-open {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes drawer-top-close {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-100%);
+    }
+  }
+
+  @keyframes drawer-right-open {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes drawer-right-close {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes drawer-bottom-open {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes drawer-bottom-close {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes drawer-left-open {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes drawer-left-close {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+}

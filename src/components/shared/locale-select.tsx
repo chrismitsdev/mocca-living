@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import {GlobeIcon} from 'lucide-react'
-import {useRouter, usePathname} from '@/i18n/routing'
+import {useRouter, usePathname} from '@/src/i18n/navigation'
 import {
   Select,
   SelectTrigger,
@@ -11,24 +11,24 @@ import {
   SelectContent,
   SelectViewport,
   SelectItem
-} from '@/components/ui/select'
-import {Spinner} from '@/components/ui/spinner'
+} from '@/src/components/ui/select'
+import {Spinner} from '@/src/components/ui/spinner'
 
-type LocaleSelectProps = React.ComponentPropsWithoutRef<typeof Select> & {
+interface LocaleSelectProps extends React.ComponentPropsWithRef<typeof Select> {
   loadingText: string
   className?: string
   placeholder: string
   noScroll?: boolean
 }
 
-function LocaleSelect({
+const LocaleSelect: React.FC<LocaleSelectProps> = ({
   loadingText,
   className,
   placeholder,
   noScroll = false,
   children,
   ...props
-}: LocaleSelectProps) {
+}) => {
   const router = useRouter()
   const pathname = usePathname()
   const [isPending, startTransition] = React.useTransition()
@@ -67,9 +67,9 @@ function LocaleSelect({
   )
 }
 
-function LocaleSelectItem({
-  ...props
-}: React.ComponentPropsWithoutRef<typeof SelectItem>) {
+const LocaleSelectItem: React.FC<
+  React.ComponentPropsWithRef<typeof SelectItem>
+> = (props) => {
   return <SelectItem {...props} />
 }
 

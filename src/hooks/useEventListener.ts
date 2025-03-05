@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {useIsomorphicLayoutEffect} from '@/hooks/useIsomorphicLayoutEffect'
+import {useIsomorphicLayoutEffect} from '@/src/hooks/useIsomorphicLayoutEffect'
 
 // MediaQueryList Event based useEventListener interface
 function useEventListener<K extends keyof MediaQueryListEventMap>(

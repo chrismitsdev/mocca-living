@@ -3,11 +3,7 @@
 import * as React from 'react'
 import {type StaticImageData} from 'next/image'
 import {XIcon, ExpandIcon} from 'lucide-react'
-import {cn} from '#/lib/utils'
-import {Container} from '@/components/shared/container'
-import {CustomImage} from '@/components/ui/custom-image'
-import {Button} from '@/components/ui/button'
-import {VisuallyHidden} from '@/components/ui/visually-hidden'
+import {cn, sortImportedImagesByName} from '@/src/lib/utils'
 import {
   Dialog,
   DialogTrigger,
@@ -16,183 +12,138 @@ import {
   DialogClose,
   DialogContent,
   DialogTitle
-} from '@/components/ui/dialog'
+} from '@/src/components/ui/dialog'
 import {
-  CarouselProvider,
-  CarouselRoot,
-  CarouselViewport,
-  CarouselImageContainer,
-  CarouselImage,
-  CarouselPrevButton,
-  CarouselNextButton,
-  CarouselThumbnailViewport,
-  CarouselThumbnailContainer,
-  CarouselThumbnailButton,
-  CarouselThumbnailImage,
-  CarouselCount
-} from '@/components/ui/carousel'
+  EmblaCarousel,
+  EmblaViewport,
+  EmblaContainer,
+  EmblaSlide,
+  EmblaButtonPrev,
+  EmblaButtonNext
+} from '@/src/components/ui/embla-carousel'
+import {CustomImage} from '@/src/components/ui/custom-image'
+import {Button} from '@/src/components/ui/button'
+import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
+import {Container} from '@/src/components/shared/container'
+import * as galleryImages from '@/public/images/home/home-gallery'
 
-import * as outdoorImages from '#/public/images/outdoor'
+const images = sortImportedImagesByName(galleryImages)
 
-const images = Object.values(outdoorImages).slice(1, 9)
+const triggerClasses: string[] = [
+  'sm:col-start-1 sm:col-end-3 sm:row-start-1 sm:row-end-3',
+  'sm:col-start-3 sm:col-end-5 sm:row-start-1 sm:row-end-4',
+  'sm:col-start-5 sm:col-end-9 sm:row-start-1 sm:row-end-6',
+  'sm:col-start-1 sm:col-end-3 sm:row-start-3 sm:row-end-9',
+  'sm:col-start-3 sm:col-end-5 sm:row-start-4 sm:row-end-7',
+  'sm:col-start-3 sm:col-end-5 sm:row-start-7 sm:row-end-9',
+  'sm:col-start-5 sm:col-end-6 sm:row-start-6 sm:row-end-9',
+  'sm:col-start-6 sm:col-end-9 sm:row-start-6 sm:row-end-9'
+]
 
-function Gallery() {
-  const [index, setIndex] = React.useState(0)
-
-  return (
-    <Container
-      className='space-y-6'
-      asChild
-    >
-      <article>
-        <Dialog>
-          <div className='grid grid-cols-2 gap-2 sm:grid-cols-8 sm:grid-rows-8'>
-            <GalleryItem
-              className='sm:col-start-1 sm:col-end-3 sm:row-start-1 sm:row-end-3'
-              src={images[0]}
-              alt='Carousel preview image 1'
-              onClick={() => setIndex(0)}
-            />
-            <GalleryItem
-              className='s sm:col-start-3 sm:col-end-5 sm:row-start-1 sm:row-end-4'
-              src={images[1]}
-              alt='Carousel preview image 2'
-              onClick={() => setIndex(1)}
-            />
-            <GalleryItem
-              className='sm:col-start-5 sm:col-end-9 sm:row-start-1 sm:row-end-6'
-              src={images[2]}
-              alt='Carousel preview image 3'
-              onClick={() => setIndex(2)}
-            />
-            <GalleryItem
-              className='sm:col-start-1 sm:col-end-3 sm:row-start-3 sm:row-end-9'
-              src={images[3]}
-              alt='Carousel preview image 4'
-              onClick={() => setIndex(3)}
-            />
-            <GalleryItem
-              className='sm:col-start-3 sm:col-end-5 sm:row-start-4 sm:row-end-7'
-              src={images[4]}
-              alt='Carousel preview image 5'
-              onClick={() => setIndex(4)}
-            />
-            <GalleryItem
-              className='sm:col-start-3 sm:col-end-5 sm:row-start-7 sm:row-end-9'
-              src={images[5]}
-              alt='Carousel preview image 6'
-              onClick={() => setIndex(5)}
-            />
-            <GalleryItem
-              className='sm:col-start-5 sm:col-end-6 sm:row-start-6 sm:row-end-9'
-              src={images[6]}
-              alt='Carousel preview image 7'
-              onClick={() => setIndex(6)}
-            />
-            <GalleryItem
-              className='sm:col-start-6 sm:col-end-9 sm:row-start-6 sm:row-end-9'
-              src={images[7]}
-              alt='Carousel preview image 8'
-              onClick={() => setIndex(7)}
-            />
-          </div>
-          <DialogPortal>
-            <DialogOverlay />
-            <DialogContent
-              className='p-0 max-w-full h-full bg-[unset] shadow-none'
-              onCloseAutoFocus={(e) => e.preventDefault()}
-            >
-              <VisuallyHidden>
-                <DialogTitle>{'Gallery carousel'}</DialogTitle>
-              </VisuallyHidden>
-              <CarouselProvider
-                activeIndex={index}
-                className='bg-[unset]'
-                images={images}
-              >
-                <CarouselRoot>
-                  <CarouselViewport>
-                    <CarouselImageContainer>
-                      {images.map((image, i) => (
-                        <CarouselImage
-                          className='!opacity-100'
-                          key={i + 1}
-                          index={i}
-                          src={image}
-                          alt={`Gallery carousel image ${i + 1}`}
-                        />
-                      ))}
-                    </CarouselImageContainer>
-                  </CarouselViewport>
-                  <CarouselThumbnailViewport>
-                    <CarouselThumbnailContainer>
-                      {images.map((image, i) => (
-                        <CarouselThumbnailButton
-                          key={i + 2}
-                          index={i}
-                        >
-                          <CarouselThumbnailImage
-                            src={image}
-                            alt={`Gallery carousel image thumbnail ${i + 1}`}
-                          />
-                        </CarouselThumbnailButton>
-                      ))}
-                    </CarouselThumbnailContainer>
-                  </CarouselThumbnailViewport>
-                  <CarouselPrevButton size='icon-small' />
-                  <CarouselNextButton size='icon-small' />
-                  <CarouselCount />
-                </CarouselRoot>
-              </CarouselProvider>
-              <DialogClose asChild>
-                <Button
-                  className='absolute top-2 right-2'
-                  variant='primary-alt'
-                  size='icon-small'
-                >
-                  <XIcon size={24} />
-                </Button>
-              </DialogClose>
-            </DialogContent>
-          </DialogPortal>
-        </Dialog>
-      </article>
-    </Container>
-  )
-}
-
-function GalleryItem({
-  className,
-  src,
-  alt,
-  onClick
-}: {
+interface GalleryTriggerProps {
   className: string
   src: StaticImageData
   alt: string
   onClick: () => void
-}) {
+}
+
+const Gallery: React.FC = () => {
+  const [index, setIndex] = React.useState(0)
+
+  const renderedTriggers = images.map(function (image, i) {
+    return (
+      <GalleryTrigger
+        key={image.src}
+        className={triggerClasses[i]}
+        src={image}
+        alt={`Gallery thumbnail image ${i + 1}`}
+        onClick={() => setIndex(i)}
+      />
+    )
+  })
+
+  const renderedSlides = images.map(function (image, i) {
+    return (
+      <EmblaSlide key={image.src}>
+        <CustomImage
+          className='w-full h-full rounded'
+          src={image}
+          alt={`Gallery slide image ${i + 1}`}
+        />
+      </EmblaSlide>
+    )
+  })
+
+  return (
+    <Container asChild>
+      <section>
+        <Dialog>
+          <div className='grid grid-cols-2 gap-2 sm:grid-cols-8 sm:grid-rows-8'>
+            {renderedTriggers}
+          </div>
+          <DialogPortal>
+            <DialogOverlay>
+              <DialogContent className='p-0 bg-transparent max-w-[1512px]'>
+                <VisuallyHidden>
+                  <DialogTitle>Home page gallery images</DialogTitle>
+                </VisuallyHidden>
+                <EmblaCarousel startIndex={index}>
+                  <EmblaViewport>
+                    <EmblaContainer>{renderedSlides}</EmblaContainer>
+                  </EmblaViewport>
+                  <EmblaButtonPrev className=' 2xl:-left-14' />
+                  <EmblaButtonNext className=' 2xl:-right-14' />
+                </EmblaCarousel>
+              </DialogContent>
+              <DialogClose
+                className='absolute top-4 right-4 z-50'
+                asChild
+              >
+                <Button
+                  variant='error'
+                  size='icon-normal'
+                >
+                  <XIcon />
+                </Button>
+              </DialogClose>
+            </DialogOverlay>
+          </DialogPortal>
+        </Dialog>
+      </section>
+    </Container>
+  )
+}
+
+const GalleryTrigger: React.FC<GalleryTriggerProps> = ({
+  className,
+  src,
+  alt,
+  onClick
+}) => {
   return (
     <DialogTrigger
       className={cn(
-        'relative overflow-hidden rounded shadow before:absolute before:inset-0 hover:before:bg-black/75 before:duration-700 before:ease-mocca focus-visible:outline-0 group',
+        'relative overflow-hidden rounded shadow before:absolute before:inset-0 before:duration-700 before:ease-mocca hover:before:bg-black/80 focus-visible:outline-0 group',
         className
       )}
       onClick={onClick}
     >
       <CustomImage
-        className='h-full object-cover'
+        className='h-full w-full object-cover'
         src={src}
         alt={alt}
       />
-      <div className='hidden absolute inset-0 group-hover:flex items-center justify-center text-primary-foreground'>
-        <ExpandIcon size={32} />
+      <div className='hidden absolute inset-0 items-center justify-center group-hover:flex'>
+        <ExpandIcon
+          className='text-primary-foreground'
+          size={32}
+        />
       </div>
     </DialogTrigger>
   )
 }
 
 Gallery.displayName = 'Gallery'
-GalleryItem.displayName = 'GalleryItem'
+GalleryTrigger.displayName = 'GalleryTrigger'
 
 export {Gallery}

@@ -2,16 +2,15 @@
 
 import * as React from 'react'
 import {Root} from '@radix-ui/react-separator'
-import {cn} from '#/lib/utils'
+import {cn} from '@/src/lib/utils'
 
-const Separator = React.forwardRef<
-  React.ElementRef<typeof Root>,
-  React.ComponentPropsWithoutRef<typeof Root>
->(
-  (
-    {className, orientation = 'horizontal', decorative = true, ...props},
-    ref
-  ) => (
+const Separator: React.FC<React.ComponentPropsWithRef<typeof Root>> = ({
+  className,
+  orientation = 'horizontal',
+  decorative = true,
+  ...props
+}) => {
+  return (
     <Root
       className={cn(
         'shrink-0 bg-surface-3',
@@ -20,11 +19,10 @@ const Separator = React.forwardRef<
       )}
       decorative={decorative}
       orientation={orientation}
-      ref={ref}
       {...props}
     />
   )
-)
+}
 
 Separator.displayName = 'Separator'
 

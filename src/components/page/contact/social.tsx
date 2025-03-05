@@ -1,9 +1,9 @@
 import {useTranslations} from 'next-intl'
-import {Container} from '@/components/shared/container'
-import {Typography} from '@/components/ui/typography'
 import {MapPin, PhoneIcon, FacebookIcon, InstagramIcon} from 'lucide-react'
+import {Container} from '@/src/components/shared/container'
+import {Typography} from '@/src/components/ui/typography'
 
-function Social() {
+const Social: React.FC = () => {
   const t = useTranslations('Pages.Contact.Social')
 
   return (
@@ -35,10 +35,10 @@ function Social() {
   )
 }
 
-function SocialLink({
+const SocialLink: React.FC<React.ComponentPropsWithoutRef<'a'>> = ({
   target = '_blank',
   ...props
-}: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
+}) => {
   return (
     <a
       className='p-6 mx-auto w-fit flex flex-col items-center gap-4 rounded transition hover:bg-surface-3 hover:-translate-y-0.5 sm:w-full'

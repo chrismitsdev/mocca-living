@@ -1,11 +1,7 @@
-export default function AccomodationTemplate({
-  children
-}: {
-  children: Readonly<React.ReactNode>
-}) {
+export default function Template({children}: React.PropsWithChildren) {
   return (
-    <section className='pb-32 bg-surface-1 space-y-28 h-full animate-page-appear'>
+    <div className='pb-32 space-y-28 h-full animate-page-appear'>
       {children}
-    </section>
+    </div>
   )
 }

@@ -1,4 +1,4 @@
-type State = {
+export type State = {
   playlist: Song[]
   currentTrackIndex: number
   showPlaylist: boolean

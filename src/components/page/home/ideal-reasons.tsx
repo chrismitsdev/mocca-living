@@ -1,37 +1,36 @@
 import {useTranslations} from 'next-intl'
 import {CornerDownRightIcon} from 'lucide-react'
-import {Container} from '@/components/shared/container'
-import {CustomImage} from '@/components/ui/custom-image'
-import {Typography} from '@/components/ui/typography'
-import {FadeUp} from '@/components/motion/fade-up'
-import * as outdoorImages from '#/public/images/outdoor'
+import {Container} from '@/src/components/shared/container'
+import {CustomImage} from '@/src/components/ui/custom-image'
+import {Typography} from '@/src/components/ui/typography'
+import {reasonImage1, reasonImage2} from '@/public/images/home/home-reasons'
 
-function IdealReasons() {
+const IdealReasons: React.FC = () => {
   const t = useTranslations('Pages.Home.IdealReasons')
 
   return (
-    <article className='py-24 space-y-6 bg-surface-2'>
+    <section className='py-24 space-y-6 bg-surface-2'>
       <Container>
         <div className='grid gap-16 sm:grid-cols-2'>
           <div className='sm:hidden'>
             <CustomImage
-              className='h-full object-cover rounded shadow'
-              src={outdoorImages.OutdoorImage5}
+              className='h-full object-cover rounded shadow-small'
+              src={reasonImage1}
               alt='Hello'
             />
           </div>
-          <div className='hidden grid-cols-2 grid-rows-2 gap-2 sm:grid'>
-            <div className='col-start-2'>
+          <div className='hidden grid-cols-3 grid-rows-2 gap-5 sm:grid'>
+            <div className='col-start-2 col-span-2'>
               <CustomImage
-                className='h-full object-cover rounded shadow'
-                src={outdoorImages.OutdoorImage5}
+                className='h-full object-cover rounded shadow-small'
+                src={reasonImage1}
                 alt='Hello'
               />
             </div>
-            <div className='row-start-2'>
+            <div className='row-start-2 col-span-2'>
               <CustomImage
-                className='h-full object-cover rounded shadow'
-                src={outdoorImages.OutdoorImage11}
+                className='h-full object-cover rounded shadow-small'
+                src={reasonImage2}
                 alt='Hello'
               />
             </div>
@@ -44,45 +43,38 @@ function IdealReasons() {
               {t('title')}
             </Typography>
             <div className='mt-12 space-y-14'>
-              <FadeUp>
-                <Reason
-                  title={t('reasons.reason1.title')}
-                  description={t('reasons.reason1.description')}
-                />
-              </FadeUp>
-              <FadeUp>
-                <Reason
-                  title={t('reasons.reason2.title')}
-                  description={t('reasons.reason2.description')}
-                />
-              </FadeUp>
-              <FadeUp>
-                <Reason
-                  title={t('reasons.reason3.title')}
-                  description={t('reasons.reason3.description')}
-                />
-              </FadeUp>
-              <FadeUp>
-                <Reason
-                  title={t('reasons.reason4.title')}
-                  description={t('reasons.reason4.description')}
-                />
-              </FadeUp>
-              <FadeUp>
-                <Reason
-                  title={t('reasons.reason5.title')}
-                  description={t('reasons.reason5.description')}
-                />
-              </FadeUp>
+              <Reason
+                title={t('reasons.reason1.title')}
+                description={t('reasons.reason1.description')}
+              />
+              <Reason
+                title={t('reasons.reason2.title')}
+                description={t('reasons.reason2.description')}
+              />
+              <Reason
+                title={t('reasons.reason3.title')}
+                description={t('reasons.reason3.description')}
+              />
+              <Reason
+                title={t('reasons.reason4.title')}
+                description={t('reasons.reason4.description')}
+              />
+              <Reason
+                title={t('reasons.reason5.title')}
+                description={t('reasons.reason5.description')}
+              />
             </div>
           </div>
         </div>
       </Container>
-    </article>
+    </section>
   )
 }
 
-function Reason({title, description}: {title: string; description: string}) {
+const Reason: React.FC<{title: string; description: string}> = ({
+  title,
+  description
+}) => {
   return (
     <div className='flex gap-2'>
       <CornerDownRightIcon

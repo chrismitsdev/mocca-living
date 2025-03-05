@@ -1,21 +1,24 @@
-import {useLocale, useTranslations} from 'next-intl'
-/* eslint-disable-next-line no-restricted-imports */
 import Image from 'next/image'
-import {Link, locales} from '@/i18n/routing'
-import {Container} from '@/components/shared/container'
-import {LocaleSelect, LocaleSelectItem} from '@/components/shared/locale-select'
-import {Separator} from '@/components/ui/separator'
-import {Typography} from '@/components/ui/typography'
-import {DialogAudioPlayer} from '@/components/shared/dialog-audio-player'
-import logoFull from '#/public/logos/mocca-logo-full.svg'
+import {useLocale, useTranslations} from 'next-intl'
+import {locales} from '@/src/i18n/routing'
+import {Link} from '@/src/i18n/navigation'
+import {Container} from '@/src/components/shared/container'
+import {
+  LocaleSelect,
+  LocaleSelectItem
+} from '@/src/components/shared/locale-select'
+import {Separator} from '@/src/components/ui/separator'
+import {Typography} from '@/src/components/ui/typography'
+import {DialogAudioPlayer} from '@/src/components/shared/dialog-audio-player'
+import logoFull from '@/public/logos/mocca-logo-full.svg'
 
-function Footer() {
+const Footer: React.FC = () => {
   const t = useTranslations('Components')
   const locale = useLocale()
 
   return (
-    <footer className='py-12 space-y-12 bg-surface-2 border-t border-t-surface-3 '>
-      <Container>
+    <footer className='py-12 bg-surface-2 border-t border-t-surface-3'>
+      <Container className='space-y-12'>
         <div className='space-y-10 sm:space-y-0 sm:flex sm:justify-between sm:items-start'>
           <Image
             src={logoFull}
@@ -134,9 +137,9 @@ function Footer() {
             ))}
           </LocaleSelect>
         </div>
-      </Container>
-      <Separator />
-      <Container>
+
+        <Separator />
+
         <div className='flex flex-col justify-between gap-2 sm:flex-row'>
           <Typography variant='mini'>
             {t('Footer.row-2.copyright', {created: new Date()})}

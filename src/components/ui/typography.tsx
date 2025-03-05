@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {Slot} from '@radix-ui/react-slot'
 import {cva, type VariantProps} from 'class-variance-authority'
-import {cn} from '#/lib/utils'
+import {cn} from '@/src/lib/utils'
 
 const typographyVariants = cva(['block'], {
   variants: {
@@ -30,24 +30,27 @@ const typographyVariants = cva(['block'], {
   ]
 })
 
-type TypographyProps = React.HTMLAttributes<HTMLElement> &
-  VariantProps<typeof typographyVariants> & {
-    asChild?: boolean
-  }
+interface TypographyProps
+  extends React.ComponentPropsWithRef<'span'>,
+    VariantProps<typeof typographyVariants> {
+  asChild?: boolean
+}
 
-const Typography = React.forwardRef<HTMLElement, TypographyProps>(
-  ({className, variant, asChild, ...props}, ref) => {
-    const Comp = asChild ? Slot : 'span'
+const Typography: React.FC<TypographyProps> = ({
+  className,
+  variant,
+  asChild,
+  ...props
+}) => {
+  const Comp = asChild ? Slot : 'span'
 
-    return (
-      <Comp
-        className={cn(typographyVariants({variant, className}))}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
+  return (
+    <Comp
+      className={cn(typographyVariants({variant, className}))}
+      {...props}
+    />
+  )
+}
 
 Typography.displayName = 'Typography'
 

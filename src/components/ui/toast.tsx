@@ -3,9 +3,9 @@
 import React from 'react'
 import {Toaster as SonnerToaster, toast as sonnerToast} from 'sonner'
 
-type ToasterProps = React.ComponentProps<typeof SonnerToaster>
-
-function Toaster({...props}: ToasterProps) {
+const Toaster: React.FC<React.ComponentProps<typeof SonnerToaster>> = (
+  props
+) => {
   return (
     <SonnerToaster
       toastOptions={{
@@ -32,13 +32,15 @@ function Toaster({...props}: ToasterProps) {
   )
 }
 
-type ToastParams = {
-  title: string | React.ReactNode
-  description?: string | React.ReactNode
+function toast({
+  title,
+  description,
+  status
+}: {
+  title: React.ReactNode
+  description?: React.ReactNode
   status?: 'success' | 'error' | 'info' | 'warning'
-}
-
-function toast({title, description, status}: ToastParams) {
+}) {
   if (!status) {
     return sonnerToast(title, {description})
   } else {

@@ -3,14 +3,14 @@
 import * as React from 'react'
 import {DayPicker} from 'react-day-picker'
 import {el, enUS} from 'date-fns/locale'
-import {buttonVariants} from '@/components/ui/button'
 import {
   ChevronUpIcon,
   ChevronRightIcon,
   ChevronDownIcon,
   ChevronLeftIcon
 } from 'lucide-react'
-import {cn} from '#/lib/utils'
+import {cn} from '@/src/lib/utils'
+import {buttonVariants} from '@/src/components/ui/button'
 
 const chevronMap = {
   up: <ChevronUpIcon size={18} />,
@@ -19,11 +19,11 @@ const chevronMap = {
   left: <ChevronLeftIcon size={18} />
 }
 
-type CalendarProps = React.ComponentProps<typeof DayPicker> & {
-  calendarLocale?: Params['params']['locale']
+type CalendarProps = React.ComponentPropsWithRef<typeof DayPicker> & {
+  calendarLocale?: Awaited<Params['params']>['locale']
 }
 
-function Calendar({
+const Calendar: React.FC<CalendarProps> = ({
   className,
   classNames,
   weekStartsOn = 1,
@@ -31,7 +31,7 @@ function Calendar({
   disabled = {before: new Date()},
   calendarLocale,
   ...props
-}: CalendarProps) {
+}) => {
   const btnVariant = buttonVariants({variant: 'bordered', size: 'icon-small'})
 
   return (

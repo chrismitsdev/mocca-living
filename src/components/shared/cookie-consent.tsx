@@ -4,14 +4,14 @@ import * as React from 'react'
 import cookies from 'js-cookie'
 import {useTranslations} from 'next-intl'
 import {CookieIcon} from 'lucide-react'
-import {Button} from '@/components/ui/button'
-import {Typography} from '@/components/ui/typography'
-import {useScrollLock} from '@/hooks/useScrollLock'
+import {useScrollLock} from '@/src/hooks/useScrollLock'
+import {Button} from '@/src/components/ui/button'
+import {Typography} from '@/src/components/ui/typography'
 
 const COOKIE_NAME = 'COOKIE_CONSENT'
 const EXPIRES_DAYS = 365
 
-function CookieConsent() {
+const CookieConsent: React.FC = () => {
   const t = useTranslations<'Components.CookieConsent'>()
   const [showConsentBanner, setShowConsentBanner] = React.useState(false)
   useScrollLock({autoLock: showConsentBanner})

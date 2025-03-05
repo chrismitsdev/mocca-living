@@ -1,14 +1,14 @@
 import * as React from 'react'
-import {Container} from '@/components/shared/container'
+import {Container} from '@/src/components/shared/container'
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent
-} from '@/components/ui/accordion'
-import {Typography} from '@/components/ui/typography'
+} from '@/src/components/ui/accordion'
+import {Typography} from '@/src/components/ui/typography'
 
-function Faq() {
+const Faq: React.FC = () => {
   return (
     <Container asChild>
       <article className='space-y-6'>

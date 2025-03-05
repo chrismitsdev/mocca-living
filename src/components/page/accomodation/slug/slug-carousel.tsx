@@ -1,46 +1,46 @@
 import {
-  CarouselProvider,
-  CarouselRoot,
-  CarouselViewport,
-  CarouselImageContainer,
-  CarouselImage,
-  CarouselPrevButton,
-  CarouselNextButton
-} from '@/components/ui/carousel'
-import * as georgiaImages from '#/public/images/georgia'
-import * as dimitraImages from '#/public/images/dimitra'
-
-type SlugCarouselProps = {
-  slug: Slug
-}
+  EmblaCarousel,
+  EmblaViewport,
+  EmblaContainer,
+  EmblaSlide,
+  EmblaButtonPrev,
+  EmblaButtonNext
+} from '@/src/components/ui/embla-carousel'
+import * as dimitraImages from '@/public/images/accomodation/slug/dimitra'
+import * as georgiaImages from '@/public/images/accomodation/slug/georgia'
+import {CustomImage} from '@/src/components/ui/custom-image'
 
 const slugImages = {
   georgia: Object.values(georgiaImages),
   dimitra: Object.values(dimitraImages)
 }
 
-function SlugCarousel({slug}: SlugCarouselProps) {
+const SlugCarousel: React.FC<{slug: Slug}> = ({slug}) => {
   const images = slugImages[slug]
 
+  const renderedImages = images.map(function (image, i) {
+    return (
+      <EmblaSlide
+        key={image.src}
+        className='mr-0'
+      >
+        <CustomImage
+          className='w-full h-full object-cover'
+          src={image}
+          alt={`${slug} carousel image ${i + 1}`}
+        />
+      </EmblaSlide>
+    )
+  })
+
   return (
-    <CarouselProvider images={images}>
-      <CarouselRoot className='max-w-full'>
-        <CarouselViewport className='h-full'>
-          <CarouselImageContainer className='h-full'>
-            {images.map((image, i) => (
-              <CarouselImage
-                key={image.blurDataURL}
-                index={i}
-                src={image}
-                alt='Image'
-              />
-            ))}
-          </CarouselImageContainer>
-          <CarouselPrevButton size='icon-small' />
-          <CarouselNextButton size='icon-small' />
-        </CarouselViewport>
-      </CarouselRoot>
-    </CarouselProvider>
+    <EmblaCarousel className='h-screen'>
+      <EmblaViewport>
+        <EmblaContainer>{renderedImages}</EmblaContainer>
+      </EmblaViewport>
+      <EmblaButtonPrev />
+      <EmblaButtonNext />
+    </EmblaCarousel>
   )
 }
 

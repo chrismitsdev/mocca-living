@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {useEventListener} from '@/hooks/useEventListener'
+import {useEventListener} from '@/src/hooks/useEventListener'
 
 type EventType =
   | 'mousedown'

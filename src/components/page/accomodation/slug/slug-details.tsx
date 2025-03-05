@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {NextIntlClientProvider, useTranslations, useMessages} from 'next-intl'
-import {Link} from '@/i18n/routing'
+import {Link} from '@/src/i18n/navigation'
 import {
   DotIcon,
   UsersIcon,
@@ -12,25 +12,24 @@ import {
   ChevronRightIcon,
   LucideProps
 } from 'lucide-react'
-import {Container} from '@/components/shared/container'
+import {Container} from '@/src/components/shared/container'
 import {
   Card,
   CardHeader,
   CardTitle,
   CardContent,
   CardFooter
-} from '@/components/ui/card'
-import {Button} from '@/components/ui/button'
-import {Typography} from '@/components/ui/typography'
-import {SlugForm} from '@/components/page/accomodation/slug/slug-form'
-import {FadeUp} from '@/components/motion/fade-up'
+} from '@/src/components/ui/card'
+import {Button} from '@/src/components/ui/button'
+import {Typography} from '@/src/components/ui/typography'
+import {SlugForm} from '@/src/components/page/accomodation/slug/slug-form'
 
-type SlugDetailsProps = {
+interface SlugDetailsProps {
   slug: Slug
-  locale: Params['params']['locale']
+  locale: Awaited<Params['params']>['locale']
 }
 
-function SlugDetails({slug, locale}: SlugDetailsProps) {
+const SlugDetails: React.FC<SlugDetailsProps> = ({slug, locale}) => {
   const t = useTranslations('Pages.Accomodation')
   const messages = useMessages() as IntlMessages
   const scopedMessages = {
@@ -124,13 +123,9 @@ function SlugDetails({slug, locale}: SlugDetailsProps) {
   )
 }
 
-function SlugBadge({
-  icon,
-  children
-}: {
-  icon?: React.ComponentType<LucideProps>
-  children: React.ReactNode
-}) {
+const SlugBadge: React.FC<
+  React.PropsWithChildren<{icon?: React.ComponentType<LucideProps>}>
+> = ({icon, children}) => {
   return (
     <div className='inline-flex items-center gap-1.5 [&>*]:shrink-0'>
       {icon && <span>{React.createElement(icon, {size: 18})}</span>}
@@ -139,31 +134,32 @@ function SlugBadge({
   )
 }
 
-function SlugList({children, data}: {children: React.ReactNode; data: string}) {
+const SlugList: React.FC<React.PropsWithChildren<{data: string}>> = ({
+  children,
+  data
+}) => {
   return (
     <section className='space-y-2'>
-      <FadeUp>
-        <Typography
-          variant='h5'
-          asChild
-        >
-          <h5>{children}</h5>
-        </Typography>
-        <ul className='space-y-1'>
-          {data.split(',').map((entry) => (
-            <li
-              key={entry}
-              className='flex gap-1 -ml-1.5'
-            >
-              <DotIcon
-                className='shrink-0 mt-1'
-                size={16}
-              />
-              <Typography>{entry}</Typography>
-            </li>
-          ))}
-        </ul>
-      </FadeUp>
+      <Typography
+        variant='h5'
+        asChild
+      >
+        <h5>{children}</h5>
+      </Typography>
+      <ul className='space-y-1'>
+        {data.split(',').map((entry) => (
+          <li
+            key={entry}
+            className='flex gap-1 -ml-1.5'
+          >
+            <DotIcon
+              className='shrink-0 mt-1'
+              size={16}
+            />
+            <Typography>{entry}</Typography>
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }

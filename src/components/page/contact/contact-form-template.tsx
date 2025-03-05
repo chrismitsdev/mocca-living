@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-no-literals */
-
 import {
   Html,
   Head,
@@ -15,14 +13,16 @@ import {
   Heading,
   Text
 } from '@react-email/components'
-import {formatDate} from '#/lib/utils'
-import config from '#/tailwind.config'
+import {formatDate} from '@/src/lib/utils'
+import type React from 'react'
 
-type ContactFormTemplateProps = {
+interface ContactFormTemplateProps {
   formData: Omit<ContactFormData, 'consentData'>
 }
 
-function ContactFormTemplate({formData}: ContactFormTemplateProps) {
+const ContactFormTemplate: React.FC<Readonly<ContactFormTemplateProps>> = ({
+  formData
+}) => {
   return (
     <Html>
       <Head>
@@ -37,7 +37,7 @@ function ContactFormTemplate({formData}: ContactFormTemplateProps) {
           fontStyle='normal'
         />
       </Head>
-      <Tailwind config={config}>
+      <Tailwind>
         <Body className='py-6 bg-[#ddc8a2] text-[#453227]'>
           <Container className='max-w-[576px]'>
             <Section className='p-4'>

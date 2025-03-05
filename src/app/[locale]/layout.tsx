@@ -1,16 +1,16 @@
-import '@/globals.css'
+import '@/src/styles/index.css'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import type {Metadata} from 'next'
 import {Commissioner} from 'next/font/google'
-import {notFound} from 'next/navigation'
-import {setRequestLocale, getMessages} from 'next-intl/server'
 import {NextIntlClientProvider} from 'next-intl'
-import {routing} from '@/i18n/routing'
-import {Header} from '@/components/shared/header'
-import {Footer} from '@/components/shared/footer'
-import {CookieConsent} from '@/components/shared/cookie-consent'
-import {ContactPopup} from '@/components/motion/contact-popup'
-import {Toaster} from '@/components/ui/toast'
+import {setRequestLocale, getMessages} from 'next-intl/server'
+import {notFound} from 'next/navigation'
+import {routing} from '@/src/i18n/routing'
+import {Header} from '@/src/components/shared/header'
+import {Footer} from '@/src/components/shared/footer'
+import {CookieConsent} from '@/src/components/shared/cookie-consent'
+import {ContactPopup} from '@/src/components/shared/contact-popup'
+import {Toaster} from '@/src/components/ui/toast'
 
 const commissioner = Commissioner({
   subsets: ['latin'],
@@ -33,14 +33,17 @@ export function generateStaticParams() {
 }
 
 export default async function LocaleLayout({
-  params: {locale},
+  params,
   children
 }: React.PropsWithChildren<Params>) {
+  const {locale} = await params
+
   if (!routing.locales.includes(locale)) {
     notFound()
   }
 
   setRequestLocale(locale)
+
   const messages = (await getMessages()) as IntlMessages
 
   return (
@@ -48,7 +51,7 @@ export default async function LocaleLayout({
       lang={locale}
       className={`${commissioner.className}`}
     >
-      <body className='min-h-screen grid grid-rows-[1fr,_auto]'>
+      <body className='min-h-screen grid grid-rows-[1fr_auto]'>
         <Header />
         <main>{children}</main>
         <Footer />

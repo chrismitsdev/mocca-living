@@ -1,14 +1,14 @@
-import {Link} from '@/i18n/routing'
-import {CustomImage} from '@/components/ui/custom-image'
-import {Button} from '@/components/ui/button'
-import indoorImage from '#/public/images/indoor/4.webp'
+import {Link} from '@/src/i18n/navigation'
+import {CustomImage} from '@/src/components/ui/custom-image'
+import {Button} from '@/src/components/ui/button'
+import {dimitra35} from '@/public/images/accomodation/slug/dimitra'
 
-function HeroImage() {
+const HeroImage: React.FC = () => {
   return (
     <div className='relative h-svh'>
       <CustomImage
         className='w-full h-full object-cover'
-        src={indoorImage}
+        src={dimitra35}
         alt='Hero image'
         draggable={false}
         priority

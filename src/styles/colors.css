@@ -1,0 +1,149 @@
+/* LEGEND
+   1: Backgrounds
+   2: Backgrounds
+   3: Interactive components
+   4: Interactive components
+   5: Interactive components
+   6: Borders and separator
+   7: Borders and separator
+   8: Borders and separator
+   9: Solid colors
+   10: Solid colors
+   11: Accessible text
+   12: Accessible text
+*/
+
+@theme {
+  --color-brand-1: #c6c4c3; /* rgba(198, 196, 195, 1) */
+  --color-brand-2: #c4bbb6; /* rgba(196, 187, 182, 1) */
+  --color-brand-3: #c2ab9f; /* rgba(194, 171, 159, 1) */
+  --color-brand-4: #bf9c88; /* rgba(191, 156, 136, 1) */
+  --color-brand-5: #ba8c71; /* rgba(186, 140, 113, 1) */
+  --color-brand-6: #af7c5f; /* rgba(175, 124, 95, 1) */
+  --color-brand-7: #a26844; /* rgba(162, 104, 68, 1) */
+  --color-brand-8: #934a16; /* rgba(147, 74, 22, 1) */
+  --color-brand-9: #944f21; /* rgba(148, 79, 33, 1) */
+  --color-brand-10: #873f03; /* rgba(135, 63, 3, 1) */
+  --color-brand-11: #491400; /* rgba(73, 20, 0, 1) */
+  --color-brand-12: #453227; /* rgba(69, 50, 39, 1) */
+
+  --color-gray-1: #c5c3c3;
+  --color-gray-2: #bdbcbb;
+  --color-gray-3: #b1afae;
+  --color-gray-4: #a5a4a3;
+  --color-gray-5: #9b9998;
+  --color-gray-6: #908e8d;
+  --color-gray-7: #838180;
+  --color-gray-8: #6f6d6c;
+  --color-gray-9: #444140;
+  --color-gray-10: #3b3837;
+  --color-gray-11: #242221;
+  --color-gray-12: #211f1e; /* rgba(33, 31, 30, 1) */
+
+  --color-green-1: #fbfefc;
+  --color-green-2: #f4fbf6;
+  --color-green-3: #e6f6eb;
+  --color-green-4: #d6f1df;
+  --color-green-5: #c4e8d1;
+  --color-green-6: #adddc0;
+  --color-green-7: #8eceaa;
+  --color-green-8: #5bb98b;
+  --color-green-9: #30a46c;
+  --color-green-10: #2b9a66;
+  --color-green-11: #218358;
+  --color-green-12: #193b2d;
+
+  --color-red-1: #fffcfc;
+  --color-red-2: #fff7f7;
+  --color-red-3: #feebec;
+  --color-red-4: #ffdbdc;
+  --color-red-5: #ffcdce;
+  --color-red-6: #fdbdbe;
+  --color-red-7: #f4a9aa;
+  --color-red-8: #eb8e90;
+  --color-red-9: #e5484d;
+  --color-red-10: #dc3e42;
+  --color-red-11: #ce2c31;
+  --color-red-12: #641723;
+
+  --color-yellow-1: #fdfdf9;
+  --color-yellow-2: #fefce9;
+  --color-yellow-3: #fffab8;
+  --color-yellow-4: #fff394;
+  --color-yellow-5: #ffe770;
+  --color-yellow-6: #f3d768;
+  --color-yellow-7: #e4c767;
+  --color-yellow-8: #d5ae39;
+  --color-yellow-9: #ffe629;
+  --color-yellow-10: #ffdc00;
+  --color-yellow-11: #9e6c00;
+  --color-yellow-12: #473b1f;
+
+  --color-blue-1: #fbfdff;
+  --color-blue-2: #f4faff;
+  --color-blue-3: #e6f4fe;
+  --color-blue-4: #d5efff;
+  --color-blue-5: #c2e5ff;
+  --color-blue-6: #acd8fc;
+  --color-blue-7: #8ec8f6;
+  --color-blue-8: #5eb1ef;
+  --color-blue-9: #0090ff;
+  --color-blue-10: #0588f0;
+  --color-blue-11: #0d74ce;
+  --color-blue-12: #113264;
+
+  /* Surface colors */
+  --color-surface-1: #e7d9be; /* rgba(231, 217, 190, 1) */
+  --color-surface-2: #ddc8a2; /* rgba(221, 200, 162, 1) */
+  --color-surface-3: #c7b492; /* rgba(199, 180, 146, 1) */
+  --color-surface-4: #b1a082; /* rgba(177, 160, 130, 1) */
+  --color-surface-5: #9b8c71; /* rgba(155, 140, 113, 1) */
+
+  /* Semantic colors */
+  --color-foreground: var(--color-brand-12);
+  --color-foreground-muted: var(--color-brand-6);
+
+  --color-primary: var(--color-brand-9);
+  --color-primary-foreground: var(--color-surface-1);
+  --color-primary-hover: var(--color-brand-10);
+
+  --color-muted: var(--color-brand-4);
+  --color-muted-foreground: var(--color-brand-12);
+  --color-muted-hover: var(--color-brand-5);
+
+  --color-success: var(--color-green-9);
+  --color-success-foreground: var(--color-green-3);
+  --color-success-hover: var(--color-green-10);
+
+  --color-error: var(--color-red-9);
+  --color-error-foreground: var(--color-red-3);
+  --color-error-hover: var(--color-red-10);
+
+  --color-warning: var(--color-yellow-9);
+  --color-warning-foreground: var(--color-brand-12);
+  --color-warning-hover: var(--color-yellow-10);
+
+  --color-info: var(--color-blue-9);
+  --color-info-foreground: var(--color-blue-3);
+  --color-info-hover: var(--color-blue-10);
+
+  --color-border: var(--color-brand-6);
+  --color-border-hover: var(--color-brand-8);
+
+  --color-border-muted: var(--color-brand-4);
+  --color-border-muted-hover: var(--color-brand-5);
+
+  --color-border-success: var(--color-green-6);
+  --color-border-success-hover: var(--color-green-8);
+
+  --color-border-error: var(--color-red-6);
+  --color-border-error-hover: var(--color-red-8);
+
+  --color-border-info: var(--color-blue-6);
+  --color-border-info-hover: var(--color-blue-8);
+
+  --color-border-warning: var(--color-yellow-6);
+  --color-border-warning-hover: var(--color-yellow-8);
+
+  --color-ring: var(--color-brand-8);
+}

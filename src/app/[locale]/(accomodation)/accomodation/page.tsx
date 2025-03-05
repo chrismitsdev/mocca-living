@@ -1,9 +1,11 @@
+import * as React from 'react'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
-import {HeroImage} from '@/components/page/accomodation/hero-image'
-import {Introduction} from '@/components/page/accomodation/introduction'
-import {Villas} from '@/components/page/accomodation/villas'
+import {HeroImage} from '@/src/components/page/accomodation/hero-image'
+import {Introduction} from '@/src/components/page/accomodation/introduction'
+import {Villas} from '@/src/components/page/accomodation/villas'
 
-export async function generateMetadata({params: {locale}}: Params) {
+export async function generateMetadata({params}: Params) {
+  const {locale} = await params
   const t = await getTranslations({
     locale,
     namespace: 'Metadata.Pages.accomodation'
@@ -14,7 +16,9 @@ export async function generateMetadata({params: {locale}}: Params) {
   }
 }
 
-export default function AccomodationPage({params: {locale}}: Params) {
+export default function AccomodationPage({params}: Params) {
+  const {locale} = React.use(params)
+
   setRequestLocale(locale)
 
   return (

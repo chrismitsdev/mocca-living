@@ -1,56 +1,45 @@
 import {
-  CarouselProvider,
-  CarouselRoot,
-  CarouselViewport,
-  CarouselImageContainer,
-  CarouselImage,
-  CarouselPrevButton,
-  CarouselNextButton,
-  CarouselThumbnailViewport,
-  CarouselThumbnailContainer,
-  CarouselThumbnailButton,
-  CarouselThumbnailImage
-} from '@/components/ui/carousel'
-import * as outdoorImages from '#/public/images/outdoor'
+  EmblaCarousel,
+  EmblaViewport,
+  EmblaContainer,
+  EmblaSlide,
+  EmblaButtonPrev,
+  EmblaButtonNext
+} from '@/src/components/ui/embla-carousel'
+import {CustomImage} from '@/src/components/ui/custom-image'
+import {sortImportedImagesByName} from '@/src/lib/utils'
+import * as slideShowImages from '@/public/images/home/home-slide-show'
 
-const images = Object.values(outdoorImages).slice(0, 8)
+const images = sortImportedImagesByName(slideShowImages)
 
-function HomeHeroCarousel() {
+const HomeHeroCarousel: React.FC = () => {
+  const renderedImages = images.map(function (image, i) {
+    return (
+      <EmblaSlide
+        key={image.src}
+        className='mr-0'
+      >
+        <CustomImage
+          className='w-full h-full object-cover'
+          src={image}
+          alt={`Home page carousel image ${i + 1}`}
+          priority
+        />
+      </EmblaSlide>
+    )
+  })
+
   return (
-    <CarouselProvider images={images}>
-      <CarouselRoot className='max-w-full'>
-        <CarouselViewport className='h-full'>
-          <CarouselImageContainer className='h-full'>
-            {images.map((image, i) => (
-              <CarouselImage
-                key={image.src}
-                index={i}
-                src={image}
-                alt={`Home page carousel image ${i + 1}`}
-                priority
-              />
-            ))}
-          </CarouselImageContainer>
-          <CarouselPrevButton size='icon-small' />
-          <CarouselNextButton size='icon-small' />
-        </CarouselViewport>
-        <CarouselThumbnailViewport className='hidden sm:flex'>
-          <CarouselThumbnailContainer>
-            {images.map((image, i) => (
-              <CarouselThumbnailButton
-                key={image.src}
-                index={i}
-              >
-                <CarouselThumbnailImage
-                  src={image}
-                  alt={`Carousel thumbnail iamge ${i + 1}`}
-                />
-              </CarouselThumbnailButton>
-            ))}
-          </CarouselThumbnailContainer>
-        </CarouselThumbnailViewport>
-      </CarouselRoot>
-    </CarouselProvider>
+    <EmblaCarousel
+      className='h-screen'
+      autoplayActive
+    >
+      <EmblaViewport>
+        <EmblaContainer>{renderedImages}</EmblaContainer>
+      </EmblaViewport>
+      <EmblaButtonPrev />
+      <EmblaButtonNext />
+    </EmblaCarousel>
   )
 }
 

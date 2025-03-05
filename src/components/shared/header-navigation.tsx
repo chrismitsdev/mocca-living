@@ -8,31 +8,34 @@ import {
   useTransform,
   useMotionTemplate
 } from 'framer-motion'
-import {Link, usePathname, locales} from '@/i18n/routing'
+import {locales} from '@/src/i18n/routing'
+import {Link, usePathname} from '@/src/i18n/navigation'
 import {
   MenuIcon,
   XIcon,
   ChevronRightIcon,
   EllipsisVerticalIcon
 } from 'lucide-react'
-import {useBoundedScroll} from '@/hooks/useBoundedScroll'
-import {cn} from '#/lib/utils'
-import {Container} from '@/components/shared/container'
-import {Typography} from '@/components/ui/typography'
-import {LogoSimple} from '@/components/logos/logo-simple'
-import {VisuallyHidden} from '@/components/ui/visually-hidden'
-import {Button} from '@/components/ui/button'
-import {CustomImage} from '@/components/ui/custom-image'
-import {AnimatedBackground} from '@/components/motion/animated-background'
-import {LocaleSelect, LocaleSelectItem} from '@/components/shared/locale-select'
-import {Separator} from '@/components/ui/separator'
+import {cn} from '@/src/lib/utils'
+import {useBoundedScroll} from '@/src/hooks/useBoundedScroll'
+import {Container} from '@/src/components/shared/container'
+import {Typography} from '@/src/components/ui/typography'
+import {LogoSimple} from '@/src/components/logos/logo-simple'
+import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
+import {Button} from '@/src/components/ui/button'
+import {CustomImage} from '@/src/components/ui/custom-image'
+import {
+  LocaleSelect,
+  LocaleSelectItem
+} from '@/src/components/shared/locale-select'
+import {Separator} from '@/src/components/ui/separator'
 import {
   HoverCard,
   HoverCardTrigger,
   HoverCardPortal,
   HoverCardContent,
   HoverCardArrow
-} from '@/components/ui/hover-card'
+} from '@/src/components/ui/hover-card'
 import {
   Drawer,
   DrawerTrigger,
@@ -41,21 +44,21 @@ import {
   DrawerContent,
   DrawerTitle,
   DrawerClose
-} from '@/components/ui/drawer'
+} from '@/src/components/ui/drawer'
 import {
   Collapsible,
   CollapsibleTrigger,
   CollapsibleContent
-} from '@/components/ui/collapsible'
-import georgiaImage from '#/public/images/georgia/5.webp'
-import dimitraImage from '#/public/images/dimitra/8.webp'
+} from '@/src/components/ui/collapsible'
+import {dimitra43} from '@/public/images/accomodation/slug/dimitra'
+import {dimitra44} from '@/public/images/accomodation/slug/dimitra'
 
 const HEADER_MAX_HEIGHT = 128
 const HEADER_MIN_HEIGHT = 64
 const LOGO_MAX_SCALE = 1
 const LOGO_MIN_SCALE = 0.5
 
-function HeaderNavigation() {
+const HeaderNavigation: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   const [hoverCardOpen, setHoverCardOpen] = React.useState(false)
   const m = useTranslations<'Metadata.Pages'>()
@@ -186,50 +189,40 @@ function HeaderNavigation() {
               <HoverCardPortal>
                 <HoverCardContent collisionPadding={16}>
                   <section className='columns-2'>
-                    <AnimatedBackground
-                      className='bg-surface-3 rounded'
-                      transition={{
-                        bounce: 0.2,
-                        duration: 0.6,
-                        type: 'spring'
-                      }}
-                      enableHover
+                    <Link
+                      data-id='1'
+                      href='/accomodation/georgia'
+                      onClick={() => setHoverCardOpen(false)}
                     >
-                      <Link
-                        data-id='1'
-                        href='/accomodation/georgia'
-                        onClick={() => setHoverCardOpen(false)}
-                      >
-                        <article className='p-3 space-y-1'>
-                          <CustomImage
-                            className='aspect-square object-cover rounded'
-                            src={georgiaImage}
-                            alt='Georgia card image'
-                          />
-                          <Typography variant='h5'>{'Georgia'}</Typography>
-                          <Typography variant='small'>
-                            {m('accomodation.georgia-caption')}
-                          </Typography>
-                        </article>
-                      </Link>
-                      <Link
-                        data-id='2'
-                        href='/accomodation/dimitra'
-                        onClick={() => setHoverCardOpen(false)}
-                      >
-                        <article className='p-3 space-y-1'>
-                          <CustomImage
-                            className='aspect-square object-cover rounded'
-                            src={dimitraImage}
-                            alt='Dimitra card image'
-                          />
-                          <Typography variant='h5'>{'Dimitra'}</Typography>
-                          <Typography variant='small'>
-                            {m('accomodation.dimitra-caption')}
-                          </Typography>
-                        </article>
-                      </Link>
-                    </AnimatedBackground>
+                      <article className='p-3 space-y-1 rounded hover:bg-surface-3 transition'>
+                        <CustomImage
+                          className='aspect-square object-cover rounded'
+                          src={dimitra43}
+                          alt='Georgia card image'
+                        />
+                        <Typography variant='h5'>{'Georgia'}</Typography>
+                        <Typography variant='small'>
+                          {m('accomodation.georgia-caption')}
+                        </Typography>
+                      </article>
+                    </Link>
+                    <Link
+                      data-id='2'
+                      href='/accomodation/dimitra'
+                      onClick={() => setHoverCardOpen(false)}
+                    >
+                      <article className='p-3 space-y-1 rounded hover:bg-surface-3 transition'>
+                        <CustomImage
+                          className='aspect-square object-cover rounded'
+                          src={dimitra44}
+                          alt='Dimitra card image'
+                        />
+                        <Typography variant='h5'>{'Dimitra'}</Typography>
+                        <Typography variant='small'>
+                          {m('accomodation.dimitra-caption')}
+                        </Typography>
+                      </article>
+                    </Link>
                   </section>
                   <HoverCardArrow />
                 </HoverCardContent>
@@ -402,15 +395,9 @@ function HeaderNavigation() {
   )
 }
 
-function NavLink({
-  isActive,
-  draggable = false,
-  role = 'menuitem',
-  children,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof Link> & {
-  isActive: boolean
-}) {
+const NavLink: React.FC<
+  React.ComponentPropsWithRef<typeof Link> & {isActive: boolean}
+> = ({isActive, draggable = false, role = 'menuitem', children, ...props}) => {
   return (
     <Link
       className={cn('p-1 inline-block', isActive && 'font-bold')}
