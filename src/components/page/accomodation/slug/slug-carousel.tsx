@@ -6,13 +6,14 @@ import {
   EmblaButtonPrev,
   EmblaButtonNext
 } from '@/src/components/ui/embla-carousel'
+import {CustomImage} from '@/src/components/ui/custom-image'
+import {sortImportedImagesByName} from '@/src/lib/utils'
 import * as dimitraImages from '@/public/images/accomodation/slug/dimitra'
 import * as georgiaImages from '@/public/images/accomodation/slug/georgia'
-import {CustomImage} from '@/src/components/ui/custom-image'
 
 const slugImages = {
-  georgia: Object.values(georgiaImages),
-  dimitra: Object.values(dimitraImages)
+  georgia: sortImportedImagesByName(georgiaImages),
+  dimitra: sortImportedImagesByName(dimitraImages)
 }
 
 const SlugCarousel: React.FC<{slug: Slug}> = ({slug}) => {

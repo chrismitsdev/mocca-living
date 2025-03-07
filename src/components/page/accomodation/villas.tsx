@@ -4,8 +4,6 @@ import {type StaticImageData} from 'next/image'
 import {UsersIcon, BedDoubleIcon, BathIcon, ChevronRight} from 'lucide-react'
 import {Link} from '@/src/i18n/navigation'
 import {Container} from '@/src/components/shared/container'
-import {CustomImage} from '@/src/components/ui/custom-image'
-import {Separator} from '@/src/components/ui/separator'
 import {
   Card,
   CardHeader,
@@ -14,9 +12,10 @@ import {
   CardContent,
   CardFooter
 } from '@/src/components/ui/card'
+import {CustomImage} from '@/src/components/ui/custom-image'
+import {Separator} from '@/src/components/ui/separator'
 import {Button} from '@/src/components/ui/button'
-import {dimitra43} from '@/public/images/accomodation/slug/dimitra'
-import {dimitra44} from '@/public/images/accomodation/slug/dimitra'
+import {dimitraCover, georgiaCover} from '@/public/images/covers'
 
 type Villas = IntlMessages['Pages']['Accomodation']['Index']['Villas']
 
@@ -32,8 +31,8 @@ type VillaInfo = {
 }
 
 const villaInfo: Pick<VillaInfo, 'key' | 'image'>[] = [
-  {key: 'georgia', image: dimitra43},
-  {key: 'dimitra', image: dimitra44}
+  {key: 'dimitra', image: dimitraCover},
+  {key: 'georgia', image: georgiaCover}
 ]
 
 const tInfo = function (

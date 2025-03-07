@@ -3,6 +3,7 @@
 import * as React from 'react'
 import {GlobeIcon} from 'lucide-react'
 import {useRouter, usePathname} from '@/src/i18n/navigation'
+import {locales} from '@/src/i18n/routing'
 import {
   Select,
   SelectTrigger,
@@ -18,31 +19,40 @@ interface LocaleSelectProps extends React.ComponentPropsWithRef<typeof Select> {
   loadingText: string
   className?: string
   placeholder: string
-  noScroll?: boolean
+  scroll?: boolean
 }
 
 const LocaleSelect: React.FC<LocaleSelectProps> = ({
   loadingText,
   className,
   placeholder,
-  noScroll = false,
+  scroll = false,
   children,
   ...props
 }) => {
+  const [isPending, startTransition] = React.useTransition()
   const router = useRouter()
   const pathname = usePathname()
-  const [isPending, startTransition] = React.useTransition()
 
-  function onSelectChange(locale: Locale) {
+  function onValueChange(locale: Locale) {
     startTransition(function () {
-      router.replace(pathname, {locale, scroll: !noScroll})
+      router.replace(pathname, {locale, scroll})
     })
   }
+
+  const renderedLocales = locales.map(function (locale) {
+    return (
+      <SelectItem
+        key={locale}
+        value={locale}
+      ></SelectItem>
+    )
+  })
 
   return (
     <Select
       disabled={isPending}
-      onValueChange={onSelectChange}
+      onValueChange={onValueChange}
       {...props}
     >
       <SelectTrigger className={className}>

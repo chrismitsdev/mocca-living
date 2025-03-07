@@ -17,7 +17,7 @@ import {cn} from '@/src/lib/utils'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 
 const drawerContentVariants = cva(
-  ['fixed', 'z-[1]', 'bg-surface-2', 'shadow'],
+  ['fixed', 'z-[1]', 'bg-surface-2', 'shadow-small'],
   {
     variants: {
       side: {
@@ -31,7 +31,7 @@ const drawerContentVariants = cva(
           'inset-y-0',
           'right-0',
           'h-full',
-          'w-4/5',
+          'w-full',
           'data-open:animate-drawer-right-open',
           'data-closed:animate-drawer-right-close',
           'sm:max-w-sm'
@@ -46,7 +46,7 @@ const drawerContentVariants = cva(
           'inset-y-0',
           'left-0',
           'h-full',
-          'w-4/5',
+          'w-full',
           'data-open:animate-drawer-left-open',
           'data-closed:animate-drawer-left-close',
           'sm:max-w-sm'

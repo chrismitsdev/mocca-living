@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import {type LucideProps, ChevronLeftIcon, ChevronRightIcon} from 'lucide-react'
+import {ChevronLeftIcon, ChevronRightIcon, type LucideProps} from 'lucide-react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import {
@@ -128,7 +128,10 @@ const EmblaButtonPrev: React.FC<
   return (
     <Button
       id='embla-button-prev'
-      className={cn('absolute top-1/2 -translate-y-1/2 left-4', className)}
+      className={cn(
+        'absolute top-1/2 -translate-y-1/2 left-2 sm:left-4',
+        className
+      )}
       size={matches ? 'icon-normal' : 'icon-small'}
       onClick={scrollPrevSlide}
       {...props}
@@ -151,7 +154,10 @@ const EmblaButtonNext: React.FC<
   return (
     <Button
       id='embla-button-next'
-      className={cn('absolute top-1/2 -translate-y-1/2 right-4', className)}
+      className={cn(
+        'absolute top-1/2 -translate-y-1/2 right-2 sm:right-4',
+        className
+      )}
       size={matches ? 'icon-normal' : 'icon-small'}
       onClick={scrollNextSlide}
       {...props}

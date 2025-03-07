@@ -8,8 +8,8 @@ import {notFound} from 'next/navigation'
 import {routing} from '@/src/i18n/routing'
 import {Header} from '@/src/components/shared/header'
 import {Footer} from '@/src/components/shared/footer'
+import {ContactDrawer} from '@/src/components/shared/contact-drawer'
 import {CookieConsent} from '@/src/components/shared/cookie-consent'
-import {ContactPopup} from '@/src/components/shared/contact-popup'
 import {Toaster} from '@/src/components/ui/toast'
 
 const commissioner = Commissioner({
@@ -37,14 +37,13 @@ export default async function LocaleLayout({
   children
 }: React.PropsWithChildren<Params>) {
   const {locale} = await params
+  const messages = (await getMessages()) as IntlMessages
 
   if (!routing.locales.includes(locale)) {
     notFound()
   }
 
   setRequestLocale(locale)
-
-  const messages = (await getMessages()) as IntlMessages
 
   return (
     <html
@@ -55,14 +54,9 @@ export default async function LocaleLayout({
         <Header />
         <main>{children}</main>
         <Footer />
-        <NextIntlClientProvider
-          messages={{
-            ...messages.Components.CookieConsent,
-            ...messages.Components.ContactPopup
-          }}
-        >
+        <ContactDrawer />
+        <NextIntlClientProvider messages={messages.Components.CookieConsent}>
           <CookieConsent />
-          <ContactPopup />
         </NextIntlClientProvider>
         <Toaster position='top-right' />
       </body>

@@ -285,7 +285,7 @@ const SlugForm: React.FC<SlugFormProps> = ({slug, locale}) => {
               variant='ghost-error'
               size='icon-normal'
             >
-              <VisuallyHidden>{'Close drawer'}</VisuallyHidden>
+              <VisuallyHidden>Close drawer</VisuallyHidden>
               <XIcon />
             </Button>
           </DrawerClose>

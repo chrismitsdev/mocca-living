@@ -31,7 +31,7 @@ const HomeHeroCarousel: React.FC = () => {
 
   return (
     <EmblaCarousel
-      className='h-screen'
+      className='h-svh'
       autoplayActive
     >
       <EmblaViewport>

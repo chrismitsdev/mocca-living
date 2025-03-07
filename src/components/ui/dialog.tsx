@@ -41,7 +41,7 @@ const DialogContent: React.FC<React.ComponentPropsWithRef<typeof Content>> = ({
 }) => (
   <Content
     className={cn(
-      'p-6 fixed left-1/2 top-1/2 -translate-1/2 origin-center z-[1] w-full max-w-xl bg-surface-2 rounded shadow-medium data-open:animate-dialog-open data-closed:animate-dialog-close',
+      'p-6 fixed left-1/2 top-1/2 -translate-1/2 origin-center z-[1] w-full max-w-xl bg-surface-2 rounded shadow-small data-open:animate-dialog-open data-closed:animate-dialog-close',
       className
     )}
     aria-describedby={ariaDescribedBy}

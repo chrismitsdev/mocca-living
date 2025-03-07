@@ -27,7 +27,10 @@ const DialogAudioPlayer: React.FC<React.PropsWithChildren> = ({children}) => {
       <DialogTrigger>{children}</DialogTrigger>
       <DialogPortal forceMount>
         <DialogContent
-          className={cn('p-0 max-w-3xl', !open && 'invisible')}
+          className={cn(
+            'p-0 w-[calc(100%-16px)] max-w-3xl',
+            !open && 'invisible'
+          )}
           aria-describedby={undefined}
         >
           <VisuallyHidden>

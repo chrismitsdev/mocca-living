@@ -1,14 +1,14 @@
 import {Link} from '@/src/i18n/navigation'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {Button} from '@/src/components/ui/button'
-import {dimitra35} from '@/public/images/accomodation/slug/dimitra'
+import {dimitraCover} from '@/public/images/covers'
 
 const HeroImage: React.FC = () => {
   return (
     <div className='relative h-svh'>
       <CustomImage
         className='w-full h-full object-cover'
-        src={dimitra35}
+        src={dimitraCover}
         alt='Hero image'
         draggable={false}
         priority
