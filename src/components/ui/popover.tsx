@@ -9,7 +9,7 @@ import {
   Close,
   Anchor
 } from '@radix-ui/react-popover'
-import {cn} from '#/lib/utils'
+import {cn} from '@/src/lib/utils'
 
 const Popover = Root
 const PopoverPortal = Portal
@@ -17,21 +17,22 @@ const PopoverTrigger = Trigger
 const PopoverAnchor = Anchor
 const PopoverClose = Close
 
-const PopoverContent = React.forwardRef<
-  React.ElementRef<typeof Content>,
-  React.ComponentPropsWithoutRef<typeof Content>
->(({className, align = 'center', sideOffset = 6, ...props}, ref) => (
+const PopoverContent: React.FC<React.ComponentPropsWithRef<typeof Content>> = ({
+  className,
+  sideOffset = 6,
+  align = 'center',
+  ...props
+}) => (
   <Content
     className={cn(
-      'p-4 z-50 bg-surface-1 border border-primary rounded shadow outline-none data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-top:slide-in-from-bottom-2 data-right:slide-in-from-left-2 data-bottom:slide-in-from-top-2 data-left:slide-in-from-right-2',
+      'p-4 z-50 bg-surface-1 border border-primary rounded shadow outline-none data-open:data-top:animate-slide-top-show data-open:data-right:animate-slide-right-show data-open:data-bottom:animate-slide-bottom-show data-open:data-left:animate-slide-left-show data-closed:data-top:animate-slide-top-hide data-closed:data-right:animate-slide-right-hide data-closed:data-bottom:animate-slide-bottom-hide data-closed:data-left:animate-slide-left-hide',
       className
     )}
-    align={align}
     sideOffset={sideOffset}
-    ref={ref}
+    align={align}
     {...props}
   />
-))
+)
 
 Popover.displayName = 'Popover'
 PopoverTrigger.displayName = 'PopoverTrigger'

@@ -1,54 +1,78 @@
 'use client'
 
 import * as React from 'react'
-import cookies from 'js-cookie'
 import {useTranslations} from 'next-intl'
+import cookies from 'js-cookie'
 import {CookieIcon} from 'lucide-react'
-import {Button} from '@/components/ui/button'
-import {Typography} from '@/components/ui/typography'
-import {useScrollLock} from '@/hooks/useScrollLock'
+import {useScrollLock} from '@/src/hooks/useScrollLock'
+import {Typography} from '@/src/components/ui/typography'
+import {Button} from '@/src/components/ui/button'
 
-const COOKIE_NAME = 'COOKIE_CONSENT'
+const COOKIE_NAME = 'CONSENT_COOKIE'
+const COOKIE_VALUE = 'true'
 const EXPIRES_DAYS = 365
 
-function CookieConsent() {
+const CookieConsent: React.FC = () => {
+  const [showBanner, setShowBanner] = React.useState(false)
   const t = useTranslations<'Components.CookieConsent'>()
-  const [showConsentBanner, setShowConsentBanner] = React.useState(false)
-  useScrollLock({autoLock: showConsentBanner})
+  useScrollLock({autoLock: showBanner})
 
-  function handleCookieConsent() {
-    setShowConsentBanner(false)
+  function handleClick() {
+    if (!cookies.get(COOKIE_NAME)) {
+      cookies.set(COOKIE_NAME, COOKIE_VALUE, {expires: EXPIRES_DAYS})
+    }
 
-    cookies.set(COOKIE_NAME, 'accepted', {expires: EXPIRES_DAYS})
+    setShowBanner(false)
   }
 
   React.useEffect(function () {
-    if (typeof window === 'undefined') return
-    const consentCookie = cookies.get(COOKIE_NAME)
-
-    if (!consentCookie) {
-      setShowConsentBanner(true)
+    if (!cookies.get(COOKIE_NAME)) {
+      setShowBanner(true)
     }
   }, [])
 
-  if (!showConsentBanner) {
+  if (!showBanner) {
     return null
   }
 
   return (
-    <section className='px-4 py-8 fixed inset-x-0 bottom-0 space-y-6 bg-brand-12 text-primary-foreground sm:px-8 sm:w-96 sm:inset-auto sm:bottom-8 sm:right-8 sm:rounded sm:shadow'>
-      <div className='flex items-center gap-2'>
-        <CookieIcon size={32} />
-        <Typography variant='h3'>{t('title')}</Typography>
-      </div>
-      <Typography variant={'small'}>{t('message')}</Typography>
-      <Button
-        className='w-full sm:w-auto'
-        onClick={handleCookieConsent}
+    <div
+      id='consent-cookie-overlay'
+      className='fixed inset-0 bg-black/75 z-50'
+    >
+      <div
+        id='consent-cookie-banner'
+        className='p-8 absolute bottom-2 left-2 w-[calc(100%-16px)] bg-surface-2 space-y-5 rounded shadow-small sm:bottom-1/2 sm:left-1/2 sm:translate-y-1/2 sm:-translate-x-1/2 sm:w-lg'
+        role='dialog'
+        aria-live='polite'
       >
-        {t('button-label')}
-      </Button>
-    </section>
+        <div className='flex items-center gap-3'>
+          <CookieIcon
+            className='mt-0.5'
+            size={24}
+          />
+          <Typography
+            variant='h3'
+            asChild
+          >
+            <h3>{t('title')}</h3>
+          </Typography>
+        </div>
+        <Typography
+          className='text-sm sm:text-base'
+          asChild
+        >
+          <p>{t('message')}</p>
+        </Typography>
+        <Button
+          className='w-full'
+          type='submit'
+          onClick={handleClick}
+        >
+          {t('button-label')}
+        </Button>
+      </div>
+    </div>
   )
 }
 

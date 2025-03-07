@@ -1,5 +1,5 @@
-import {Container} from '@/components/shared/container'
-import {Spinner} from '@/components/ui/spinner'
+import {Container} from '@/src/components/shared/container'
+import {Spinner} from '@/src/components/ui/spinner'
 
 export default function Loading() {
   return (

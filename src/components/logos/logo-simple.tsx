@@ -1,4 +1,8 @@
-function LogoSimple({width = 234, height = 362, ...props}: CustomIconProps) {
+const LogoSimple: React.FC<CustomIconProps> = ({
+  width = 234,
+  height = 362,
+  ...props
+}) => {
   return (
     <svg
       width={width}

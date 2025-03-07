@@ -1,12 +1,12 @@
 import * as React from 'react'
 
 export function useClickOutside<T extends HTMLElement>(
-  ref: React.RefObject<T>,
+  ref: React.RefObject<T | null>,
   handler: (event: MouseEvent | TouchEvent) => void
 ): void {
   React.useEffect(
     function () {
-      const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      function handleClickOutside(event: MouseEvent | TouchEvent): void {
         if (
           !ref ||
           !ref.current ||
@@ -21,7 +21,7 @@ export function useClickOutside<T extends HTMLElement>(
       document.addEventListener('mousedown', handleClickOutside)
       document.addEventListener('touchstart', handleClickOutside)
 
-      return () => {
+      return function () {
         document.removeEventListener('mousedown', handleClickOutside)
         document.removeEventListener('touchstart', handleClickOutside)
       }

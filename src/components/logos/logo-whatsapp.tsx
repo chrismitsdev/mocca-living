@@ -1,4 +1,8 @@
-function LogoWhatsApp({width = 32, height = 32, ...props}: CustomIconProps) {
+const LogoWhatsApp: React.FC<CustomIconProps> = ({
+  width = 32,
+  height = 32,
+  ...props
+}) => {
   return (
     <svg
       width={width}

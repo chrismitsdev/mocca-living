@@ -1,0 +1,68 @@
+@theme {
+  --text-xxs: 10px;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
+  --text-4xl: 36px;
+  --text-5xl: 48px;
+  --text-6xl: 60px;
+}
+
+@utility text-xxs {
+  font-size: var(--text-xxs);
+  line-height: 14px;
+}
+
+@utility text-xs {
+  font-size: var(--text-xs);
+  line-height: 16px;
+}
+
+@utility text-sm {
+  font-size: var(--text-sm);
+  line-height: 24px;
+}
+
+@utility text-base {
+  font-size: var(--text-base);
+  line-height: 24px;
+}
+
+@utility text-lg {
+  font-size: var(--text-lg);
+  line-height: 24px;
+}
+
+@utility text-xl {
+  font-size: var(--text-xl);
+  line-height: 24px;
+}
+
+@utility text-2xl {
+  font-size: var(--text-2xl);
+  line-height: 32px;
+}
+
+@utility text-3xl {
+  font-size: var(--text-3xl);
+  line-height: 48px;
+}
+
+@utility text-4xl {
+  font-size: var(--text-4xl);
+  line-height: 48px;
+}
+
+@utility text-5xl {
+  font-size: var(--text-5xl);
+  line-height: 64px;
+}
+
+@utility text-6xl {
+  font-size: var(--text-6xl);
+  line-height: 96px;
+}

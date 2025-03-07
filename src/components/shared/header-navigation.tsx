@@ -1,38 +1,42 @@
 'use client'
 
 import * as React from 'react'
-import {useTranslations, useLocale} from 'next-intl'
+import {useTranslations} from 'next-intl'
 import {
   type MotionStyle,
   motion,
   useTransform,
   useMotionTemplate
 } from 'framer-motion'
-import {Link, usePathname, locales} from '@/i18n/routing'
 import {
   MenuIcon,
   XIcon,
   ChevronRightIcon,
-  EllipsisVerticalIcon
+  EllipsisVerticalIcon,
+  HomeIcon,
+  BedDoubleIcon,
+  MessageSquareIcon,
+  FacebookIcon,
+  InstagramIcon,
+  type LucideProps
 } from 'lucide-react'
-import {useBoundedScroll} from '@/hooks/useBoundedScroll'
-import {cn} from '#/lib/utils'
-import {Container} from '@/components/shared/container'
-import {Typography} from '@/components/ui/typography'
-import {LogoSimple} from '@/components/logos/logo-simple'
-import {VisuallyHidden} from '@/components/ui/visually-hidden'
-import {Button} from '@/components/ui/button'
-import {CustomImage} from '@/components/ui/custom-image'
-import {AnimatedBackground} from '@/components/motion/animated-background'
-import {LocaleSelect, LocaleSelectItem} from '@/components/shared/locale-select'
-import {Separator} from '@/components/ui/separator'
+import {Link, usePathname} from '@/src/i18n/navigation'
+import {cn} from '@/src/lib/utils'
+import {useBoundedScroll} from '@/src/hooks/useBoundedScroll'
+import {Container} from '@/src/components/shared/container'
+import {LogoSimple} from '@/src/components/logos/logo-simple'
+import {Typography} from '@/src/components/ui/typography'
+import {Button} from '@/src/components/ui/button'
+import {CustomImage} from '@/src/components/ui/custom-image'
+import {ClientLocaleSwitcher} from '@/src/components/shared/locale-switcher/client-locale-switcher'
+import {Separator} from '@/src/components/ui/separator'
 import {
   HoverCard,
   HoverCardTrigger,
   HoverCardPortal,
   HoverCardContent,
   HoverCardArrow
-} from '@/components/ui/hover-card'
+} from '@/src/components/ui/hover-card'
 import {
   Drawer,
   DrawerTrigger,
@@ -41,26 +45,23 @@ import {
   DrawerContent,
   DrawerTitle,
   DrawerClose
-} from '@/components/ui/drawer'
+} from '@/src/components/ui/drawer'
 import {
   Collapsible,
   CollapsibleTrigger,
   CollapsibleContent
-} from '@/components/ui/collapsible'
-import georgiaImage from '#/public/images/georgia/5.webp'
-import dimitraImage from '#/public/images/dimitra/8.webp'
+} from '@/src/components/ui/collapsible'
+import {dimitraCover, georgiaCover} from '@/public/images/covers'
 
 const HEADER_MAX_HEIGHT = 128
 const HEADER_MIN_HEIGHT = 64
 const LOGO_MAX_SCALE = 1
 const LOGO_MIN_SCALE = 0.5
 
-function HeaderNavigation() {
+const HeaderNavigation: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   const [hoverCardOpen, setHoverCardOpen] = React.useState(false)
-  const m = useTranslations<'Metadata.Pages'>()
-  const t = useTranslations<'Components.LocaleSelect'>()
-  const locale = useLocale()
+  const t = useTranslations<'Metadata.Pages'>()
   const pathname = usePathname()
   const {scrollYBoundedProgress} = useBoundedScroll(250)
   const useBoundedTransform = (output: [number, number]) =>
@@ -140,15 +141,16 @@ function HeaderNavigation() {
         >
           <ul
             aria-label='Desktop navigation bar'
-            className='flex gap-4'
+            className='flex gap-x-6'
             role='menubar'
           >
             <li role='none'>
               <NavLink
                 href='/'
                 isActive={pathname === '/'}
+                icon={HomeIcon}
               >
-                {m('home')}
+                {t('home')}
               </NavLink>
             </li>
             <Separator
@@ -167,8 +169,9 @@ function HeaderNavigation() {
                 <NavLink
                   href='/accomodation'
                   isActive={pathname === '/accomodation'}
+                  icon={BedDoubleIcon}
                 >
-                  {m('accomodation.root')}
+                  {t('accomodation.root')}
                 </NavLink>
                 <HoverCardTrigger asChild>
                   <motion.button
@@ -186,50 +189,44 @@ function HeaderNavigation() {
               <HoverCardPortal>
                 <HoverCardContent collisionPadding={16}>
                   <section className='columns-2'>
-                    <AnimatedBackground
-                      className='bg-surface-3 rounded'
-                      transition={{
-                        bounce: 0.2,
-                        duration: 0.6,
-                        type: 'spring'
-                      }}
-                      enableHover
+                    <Link
+                      data-id='2'
+                      href='/accomodation/dimitra'
+                      onClick={() => setHoverCardOpen(false)}
                     >
-                      <Link
-                        data-id='1'
-                        href='/accomodation/georgia'
-                        onClick={() => setHoverCardOpen(false)}
-                      >
-                        <article className='p-3 space-y-1'>
-                          <CustomImage
-                            className='aspect-square object-cover rounded'
-                            src={georgiaImage}
-                            alt='Georgia card image'
-                          />
-                          <Typography variant='h5'>{'Georgia'}</Typography>
-                          <Typography variant='small'>
-                            {m('accomodation.georgia-caption')}
-                          </Typography>
-                        </article>
-                      </Link>
-                      <Link
-                        data-id='2'
-                        href='/accomodation/dimitra'
-                        onClick={() => setHoverCardOpen(false)}
-                      >
-                        <article className='p-3 space-y-1'>
-                          <CustomImage
-                            className='aspect-square object-cover rounded'
-                            src={dimitraImage}
-                            alt='Dimitra card image'
-                          />
-                          <Typography variant='h5'>{'Dimitra'}</Typography>
-                          <Typography variant='small'>
-                            {m('accomodation.dimitra-caption')}
-                          </Typography>
-                        </article>
-                      </Link>
-                    </AnimatedBackground>
+                      <article className='p-3 space-y-1 rounded hover:bg-surface-3 transition'>
+                        <CustomImage
+                          className='aspect-square object-cover rounded'
+                          src={dimitraCover}
+                          alt='Dimitra card image'
+                        />
+                        <Typography variant='h5'>
+                          {t('accomodation.dimitra')}
+                        </Typography>
+                        <Typography variant='small'>
+                          {t('accomodation.dimitra-caption')}
+                        </Typography>
+                      </article>
+                    </Link>
+                    <Link
+                      data-id='1'
+                      href='/accomodation/georgia'
+                      onClick={() => setHoverCardOpen(false)}
+                    >
+                      <article className='p-3 space-y-1 rounded hover:bg-surface-3 transition'>
+                        <CustomImage
+                          className='aspect-square object-cover rounded'
+                          src={georgiaCover}
+                          alt='Georgia card image'
+                        />
+                        <Typography variant='h5'>
+                          {t('accomodation.georgia')}
+                        </Typography>
+                        <Typography variant='small'>
+                          {t('accomodation.georgia-caption')}
+                        </Typography>
+                      </article>
+                    </Link>
                   </section>
                   <HoverCardArrow />
                 </HoverCardContent>
@@ -243,8 +240,9 @@ function HeaderNavigation() {
               <NavLink
                 href='/contact'
                 isActive={pathname === '/contact'}
+                icon={MessageSquareIcon}
               >
-                {m('contact')}
+                {t('contact')}
               </NavLink>
             </li>
           </ul>
@@ -273,27 +271,41 @@ function HeaderNavigation() {
           </DrawerTrigger>
           <DrawerPortal>
             <DrawerOverlay />
-            <DrawerContent className='w-3/4'>
-              <div className='p-8 h-full grid grid-rows-[1fr,auto]'>
-                <VisuallyHidden>
-                  <DrawerTitle>{'Sidebar navigation menu'}</DrawerTitle>
-                </VisuallyHidden>
+            <DrawerContent
+              side='top'
+              className='h-full'
+            >
+              <div className='pl-7 pr-5 pt-5 pb-3 flex justify-between items-center'>
+                <DrawerTitle>Menu</DrawerTitle>
+                <DrawerClose asChild>
+                  <Button
+                    variant='ghost-error'
+                    size='icon-small'
+                  >
+                    <XIcon />
+                  </Button>
+                </DrawerClose>
+              </div>
+              <Separator />
+              <div className='px-7 py-16 h-[calc(100%-64px)] grid grid-rows-[1fr_auto]'>
                 <nav
                   aria-label='Mobile navigation bar'
                   className='flex'
                 >
                   <ul
                     aria-label='Mobile navigation bar'
-                    className='my-auto w-full space-y-6'
+                    className='w-full space-y-8'
                     role='menubar'
                   >
                     <li role='none'>
                       <NavLink
+                        className='pl-0'
                         isActive={pathname === '/'}
                         href='/'
                         onClick={() => setDrawerOpen(false)}
+                        icon={HomeIcon}
                       >
-                        {m('home')}
+                        {t('home')}
                       </NavLink>
                     </li>
                     <Collapsible
@@ -306,11 +318,13 @@ function HeaderNavigation() {
                       <li role='none'>
                         <div className='flex items-center justify-between'>
                           <NavLink
+                            className='pl-0'
                             isActive={pathname === '/accomodation'}
                             href='/accomodation'
                             onClick={() => setDrawerOpen(false)}
+                            icon={BedDoubleIcon}
                           >
-                            {m('accomodation.root')}
+                            {t('accomodation.root')}
                           </NavLink>
                           <CollapsibleTrigger asChild>
                             <Button
@@ -319,7 +333,7 @@ function HeaderNavigation() {
                             >
                               <ChevronRightIcon
                                 className='group-data-open:rotate-90 group-data-open:duration-750 group-data-closed:duration-375'
-                                size={16}
+                                size={20}
                               />
                             </Button>
                           </CollapsibleTrigger>
@@ -338,7 +352,7 @@ function HeaderNavigation() {
                                 href='/accomodation/georgia'
                                 onClick={() => setDrawerOpen(false)}
                               >
-                                {m('accomodation.georgia')}
+                                {t('accomodation.georgia')}
                               </NavLink>
                             </li>
                             <li role='none'>
@@ -347,7 +361,7 @@ function HeaderNavigation() {
                                 href='/accomodation/dimitra'
                                 onClick={() => setDrawerOpen(false)}
                               >
-                                {m('accomodation.dimitra')}
+                                {t('accomodation.dimitra')}
                               </NavLink>
                             </li>
                           </ul>
@@ -356,44 +370,49 @@ function HeaderNavigation() {
                     </Collapsible>
                     <li role='none'>
                       <NavLink
+                        className='pl-0'
                         isActive={pathname === '/contact'}
                         href='/contact'
                         onClick={() => setDrawerOpen(false)}
+                        icon={MessageSquareIcon}
                       >
-                        {m('contact')}
+                        {t('contact')}
                       </NavLink>
                     </li>
                   </ul>
                 </nav>
-                <LocaleSelect
-                  defaultValue={locale}
-                  loadingText={t('loadingText')}
-                  placeholder={t('placeholder')}
-                  noScroll
-                >
-                  {locales.map((localeEntry) => (
-                    <LocaleSelectItem
-                      key={localeEntry}
-                      value={localeEntry}
+                <div className='flex justify-between'>
+                  <div className='flex gap-2'>
+                    <Button
+                      className='bg-surface-1'
+                      variant='bordered'
+                      size='icon-normal'
+                      asChild
                     >
-                      {t(`values.${localeEntry}`)}
-                    </LocaleSelectItem>
-                  ))}
-                </LocaleSelect>
+                      <a
+                        target='_blank'
+                        href='https://www.facebook.com/profile.php?id=61566665200042'
+                      >
+                        <FacebookIcon />
+                      </a>
+                    </Button>
+                    <Button
+                      className='bg-surface-1'
+                      variant='bordered'
+                      size='icon-normal'
+                      asChild
+                    >
+                      <a
+                        target='_blank'
+                        href='https://www.instagram.com/moccaliving.premiumstay'
+                      >
+                        <InstagramIcon />
+                      </a>
+                    </Button>
+                  </div>
+                  <ClientLocaleSwitcher />
+                </div>
               </div>
-              <DrawerClose asChild>
-                <motion.button
-                  style={{
-                    padding: '8px',
-                    position: 'absolute',
-                    right: '16px',
-                    willChange: 'top',
-                    top: useBoundedTransform([24, 12])
-                  }}
-                >
-                  <XIcon size={24} />
-                </motion.button>
-              </DrawerClose>
             </DrawerContent>
           </DrawerPortal>
         </Drawer>
@@ -402,23 +421,34 @@ function HeaderNavigation() {
   )
 }
 
-function NavLink({
+interface NavLinkProps extends React.ComponentPropsWithRef<typeof Link> {
+  isActive: boolean
+  icon?: React.ComponentType<LucideProps>
+}
+
+const NavLink: React.FC<NavLinkProps> = ({
   isActive,
   draggable = false,
   role = 'menuitem',
+  className,
+  icon,
   children,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Link> & {
-  isActive: boolean
-}) {
+}) => {
   return (
     <Link
-      className={cn('p-1 inline-block', isActive && 'font-bold')}
+      className={cn(
+        'p-1 flex items-center gap-2',
+        isActive && 'font-bold',
+        className
+      )}
       draggable={draggable}
       role={role}
       {...(role === 'menuitem' && isActive ? {'aria-current': 'page'} : {})}
       {...props}
     >
+      {icon &&
+        React.createElement(icon, {size: 16, strokeWidth: isActive ? 3 : 2})}
       <Typography
         className='uppercase'
         variant='small'

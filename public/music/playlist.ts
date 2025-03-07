@@ -1,4 +1,4 @@
-const playlist = [
+const songs = [
   {
     artist: 'FASSounds',
     title: 'Calm',
@@ -77,4 +77,4 @@ const playlist = [
   }
 ].map((entry, i) => ({trackId: i + 1, ...entry})) as Song[]
 
-export {playlist}
+export {songs}

@@ -11,98 +11,95 @@ import {
   Description,
   Close
 } from '@radix-ui/react-dialog'
-import {cn} from '#/lib/utils'
+import {cn} from '@/src/lib/utils'
 
 const Dialog = Root
 const DialogTrigger = Trigger
 const DialogPortal = Portal
 const DialogClose = Close
 
-const DialogOverlay = React.forwardRef<
-  React.ElementRef<typeof Overlay>,
-  React.ComponentPropsWithoutRef<typeof Overlay>
->(({className, ...props}, ref) => (
-  <Overlay
-    className={cn(
-      'fixed inset-0 z-[1] bg-black/75 data-open:animate-in data-open:fade-in-0 data-open:duration-750 data-open:backdrop-blur-[1px] data-closed:animate-out data-closed:fade-out-0 data-closed:duration-350 data-closed:backdrop-blur-none ease-mocca',
-      className
-    )}
-    ref={ref}
-    {...props}
-  />
-))
-
-const DialogContent = React.forwardRef<
-  React.ElementRef<typeof Content>,
-  React.ComponentPropsWithoutRef<typeof Content>
->(
-  (
-    {
-      className,
-      children,
-      'aria-describedby': ariaDescribedBy = undefined,
-      ...props
-    },
-    ref
-  ) => (
-    <Content
+const DialogOverlay: React.FC<React.ComponentPropsWithRef<typeof Overlay>> = ({
+  className,
+  ...props
+}) => {
+  return (
+    <Overlay
       className={cn(
-        'p-6 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1] w-full max-w-xl bg-surface-2 rounded shadow-medium data-open:animate-dialog-open data-closed:animate-dialog-closed',
+        'fixed inset-0 z-[1] bg-black/75 backdrop-blur-[1px] data-open:animate-overlay-open data-closed:animate-overlay-close',
         className
       )}
-      aria-describedby={ariaDescribedBy}
-      ref={ref}
       {...props}
-    >
-      {children}
-    </Content>
+    />
   )
-)
+}
 
-const DialogHeader = ({
+const DialogContent: React.FC<React.ComponentPropsWithRef<typeof Content>> = ({
   className,
+  children,
+  'aria-describedby': ariaDescribedBy = undefined,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn('flex flex-col space-y-1.5', className)}
-    {...props}
-  />
-)
-
-const DialogTitle = React.forwardRef<
-  React.ElementRef<typeof Title>,
-  React.ComponentPropsWithoutRef<typeof Title>
->(({className, ...props}, ref) => (
-  <Title
-    className={cn('text-lg font-semibold tracking-tight', className)}
-    ref={ref}
-    {...props}
-  />
-))
-
-const DialogDescription = React.forwardRef<
-  React.ElementRef<typeof Description>,
-  React.ComponentPropsWithoutRef<typeof Description>
->(({className, ...props}, ref) => (
-  <Description
-    className={cn('text-sm text-muted-foreground tracking-wide', className)}
-    ref={ref}
-    {...props}
-  />
-))
-
-const DialogFooter = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
+}) => (
+  <Content
     className={cn(
-      'flex flex-col-reverse sm:space-x-2 sm:flex-row sm:justify-end',
+      'p-6 fixed left-1/2 top-1/2 -translate-1/2 origin-center z-[1] w-full max-w-xl bg-surface-2 rounded shadow-small data-open:animate-dialog-open data-closed:animate-dialog-close',
       className
     )}
+    aria-describedby={ariaDescribedBy}
     {...props}
-  />
+  >
+    {children}
+  </Content>
 )
+
+const DialogHeader: React.FC<React.ComponentPropsWithRef<'div'>> = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
+  return (
+    <div
+      className={cn('flex flex-col space-y-1.5', className)}
+      {...props}
+    />
+  )
+}
+
+const DialogTitle: React.FC<React.ComponentPropsWithRef<typeof Title>> = ({
+  className,
+  ...props
+}) => {
+  return (
+    <Title
+      className={cn('text-lg font-semibold tracking-tight', className)}
+      {...props}
+    />
+  )
+}
+
+const DialogDescription: React.FC<
+  React.ComponentPropsWithoutRef<typeof Description>
+> = ({className, ...props}) => {
+  return (
+    <Description
+      className={cn('text-sm text-muted-foreground tracking-wide', className)}
+      {...props}
+    />
+  )
+}
+
+const DialogFooter: React.FC<React.ComponentPropsWithRef<'div'>> = ({
+  className,
+  ...props
+}) => {
+  return (
+    <div
+      className={cn(
+        'flex flex-col-reverse sm:space-x-2 sm:flex-row sm:justify-end',
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
 Dialog.displayName = 'Dialog'
 DialogTrigger.displayName = 'DialogTrigger'

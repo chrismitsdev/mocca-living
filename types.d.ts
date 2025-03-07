@@ -1,5 +1,5 @@
-import enMessages from '#/messages/en.json'
-import {routing} from '@/i18n/routing'
+import enMessages from '@/messages/en.json'
+import {routing} from '@/src/i18n/routing'
 
 type Messages = typeof enMessages
 
@@ -9,9 +9,9 @@ declare global {
   type Locale = (typeof routing.locales)[number]
 
   type Params = {
-    params: {
+    params: Promise<{
       locale: Locale
-    }
+    }>
   }
 
   type ContactFormData = {

@@ -14,7 +14,9 @@ import {
   XIcon,
   SendHorizonalIcon
 } from 'lucide-react'
-import {type SlugFormSchema, getSlugFormSchema} from '#/lib/schema'
+import {type SlugFormSchema, getSlugFormSchema} from '@/src/lib/schema'
+import {sendContactForm} from '@/src/lib/actions'
+import {PrivacyModal} from '@/src/components/shared/privacy-modal'
 import {
   Drawer,
   DrawerTrigger,
@@ -24,7 +26,7 @@ import {
   DrawerTitle,
   DrawerDescription,
   DrawerClose
-} from '@/components/ui/drawer'
+} from '@/src/components/ui/drawer'
 import {
   Form,
   FormControl,
@@ -32,28 +34,26 @@ import {
   FormItem,
   FormLabel,
   FormMessage
-} from '@/components/ui/form'
-import {Input} from '@/components/ui/input'
-import {DatePicker} from '@/components/ui/date-picker'
-import {Checkbox} from '@/components/ui/checkbox'
-import {Button} from '@/components/ui/button'
-import {VisuallyHidden} from '@/components/ui/visually-hidden'
-import {Separator} from '@/components/ui/separator'
+} from '@/src/components/ui/form'
+import {Input} from '@/src/components/ui/input'
+import {DatePicker} from '@/src/components/ui/date-picker'
+import {Checkbox} from '@/src/components/ui/checkbox'
+import {Button} from '@/src/components/ui/button'
+import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
+import {Separator} from '@/src/components/ui/separator'
 import {
   ScrollArea,
   ScrollAreaViewport,
   ScrollAreaBar
-} from '@/components/ui/scrollarea'
-import {sendContactForm} from '#/lib/actions'
-import {PrivacyModal} from '@/components/shared/privacy-modal'
-import {toast} from '@/components/ui/toast'
+} from '@/src/components/ui/scrollarea'
+import {toast} from '@/src/components/ui/toast'
 
-type SlugFormProps = {
+interface SlugFormProps {
   slug: Slug
-  locale: Params['params']['locale']
+  locale: Awaited<Params['params']>['locale']
 }
 
-function SlugForm({slug, locale}: SlugFormProps) {
+const SlugForm: React.FC<SlugFormProps> = ({slug, locale}) => {
   const [open, setOpen] = React.useState(false)
   const t = useTranslations<'Components.Form'>()
   const form = useForm<SlugFormSchema>({
@@ -101,7 +101,7 @@ function SlugForm({slug, locale}: SlugFormProps) {
         <DrawerOverlay />
         <DrawerContent
           side='left'
-          className='w-full border-r-0 sm:max-w-2xl'
+          className='w-full sm:max-w-3xl'
           onOpenAutoFocus={(e) => e.preventDefault()}
         >
           <div className='px-[28px] pt-14 pb-4 space-y-2 sm:px-8 sm:py-16'>
@@ -201,11 +201,11 @@ function SlugForm({slug, locale}: SlugFormProps) {
                                 after: !watchCheckOut
                                   ? undefined
                                   : isSameDay(
-                                        watchCheckOut,
-                                        addDays(new Date(), 1)
-                                      )
-                                    ? new Date()
-                                    : subDays(watchCheckOut, 1)
+                                      watchCheckOut,
+                                      addDays(new Date(), 1)
+                                    )
+                                  ? new Date()
+                                  : subDays(watchCheckOut, 1)
                               }}
                               disabled={form.formState.isSubmitting}
                             />
@@ -285,7 +285,7 @@ function SlugForm({slug, locale}: SlugFormProps) {
               variant='ghost-error'
               size='icon-normal'
             >
-              <VisuallyHidden>{'Close drawer'}</VisuallyHidden>
+              <VisuallyHidden>Close drawer</VisuallyHidden>
               <XIcon />
             </Button>
           </DrawerClose>

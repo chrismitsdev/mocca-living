@@ -15,47 +15,37 @@ import {
   Volume2Icon,
   VolumeOffIcon
 } from 'lucide-react'
-import {cn, formatDuration} from '#/lib/utils'
-import {reducer} from '@/reducers/audo-player-reducer'
+import {cn, formatDuration} from '@/src/lib/utils'
+import {reducer, type State} from '@/src/reducers/audo-player-reducer'
 import {
   Collapsible,
   CollapsibleTrigger,
   CollapsibleContent
-} from '@/components/ui/collapsible'
+} from '@/src/components/ui/collapsible'
 import {
   ScrollArea,
   ScrollAreaViewport,
   ScrollAreaBar
-} from '@/components/ui/scrollarea'
-import {Typography} from '@/components/ui/typography'
-import {Spinner} from '@/components/ui/spinner'
-import {Separator} from '@/components/ui/separator'
-import {Button} from '@/components/ui/button'
-import {CustomImage} from '@/components/ui/custom-image'
-import {TextEffect} from '@/components/motion/text-effect'
-import image from '#/public/images/other/playlst-image.jpg'
-import '@/custom-styles/audio-player.css'
+} from '@/src/components/ui/scrollarea'
+import {Typography} from '@/src/components/ui/typography'
+import {Spinner} from '@/src/components/ui/spinner'
+import {Separator} from '@/src/components/ui/separator'
+import {Button} from '@/src/components/ui/button'
+import {CustomImage} from '@/src/components/ui/custom-image'
+import image from '@/public/images/other/playlst-image.jpg'
+import {songs} from '@/public/music/playlist'
 
-type AudioPlayerProps = React.ComponentPropsWithoutRef<
-  typeof ReactAudioPlayer
-> & {
-  playlist: Song[]
+const initialState: State = {
+  playlist: songs,
+  currentTrackIndex: 0,
+  showPlaylist: true,
+  isPlaying: false
 }
 
-type CurretntTrackProps = Song & {isPlaying: boolean}
-
-type PlaylistProps = React.HTMLAttributes<HTMLUListElement>
-
-type PlaylistTrackProps = React.HTMLAttributes<HTMLLIElement> &
-  Song & {isActive: boolean}
-
-function AudioPlayer({playlist, ...props}: AudioPlayerProps) {
-  const [state, dispatch] = React.useReducer(reducer, {
-    playlist,
-    currentTrackIndex: 0,
-    showPlaylist: true,
-    isPlaying: false
-  })
+const AudioPlayer: React.FC<
+  React.ComponentPropsWithRef<typeof ReactAudioPlayer>
+> = (props) => {
+  const [state, dispatch] = React.useReducer(reducer, initialState)
   const currentTrack = state.playlist[state.currentTrackIndex]
 
   return (
@@ -122,7 +112,7 @@ function AudioPlayer({playlist, ...props}: AudioPlayerProps) {
         <ScrollArea type='always'>
           <ScrollAreaViewport className='max-h-[calc(100dvh-208px-128px-32px)] sm:max-h-[calc(100dvh-280px-32px-300px)]'>
             <Playlist>
-              {playlist.map((song) => (
+              {state.playlist.map((song) => (
                 <PlaylistTrack
                   key={song.trackId}
                   isActive={currentTrack.trackId === song.trackId}
@@ -141,7 +131,9 @@ function AudioPlayer({playlist, ...props}: AudioPlayerProps) {
   )
 }
 
-function CurrentTrack({artist, title, isPlaying}: CurretntTrackProps) {
+const CurrentTrack: React.FC<
+  React.ComponentPropsWithRef<'div'> & Song & {isPlaying: boolean}
+> = ({artist, title, isPlaying}) => {
   return (
     <div className='sm:mb-0 sm:p-4'>
       <div className='flex items-start gap-2 sm:gap-4'>
@@ -153,26 +145,12 @@ function CurrentTrack({artist, title, isPlaying}: CurretntTrackProps) {
         <div className='sm:space-y-3'>
           <div className='flex gap-2'>
             <MusicIcon className='mt-1 w-4 h-4' />
-            {isPlaying ? (
-              <TextEffect
-                className='text-base font-semibold sm:text-lg'
-                preset='fade'
-              >
-                {title}
-              </TextEffect>
-            ) : (
-              <Typography
-                variant='large'
-                className='text-base sm:text-lg'
-              >
-                {'---'}
-              </Typography>
-            )}
+            {isPlaying ? title : '---'}
           </div>
           <div className='flex gap-2'>
             <UserIcon className='mt-1 w-4 h-4' />
             <Typography variant='small'>
-              {isPlaying ? artist : '----'}
+              {isPlaying ? artist : '---'}
             </Typography>
           </div>
           <div className='flex gap-2'>
@@ -185,7 +163,10 @@ function CurrentTrack({artist, title, isPlaying}: CurretntTrackProps) {
   )
 }
 
-function Playlist({className, ...props}: PlaylistProps) {
+const Playlist: React.FC<React.ComponentPropsWithRef<'ul'>> = ({
+  className,
+  ...props
+}) => {
   return (
     <ul
       className={cn('px-4 sm:py-4', className)}
@@ -194,7 +175,9 @@ function Playlist({className, ...props}: PlaylistProps) {
   )
 }
 
-function PlaylistTrack({
+const PlaylistTrack: React.FC<
+  React.HTMLAttributes<HTMLLIElement> & Song & {isActive: boolean}
+> = ({
   trackId,
   artist,
   title,
@@ -203,7 +186,7 @@ function PlaylistTrack({
   isActive,
   className,
   ...props
-}: PlaylistTrackProps) {
+}) => {
   const [trackDuration, setTrackDuration] = React.useState<number | null>(null)
 
   React.useEffect(
@@ -227,7 +210,7 @@ function PlaylistTrack({
   return (
     <li
       className={cn(
-        'py-4 grid grid-cols-2 items-center gap-2 cursor-pointer duration-375 hover:bg-surface-3 sm:grid-cols-[24px,repeat(3,1fr)] sm:p-4',
+        'py-4 grid grid-cols-2 items-center gap-2 cursor-pointer duration-375 hover:bg-surface-3 sm:grid-cols-[24px_repeat(3,1fr)] sm:p-4',
         isActive && 'font-semibold',
         className
       )}

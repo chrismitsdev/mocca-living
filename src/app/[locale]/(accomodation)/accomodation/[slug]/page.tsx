@@ -1,17 +1,19 @@
+import * as React from 'react'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {notFound} from 'next/navigation'
-import {SlugCarousel} from '@/components/page/accomodation/slug/slug-carousel'
-import {SlugDetails} from '@/components/page/accomodation/slug/slug-details'
+import {SlugCarousel} from '@/src/components/page/accomodation/slug/slug-carousel'
+import {SlugDetails} from '@/src/components/page/accomodation/slug/slug-details'
 
-type ParamsWithSlug<T extends Params = Params> = {
-  [K in keyof T]: T[K] & {
+type ParamsWithSlug = {
+  params: Promise<{
+    locale: Locale
     slug: Slug
-  }
+  }>
 }
 
-export async function generateMetadata({
-  params: {locale, slug}
-}: ParamsWithSlug) {
+export async function generateMetadata({params}: ParamsWithSlug) {
+  const {locale, slug} = await params
+
   const t = await getTranslations({
     locale,
     namespace: 'Metadata.Pages.accomodation'
@@ -26,7 +28,9 @@ export function generateStaticParams() {
   return [{slug: 'georgia'}, {slug: 'dimitra'}]
 }
 
-export default function SlugPage({params: {locale, slug}}: ParamsWithSlug) {
+export default function SlugPage({params}: ParamsWithSlug) {
+  const {slug, locale} = React.use(params)
+
   setRequestLocale(locale)
 
   if (slug !== 'georgia' && slug !== 'dimitra') {

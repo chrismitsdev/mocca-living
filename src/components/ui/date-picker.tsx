@@ -3,19 +3,19 @@
 import * as React from 'react'
 import {type Matcher} from 'react-day-picker'
 import {type LucideProps} from 'lucide-react'
-import {Button} from '@/components/ui/button'
-import {Calendar} from '@/components/ui/calendar'
+import {cn, formatDate} from '@/src/lib/utils'
+import {Button} from '@/src/components/ui/button'
+import {Calendar} from '@/src/components/ui/calendar'
 import {
   Popover,
   PopoverTrigger,
   PopoverPortal,
   PopoverContent
-} from '@/components/ui/popover'
-import {cn, formatDate} from '#/lib/utils'
+} from '@/src/components/ui/popover'
 
 type DatePickerProps = {
   id?: string
-  locale: Params['params']['locale']
+  locale: Awaited<Params['params']>['locale']
   placeholder?: string
   disabled?: boolean
   disabledDates?: Matcher | Matcher[]
@@ -24,7 +24,7 @@ type DatePickerProps = {
   onDateChange?: React.Dispatch<React.SetStateAction<Date | undefined>>
 }
 
-function DatePicker({
+const DatePicker: React.FC<DatePickerProps> = ({
   id,
   locale,
   placeholder,
@@ -33,7 +33,7 @@ function DatePicker({
   icon,
   date,
   onDateChange
-}: DatePickerProps) {
+}) => {
   const [open, setOpen] = React.useState(false)
 
   function handleDateSelect(date: Date | undefined) {

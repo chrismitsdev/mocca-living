@@ -3,11 +3,11 @@
 import * as React from 'react'
 import {Map as ReactMapGl, Marker, Popup} from 'react-map-gl/mapbox'
 import {MapPinIcon, XIcon} from 'lucide-react'
-import {useMediaQuery} from '@/hooks/useMediaQuery'
-import {Typography} from '@/components/ui/typography'
-import {LogoSimple} from '@/components/logos/logo-simple'
+import {useMediaQuery} from '@/src/hooks/useMediaQuery'
+import {Typography} from '@/src/components/ui/typography'
+import {LogoSimple} from '@/src/components/logos/logo-simple'
 
-type MapboxProps = {
+interface MapboxProps {
   token: string
   translations: {
     title: string
@@ -20,7 +20,7 @@ const coords = {
   lon: 25.723552
 }
 
-function Map({token, translations}: MapboxProps) {
+const Map: React.FC<MapboxProps> = ({token, translations}) => {
   const [showPopup, setShowPopup] = React.useState<boolean>(true)
   const matches = useMediaQuery('(min-width: 640px)', {
     initializeWithValue: false

@@ -2,34 +2,35 @@
 
 import * as React from 'react'
 import {Root, Trigger, Content} from '@radix-ui/react-collapsible'
-import {cn} from '#/lib/utils'
+import {cn} from '@/src/lib/utils'
 
-const Collapsible = React.forwardRef<
-  React.ElementRef<typeof Root>,
-  React.ComponentPropsWithoutRef<typeof Root>
->(({className, ...props}, ref) => (
-  <Root
-    className={cn('group', className)}
-    ref={ref}
-    {...props}
-  />
-))
+const Collapsible: React.FC<React.ComponentPropsWithRef<typeof Root>> = ({
+  className,
+  ...props
+}) => {
+  return (
+    <Root
+      className={cn('group', className)}
+      {...props}
+    />
+  )
+}
 
 const CollapsibleTrigger = Trigger
 
-const CollapsibleContent = React.forwardRef<
-  React.ElementRef<typeof Content>,
-  React.ComponentPropsWithoutRef<typeof Content>
->(({className, ...props}, ref) => (
-  <Content
-    className={cn(
-      'overflow-hidden data-open:animate-collapsible-open data-closed:animate-collapsible-close',
-      className
-    )}
-    ref={ref}
-    {...props}
-  />
-))
+const CollapsibleContent: React.FC<
+  React.ComponentPropsWithRef<typeof Root>
+> = ({className, ...props}) => {
+  return (
+    <Content
+      className={cn(
+        'overflow-hidden data-open:animate-collapsible-open data-closed:animate-collapsible-close',
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
 Collapsible.displayName = 'Collapsible'
 CollapsibleTrigger.displayName = 'CollapsibleTrigger'

@@ -15,8 +15,8 @@ import {
   SendHorizonalIcon,
   RotateCcwIcon
 } from 'lucide-react'
-import {type ContactFormSchema, getContactFormSchema} from '#/lib/schema'
-import {sendContactForm} from '#/lib/actions'
+import {type ContactFormSchema, getContactFormSchema} from '@/src/lib/schema'
+import {sendContactForm} from '@/src/lib/actions'
 import {
   Form,
   FormControl,
@@ -24,7 +24,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage
-} from '@/components/ui/form'
+} from '@/src/components/ui/form'
 import {
   Select,
   SelectTrigger,
@@ -33,16 +33,21 @@ import {
   SelectContent,
   SelectViewport,
   SelectItem
-} from '@/components/ui/select'
-import {Input} from '@/components/ui/input'
-import {DatePicker} from '@/components/ui/date-picker'
-import {Textarea} from '@/components/ui/textarea'
-import {Checkbox} from '@/components/ui/checkbox'
-import {Button} from '@/components/ui/button'
-import {toast} from '@/components/ui/toast'
-import {PrivacyModal} from '@/components/shared/privacy-modal'
+} from '@/src/components/ui/select'
+import {Input} from '@/src/components/ui/input'
+import {DatePicker} from '@/src/components/ui/date-picker'
+import {Textarea} from '@/src/components/ui/textarea'
+import {Checkbox} from '@/src/components/ui/checkbox'
+import {Button} from '@/src/components/ui/button'
+import {toast} from '@/src/components/ui/toast'
+import {PrivacyModal} from '@/src/components/shared/privacy-modal'
+import type React from 'react'
 
-function ContactForm({locale}: {locale: Params['params']['locale']}) {
+interface ContactFormProps {
+  locale: Awaited<Params['params']>['locale']
+}
+
+const ContactForm: React.FC<ContactFormProps> = ({locale}) => {
   const t = useTranslations<'Components.Form'>()
   const form = useForm<ContactFormSchema>({
     defaultValues: {
@@ -160,8 +165,8 @@ function ContactForm({locale}: {locale: Params['params']['locale']}) {
                       after: !watchCheckOut
                         ? undefined
                         : isSameDay(watchCheckOut, addDays(new Date(), 1))
-                          ? new Date()
-                          : subDays(watchCheckOut, 1)
+                        ? new Date()
+                        : subDays(watchCheckOut, 1)
                     }}
                     disabled={form.formState.isSubmitting}
                   />

@@ -1,8 +1,8 @@
 import {useTranslations} from 'next-intl'
-import {Link} from '@/i18n/routing'
-import {Container} from '@/components/shared/container'
-import {Button} from '@/components/ui/button'
 import {HouseIcon, TriangleAlertIcon} from 'lucide-react'
+import {Link} from '@/src/i18n/navigation'
+import {Container} from '@/src/components/shared/container'
+import {Button} from '@/src/components/ui/button'
 
 export default function NotFound() {
   const t = useTranslations('Pages.NotFound')

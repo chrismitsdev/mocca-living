@@ -1,17 +1,18 @@
 import * as React from 'react'
 import {Root} from '@radix-ui/react-label'
-import {cn} from '#/lib/utils'
+import {cn} from '@/src/lib/utils'
 
-const Label = React.forwardRef<
-  React.ElementRef<typeof Root>,
-  React.ComponentPropsWithoutRef<typeof Root>
->(({className, ...props}, ref) => (
-  <Root
-    className={cn('inline-block text-sm font-semibold', className)}
-    ref={ref}
-    {...props}
-  />
-))
+const Label: React.FC<React.ComponentPropsWithRef<typeof Root>> = ({
+  className,
+  ...props
+}) => {
+  return (
+    <Root
+      className={cn('inline-block text-sm font-semibold', className)}
+      {...props}
+    />
+  )
+}
 
 Label.displayName = 'Label'
 

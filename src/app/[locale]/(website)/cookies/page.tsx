@@ -1,9 +1,11 @@
+import * as React from 'react'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {useTranslations} from 'next-intl'
-import {Container} from '@/components/shared/container'
-import {Typography} from '@/components/ui/typography'
+import {Container} from '@/src/components/shared/container'
+import {Typography} from '@/src/components/ui/typography'
 
-export async function generateMetadata({params: {locale}}: Params) {
+export async function generateMetadata({params}: Params) {
+  const {locale} = await params
   const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
 
   return {
@@ -11,7 +13,9 @@ export async function generateMetadata({params: {locale}}: Params) {
   }
 }
 
-export default function CookiesPage({params: {locale}}: Params) {
+export default function CookiesPage({params}: Params) {
+  const {locale} = React.use(params)
+
   setRequestLocale(locale)
   const t = useTranslations('Pages.Cookies')
 

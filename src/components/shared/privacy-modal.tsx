@@ -8,18 +8,18 @@ import {
   DialogContent,
   DialogTitle,
   DialogClose
-} from '@/components/ui/dialog'
-import {Separator} from '@/components/ui/separator'
+} from '@/src/components/ui/dialog'
+import {Separator} from '@/src/components/ui/separator'
 import {
   ScrollArea,
   ScrollAreaViewport,
   ScrollAreaBar
-} from '@/components/ui/scrollarea'
-import {Typography} from '@/components/ui/typography'
-import {VisuallyHidden} from '@/components/ui/visually-hidden'
-import {Button} from '@/components/ui/button'
+} from '@/src/components/ui/scrollarea'
+import {Typography} from '@/src/components/ui/typography'
+import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
+import {Button} from '@/src/components/ui/button'
 
-function PrivacyModal({children}: React.PropsWithChildren) {
+const PrivacyModal: React.FC<React.PropsWithChildren> = ({children}) => {
   const m = useTranslations<'Metadata.Pages'>()
   const p = useTranslations<'Pages.Privacy'>()
 

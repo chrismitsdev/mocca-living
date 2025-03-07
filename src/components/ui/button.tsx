@@ -1,8 +1,8 @@
 import * as React from 'react'
 import {Slot, Slottable} from '@radix-ui/react-slot'
 import {cva, type VariantProps} from 'class-variance-authority'
-import {cn} from '#/lib/utils'
-import {Spinner} from '@/components/ui/spinner'
+import {cn} from '@/src/lib/utils'
+import {Spinner} from '@/src/components/ui/spinner'
 
 const buttonVariants = cva(
   [
@@ -33,7 +33,7 @@ const buttonVariants = cva(
           'hover:bg-primary-hover'
         ],
         'primary-alt': ['bg-surface-1', 'text-primary', 'hover:bg-surface-2'],
-        bordered: ['border', 'hover:border-border-hover'],
+        bordered: ['border', 'border-border', 'hover:border-border-hover'],
         ghost: ['hover:bg-primary', 'hover:text-primary-foreground'],
         'ghost-alt': ['hover:bg-surface-2', 'hover:text-foreground'],
         success: [
@@ -88,56 +88,51 @@ const buttonVariants = cva(
   }
 )
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-    isLoading?: boolean
-  }
+interface ButtonProps
+  extends React.ComponentPropsWithRef<'button'>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+  isLoading?: boolean
+}
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      variant,
-      size,
-      className,
-      asChild = false,
-      isLoading = false,
-      type = 'button',
-      draggable = false,
-      children,
-      ...props
-    },
-    ref
-  ) => {
-    const Comp = asChild ? Slot : 'button'
+const Button: React.FC<ButtonProps> = ({
+  variant,
+  size,
+  className,
+  asChild = false,
+  isLoading = false,
+  type = 'button',
+  draggable = false,
+  children,
+  ...props
+}) => {
+  const Comp = asChild ? Slot : 'button'
 
-    return (
-      <Comp
-        className={cn(
-          buttonVariants({
-            variant,
-            size,
-            className: cn(
-              isLoading && '[&>*:not(span:last-child)]:invisible',
-              className
-            )
-          })
-        )}
-        type={type}
-        ref={ref}
-        draggable={draggable}
-        {...props}
-      >
-        <Slottable>{children}</Slottable>
-        {isLoading && (
-          <span className='absolute inset-0 flex items-center justify-center'>
-            <Spinner size={size === 'large' ? 24 : 16} />
-          </span>
-        )}
-      </Comp>
-    )
-  }
-)
+  return (
+    <Comp
+      className={cn(
+        buttonVariants({
+          variant,
+          size,
+          className: cn(
+            isLoading && '[&>*:not(span:last-child)]:invisible',
+            className
+          )
+        })
+      )}
+      type={type}
+      draggable={draggable}
+      {...props}
+    >
+      <Slottable>{children}</Slottable>
+      {isLoading && (
+        <span className='absolute inset-0 flex items-center justify-center'>
+          <Spinner size={size === 'large' ? 24 : 16} />
+        </span>
+      )}
+    </Comp>
+  )
+}
 
 Button.displayName = 'Button'
 
