@@ -4,8 +4,10 @@ import useEmblaCarousel from 'embla-carousel-react'
 interface EmblaContextProps {
   emblaRef: ReturnType<typeof useEmblaCarousel>[0]
   emblaApi: ReturnType<typeof useEmblaCarousel>[1]
-  scrollPrevSlide(): void
-  scrollNextSlide(): void
+  selectedIndex: number
+  onPrevButtonClick(): void
+  onNextButtonClick(): void
+  onThumbButtonClick(index: number): void
 }
 
 const EmblaContext = React.createContext<EmblaContextProps | null>(null)

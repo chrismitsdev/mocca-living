@@ -30,7 +30,7 @@ const ContactDrawer: React.FC = () => {
     <Drawer>
       <DrawerTrigger asChild>
         <Button
-          className='fixed bottom-4 right-4 sm:hidden'
+          className='fixed bottom-2 right-2 sm:hidden'
           variant='success'
           size='icon-normal'
         >

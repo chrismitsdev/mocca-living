@@ -35,17 +35,21 @@ const PrivacyModal: React.FC<React.PropsWithChildren> = ({children}) => {
           <Separator />
           <ScrollArea
             type='always'
-            className='h-[calc(100%-56px-1px)]'
+            className='h-[calc(100%-61px)]'
           >
             <ScrollAreaViewport>
-              <div className='p-4 space-y-4'>
-                <article className='space-y-0.5'>
-                  <Typography variant='h6'>{p('title')}</Typography>
-                  <Typography variant='small'>{p('content')}</Typography>
+              <div className='p-4 space-y-6'>
+                <article className='space-y-1.5'>
+                  <Typography variant='h5'>{p('title')}</Typography>
+                  <Typography className='text-sm sm:text-base'>
+                    {p('content')}
+                  </Typography>
                 </article>
-                <article className='space-y-0.5'>
-                  <Typography variant='h6'>{p('sub-title')}</Typography>
-                  <Typography variant='small'>{p('sub-content')}</Typography>
+                <article className='space-y-1.5'>
+                  <Typography variant='h5'>{p('sub-title')}</Typography>
+                  <Typography className='text-sm sm:text-base'>
+                    {p('sub-content')}
+                  </Typography>
                 </article>
               </div>
             </ScrollAreaViewport>

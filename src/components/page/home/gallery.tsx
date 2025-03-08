@@ -4,6 +4,7 @@ import * as React from 'react'
 import {type StaticImageData} from 'next/image'
 import {XIcon, ExpandIcon} from 'lucide-react'
 import {cn, sortImportedImagesByName} from '@/src/lib/utils'
+import {Container} from '@/src/components/shared/container'
 import {
   Dialog,
   DialogTrigger,
@@ -24,7 +25,6 @@ import {
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {Button} from '@/src/components/ui/button'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
-import {Container} from '@/src/components/shared/container'
 import * as galleryImages from '@/public/images/home/home-gallery'
 
 const images = sortImportedImagesByName(galleryImages)
@@ -77,7 +77,7 @@ const Gallery: React.FC = () => {
   return (
     <Container asChild>
       <section>
-        <Dialog>
+        <Dialog open>
           <div className='grid grid-cols-2 gap-2 sm:grid-cols-8 sm:grid-rows-8'>
             {renderedTriggers}
           </div>
@@ -91,8 +91,8 @@ const Gallery: React.FC = () => {
                   <EmblaViewport>
                     <EmblaContainer>{renderedSlides}</EmblaContainer>
                   </EmblaViewport>
-                  <EmblaButtonPrev className=' 2xl:-left-14' />
-                  <EmblaButtonNext className=' 2xl:-right-14' />
+                  <EmblaButtonPrev />
+                  <EmblaButtonNext />
                 </EmblaCarousel>
               </DialogContent>
               <DialogClose

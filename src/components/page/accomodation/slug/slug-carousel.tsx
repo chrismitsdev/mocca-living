@@ -4,7 +4,9 @@ import {
   EmblaContainer,
   EmblaSlide,
   EmblaButtonPrev,
-  EmblaButtonNext
+  EmblaButtonNext,
+  EmblaThumbsContainer,
+  EmblaThumb
 } from '@/src/components/ui/embla-carousel'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {sortImportedImagesByName} from '@/src/lib/utils'
@@ -34,13 +36,30 @@ const SlugCarousel: React.FC<{slug: Slug}> = ({slug}) => {
     )
   })
 
+  const renderedThumbs = images.map(function (image, i) {
+    return (
+      <EmblaThumb
+        key={image.src}
+        thumbIndex={i}
+      >
+        <CustomImage
+          className='w-full h-full object-cover'
+          src={image}
+          alt={`${slug} carousel thumb ${i + 1}`}
+          draggable={false}
+        />
+      </EmblaThumb>
+    )
+  })
+
   return (
-    <EmblaCarousel className='h-screen'>
+    <EmblaCarousel className='h-svh'>
       <EmblaViewport>
         <EmblaContainer>{renderedImages}</EmblaContainer>
       </EmblaViewport>
       <EmblaButtonPrev />
       <EmblaButtonNext />
+      <EmblaThumbsContainer>{renderedThumbs}</EmblaThumbsContainer>
     </EmblaCarousel>
   )
 }

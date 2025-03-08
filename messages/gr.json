@@ -149,6 +149,10 @@
     }
   },
   "Components": {
+    "LocaleSwitcher": {
+      "label": "{locale, select, en {Αγγλικά} gr {Ελληνικά} other {Unknown}}",
+      "loadingText": "Φορτώνει"
+    },
     "ContactDrawer": {
       "title": "Επικοινωνία",
       "description": "Γρήγορη επικοινωνία μαζί μας.",
@@ -156,10 +160,6 @@
       "whatsapp": "WhatsApp",
       "sms": "SMS",
       "call": "Κλήση"
-    },
-    "LocaleSwitcher": {
-      "label": "{locale, select, en {Αγγλικά} gr {Ελληνικά} other {Unknown}}",
-      "loadingText": "Φορτώνει"
     },
     "CookieConsent": {
       "title": "Cookies",

@@ -3,6 +3,8 @@ import {
   EmblaViewport,
   EmblaContainer,
   EmblaSlide,
+  EmblaThumbsContainer,
+  EmblaThumb,
   EmblaButtonPrev,
   EmblaButtonNext
 } from '@/src/components/ui/embla-carousel'
@@ -22,10 +24,27 @@ const HomeHeroCarousel: React.FC = () => {
         <CustomImage
           className='w-full h-full object-cover'
           src={image}
-          alt={`Home page carousel image ${i + 1}`}
+          alt={`Home page carousel image slide ${i + 1}`}
           priority
+          draggable={false}
         />
       </EmblaSlide>
+    )
+  })
+
+  const renderedThumbs = images.map(function (image, i) {
+    return (
+      <EmblaThumb
+        key={image.src}
+        thumbIndex={i}
+      >
+        <CustomImage
+          className='w-full h-full object-cover'
+          src={image}
+          alt={`Home page carousel image thumb ${i + 1}`}
+          draggable={false}
+        />
+      </EmblaThumb>
     )
   })
 
@@ -39,6 +58,7 @@ const HomeHeroCarousel: React.FC = () => {
       </EmblaViewport>
       <EmblaButtonPrev />
       <EmblaButtonNext />
+      <EmblaThumbsContainer>{renderedThumbs}</EmblaThumbsContainer>
     </EmblaCarousel>
   )
 }
