@@ -50,7 +50,7 @@ const HomeHeroCarousel: React.FC = () => {
 
   return (
     <EmblaCarousel
-      className='h-svh'
+      className='mt-32 sm:mt-0 sm:h-svh'
       autoplayActive
     >
       <EmblaViewport>

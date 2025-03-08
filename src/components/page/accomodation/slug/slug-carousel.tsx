@@ -53,7 +53,7 @@ const SlugCarousel: React.FC<{slug: Slug}> = ({slug}) => {
   })
 
   return (
-    <EmblaCarousel className='h-svh'>
+    <EmblaCarousel className='mt-32 sm:mt-0 sm:h-svh'>
       <EmblaViewport>
         <EmblaContainer>{renderedImages}</EmblaContainer>
       </EmblaViewport>
