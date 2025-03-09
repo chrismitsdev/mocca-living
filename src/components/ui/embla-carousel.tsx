@@ -190,7 +190,7 @@ const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
     >
       <DrawerTrigger asChild>
         <Button
-          className='absolute left-1/2 bottom-2 -translate-x-1/2 data-open:-translate-y-18 data-open:duration-[750ms] data-closed:duration-[375ms] transition ease-mocca sm:data-open:-translate-y-28 '
+          className='absolute left-1/2 bottom-2 -translate-x-1/2 data-open:-translate-y-16 data-open:duration-[750ms] data-closed:duration-[375ms] transition ease-mocca sm:data-open:-translate-y-28 '
           variant={!open ? 'primary-alt' : 'error'}
           size={mediaQueryMatches ? 'icon-normal' : 'icon-small'}
         >
@@ -205,12 +205,13 @@ const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
         <VisuallyHidden>
           <DrawerTitle>Carousel thumbnails drawer</DrawerTitle>
         </VisuallyHidden>
-        <div className='py-3 px-2 m-1.5 glassmorphed-surface-dark'>
+        {/* <div className='py-2  px-2 m-1.5 glassmorphed-surface-dark rounded sm:py-3'> */}
+        <div className='py-2 px-2 m-1.5 bg-surface-2 rounded sm:py-3'>
           <ScrollArea>
             <ScrollAreaViewport>
               <div
                 id='embla-thumbs-container'
-                className={cn('flex justify-center gap-3', className)}
+                className={cn('flex justify-center gap-2 sm:gap-3', className)}
                 {...props}
               />
             </ScrollAreaViewport>
