@@ -338,31 +338,55 @@ const HeaderNavigation: React.FC = () => {
                             </Button>
                           </CollapsibleTrigger>
                         </div>
-                        <CollapsibleContent asChild>
+                        <CollapsibleContent>
+                          <Separator className='mt-2' />
                           <ul
-                            className='ml-2 pl-4 space-y-2 relative before:absolute before:h-[calc(100%-16px)] before:w-px before:top-1/2 before:-translate-y-1/2 before:left-0 before:bg-surface-3'
+                            className='mt-2 space-y-4'
                             role='menu'
                           >
-                            <li
-                              className='pt-2'
-                              role='none'
-                            >
-                              <NavLink
-                                isActive={pathname === '/accomodation/georgia'}
-                                href='/accomodation/georgia'
-                                onClick={() => setDrawerOpen(false)}
-                              >
-                                {t('accomodation.georgia')}
-                              </NavLink>
-                            </li>
                             <li role='none'>
-                              <NavLink
-                                isActive={pathname === '/accomodation/dimitra'}
+                              <Link
                                 href='/accomodation/dimitra'
                                 onClick={() => setDrawerOpen(false)}
                               >
-                                {t('accomodation.dimitra')}
-                              </NavLink>
+                                <div className='flex gap-3 rounded'>
+                                  <CustomImage
+                                    className='max-w-24 object-cover rounded'
+                                    src={dimitraCover}
+                                    alt='Dimitra cover image'
+                                  />
+                                  <div className='space-y-1.5'>
+                                    <Typography variant='h6'>
+                                      {t('accomodation.dimitra')}
+                                    </Typography>
+                                    <Typography variant='small'>
+                                      {t('accomodation.dimitra-caption')}
+                                    </Typography>
+                                  </div>
+                                </div>
+                              </Link>
+                            </li>
+                            <li role='none'>
+                              <Link
+                                href='/accomodation/georgia'
+                                onClick={() => setDrawerOpen(false)}
+                              >
+                                <div className='flex gap-3 rounded'>
+                                  <CustomImage
+                                    className='max-w-24 object-cover rounded'
+                                    src={georgiaCover}
+                                    alt='Georgia cover image'
+                                  />
+                                  <div className='space-y-1.5'>
+                                    <Typography variant='h6'>
+                                      {t('accomodation.georgia')}
+                                    </Typography>
+                                    <Typography variant='small'>
+                                      {t('accomodation.georgia-caption')}
+                                    </Typography>
+                                  </div>
+                                </div>
+                              </Link>
                             </li>
                           </ul>
                         </CollapsibleContent>

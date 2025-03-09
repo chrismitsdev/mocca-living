@@ -46,7 +46,6 @@ const SlugCarousel: React.FC<{slug: Slug}> = ({slug}) => {
           className='w-full h-full object-cover'
           src={image}
           alt={`${slug} carousel thumb ${i + 1}`}
-          draggable={false}
         />
       </EmblaThumb>
     )

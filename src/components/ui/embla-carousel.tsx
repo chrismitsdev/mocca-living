@@ -49,6 +49,9 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
     Autoplay({delay: autoplayDelay, active: autoplayActive})
   ])
   const [selectedIndex, setSelectedIndex] = React.useState<number>(startIndex)
+  const mediaQueryMatches = useMediaQuery('(min-width: 640px)', {
+    initializeWithValue: false
+  })
 
   const onPrevButtonClick = React.useCallback(
     function () {
@@ -114,7 +117,8 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
         selectedIndex,
         onPrevButtonClick,
         onNextButtonClick,
-        onThumbButtonClick
+        onThumbButtonClick,
+        mediaQueryMatches
       }}
     >
       <div
@@ -176,6 +180,7 @@ const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
   ...props
 }) => {
   const [open, setOpen] = React.useState<boolean>(false)
+  const {mediaQueryMatches} = useEmblaContext()
 
   return (
     <Drawer
@@ -187,7 +192,7 @@ const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
         <Button
           className='absolute left-1/2 bottom-2 -translate-x-1/2 data-open:-translate-y-18 data-open:duration-[750ms] data-closed:duration-[375ms] transition ease-mocca sm:data-open:-translate-y-28 '
           variant={!open ? 'primary-alt' : 'error'}
-          size='icon-small'
+          size={mediaQueryMatches ? 'icon-normal' : 'icon-small'}
         >
           {open ? <XIcon /> : <ImagesIcon />}
         </Button>
@@ -244,10 +249,7 @@ const EmblaButtonPrev: React.FC<
     icon?: React.ComponentType<LucideProps>
   }
 > = ({className, icon, ...props}) => {
-  const {onPrevButtonClick} = useEmblaContext()
-  const matches = useMediaQuery('(min-width: 640px)', {
-    initializeWithValue: false
-  })
+  const {onPrevButtonClick, mediaQueryMatches} = useEmblaContext()
 
   return (
     <Button
@@ -256,7 +258,8 @@ const EmblaButtonPrev: React.FC<
         'absolute top-1/2 -translate-y-1/2 left-2 sm:left-4',
         className
       )}
-      size={matches ? 'icon-normal' : 'icon-small'}
+      variant='primary-alt'
+      size={mediaQueryMatches ? 'icon-normal' : 'icon-small'}
       onClick={onPrevButtonClick}
       {...props}
     >
@@ -270,10 +273,7 @@ const EmblaButtonNext: React.FC<
     icon?: React.ComponentType<LucideProps>
   }
 > = ({className, icon, ...props}) => {
-  const {onNextButtonClick} = useEmblaContext()
-  const matches = useMediaQuery('(min-width: 640px)', {
-    initializeWithValue: false
-  })
+  const {onNextButtonClick, mediaQueryMatches} = useEmblaContext()
 
   return (
     <Button
@@ -282,7 +282,8 @@ const EmblaButtonNext: React.FC<
         'absolute top-1/2 -translate-y-1/2 right-2 sm:right-4',
         className
       )}
-      size={matches ? 'icon-normal' : 'icon-small'}
+      variant='primary-alt'
+      size={mediaQueryMatches ? 'icon-normal' : 'icon-small'}
       onClick={onNextButtonClick}
       {...props}
     >
