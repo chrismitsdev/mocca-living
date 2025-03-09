@@ -53,6 +53,9 @@
       }
     },
     "Accomodation": {
+      "HeroImage": {
+        "button-label": "Contact us"
+      },
       "Index": {
         "Introdution": {
           "title": "Our Exclusive Villas",
@@ -62,7 +65,8 @@
           "dimitra": {
             "title": "Dimitra",
             "description": "Embrace the luxury of space in Villa Dimitra, an 85m² sanctuary for 5 adults and 1 child. With 2 bedrooms and 2 bathrooms, it's ideal for a relaxed, elegant stay.",
-            "guests": "5 Guests",
+            "guests": "5 Adults",
+            "children": "1 Child",
             "bedrooms": "2 Bedrooms",
             "bathrooms": "2 Bathrooms",
             "button": "Information"
@@ -70,7 +74,8 @@
           "georgia": {
             "title": "Georgia",
             "description": "Step into Villa Georgia, a charming 45m² haven for 4 adults and 1 child. Featuring 2 bedrooms and a modern bathroom, it's the perfect cozy escape near the sea.",
-            "guests": "4 Guests",
+            "guests": "4 Adults",
+            "children": "1 Child",
             "bedrooms": "2 Bedrooms",
             "bathrooms": "1 Bathroom",
             "button": "Information"
@@ -90,7 +95,7 @@
         },
         "georgia": {
           "name": "Georgia",
-          "guests": "4 Guests",
+          "guests": "4 Adults",
           "child": "1 Child",
           "bedrooms": "2 Bedrooms",
           "bathrooms": "1 Bathroom",
@@ -105,7 +110,7 @@
         },
         "dimitra": {
           "name": "Dimitra",
-          "guests": "5 Guests",
+          "guests": "5 Adults",
           "child": "1 Child",
           "bedrooms": "2 Bedrooms",
           "bathrooms": "2 Bathrooms",

@@ -7,7 +7,12 @@ interface CustomImageProps
   src: StaticImageData
 }
 
-const CustomImage: React.FC<CustomImageProps> = ({src, alt, ...props}) => {
+const CustomImage: React.FC<CustomImageProps> = ({
+  src,
+  alt,
+  draggable = false,
+  ...props
+}) => {
   return (
     <Image
       placeholder={`data:image/svg+xml;base64,${toBase64(
@@ -15,6 +20,7 @@ const CustomImage: React.FC<CustomImageProps> = ({src, alt, ...props}) => {
       )}`}
       src={src}
       alt={alt}
+      draggable={draggable}
       {...props}
     />
   )

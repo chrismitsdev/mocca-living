@@ -1,7 +1,13 @@
 import * as React from 'react'
 import {useTranslations} from 'next-intl'
 import {type StaticImageData} from 'next/image'
-import {UsersIcon, BedDoubleIcon, BathIcon, ChevronRight} from 'lucide-react'
+import {
+  UsersIcon,
+  BedDoubleIcon,
+  ToiletIcon,
+  ChevronRight,
+  BabyIcon
+} from 'lucide-react'
 import {Link} from '@/src/i18n/navigation'
 import {Container} from '@/src/components/shared/container'
 import {
@@ -24,6 +30,7 @@ type VillaInfo = {
   title: Villas[keyof Villas]['title']
   description: Villas[keyof Villas]['description']
   guests: Villas[keyof Villas]['guests']
+  children: Villas[keyof Villas]['children']
   bedrooms: Villas[keyof Villas]['bedrooms']
   bathrooms: Villas[keyof Villas]['bathrooms']
   button: Villas[keyof Villas]['button']
@@ -37,17 +44,20 @@ const villaInfo: Pick<VillaInfo, 'key' | 'image'>[] = [
 
 const tInfo = function (
   t: ReturnType<typeof useTranslations<'Pages.Accomodation.Index.Villas'>>
-) {
-  return villaInfo.map(({key, image}) => ({
-    key,
-    image,
-    title: t(`${key}.title`),
-    description: t(`${key}.description`),
-    guests: t(`${key}.guests`),
-    bedrooms: t(`${key}.bedrooms`),
-    bathrooms: t(`${key}.bathrooms`),
-    button: t(`${key}.button`)
-  }))
+): VillaInfo[] {
+  return villaInfo.map(function ({key, image}) {
+    return {
+      key,
+      image,
+      title: t(`${key}.title`),
+      description: t(`${key}.description`),
+      guests: t(`${key}.guests`),
+      children: t(`${key}.children`),
+      bedrooms: t(`${key}.bedrooms`),
+      bathrooms: t(`${key}.bathrooms`),
+      button: t(`${key}.button`)
+    }
+  })
 }
 
 const Villas: React.FC = () => {
@@ -60,8 +70,8 @@ const Villas: React.FC = () => {
         <div className='grid gap-12 sm:grid-cols-2'>
           {info.map((villa) => (
             <Card
-              className='p-0 space-y-0 overflow-hidden'
               key={villa.key}
+              className='p-0 space-y-0 overflow-hidden'
             >
               <CustomImage
                 className='min-h-80 w-full object-cover'
@@ -69,27 +79,35 @@ const Villas: React.FC = () => {
                 alt={`${villa.key} indoor image`}
                 priority
               />
-              <CardHeader className='p-4 space-y-4 sm:p-6 sm:space-y-2'>
+              <CardHeader className='p-4 space-y-4 sm:p-6'>
                 <CardTitle>{villa.title}</CardTitle>
-                <CardDescription className='flex flex-col gap-0.5 sm:h-6 sm:flex-row sm:justify-end sm:gap-4'>
+                <CardDescription className='pt-1 grid grid-cols-2 gap-x-3 gap-y-2 sm:flex'>
                   <VillaDetail>
-                    <UsersIcon size={16} />
+                    <UsersIcon size={14} />
                     <span>{villa.guests}</span>
                   </VillaDetail>
                   <Separator
-                    className='hidden sm:block'
+                    className='hidden sm:block sm:h-auto'
                     orientation='vertical'
                   />
                   <VillaDetail>
-                    <BedDoubleIcon size={16} />
+                    <BabyIcon size={14} />
+                    <span>{villa.children}</span>
+                  </VillaDetail>
+                  <Separator
+                    className='hidden sm:block sm:h-auto'
+                    orientation='vertical'
+                  />
+                  <VillaDetail>
+                    <BedDoubleIcon size={14} />
                     <span>{villa.bedrooms}</span>
                   </VillaDetail>
                   <Separator
-                    className='hidden sm:block'
+                    className='hidden sm:block sm:h-auto'
                     orientation='vertical'
                   />
                   <VillaDetail>
-                    <BathIcon size={16} />
+                    <ToiletIcon size={14} />
                     <span>{villa.bathrooms}</span>
                   </VillaDetail>
                 </CardDescription>

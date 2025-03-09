@@ -49,6 +49,9 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
     Autoplay({delay: autoplayDelay, active: autoplayActive})
   ])
   const [selectedIndex, setSelectedIndex] = React.useState<number>(startIndex)
+  const mediaQueryMatches = useMediaQuery('(min-width: 640px)', {
+    initializeWithValue: false
+  })
 
   const onPrevButtonClick = React.useCallback(
     function () {
@@ -114,7 +117,8 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
         selectedIndex,
         onPrevButtonClick,
         onNextButtonClick,
-        onThumbButtonClick
+        onThumbButtonClick,
+        mediaQueryMatches
       }}
     >
       <div
@@ -176,6 +180,7 @@ const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
   ...props
 }) => {
   const [open, setOpen] = React.useState<boolean>(false)
+  const {mediaQueryMatches} = useEmblaContext()
 
   return (
     <Drawer
@@ -185,9 +190,9 @@ const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
     >
       <DrawerTrigger asChild>
         <Button
-          className='absolute left-1/2 bottom-4 -translate-x-1/2 data-open:-translate-y-20 data-open:duration-[750ms] data-closed:duration-[375ms] transition ease-mocca sm:data-open:-translate-y-28 '
+          className='absolute left-1/2 bottom-2 -translate-x-1/2 data-open:-translate-y-18 data-open:duration-[750ms] data-closed:duration-[375ms] transition ease-mocca sm:data-open:-translate-y-28 '
           variant={!open ? 'primary-alt' : 'error'}
-          size='icon-small'
+          size={mediaQueryMatches ? 'icon-normal' : 'icon-small'}
         >
           {open ? <XIcon /> : <ImagesIcon />}
         </Button>
@@ -229,7 +234,7 @@ const EmblaThumb: React.FC<
     <button
       id='embla-thumb'
       className={cn(
-        'size-14 sm:size-20 rounded-xs overflow-hidden grayscale-100 contrast-75 transition',
+        'size-10 sm:size-20 rounded-xs overflow-hidden grayscale-100 contrast-75 transition',
         thumbIndex === selectedIndex && 'grayscale-0 contrast-100',
         className
       )}
@@ -239,76 +244,12 @@ const EmblaThumb: React.FC<
   )
 }
 
-// const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
-//   className,
-//   ...props
-// }) => {
-//   const [open, setOpen] = React.useState<boolean>(false)
-
-//   return (
-//     <Drawer
-//       open={open}
-//       onOpenChange={setOpen}
-//       modal={false}
-//     >
-//       <DrawerTrigger asChild>
-//         <Button
-//           className='absolute left-4 bottom-40 data-open:duration-[750ms] data-closed:duration-[375ms]'
-//           variant={!open ? 'primary-alt' : 'error'}
-//           size='icon-small'
-//         >
-//           {open ? <XIcon /> : <ImagesIcon />}
-//         </Button>
-//       </DrawerTrigger>
-//       <DrawerContent
-//         className='absolute bg-transparent !shadow-none'
-//         side='bottom'
-//         onInteractOutside={(e) => e.preventDefault()}
-//       >
-//         <VisuallyHidden>
-//           <DrawerTitle>Carousel thumbnails drawer</DrawerTitle>
-//         </VisuallyHidden>
-//         <div
-//           id='embla-thumbs-container'
-//           className={cn(
-//             'p-3 m-1.5 flex justify-center flex-wrap gap-2 glassmorphed-surface-dark',
-//             className
-//           )}
-//           {...props}
-//         />
-//       </DrawerContent>
-//     </Drawer>
-//   )
-// }
-
-// const EmblaThumb: React.FC<
-//   React.ComponentPropsWithRef<'button'> & {thumbIndex: number}
-// > = ({className, thumbIndex, ...props}) => {
-//   const {selectedIndex, onThumbButtonClick} = useEmblaContext()
-
-//   return (
-//     <button
-//       id='embla-thumb'
-//       className={cn(
-//         'size-10 sm:size-16 rounded-xs overflow-hidden grayscale-100',
-//         thumbIndex === selectedIndex && 'grayscale-0',
-//         className
-//       )}
-//       onClick={() => onThumbButtonClick(thumbIndex)}
-//       {...props}
-//     />
-//   )
-// }
-
 const EmblaButtonPrev: React.FC<
   Omit<React.ComponentPropsWithRef<typeof Button>, 'size'> & {
     icon?: React.ComponentType<LucideProps>
   }
 > = ({className, icon, ...props}) => {
-  const {onPrevButtonClick} = useEmblaContext()
-  const matches = useMediaQuery('(min-width: 640px)', {
-    initializeWithValue: false
-  })
+  const {onPrevButtonClick, mediaQueryMatches} = useEmblaContext()
 
   return (
     <Button
@@ -317,7 +258,8 @@ const EmblaButtonPrev: React.FC<
         'absolute top-1/2 -translate-y-1/2 left-2 sm:left-4',
         className
       )}
-      size={matches ? 'icon-normal' : 'icon-small'}
+      variant='primary-alt'
+      size={mediaQueryMatches ? 'icon-normal' : 'icon-small'}
       onClick={onPrevButtonClick}
       {...props}
     >
@@ -331,10 +273,7 @@ const EmblaButtonNext: React.FC<
     icon?: React.ComponentType<LucideProps>
   }
 > = ({className, icon, ...props}) => {
-  const {onNextButtonClick} = useEmblaContext()
-  const matches = useMediaQuery('(min-width: 640px)', {
-    initializeWithValue: false
-  })
+  const {onNextButtonClick, mediaQueryMatches} = useEmblaContext()
 
   return (
     <Button
@@ -343,7 +282,8 @@ const EmblaButtonNext: React.FC<
         'absolute top-1/2 -translate-y-1/2 right-2 sm:right-4',
         className
       )}
-      size={matches ? 'icon-normal' : 'icon-small'}
+      variant='primary-alt'
+      size={mediaQueryMatches ? 'icon-normal' : 'icon-small'}
       onClick={onNextButtonClick}
       {...props}
     >

@@ -6,7 +6,7 @@ import {
   UsersIcon,
   BabyIcon,
   BedDoubleIcon,
-  BathIcon,
+  ToiletIcon,
   LandPlotIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -84,7 +84,7 @@ const SlugDetails: React.FC<SlugDetailsProps> = ({slug, locale}) => {
               <SlugBadge icon={BedDoubleIcon}>
                 {t(`Slug.${slug}.bedrooms`)}
               </SlugBadge>
-              <SlugBadge icon={BathIcon}>
+              <SlugBadge icon={ToiletIcon}>
                 {t(`Slug.${slug}.bathrooms`)}
               </SlugBadge>
               <SlugBadge icon={LandPlotIcon}>

@@ -26,7 +26,6 @@ const HomeHeroCarousel: React.FC = () => {
           src={image}
           alt={`Home page carousel image slide ${i + 1}`}
           priority
-          draggable={false}
         />
       </EmblaSlide>
     )
@@ -42,7 +41,6 @@ const HomeHeroCarousel: React.FC = () => {
           className='w-full h-full object-cover'
           src={image}
           alt={`Home page carousel image thumb ${i + 1}`}
-          draggable={false}
         />
       </EmblaThumb>
     )
@@ -50,7 +48,7 @@ const HomeHeroCarousel: React.FC = () => {
 
   return (
     <EmblaCarousel
-      className='h-svh'
+      className='mt-32 sm:mt-0 sm:h-svh'
       autoplayActive
     >
       <EmblaViewport>
