@@ -1,5 +1,13 @@
 import Image from 'next/image'
 import {useTranslations} from 'next-intl'
+import {
+  PhoneIcon,
+  MailIcon,
+  MapPinHouseIcon,
+  FileTextIcon,
+  CookieIcon,
+  MusicIcon
+} from 'lucide-react'
 import {Link} from '@/src/i18n/navigation'
 import {Container} from '@/src/components/shared/container'
 import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
@@ -26,10 +34,12 @@ const Footer: React.FC = () => {
               asChild
             >
               <a
+                className='flex items-center gap-1.5'
                 href='tel:+306936998859'
                 target='_blank'
               >
-                {t('Footer.row-1.column-1.link-1')}
+                <PhoneIcon size={14} />
+                <span>{t('Footer.row-1.column-1.link-1')}</span>
               </a>
             </Typography>
             <Typography
@@ -37,11 +47,13 @@ const Footer: React.FC = () => {
               asChild
             >
               <a
+                className='flex items-center gap-1.5'
                 href='mailto:info@moccaliving.com'
                 target='_blank'
                 rel='noopener'
               >
-                {t('Footer.row-1.column-1.link-2')}
+                <MailIcon size={14} />
+                <span>{t('Footer.row-1.column-1.link-2')}</span>
               </a>
             </Typography>
             <Typography
@@ -49,31 +61,50 @@ const Footer: React.FC = () => {
               asChild
             >
               <a
+                className='flex gap-1.5'
                 href='https://maps.app.goo.gl/L6JEySni2t8jnb5m9'
                 target='_blank'
               >
-                {t.rich('Footer.row-1.column-1.link-3', {
-                  br: () => <br />
-                })}
+                <MapPinHouseIcon
+                  className='mt-1'
+                  size={14}
+                />
+                <span>
+                  {t.rich('Footer.row-1.column-1.link-3', {
+                    br: () => <br />
+                  })}
+                </span>
               </a>
             </Typography>
           </FooterColumn>
           <FooterColumn title={t('Footer.row-1.column-2.header')}>
             <Typography
+              className='flex items-center gap-1.5'
               variant='link'
               asChild
             >
-              <Link href='/privacy'>{t('Footer.row-1.column-2.link-1')}</Link>
+              <Link href='/privacy'>
+                <FileTextIcon size={14} />
+                <span>{t('Footer.row-1.column-2.link-1')}</span>
+              </Link>
             </Typography>
             <Typography
+              className='flex items-center gap-1.5'
               variant='link'
               asChild
             >
-              <Link href='/cookies'>{t('Footer.row-1.column-2.link-2')}</Link>
+              <Link href='/cookies'>
+                <CookieIcon size={14} />
+                <span>{t('Footer.row-1.column-2.link-2')}</span>
+              </Link>
             </Typography>
             <DialogAudioPlayer>
-              <Typography variant='link'>
-                {t('Footer.row-1.column-2.link-3')}
+              <Typography
+                className='flex items-center gap-1.5'
+                variant='link'
+              >
+                <MusicIcon size={14} />
+                <span>{t('Footer.row-1.column-2.link-3')}</span>
               </Typography>
             </DialogAudioPlayer>
           </FooterColumn>
