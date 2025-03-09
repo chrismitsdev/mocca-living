@@ -354,7 +354,7 @@ const HeaderNavigation: React.FC = () => {
                                     src={dimitraCover}
                                     alt='Dimitra cover image'
                                   />
-                                  <div className='space-y-1.5'>
+                                  <div className='space-y-0.5'>
                                     <Typography variant='h6'>
                                       {t('accomodation.dimitra')}
                                     </Typography>
@@ -376,7 +376,7 @@ const HeaderNavigation: React.FC = () => {
                                     src={georgiaCover}
                                     alt='Georgia cover image'
                                   />
-                                  <div className='space-y-1.5'>
+                                  <div className='space-y-0.5'>
                                     <Typography variant='h6'>
                                       {t('accomodation.georgia')}
                                     </Typography>
