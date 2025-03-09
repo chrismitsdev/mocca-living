@@ -339,9 +339,8 @@ const HeaderNavigation: React.FC = () => {
                           </CollapsibleTrigger>
                         </div>
                         <CollapsibleContent>
-                          <Separator className='mt-2' />
                           <ul
-                            className='mt-2 space-y-4'
+                            className='mt-4 space-y-4'
                             role='menu'
                           >
                             <li role='none'>
@@ -351,7 +350,7 @@ const HeaderNavigation: React.FC = () => {
                               >
                                 <div className='flex gap-3 rounded'>
                                   <CustomImage
-                                    className='max-w-24 object-cover rounded'
+                                    className='size-24 object-cover rounded'
                                     src={dimitraCover}
                                     alt='Dimitra cover image'
                                   />
@@ -373,7 +372,7 @@ const HeaderNavigation: React.FC = () => {
                               >
                                 <div className='flex gap-3 rounded'>
                                   <CustomImage
-                                    className='max-w-24 object-cover rounded'
+                                    className='size-24 object-cover rounded'
                                     src={georgiaCover}
                                     alt='Georgia cover image'
                                   />
