@@ -14,55 +14,55 @@
 
 @utility text-xxs {
   font-size: var(--text-xxs);
-  line-height: 14px;
+  line-height: 14px !important;
 }
 
 @utility text-xs {
   font-size: var(--text-xs);
-  line-height: 16px;
+  line-height: 16px !important;
 }
 
 @utility text-sm {
   font-size: var(--text-sm);
-  line-height: 24px;
+  line-height: 24px !important;
 }
 
 @utility text-base {
   font-size: var(--text-base);
-  line-height: 24px;
+  line-height: 24px !important;
 }
 
 @utility text-lg {
   font-size: var(--text-lg);
-  line-height: 24px;
+  line-height: 24px !important;
 }
 
 @utility text-xl {
   font-size: var(--text-xl);
-  line-height: 24px;
+  line-height: 24px !important;
 }
 
 @utility text-2xl {
   font-size: var(--text-2xl);
-  line-height: 32px;
+  line-height: 32px !important;
 }
 
 @utility text-3xl {
   font-size: var(--text-3xl);
-  line-height: 48px;
+  line-height: 48px !important;
 }
 
 @utility text-4xl {
   font-size: var(--text-4xl);
-  line-height: 48px;
+  line-height: 48px !important;
 }
 
 @utility text-5xl {
   font-size: var(--text-5xl);
-  line-height: 64px;
+  line-height: 64px !important;
 }
 
 @utility text-6xl {
   font-size: var(--text-6xl);
-  line-height: 96px;
+  line-height: 96px !important;
 }

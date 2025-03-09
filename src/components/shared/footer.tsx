@@ -7,7 +7,6 @@ import {DialogAudioPlayer} from '@/src/components/shared/dialog-audio-player'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 import logoFull from '@/public/logos/mocca-logo-full.svg'
-import type React from 'react'
 
 const Footer: React.FC = () => {
   const t = useTranslations('Components')

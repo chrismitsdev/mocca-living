@@ -10,8 +10,8 @@
         "dimitra-caption": "Experience luxury at villa Dimitra, a gorgeous 85m² retreat for 5 guests."
       },
       "contact": "Contact",
-      "privacy": "Privacy",
-      "cookies": "Cookies",
+      "privacy": "Privacy policy",
+      "cookies": "Cookies policy",
       "not-found": "Page not found"
     },
     "Contact": {
@@ -144,8 +144,20 @@
       "sub-content": "The visitor of the pages and services of our website mocca-living.gr grants their consent to the above terms of use, which apply to the entirety of the content, pages, graphics, images, photographs, and files included on the website. Therefore, they should carefully read these terms before visiting or using the pages and services of the mocca-living.gr website. If they do not agree, they should refrain from using the services and content of the website. The visitor is requested to check the content of these pages for any possible changes. The continued use of the mocca-living.gr website, even after any changes, signifies the visitor's unconditional acceptance of these terms."
     },
     "Cookies": {
-      "title": "Use of Cookies",
-      "content": "We use cookies to enhance your experience on our website and to ensure its effective functioning. By selecting 'Accept' upon entering this website, you give your consent to the use of cookies in accordance with our policy. This website has the ability to use cookies as part of its functionality and services. Cookies are small files (text files) that are sent and stored on the user's computer, allowing websites to operate smoothly and without technical abnormalities, collect multiple user preferences, recognize frequent users, facilitate their access, and gather data to improve the content of the website. Cookies do not cause any harm to users' computers or the files stored on them. We use cookies to provide you with information and to perform the functions and features of the website."
+      "title-1": "What are cookies",
+      "content-1": {
+        "description": "Cookies are small text files stored on your device when you visit a website. They help websites function properly, enhance user experience, and provide analytical insights. Cookies can be categorized into different types based on their purpose:",
+        "bullet-1": "<strong>Essential Cookies</strong> - Required for the website to function properly.",
+        "bullet-2": "<strong>Performance Cookies</strong> - Help analyze how visitors use the website to improve its functionality.",
+        "bullet-3": "<strong>Functional Cookies</strong> - Enhance user experience by remembering preferences (e.g., language settings).",
+        "bullet-4": "<strong>Marketing Cookies</strong> - Used for advertising and tracking user behavior across different websites."
+      },
+      "title-2": "Cookies used on this website",
+      "content-2": {
+        "description": "This website uses two cookies:",
+        "bullet-1": "<strong>CONSENT_COOKIE</strong> - This cookie is stored to deliver a better user experience and analyze website traffic.",
+        "bullet-2": "<strong>NEXT_LOCALE</strong> - This cookie is used for internalization purposes, ensuring the website displays the correct language based on user preferences."
+      }
     },
     "NotFound": {
       "title": "Not found",
@@ -254,7 +266,7 @@
         "column-2": {
           "header": "Useful links",
           "link-1": "Privacy policy",
-          "link-2": "Use of cookies",
+          "link-2": "Cookies policy",
           "link-3": "Audio playlist"
         },
         "column-3": {
