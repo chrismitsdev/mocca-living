@@ -11,8 +11,6 @@ import {
   InstagramIcon
 } from 'lucide-react'
 import {Link} from '@/src/i18n/navigation'
-import {StartPilatesLogo} from '@/src/components/logos/startpilates-logo'
-import {YuppiiLogo} from '@/src/components/logos/yuppii-logo'
 import {Container} from '@/src/components/shared/container'
 import {LogosCarousel} from '@/src/components/shared/logos-carousel'
 import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
