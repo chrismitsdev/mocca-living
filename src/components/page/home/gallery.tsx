@@ -96,12 +96,12 @@ const Gallery: React.FC = () => {
                 </EmblaCarousel>
               </DialogContent>
               <DialogClose
-                className='absolute top-4 right-4 z-50'
+                className='absolute top-2 right-2 z-50'
                 asChild
               >
                 <Button
                   variant='error'
-                  size='icon-normal'
+                  size='icon-small'
                 >
                   <XIcon />
                 </Button>
