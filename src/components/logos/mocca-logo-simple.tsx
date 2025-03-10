@@ -1,4 +1,4 @@
-const LogoSimple: React.FC<CustomIconProps> = ({
+const MoccaLogoSimple: React.FC<CustomIconProps> = ({
   width = 234,
   height = 362,
   ...props
@@ -36,6 +36,6 @@ const LogoSimple: React.FC<CustomIconProps> = ({
   )
 }
 
-LogoSimple.displayName = 'LogoSimple'
+MoccaLogoSimple.displayName = 'MoccaLogoSimple'
 
-export {LogoSimple}
+export {MoccaLogoSimple}

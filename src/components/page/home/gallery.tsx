@@ -87,7 +87,7 @@ const Gallery: React.FC = () => {
                 <VisuallyHidden>
                   <DialogTitle>Home page gallery images</DialogTitle>
                 </VisuallyHidden>
-                <EmblaCarousel startIndex={index}>
+                <EmblaCarousel options={{startIndex: index, loop: true}}>
                   <EmblaViewport>
                     <EmblaContainer>{renderedSlides}</EmblaContainer>
                   </EmblaViewport>

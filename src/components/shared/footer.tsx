@@ -6,14 +6,20 @@ import {
   MapPinHouseIcon,
   FileTextIcon,
   CookieIcon,
-  MusicIcon
+  MusicIcon,
+  FacebookIcon,
+  InstagramIcon
 } from 'lucide-react'
 import {Link} from '@/src/i18n/navigation'
+import {StartPilatesLogo} from '@/src/components/logos/startpilates-logo'
+import {YuppiiLogo} from '@/src/components/logos/yuppii-logo'
 import {Container} from '@/src/components/shared/container'
+import {LogosCarousel} from '@/src/components/shared/logos-carousel'
 import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
 import {DialogAudioPlayer} from '@/src/components/shared/dialog-audio-player'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
+import {Button} from '@/src/components/ui/button'
 import logoFull from '@/public/logos/mocca-logo-full.svg'
 
 const Footer: React.FC = () => {
@@ -132,16 +138,51 @@ const Footer: React.FC = () => {
               </a>
             </Typography>
           </FooterColumn>
-          <LocaleSwitcher />
+          <FooterColumn>
+            <div className='space-x-2'>
+              <Button
+                variant='bordered-alt'
+                size='icon-normal'
+                asChild
+              >
+                <a
+                  target='_blank'
+                  href='https://www.facebook.com/profile.php?id=61566665200042'
+                >
+                  <FacebookIcon />
+                </a>
+              </Button>
+              <Button
+                variant='bordered-alt'
+                size='icon-normal'
+                asChild
+              >
+                <a
+                  target='_blank'
+                  href='https://www.instagram.com/moccaliving.premiumstay'
+                >
+                  <InstagramIcon />
+                </a>
+              </Button>
+            </div>
+            <LocaleSwitcher />
+          </FooterColumn>
         </div>
 
         <Separator />
 
-        <div className='flex flex-col justify-between gap-3 sm:flex-row'>
-          <Typography variant='mini'>
+        <div className='flex flex-col justify-between gap-3 sm:items-center sm:flex-row'>
+          <Typography
+            className='order-2 sm:order-1'
+            variant='mini'
+          >
             {t('Footer.row-2.copyright', {created: new Date()})}
           </Typography>
-          <Typography variant='mini'>
+          <LogosCarousel />
+          <Typography
+            className='order-3 sm:hidden'
+            variant='mini'
+          >
             {t.rich('Footer.row-2.manufacturer', {
               a: (chunks) => (
                 <a
@@ -154,7 +195,10 @@ const Footer: React.FC = () => {
               )
             })}
           </Typography>
-          <Typography variant='mini'>
+          <Typography
+            className='order-4 sm:order-3'
+            variant='mini'
+          >
             {t.rich('Footer.row-2.developer', {
               a: (chunks) => (
                 <a
@@ -173,16 +217,32 @@ const Footer: React.FC = () => {
   )
 }
 
-const FooterColumn: React.FC<React.PropsWithChildren & {title: string}> = ({
+const FooterColumn: React.FC<React.PropsWithChildren & {title?: string}> = ({
   title,
   children
 }) => {
-  return (
-    <div className='w-fit space-y-2 sm:space-y-4'>
-      <Typography className='font-semibold uppercase'>{title}</Typography>
-      <div className='space-y-2'>{children}</div>
-    </div>
-  )
+  let renderedJsx: React.JSX.Element
+
+  if (title) {
+    renderedJsx = (
+      <div className='w-fit space-y-2 sm:space-y-4'>
+        <Typography className='font-semibold uppercase'>{title}</Typography>
+        <div className='space-y-2'>{children}</div>
+      </div>
+    )
+  } else {
+    renderedJsx = <div className='w-fit space-y-2 sm:space-y-4'>{children}</div>
+  }
+
+  return renderedJsx
+  // return (
+  //   <div className='w-fit space-y-2 sm:space-y-4'>
+  //     {title && (
+  //       <Typography className='font-semibold uppercase'>{title}</Typography>
+  //     )}
+  //     <div className='space-y-2'>{children}</div>
+  //   </div>
+  // )
 }
 
 Footer.displayName = 'Footer'

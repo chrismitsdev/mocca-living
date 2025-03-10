@@ -5,7 +5,7 @@ import {Map as ReactMapGl, Marker, Popup} from 'react-map-gl/mapbox'
 import {MapPinIcon, XIcon} from 'lucide-react'
 import {useMediaQuery} from '@/src/hooks/useMediaQuery'
 import {Typography} from '@/src/components/ui/typography'
-import {LogoSimple} from '@/src/components/logos/logo-simple'
+import {MoccaLogoSimple} from '@/src/components/logos/mocca-logo-simple'
 
 interface MapboxProps {
   token: string
@@ -32,8 +32,8 @@ const Map: React.FC<MapboxProps> = ({token, translations}) => {
         style={{
           width: '100%',
           minHeight: matches ? 696 : 500,
-          borderRadius: 'var(--radius)',
-          boxShadow: 'var(--box-shadow-sm)'
+          borderRadius: '4px',
+          boxShadow: 'var(--shadow-small)'
         }}
         mapboxAccessToken={token}
         initialViewState={{
@@ -79,7 +79,7 @@ const Map: React.FC<MapboxProps> = ({token, translations}) => {
               <XIcon size={16} />
             </div>
             <div className='inline-flex items-center gap-4'>
-              <LogoSimple
+              <MoccaLogoSimple
                 className='text-primary'
                 width={25.5}
                 height={40}

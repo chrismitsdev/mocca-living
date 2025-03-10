@@ -24,7 +24,7 @@ import {Link, usePathname} from '@/src/i18n/navigation'
 import {cn} from '@/src/lib/utils'
 import {useBoundedScroll} from '@/src/hooks/useBoundedScroll'
 import {Container} from '@/src/components/shared/container'
-import {LogoSimple} from '@/src/components/logos/logo-simple'
+import {MoccaLogoSimple} from '@/src/components/logos/mocca-logo-simple'
 import {Typography} from '@/src/components/ui/typography'
 import {Button} from '@/src/components/ui/button'
 import {CustomImage} from '@/src/components/ui/custom-image'
@@ -121,7 +121,7 @@ const HeaderNavigation: React.FC = () => {
           }}
         >
           <Link href='/'>
-            <LogoSimple
+            <MoccaLogoSimple
               width={51}
               height={80}
             />
@@ -407,8 +407,7 @@ const HeaderNavigation: React.FC = () => {
                 <div className='flex justify-between'>
                   <div className='flex gap-2'>
                     <Button
-                      className='bg-surface-1'
-                      variant='bordered'
+                      variant='bordered-alt'
                       size='icon-normal'
                       asChild
                     >
@@ -420,8 +419,7 @@ const HeaderNavigation: React.FC = () => {
                       </a>
                     </Button>
                     <Button
-                      className='bg-surface-1'
-                      variant='bordered'
+                      variant='bordered-alt'
                       size='icon-normal'
                       asChild
                     >

@@ -1,3 +1,7 @@
+'use client'
+
+import Autoplay from 'embla-carousel-autoplay'
+import {sortImportedImagesByName} from '@/src/lib/utils'
 import {
   EmblaCarousel,
   EmblaViewport,
@@ -9,7 +13,6 @@ import {
   EmblaButtonNext
 } from '@/src/components/ui/embla-carousel'
 import {CustomImage} from '@/src/components/ui/custom-image'
-import {sortImportedImagesByName} from '@/src/lib/utils'
 import * as slideShowImages from '@/public/images/home/home-slide-show'
 
 const images = sortImportedImagesByName(slideShowImages)
@@ -49,7 +52,7 @@ const HomeHeroCarousel: React.FC = () => {
   return (
     <EmblaCarousel
       className='mt-32 sm:mt-0 sm:h-svh'
-      autoplayActive
+      plugins={[Autoplay({delay: 3500})]}
     >
       <EmblaViewport>
         <EmblaContainer>{renderedImages}</EmblaContainer>

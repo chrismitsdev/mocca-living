@@ -34,6 +34,12 @@ const buttonVariants = cva(
         ],
         'primary-alt': ['bg-surface-1', 'text-primary', 'hover:bg-surface-2'],
         bordered: ['border', 'border-border', 'hover:border-border-hover'],
+        'bordered-alt': [
+          'bg-surface-1',
+          'border',
+          'border-border',
+          'hover:border-border-hover'
+        ],
         ghost: ['hover:bg-primary', 'hover:text-primary-foreground'],
         'ghost-alt': ['hover:bg-surface-2', 'hover:text-foreground'],
         success: [

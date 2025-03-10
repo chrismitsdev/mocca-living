@@ -70,7 +70,7 @@ const ClientLocaleSwitcher: React.FC<LocaleSwitcherProps> = ({
       disabled={isPending}
       defaultValue={locale}
     >
-      <SelectTrigger className='min-w-fit'>{renderedTrigger}</SelectTrigger>
+      <SelectTrigger className='min-w-[150px]'>{renderedTrigger}</SelectTrigger>
       <SelectPortal>
         <SelectContent>
           <SelectViewport>{renderedItems}</SelectViewport>
