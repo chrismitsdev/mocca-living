@@ -11,7 +11,6 @@ import {
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import {cn} from '@/src/lib/utils'
-import {useMediaQuery} from '@/src/hooks/useMediaQuery'
 import {
   EmblaContext,
   useEmblaContext
@@ -49,19 +48,12 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
     Autoplay({delay: autoplayDelay, active: autoplayActive})
   ])
   const [selectedIndex, setSelectedIndex] = React.useState<number>(startIndex)
-  const mediaQueryMatches = useMediaQuery('(min-width: 640px)', {
-    initializeWithValue: false
-  })
 
   const onPrevButtonClick = React.useCallback(
     function () {
       if (!emblaApi) return
-
-      const isAutoPlaying = emblaApi.plugins().autoplay.isPlaying()
+      if (autoplayActive) emblaApi.plugins().autoplay.stop()
       emblaApi.scrollPrev()
-      if (isAutoPlaying) {
-        emblaApi.plugins().autoplay.stop()
-      }
     },
     [emblaApi]
   )
@@ -69,13 +61,8 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
   const onNextButtonClick = React.useCallback(
     function () {
       if (!emblaApi) return
-
-      const isAutoPlaying = emblaApi.plugins().autoplay.isPlaying()
+      if (autoplayActive) emblaApi.plugins().autoplay.stop()
       emblaApi.scrollNext()
-
-      if (isAutoPlaying) {
-        emblaApi.plugins().autoplay.stop()
-      }
     },
     [emblaApi]
   )
@@ -83,13 +70,8 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
   const onThumbButtonClick = React.useCallback(
     function (index: number) {
       if (!emblaApi) return
-
-      const isAutoPlaying = emblaApi.plugins().autoplay.isPlaying()
+      if (autoplayActive) emblaApi.plugins().autoplay.stop()
       emblaApi.scrollTo(index)
-
-      if (isAutoPlaying) {
-        emblaApi.plugins().autoplay.stop()
-      }
     },
     [emblaApi]
   )
@@ -102,7 +84,6 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
   React.useEffect(
     function () {
       if (!emblaApi) return
-
       onSelect(emblaApi)
       emblaApi.on('reInit', onSelect).on('select', onSelect)
     },
@@ -117,8 +98,7 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
         selectedIndex,
         onPrevButtonClick,
         onNextButtonClick,
-        onThumbButtonClick,
-        mediaQueryMatches
+        onThumbButtonClick
       }}
     >
       <div
@@ -180,7 +160,6 @@ const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
   ...props
 }) => {
   const [open, setOpen] = React.useState<boolean>(false)
-  const {mediaQueryMatches} = useEmblaContext()
 
   return (
     <Drawer
@@ -190,9 +169,9 @@ const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
     >
       <DrawerTrigger asChild>
         <Button
-          className='absolute left-1/2 bottom-2 -translate-x-1/2 data-open:-translate-y-16 data-open:duration-[750ms] data-closed:duration-[375ms] transition ease-mocca sm:data-open:-translate-y-28 '
+          className='absolute left-1/2 bottom-2 -translate-x-1/2 data-open:-translate-y-16 data-open:duration-[750ms] data-closed:duration-[375ms] transition ease-mocca sm:data-open:-translate-y-28'
           variant={!open ? 'primary-alt' : 'error'}
-          size={mediaQueryMatches ? 'icon-normal' : 'icon-small'}
+          size='icon-small'
         >
           {open ? <XIcon /> : <ImagesIcon />}
         </Button>
@@ -205,7 +184,6 @@ const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
         <VisuallyHidden>
           <DrawerTitle>Carousel thumbnails drawer</DrawerTitle>
         </VisuallyHidden>
-        {/* <div className='py-2  px-2 m-1.5 glassmorphed-surface-dark rounded sm:py-3'> */}
         <div className='py-2 px-2 m-1.5 bg-surface-2 rounded sm:py-3'>
           <ScrollArea>
             <ScrollAreaViewport>
@@ -246,11 +224,11 @@ const EmblaThumb: React.FC<
 }
 
 const EmblaButtonPrev: React.FC<
-  Omit<React.ComponentPropsWithRef<typeof Button>, 'size'> & {
+  React.ComponentPropsWithRef<typeof Button> & {
     icon?: React.ComponentType<LucideProps>
   }
 > = ({className, icon, ...props}) => {
-  const {onPrevButtonClick, mediaQueryMatches} = useEmblaContext()
+  const {onPrevButtonClick} = useEmblaContext()
 
   return (
     <Button
@@ -260,7 +238,7 @@ const EmblaButtonPrev: React.FC<
         className
       )}
       variant='primary-alt'
-      size={mediaQueryMatches ? 'icon-normal' : 'icon-small'}
+      size='icon-small'
       onClick={onPrevButtonClick}
       {...props}
     >
@@ -270,11 +248,11 @@ const EmblaButtonPrev: React.FC<
 }
 
 const EmblaButtonNext: React.FC<
-  Omit<React.ComponentPropsWithRef<typeof Button>, 'size'> & {
+  React.ComponentPropsWithRef<typeof Button> & {
     icon?: React.ComponentType<LucideProps>
   }
 > = ({className, icon, ...props}) => {
-  const {onNextButtonClick, mediaQueryMatches} = useEmblaContext()
+  const {onNextButtonClick} = useEmblaContext()
 
   return (
     <Button
@@ -284,7 +262,7 @@ const EmblaButtonNext: React.FC<
         className
       )}
       variant='primary-alt'
-      size={mediaQueryMatches ? 'icon-normal' : 'icon-small'}
+      size='icon-small'
       onClick={onNextButtonClick}
       {...props}
     >

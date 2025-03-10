@@ -8,7 +8,6 @@ interface EmblaContextProps {
   onPrevButtonClick(): void
   onNextButtonClick(): void
   onThumbButtonClick(index: number): void
-  mediaQueryMatches: boolean
 }
 
 const EmblaContext = React.createContext<EmblaContextProps | null>(null)
