@@ -47,12 +47,12 @@ interface GalleryTriggerProps {
   onClick: () => void
 }
 
-const Gallery: React.FC = () => {
+const HomeGallery: React.FC = () => {
   const [index, setIndex] = React.useState(0)
 
   const renderedTriggers = images.map(function (image, i) {
     return (
-      <GalleryTrigger
+      <Trigger
         key={image.src}
         className={triggerClasses[i]}
         src={image}
@@ -114,7 +114,7 @@ const Gallery: React.FC = () => {
   )
 }
 
-const GalleryTrigger: React.FC<GalleryTriggerProps> = ({
+const Trigger: React.FC<GalleryTriggerProps> = ({
   className,
   src,
   alt,
@@ -143,7 +143,7 @@ const GalleryTrigger: React.FC<GalleryTriggerProps> = ({
   )
 }
 
-Gallery.displayName = 'Gallery'
-GalleryTrigger.displayName = 'GalleryTrigger'
+HomeGallery.displayName = 'HomeGallery'
+Trigger.displayName = 'Trigger'
 
-export {Gallery}
+export {HomeGallery}

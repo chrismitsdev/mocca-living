@@ -80,7 +80,8 @@
             "bathrooms": "1 Bathroom",
             "button": "Information"
           }
-        }
+        },
+        "Faq": {}
       },
       "Slug": {
         "headers": {

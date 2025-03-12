@@ -17,7 +17,7 @@ import * as slideShowImages from '@/public/images/home/home-slide-show'
 
 const images = sortImportedImagesByName(slideShowImages)
 
-const HomeHeroCarousel: React.FC = () => {
+const HomeCarousel: React.FC = () => {
   const renderedImages = images.map(function (image, i) {
     return (
       <EmblaSlide
@@ -53,17 +53,20 @@ const HomeHeroCarousel: React.FC = () => {
     <EmblaCarousel
       className='mt-32 sm:mt-0 sm:h-svh'
       plugins={[Autoplay({delay: 3500})]}
+      asChild
     >
-      <EmblaViewport>
-        <EmblaContainer>{renderedImages}</EmblaContainer>
-      </EmblaViewport>
-      <EmblaButtonPrev />
-      <EmblaButtonNext />
-      <EmblaThumbsContainer>{renderedThumbs}</EmblaThumbsContainer>
+      <section>
+        <EmblaViewport>
+          <EmblaContainer>{renderedImages}</EmblaContainer>
+        </EmblaViewport>
+        <EmblaButtonPrev />
+        <EmblaButtonNext />
+        <EmblaThumbsContainer>{renderedThumbs}</EmblaThumbsContainer>
+      </section>
     </EmblaCarousel>
   )
 }
 
-HomeHeroCarousel.displayName = 'HomeHeroCarousel'
+HomeCarousel.displayName = 'HomeCarousel'
 
-export {HomeHeroCarousel}
+export {HomeCarousel}

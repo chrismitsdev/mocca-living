@@ -1,9 +1,9 @@
 import * as React from 'react'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
-import {HomeHeroCarousel} from '@/src/components/page/home/home-hero-carousel'
-import {Introduction} from '@/src/components/page/home/intoduction'
-import {IdealReasons} from '@/src/components/page/home/ideal-reasons'
-import {Gallery} from '@/src/components/page/home/gallery'
+import {HomeCarousel} from '@/src/app/[locale]/(home)/(components)/home-carousel'
+import {HomeIntro} from '@/src/app/[locale]/(home)/(components)/home-intro'
+import {HomeReasons} from '@/src/app/[locale]/(home)/(components)/home-reasons'
+import {HomeGallery} from '@/src/app/[locale]/(home)/(components)/home-gallery'
 
 export async function generateMetadata({params}: Params) {
   const {locale} = await params
@@ -21,10 +21,10 @@ export default function HomePage({params}: Params) {
 
   return (
     <>
-      <HomeHeroCarousel />
-      <Introduction />
-      <IdealReasons />
-      <Gallery />
+      <HomeCarousel />
+      <HomeIntro />
+      <HomeReasons />
+      <HomeGallery />
     </>
   )
 }

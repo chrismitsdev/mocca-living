@@ -1,8 +1,8 @@
 import * as React from 'react'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {notFound} from 'next/navigation'
-import {SlugCarousel} from '@/src/components/page/accomodation/slug/slug-carousel'
-import {SlugDetails} from '@/src/components/page/accomodation/slug/slug-details'
+import {SlugCarousel} from '@/src/app/[locale]/accomodation/[slug]/(components)/slug-carousel'
+import {SlugDetails} from '@/src/app/[locale]/accomodation/[slug]/(components)/slug-details'
 
 type ParamsWithSlug = {
   params: Promise<{

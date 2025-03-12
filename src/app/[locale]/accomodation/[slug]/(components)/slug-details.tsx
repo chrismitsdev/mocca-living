@@ -22,7 +22,7 @@ import {
 } from '@/src/components/ui/card'
 import {Button} from '@/src/components/ui/button'
 import {Typography} from '@/src/components/ui/typography'
-import {SlugForm} from '@/src/components/page/accomodation/slug/slug-form'
+import {SlugForm} from '@/src/app/[locale]/accomodation/[slug]/(components)/slug-form'
 
 interface SlugDetailsProps {
   slug: Slug
@@ -43,7 +43,7 @@ const SlugDetails: React.FC<SlugDetailsProps> = ({slug, locale}) => {
       className='px-3'
       asChild
     >
-      <article className='space-y-4'>
+      <section className='space-y-4'>
         <div className='p-0.5 flex justify-between bg-surface-2 border border-surface-3 rounded'>
           <Button
             variant='ghost'
@@ -118,7 +118,7 @@ const SlugDetails: React.FC<SlugDetailsProps> = ({slug, locale}) => {
             </NextIntlClientProvider>
           </CardFooter>
         </Card>
-      </article>
+      </section>
     </Container>
   )
 }

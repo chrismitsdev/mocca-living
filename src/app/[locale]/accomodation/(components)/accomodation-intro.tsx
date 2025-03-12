@@ -2,7 +2,7 @@ import {useTranslations} from 'next-intl'
 import {Container} from '@/src/components/shared/container'
 import {Typography} from '@/src/components/ui/typography'
 
-const Introduction: React.FC = () => {
+const AccomodationIntro: React.FC = () => {
   const t = useTranslations('Pages.Accomodation.Index.Introdution')
 
   return (
@@ -10,14 +10,14 @@ const Introduction: React.FC = () => {
       className='space-y-6'
       asChild
     >
-      <article>
+      <section>
         <Typography variant='h3'>{t('title')}</Typography>
         <Typography className='leading-8'>{t('message')}</Typography>
-      </article>
+      </section>
     </Container>
   )
 }
 
-Introduction.displayName = 'Introduction'
+AccomodationIntro.displayName = 'AccomodationIntro'
 
-export {Introduction}
+export {AccomodationIntro}

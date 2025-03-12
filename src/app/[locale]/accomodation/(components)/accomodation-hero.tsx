@@ -2,21 +2,20 @@ import {useTranslations} from 'next-intl'
 import {Link} from '@/src/i18n/navigation'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {Button} from '@/src/components/ui/button'
-import {dimitraCover} from '@/public/images/covers'
+import accomodationIndex from '@/public/images/accomodation/index/1.webp'
 
-const HeroImage: React.FC = () => {
+const AccomodationHero: React.FC = () => {
   const t = useTranslations('Pages.Accomodation')
   return (
-    <div className='relative h-svh'>
+    <section className='relative h-svh'>
       <CustomImage
         className='w-full h-full object-cover'
-        src={dimitraCover}
+        src={accomodationIndex}
         alt='Hero image'
         priority
       />
       <Button
         className='absolute bottom-10 left-1/2 -translate-x-1/2'
-        variant='primary-alt'
         size='large'
         asChild
       >
@@ -24,10 +23,10 @@ const HeroImage: React.FC = () => {
           <span>{t('HeroImage.button-label')}</span>
         </Link>
       </Button>
-    </div>
+    </section>
   )
 }
 
-HeroImage.displayName = 'HeroImage'
+AccomodationHero.displayName = 'AccomodationHero'
 
-export {HeroImage}
+export {AccomodationHero}

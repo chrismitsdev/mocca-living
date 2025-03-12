@@ -60,13 +60,13 @@ const tInfo = function (
   })
 }
 
-const Villas: React.FC = () => {
+const AccomodationVillas: React.FC = () => {
   const t = useTranslations('Pages.Accomodation.Index.Villas')
   const info = tInfo(t)
 
   return (
-    <article>
-      <Container asChild>
+    <Container asChild>
+      <section>
         <div className='grid gap-12 sm:grid-cols-2'>
           {info.map((villa) => (
             <Card
@@ -129,8 +129,8 @@ const Villas: React.FC = () => {
             </Card>
           ))}
         </div>
-      </Container>
-    </article>
+      </section>
+    </Container>
   )
 }
 
@@ -142,7 +142,7 @@ const VillaDetail: React.FC<React.PropsWithChildren> = ({children}) => {
   )
 }
 
-Villas.displayName = 'Villas'
+AccomodationVillas.displayName = 'AccomodationVillas'
 VillaDetail.displayName = 'VillaDetail'
 
-export {Villas}
+export {AccomodationVillas}

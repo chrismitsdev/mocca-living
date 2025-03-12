@@ -80,7 +80,8 @@
             "bathrooms": "1 Μπάνιο",
             "button": "Πληροφορίες"
           }
-        }
+        },
+        "Faq": {}
       },
       "Slug": {
         "headers": {

@@ -3,10 +3,11 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import type {Metadata} from 'next'
 import {Commissioner} from 'next/font/google'
 import {NextIntlClientProvider} from 'next-intl'
-import {setRequestLocale, getMessages} from 'next-intl/server'
+import {getMessages, setRequestLocale} from 'next-intl/server'
 import {notFound} from 'next/navigation'
 import {routing} from '@/src/i18n/routing'
 import {Header} from '@/src/components/shared/header'
+import {RouteTransition} from '@/src/components/shared/route-transition'
 import {Footer} from '@/src/components/shared/footer'
 import {ContactDrawer} from '@/src/components/shared/contact-drawer'
 import {CookieConsent} from '@/src/components/shared/cookie-consent'
@@ -52,7 +53,9 @@ export default async function LocaleLayout({
     >
       <body className='min-h-screen grid grid-rows-[1fr_auto]'>
         <Header />
-        <main>{children}</main>
+        <main>
+          <RouteTransition>{children}</RouteTransition>
+        </main>
         <Footer />
         <ContactDrawer />
         <NextIntlClientProvider messages={messages.Components.CookieConsent}>

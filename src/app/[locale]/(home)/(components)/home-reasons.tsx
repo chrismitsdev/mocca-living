@@ -5,7 +5,7 @@ import {CustomImage} from '@/src/components/ui/custom-image'
 import {Typography} from '@/src/components/ui/typography'
 import {reasonImage1, reasonImage2} from '@/public/images/home/home-reasons'
 
-const IdealReasons: React.FC = () => {
+const HomeReasons: React.FC = () => {
   const t = useTranslations('Pages.Home.IdealReasons')
 
   return (
@@ -89,7 +89,7 @@ const Reason: React.FC<{title: string; description: string}> = ({
   )
 }
 
-IdealReasons.displayName = 'IdealReasons'
+HomeReasons.displayName = 'HomeReasons'
 Reason.displayName = 'Reason'
 
-export {IdealReasons}
+export {HomeReasons}

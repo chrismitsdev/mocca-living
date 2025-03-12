@@ -2,7 +2,7 @@ import {useTranslations} from 'next-intl'
 import {Container} from '@/src/components/shared/container'
 import {Typography} from '@/src/components/ui/typography'
 
-const Introduction: React.FC = () => {
+const HomeIntro: React.FC = () => {
   const t = useTranslations('Pages.Home.Introdution')
 
   return (
@@ -18,6 +18,6 @@ const Introduction: React.FC = () => {
   )
 }
 
-Introduction.displayName = 'Introduction'
+HomeIntro.displayName = 'HomeIntro'
 
-export {Introduction}
+export {HomeIntro}

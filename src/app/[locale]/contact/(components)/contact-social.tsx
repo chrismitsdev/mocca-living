@@ -3,11 +3,11 @@ import {MapPin, PhoneIcon, FacebookIcon, InstagramIcon} from 'lucide-react'
 import {Container} from '@/src/components/shared/container'
 import {Typography} from '@/src/components/ui/typography'
 
-const Social: React.FC = () => {
+const ContactSocial: React.FC = () => {
   const t = useTranslations('Pages.Contact.Social')
 
   return (
-    <article className='py-24 bg-surface-2'>
+    <section className='py-24 bg-surface-2'>
       <Container>
         <div className='grid gap-8 sm:grid-cols-2'>
           <SocialLink href='https://www.google.com/maps?saddr=My+Location&daddr=40.848948,25.723508'>
@@ -31,7 +31,7 @@ const Social: React.FC = () => {
           </SocialLink>
         </div>
       </Container>
-    </article>
+    </section>
   )
 }
 
@@ -48,7 +48,7 @@ const SocialLink: React.FC<React.ComponentPropsWithoutRef<'a'>> = ({
   )
 }
 
-Social.displayName = 'Social'
+ContactSocial.displayName = 'ContactSocial'
 SocialLink.displayName = 'SocialLink'
 
-export {Social}
+export {ContactSocial}

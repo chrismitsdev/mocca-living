@@ -3,9 +3,9 @@ import {Spinner} from '@/src/components/ui/spinner'
 
 export default function Loading() {
   return (
-    <Container className='h-[calc(100svh-128px)]'>
+    <Container className='h-svh'>
       <div className='h-full flex items-center justify-center'>
-        <Spinner size={48} />
+        <Spinner size={56} />
       </div>
     </Container>
   )
