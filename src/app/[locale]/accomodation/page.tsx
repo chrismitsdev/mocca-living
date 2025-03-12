@@ -3,7 +3,6 @@ import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {AccomodationHero} from '@/src/app/[locale]/accomodation/(components)/accomodation-hero'
 import {AccomodationIntro} from '@/src/app/[locale]/accomodation/(components)/accomodation-intro'
 import {AccomodationVillas} from '@/src/app/[locale]/accomodation/(components)/accomodation-villas'
-// import {AccomodationFaq} from '@/src/app/[locale]/accomodation/(components)/accomodation-faq'
 
 export async function generateMetadata({params}: Params) {
   const {locale} = await params
@@ -27,8 +26,6 @@ export default function AccomodationPage({params}: Params) {
       <AccomodationHero />
       <AccomodationIntro />
       <AccomodationVillas />
-      {/* @TODO: Faq section */}
-      {/* <AccomodationFaq /> */}
     </>
   )
 }

@@ -2,6 +2,7 @@ import * as React from 'react'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {useTranslations, useMessages, NextIntlClientProvider} from 'next-intl'
 import {Container} from '@/src/components/shared/container'
+import {Section} from '@/src/components/shared/section'
 import {
   Card,
   CardContent,
@@ -36,11 +37,8 @@ export default function ContactPage({params}: Params) {
 
   return (
     <>
-      <Container
-        className='pt-56'
-        asChild
-      >
-        <section>
+      <Container asChild>
+        <Section>
           <Card className='px-4 py-8 space-y-8 sm:p-16 w-full'>
             <CardHeader>
               <CardTitle>{t('Components.Form.contact-page-title')}</CardTitle>
@@ -54,14 +52,14 @@ export default function ContactPage({params}: Params) {
               </NextIntlClientProvider>
             </CardContent>
           </Card>
-        </section>
+        </Section>
       </Container>
 
       <ContactSocial />
 
       {process.env.MAPBOX_TOKEN && (
         <Container asChild>
-          <section>
+          <Section>
             <ContactMap
               token={process.env.MAPBOX_TOKEN}
               translations={{
@@ -69,7 +67,7 @@ export default function ContactPage({params}: Params) {
                 directions: t('Pages.Contact.Map.directions')
               }}
             />
-          </section>
+          </Section>
         </Container>
       )}
     </>

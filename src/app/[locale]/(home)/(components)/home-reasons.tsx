@@ -1,6 +1,7 @@
 import {useTranslations} from 'next-intl'
 import {CornerDownRightIcon} from 'lucide-react'
 import {Container} from '@/src/components/shared/container'
+import {Section} from '@/src/components/shared/section'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {Typography} from '@/src/components/ui/typography'
 import {reasonImage1, reasonImage2} from '@/public/images/home/home-reasons'
@@ -9,7 +10,7 @@ const HomeReasons: React.FC = () => {
   const t = useTranslations('Pages.Home.IdealReasons')
 
   return (
-    <section className='py-24 space-y-6 bg-surface-2'>
+    <Section className='bg-surface-2'>
       <Container>
         <div className='grid gap-16 sm:grid-cols-2'>
           <div className='sm:hidden'>
@@ -67,7 +68,7 @@ const HomeReasons: React.FC = () => {
           </div>
         </div>
       </Container>
-    </section>
+    </Section>
   )
 }
 

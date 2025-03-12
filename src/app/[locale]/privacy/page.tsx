@@ -2,6 +2,7 @@ import * as React from 'react'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {useTranslations} from 'next-intl'
 import {Container} from '@/src/components/shared/container'
+import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
 export async function generateMetadata({params}: Params) {
@@ -21,15 +22,17 @@ export default function PrivacyPage({params}: Params) {
   const t = useTranslations('Pages.Privacy')
 
   return (
-    <Container className='pt-56 space-y-12'>
-      <article className='space-y-4'>
-        <Typography variant='h4'>{t('title')}</Typography>
-        <Typography>{t('content')}</Typography>
-      </article>
-      <article className='space-y-4'>
-        <Typography variant='h4'>{t('sub-title')}</Typography>
-        <Typography>{t('sub-content')}</Typography>
-      </article>
-    </Container>
+    <Section>
+      <Container className='space-y-12'>
+        <article className='space-y-4'>
+          <Typography variant='h4'>{t('title')}</Typography>
+          <Typography>{t('content')}</Typography>
+        </article>
+        <article className='space-y-4'>
+          <Typography variant='h4'>{t('sub-title')}</Typography>
+          <Typography>{t('sub-content')}</Typography>
+        </article>
+      </Container>
+    </Section>
   )
 }

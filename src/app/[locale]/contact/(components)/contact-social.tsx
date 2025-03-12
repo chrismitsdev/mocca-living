@@ -1,13 +1,14 @@
 import {useTranslations} from 'next-intl'
 import {MapPin, PhoneIcon, FacebookIcon, InstagramIcon} from 'lucide-react'
 import {Container} from '@/src/components/shared/container'
+import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
 const ContactSocial: React.FC = () => {
   const t = useTranslations('Pages.Contact.Social')
 
   return (
-    <section className='py-24 bg-surface-2'>
+    <Section className='bg-surface-2'>
       <Container>
         <div className='grid gap-8 sm:grid-cols-2'>
           <SocialLink href='https://www.google.com/maps?saddr=My+Location&daddr=40.848948,25.723508'>
@@ -31,7 +32,7 @@ const ContactSocial: React.FC = () => {
           </SocialLink>
         </div>
       </Container>
-    </section>
+    </Section>
   )
 }
 

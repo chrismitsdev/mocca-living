@@ -195,7 +195,6 @@ const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
       <DrawerContent
         className='absolute bg-transparent !shadow-none'
         side='bottom'
-        onInteractOutside={(e) => e.preventDefault()}
       >
         <VisuallyHidden>
           <DrawerTitle>Carousel thumbnails drawer</DrawerTitle>

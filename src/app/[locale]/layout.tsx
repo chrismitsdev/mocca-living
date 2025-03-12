@@ -7,7 +7,7 @@ import {getMessages, setRequestLocale} from 'next-intl/server'
 import {notFound} from 'next/navigation'
 import {routing} from '@/src/i18n/routing'
 import {Header} from '@/src/components/shared/header'
-import {RouteTransition} from '@/src/components/shared/route-transition'
+import {ColumnsTransition} from '@/src/components/shared/route-transitions'
 import {Footer} from '@/src/components/shared/footer'
 import {ContactDrawer} from '@/src/components/shared/contact-drawer'
 import {CookieConsent} from '@/src/components/shared/cookie-consent'
@@ -51,10 +51,10 @@ export default async function LocaleLayout({
       lang={locale}
       className={`${commissioner.className}`}
     >
-      <body className='min-h-screen grid grid-rows-[1fr_auto]'>
+      <body className='min-h-screen grid grid-rows-[auto_1fr] relative bg-surface-1 text-foreground'>
         <Header />
         <main>
-          <RouteTransition>{children}</RouteTransition>
+          <ColumnsTransition>{children}</ColumnsTransition>
         </main>
         <Footer />
         <ContactDrawer />

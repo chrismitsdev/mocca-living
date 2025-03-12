@@ -5,6 +5,7 @@ import {type StaticImageData} from 'next/image'
 import {XIcon, ExpandIcon} from 'lucide-react'
 import {cn, sortImportedImagesByName} from '@/src/lib/utils'
 import {Container} from '@/src/components/shared/container'
+import {Section} from '@/src/components/shared/section'
 import {
   Dialog,
   DialogTrigger,
@@ -76,7 +77,7 @@ const HomeGallery: React.FC = () => {
 
   return (
     <Container asChild>
-      <section>
+      <Section>
         <Dialog>
           <div className='grid grid-cols-2 gap-2 sm:grid-cols-8 sm:grid-rows-8'>
             {renderedTriggers}
@@ -109,7 +110,7 @@ const HomeGallery: React.FC = () => {
             </DialogOverlay>
           </DialogPortal>
         </Dialog>
-      </section>
+      </Section>
     </Container>
   )
 }

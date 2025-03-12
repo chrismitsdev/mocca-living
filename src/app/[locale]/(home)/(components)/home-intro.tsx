@@ -1,5 +1,6 @@
 import {useTranslations} from 'next-intl'
 import {Container} from '@/src/components/shared/container'
+import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
 const HomeIntro: React.FC = () => {
@@ -10,10 +11,10 @@ const HomeIntro: React.FC = () => {
       className='space-y-6'
       asChild
     >
-      <section>
+      <Section>
         <Typography variant='h3'>{t('title')}</Typography>
         <Typography className='leading-8'>{t('message')}</Typography>
-      </section>
+      </Section>
     </Container>
   )
 }

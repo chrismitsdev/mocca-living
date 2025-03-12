@@ -13,6 +13,7 @@ import {
   LucideProps
 } from 'lucide-react'
 import {Container} from '@/src/components/shared/container'
+import {Section} from '@/src/components/shared/section'
 import {
   Card,
   CardHeader,
@@ -43,7 +44,7 @@ const SlugDetails: React.FC<SlugDetailsProps> = ({slug, locale}) => {
       className='px-3'
       asChild
     >
-      <section className='space-y-4'>
+      <Section className='space-y-4'>
         <div className='p-0.5 flex justify-between bg-surface-2 border border-surface-3 rounded'>
           <Button
             variant='ghost'
@@ -118,7 +119,7 @@ const SlugDetails: React.FC<SlugDetailsProps> = ({slug, locale}) => {
             </NextIntlClientProvider>
           </CardFooter>
         </Card>
-      </section>
+      </Section>
     </Container>
   )
 }
@@ -139,7 +140,7 @@ const SlugList: React.FC<React.PropsWithChildren<{data: string}>> = ({
   data
 }) => {
   return (
-    <section className='space-y-2'>
+    <article className='space-y-2'>
       <Typography
         variant='h5'
         asChild
@@ -160,7 +161,7 @@ const SlugList: React.FC<React.PropsWithChildren<{data: string}>> = ({
           </li>
         ))}
       </ul>
-    </section>
+    </article>
   )
 }
 

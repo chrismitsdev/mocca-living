@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
   const t = useTranslations('Components')
 
   return (
-    <footer className='py-16 mt-32 bg-surface-2 border-t border-t-surface-3'>
+    <footer className='py-16 bg-surface-2 border-t border-t-surface-3'>
       <Container className='space-y-12'>
         <div className='space-y-12 sm:space-y-0 sm:flex sm:justify-between sm:items-start'>
           <Image

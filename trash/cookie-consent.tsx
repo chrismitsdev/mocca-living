@@ -37,7 +37,7 @@ const CookieConsent: React.FC = () => {
   }
 
   return (
-    <section className='px-4 py-8 fixed inset-x-0 bottom-0 space-y-6 bg-brand-12 text-primary-foreground sm:px-8 sm:w-96 sm:inset-auto sm:bottom-8 sm:right-8 sm:rounded sm:shadow'>
+    <article className='px-4 py-8 fixed inset-x-0 bottom-0 space-y-6 bg-brand-12 text-primary-foreground sm:px-8 sm:w-96 sm:inset-auto sm:bottom-8 sm:right-8 sm:rounded sm:shadow'>
       <div className='flex items-center gap-2'>
         <CookieIcon size={32} />
         <Typography variant='h3'>{t('title')}</Typography>
@@ -49,7 +49,7 @@ const CookieConsent: React.FC = () => {
       >
         {t('button-label')}
       </Button>
-    </section>
+    </article>
   )
 }
 

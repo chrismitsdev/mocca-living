@@ -10,6 +10,7 @@ import {
 } from 'lucide-react'
 import {Link} from '@/src/i18n/navigation'
 import {Container} from '@/src/components/shared/container'
+import {Section} from '@/src/components/shared/section'
 import {
   Card,
   CardHeader,
@@ -66,7 +67,7 @@ const AccomodationVillas: React.FC = () => {
 
   return (
     <Container asChild>
-      <section>
+      <Section className='pt-16'>
         <div className='grid gap-12 sm:grid-cols-2'>
           {info.map((villa) => (
             <Card
@@ -129,7 +130,7 @@ const AccomodationVillas: React.FC = () => {
             </Card>
           ))}
         </div>
-      </section>
+      </Section>
     </Container>
   )
 }

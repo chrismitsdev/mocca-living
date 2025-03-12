@@ -51,7 +51,7 @@ const HomeCarousel: React.FC = () => {
 
   return (
     <EmblaCarousel
-      className='mt-32 sm:mt-0 sm:h-svh'
+      className='sm:h-[calc(100svh-81px)]'
       plugins={[Autoplay({delay: 3500})]}
       asChild
     >

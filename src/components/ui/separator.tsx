@@ -13,7 +13,7 @@ const Separator: React.FC<React.ComponentPropsWithRef<typeof Root>> = ({
   return (
     <Root
       className={cn(
-        'shrink-0 bg-surface-3',
+        'shrink-0 bg-surface-4',
         orientation === 'horizontal' ? 'h-px w-full' : 'h-full w-px',
         className
       )}
