@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {NextIntlClientProvider, useTranslations, useMessages} from 'next-intl'
+import {useTranslations} from 'next-intl'
 import {Link} from '@/src/i18n/navigation'
 import {
   DotIcon,
@@ -32,12 +32,6 @@ interface SlugDetailsProps {
 
 const SlugDetails: React.FC<SlugDetailsProps> = ({slug, locale}) => {
   const t = useTranslations('Pages.Accomodation')
-  const messages = useMessages() as IntlMessages
-  const scopedMessages = {
-    ...messages.Components.Form,
-    ...messages.Metadata.Pages,
-    ...messages.Pages.Privacy
-  }
 
   return (
     <Container
@@ -111,12 +105,10 @@ const SlugDetails: React.FC<SlugDetailsProps> = ({slug, locale}) => {
             </SlugList>
           </CardContent>
           <CardFooter className='justify-end'>
-            <NextIntlClientProvider messages={scopedMessages}>
-              <SlugForm
-                slug={slug}
-                locale={locale}
-              />
-            </NextIntlClientProvider>
+            <SlugForm
+              slug={slug}
+              locale={locale}
+            />
           </CardFooter>
         </Card>
       </Section>

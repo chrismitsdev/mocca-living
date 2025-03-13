@@ -1,9 +1,9 @@
 'use client'
 
 import * as React from 'react'
-import {useTranslations, useLocale} from 'next-intl'
+import {useTranslations, useLocale, Locale} from 'next-intl'
 import {GlobeIcon} from 'lucide-react'
-import {locales} from '@/src/i18n/routing'
+import {routing} from '@/src/i18n/routing'
 import {usePathname, useRouter} from '@/src/i18n/navigation'
 import {
   Select,
@@ -20,11 +20,9 @@ interface LocaleSwitcherProps {
   scrollTop?: boolean
 }
 
-const ClientLocaleSwitcher: React.FC<LocaleSwitcherProps> = ({
-  scrollTop = false
-}) => {
+const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
   const [isPending, startTransition] = React.useTransition()
-  const t = useTranslations<'Components.LocaleSwitcher'>()
+  const t = useTranslations('Components.LocaleSwitcher')
   const pathname = usePathname()
   const router = useRouter()
   const locale = useLocale()
@@ -35,7 +33,7 @@ const ClientLocaleSwitcher: React.FC<LocaleSwitcherProps> = ({
     })
   }
 
-  const renderedItems = locales.map(function (locale) {
+  const renderedItems = routing.locales.map(function (locale) {
     return (
       <SelectItem
         key={locale}
@@ -80,6 +78,6 @@ const ClientLocaleSwitcher: React.FC<LocaleSwitcherProps> = ({
   )
 }
 
-ClientLocaleSwitcher.displayName = 'ClientLocaleSwitcher'
+LocaleSwitcher.displayName = 'LocaleSwitcher'
 
-export {ClientLocaleSwitcher}
+export {LocaleSwitcher}

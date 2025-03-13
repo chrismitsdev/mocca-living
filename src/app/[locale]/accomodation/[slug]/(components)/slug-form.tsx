@@ -55,7 +55,7 @@ interface SlugFormProps {
 
 const SlugForm: React.FC<SlugFormProps> = ({slug, locale}) => {
   const [open, setOpen] = React.useState(false)
-  const t = useTranslations<'Components.Form'>()
+  const t = useTranslations('Components.Form')
   const form = useForm<SlugFormSchema>({
     defaultValues: {
       fullName: '',

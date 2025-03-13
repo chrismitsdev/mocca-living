@@ -14,7 +14,7 @@ const EXPIRES_DAYS = 365
 
 const CookieConsent: React.FC = () => {
   const [showBanner, setShowBanner] = React.useState(false)
-  const t = useTranslations<'Components.CookieConsent'>()
+  const t = useTranslations('Components.CookieConsent')
   useScrollLock({autoLock: showBanner})
 
   function handleClick() {

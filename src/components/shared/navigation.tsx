@@ -37,7 +37,7 @@ import {
   CollapsibleTrigger,
   CollapsibleContent
 } from '@/src/components/ui/collapsible'
-import {ClientLocaleSwitcher} from '@/src/components/shared/locale-switcher/client-locale-switcher'
+import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
 import {Button} from '@/src/components/ui/button'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {Typography} from '@/src/components/ui/typography'
@@ -47,7 +47,7 @@ import {dimitraCover, georgiaCover} from '@/public/images/covers'
 const Navigation: React.FC = () => {
   const [hoverCardOpen, setHoverCardOpen] = React.useState(false)
   const [drawerOpen, setDrawerOpen] = React.useState(false)
-  const t = useTranslations<'Metadata.Pages'>()
+  const t = useTranslations('Metadata.Pages')
 
   return (
     <>
@@ -326,7 +326,7 @@ const Navigation: React.FC = () => {
                     </a>
                   </Button>
                 </div>
-                <ClientLocaleSwitcher />
+                <LocaleSwitcher />
               </div>
             </div>
           </DrawerContent>

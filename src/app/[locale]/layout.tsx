@@ -1,9 +1,8 @@
 import '@/src/styles/index.css'
-import 'mapbox-gl/dist/mapbox-gl.css'
 import type {Metadata} from 'next'
 import {Commissioner} from 'next/font/google'
-import {NextIntlClientProvider} from 'next-intl'
-import {getMessages, setRequestLocale} from 'next-intl/server'
+import {NextIntlClientProvider, hasLocale} from 'next-intl'
+import {setRequestLocale} from 'next-intl/server'
 import {notFound} from 'next/navigation'
 import {routing} from '@/src/i18n/routing'
 import {Header} from '@/src/components/shared/header'
@@ -38,9 +37,8 @@ export default async function LocaleLayout({
   children
 }: React.PropsWithChildren<Params>) {
   const {locale} = await params
-  const messages = (await getMessages()) as IntlMessages
 
-  if (!routing.locales.includes(locale)) {
+  if (!hasLocale(routing.locales, locale)) {
     notFound()
   }
 
@@ -52,16 +50,17 @@ export default async function LocaleLayout({
       className={`${commissioner.className}`}
     >
       <body className='min-h-screen grid grid-rows-[auto_1fr] relative bg-surface-1 text-foreground'>
-        <Header />
-        <main>
-          <ColumnsTransition>{children}</ColumnsTransition>
-        </main>
-        <Footer />
-        <ContactDrawer />
-        <NextIntlClientProvider messages={messages.Components.CookieConsent}>
+        <NextIntlClientProvider>
+          <Header />
+          <main>
+            <ColumnsTransition>{children}</ColumnsTransition>
+          </main>
+          <Footer />
+
+          <ContactDrawer />
           <CookieConsent />
+          <Toaster position='top-right' />
         </NextIntlClientProvider>
-        <Toaster position='top-right' />
       </body>
     </html>
   )

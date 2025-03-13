@@ -1,4 +1,5 @@
 import * as React from 'react'
+import {Locale} from 'next-intl'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {notFound} from 'next/navigation'
 import {SlugCarousel} from '@/src/app/[locale]/accomodation/[slug]/(components)/slug-carousel'

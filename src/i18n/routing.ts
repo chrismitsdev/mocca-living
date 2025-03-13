@@ -1,12 +1,8 @@
-import {defineRouting, type LocalePrefix} from 'next-intl/routing'
-
-export const locales = ['gr', 'en'] as const
-const defaultLocale = 'en' as const
-const localePrefix = 'always' satisfies LocalePrefix
+import {defineRouting} from 'next-intl/routing'
 
 export const routing = defineRouting({
-  locales,
-  defaultLocale,
-  localePrefix,
+  locales: ['gr', 'en'],
+  defaultLocale: 'en',
+  localePrefix: 'always',
   localeDetection: true
 })

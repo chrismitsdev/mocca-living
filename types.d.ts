@@ -1,13 +1,17 @@
-import enMessages from '@/messages/en.json'
 import {routing} from '@/src/i18n/routing'
+import messages from '@/messages/en.json'
 
-type Messages = typeof enMessages
+type Locale = (typeof routing.locales)[number]
+type Messages = typeof messages
+
+declare module 'next-intl' {
+  interface AppConfig {
+    Locale: Locale
+    Messages: Messages
+  }
+}
 
 declare global {
-  interface IntlMessages extends Messages {}
-
-  type Locale = (typeof routing.locales)[number]
-
   type Params = {
     params: Promise<{
       locale: Locale
@@ -29,10 +33,7 @@ declare global {
     size?: number
   }
 
-  type Slug = keyof Omit<
-    IntlMessages['Pages']['Accomodation']['Slug'],
-    'headers'
-  >
+  type Slug = keyof Omit<Messages['Pages']['Accomodation']['Slug'], 'headers'>
 
   type User = {
     id: number

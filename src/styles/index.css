@@ -39,6 +39,26 @@
   border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
+/* Leaflet styling */
+.leaflet-popup-pane {
+  .leaflet-popup-content-wrapper {
+    background-color: var(--color-surface-1);
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: var(--shadow-small);
+
+    .leaflet-popup-content {
+      margin: 0;
+    }
+  }
+
+  .leaflet-popup-tip-container {
+    .leaflet-popup-tip {
+      background-color: var(--color-surface-1);
+    }
+  }
+}
+
 /* Mapbox popup styling */
 .mapboxgl-control-container .mapboxgl-ctrl-bottom-left {
   z-index: auto;

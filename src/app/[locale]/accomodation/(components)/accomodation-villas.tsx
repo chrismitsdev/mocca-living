@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {useTranslations} from 'next-intl'
+import {useTranslations, Messages} from 'next-intl'
 import {type StaticImageData} from 'next/image'
 import {
   UsersIcon,
@@ -24,7 +24,7 @@ import {Separator} from '@/src/components/ui/separator'
 import {Button} from '@/src/components/ui/button'
 import {dimitraCover, georgiaCover} from '@/public/images/covers'
 
-type Villas = IntlMessages['Pages']['Accomodation']['Index']['Villas']
+type Villas = Messages['Pages']['Accomodation']['Index']['Villas']
 
 type VillaInfo = {
   key: keyof Villas
@@ -43,7 +43,7 @@ const villaInfo: Pick<VillaInfo, 'key' | 'image'>[] = [
   {key: 'georgia', image: georgiaCover}
 ]
 
-const tInfo = function (
+const getVillas = function (
   t: ReturnType<typeof useTranslations<'Pages.Accomodation.Index.Villas'>>
 ): VillaInfo[] {
   return villaInfo.map(function ({key, image}) {
@@ -62,14 +62,13 @@ const tInfo = function (
 }
 
 const AccomodationVillas: React.FC = () => {
-  const t = useTranslations('Pages.Accomodation.Index.Villas')
-  const info = tInfo(t)
+  const villas = getVillas(useTranslations('Pages.Accomodation.Index.Villas'))
 
   return (
     <Container asChild>
       <Section className='pt-16'>
         <div className='grid gap-12 sm:grid-cols-2'>
-          {info.map((villa) => (
+          {villas.map((villa) => (
             <Card
               key={villa.key}
               className='p-0 space-y-0 overflow-hidden'
