@@ -75,7 +75,7 @@ const Navigation: React.FC = () => {
             openDelay={50}
           >
             <li
-              className='flex items-center gap-1'
+              className='flex items-center gap-0.5'
               role='none'
             >
               <NavLink
@@ -86,7 +86,8 @@ const Navigation: React.FC = () => {
               </NavLink>
               <HoverCardTrigger asChild>
                 <Button
-                  variant='bordered-alt'
+                  className='data-open:bg-primary data-open:text-primary-foreground'
+                  variant='ghost'
                   size='icon-mini'
                 >
                   <EllipsisVerticalIcon size={16} />
