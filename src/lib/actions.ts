@@ -2,7 +2,7 @@
 
 import {getTranslations} from 'next-intl/server'
 import {Resend} from 'resend'
-import {ContactFormTemplate} from '@/src/components/page/contact/contact-form-template'
+import {ContactFormTemplate} from '@/src/app/[locale]/contact/(components)/contact-form-template'
 import {createUser} from '@/src/services/create-user'
 
 const resend = new Resend(process.env.RESEND_ONBOARDING_API_KEY)

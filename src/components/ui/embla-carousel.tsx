@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import {Slot} from '@radix-ui/react-slot'
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -33,6 +34,7 @@ type EmblaApiType = ReturnType<typeof useEmblaCarousel>[1]
 interface EmblaCarouselProps extends React.ComponentPropsWithRef<'div'> {
   options?: Parameters<typeof useEmblaCarousel>[0]
   plugins?: Parameters<typeof useEmblaCarousel>[1]
+  asChild?: boolean
 }
 
 const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
@@ -42,12 +44,14 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
     startIndex: 0
   },
   plugins,
+  asChild = false,
   ...props
 }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins)
   const [selectedIndex, setSelectedIndex] = React.useState<number>(
     options.startIndex ?? 0
   )
+  const Comp = asChild ? Slot : 'div'
 
   const onPrevButtonClick = React.useCallback(
     function () {
@@ -113,7 +117,7 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
         onThumbButtonClick
       }}
     >
-      <div
+      <Comp
         id='embla'
         className={cn('relative overflow-hidden', className)}
         {...props}
@@ -191,7 +195,6 @@ const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
       <DrawerContent
         className='absolute bg-transparent !shadow-none'
         side='bottom'
-        onInteractOutside={(e) => e.preventDefault()}
       >
         <VisuallyHidden>
           <DrawerTitle>Carousel thumbnails drawer</DrawerTitle>

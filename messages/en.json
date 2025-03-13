@@ -80,7 +80,8 @@
             "bathrooms": "1 Bathroom",
             "button": "Information"
           }
-        }
+        },
+        "Faq": {}
       },
       "Slug": {
         "headers": {
@@ -260,8 +261,9 @@
         "column-1": {
           "header": "Information",
           "link-1": "+30 6936998859",
-          "link-2": "info@moccaliving.com",
-          "link-3": "Agia Paraskevi Beach, <br></br> Makri Alexandroupolis, Greece"
+          "link-2": "+30 6973433980",
+          "link-3": "info@moccaliving.com",
+          "link-4": "Agia Paraskevi Beach, <br></br> Makri Alexandroupolis, Greece"
         },
         "column-2": {
           "header": "Useful links",

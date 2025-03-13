@@ -52,12 +52,25 @@ const Footer: React.FC = () => {
             >
               <a
                 className='flex items-center gap-1.5'
+                href='tel:+306936998859'
+                target='_blank'
+              >
+                <PhoneIcon size={14} />
+                <span>{t('Footer.row-1.column-1.link-2')}</span>
+              </a>
+            </Typography>
+            <Typography
+              variant='link'
+              asChild
+            >
+              <a
+                className='flex items-center gap-1.5'
                 href='mailto:info@moccaliving.com'
                 target='_blank'
                 rel='noopener'
               >
                 <MailIcon size={14} />
-                <span>{t('Footer.row-1.column-1.link-2')}</span>
+                <span>{t('Footer.row-1.column-1.link-3')}</span>
               </a>
             </Typography>
             <Typography
@@ -74,7 +87,7 @@ const Footer: React.FC = () => {
                   size={14}
                 />
                 <span>
-                  {t.rich('Footer.row-1.column-1.link-3', {
+                  {t.rich('Footer.row-1.column-1.link-4', {
                     br: () => <br />
                   })}
                 </span>

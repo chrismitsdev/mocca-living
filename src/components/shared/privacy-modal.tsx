@@ -20,8 +20,8 @@ import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 import {Button} from '@/src/components/ui/button'
 
 const PrivacyModal: React.FC<React.PropsWithChildren> = ({children}) => {
-  const m = useTranslations<'Metadata.Pages'>()
-  const p = useTranslations<'Pages.Privacy'>()
+  const m = useTranslations('Metadata.Pages')
+  const p = useTranslations('Pages.Privacy')
 
   return (
     <Dialog>
