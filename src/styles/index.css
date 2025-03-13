@@ -40,6 +40,16 @@
 }
 
 /* Leaflet styling */
+.leaflet-map-pane,
+.leaflet-left,
+.leaflet-control-zoom {
+  z-index: auto !important;
+}
+
+.leaflet-bottom {
+  display: none;
+}
+
 .leaflet-popup-pane {
   .leaflet-popup-content-wrapper {
     background-color: var(--color-surface-1);
