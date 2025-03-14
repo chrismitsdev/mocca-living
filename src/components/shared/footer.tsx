@@ -246,14 +246,6 @@ const FooterColumn: React.FC<React.PropsWithChildren & {title?: string}> = ({
   }
 
   return renderedJsx
-  // return (
-  //   <div className='w-fit space-y-2 sm:space-y-4'>
-  //     {title && (
-  //       <Typography className='font-semibold uppercase'>{title}</Typography>
-  //     )}
-  //     <div className='space-y-2'>{children}</div>
-  //   </div>
-  // )
 }
 
 Footer.displayName = 'Footer'
