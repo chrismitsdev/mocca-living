@@ -16,10 +16,6 @@ const position = [40.849038, 25.723552] satisfies LatLngTuple
 const ContactMap: React.FC = () => {
   const t = useTranslations('Pages.Contact.Map')
 
-  // if (typeof window === 'undefined') {
-  //   return null
-  // }
-
   return (
     <Section>
       <Container className='h-[500px] sm:h-[696px]'>
@@ -32,7 +28,12 @@ const ContactMap: React.FC = () => {
           <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
           <Marker
             position={position}
-            icon={<MapPinIcon className='fill-surface-1 text-primary' />}
+            icon={
+              <MapPinIcon
+                size={32}
+                className='fill-primary text-surface-1'
+              />
+            }
           >
             <Popup offset={[0, -8]}>
               <div className='flex items-center gap-4'>

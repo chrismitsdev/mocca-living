@@ -167,7 +167,7 @@ const Navigation: React.FC = () => {
           asChild
         >
           <Button
-            variant='bordered'
+            variant='ghost'
             size='icon-small'
           >
             <MenuIcon />
