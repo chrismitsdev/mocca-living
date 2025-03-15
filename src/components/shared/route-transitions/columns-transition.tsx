@@ -79,19 +79,19 @@ const ColumnsTransition: React.FC<React.PropsWithChildren> = ({children}) => {
     <AnimatePresence mode='wait'>
       <div key={pathname}>
         <motion.div
-          id='overlay'
+          id='columns-transition-overlay'
           className='fixed inset-0 pointer-events-none z-50 bg-black'
           {...anim(overlay)}
         />
         <div
-          id='columns-container'
+          id='columns-transition-container'
           className='fixed inset-0 pointer-events-none z-50 flex'
         >
           {Array.from({length: columns}).map(function (_, i) {
             return (
               <motion.div
                 key={i}
-                id='column'
+                id='columns-transition-column'
                 className='relative h-full w-full bg-surface-3'
                 {...anim(column, columns - i)}
               />

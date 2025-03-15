@@ -3,8 +3,6 @@
 import * as React from 'react'
 import {useTranslations} from 'next-intl'
 import {
-  MenuIcon,
-  XIcon,
   ChevronRightIcon,
   EllipsisVerticalIcon,
   HomeIcon,
@@ -26,11 +24,8 @@ import {
 import {
   Drawer,
   DrawerTrigger,
-  DrawerPortal,
-  DrawerOverlay,
   DrawerContent,
-  DrawerTitle,
-  DrawerClose
+  DrawerTitle
 } from '@/src/components/ui/drawer'
 import {
   Collapsible,
@@ -42,12 +37,22 @@ import {Button} from '@/src/components/ui/button'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {Typography} from '@/src/components/ui/typography'
 import {Separator} from '@/src/components/ui/separator'
+import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 import {dimitraCover, georgiaCover} from '@/public/images/covers'
 
 const Navigation: React.FC = () => {
   const [hoverCardOpen, setHoverCardOpen] = React.useState(false)
   const [drawerOpen, setDrawerOpen] = React.useState(false)
+  const pathname = usePathname()
   const t = useTranslations('Metadata.Pages')
+
+  React.useEffect(
+    function () {
+      if (hoverCardOpen) setHoverCardOpen(false)
+      if (drawerOpen) setDrawerOpen(false)
+    },
+    [pathname]
+  )
 
   return (
     <>
@@ -60,6 +65,7 @@ const Navigation: React.FC = () => {
           <li role='none'>
             <NavLink
               href='/'
+              pathname={pathname}
               icon={HomeIcon}
             >
               {t('home')}
@@ -80,6 +86,7 @@ const Navigation: React.FC = () => {
             >
               <NavLink
                 href='/accomodation'
+                pathname={pathname}
                 icon={BedDoubleIcon}
               >
                 {t('accomodation.root')}
@@ -100,11 +107,7 @@ const Navigation: React.FC = () => {
                 collisionPadding={16}
               >
                 <section className='columns-2'>
-                  <Link
-                    data-id='2'
-                    href='/accomodation/dimitra'
-                    onClick={() => setHoverCardOpen(false)}
-                  >
+                  <Link href='/accomodation/dimitra'>
                     <article className='p-3 space-y-1 rounded hover:bg-surface-3 transition'>
                       <CustomImage
                         className='aspect-square object-cover rounded'
@@ -119,11 +122,7 @@ const Navigation: React.FC = () => {
                       </Typography>
                     </article>
                   </Link>
-                  <Link
-                    data-id='1'
-                    href='/accomodation/georgia'
-                    onClick={() => setHoverCardOpen(false)}
-                  >
+                  <Link href='/accomodation/georgia'>
                     <article className='p-3 space-y-1 rounded hover:bg-surface-3 transition'>
                       <CustomImage
                         className='aspect-square object-cover rounded'
@@ -150,6 +149,7 @@ const Navigation: React.FC = () => {
           <li role='none'>
             <NavLink
               href='/contact'
+              pathname={pathname}
               icon={MessageSquareIcon}
             >
               {t('contact')}
@@ -161,176 +161,163 @@ const Navigation: React.FC = () => {
       <Drawer
         open={drawerOpen}
         onOpenChange={setDrawerOpen}
+        modal={false}
       >
         <DrawerTrigger
           className='sm:hidden'
           asChild
         >
           <Button
-            variant='ghost'
+            className='flex-col z-1 [&>*]:w-[70%] [&>*]:h-0.5 [&>*]:bg-primary data-open:[&>*]:duration-750 data-closed:[&>*]:duration-375 [&>*]:ease-mocca group'
+            variant='ghost-alt'
             size='icon-small'
           >
-            <MenuIcon />
+            <div className='group-data-open:translate-y-2.5 group-data-open:rotate-45' />
+            <div className='group-data-open:opacity-0' />
+            <div className='group-data-open:-translate-y-2.5 group-data-open:-rotate-45' />
           </Button>
         </DrawerTrigger>
-        <DrawerPortal>
-          <DrawerOverlay />
-          <DrawerContent
-            side='top'
-            className='h-full'
-          >
-            <div className='pl-7 pr-5 pt-5 pb-3 flex justify-between items-center'>
-              <DrawerTitle>Menu</DrawerTitle>
-              <DrawerClose asChild>
-                <Button
-                  variant='ghost-error'
-                  size='icon-small'
-                >
-                  <XIcon />
-                </Button>
-              </DrawerClose>
-            </div>
-            <Separator />
-            <div className='px-7 py-16 h-[calc(100%-64px)] grid grid-rows-[1fr_auto]'>
-              <nav
-                aria-label='Mobile navigation bar'
-                className='flex'
+        <DrawerContent
+          side='right'
+          className='absolute top-[calc(100%+1px)] h-screen z-1 !shadow-none'
+          onInteractOutside={(e) => e.preventDefault()}
+        >
+          <VisuallyHidden>
+            <DrawerTitle>Navigation menu</DrawerTitle>
+          </VisuallyHidden>
+          <div className='px-7 py-16 h-[calc(100%-64px)] grid grid-rows-[1fr_auto]'>
+            <nav
+              aria-label='Mobile navigation bar'
+              className='flex'
+            >
+              <ul
+                aria-label='Mobile navigation menu'
+                className='w-full space-y-8'
+                role='menubar'
               >
-                <ul
-                  aria-label='Mobile navigation menu'
-                  className='w-full space-y-8'
-                  role='menubar'
+                <li role='none'>
+                  <NavLink
+                    className='pl-0'
+                    href='/'
+                    pathname={pathname}
+                    icon={HomeIcon}
+                  >
+                    {t('home')}
+                  </NavLink>
+                </li>
+                <Collapsible asChild>
+                  <li role='none'>
+                    <div className='flex items-center justify-between'>
+                      <NavLink
+                        className='pl-0'
+                        href='/accomodation'
+                        pathname={pathname}
+                        icon={BedDoubleIcon}
+                      >
+                        {t('accomodation.root')}
+                      </NavLink>
+                      <CollapsibleTrigger asChild>
+                        <Button
+                          variant='link'
+                          size='icon-mini'
+                        >
+                          <ChevronRightIcon
+                            className='group-data-open:rotate-90 group-data-open:duration-750 group-data-closed:duration-375'
+                            size={20}
+                          />
+                        </Button>
+                      </CollapsibleTrigger>
+                    </div>
+                    <CollapsibleContent>
+                      <ul
+                        className='mt-4 space-y-4'
+                        role='menu'
+                      >
+                        <li role='none'>
+                          <Link href='/accomodation/dimitra'>
+                            <div className='flex gap-3 rounded'>
+                              <CustomImage
+                                className='size-24 object-cover rounded'
+                                src={dimitraCover}
+                                alt='Dimitra cover image'
+                              />
+                              <div className='space-y-0.5'>
+                                <Typography variant='h6'>
+                                  {t('accomodation.dimitra')}
+                                </Typography>
+                                <Typography variant='small'>
+                                  {t('accomodation.dimitra-caption')}
+                                </Typography>
+                              </div>
+                            </div>
+                          </Link>
+                        </li>
+                        <li role='none'>
+                          <Link href='/accomodation/georgia'>
+                            <div className='flex gap-3 rounded'>
+                              <CustomImage
+                                className='size-24 object-cover rounded'
+                                src={georgiaCover}
+                                alt='Georgia cover image'
+                              />
+                              <div className='space-y-0.5'>
+                                <Typography variant='h6'>
+                                  {t('accomodation.georgia')}
+                                </Typography>
+                                <Typography variant='small'>
+                                  {t('accomodation.georgia-caption')}
+                                </Typography>
+                              </div>
+                            </div>
+                          </Link>
+                        </li>
+                      </ul>
+                    </CollapsibleContent>
+                  </li>
+                </Collapsible>
+                <li role='none'>
+                  <NavLink
+                    className='pl-0'
+                    href='/contact'
+                    pathname={pathname}
+                    icon={MessageSquareIcon}
+                  >
+                    {t('contact')}
+                  </NavLink>
+                </li>
+              </ul>
+            </nav>
+            <div className='flex justify-between'>
+              <div className='flex gap-2'>
+                <Button
+                  variant='bordered-alt'
+                  size='icon-normal'
+                  asChild
                 >
-                  <li role='none'>
-                    <NavLink
-                      className='pl-0'
-                      href='/'
-                      onClick={() => setDrawerOpen(false)}
-                      icon={HomeIcon}
-                    >
-                      {t('home')}
-                    </NavLink>
-                  </li>
-                  <Collapsible asChild>
-                    <li role='none'>
-                      <div className='flex items-center justify-between'>
-                        <NavLink
-                          className='pl-0'
-                          href='/accomodation'
-                          onClick={() => setDrawerOpen(false)}
-                          icon={BedDoubleIcon}
-                        >
-                          {t('accomodation.root')}
-                        </NavLink>
-                        <CollapsibleTrigger asChild>
-                          <Button
-                            variant='link'
-                            size='icon-mini'
-                          >
-                            <ChevronRightIcon
-                              className='group-data-open:rotate-90 group-data-open:duration-750 group-data-closed:duration-375'
-                              size={20}
-                            />
-                          </Button>
-                        </CollapsibleTrigger>
-                      </div>
-                      <CollapsibleContent>
-                        <ul
-                          className='mt-4 space-y-4'
-                          role='menu'
-                        >
-                          <li role='none'>
-                            <Link
-                              href='/accomodation/dimitra'
-                              onClick={() => setDrawerOpen(false)}
-                            >
-                              <div className='flex gap-3 rounded'>
-                                <CustomImage
-                                  className='size-24 object-cover rounded'
-                                  src={dimitraCover}
-                                  alt='Dimitra cover image'
-                                />
-                                <div className='space-y-0.5'>
-                                  <Typography variant='h6'>
-                                    {t('accomodation.dimitra')}
-                                  </Typography>
-                                  <Typography variant='small'>
-                                    {t('accomodation.dimitra-caption')}
-                                  </Typography>
-                                </div>
-                              </div>
-                            </Link>
-                          </li>
-                          <li role='none'>
-                            <Link
-                              href='/accomodation/georgia'
-                              onClick={() => setDrawerOpen(false)}
-                            >
-                              <div className='flex gap-3 rounded'>
-                                <CustomImage
-                                  className='size-24 object-cover rounded'
-                                  src={georgiaCover}
-                                  alt='Georgia cover image'
-                                />
-                                <div className='space-y-0.5'>
-                                  <Typography variant='h6'>
-                                    {t('accomodation.georgia')}
-                                  </Typography>
-                                  <Typography variant='small'>
-                                    {t('accomodation.georgia-caption')}
-                                  </Typography>
-                                </div>
-                              </div>
-                            </Link>
-                          </li>
-                        </ul>
-                      </CollapsibleContent>
-                    </li>
-                  </Collapsible>
-                  <li role='none'>
-                    <NavLink
-                      className='pl-0'
-                      href='/contact'
-                      onClick={() => setDrawerOpen(false)}
-                      icon={MessageSquareIcon}
-                    >
-                      {t('contact')}
-                    </NavLink>
-                  </li>
-                </ul>
-              </nav>
-              <div className='flex justify-between'>
-                <div className='flex gap-2'>
-                  <Button
-                    variant='bordered-alt'
-                    size='icon-normal'
-                    asChild
+                  <a
+                    target='_blank'
+                    href='https://www.facebook.com/profile.php?id=61566665200042'
                   >
-                    <a
-                      target='_blank'
-                      href='https://www.facebook.com/profile.php?id=61566665200042'
-                    >
-                      <FacebookIcon />
-                    </a>
-                  </Button>
-                  <Button
-                    variant='bordered-alt'
-                    size='icon-normal'
-                    asChild
+                    <FacebookIcon />
+                  </a>
+                </Button>
+                <Button
+                  variant='bordered-alt'
+                  size='icon-normal'
+                  asChild
+                >
+                  <a
+                    target='_blank'
+                    href='https://www.instagram.com/moccaliving.premiumstay'
                   >
-                    <a
-                      target='_blank'
-                      href='https://www.instagram.com/moccaliving.premiumstay'
-                    >
-                      <InstagramIcon />
-                    </a>
-                  </Button>
-                </div>
-                <LocaleSwitcher />
+                    <InstagramIcon />
+                  </a>
+                </Button>
               </div>
+              <LocaleSwitcher />
             </div>
-          </DrawerContent>
-        </DrawerPortal>
+          </div>
+        </DrawerContent>
       </Drawer>
     </>
   )
@@ -338,9 +325,11 @@ const Navigation: React.FC = () => {
 
 const NavLink: React.FC<
   React.ComponentPropsWithRef<typeof Link> & {
+    pathname: string
     icon?: React.ComponentType<LucideProps>
   }
 > = ({
+  pathname,
   draggable = false,
   role = 'menuitem',
   className,
@@ -349,7 +338,6 @@ const NavLink: React.FC<
   children,
   ...props
 }) => {
-  const pathname = usePathname()
   const isActive = pathname === href
 
   return (
