@@ -18,7 +18,7 @@ type UseScrollLockReturn = {
 type OriginalStyle = {
   overflow: CSSStyleDeclaration['overflow']
   paddingRight: CSSStyleDeclaration['paddingRight']
-  height: CSSStyleDeclaration['height']
+  minHeight: CSSStyleDeclaration['minHeight']
 }
 
 const IS_SERVER = typeof window === 'undefined'
@@ -33,10 +33,10 @@ export function useScrollLock(
 
   const lock = () => {
     if (target.current) {
-      const {overflow, paddingRight, height} = target.current.style
+      const {overflow, paddingRight, minHeight} = target.current.style
 
       // Save the original styles
-      originalStyle.current = {overflow, paddingRight, height}
+      originalStyle.current = {overflow, paddingRight, minHeight}
 
       // Prevent width reflow
       if (widthReflow) {
@@ -56,9 +56,9 @@ export function useScrollLock(
         }px`
       }
 
-      // Lock the scroll and apply full height
+      // Lock the scroll
       target.current.style.overflow = 'hidden'
-      target.current.style.height = '100dvh'
+      target.current.style.minHeight = 'auto'
 
       setIsLocked(true)
     }
@@ -73,7 +73,7 @@ export function useScrollLock(
         target.current.style.paddingRight = originalStyle.current.paddingRight
       }
 
-      target.current.style.height = originalStyle.current.height
+      target.current.style.minHeight = originalStyle.current.minHeight
     }
 
     setIsLocked(false)
