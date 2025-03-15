@@ -181,7 +181,7 @@ const Navigation: React.FC = () => {
         </DrawerTrigger>
         <DrawerContent
           side='right'
-          className='absolute top-[calc(100%+1px)] h-dvh z-1 !shadow-none'
+          className='absolute top-full h-dvh z-1 !shadow-none border-t border-t-surface-3'
           onInteractOutside={(e) => e.preventDefault()}
         >
           <VisuallyHidden>

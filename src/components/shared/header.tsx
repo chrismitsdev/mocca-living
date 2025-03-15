@@ -6,7 +6,7 @@ import logoSimple from '@/public/logos/mocca-logo-simple.svg'
 
 const Header: React.FC = () => {
   return (
-    <header className='py-2 relative overflow-x-clip bg-surface-2 border-b border-b-surface-3'>
+    <header className='py-2 relative overflow-x-clip bg-surface-2'>
       <Container>
         <div className='flex items-center justify-between'>
           <Link href='/'>
