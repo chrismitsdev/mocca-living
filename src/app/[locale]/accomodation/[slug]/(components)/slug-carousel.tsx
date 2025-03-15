@@ -53,7 +53,7 @@ const SlugCarousel: React.FC<{slug: Slug}> = ({slug}) => {
 
   return (
     <EmblaCarousel
-      className='sm:h-[calc(100svh-81px)]'
+      className='sm:h-[calc(100svh-80px)]'
       asChild
     >
       <section>

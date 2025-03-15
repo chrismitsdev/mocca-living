@@ -8,7 +8,7 @@ const AccomodationHero: React.FC = () => {
   const t = useTranslations('Pages.Accomodation')
 
   return (
-    <section className='relative h-[calc(100svh-81px)]'>
+    <section className='relative h-[calc(100svh-80px)]'>
       <div className='absolute inset-0 bg-black/25' />
       <CustomImage
         className='w-full h-full object-cover sm:hidden'
