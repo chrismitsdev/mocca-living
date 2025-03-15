@@ -14,6 +14,7 @@ import {
 } from 'lucide-react'
 import {cn} from '@/src/lib/utils'
 import {Link, usePathname} from '@/src/i18n/navigation'
+import {useScrollLock} from '@/src/hooks/useScrollLock'
 import {
   HoverCard,
   HoverCardTrigger,
@@ -45,6 +46,7 @@ const Navigation: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   const pathname = usePathname()
   const t = useTranslations('Metadata.Pages')
+  useScrollLock({autoLock: drawerOpen})
 
   React.useEffect(
     function () {
