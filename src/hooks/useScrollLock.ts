@@ -58,7 +58,7 @@ export function useScrollLock(
 
       // Lock the scroll and apply full height
       target.current.style.overflow = 'hidden'
-      target.current.style.height = '100%'
+      target.current.style.height = '100dvh'
 
       setIsLocked(true)
     }
