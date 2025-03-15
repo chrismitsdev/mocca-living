@@ -11,7 +11,7 @@ const AccomodationIntro: React.FC = () => {
       className='space-y-6'
       asChild
     >
-      <Section className='pb-16'>
+      <Section>
         <Typography variant='h3'>{t('title')}</Typography>
         <Typography className='leading-8'>{t('message')}</Typography>
       </Section>

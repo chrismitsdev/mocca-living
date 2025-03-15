@@ -46,7 +46,7 @@ const AccordionTrigger: React.FC<
     <AccordionHeader>
       <Trigger
         className={cn(
-          'px-4 py-3 w-full flex items-center justify-between gap-4 font-semibold rounded transition group-data-open:bg-surface-3 hover:bg-surface-3',
+          'px-4 py-3 w-full flex items-center gap-4 rounded transition group-data-open:bg-surface-3 hover:bg-surface-3',
           className
         )}
         {...props}
