@@ -18,6 +18,7 @@ type UseScrollLockReturn = {
 type OriginalStyle = {
   overflow: CSSStyleDeclaration['overflow']
   paddingRight: CSSStyleDeclaration['paddingRight']
+  overscrollBehavior: CSSStyleDeclaration['overscrollBehavior']
 }
 
 const IS_SERVER = typeof window === 'undefined'
@@ -32,10 +33,10 @@ export function useScrollLock(
 
   const lock = () => {
     if (target.current) {
-      const {overflow, paddingRight} = target.current.style
+      const {overflow, paddingRight, overscrollBehavior} = target.current.style
 
       // Save the original styles
-      originalStyle.current = {overflow, paddingRight}
+      originalStyle.current = {overflow, paddingRight, overscrollBehavior}
 
       // Prevent width reflow
       if (widthReflow) {
@@ -57,6 +58,7 @@ export function useScrollLock(
 
       // Lock the scroll
       target.current.style.overflow = 'hidden'
+      target.current.style.overscrollBehavior = 'contain'
 
       setIsLocked(true)
     }
@@ -65,6 +67,8 @@ export function useScrollLock(
   const unlock = () => {
     if (target.current && originalStyle.current) {
       target.current.style.overflow = originalStyle.current.overflow
+      target.current.style.overscrollBehavior =
+        originalStyle.current.overscrollBehavior
 
       // Only reset padding right if we changed it
       if (widthReflow) {

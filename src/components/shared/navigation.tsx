@@ -170,7 +170,7 @@ const Navigation: React.FC = () => {
           asChild
         >
           <Button
-            className='flex-col z-1 [&>*]:w-[70%] [&>*]:h-0.5 [&>*]:bg-primary data-open:[&>*]:duration-750 data-closed:[&>*]:duration-375 [&>*]:ease-mocca group'
+            className='flex-col z-1 [&>*]:w-[70%] [&>*]:h-0.5 [&>*]:bg-primary [&>*]:ease-mocca data-open:[&>*]:rotate-z-180 data-open:[&>*]:scale-x-125 data-open:[&>*]:duration-750 data-closed:[&>*]:duration-375 group'
             variant='ghost-alt'
             size='icon-small'
           >
