@@ -161,33 +161,35 @@ const Footer: React.FC = () => {
             </Typography>
           </FooterColumn>
           <FooterColumn>
-            <div className='space-x-2'>
-              <Button
-                variant='bordered-alt'
-                size='icon-normal'
-                asChild
-              >
-                <a
-                  target='_blank'
-                  href='https://www.facebook.com/profile.php?id=61566665200042'
+            <div className='flex gap-2 sm:flex-col'>
+              <div className='space-x-2'>
+                <Button
+                  variant='bordered-alt'
+                  size='icon-normal'
+                  asChild
                 >
-                  <FacebookIcon />
-                </a>
-              </Button>
-              <Button
-                variant='bordered-alt'
-                size='icon-normal'
-                asChild
-              >
-                <a
-                  target='_blank'
-                  href='https://www.instagram.com/moccaliving.premiumstay'
+                  <a
+                    target='_blank'
+                    href='https://www.facebook.com/profile.php?id=61566665200042'
+                  >
+                    <FacebookIcon />
+                  </a>
+                </Button>
+                <Button
+                  variant='bordered-alt'
+                  size='icon-normal'
+                  asChild
                 >
-                  <InstagramIcon />
-                </a>
-              </Button>
+                  <a
+                    target='_blank'
+                    href='https://www.instagram.com/moccaliving.premiumstay'
+                  >
+                    <InstagramIcon />
+                  </a>
+                </Button>
+              </div>
+              <LocaleSwitcher />
             </div>
-            <LocaleSwitcher scrollTop />
           </FooterColumn>
         </div>
 

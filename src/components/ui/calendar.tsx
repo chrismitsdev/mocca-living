@@ -1,8 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import {DayPicker} from 'react-day-picker'
-import {el, enUS} from 'date-fns/locale'
+import {DayPicker, type DayPickerProps} from 'react-day-picker'
 import {
   ChevronUpIcon,
   ChevronRightIcon,
@@ -19,17 +18,13 @@ const chevronMap = {
   left: <ChevronLeftIcon size={18} />
 }
 
-type CalendarProps = React.ComponentPropsWithRef<typeof DayPicker> & {
-  calendarLocale?: Awaited<Params['params']>['locale']
-}
-
-const Calendar: React.FC<CalendarProps> = ({
+const Calendar: React.FC<DayPickerProps> = ({
   className,
   classNames,
   weekStartsOn = 1,
   showOutsideDays = true,
   disabled = {before: new Date()},
-  calendarLocale,
+  locale,
   ...props
 }) => {
   const btnVariant = buttonVariants({variant: 'bordered', size: 'icon-small'})
@@ -69,7 +64,6 @@ const Calendar: React.FC<CalendarProps> = ({
       weekStartsOn={weekStartsOn}
       showOutsideDays={showOutsideDays}
       disabled={disabled}
-      locale={calendarLocale === 'gr' ? el : enUS}
       {...props}
     />
   )

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {ContactForm} from '@/src/app/[locale]/contact/(components)/contact-form'
+import {ContactFormNew} from '@/src/app/[locale]/contact/(components)/contact-form-new'
 import {ContactSocial} from '@/src/app/[locale]/contact/(components)/contact-social'
 import ContactMap from '@/src/app/[locale]/contact/(components)/contact-map'
 
@@ -20,7 +21,8 @@ export default function ContactPage({params}: Params) {
 
   return (
     <>
-      <ContactForm locale={locale} />
+      {/* <ContactForm locale={locale} /> */}
+      <ContactFormNew />
       <ContactSocial />
       <ContactMap />
     </>

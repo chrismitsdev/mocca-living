@@ -173,7 +173,6 @@ const ContactForm: React.FC<ContactFormProps> = ({locale}) => {
                           <DatePicker
                             placeholder={t('fields.checkIn.placeholder')}
                             icon={LogInIcon}
-                            locale={locale}
                             date={field.value}
                             onDateChange={field.onChange}
                             disabledDates={{
@@ -205,7 +204,6 @@ const ContactForm: React.FC<ContactFormProps> = ({locale}) => {
                           <DatePicker
                             placeholder={t('fields.checkOut.placeholder')}
                             icon={LogOutIcon}
-                            locale={locale}
                             date={field.value}
                             onDateChange={field.onChange}
                             disabledDates={{

@@ -1,7 +1,9 @@
 'use client'
 
 import * as React from 'react'
+import {useLocale} from 'next-intl'
 import {type Matcher} from 'react-day-picker'
+import {el, enUS} from 'react-day-picker/locale'
 import {type LucideProps} from 'lucide-react'
 import {cn, formatDate} from '@/src/lib/utils'
 import {Button} from '@/src/components/ui/button'
@@ -15,7 +17,6 @@ import {
 
 type DatePickerProps = {
   id?: string
-  locale: Awaited<Params['params']>['locale']
   placeholder?: string
   disabled?: boolean
   disabledDates?: Matcher | Matcher[]
@@ -26,7 +27,6 @@ type DatePickerProps = {
 
 const DatePicker: React.FC<DatePickerProps> = ({
   id,
-  locale,
   placeholder,
   disabled,
   disabledDates,
@@ -35,6 +35,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
   onDateChange
 }) => {
   const [open, setOpen] = React.useState(false)
+  const locale = useLocale()
 
   function handleDateSelect(date: Date | undefined) {
     if (!date) return
@@ -76,7 +77,6 @@ const DatePicker: React.FC<DatePickerProps> = ({
           align='start'
         >
           <Calendar
-            calendarLocale={locale}
             classNames={{month_grid: 'border-separate'}}
             mode='single'
             selected={date}
