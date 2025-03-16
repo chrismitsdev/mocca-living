@@ -7,7 +7,13 @@ const typographyVariants = cva(['block'], {
     variant: {
       hero: ['text-5xl', 'font-extrabold', 'lg:text-6xl'],
       h1: ['text-4xl', 'font-extrabold', 'lg:text-5xl'],
-      h2: ['pb-2', 'text-3xl', 'font-semibold', 'border-b', 'first:mt-0'],
+      h2: [
+        'pb-2',
+        'text-3xl',
+        'font-semibold',
+        'border-b',
+        'border-b-surface-3'
+      ],
       h3: ['text-2xl', 'font-semibold'],
       h4: ['text-xl', 'font-semibold'],
       h5: ['text-base', 'font-semibold'],

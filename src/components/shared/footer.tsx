@@ -6,6 +6,7 @@ import {
   MapPinHouseIcon,
   FileTextIcon,
   CookieIcon,
+  BedSingleIcon,
   MusicIcon,
   FacebookIcon,
   InstagramIcon
@@ -115,13 +116,23 @@ const Footer: React.FC = () => {
                 <span>{t('Footer.row-1.column-2.link-2')}</span>
               </Link>
             </Typography>
+            <Typography
+              className='flex items-center gap-1.5'
+              variant='link'
+              asChild
+            >
+              <Link href='/rules'>
+                <BedSingleIcon size={14} />
+                <span>{t('Footer.row-1.column-2.link-3')}</span>
+              </Link>
+            </Typography>
             <DialogAudioPlayer>
               <Typography
                 className='flex items-center gap-1.5'
                 variant='link'
               >
                 <MusicIcon size={14} />
-                <span>{t('Footer.row-1.column-2.link-3')}</span>
+                <span>{t('Footer.row-1.column-2.link-4')}</span>
               </Typography>
             </DialogAudioPlayer>
           </FooterColumn>

@@ -84,7 +84,7 @@ const Reason: React.FC<{title: string; description: string}> = ({
       />
       <div className='space-y-2'>
         <Typography variant='large'>{title}</Typography>
-        <Typography>{description}</Typography>
+        <Typography className='leading-8'>{description}</Typography>
       </div>
     </div>
   )

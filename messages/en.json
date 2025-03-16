@@ -12,6 +12,7 @@
       "contact": "Contact",
       "privacy": "Privacy policy",
       "cookies": "Cookies policy",
+      "rules": "Accommodation policy",
       "not-found": "Page not found"
     },
     "Contact": {
@@ -50,6 +51,30 @@
             "description": "Mocca Living is the perfect haven for wellness lovers, offering a peaceful environment ideal for relaxation and slow-living by the sea."
           }
         }
+      },
+      "Distances": {
+        "title": "Distances to key locations",
+        "description": "Discover how close the villas are to key locations, including the airport, beach, city center, and more.",
+        "airport": {
+          "title": "\"Dimokritos\" airport – 20 km",
+          "description": "The Dimokritos Airport, situated 20 km from the villas, ensures convenient travel for guests arriving from domestic and international destinations. Whether you're flying in for a relaxing getaway or departing after a memorable stay, the airport is easily accessible, offering a smooth and hassle-free journey."
+        },
+        "city": {
+          "title": "Alexandroupolis – 14 km",
+          "description": "Located just 14 km away, the vibrant city of Alexandroupolis offers a perfect blend of modern amenities and cultural heritage. Visitors can explore its charming waterfront, indulge in local cuisine at the numerous restaurants, or take a stroll through its bustling shopping streets. With easy access from the villas, a short drive will bring you to the heart of the city’s lively atmosphere."
+        },
+        "beach": {
+          "title": "Agia Paraskevi beach – 100 m",
+          "description": "Just a mere 100 meters away, Agia Paraskevi Beach invites guests to experience its pristine sands and crystal-clear waters. Perfect for sunbathing, swimming, or simply unwinding by the sea, this nearby beach provides the ideal setting for a refreshing coastal escape within walking distance of the villas."
+        },
+        "restaurant": {
+          "title": "Restaurant (Closest) – 100 m",
+          "description": "A delightful dining experience awaits just 100 meters from the villas, where the nearest restaurant serves a variety of delicious local and international dishes. Whether you’re looking for a casual meal or a fine dining experience, the close proximity allows guests to enjoy exceptional cuisine without the need for extensive travel."
+        },
+        "charge": {
+          "title": "Car charging station – 80 m",
+          "description": "For guests traveling with electric vehicles, a convenient car charging station is located just 80 meters away. This nearby facility ensures that your vehicle remains powered and ready for your next adventure, making sustainable travel effortless and hassle-free."
+        }
       }
     },
     "Accomodation": {
@@ -79,43 +104,6 @@
             "bedrooms": "2 Bedrooms",
             "bathrooms": "1 Bathroom",
             "button": "Information"
-          }
-        },
-        "Faq": {
-          "title": "Accomodation policy & useful information",
-          "accordion-1": {
-            "title": "Distances",
-            "item-1": {
-              "title": "Αirport \"Dimokritos\" – 20 km",
-              "content": "The Dimokritos Airport, situated 20 km from the villas, ensures convenient travel for guests arriving from domestic and international destinations. Whether you're flying in for a relaxing getaway or departing after a memorable stay, the airport is easily accessible, offering a smooth and hassle-free journey."
-            },
-            "item-2": {
-              "title": "Alexandroupolis – 14 km",
-              "content": "Located just 14 km away, the vibrant city of Alexandroupolis offers a perfect blend of modern amenities and cultural heritage. Visitors can explore its charming waterfront, indulge in local cuisine at the numerous restaurants, or take a stroll through its bustling shopping streets. With easy access from the villas, a short drive will bring you to the heart of the city’s lively atmosphere."
-            },
-            "item-3": {
-              "title": "Agia Paraskevi beach – 100 m",
-              "content": "Just a mere 100 meters away, Agia Paraskevi Beach invites guests to experience its pristine sands and crystal-clear waters. Perfect for sunbathing, swimming, or simply unwinding by the sea, this nearby beach provides the ideal setting for a refreshing coastal escape within walking distance of the villas."
-            },
-            "item-4": {
-              "title": "Restaurant (Closest) – 100 m",
-              "content": "A delightful dining experience awaits just 100 meters from the villas, where the nearest restaurant serves a variety of delicious local and international dishes. Whether you’re looking for a casual meal or a fine dining experience, the close proximity allows guests to enjoy exceptional cuisine without the need for extensive travel."
-            },
-            "item-5": {
-              "title": "Car charging station – 80 m",
-              "content": "For guests traveling with electric vehicles, a convenient car charging station is located just 80 meters away. This nearby facility ensures that your vehicle remains powered and ready for your next adventure, making sustainable travel effortless and hassle-free."
-            }
-          },
-          "accordion-2": {
-            "title": "Accommodation rules",
-            "item-1": {
-              "title": "Smoking prohibited indoors",
-              "content": "To ensure a fresh and comfortable environment for all guests, smoking is strictly prohibited inside the villas. Guests who wish to smoke may do so in outdoor areas."
-            },
-            "item-2": {
-              "title": "Parties are not allowed",
-              "content": "For the comfort and relaxation of all guests, parties and loud gatherings are not permitted on the property. We kindly ask for respect towards other visitors and the tranquil atmosphere of the villas."
-            }
           }
         }
       },
@@ -194,6 +182,17 @@
         "description": "This website uses two cookies:",
         "bullet-1": "<strong>CONSENT_COOKIE</strong> - This cookie is stored to deliver a better user experience and analyze website traffic.",
         "bullet-2": "<strong>NEXT_LOCALE</strong> - This cookie is used for internalization purposes, ensuring the website displays the correct language based on user preferences."
+      }
+    },
+    "Rules": {
+      "title": "Accommodation Policy & stay rules",
+      "item-1": {
+        "title": "Smoking prohibited indoors",
+        "description": "To ensure a fresh and comfortable environment for all guests, smoking is strictly prohibited inside the villas. Guests who wish to smoke may do so in outdoor areas."
+      },
+      "item-2": {
+        "title": "Parties are not allowed",
+        "description": "For the comfort and relaxation of all guests, parties and loud gatherings are not permitted on the property. We kindly ask for respect towards other visitors and the tranquil atmosphere of the villas."
       }
     },
     "NotFound": {
@@ -305,7 +304,8 @@
           "header": "Useful links",
           "link-1": "Privacy policy",
           "link-2": "Cookies policy",
-          "link-3": "Audio playlist"
+          "link-3": "Accommodation policy",
+          "link-4": "Audio playlist"
         },
         "column-3": {
           "header": "More",

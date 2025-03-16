@@ -77,7 +77,7 @@ const HomeGallery: React.FC = () => {
 
   return (
     <Container asChild>
-      <Section>
+      <Section className='pt-16'>
         <Dialog>
           <div className='grid grid-cols-2 gap-2 sm:grid-cols-8 sm:grid-rows-8'>
             {renderedTriggers}

@@ -66,7 +66,7 @@ const AccomodationVillas: React.FC = () => {
 
   return (
     <Container asChild>
-      <Section className='py-16'>
+      <Section className='pt-16'>
         <div className='grid gap-12 sm:grid-cols-2'>
           {villas.map((villa) => (
             <Card
