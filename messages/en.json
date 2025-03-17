@@ -237,6 +237,10 @@
           "label": "Phone number",
           "placeholder": "Fill in your phone number"
         },
+        "dates": {
+          "label": "Dates",
+          "placeholder": "Select arrival/departure dates"
+        },
         "checkIn": {
           "label": "Check-in date",
           "placeholder": "Select your arrival date"

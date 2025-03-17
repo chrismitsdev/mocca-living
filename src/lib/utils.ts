@@ -1,19 +1,27 @@
+import type {StaticImageData} from 'next/image'
 import {clsx, type ClassValue} from 'clsx'
-import {twMerge} from 'tailwind-merge'
+import {type Locale} from 'next-intl'
 import {format} from 'date-fns'
 import {el, enUS} from 'date-fns/locale'
-import type {StaticImageData} from 'next/image'
+import {twMerge} from 'tailwind-merge'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+// export function formatDate(
+//   date: Date,
+//   formatPattern: string = 'PPP',
+//   locale: Locale
+// ): string {
+//   return format(date, formatPattern, {locale: locale === 'gr' ? el : enUS})
+// }
+
 export function formatDate(
   date: Date,
-  locale: Awaited<Params['params']>['locale'],
-  formatPattern: string = 'PPP'
+  locale: Locale
 ): string {
-  return format(date, formatPattern, {locale: locale === 'gr' ? el : enUS})
+  return format(date, 'PPP', {locale: locale === 'gr' ? el : enUS})
 }
 
 export async function sleep(sleepTime: number = 1000) {

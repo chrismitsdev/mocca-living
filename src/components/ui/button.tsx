@@ -77,12 +77,12 @@ const buttonVariants = cva(
     },
     compoundVariants: [
       {
-        variant: ['bordered'],
+        variant: ['bordered', 'bordered-alt'],
         size: 'normal',
         className: 'py-[7px]'
       },
       {
-        variant: ['bordered'],
+        variant: ['bordered', 'bordered-alt'],
         size: 'small',
         className: 'py-[5px]'
       }

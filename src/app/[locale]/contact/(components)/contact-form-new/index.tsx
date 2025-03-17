@@ -26,6 +26,7 @@ import {
   SelectItem
 } from '@/src/components/ui/select'
 import {Button} from '@/src/components/ui/button'
+import {PopoverCalendar} from '@/src/app/[locale]/contact/(components)/contact-form-new/popover-calendar'
 import {Calendar} from '@/src/app/[locale]/contact/(components)/contact-form-new/calendar'
 
 const ContactFormNew: React.FC = () => {
@@ -34,9 +35,7 @@ const ContactFormNew: React.FC = () => {
   return (
     <Section>
       <Container>
-        <Calendar />
-
-        {/* <Card>
+        <Card>
           <CardHeader>
             <CardTitle>{t('contact-page-title')}</CardTitle>
             <CardDescription>{t('contact-page-description')}</CardDescription>
@@ -72,16 +71,16 @@ const ContactFormNew: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor='checIn'>{t('fields.checkIn.label')}</Label>
-                  <DatePicker
+                  <Label htmlFor='checIn'>{t('fields.dates.label')}</Label>
+                  <PopoverCalendar
                     id='checkIn'
-                    placeholder={t('fields.checkIn.placeholder')}
+                    placeholder={t('fields.dates.placeholder')}
                   />
                 </div>
               </div>
             </form>
           </CardContent>
-        </Card> */}
+        </Card>
       </Container>
     </Section>
   )
