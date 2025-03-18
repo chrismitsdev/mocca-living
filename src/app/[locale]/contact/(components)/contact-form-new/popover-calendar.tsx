@@ -1,72 +1,103 @@
-'use client'
-
 import * as React from 'react'
 import {useLocale} from 'next-intl'
-import {DateRange} from 'react-day-picker'
-import {CalendarIcon} from 'lucide-react'
+import {type DateRange, useDayPicker} from 'react-day-picker'
+import {type LucideProps, RotateCcwIcon} from 'lucide-react'
 import {
   Popover,
   PopoverTrigger,
   PopoverPortal,
   PopoverContent
 } from '@/src/components/ui/popover'
-import {formatDate} from '@/src/lib/utils'
-import {Calendar} from '@/src/app/[locale]/contact/(components)/contact-form-new/calendar'
+import {formatDate, cn} from '@/src/lib/utils'
 import {Button} from '@/src/components/ui/button'
+import {Typography} from '@/src/components/ui/typography'
+import {Calendar} from '@/src/app/[locale]/contact/(components)/contact-form-new/calendar'
 
 interface PopoverCalendarProps {
   id?: string
   name?: string
   placeholder?: string
-  calendarProps?: React.ComponentPropsWithoutRef<typeof Calendar>
+  icon?: React.ComponentType<LucideProps>
+  date: DateRange
+  onDateChange?: (date: DateRange) => void
+  minimumNights?: number
+  footerMessage?: string
 }
 
 const PopoverCalendar: React.FC<PopoverCalendarProps> = ({
   id,
   name,
   placeholder,
-  calendarProps
+  icon,
+  date,
+  onDateChange,
+  minimumNights = 2,
+  footerMessage
 }) => {
-  const [date, setDate] = React.useState<DateRange>({
-    from: undefined,
-    to: undefined
-  })
   const locale = useLocale()
 
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          className='pl-3 w-full justify-start'
+          value={'hello World'}
+          className='px-3 w-full justify-start data-open:border-border-hover data-open:shadow'
           id={id}
           name={name}
           variant='bordered-alt'
         >
-          <CalendarIcon size={16} />
-          {date?.from ? (
-            date.to ? (
-              <>
-                {formatDate(date.from, locale)} - {formatDate(date.to, locale)}
-              </>
-            ) : (
-              formatDate(date.from, locale)
-            )
-          ) : (
-            <span className='text-sm font-normal text-foreground-muted'>
-              {placeholder}
-            </span>
-          )}
+          {icon && React.createElement(icon, {size: 16})}
+          <span
+            className={cn(
+              !date.from &&
+                !date.to &&
+                'text-sm font-normal text-foreground-muted'
+            )}
+          >
+            {date?.from
+              ? date.to
+                ? `${formatDate(date.from, locale)} - ${formatDate(
+                    date.to,
+                    locale
+                  )}`
+                : `${formatDate(date.from, locale)} -`
+              : placeholder}
+          </span>
         </Button>
       </PopoverTrigger>
       <PopoverPortal>
         <PopoverContent align='start'>
           <Calendar
-            autoFocus
             mode='range'
-            selected={date}
-            onSelect={setDate}
+            fixedWeeks
             required
-            disabled={{before: new Date()}}
+            selected={date}
+            onSelect={onDateChange}
+            min={minimumNights}
+            calendarLocale={locale}
+            onMonthChange={(month) => console.log(month)}
+            disabled={{
+              before: new Date()
+            }}
+            footer={
+              <>
+                <Typography
+                  className='text-center !leading-6'
+                  variant='mini'
+                >
+                  {footerMessage}
+                </Typography>
+                <Button
+                  variant='bordered'
+                  size='icon-mini'
+                  onClick={() =>
+                    onDateChange?.({from: undefined, to: undefined})
+                  }
+                >
+                  <RotateCcwIcon size={16} />
+                </Button>
+              </>
+            }
           />
         </PopoverContent>
       </PopoverPortal>

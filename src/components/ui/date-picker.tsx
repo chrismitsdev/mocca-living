@@ -22,7 +22,8 @@ type DatePickerProps = {
   disabledDates?: Matcher | Matcher[]
   icon?: React.ComponentType<LucideProps>
   date?: Date
-  onDateChange?: React.Dispatch<React.SetStateAction<Date | undefined>>
+  // onDateChange?: React.Dispatch<React.SetStateAction<Date | undefined>>
+  onDateChange?: (date?: Date) => void
 }
 
 const DatePicker: React.FC<DatePickerProps> = ({

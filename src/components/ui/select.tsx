@@ -32,7 +32,7 @@ const SelectTrigger: React.FC<React.ComponentPropsWithRef<typeof Trigger>> = ({
 }) => (
   <Trigger
     className={cn(
-      'px-3 py-[7px] flex items-center gap-2 bg-surface-1 border border-border rounded font-semibold transition hover:border-border-hover focus:outline-none disabled:border-border disabled:pointer-events-none disabled:opacity-35 data-open:border-border-hover data-open:shadow [&>span]:grow [&>span]:text-left group',
+      'px-3 py-[7px] flex items-center gap-2 bg-surface-1 border border-border rounded font-semibold transition hover:border-border-hover focus:outline-none disabled:border-border disabled:pointer-events-none disabled:opacity-35 data-open:border-border-hover data-placeholder:[&>div>span]:text-sm data-placeholder:[&>div>span]:font-normal data-placeholder:[&>div>span]:text-foreground-muted data-open:shadow [&>div]:grow [&>div]:text-left group',
       className
     )}
     {...props}

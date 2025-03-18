@@ -9,19 +9,12 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-// export function formatDate(
-//   date: Date,
-//   formatPattern: string = 'PPP',
-//   locale: Locale
-// ): string {
-//   return format(date, formatPattern, {locale: locale === 'gr' ? el : enUS})
-// }
-
 export function formatDate(
   date: Date,
-  locale: Locale
+  locale: Locale,
+  formatStr: string = 'PP'
 ): string {
-  return format(date, 'PPP', {locale: locale === 'gr' ? el : enUS})
+  return format(date, formatStr, {locale: locale === 'gr' ? el : enUS})
 }
 
 export async function sleep(sleepTime: number = 1000) {

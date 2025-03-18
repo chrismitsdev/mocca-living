@@ -284,7 +284,7 @@ const ContactForm: React.FC<ContactFormProps> = ({locale}) => {
                           />
                         </FormControl>
                         <FormLabel>
-                          {t.rich('fields.consentData.label', {
+                          {t.rich('fields.consent.label', {
                             link: (string) => (
                               <PrivacyModal>{string}</PrivacyModal>
                             )

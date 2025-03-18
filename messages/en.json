@@ -225,6 +225,14 @@
       "slug-page-title": "Make a reservartion for villa {slug, select, georgia {Georgia} dimitra {Dimitra} other {Unknown}}",
       "slug-page-description": "Fill out the form below and we will contact you shortly.",
       "fields": {
+        "firstName": {
+          "label": "First name",
+          "placeholder": "Fill in your first name"
+        },
+        "lastName": {
+          "label": "Last name",
+          "placeholder": "Fill in your last name"
+        },
         "fullName": {
           "label": "Full name",
           "placeholder": "Fill in your full name"
@@ -239,7 +247,8 @@
         },
         "dates": {
           "label": "Dates",
-          "placeholder": "Select arrival/departure dates"
+          "placeholder": "Select date range",
+          "footer": "At least {min} nights"
         },
         "checkIn": {
           "label": "Check-in date",
@@ -257,7 +266,7 @@
           "label": "Message",
           "placeholder": "Optionally, leave your message here..."
         },
-        "consentData": {
+        "consent": {
           "label": "I agree that my personal data will be used only to fulfill my request according to <link>Privacy Policy statement</link>"
         }
       },
