@@ -209,9 +209,9 @@ const Navigation: React.FC = () => {
                 </li>
                 <Collapsible asChild>
                   <li role='none'>
-                    <div className='flex items-center justify-between'>
+                    <div className='flex items-center justify-between gap-4'>
                       <NavLink
-                        className='pl-0'
+                        className='pl-0 grow'
                         href='/accomodation'
                         pathname={pathname}
                         icon={BedDoubleIcon}
@@ -221,11 +221,11 @@ const Navigation: React.FC = () => {
                       <CollapsibleTrigger asChild>
                         <Button
                           variant='link'
-                          size='icon-mini'
+                          size='icon-small'
                         >
                           <ChevronRightIcon
                             className='group-data-open:rotate-90 group-data-open:duration-750 group-data-closed:duration-375'
-                            size={20}
+                            size={24}
                           />
                         </Button>
                       </CollapsibleTrigger>
