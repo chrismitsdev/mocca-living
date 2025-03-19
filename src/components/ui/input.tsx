@@ -10,7 +10,6 @@ interface InputProps extends React.ComponentPropsWithRef<'input'> {
 const Input: React.FC<InputProps> = ({
   className,
   wrapperProps = {},
-  type = 'text',
   icon,
   ...props
 }) => {
@@ -27,7 +26,6 @@ const Input: React.FC<InputProps> = ({
           icon ? 'pl-9 pr-3' : 'px-3',
           className
         )}
-        type={type}
         {...props}
       />
       {icon && (

@@ -22,6 +22,7 @@ interface PopoverCalendarProps {
   onDateChange?: (date: DateRange) => void
   minimumNights?: number
   footerMessage?: string
+  disabled?: boolean
 }
 
 const PopoverCalendar: React.FC<PopoverCalendarProps> = ({
@@ -32,7 +33,8 @@ const PopoverCalendar: React.FC<PopoverCalendarProps> = ({
   date,
   onDateChange,
   minimumNights = 2,
-  footerMessage
+  footerMessage,
+  disabled
 }) => {
   const locale = useLocale()
 
@@ -45,6 +47,7 @@ const PopoverCalendar: React.FC<PopoverCalendarProps> = ({
           id={id}
           name={name}
           variant='bordered-alt'
+          disabled={disabled}
         >
           {icon && React.createElement(icon, {size: 16})}
           <span

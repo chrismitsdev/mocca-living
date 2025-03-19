@@ -1,8 +1,8 @@
 'use server'
 
-import {type DateRange} from 'react-day-picker'
 import {
   type InferOutput,
+  safeParse,
   object,
   pipe,
   string,
@@ -11,20 +11,14 @@ import {
   maxLength,
   email,
   trim,
-  literal
+  literal,
+  picklist,
+  fallback,
+  date,
+  flatten
 } from 'valibot'
 
-// {
-//   firstName: '',
-//   lastName: '',
-//   email: '',
-//   phone: '',
-//   villa: '',
-//   message: '',
-//   date: { from: 2025-03-17T22:00:00.000Z, to: 2025-03-21T22:00:00.000Z }
-// }
-
-const SubmitFormSchema = object({
+const ContactFormSchema = object({
   firstName: pipe(
     string('Πρέπει να είναι αλφαριθμιτική συμβολοσειρά'),
     trim(),
@@ -48,30 +42,71 @@ const SubmitFormSchema = object({
   phone: pipe(
     string('Πρέπει να είναι αλφαριθμιτική συμβολοσειρά'),
     trim(),
-    nonEmpty('Πληκτρολογήστε τον αριθμό τηλεφώνου σας')
+    nonEmpty('Πληκτρολογήστε το τηλέφωνο σας')
   ),
-  villa: pipe(
+  villa: picklist(['Δήμητρα', 'Γεωργία'], 'Επιλέξτε επιθυμητή βίλα'),
+  message: fallback(
     string('Πρέπει να είναι αλφαριθμιτική συμβολοσειρά'),
-    trim(),
-    nonEmpty('Επιλέξτε επιθυμητή βίλα')
-  )
+    'Κανένα μήνυμα'
+  ),
+  range: object({
+    from: date('Επιλέξτε ημερομηνία άφιξης'),
+    to: date('Επιλέξτε ημερομηνία αναχώρησης')
+  }),
+  consent: literal('on', 'Πρέπει να αποδεχτείτε τους όρους')
 })
 
-export async function submitFormAction(
-  date: DateRange,
-  prevState: any,
+type ContactFormData = InferOutput<typeof ContactFormSchema>
+type ContactFormErrors = Omit<
+  Partial<Record<keyof ContactFormData, string>>,
+  'message'
+>
+export type ContactFormActionState = {
+  data: ContactFormData
+  errors: ContactFormErrors
+}
+
+export async function contactFormAction(
+  range: {
+    from: Date | null
+    to: Date | null
+  },
+  _prevState: ContactFormActionState,
   formData: FormData
-) {
-  const rawFormData = Object.fromEntries(
+): Promise<ContactFormActionState> {
+  const rawData = Object.fromEntries(
     Array.from(formData).filter(function ([key]) {
       return !key.startsWith('$ACTION_')
     })
   )
-  const formDataWithDate = {...rawFormData, date}
+  const data = {
+    consent: formData.get('consent'),
+    range,
+    ...rawData
+  } as ContactFormData
+  const result = safeParse(ContactFormSchema, data)
 
-  console.log(formDataWithDate)
+  if (!result.success) {
+    const issues = flatten<typeof ContactFormSchema>(result.issues)
 
-  return {
-    message: ''
+    return {
+      data,
+      errors: {
+        firstName: issues.nested?.firstName?.[0],
+        lastName: issues.nested?.lastName?.[0],
+        email: issues.nested?.email?.[0],
+        phone: issues.nested?.phone?.[0],
+        villa: issues.nested?.villa?.[0],
+        range:
+          issues.nested?.['range.from']?.[0] ||
+          issues.nested?.['range.to']?.[0],
+        consent: issues.nested?.consent?.[0]
+      }
+    }
+  } else {
+    return {
+      data: result.output,
+      errors: {}
+    }
   }
 }

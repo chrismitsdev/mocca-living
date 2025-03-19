@@ -8,7 +8,7 @@ const Label: React.FC<React.ComponentPropsWithRef<typeof Root>> = ({
 }) => {
   return (
     <Root
-      className={cn('inline-block text-sm font-semibold', className)}
+      className={cn('block text-sm font-semibold select-none', className)}
       {...props}
     />
   )
