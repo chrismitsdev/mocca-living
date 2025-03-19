@@ -242,7 +242,7 @@
           "placeholder": "Fill in your email"
         },
         "phone": {
-          "label": "Phone number",
+          "label": "Phone",
           "placeholder": "Fill in your phone number"
         },
         "dates": {

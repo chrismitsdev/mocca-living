@@ -10,7 +10,7 @@ const Checkbox: React.FC<React.ComponentPropsWithRef<'input'>> = ({
   return (
     <input
       className={cn(
-        'appearance-none font-[inherit] text-current relative',
+        'appearance-none font-[inherit] text-current relative shrink-0',
         'w-6 h-6 bg-surface-1 border border-border rounded before:absolute before:inset-0.5 before:bg-primary before:rounded-xs before:scale-0 checked:before:scale-100 before:transition',
         className
       )}

@@ -1,19 +1,19 @@
 import * as React from 'react'
 import {useLocale} from 'next-intl'
-import {type DateRange, useDayPicker} from 'react-day-picker'
+import {type DateRange} from 'react-day-picker'
 import {type LucideProps, RotateCcwIcon} from 'lucide-react'
+import {formatDate, cn} from '@/src/lib/utils'
 import {
   Popover,
   PopoverTrigger,
   PopoverPortal,
   PopoverContent
 } from '@/src/components/ui/popover'
-import {formatDate, cn} from '@/src/lib/utils'
 import {Button} from '@/src/components/ui/button'
 import {Typography} from '@/src/components/ui/typography'
 import {Calendar} from '@/src/app/[locale]/contact/(components)/contact-form-new/calendar'
 
-interface PopoverCalendarProps {
+interface RangeCalendarProps {
   id?: string
   name?: string
   placeholder?: string
@@ -25,7 +25,7 @@ interface PopoverCalendarProps {
   disabled?: boolean
 }
 
-const PopoverCalendar: React.FC<PopoverCalendarProps> = ({
+const RangeCalendar: React.FC<RangeCalendarProps> = ({
   id,
   name,
   placeholder,
@@ -108,6 +108,6 @@ const PopoverCalendar: React.FC<PopoverCalendarProps> = ({
   )
 }
 
-PopoverCalendar.displayName = 'PopoverCalendar'
+RangeCalendar.displayName = 'RangeCalendar'
 
-export {PopoverCalendar}
+export {RangeCalendar}

@@ -2,20 +2,17 @@
 
 import {
   type InferOutput,
-  safeParse,
   object,
   pipe,
   string,
+  trim,
   nonEmpty,
   minLength,
   maxLength,
   email,
-  trim,
   literal,
-  picklist,
-  fallback,
-  date,
-  flatten
+  flatten,
+  safeParse
 } from 'valibot'
 
 const ContactFormSchema = object({
@@ -44,15 +41,7 @@ const ContactFormSchema = object({
     trim(),
     nonEmpty('Πληκτρολογήστε το τηλέφωνο σας')
   ),
-  villa: picklist(['Δήμητρα', 'Γεωργία'], 'Επιλέξτε επιθυμητή βίλα'),
-  message: fallback(
-    string('Πρέπει να είναι αλφαριθμιτική συμβολοσειρά'),
-    'Κανένα μήνυμα'
-  ),
-  range: object({
-    from: date('Επιλέξτε ημερομηνία άφιξης'),
-    to: date('Επιλέξτε ημερομηνία αναχώρησης')
-  }),
+  message: string('Πρέπει να είναι αλφαριθμιτική συμβολοσειρά'),
   consent: literal('on', 'Πρέπει να αποδεχτείτε τους όρους')
 })
 
@@ -67,22 +56,12 @@ export type ContactFormActionState = {
 }
 
 export async function contactFormAction(
-  range: {
-    from: Date | null
-    to: Date | null
-  },
   _prevState: ContactFormActionState,
   formData: FormData
 ): Promise<ContactFormActionState> {
-  const rawData = Object.fromEntries(
-    Array.from(formData).filter(function ([key]) {
-      return !key.startsWith('$ACTION_')
-    })
-  )
   const data = {
     consent: formData.get('consent'),
-    range,
-    ...rawData
+    ...Object.fromEntries(formData)
   } as ContactFormData
   const result = safeParse(ContactFormSchema, data)
 
@@ -96,17 +75,13 @@ export async function contactFormAction(
         lastName: issues.nested?.lastName?.[0],
         email: issues.nested?.email?.[0],
         phone: issues.nested?.phone?.[0],
-        villa: issues.nested?.villa?.[0],
-        range:
-          issues.nested?.['range.from']?.[0] ||
-          issues.nested?.['range.to']?.[0],
         consent: issues.nested?.consent?.[0]
       }
     }
-  } else {
-    return {
-      data: result.output,
-      errors: {}
-    }
+  }
+
+  return {
+    data: result.output,
+    errors: {}
   }
 }
