@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
             >
               <a
                 className='flex items-center gap-1.5'
-                href='tel:+306936998859'
+                href='tel:+306973433980'
                 target='_blank'
               >
                 <PhoneIcon size={14} />
