@@ -8,7 +8,7 @@ const Card: React.FC<React.ComponentPropsWithRef<'div'>> = ({
   return (
     <div
       className={cn(
-        'p-6 space-y-6 bg-surface-2 rounded border border-surface-3',
+        'p-6 space-y-6 bg-surface-2 border border-surface-3 rounded',
         className
       )}
       {...props}

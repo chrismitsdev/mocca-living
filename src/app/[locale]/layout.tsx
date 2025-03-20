@@ -4,13 +4,13 @@ import {Commissioner} from 'next/font/google'
 import {NextIntlClientProvider, hasLocale} from 'next-intl'
 import {setRequestLocale} from 'next-intl/server'
 import {notFound} from 'next/navigation'
+import {Toaster} from 'sonner'
 import {routing} from '@/src/i18n/routing'
 import {Header} from '@/src/components/shared/header'
 import {ColumnsTransition} from '@/src/components/shared/route-transitions'
 import {Footer} from '@/src/components/shared/footer'
 import {ContactDrawer} from '@/src/components/shared/contact-drawer'
 import {CookieConsent} from '@/src/components/shared/cookie-consent'
-import {Toaster} from '@/src/components/ui/toast'
 
 const commissioner = Commissioner({
   subsets: ['latin'],
@@ -56,10 +56,12 @@ export default async function LocaleLayout({
             <ColumnsTransition>{children}</ColumnsTransition>
           </main>
           <Footer />
-
           <ContactDrawer />
           <CookieConsent />
-          <Toaster position='top-right' />
+          <Toaster
+            position='top-center'
+            mobileOffset={12}
+          />
         </NextIntlClientProvider>
       </body>
     </html>

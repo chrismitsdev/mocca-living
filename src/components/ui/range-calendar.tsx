@@ -11,7 +11,7 @@ import {
 } from '@/src/components/ui/popover'
 import {Button} from '@/src/components/ui/button'
 import {Typography} from '@/src/components/ui/typography'
-import {Calendar} from '@/src/app/[locale]/contact/(components)/contact-form-new/calendar'
+import {Calendar} from '@/src/components/ui/calendar'
 
 interface RangeCalendarProps {
   id?: string

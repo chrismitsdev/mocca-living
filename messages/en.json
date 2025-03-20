@@ -78,11 +78,11 @@
       }
     },
     "Accomodation": {
-      "HeroImage": {
-        "button-label": "Contact us"
-      },
       "Index": {
-        "Introdution": {
+        "Hero": {
+          "button-label": "Contact us"
+        },
+        "Intro": {
           "title": "Our Exclusive Villas",
           "message": "Experience ultimate luxury at Mocca Living, where our exclusive villas perfectly blend modern comfort with timeless elegance. Each villa is carefully designed to offer an unforgettable stay, whether you're here for a family vacation, a getaway with friends, or a romantic retreat. Indulge in luxury and discover the perfect balance between relaxation and refined aesthetics in a space that promises to make every moment unique."
         },
@@ -108,58 +108,74 @@
         }
       },
       "Slug": {
-        "headers": {
-          "layout": "Villa Layout",
-          "amenities": {
-            "indoor": "Indoor amenities",
-            "outdoor": "Outdoor amenities"
+        "card": {
+          "links": {
+            "back": "Back",
+            "next": "{slug, select, georgia {Dimitra} dimitra {Georgia} other {Unknown}}"
           },
-          "complementary": "Complementary services",
-          "request": "Rental services",
-          "button": "Back"
-        },
-        "dimitra": {
-          "name": "Dimitra",
-          "guests": "2 - 5 Adults",
-          "child": "1 Child",
-          "bedrooms": "2 Bedrooms",
-          "bathrooms": "2 Bathrooms",
-          "area": "85m² Area",
-          "layout": "One main entrance, Big living room area, Dining room area, One master bedroom with king-sized bed (COCOMAT mattress and bed cover) and en-suite bathroom, One bedroom with queen-sized bed (COCOMAT mattress and bed cover) and en-suite bathroom, Direct access to big private outdoor area",
-          "amenities": {
-            "indoor": "Free Wi-Fi, Three 55\" Smart TV, Three ceiling fans, Kitchen, Kitchen extractor hood, Air fryer, Fridge, Clothes washer, Clothes iron & ironing board, Nespresso machine, Sound system (Marshall Acton III), Safe box",
-            "outdoor": "Private area with two pergolas and two sitting areas, Sunbeds with umbrella, Mini pool with hydromassage & color-therapy, Private garden with tropical plants and flowers, Shower area"
+          "header": {
+            "layout": "Villa Layout",
+            "amenities": {
+              "indoor": "Indoor amenities",
+              "outdoor": "Outdoor amenities"
+            },
+            "complementary": "Complementary services",
+            "request": "Rental services"
           },
-          "complementary": "Welcome assistance procedure, Check-in/out assistance",
-          "request": "Two SUP boards for rental, One electric-bike for rental"
-        },
-        "georgia": {
-          "name": "Georgia",
-          "guests": "2 - 4 Adults",
-          "child": "1 Child",
-          "bedrooms": "2 Bedrooms",
-          "bathrooms": "1 Bathroom",
-          "area": "45m² Area",
-          "layout": "One main entrance, Big living room area, Dining room area, Two master bedrooms with double-sized beds, One shared bathroom, Direct access to big private outdoor area",
-          "amenities": {
-            "indoor": "Free Wi-Fi, One 55\" Smart TV, One ceiling fan, Fully provisioned smart-equipped kitchen, Electric oven, Kitchen extractor hood, Fridge, Clothes washer, Clothes iron & ironing board, Nespresso machine, Sound system Marshall, Safe box",
-            "outdoor": "Private area with pergola, Sunbeds with umbrella, Sitting area, Mini pool with hydromassage & color-therapy, Private garden with tropical plants and flowers, Shower area"
+          "content": {
+            "dimitra": {
+              "name": "Dimitra",
+              "guests": "2 - 5 Adults",
+              "child": "1 Child",
+              "bedrooms": "2 Bedrooms",
+              "bathrooms": "2 Bathrooms",
+              "area": "85m² Area",
+              "layout": "One main entrance, Big living room area, Dining room area, One master bedroom with king-sized bed (COCOMAT mattress and bed cover) and en-suite bathroom, One bedroom with queen-sized bed (COCOMAT mattress and bed cover) and en-suite bathroom, Direct access to big private outdoor area",
+              "amenities": {
+                "indoor": "Free Wi-Fi, Three 55\" Smart TV, Three ceiling fans, Kitchen, Kitchen extractor hood, Air fryer, Fridge, Clothes washer, Clothes iron & ironing board, Nespresso machine, Sound system (Marshall Acton III), Safe box",
+                "outdoor": "Private area with two pergolas and two sitting areas, Sunbeds with umbrella, Mini pool with hydromassage & color-therapy, Private garden with tropical plants and flowers, Shower area"
+              },
+              "complementary": "Welcome assistance procedure, Check-in/out assistance",
+              "request": "Two SUP boards for rental, One electric-bike for rental"
+            },
+            "georgia": {
+              "name": "Georgia",
+              "guests": "2 - 4 Adults",
+              "child": "1 Child",
+              "bedrooms": "2 Bedrooms",
+              "bathrooms": "1 Bathroom",
+              "area": "45m² Area",
+              "layout": "One main entrance, Big living room area, Dining room area, Two master bedrooms with double-sized beds, One shared bathroom, Direct access to big private outdoor area",
+              "amenities": {
+                "indoor": "Free Wi-Fi, One 55\" Smart TV, One ceiling fan, Fully provisioned smart-equipped kitchen, Electric oven, Kitchen extractor hood, Fridge, Clothes washer, Clothes iron & ironing board, Nespresso machine, Sound system Marshall, Safe box",
+                "outdoor": "Private area with pergola, Sunbeds with umbrella, Sitting area, Mini pool with hydromassage & color-therapy, Private garden with tropical plants and flowers, Shower area"
+              },
+              "complementary": "Welcome assistance procedure, Check-in/out assistance",
+              "request": "Two SUP boards for rental, One electric-bike for rental"
+            }
           },
-          "complementary": "Welcome assistance procedure, Check-in/out assistance",
-          "request": "Two SUP boards for rental, One electric-bike for rental"
+          "drawer": {
+            "trigger": "Enquire about {slug, select, georgia {Georgia} dimitra {Dimitra} other {Unknown}}",
+            "title": "Make a reservartion for villa {slug, select, georgia {Georgia} dimitra {Dimitra} other {Unknown}}",
+            "description": "Fill out the form below and we will contact you shortly."
+          }
         }
       }
     },
     "Contact": {
-      "Map": {
-        "title": "Mocca Living",
-        "directions": "How to get here"
+      "Form": {
+        "title": "Contact us",
+        "description": "Fill out the form below to make a booking, and we will contact you shortly."
       },
       "Social": {
         "location": "Location",
         "instagram": "Instagram",
         "facebook": "Facebook",
         "phone": "Call us"
+      },
+      "Map": {
+        "title": "Mocca Living",
+        "directions": "How to get here"
       }
     },
     "Privacy": {
@@ -220,10 +236,6 @@
       "button-label": "Understood"
     },
     "Form": {
-      "contact-page-title": "Contact us",
-      "contact-page-description": "Fill out the form below to make a booking, and we will contact you shortly.",
-      "slug-page-title": "Make a reservartion for villa {slug, select, georgia {Georgia} dimitra {Dimitra} other {Unknown}}",
-      "slug-page-description": "Fill out the form below and we will contact you shortly.",
       "fields": {
         "firstName": {
           "label": "First name",
@@ -233,10 +245,6 @@
           "label": "Last name",
           "placeholder": "Fill in your last name"
         },
-        "fullName": {
-          "label": "Full name",
-          "placeholder": "Fill in your full name"
-        },
         "email": {
           "label": "Email",
           "placeholder": "Fill in your email"
@@ -244,23 +252,6 @@
         "phone": {
           "label": "Phone",
           "placeholder": "Fill in your phone number"
-        },
-        "dates": {
-          "label": "Dates",
-          "placeholder": "Select date range",
-          "footer": "At least {min} nights"
-        },
-        "checkIn": {
-          "label": "Check-in date",
-          "placeholder": "Select your arrival date"
-        },
-        "checkOut": {
-          "label": "Check-out date",
-          "placeholder": "Select your departure date"
-        },
-        "villa": {
-          "label": "Selected villa",
-          "placeholder": "Select your preferred villa"
         },
         "message": {
           "label": "Message",
@@ -270,37 +261,23 @@
           "label": "I agree that my personal data will be used only to fulfill my request according to <link>Privacy Policy statement</link>"
         }
       },
-      "validation": {
-        "required": "Mandatory field",
-        "fullName": "Must be between 5 and 25 characters long",
-        "email": {
-          "invalid": "Invalid email address",
-          "providers": "Email provider is not supported"
-        },
-        "phone": "Invalid phone number format"
+      "button": {
+        "label": "Submit"
       },
-      "buttons": {
-        "submit": "Submit",
-        "reset": "Reset",
-        "trigger": {
-          "georgia": "Enquire about Georgia",
-          "dimitra": "Enquire about Dimitra"
-        }
-      },
-      "response": {
+      "toast": {
         "success": {
           "title": "Successful submission",
-          "message": "Form submission was successful. We will contact you shortly."
+          "description": "Form submission was successful. We will contact you shortly."
         },
         "error": {
-          "title": "Failed submission",
-          "message": "Form submission failed. Please try again later."
-        }
-      },
-      "metadata": {
-        "villa": {
-          "georgia": "Georgia",
-          "dimitra": "Dimitra"
+          "validation": {
+            "title": "Failed submission",
+            "description": "Please check the highlighted fields and correct any errors before resubmitting."
+          },
+          "api": {
+            "title": "Failed submission",
+            "description": "An error occurred while contacting the email service. Please try again later."
+          }
         }
       }
     },

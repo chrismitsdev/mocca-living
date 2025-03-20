@@ -1,9 +1,34 @@
 import type {StaticImageData} from 'next/image'
-import {clsx, type ClassValue} from 'clsx'
 import {type Locale} from 'next-intl'
+import {clsx, type ClassValue} from 'clsx'
 import {format} from 'date-fns'
 import {el, enUS} from 'date-fns/locale'
 import {twMerge} from 'tailwind-merge'
+import {Resend} from 'resend'
+import {ContactFormActionState} from '@/src/lib/actions'
+import {ContactFormTemplate} from '@/src/components/email/contact-form-template'
+
+export async function sendContactForm(
+  formData: ContactFormActionState['data']
+) {
+  const resend = new Resend(process.env.RESEND_ONBOARDING_API_KEY)
+
+  try {
+    const {error} = await resend.emails.send({
+      from: 'Mocca Living <info@moccaliving.com>',
+      to: ['apefthimiadou@gmail.com', 'mokalis@gmail.com'],
+      cc: 'chrismits88@gmail.com',
+      subject: 'Φόρμα επικοινωνίας',
+      react: ContactFormTemplate(formData) as React.JSX.Element
+    })
+
+    if (error) {
+      return error
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -55,10 +80,6 @@ export function toBase64(str: string) {
   return typeof window === 'undefined'
     ? Buffer.from(str).toString('base64')
     : window.btoa(str)
-}
-
-export function clamp(num: number, min: number, max: number) {
-  return Math.min(Math.max(num, min), max)
 }
 
 // Helper to format duration to mm:ss

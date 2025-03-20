@@ -1,69 +1,72 @@
-'use client'
+import {type Locale} from 'next-intl'
+import {DayPicker} from 'react-day-picker'
+import {el, enUS} from 'react-day-picker/locale'
+import {ChevronLeftIcon, ChevronRightIcon} from 'lucide-react'
 
-import * as React from 'react'
-import {DayPicker, type DayPickerProps} from 'react-day-picker'
-import {
-  ChevronUpIcon,
-  ChevronRightIcon,
-  ChevronDownIcon,
-  ChevronLeftIcon
-} from 'lucide-react'
-import {cn} from '@/src/lib/utils'
-import {buttonVariants} from '@/src/components/ui/button'
-
-const chevronMap = {
-  up: <ChevronUpIcon size={18} />,
-  right: <ChevronRightIcon size={18} />,
-  down: <ChevronDownIcon size={18} />,
-  left: <ChevronLeftIcon size={18} />
+type CalendarProps = React.ComponentPropsWithoutRef<typeof DayPicker> & {
+  calendarLocale?: Locale
 }
 
-const Calendar: React.FC<DayPickerProps> = ({
-  className,
+const Calendar: React.FC<CalendarProps> = ({
   classNames,
-  weekStartsOn = 1,
-  showOutsideDays = true,
-  disabled = {before: new Date()},
-  locale,
+  calendarLocale,
   ...props
 }) => {
-  const btnVariant = buttonVariants({variant: 'bordered', size: 'icon-small'})
-
   return (
     <DayPicker
-      className={cn('mx-auto w-fit', className)}
       classNames={{
+        // root div
+        root: 'p-2 w-max space-y-2',
+        // div > div (direct child div that nests nav and div)
         months: 'relative',
-        nav: 'absolute top-0 right-0 flex items-center gap-2',
-        month: 'space-y-4', // div (month-year wrapper & table)
-        month_caption: 'py-1', // div (month-year wrapper)
-        caption_label: 'block font-semibold', // div > span (month-year)
-        button_previous: btnVariant, // nav button previous
-        button_next: btnVariant, // nav button next
-        month_grid: 'border-collapse', // table
-        // weekdays: '',                                // table > thead > tr element
-        weekday: 'p-0 h-10 w-10 font-semibold', // table > thead > tr > th element
-        // weeks: '',                                   // table > tbody
-        // week: '',                                    // table > tbody > tr
-        day: `p-0 transition rounded [&:not([aria-selected]):not(:has(button[disabled]))]:hover:text-surface-1 [&:not([aria-selected]):not(:has(button[disabled]))]:hover:bg-border`, // table > tbody > tr > td
-        day_button: 'h-10 w-10', // table > tbody > tr > td > button element
-        today: 'font-semibold', // table > tbody > tr > td (that matches today)
-        selected: 'bg-primary text-primary-foreground', // table > tbody > tr > td (that is selected)
-        range_start: 'rounded-r-none', // table > tbody > tr > td (when mode = 'range')
-        range_middle: 'rounded-none', // table > tbody > tr > td (when mode = 'range')
-        range_end: 'rounded-l-none', // table > tbody > tr > td (when mode = 'range')
-        outside: 'text-primary', // table > tbody > tr > td
-        hidden: 'invisible', // table > tbody > tr > td[aria-hidden="true"]
-        disabled:
-          'opacity-50 bg-striped !text-inherit font-bold [&>button]:cursor-not-allowed',
+        // div > div > nav (nav element with navigation buttons)
+        nav: 'absolute top-0 inset-x-0 inline-flex justify-between',
+        // div > div > nav > button
+        button_previous:
+          'size-10 grid place-content-center rounded hover:bg-surface-3 active:bg-surface-3 sm:size-11',
+        // div > div > nav > button
+        button_next:
+          'size-10 grid place-content-center rounded hover:bg-surface-3 active:bg-surface-3 sm:size-11',
+        // div > div > div
+        // month: 'text-red-10',
+        // div > div > div > div
+        month_caption: 'h-10 flex items-center justify-center sm:h-11',
+        // div > div > div > div > span (month & year)
+        caption_label: 'inline-block leading-6 font-semibold',
+        // table
+        // month_grid: '',
+        // table > thead > tr
+        weekdays: 'border-b border-b-surface-3',
+        // table > thead > tr > th
+        weekday: 'h-10 font-normal text-sm',
+        // table > tbody
+        weeks:
+          'before:[content:"-"] before:block before:leading-[8px] before:text-transparent',
+        // table > tbody > tr > td (current day)
+        today: 'font-semibold',
+        // table > tbody > tr > td
+        day: 'size-10 rounded [&.range-start.range-end]:!rounded [&:not([aria-selected]):not([data-outside="true"]):not(:has(button[disabled]))]:hover:bg-surface-2 sm:size-11',
+        selected:
+          'font-semibold transition rounded [&:not([data-outside="true"])]:bg-surface-3',
+        day_button: 'w-full h-full', // td > button element
+        range_start: 'range-start rounded-r-none', // Start range day
+        range_middle: 'rounded-none', // Middle range day
+        range_end: 'range-end rounded-l-none', // End range day
+        outside: 'text-muted',
+        disabled: 'text-muted cursor-not-allowed',
+        footer: 'flex items-center justify-between',
         ...classNames
       }}
       components={{
-        Chevron: ({orientation}) => chevronMap[orientation || 'right']
+        Chevron: ({orientation}) => {
+          return orientation === 'left' ? (
+            <ChevronLeftIcon />
+          ) : (
+            <ChevronRightIcon />
+          )
+        }
       }}
-      weekStartsOn={weekStartsOn}
-      showOutsideDays={showOutsideDays}
-      disabled={disabled}
+      locale={calendarLocale === 'gr' ? el : enUS}
       {...props}
     />
   )

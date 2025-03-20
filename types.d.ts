@@ -18,22 +18,11 @@ declare global {
     }>
   }
 
-  type ContactFormData = {
-    fullName: string
-    email: string
-    phone: string
-    checkIn: Date
-    checkOut: Date
-    villa: string
-    message: string
-    consentData: boolean
-  }
+  type Slug = 'dimitra' | 'georgia'
 
   type CustomIconProps = React.SVGProps<SVGSVGElement> & {
     size?: number
   }
-
-  type Slug = keyof Omit<Messages['Pages']['Accomodation']['Slug'], 'headers'>
 
   type User = {
     id: number

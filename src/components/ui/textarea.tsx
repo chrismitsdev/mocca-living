@@ -5,11 +5,13 @@ import {cn} from '@/src/lib/utils'
 interface TextareaProps extends React.ComponentPropsWithRef<'textarea'> {
   wrapperProps?: React.ComponentPropsWithRef<'div'>
   icon?: React.ComponentType<LucideProps>
+  error?: boolean
 }
 
 const Textarea: React.FC<TextareaProps> = ({
   className,
   wrapperProps = {},
+  error,
   icon,
   rows = 4,
   ...props
@@ -24,6 +26,7 @@ const Textarea: React.FC<TextareaProps> = ({
       <textarea
         className={cn(
           'py-[7px] w-full block bg-surface-1 border border-border rounded font-semibold outline-0 transition placeholder:text-sm placeholder:font-normal placeholder:text-foreground-muted placeholder:opacity-100 focus-within:border-border-hover focus-within:shadow disabled:pointer-events-none disabled:opacity-35',
+          error && 'border-error',
           icon ? 'pl-9 pr-3' : 'px-3',
           className
         )}
