@@ -16,9 +16,8 @@ export async function sendContactForm(
   try {
     const {error} = await resend.emails.send({
       from: 'Mocca Living <info@moccaliving.com>',
-      to: 'chrismits88@gmail.com',
-      // to: ['apefthimiadou@gmail.com', 'mokalis@gmail.com'],
-      // cc: 'chrismits88@gmail.com',
+      to: ['apefthimiadou@gmail.com', 'mokalis@gmail.com'],
+      cc: 'chrismits88@gmail.com',
       subject: 'Φόρμα επικοινωνίας',
       react: ContactFormTemplate(formData) as React.JSX.Element
     })
