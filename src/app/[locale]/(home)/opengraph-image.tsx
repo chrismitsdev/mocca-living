@@ -6,8 +6,12 @@ import {readFile} from 'node:fs/promises'
 export default async function Image({params}: Params) {
   const {locale} = await params
   const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
-  const logoData = await readFile(join(process.cwd(), 'logo.png'))
-  // const logoSrc = Uint8Array.from(logoData).buffer
+  const commisionerSemiBold = await readFile(
+    join(process.cwd(), 'assets/Commissioner-SemiBold.ttf')
+  )
+  const logoData = await readFile(
+    join(process.cwd(), 'public/images/other/opengraph.png')
+  )
   const logoSrc = `data:image/png;base64,${logoData.toString('base64')}`
 
   return new ImageResponse(
@@ -55,6 +59,16 @@ export default async function Image({params}: Params) {
           <span>{`${t('home')} • Mocca Living`}</span>
         </p>
       </div>
-    )
+    ),
+    {
+      fonts: [
+        {
+          name: 'Commissioner',
+          data: commisionerSemiBold,
+          style: 'normal',
+          weight: 700
+        }
+      ]
+    }
   )
 }
