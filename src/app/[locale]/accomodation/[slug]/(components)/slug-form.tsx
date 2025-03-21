@@ -48,7 +48,7 @@ const SlugForm: React.FC<SlugFormProps> = ({slug}) => {
           </div>
           <Separator />
           <ScrollArea type='always'>
-            <ScrollAreaViewport className='max-h-[calc(100svh-128px-1px)]'>
+            <ScrollAreaViewport className='max-h-[calc(100dvh-128px-1px)]'>
               <div className='px-7 pt-6 pb-20 space-y-4 sm:p-8'>
                 <Form />
               </div>
