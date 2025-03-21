@@ -11,7 +11,8 @@ You can take a look at the in-development progress [here](https://mocca-living.v
 - [next-intl](https://next-intl-docs.vercel.app/) as the internationalization solution
 - [Radix UI](https://www.radix-ui.com/primitives) for its accessible, unstyled primitives
 - [shadcn/ui](https://ui.shadcn.com/) as a reference on the implementation of components
-- [Mapbox](https://www.mapbox.com/) for interactive maps
+- [Leaflet](https://leafletjs.com/) JavaScript library for mobile-friendly interactive maps
+- [React Leaflet](https://react-leaflet.js.org/) components for Leaflet maps
 - [Lucide](https://lucide.dev/) react icon library
-- [Zod](https://zod.dev/) used for schema validations
-- [Jest](https://jestjs.io/) & [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) used for testing
+- [Valibot](https://valibot.dev/) schema & data validation library
+- [Resend](https://resend.com/home) API for sending transactional emails
