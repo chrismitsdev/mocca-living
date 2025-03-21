@@ -19,7 +19,8 @@ export default async function Image({params}: Params) {
   )
   // Logo loading
   const logoData = await readFile(join(process.cwd(), 'opengraph.png'))
-  const imgSrc = `data:image/png;base64,${logoData.toString('base64')}`
+  const imgSrc = Uint8Array.from(logoData).buffer
+  // const imgSrc = `data:image/png;base64,${logoData.toString('base64')}`
 
   return new ImageResponse(
     (
@@ -38,6 +39,7 @@ export default async function Image({params}: Params) {
       >
         <picture>
           <img
+            // @ts-ignore
             src={imgSrc}
             width='250'
           />
