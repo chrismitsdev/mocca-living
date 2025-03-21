@@ -7,7 +7,8 @@ export default async function Image({params}: Params) {
   const {locale} = await params
   const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
   const logoData = await readFile(join(process.cwd(), 'logo.png'))
-  const logoSrc = Uint8Array.from(logoData).buffer
+  // const logoSrc = Uint8Array.from(logoData).buffer
+  const logoSrc = `data:image/png;base64,${logoData.toString('base64')}`
 
   return new ImageResponse(
     (
@@ -25,7 +26,6 @@ export default async function Image({params}: Params) {
         }}
       >
         <img
-          // @ts-ignore
           src={logoSrc}
           width='250'
         />
