@@ -3,13 +3,6 @@ import {getTranslations} from 'next-intl/server'
 import {join} from 'node:path'
 import {readFile} from 'node:fs/promises'
 
-// export const alt = 'Mocca Living'
-// export const size = {
-//   width: 1200,
-//   height: 630
-// }
-// export const contentType = 'image/png'
-
 export default async function Image({params}: Params) {
   const {locale} = await params
   const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
@@ -31,13 +24,11 @@ export default async function Image({params}: Params) {
           fontSize: 48
         }}
       >
-        <picture>
-          <img
-            // @ts-ignore
-            src={logoSrc}
-            width='250'
-          />
-        </picture>
+        <img
+          // @ts-ignore
+          src={logoSrc}
+          width='250'
+        />
         <p
           style={{
             display: 'flex',
