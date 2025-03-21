@@ -41,10 +41,7 @@ export default function SlugPage({params}: ParamsWithSlug) {
   return (
     <>
       <SlugCarousel slug={slug} />
-      <SlugDetails
-        slug={slug}
-        locale={locale}
-      />
+      <SlugDetails slug={slug} />
     </>
   )
 }

@@ -5,12 +5,13 @@ import {cn} from '@/src/lib/utils'
 interface InputProps extends React.ComponentPropsWithRef<'input'> {
   wrapperProps?: React.ComponentPropsWithRef<'div'>
   icon?: React.ComponentType<LucideProps>
+  error?: boolean
 }
 
 const Input: React.FC<InputProps> = ({
   className,
   wrapperProps = {},
-  type = 'text',
+  error,
   icon,
   ...props
 }) => {
@@ -24,10 +25,10 @@ const Input: React.FC<InputProps> = ({
       <input
         className={cn(
           'py-[7px] w-full bg-surface-1 border border-border rounded font-semibold outline-0 transition placeholder:text-sm placeholder:font-normal placeholder:text-foreground-muted placeholder:opacity-100 focus-within:border-border-hover focus-within:shadow disabled:pointer-events-none disabled:opacity-35 autofill:bg-surface-1',
+          error && 'border-error',
           icon ? 'pl-9 pr-3' : 'px-3',
           className
         )}
-        type={type}
         {...props}
       />
       {icon && (

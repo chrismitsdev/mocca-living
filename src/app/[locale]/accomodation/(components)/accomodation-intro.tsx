@@ -4,7 +4,7 @@ import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
 const AccomodationIntro: React.FC = () => {
-  const t = useTranslations('Pages.Accomodation.Index.Introdution')
+  const t = useTranslations('Pages.Accomodation.Index.Intro')
 
   return (
     <Container

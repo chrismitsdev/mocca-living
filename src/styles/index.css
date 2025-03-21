@@ -69,26 +69,6 @@
   }
 }
 
-/* Mapbox popup styling */
-.mapboxgl-control-container .mapboxgl-ctrl-bottom-left {
-  z-index: auto;
-}
-
-.mapboxgl-popup.mapboxgl-popup-anchor-bottom {
-  .mapboxgl-popup-content {
-    position: relative;
-    padding: 16px;
-    background-color: var(--color-surface-1);
-    border-radius: 4px;
-    box-shadow: none;
-  }
-
-  .mapboxgl-popup-tip {
-    border-top-color: var(--color-surface-1);
-    box-shadow: none;
-  }
-}
-
 /* Audio player styles */
 .rhap_container {
   box-sizing: border-box;

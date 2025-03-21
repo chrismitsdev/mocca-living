@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {useTranslations} from 'next-intl'
+import {type Locale, useTranslations} from 'next-intl'
 import {Link} from '@/src/i18n/navigation'
 import {
   DotIcon,
@@ -23,15 +23,16 @@ import {
 } from '@/src/components/ui/card'
 import {Button} from '@/src/components/ui/button'
 import {Typography} from '@/src/components/ui/typography'
+import {Separator} from '@/src/components/ui/separator'
 import {SlugForm} from '@/src/app/[locale]/accomodation/[slug]/(components)/slug-form'
 
 interface SlugDetailsProps {
   slug: Slug
-  locale: Awaited<Params['params']>['locale']
 }
 
-const SlugDetails: React.FC<SlugDetailsProps> = ({slug, locale}) => {
-  const t = useTranslations('Pages.Accomodation')
+const SlugDetails: React.FC<SlugDetailsProps> = ({slug}) => {
+  const t = useTranslations('Pages.Accomodation.Slug.card')
+  const oppositeSlug = slug === 'dimitra' ? 'georgia' : 'dimitra'
 
   return (
     <Container
@@ -39,77 +40,73 @@ const SlugDetails: React.FC<SlugDetailsProps> = ({slug, locale}) => {
       asChild
     >
       <Section className='space-y-4'>
-        <div className='p-0.5 flex justify-between bg-surface-2 border border-surface-3 rounded'>
-          <Button
-            variant='ghost'
-            size='small'
-            asChild
-          >
-            <Link href='/accomodation'>
-              <ChevronLeftIcon size={16} />
-              <span>{t('Slug.headers.button')}</span>
-            </Link>
-          </Button>
-          <Button
-            variant='ghost'
-            size='small'
-            asChild
-          >
-            <Link
-              scroll={false}
-              href={`/accomodation/${
-                slug === 'dimitra' ? 'georgia' : 'dimitra'
-              }`}
+        <Card className='p-0 space-y-0'>
+          <div className='py-1 px-2 flex items-center justify-between'>
+            <Button
+              variant='ghost'
+              size='small'
+              asChild
             >
-              <span className='capitalize'>
-                {slug === 'dimitra'
-                  ? t('Slug.georgia.name')
-                  : t('Slug.dimitra.name')}
-              </span>
-              <ChevronRightIcon size={16} />
-            </Link>
-          </Button>
-        </div>
-        <Card className='px-4 py-8 space-y-10 sm:p-8'>
-          <CardHeader className='space-y-6'>
-            <CardTitle>{t(`Slug.${slug}.name`)}</CardTitle>
-            <div className='grid grid-cols-2 gap-y-2 gap-x-6 sm:grid-cols-none sm:grid-flow-col sm:auto-cols-max sm:gap-8'>
-              <SlugBadge icon={UsersIcon}>{t(`Slug.${slug}.guests`)}</SlugBadge>
-              <SlugBadge icon={BabyIcon}>{t(`Slug.${slug}.child`)}</SlugBadge>
-              <SlugBadge icon={BedDoubleIcon}>
-                {t(`Slug.${slug}.bedrooms`)}
-              </SlugBadge>
-              <SlugBadge icon={ToiletIcon}>
-                {t(`Slug.${slug}.bathrooms`)}
-              </SlugBadge>
-              <SlugBadge icon={LandPlotIcon}>
-                {t(`Slug.${slug}.area`)}
-              </SlugBadge>
-            </div>
-          </CardHeader>
-          <CardContent className='space-y-10'>
-            <SlugList data={t(`Slug.${slug}.layout`)}>
-              {t('Slug.headers.layout')}
+              <Link href='/accomodation'>
+                <ChevronLeftIcon size={16} />
+                <span>{t('links.back')}</span>
+              </Link>
+            </Button>
+            <Button
+              variant='ghost'
+              size='small'
+              asChild
+            >
+              <Link
+                scroll={false}
+                href={`/accomodation/${oppositeSlug}`}
+              >
+                <span className='capitalize'>{t('links.next', {slug})}</span>
+                <ChevronRightIcon size={16} />
+              </Link>
+            </Button>
+          </div>
+          <Separator />
+          <CardContent className='px-4 py-6 space-y-10 sm:p-6'>
+            <CardHeader className='space-y-6'>
+              <CardTitle>{t(`content.${slug}.name`)}</CardTitle>
+              <div className='grid grid-cols-2 gap-y-2 gap-x-6 sm:grid-cols-none sm:grid-flow-col sm:auto-cols-max sm:gap-8'>
+                <SlugBadge icon={UsersIcon}>
+                  {t(`content.${slug}.guests`)}
+                </SlugBadge>
+                <SlugBadge icon={BabyIcon}>
+                  {t(`content.${slug}.child`)}
+                </SlugBadge>
+                <SlugBadge icon={BedDoubleIcon}>
+                  {t(`content.${slug}.bedrooms`)}
+                </SlugBadge>
+                <SlugBadge icon={ToiletIcon}>
+                  {t(`content.${slug}.bathrooms`)}
+                </SlugBadge>
+                <SlugBadge icon={LandPlotIcon}>
+                  {t(`content.${slug}.area`)}
+                </SlugBadge>
+              </div>
+            </CardHeader>
+            <SlugList data={t(`content.${slug}.layout`)}>
+              {t('header.layout')}
             </SlugList>
-            <SlugList data={t(`Slug.${slug}.amenities.indoor`)}>
-              {t('Slug.headers.amenities.indoor')}
+            <SlugList data={t(`content.${slug}.amenities.indoor`)}>
+              {t('header.amenities.indoor')}
             </SlugList>
-            <SlugList data={t(`Slug.${slug}.amenities.outdoor`)}>
-              {t('Slug.headers.amenities.outdoor')}
+            <SlugList data={t(`content.${slug}.amenities.outdoor`)}>
+              {t('header.amenities.outdoor')}
             </SlugList>
-            <SlugList data={t(`Slug.${slug}.complementary`)}>
-              {t('Slug.headers.complementary')}
+            <SlugList data={t(`content.${slug}.complementary`)}>
+              {t('header.complementary')}
             </SlugList>
-            <SlugList data={t(`Slug.${slug}.request`)}>
-              {t('Slug.headers.request')}
+            <SlugList data={t(`content.${slug}.request`)}>
+              {t('header.request')}
             </SlugList>
+            <CardFooter className='justify-end'>
+              <SlugForm slug={slug} />
+            </CardFooter>
           </CardContent>
-          <CardFooter className='justify-end'>
-            <SlugForm
-              slug={slug}
-              locale={locale}
-            />
-          </CardFooter>
         </Card>
       </Section>
     </Container>

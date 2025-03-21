@@ -1,51 +1,70 @@
 'use client'
 
-import React from 'react'
-import {Toaster as SonnerToaster, toast as sonnerToast} from 'sonner'
+import {toast as sonnerToast} from 'sonner'
+import {XIcon, CircleCheckIcon, CircleAlertIcon} from 'lucide-react'
+import {cn} from '@/src/lib/utils'
+import {Typography} from '@/src/components/ui/typography'
+import {Button} from '@/src/components/ui/button'
 
-const Toaster: React.FC<React.ComponentProps<typeof SonnerToaster>> = (
-  props
-) => {
+interface ToastProps {
+  id: string | number
+  title: string
+  description: string
+  status?: 'default' | 'success' | 'error'
+}
+
+const Toast: React.FC<ToastProps> = ({
+  id,
+  title,
+  description,
+  status = 'default'
+}) => {
   return (
-    <SonnerToaster
-      toastOptions={{
-        unstyled: true,
-        classNames: {
-          default:
-            'shrink-0 p-6 w-full bg-surface-2 border border-muted rounded shadow-medium group',
-          success:
-            'flex gap-2 items-center !bg-green-3 !border-border-success text-success',
-          error:
-            'flex gap-2 items-center !bg-red-3 !border-border-error text-error',
-          info: 'flex gap-2 items-center !bg-blue-3 !border-border-info text-info',
-          warning:
-            'flex gap-2 items-center !bg-yellow-3 !border-border-warning',
-          closeButton:
-            'bg-primary text-primary-foreground border-primary hover:!bg-error hover:!text-error-foreground hover:!border-error left-[calc(100%-5px)] group-data-success:bg-red-9 group-data-error:bg-red-9 group-data-info:bg-red-9 group-data-warning:bg-red-9 group-data-success:border-red-9 group-data-error:border-red-9 group-data-info:border-red-9 group-data-warning:border-red-9',
-          icon: 'm-0 mt-0.5 shrink-0 w-5 h-5 self-start',
-          description: 'leading-normal'
-        },
-        closeButton: true
-      }}
-      {...props}
-    />
+    <div
+      className={cn(
+        'pl-4 py-4 pr-10 relative bg-surface-2 border border-surface-3 rounded shadow-small',
+        status === 'success' && 'bg-success-foreground border-green-7',
+        status === 'error' && 'bg-error-foreground border-red-7'
+      )}
+    >
+      <div className='flex gap-2'>
+        {status === 'success' && (
+          <CircleCheckIcon className='mt-0.5 shrink-0 size-5 text-success' />
+        )}
+        {status === 'error' && (
+          <CircleAlertIcon className='mt-0.5 shrink-0 size-5 text-error' />
+        )}
+        <div className='space-y-1'>
+          <Typography variant='h5'>{title}</Typography>
+          <Typography variant='small'>{description}</Typography>
+        </div>
+      </div>
+      <div className='absolute top-1 right-1'>
+        <Button
+          variant='ghost-error'
+          size='icon-mini'
+          onClick={() => sonnerToast.dismiss(id)}
+        >
+          <XIcon size={16} />
+        </Button>
+      </div>
+    </div>
   )
 }
 
-function toast({
-  title,
-  description,
-  status
-}: {
-  title: React.ReactNode
-  description?: React.ReactNode
-  status?: 'success' | 'error' | 'info' | 'warning'
-}) {
-  if (!status) {
-    return sonnerToast(title, {description})
-  } else {
-    return sonnerToast[status](title, {description})
-  }
+function toast(toast: Omit<ToastProps, 'id'>) {
+  return sonnerToast.custom((id) => {
+    return (
+      <Toast
+        id={id}
+        title={toast.title}
+        description={toast.description}
+        status={toast.status}
+      />
+    )
+  })
 }
 
-export {Toaster, toast}
+Toast.displayName = 'Toast'
+
+export {Toast, toast}

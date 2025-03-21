@@ -20,7 +20,7 @@ export default function ContactPage({params}: Params) {
 
   return (
     <>
-      <ContactForm locale={locale} />
+      <ContactForm />
       <ContactSocial />
       <ContactMap />
     </>

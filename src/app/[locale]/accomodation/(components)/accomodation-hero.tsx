@@ -5,7 +5,7 @@ import {Button} from '@/src/components/ui/button'
 import {desktop, mobile} from '@/public/images/accomodation/index'
 
 const AccomodationHero: React.FC = () => {
-  const t = useTranslations('Pages.Accomodation')
+  const t = useTranslations('Pages.Accomodation.Index.Hero')
 
   return (
     <section className='relative h-[calc(100svh-80px)]'>
@@ -30,7 +30,7 @@ const AccomodationHero: React.FC = () => {
         asChild
       >
         <Link href='/contact'>
-          <span>{t('HeroImage.button-label')}</span>
+          <span>{t('button-label')}</span>
         </Link>
       </Button>
     </section>
