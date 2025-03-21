@@ -1,16 +1,20 @@
 import {ImageResponse} from 'next/og'
 import {getTranslations} from 'next-intl/server'
+import {join} from 'node:path'
+import {readFile} from 'node:fs/promises'
 
-export const alt = 'Mocca Living'
-export const size = {
-  width: 1200,
-  height: 630
-}
-export const contentType = 'image/png'
+// export const alt = 'Mocca Living'
+// export const size = {
+//   width: 1200,
+//   height: 630
+// }
+// export const contentType = 'image/png'
 
 export default async function Image({params}: Params) {
   const {locale} = await params
   const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
+  const logoData = await readFile(join(process.cwd(), 'logo.png'))
+  const logoSrc = Uint8Array.from(logoData).buffer
 
   return new ImageResponse(
     (
@@ -27,6 +31,13 @@ export default async function Image({params}: Params) {
           fontSize: 48
         }}
       >
+        <picture>
+          <img
+            // @ts-ignore
+            src={logoSrc}
+            width='250'
+          />
+        </picture>
         <p
           style={{
             display: 'flex',
@@ -53,9 +64,6 @@ export default async function Image({params}: Params) {
           <span>{`${t('home')} • Mocca Living`}</span>
         </p>
       </div>
-    ),
-    {
-      ...size
-    }
+    )
   )
 }
