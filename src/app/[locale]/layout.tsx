@@ -18,7 +18,14 @@ const commissioner = Commissioner({
 })
 
 export const metadata: Metadata = {
-  // metadataBase: new URL('https://moccaliving.com'),
+  metadataBase: new URL('https://moccaliving.com'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/en',
+      'el-GR': '/gr'
+    }
+  },
   title: 'Mocca Living | Premium • Stay • Philosophy',
   description:
     'Luxury villas Georgia & Dimitra for seaside escapes at Mocca Living.',
