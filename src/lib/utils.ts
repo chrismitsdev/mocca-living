@@ -1,11 +1,11 @@
-import type {StaticImageData} from 'next/image'
+import {type StaticImageData} from 'next/image'
 import {type Locale} from 'next-intl'
-import {clsx, type ClassValue} from 'clsx'
+import {type ClassValue, clsx} from 'clsx'
 import {format} from 'date-fns'
 import {el, enUS} from 'date-fns/locale'
 import {twMerge} from 'tailwind-merge'
 import {Resend} from 'resend'
-import {ContactFormActionState} from '@/src/lib/actions'
+import {type ContactFormActionState} from '@/src/lib/actions'
 import {ContactFormTemplate} from '@/src/components/email/contact-form-template'
 
 export async function sendContactForm(
@@ -30,20 +30,12 @@ export async function sendContactForm(
   }
 }
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
-
-export function formatDate(
-  date: Date,
-  locale: Locale,
-  formatStr: string = 'PP'
-): string {
-  return format(date, formatStr, {locale: locale === 'gr' ? el : enUS})
-}
-
 export async function sleep(sleepTime: number = 1000) {
   await new Promise((resolve) => setTimeout(resolve, sleepTime))
+}
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
 }
 
 export function shimmer(w: number, h: number) {
@@ -82,7 +74,14 @@ export function toBase64(str: string) {
     : window.btoa(str)
 }
 
-// Helper to format duration to mm:ss
+export function formatDate(
+  date: Date,
+  locale: Locale,
+  formatStr: string = 'PP'
+): string {
+  return format(date, formatStr, {locale: locale === 'gr' ? el : enUS})
+}
+
 export function formatDuration(durationInSeconds: number | null) {
   if (durationInSeconds === null) return null
 

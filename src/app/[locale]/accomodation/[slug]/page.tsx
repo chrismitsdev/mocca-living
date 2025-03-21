@@ -30,7 +30,7 @@ export function generateStaticParams() {
 }
 
 export default function SlugPage({params}: ParamsWithSlug) {
-  const {slug, locale} = React.use(params)
+  const {locale, slug} = React.use(params)
 
   setRequestLocale(locale)
 

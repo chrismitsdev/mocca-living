@@ -18,7 +18,7 @@ const commissioner = Commissioner({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mocca-living.gr'),
+  metadataBase: new URL('https://moccaliving.com'),
   title: 'Mocca Living | Premium • Stay • Philosophy',
   description:
     'Luxury villas Georgia & Dimitra for seaside escapes at Mocca Living.',
