@@ -1,31 +1,11 @@
 import {ImageResponse} from 'next/og'
 import {getTranslations} from 'next-intl/server'
-// import {HomeIcon} from 'lucide-react'
-// import {readFile} from 'node:fs/promises'
-// import {join} from 'node:path'
 import {getOpengraphData} from '@/src/lib/getOpengraphData'
 
-export const alt = 'Mocca Living'
-export const size = {
-  width: 1200,
-  height: 630
-}
-export const contentType = 'image/png'
-
-export default async function OpenGraphImage({params}: Params) {
+export default async function Image({params}: Params) {
   const {locale} = await params
   const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
   const {src, font} = await getOpengraphData()
-  // Logo loading
-  // const logoData = await readFile(
-  //   join(process.cwd(), 'public/images/other/opengraph.png')
-  // )
-  // Font loading
-  // const commissionerSemiBold = await readFile(
-  //   join(process.cwd(), 'assets/Commissioner-SemiBold.ttf')
-  // )
-  // const imgSrc = `data:image/png;base64,${logoData.toString('base64')}`
-  // const imgSrc = Uint8Array.from(logoData).buffer
 
   return new ImageResponse(
     (
@@ -37,17 +17,16 @@ export default async function OpenGraphImage({params}: Params) {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
+          rowGap: 24,
           backgroundColor: '#e7d9be',
           color: '#453227',
           fontSize: 48
         }}
       >
-        <picture>
-          <img
-            src={src}
-            width='250'
-          />
-        </picture>
+        <img
+          src={src}
+          width='250'
+        />
         <p
           style={{
             display: 'flex',
@@ -80,13 +59,11 @@ export default async function OpenGraphImage({params}: Params) {
       </div>
     ),
     {
-      ...size,
       fonts: [
         {
-          name: 'Inter',
+          name: 'Commissioner',
           data: font,
-          style: 'normal',
-          weight: 700
+          style: 'normal'
         }
       ]
     }
