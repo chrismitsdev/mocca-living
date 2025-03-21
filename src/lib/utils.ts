@@ -11,7 +11,7 @@ import {ContactFormTemplate} from '@/src/components/email/contact-form-template'
 export async function sendContactForm(
   formData: ContactFormActionState['data']
 ) {
-  const resend = new Resend(process.env.RESEND_ONBOARDING_API_KEY)
+  const resend = new Resend(process.env.RESEND_API_KEY)
 
   try {
     const {error} = await resend.emails.send({
