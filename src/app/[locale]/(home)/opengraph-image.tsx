@@ -1,9 +1,7 @@
 import {ImageResponse} from 'next/og'
 import {getTranslations} from 'next-intl/server'
-// import {HomeIcon} from 'lucide-react'
-// import {readFile} from 'node:fs/promises'
-// import {join} from 'node:path'
-import {getOpengraphData} from '@/src/lib/getOpengraphData'
+import {readFile} from 'node:fs/promises'
+import {join} from 'node:path'
 
 export const alt = 'Mocca Living'
 export const size = {
@@ -15,16 +13,15 @@ export const contentType = 'image/png'
 export default async function OpenGraphImage({params}: Params) {
   const {locale} = await params
   const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
-  const {src, font} = await getOpengraphData()
   // Logo loading
-  // const logoData = await readFile(
-  //   join(process.cwd(), 'public/images/other/opengraph.png')
-  // )
+  const logoData = await readFile(
+    join(process.cwd(), 'public/images/other/opengraph.png')
+  )
   // Font loading
-  // const commissionerSemiBold = await readFile(
-  //   join(process.cwd(), 'assets/Commissioner-SemiBold.ttf')
-  // )
-  // const imgSrc = `data:image/png;base64,${logoData.toString('base64')}`
+  const commissionerSemiBold = await readFile(
+    join(process.cwd(), 'assets/Commissioner-SemiBold.ttf')
+  )
+  const imgSrc = `data:image/png;base64,${logoData.toString('base64')}`
   // const imgSrc = Uint8Array.from(logoData).buffer
 
   return new ImageResponse(
@@ -44,7 +41,7 @@ export default async function OpenGraphImage({params}: Params) {
       >
         <picture>
           <img
-            src={src}
+            src={imgSrc}
             width='250'
           />
         </picture>
@@ -80,7 +77,7 @@ export default async function OpenGraphImage({params}: Params) {
       fonts: [
         {
           name: 'Inter',
-          data: font,
+          data: commissionerSemiBold,
           style: 'normal',
           weight: 700
         }
