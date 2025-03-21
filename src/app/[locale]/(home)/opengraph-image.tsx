@@ -65,9 +65,8 @@ export default async function Image({params}: Params) {
         {
           name: 'Commissioner',
           data: commisionerSemiBold,
-          style: 'normal',
-          weight: 700,
-          lang: locale
+          style: 'normal'
+          // weight: 700
         }
       ]
     }
