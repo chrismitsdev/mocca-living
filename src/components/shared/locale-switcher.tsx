@@ -12,12 +12,20 @@ import {
   SelectPortal,
   SelectContent,
   SelectViewport,
-  SelectItem
+  SelectItem,
+  SelectItemText
 } from '@/src/components/ui/select'
 import {Spinner} from '@/src/components/ui/spinner'
+import {EnglishFlag} from '@/src/components/flags/english-flag'
+import {GreekFlag} from '@/src/components/flags/greek-flag'
 
 interface LocaleSwitcherProps {
   scrollTop?: boolean
+}
+
+const flagLookup: Record<Locale, React.ReactNode> = {
+  en: <EnglishFlag className='mt-0.5' />,
+  gr: <GreekFlag className='mt-0.5' />
 }
 
 const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
@@ -39,7 +47,8 @@ const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
         key={locale}
         value={locale}
       >
-        <span>{t('label', {locale})}</span>
+        {flagLookup[locale]}
+        <SelectItemText>{t('label', {locale})}</SelectItemText>
       </SelectItem>
     )
   })

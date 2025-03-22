@@ -1,6 +1,5 @@
 'use client'
 
-import * as React from 'react'
 import {
   Root,
   Portal,
@@ -11,12 +10,11 @@ import {
   Content,
   Label,
   Item,
-  ItemIndicator,
   ItemText,
   Separator,
   Icon
 } from '@radix-ui/react-select'
-import {CheckIcon, ChevronsUpDownIcon} from 'lucide-react'
+import {ChevronsUpDownIcon} from 'lucide-react'
 import {cn} from '@/src/lib/utils'
 
 const Select = Root
@@ -24,6 +22,7 @@ const SelectPortal = Portal
 const SelectViewport = Viewport
 const SelectGroup = Group
 const SelectValue = Value
+const SelectItemText = ItemText
 
 const SelectTrigger: React.FC<React.ComponentPropsWithRef<typeof Trigger>> = ({
   className,
@@ -89,18 +88,12 @@ const SelectItem: React.FC<React.ComponentPropsWithRef<typeof Item>> = ({
   return (
     <Item
       className={cn(
-        'pl-8 pr-4 py-2 flex items-center cursor-pointer select-none outline-none data-disabled:pointer-events-none data-disabled:opacity-50',
+        'px-3 py-2 flex items-center gap-1.5 cursor-pointer select-none outline-none data-disabled:pointer-events-none data-disabled:opacity-50',
         className
       )}
       {...props}
     >
-      <div className='absolute left-2'>
-        <ItemIndicator asChild>
-          <CheckIcon size={16} />
-        </ItemIndicator>
-      </div>
-
-      <ItemText>{children}</ItemText>
+      {children}
     </Item>
   )
 }
@@ -125,6 +118,7 @@ SelectGroup.displayName = 'SelectGroup'
 SelectValue.displayName = 'SelectValue'
 SelectLabel.displayName = 'SelectLabel'
 SelectItem.displayName = 'SelectItem'
+SelectItemText.displayName = 'SelectItemText'
 SelectSeparator.displayName = 'SelectSeparator'
 
 export {
@@ -137,5 +131,6 @@ export {
   SelectGroup,
   SelectLabel,
   SelectItem,
+  SelectItemText,
   SelectSeparator
 }
