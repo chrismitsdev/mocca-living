@@ -188,7 +188,7 @@ const Footer: React.FC = () => {
                   </a>
                 </Button>
               </div>
-              <LocaleSwitcher />
+              <LocaleSwitcher scrollTop />
             </div>
           </FooterColumn>
         </div>
