@@ -57,15 +57,16 @@ const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
 
   if (isPending) {
     renderedTrigger = (
-      <div className='flex items-center gap-2 grow'>
+      <div className='flex items-center gap-1.5 grow'>
         <Spinner className='h-4 w-4' />
         <span>{t('loadingText')}</span>
       </div>
     )
   } else {
     renderedTrigger = (
-      <div className='flex items-center gap-2  grow'>
-        <GlobeIcon className='h-4 w-4' />
+      <div className='flex items-center gap-1.5 grow'>
+        {/* <GlobeIcon className='h-4 w-4' /> */}
+        {flagLookup[locale]}
         <SelectValue />
       </div>
     )
