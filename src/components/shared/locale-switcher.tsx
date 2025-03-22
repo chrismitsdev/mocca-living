@@ -24,8 +24,8 @@ interface LocaleSwitcherProps {
 }
 
 const flagLookup: Record<Locale, React.ReactNode> = {
-  en: <EnglishFlag className='mt-0.5' />,
-  gr: <GreekFlag className='mt-0.5' />
+  en: <EnglishFlag />,
+  gr: <GreekFlag />
 }
 
 const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
