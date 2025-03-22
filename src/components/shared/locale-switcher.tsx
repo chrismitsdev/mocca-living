@@ -65,8 +65,7 @@ const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
   } else {
     renderedTrigger = (
       <div className='flex items-center gap-1.5 grow'>
-        {/* <GlobeIcon className='h-4 w-4' /> */}
-        {flagLookup[locale]}
+        <GlobeIcon className='h-4 w-4' />
         <SelectValue />
       </div>
     )
