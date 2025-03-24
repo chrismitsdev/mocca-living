@@ -4,6 +4,7 @@ import {Commissioner} from 'next/font/google'
 import {NextIntlClientProvider, hasLocale} from 'next-intl'
 import {setRequestLocale} from 'next-intl/server'
 import {SpeedInsights} from '@vercel/speed-insights/next'
+import {Analytics} from '@vercel/analytics/next'
 import {notFound} from 'next/navigation'
 import {Toaster} from 'sonner'
 import {routing} from '@/src/i18n/routing'
@@ -72,6 +73,7 @@ export default async function LocaleLayout({
           />
         </NextIntlClientProvider>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )
