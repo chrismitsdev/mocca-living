@@ -16,7 +16,7 @@ import {
 } from '@react-email/components'
 import {ContactFormActionState} from '@/src/lib/actions'
 
-const ContactFormTemplate: React.FC<
+const ContactFormInternal: React.FC<
   Readonly<ContactFormActionState['data']>
 > = ({firstName, lastName, email, phone, message}) => {
   return (
@@ -137,6 +137,6 @@ const ContactFormTemplate: React.FC<
   )
 }
 
-ContactFormTemplate.displayName = 'ContactFormTemplate'
+ContactFormInternal.displayName = 'ContactFormInternal'
 
-export {ContactFormTemplate}
+export {ContactFormInternal}

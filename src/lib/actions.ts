@@ -79,7 +79,7 @@ export async function contactFormAction(
     }
   }
 
-  const error = await sendContactForm(valibot.output)
+  const error = await sendContactForm(valibot.output, locale)
 
   if (error) {
     return {

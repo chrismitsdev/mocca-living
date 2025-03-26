@@ -308,6 +308,20 @@
         "manufacturer": "Project implementation by <a>KYRCOM</a>",
         "developer": "Developed & designed by <a>CM</a>"
       }
+    },
+    "ContactFormClient": {
+      "subject": "Thank you for your inquiry",
+      "header": "Dear",
+      "thanks": "Thank you for reaching out to us! We have received your inquiry and will get back to you as soon as possible.",
+      "summary": "Here’s a summary of your details:",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": {
+        "title": "Message",
+        "empty": "No message provided"
+      },
+      "footer": "If you have any additional questions or specific requests, feel free to reply to this email. We look forward to assisting you and helping you plan a memorable stay."
     }
   }
 }
