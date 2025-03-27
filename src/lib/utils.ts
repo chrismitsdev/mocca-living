@@ -1,59 +1,9 @@
 import {type StaticImageData} from 'next/image'
 import {type Locale} from 'next-intl'
-import {getTranslations} from 'next-intl/server'
 import {type ClassValue, clsx} from 'clsx'
 import {format} from 'date-fns'
 import {el, enUS} from 'date-fns/locale'
 import {twMerge} from 'tailwind-merge'
-import {Resend, type CreateEmailOptions} from 'resend'
-import {type ContactFormActionState} from '@/src/lib/actions'
-import {ContactFormInternal} from '@/src/components/email/contact-form-internal'
-import {ContactFormClient} from '@/src/components/email/contact-form-client'
-
-export async function sendContactForm(
-  formData: ContactFormActionState['data'],
-  locale: Locale
-) {
-  const resend = new Resend(process.env.RESEND_API_KEY)
-  const t = await getTranslations({
-    locale,
-    namespace: 'Components.ContactFormClient'
-  })
-
-  const options: Pick<CreateEmailOptions, 'to' | 'cc'> =
-    process.env.NODE_ENV === 'production'
-      ? {
-          to: ['apefthimiadou@gmail.com', 'mokalis@gmail.com'],
-          cc: 'chrismits88@gmail.com'
-        }
-      : {
-          to: 'chrismits88@gmail.com'
-        }
-
-  try {
-    const {error} = await resend.batch.send([
-      {
-        from: 'Mocca Living <info@moccaliving.com>',
-        subject: 'Νέα φόρμα επικοινωνίας',
-        react: ContactFormInternal(formData) as React.JSX.Element,
-        ...options
-      },
-      {
-        from: 'Mocca Living <info@moccaliving.com>',
-        to: formData.email,
-        subject: t('subject'),
-        replyTo: 'info@moccaliving.com',
-        react: ContactFormClient({formData, locale}) as React.JSX.Element
-      }
-    ])
-
-    if (error) {
-      return error
-    }
-  } catch (error) {
-    console.error(error)
-  }
-}
 
 export async function sleep(sleepTime: number = 1000) {
   await new Promise((resolve) => setTimeout(resolve, sleepTime))

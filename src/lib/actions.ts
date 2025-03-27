@@ -1,6 +1,5 @@
 'use server'
 
-import {type Locale} from 'next-intl'
 import {
   type InferOutput,
   object,
@@ -17,7 +16,8 @@ import {
   safeParse,
   setSpecificMessage
 } from 'valibot'
-import {sendContactForm} from '@/src/lib/utils'
+import {type Locale} from 'next-intl'
+import {sendContactForm} from '@/src/lib/send-contact-form'
 
 setSpecificMessage(string, 'Πρέπει να είναι γράμματα & αριθμοί', 'gr')
 setSpecificMessage(string, 'Must contain only letters & numbers', 'en')

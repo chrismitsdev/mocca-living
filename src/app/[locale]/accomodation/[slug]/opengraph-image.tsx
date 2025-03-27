@@ -1,7 +1,7 @@
 import {ImageResponse} from 'next/og'
 import {Locale} from 'next-intl'
 import {getTranslations} from 'next-intl/server'
-import {getOpengraphData} from '@/src/lib/getOpengraphData'
+import {getOpengraphData} from '@/src/lib/get-opengraph-data'
 
 type ParamsWithSlug = {
   params: Promise<{

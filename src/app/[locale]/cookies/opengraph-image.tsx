@@ -1,6 +1,6 @@
 import {ImageResponse} from 'next/og'
 import {getTranslations} from 'next-intl/server'
-import {getOpengraphData} from '@/src/lib/getOpengraphData'
+import {getOpengraphData} from '@/src/lib/get-opengraph-data'
 
 export default async function Image({params}: Params) {
   const {locale} = await params
