@@ -2,6 +2,7 @@ import * as React from 'react'
 import {Locale} from 'next-intl'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {notFound} from 'next/navigation'
+import {SlugHeader} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-header'
 import {SlugCarousel} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-carousel'
 import {SlugDetails} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-details'
 
@@ -40,6 +41,7 @@ export default function SlugPage({params}: ParamsWithSlug) {
 
   return (
     <>
+      <SlugHeader slug={slug} />
       <SlugCarousel slug={slug} />
       <SlugDetails slug={slug} />
     </>

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
+import {AccommodationHeader} from '@/src/app/[locale]/accommodation/(components)/accommodation-header'
 import {AccommodationHero} from '@/src/app/[locale]/accommodation/(components)/accommodation-hero'
 import {AccommodationIntro} from '@/src/app/[locale]/accommodation/(components)/accommodation-intro'
 import {AccommodationVillas} from '@/src/app/[locale]/accommodation/(components)/accommodation-villas'
@@ -23,6 +24,7 @@ export default function AccommodationPage({params}: Params) {
 
   return (
     <>
+      <AccommodationHeader />
       <AccommodationHero />
       <AccommodationIntro />
       <AccommodationVillas />

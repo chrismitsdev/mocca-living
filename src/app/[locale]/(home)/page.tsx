@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
+import {HomeHeader} from '@/src/app/[locale]/(home)/(components)/home-header'
 import {HomeCarousel} from '@/src/app/[locale]/(home)/(components)/home-carousel'
 import {HomeIntro} from '@/src/app/[locale]/(home)/(components)/home-intro'
 import {HomeReasons} from '@/src/app/[locale]/(home)/(components)/home-reasons'
@@ -22,6 +23,7 @@ export default function HomePage({params}: Params) {
 
   return (
     <>
+      <HomeHeader />
       <HomeCarousel />
       <HomeIntro />
       <HomeReasons />
