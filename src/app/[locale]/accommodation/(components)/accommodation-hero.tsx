@@ -2,10 +2,10 @@ import {useTranslations} from 'next-intl'
 import {Link} from '@/src/i18n/navigation'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {Button} from '@/src/components/ui/button'
-import {desktop, mobile} from '@/public/images/accomodation/index'
+import {desktop, mobile} from '@/public/images/accommodation/index/index'
 
-const AccomodationHero: React.FC = () => {
-  const t = useTranslations('Pages.Accomodation.Index.Hero')
+const AccommodationHero: React.FC = () => {
+  const t = useTranslations('Pages.Accommodation.Index.Hero')
 
   return (
     <section className='relative h-[calc(100svh-80px)]'>
@@ -37,6 +37,6 @@ const AccomodationHero: React.FC = () => {
   )
 }
 
-AccomodationHero.displayName = 'AccomodationHero'
+AccommodationHero.displayName = 'AccommodationHero'
 
-export {AccomodationHero}
+export {AccommodationHero}

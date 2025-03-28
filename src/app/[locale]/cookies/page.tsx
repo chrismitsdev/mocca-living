@@ -25,7 +25,12 @@ export default function CookiesPage({params}: Params) {
     <Section>
       <Container className='space-y-12'>
         <article className='space-y-4'>
-          <Typography variant='h4'>{t('title-1')}</Typography>
+          <Typography
+            variant='h4'
+            asChild
+          >
+            <h2>{t('title-1')}</h2>
+          </Typography>
           <Typography>{t('content-1.description')}</Typography>
           <ul className='space-y-1'>
             <Typography asChild>
@@ -67,7 +72,12 @@ export default function CookiesPage({params}: Params) {
           </ul>
         </article>
         <article className='space-y-4'>
-          <Typography variant='h4'>{t('title-2')}</Typography>
+          <Typography
+            variant='h4'
+            asChild
+          >
+            <h2>{t('title-2')}</h2>
+          </Typography>
           <Typography>{t('content-2.description')}</Typography>
           <ul className='space-y-1'>
             <Typography asChild>

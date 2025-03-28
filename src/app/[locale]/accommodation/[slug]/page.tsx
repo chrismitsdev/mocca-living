@@ -2,8 +2,8 @@ import * as React from 'react'
 import {Locale} from 'next-intl'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {notFound} from 'next/navigation'
-import {SlugCarousel} from '@/src/app/[locale]/accomodation/[slug]/(components)/slug-carousel'
-import {SlugDetails} from '@/src/app/[locale]/accomodation/[slug]/(components)/slug-details'
+import {SlugCarousel} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-carousel'
+import {SlugDetails} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-details'
 
 type ParamsWithSlug = {
   params: Promise<{
@@ -17,7 +17,7 @@ export async function generateMetadata({params}: ParamsWithSlug) {
 
   const t = await getTranslations({
     locale,
-    namespace: 'Metadata.Pages.accomodation'
+    namespace: 'Metadata.Pages.accommodation'
   })
 
   return {

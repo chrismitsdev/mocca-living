@@ -24,7 +24,7 @@ import {Separator} from '@/src/components/ui/separator'
 import {Button} from '@/src/components/ui/button'
 import {dimitraCover, georgiaCover} from '@/public/images/covers'
 
-type Villas = Messages['Pages']['Accomodation']['Index']['Villas']
+type Villas = Messages['Pages']['Accommodation']['Index']['Villas']
 
 type VillaInfo = {
   key: keyof Villas
@@ -44,7 +44,7 @@ const villaInfo: Pick<VillaInfo, 'key' | 'image'>[] = [
 ]
 
 const getVillas = function (
-  t: ReturnType<typeof useTranslations<'Pages.Accomodation.Index.Villas'>>
+  t: ReturnType<typeof useTranslations<'Pages.Accommodation.Index.Villas'>>
 ): VillaInfo[] {
   return villaInfo.map(function ({key, image}) {
     return {
@@ -61,8 +61,8 @@ const getVillas = function (
   })
 }
 
-const AccomodationVillas: React.FC = () => {
-  const villas = getVillas(useTranslations('Pages.Accomodation.Index.Villas'))
+const AccommodationVillas: React.FC = () => {
+  const villas = getVillas(useTranslations('Pages.Accommodation.Index.Villas'))
 
   return (
     <Container asChild>
@@ -117,7 +117,7 @@ const AccomodationVillas: React.FC = () => {
               </CardContent>
               <CardFooter className='p-4 justify-end sm:p-6'>
                 <Button asChild>
-                  <Link href={`/accomodation/${villa.key}`}>
+                  <Link href={`/accommodation/${villa.key}`}>
                     <span>{villa.button}</span>
                     <ChevronRight
                       className='mt-1'
@@ -142,7 +142,7 @@ const VillaDetail: React.FC<React.PropsWithChildren> = ({children}) => {
   )
 }
 
-AccomodationVillas.displayName = 'AccomodationVillas'
+AccommodationVillas.displayName = 'AccommodationVillas'
 VillaDetail.displayName = 'VillaDetail'
 
-export {AccomodationVillas}
+export {AccommodationVillas}

@@ -12,7 +12,12 @@ const HomeIntro: React.FC = () => {
       asChild
     >
       <Section>
-        <Typography variant='h3'>{t('title')}</Typography>
+        <Typography
+          variant='h3'
+          asChild
+        >
+          <h2>{t('title')}</h2>
+        </Typography>
         <Typography className='leading-8'>{t('message')}</Typography>
       </Section>
     </Container>

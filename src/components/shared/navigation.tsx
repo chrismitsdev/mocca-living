@@ -87,11 +87,11 @@ const Navigation: React.FC = () => {
               role='none'
             >
               <NavLink
-                href='/accomodation'
+                href='/accommodation'
                 pathname={pathname}
                 icon={BedDoubleIcon}
               >
-                {t('accomodation.root')}
+                {t('accommodation.root')}
               </NavLink>
               <HoverCardTrigger asChild>
                 <Button
@@ -109,7 +109,7 @@ const Navigation: React.FC = () => {
                 collisionPadding={16}
               >
                 <section className='columns-2'>
-                  <Link href='/accomodation/dimitra'>
+                  <Link href='/accommodation/dimitra'>
                     <article className='p-3 space-y-1 rounded hover:bg-surface-3 transition'>
                       <CustomImage
                         className='aspect-square object-cover rounded'
@@ -117,14 +117,14 @@ const Navigation: React.FC = () => {
                         alt='Dimitra card image'
                       />
                       <Typography variant='h5'>
-                        {t('accomodation.dimitra')}
+                        {t('accommodation.dimitra')}
                       </Typography>
                       <Typography variant='small'>
-                        {t('accomodation.dimitra-caption')}
+                        {t('accommodation.dimitra-caption')}
                       </Typography>
                     </article>
                   </Link>
-                  <Link href='/accomodation/georgia'>
+                  <Link href='/accommodation/georgia'>
                     <article className='p-3 space-y-1 rounded hover:bg-surface-3 transition'>
                       <CustomImage
                         className='aspect-square object-cover rounded'
@@ -132,10 +132,10 @@ const Navigation: React.FC = () => {
                         alt='Georgia card image'
                       />
                       <Typography variant='h5'>
-                        {t('accomodation.georgia')}
+                        {t('accommodation.georgia')}
                       </Typography>
                       <Typography variant='small'>
-                        {t('accomodation.georgia-caption')}
+                        {t('accommodation.georgia-caption')}
                       </Typography>
                     </article>
                   </Link>
@@ -212,11 +212,11 @@ const Navigation: React.FC = () => {
                     <div className='flex items-center justify-between gap-4'>
                       <NavLink
                         className='pl-0 grow'
-                        href='/accomodation'
+                        href='/accommodation'
                         pathname={pathname}
                         icon={BedDoubleIcon}
                       >
-                        {t('accomodation.root')}
+                        {t('accommodation.root')}
                       </NavLink>
                       <CollapsibleTrigger asChild>
                         <Button
@@ -236,7 +236,7 @@ const Navigation: React.FC = () => {
                         role='menu'
                       >
                         <li role='none'>
-                          <Link href='/accomodation/dimitra'>
+                          <Link href='/accommodation/dimitra'>
                             <div className='flex gap-3 rounded'>
                               <CustomImage
                                 className='size-24 object-cover rounded'
@@ -245,17 +245,17 @@ const Navigation: React.FC = () => {
                               />
                               <div className='space-y-0.5'>
                                 <Typography variant='h6'>
-                                  {t('accomodation.dimitra')}
+                                  {t('accommodation.dimitra')}
                                 </Typography>
                                 <Typography variant='small'>
-                                  {t('accomodation.dimitra-caption')}
+                                  {t('accommodation.dimitra-caption')}
                                 </Typography>
                               </div>
                             </div>
                           </Link>
                         </li>
                         <li role='none'>
-                          <Link href='/accomodation/georgia'>
+                          <Link href='/accommodation/georgia'>
                             <div className='flex gap-3 rounded'>
                               <CustomImage
                                 className='size-24 object-cover rounded'
@@ -264,10 +264,10 @@ const Navigation: React.FC = () => {
                               />
                               <div className='space-y-0.5'>
                                 <Typography variant='h6'>
-                                  {t('accomodation.georgia')}
+                                  {t('accommodation.georgia')}
                                 </Typography>
                                 <Typography variant='small'>
-                                  {t('accomodation.georgia-caption')}
+                                  {t('accommodation.georgia-caption')}
                                 </Typography>
                               </div>
                             </div>

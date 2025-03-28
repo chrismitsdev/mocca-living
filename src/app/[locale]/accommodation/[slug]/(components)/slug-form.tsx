@@ -28,7 +28,7 @@ interface SlugFormProps {
 }
 
 const SlugForm: React.FC<SlugFormProps> = ({slug}) => {
-  const t = useTranslations('Pages.Accomodation.Slug.card.drawer')
+  const t = useTranslations('Pages.Accommodation.Slug.card.drawer')
 
   return (
     <Drawer>

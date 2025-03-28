@@ -2,8 +2,8 @@
   "Metadata": {
     "Pages": {
       "home": "Home",
-      "accomodation": {
-        "root": "Accomodation",
+      "accommodation": {
+        "root": "Accommodation",
         "dimitra": "Dimitra",
         "dimitra-caption": "Experience luxury at villa Dimitra, a gorgeous 85m² retreat for 2-5 guests.",
         "georgia": "Georgia",
@@ -77,7 +77,7 @@
         }
       }
     },
-    "Accomodation": {
+    "Accommodation": {
       "Index": {
         "Hero": {
           "button-label": "Contact us"
@@ -207,8 +207,8 @@
         "description": "To ensure a fresh and comfortable environment for all guests, smoking is strictly prohibited inside the villas. Guests who wish to smoke may do so in outdoor areas."
       },
       "item-2": {
-        "title": "Parties are not allowed",
-        "description": "For the comfort and relaxation of all guests, parties and loud gatherings are not permitted on the property. We kindly ask for respect towards other visitors and the tranquil atmosphere of the villas."
+        "title": "Quiet hours & noise policy",
+        "description": "To ensure the peace and comfort of all our guests, kindly note that playing music or making loud noises, including raised voices, is strictly prohibited between 14:30 - 17:30 and after 23:00. Your cooperation is essential in maintaining a serene and enjoyable environment for everyone."
       }
     },
     "NotFound": {

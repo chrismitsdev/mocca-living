@@ -39,9 +39,9 @@ const HomeReasons: React.FC = () => {
           <div>
             <Typography
               variant='h3'
-              className='pb-3'
+              asChild
             >
-              {t('title')}
+              <h2>{t('title')}</h2>
             </Typography>
             <div className='mt-12 space-y-14'>
               <Reason

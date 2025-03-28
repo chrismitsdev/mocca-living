@@ -24,14 +24,14 @@ import {
 import {Button} from '@/src/components/ui/button'
 import {Typography} from '@/src/components/ui/typography'
 import {Separator} from '@/src/components/ui/separator'
-import {SlugForm} from '@/src/app/[locale]/accomodation/[slug]/(components)/slug-form'
+import {SlugForm} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-form'
 
 interface SlugDetailsProps {
   slug: Slug
 }
 
 const SlugDetails: React.FC<SlugDetailsProps> = ({slug}) => {
-  const t = useTranslations('Pages.Accomodation.Slug.card')
+  const t = useTranslations('Pages.Accommodation.Slug.card')
   const oppositeSlug = slug === 'dimitra' ? 'georgia' : 'dimitra'
 
   return (
@@ -47,7 +47,7 @@ const SlugDetails: React.FC<SlugDetailsProps> = ({slug}) => {
               size='small'
               asChild
             >
-              <Link href='/accomodation'>
+              <Link href='/accommodation'>
                 <ChevronLeftIcon size={16} />
                 <span>{t('links.back')}</span>
               </Link>
@@ -59,7 +59,7 @@ const SlugDetails: React.FC<SlugDetailsProps> = ({slug}) => {
             >
               <Link
                 scroll={false}
-                href={`/accomodation/${oppositeSlug}`}
+                href={`/accommodation/${oppositeSlug}`}
               >
                 <span className='capitalize'>{t('links.next', {slug})}</span>
                 <ChevronRightIcon size={16} />

@@ -25,11 +25,21 @@ export default function RulesPage({params}: Params) {
     <Section>
       <Container className='space-y-12'>
         <article className='space-y-4'>
-          <Typography variant='h4'>{t('item-1.title')}</Typography>
+          <Typography
+            variant='h4'
+            asChild
+          >
+            <h2>{t('item-1.title')}</h2>
+          </Typography>
           <Typography>{t('item-1.description')}</Typography>
         </article>
         <article className='space-y-4'>
-          <Typography variant='h4'>{t('item-2.title')}</Typography>
+          <Typography
+            variant='h4'
+            asChild
+          >
+            <h2>{t('item-2.title')}</h2>
+          </Typography>
           <Typography>{t('item-2.description')}</Typography>
         </article>
       </Container>

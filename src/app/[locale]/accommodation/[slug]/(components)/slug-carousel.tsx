@@ -10,8 +10,8 @@ import {
 } from '@/src/components/ui/embla-carousel'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {sortImportedImagesByName} from '@/src/lib/utils'
-import * as dimitraImages from '@/public/images/accomodation/slug/dimitra'
-import * as georgiaImages from '@/public/images/accomodation/slug/georgia'
+import * as dimitraImages from '@/public/images/accommodation/slug/dimitra'
+import * as georgiaImages from '@/public/images/accommodation/slug/georgia'
 
 const slugImages = {
   georgia: sortImportedImagesByName(georgiaImages),

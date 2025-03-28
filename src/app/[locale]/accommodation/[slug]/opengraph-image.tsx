@@ -60,7 +60,7 @@ export default async function Image({params}: ParamsWithSlug) {
             <path d='M12 4v6' />
             <path d='M2 18h20' />
           </svg>
-          <span>{`${t(`accomodation.${slug}`)} • Mocca Living`}</span>
+          <span>{`${t(`accommodation.${slug}`)} • Mocca Living`}</span>
         </p>
       </div>
     ),

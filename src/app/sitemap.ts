@@ -1,5 +1,5 @@
 import {type MetadataRoute} from 'next'
-import {Locale} from 'next-intl'
+import {type Locale} from 'next-intl'
 import {routing} from '@/src/i18n/routing'
 import {getPathname} from '@/src/i18n/navigation'
 
@@ -11,9 +11,9 @@ const host =
     : 'https://moccaliving.com'
 
 const routes = [
-  'accomodation',
-  'accomodation/dimitra',
-  'accomodation/georgia',
+  'accommodation',
+  'accommodation/dimitra',
+  'accommodation/georgia',
   'contact',
   'privacy',
   'cookies',

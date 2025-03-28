@@ -33,7 +33,7 @@ const CardTitle: React.FC<React.ComponentPropsWithRef<'h3'>> = ({
   ...props
 }) => {
   return (
-    <h3
+    <h2
       className={cn('text-2xl font-semibold', className)}
       {...props}
     />
