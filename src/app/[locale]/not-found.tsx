@@ -1,34 +1,43 @@
 import {useTranslations} from 'next-intl'
-import {HouseIcon, TriangleAlertIcon} from 'lucide-react'
+import {TriangleAlertIcon} from 'lucide-react'
 import {Link} from '@/src/i18n/navigation'
+import {Section} from '@/src/components/shared/section'
 import {Container} from '@/src/components/shared/container'
+import {Typography} from '@/src/components/ui/typography'
 import {Button} from '@/src/components/ui/button'
 
 export default function NotFound() {
   const t = useTranslations('Pages.NotFound')
 
   return (
-    <Container asChild>
-      <article className='pt-56 grid place-content-center gap-8'>
-        <TriangleAlertIcon
-          className='mx-auto'
-          width={64}
-          height={64}
-        />
-        <div className='space-y-2'>
-          <h2 className='text-xl font-semibold text-center'>{t('title')}</h2>
-          <p className='text-center'>{t('subtitle')}</p>
+    <Section>
+      <Container>
+        <div className='flex flex-col items-center space-y-6'>
+          <TriangleAlertIcon
+            width={128}
+            height={128}
+          />
+          <Typography
+            variant='h3'
+            asChild
+          >
+            <h2>{t('title')}</h2>
+          </Typography>
+          <Typography>{t('subtitle')}</Typography>
+          <Button
+            variant='primary'
+            size='large'
+            asChild
+          >
+            <Link
+              href='/'
+              replace
+            >
+              <span>{t('linkToHome')}</span>
+            </Link>
+          </Button>
         </div>
-        <Button
-          variant='primary'
-          asChild
-        >
-          <Link href='/'>
-            <HouseIcon size={16} />
-            <span>{t('linkToHome')}</span>
-          </Link>
-        </Button>
-      </article>
-    </Container>
+      </Container>
+    </Section>
   )
 }

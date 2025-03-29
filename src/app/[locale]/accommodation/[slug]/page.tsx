@@ -16,6 +16,10 @@ type ParamsWithSlug = {
 export async function generateMetadata({params}: ParamsWithSlug) {
   const {locale, slug} = await params
 
+  if (slug !== 'dimitra' && slug !== 'georgia') {
+    return
+  }
+
   const t = await getTranslations({
     locale,
     namespace: 'Metadata.Pages.accommodation'
