@@ -10,8 +10,3 @@ export const config: MiddlewareConfig = {
   // - … the ones containing a dot (e.g. `favicon.ico`)
   matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
 }
-
-// export const config: MiddlewareConfig = {
-//   // Match only internationalized pathnames
-//   matcher: ['/', '/(gr|en)/:path*']
-// }
