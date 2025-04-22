@@ -117,8 +117,11 @@ const AccommodationCards: React.FC = () => {
                   {villa.description}
                 </Typography>
               </CardContent>
-              <CardFooter className='p-6 justify-end'>
-                <Button asChild>
+              <CardFooter className='pt-8 px-6 pb-6 justify-stretch sm:justify-end'>
+                <Button
+                  className='w-full sm:w-auto'
+                  asChild
+                >
                   <Link href={`/accommodation/${villa.key}`}>
                     <span>{villa.button}</span>
                     <ChevronRight
