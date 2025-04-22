@@ -20,7 +20,7 @@ import {
   CardFooter
 } from '@/src/components/ui/card'
 import {CustomImage} from '@/src/components/ui/custom-image'
-import {Separator} from '@/src/components/ui/separator'
+import {Typography} from '@/src/components/ui/typography'
 import {Button} from '@/src/components/ui/button'
 import {dimitraCover, georgiaCover} from '@/public/images/covers'
 
@@ -61,7 +61,7 @@ const getVillas = function (
   })
 }
 
-const AccommodationVillas: React.FC = () => {
+const AccommodationCards: React.FC = () => {
   const villas = getVillas(useTranslations('Pages.Accommodation.Index.Villas'))
 
   return (
@@ -79,43 +79,45 @@ const AccommodationVillas: React.FC = () => {
                 alt={`${villa.key} indoor image`}
                 priority
               />
-              <CardHeader className='p-4 space-y-4 sm:p-6'>
+              <CardHeader className='p-6 space-y-4'>
                 <CardTitle>{villa.title}</CardTitle>
-                <CardDescription className='pt-1 grid grid-cols-2 gap-x-3 gap-y-2 sm:flex'>
+                <CardDescription className='grid grid-cols-2 gap-3 sm:flex'>
                   <VillaDetail>
-                    <UsersIcon size={14} />
+                    <UsersIcon
+                      size={14}
+                      strokeWidth={2.5}
+                    />
                     <span>{villa.guests}</span>
                   </VillaDetail>
-                  <Separator
-                    className='hidden sm:block sm:h-auto'
-                    orientation='vertical'
-                  />
                   <VillaDetail>
-                    <BabyIcon size={14} />
+                    <BabyIcon
+                      size={14}
+                      strokeWidth={2.5}
+                    />
                     <span>{villa.children}</span>
                   </VillaDetail>
-                  <Separator
-                    className='hidden sm:block sm:h-auto'
-                    orientation='vertical'
-                  />
                   <VillaDetail>
-                    <BedDoubleIcon size={14} />
+                    <BedDoubleIcon
+                      size={14}
+                      strokeWidth={2.5}
+                    />
                     <span>{villa.bedrooms}</span>
                   </VillaDetail>
-                  <Separator
-                    className='hidden sm:block sm:h-auto'
-                    orientation='vertical'
-                  />
                   <VillaDetail>
-                    <ToiletIcon size={14} />
+                    <ToiletIcon
+                      size={14}
+                      strokeWidth={2.5}
+                    />
                     <span>{villa.bathrooms}</span>
                   </VillaDetail>
                 </CardDescription>
               </CardHeader>
-              <CardContent className='px-4 text-justify sm:px-6'>
-                {villa.description}
+              <CardContent className='px-6'>
+                <Typography className='text-lg !leading-7'>
+                  {villa.description}
+                </Typography>
               </CardContent>
-              <CardFooter className='p-4 justify-end sm:p-6'>
+              <CardFooter className='p-6 justify-end'>
                 <Button asChild>
                   <Link href={`/accommodation/${villa.key}`}>
                     <span>{villa.button}</span>
@@ -136,13 +138,13 @@ const AccommodationVillas: React.FC = () => {
 
 const VillaDetail: React.FC<React.PropsWithChildren> = ({children}) => {
   return (
-    <div className='shrink-0 flex items-center justify-start gap-1'>
+    <div className='px-2 shrink-0 inline-flex items-center justify-start gap-1.5 bg-surface-3 font-semibold border border-surface-4 rounded'>
       {children}
     </div>
   )
 }
 
-AccommodationVillas.displayName = 'AccommodationVillas'
+AccommodationCards.displayName = 'AccommodationCards'
 VillaDetail.displayName = 'VillaDetail'
 
-export {AccommodationVillas}
+export {AccommodationCards}

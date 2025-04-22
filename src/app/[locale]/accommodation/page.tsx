@@ -1,11 +1,12 @@
 import * as React from 'react'
+import {Metadata} from 'next'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {AccommodationHeader} from '@/src/app/[locale]/accommodation/(components)/accommodation-header'
 import {AccommodationHero} from '@/src/app/[locale]/accommodation/(components)/accommodation-hero'
 import {AccommodationIntro} from '@/src/app/[locale]/accommodation/(components)/accommodation-intro'
-import {AccommodationVillas} from '@/src/app/[locale]/accommodation/(components)/accommodation-villas'
+import {AccommodationCards} from '@/src/app/[locale]/accommodation/(components)/accommodation-cards'
 
-export async function generateMetadata({params}: Params) {
+export async function generateMetadata({params}: Params): Promise<Metadata> {
   const {locale} = await params
   const t = await getTranslations({
     locale,
@@ -27,7 +28,7 @@ export default function AccommodationPage({params}: Params) {
       <AccommodationHeader />
       <AccommodationHero />
       <AccommodationIntro />
-      <AccommodationVillas />
+      <AccommodationCards />
     </>
   )
 }

@@ -10,6 +10,7 @@ import {
   minLength,
   maxLength,
   email,
+  check,
   literal,
   flatten,
   regex,
@@ -29,13 +30,29 @@ setSpecificMessage(maxLength, 'Μέγιστο 25 χαρακτήρες', 'gr')
 setSpecificMessage(maxLength, 'Maximum 25 characters', 'en')
 setSpecificMessage(email, 'Μη έγκυρη μορφή email', 'gr')
 setSpecificMessage(email, 'Invalid email format', 'en')
+setSpecificMessage(check, 'Αποδεκτοί πάροχοι email: gmail, icloud, yahoo', 'gr')
+setSpecificMessage(
+  check,
+  'Accepted email providers: gmail, icloud, yahoo',
+  'en'
+)
 setSpecificMessage(regex, 'Μη έγκυρη μορφή αριθμού τηλεφώνου', 'gr')
 setSpecificMessage(regex, 'Invalid phone number format', 'en')
 
 const ContactFormSchema = object({
   firstName: pipe(string(), trim(), nonEmpty(), minLength(5), maxLength(25)),
   lastName: pipe(string(), trim(), nonEmpty(), minLength(5), maxLength(25)),
-  email: pipe(string(), trim(), nonEmpty(), email()),
+  email: pipe(
+    string(),
+    trim(),
+    nonEmpty(),
+    email(),
+    check((input) =>
+      ['@gmail.com', '@icloud.com', '@yahoo.com'].some((provider) =>
+        input.endsWith(provider)
+      )
+    )
+  ),
   phone: pipe(string(), trim(), nonEmpty(), regex(/^\d{10,}$/)),
   message: string(),
   consent: literal('on')
@@ -60,10 +77,10 @@ export async function contactFormAction(
     consent: formData.get('consent'),
     ...Object.fromEntries(formData)
   } as ContactFormData
-  const valibot = safeParse(ContactFormSchema, data, {lang: locale})
+  const result = safeParse(ContactFormSchema, data, {lang: locale})
 
-  if (!valibot.success) {
-    const issues = flatten<typeof ContactFormSchema>(valibot.issues)
+  if (!result.success) {
+    const issues = flatten<typeof ContactFormSchema>(result.issues)
 
     return {
       data,
@@ -79,11 +96,11 @@ export async function contactFormAction(
     }
   }
 
-  const error = await sendContactForm(valibot.output, locale)
+  const error = await sendContactForm(result.output, locale)
 
   if (error) {
     return {
-      data: valibot.output,
+      data: result.output,
       errors: {},
       ok: false,
       type: 'api'
