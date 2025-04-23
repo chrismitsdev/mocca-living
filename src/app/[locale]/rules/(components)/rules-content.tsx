@@ -27,6 +27,15 @@ const RulesContent: React.FC = () => {
           </Typography>
           <Typography>{t('item-2.description')}</Typography>
         </article>
+        <article className='space-y-4'>
+          <Typography
+            variant='h4'
+            asChild
+          >
+            <h2>{t('item-3.title')}</h2>
+          </Typography>
+          <Typography>{t('item-3.description')}</Typography>
+        </article>
       </Container>
     </Section>
   )
