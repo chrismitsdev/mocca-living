@@ -1,9 +1,10 @@
 'use client'
 
 import 'leaflet/dist/leaflet.css'
+import * as React from 'react'
 import {MapPinIcon} from 'lucide-react'
 import {useTranslations} from 'next-intl'
-import {type LatLngTuple} from 'leaflet'
+import L, {type LatLngTuple} from 'leaflet'
 import {MapContainer, TileLayer, Popup} from 'react-leaflet'
 import {Marker} from '@adamscybot/react-leaflet-component-marker'
 import {Section} from '@/src/components/shared/section'
@@ -11,23 +12,30 @@ import {Container} from '@/src/components/shared/container'
 import {Typography} from '@/src/components/ui/typography'
 import {MoccaLogoSimple} from '@/src/components/logos/mocca-logo-simple'
 
-const position = [40.849038, 25.723552] satisfies LatLngTuple
+const coords = [40.849038, 25.723552] satisfies LatLngTuple
 
 const ContactMap: React.FC = () => {
   const t = useTranslations('Pages.Contact.Map')
+
+  const handleMarkerRef = React.useCallback(function (marker: L.Marker | null) {
+    if (marker) {
+      marker.openPopup()
+    }
+  }, [])
 
   return (
     <Section>
       <Container className='h-[500px] sm:h-[696px]'>
         <MapContainer
           className='h-full rounded shadow-small'
-          center={position}
+          center={coords}
           zoom={17}
           scrollWheelZoom
         >
           <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
           <Marker
-            position={position}
+            position={coords}
+            ref={handleMarkerRef}
             icon={
               <MapPinIcon
                 size={32}

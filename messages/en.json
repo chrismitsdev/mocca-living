@@ -233,7 +233,20 @@
     "CookieConsent": {
       "title": "Cookies",
       "message": "This site uses services that use cookies to deliver a better user experience and analyze traffic. You can learn more about the services we use at our privacy policy page.",
-      "button-label": "Understood"
+      "button-label": "Understood",
+      "collapsible": {
+        "trigger": "Cookies used on this website",
+        "content": {
+          "consent": {
+            "title": "CONSENT_COOKIE",
+            "description": "This cookie is stored to deliver a better user experience and analyze website traffic."
+          },
+          "locale": {
+            "title": "NEXT_LOCALE",
+            "description": "This cookie is used for internalization purposes, ensuring the website displays the correct language based on user preferences."
+          }
+        }
+      }
     },
     "Form": {
       "fields": {
