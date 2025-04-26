@@ -27,7 +27,7 @@ const PHONE = '+306936998859'
 
 const ContactDrawer: React.FC = () => {
   const locale = useLocale()
-  const t = useTranslations()
+  const t = useTranslations('Components.ContactDrawer')
   const message =
     locale === 'gr'
       ? 'Γεια σας, θα ήθελα να μάθω πληροφορίες σχετικά με τη διαμονή.'
@@ -51,10 +51,8 @@ const ContactDrawer: React.FC = () => {
           side='bottom'
         >
           <div className='px-7 pt-5 pb-4 space-y-2 sm:px-8 sm:py-16'>
-            <DrawerTitle>{t('Components.ContactDrawer.title')}</DrawerTitle>
-            <DrawerDescription>
-              {t('Components.ContactDrawer.description')}
-            </DrawerDescription>
+            <DrawerTitle>{t('title')}</DrawerTitle>
+            <DrawerDescription>{t('description')}</DrawerDescription>
           </div>
           <Separator />
           <div className='p-7 space-y-6 sm:p-8'>
@@ -65,9 +63,7 @@ const ContactDrawer: React.FC = () => {
               <span>
                 <LogoViber />
               </span>
-              <Typography variant='large'>
-                {t('Components.ContactDrawer.viber')}
-              </Typography>
+              <Typography variant='large'>{t('viber')}</Typography>
             </ContactMethodLink>
             <ContactMethodLink
               href={`https://api.whatsapp.com/send/?phone=${PHONE.replace('+', '')}&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`}
@@ -76,9 +72,7 @@ const ContactDrawer: React.FC = () => {
               <span>
                 <LogoWhatsApp />
               </span>
-              <Typography variant='large'>
-                {t('Components.ContactDrawer.whatsapp')}
-              </Typography>
+              <Typography variant='large'>{t('whatsapp')}</Typography>
             </ContactMethodLink>
             <ContactMethodLink
               href={`sms:${PHONE}`}
@@ -87,9 +81,7 @@ const ContactDrawer: React.FC = () => {
               <span className='w-8 h-8 bg-info text-info-foreground flex items-center justify-center rounded-full'>
                 <MessageCircleIcon size={17} />
               </span>
-              <Typography variant='large'>
-                {t('Components.ContactDrawer.sms')}
-              </Typography>
+              <Typography variant='large'>{t('sms')}</Typography>
             </ContactMethodLink>
             <ContactMethodLink
               href={`tel:${PHONE}`}
@@ -98,9 +90,7 @@ const ContactDrawer: React.FC = () => {
               <span className='w-8 h-8 bg-primary text-primary-foreground flex items-center justify-center rounded-full'>
                 <PhoneOutgoingIcon size={17} />
               </span>
-              <Typography variant='large'>
-                {t('Components.ContactDrawer.call')}
-              </Typography>
+              <Typography variant='large'>{t('call')}</Typography>
             </ContactMethodLink>
           </div>
           <DrawerClose asChild>
