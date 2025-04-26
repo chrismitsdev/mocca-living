@@ -1,4 +1,4 @@
-import {useTranslations} from 'next-intl'
+import {useTranslations, useLocale} from 'next-intl'
 import {
   MessagesSquareIcon,
   XIcon,
@@ -23,8 +23,15 @@ import {Button} from '@/src/components/ui/button'
 import {Typography} from '@/src/components/ui/typography'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 
+const PHONE = '+306936998859'
+
 const ContactDrawer: React.FC = () => {
+  const locale = useLocale()
   const t = useTranslations()
+  const message =
+    locale === 'gr'
+      ? 'Γεια σας, θα ήθελα να μάθω πληροφορίες σχετικά με τη διαμονή.'
+      : 'Hello, I would like to get information about the accommodation.'
 
   return (
     <Drawer>
@@ -51,8 +58,8 @@ const ContactDrawer: React.FC = () => {
           </div>
           <Separator />
           <div className='p-7 space-y-6 sm:p-8'>
-            <ContactLink
-              href='viber://chat/?number=%2B306936998859'
+            <ContactMethodLink
+              href={`viber://chat/?number=${encodeURIComponent(PHONE)}`}
               aria-label='Viber messaging'
             >
               <span>
@@ -61,9 +68,9 @@ const ContactDrawer: React.FC = () => {
               <Typography variant='large'>
                 {t('Components.ContactDrawer.viber')}
               </Typography>
-            </ContactLink>
-            <ContactLink
-              href='https://wa.me/+306936998859'
+            </ContactMethodLink>
+            <ContactMethodLink
+              href={`https://api.whatsapp.com/send/?phone=${PHONE.replace('+', '')}&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`}
               aria-label='WhatsApp messaging'
             >
               <span>
@@ -72,9 +79,9 @@ const ContactDrawer: React.FC = () => {
               <Typography variant='large'>
                 {t('Components.ContactDrawer.whatsapp')}
               </Typography>
-            </ContactLink>
-            <ContactLink
-              href='sms:+306936998859'
+            </ContactMethodLink>
+            <ContactMethodLink
+              href={`sms:${PHONE}`}
               aria-label='Open messaging app to send a text message'
             >
               <span className='w-8 h-8 bg-info text-info-foreground flex items-center justify-center rounded-full'>
@@ -83,9 +90,9 @@ const ContactDrawer: React.FC = () => {
               <Typography variant='large'>
                 {t('Components.ContactDrawer.sms')}
               </Typography>
-            </ContactLink>
-            <ContactLink
-              href='tel:+306936998859'
+            </ContactMethodLink>
+            <ContactMethodLink
+              href={`tel:${PHONE}`}
               aria-label='Open messaging app to send a text message'
             >
               <span className='w-8 h-8 bg-primary text-primary-foreground flex items-center justify-center rounded-full'>
@@ -94,7 +101,7 @@ const ContactDrawer: React.FC = () => {
               <Typography variant='large'>
                 {t('Components.ContactDrawer.call')}
               </Typography>
-            </ContactLink>
+            </ContactMethodLink>
           </div>
           <DrawerClose asChild>
             <Button
@@ -112,7 +119,7 @@ const ContactDrawer: React.FC = () => {
   )
 }
 
-const ContactLink: React.FC<React.ComponentPropsWithRef<'a'>> = ({
+const ContactMethodLink: React.FC<React.ComponentPropsWithRef<'a'>> = ({
   className,
   ...props
 }) => {
@@ -125,6 +132,6 @@ const ContactLink: React.FC<React.ComponentPropsWithRef<'a'>> = ({
 }
 
 ContactDrawer.displayName = 'ContactDrawer'
-ContactLink.displayName = 'ContactLink'
+ContactMethodLink.displayName = 'ContactMethodLink'
 
 export {ContactDrawer}
