@@ -227,12 +227,12 @@
       "loadingText": "Loading"
     },
     "ContactDrawer": {
-      "title": "Contact Us",
-      "description": "Quick ways to reach us.",
-      "viber": "Viber",
+      "title": "Contact us",
+      "description": "Choose your preferred contact method.",
       "whatsapp": "WhatsApp",
-      "sms": "SMS",
-      "call": "Call"
+      "viber": "Viber",
+      "sms": "SMS message",
+      "call": "Direct call"
     },
     "CookieConsent": {
       "title": "Cookies",

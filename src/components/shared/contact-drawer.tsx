@@ -57,15 +57,6 @@ const ContactDrawer: React.FC = () => {
           <Separator />
           <div className='p-7 space-y-6 sm:p-8'>
             <ContactMethodLink
-              href={`viber://chat/?number=${encodeURIComponent(PHONE)}`}
-              aria-label='Viber messaging'
-            >
-              <span>
-                <LogoViber />
-              </span>
-              <Typography variant='large'>{t('viber')}</Typography>
-            </ContactMethodLink>
-            <ContactMethodLink
               href={`https://api.whatsapp.com/send/?phone=${PHONE.replace('+', '')}&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`}
               aria-label='WhatsApp messaging'
             >
@@ -73,6 +64,15 @@ const ContactDrawer: React.FC = () => {
                 <LogoWhatsApp />
               </span>
               <Typography variant='large'>{t('whatsapp')}</Typography>
+            </ContactMethodLink>
+            <ContactMethodLink
+              href={`viber://chat/?number=${encodeURIComponent(PHONE)}`}
+              aria-label='Viber messaging'
+            >
+              <span>
+                <LogoViber />
+              </span>
+              <Typography variant='large'>{t('viber')}</Typography>
             </ContactMethodLink>
             <ContactMethodLink
               href={`sms:${PHONE}`}

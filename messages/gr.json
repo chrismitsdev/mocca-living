@@ -227,12 +227,12 @@
       "loadingText": "Φορτώνει"
     },
     "ContactDrawer": {
-      "title": "Επικοινωνία",
-      "description": "Γρήγορη επικοινωνία μαζί μας.",
-      "viber": "Viber",
+      "title": "Επικοινωνήστε μαζί μας",
+      "description": "Επιλέξτε προτιμώμενη μέθοδο επικοινωνίας.",
       "whatsapp": "WhatsApp",
-      "sms": "SMS",
-      "call": "Κλήση"
+      "viber": "Viber",
+      "sms": "SMS μήνυμα",
+      "call": "Απευθείας κλήση"
     },
     "CookieConsent": {
       "title": "Cookies",
