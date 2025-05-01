@@ -11,6 +11,7 @@ import {
   maxLength,
   email,
   check,
+  notValues,
   literal,
   flatten,
   regex,
@@ -30,12 +31,10 @@ setSpecificMessage(maxLength, 'Μέγιστο 25 χαρακτήρες', 'gr')
 setSpecificMessage(maxLength, 'Maximum 25 characters', 'en')
 setSpecificMessage(email, 'Μη έγκυρη μορφή email', 'gr')
 setSpecificMessage(email, 'Invalid email format', 'en')
-setSpecificMessage(check, 'Αποδεκτοί πάροχοι email: gmail, icloud, yahoo', 'gr')
-setSpecificMessage(
-  check,
-  'Accepted email providers: gmail, icloud, yahoo',
-  'en'
-)
+setSpecificMessage(notValues, 'Η διεύθυνση email δεν επιτρέπεται', 'gr')
+setSpecificMessage(notValues, 'Email address is not allowed', 'en')
+setSpecificMessage(check, 'Αποδεκτά email: gmail, icloud, yahoo', 'gr')
+setSpecificMessage(check, 'Accepted email: gmail, icloud, yahoo', 'en')
 setSpecificMessage(regex, 'Μη έγκυρη μορφή αριθμού τηλεφώνου', 'gr')
 setSpecificMessage(regex, 'Invalid phone number format', 'en')
 
@@ -47,6 +46,9 @@ const ContactFormSchema = object({
     trim(),
     nonEmpty(),
     email(),
+    // Banned emails
+    notValues(['pageranktechnology@gmail.com']),
+    // Allowed email service providers
     check((input) =>
       ['@gmail.com', '@icloud.com', '@yahoo.com'].some((provider) =>
         input.endsWith(provider)
