@@ -227,7 +227,7 @@ const Footer: React.FC = () => {
               a: (chunks) => (
                 <a
                   className='underline'
-                  href='https://www.linkedin.com/in/chrismits/'
+                  href='https://www.facebook.com/Christos.Mitsiaris/'
                   target='_blank'
                 >
                   {chunks}
