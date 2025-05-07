@@ -20,7 +20,7 @@ export async function sendContactForm(
     const {error} = await resend.batch.send([
       {
         from: 'Mocca Living <info@moccaliving.com>',
-        subject: 'Νέα φόρμα επικοινωνίας',
+        subject: 'Φόρμα επικοινωνίας - Mocca Living',
         react: ContactFormInternal(formData) as React.JSX.Element,
         ...(process.env.NODE_ENV === 'production'
           ? {
@@ -33,8 +33,8 @@ export async function sendContactForm(
       },
       {
         from: 'Mocca Living <info@moccaliving.com>',
-        to: formData.email,
         subject: t('subject'),
+        to: formData.email,
         replyTo: 'info@moccaliving.com',
         react: ContactFormClient({formData, locale}) as React.JSX.Element
       }
