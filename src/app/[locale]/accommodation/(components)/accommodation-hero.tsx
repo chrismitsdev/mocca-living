@@ -1,5 +1,5 @@
 import {useTranslations} from 'next-intl'
-import {Link} from '@/src/i18n/navigation'
+import {ClientLink} from '@/src/components/shared/client-link'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {Button} from '@/src/components/ui/button'
 import {desktop, mobile} from '@/public/images/accommodation/index/index'
@@ -29,9 +29,9 @@ const AccommodationHero: React.FC = () => {
         size='large'
         asChild
       >
-        <Link href='/contact'>
+        <ClientLink href='/contact'>
           <span>{t('button-label')}</span>
-        </Link>
+        </ClientLink>
       </Button>
     </section>
   )

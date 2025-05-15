@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {Metadata} from 'next'
+import type {Metadata} from 'next'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {AccommodationHeader} from '@/src/app/[locale]/accommodation/(components)/accommodation-header'
 import {AccommodationHero} from '@/src/app/[locale]/accommodation/(components)/accommodation-hero'

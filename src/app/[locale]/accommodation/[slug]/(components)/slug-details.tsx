@@ -1,6 +1,5 @@
 import * as React from 'react'
-import {type Locale, useTranslations} from 'next-intl'
-import {Link} from '@/src/i18n/navigation'
+import {useTranslations} from 'next-intl'
 import {
   DotIcon,
   UsersIcon,
@@ -14,6 +13,7 @@ import {
 } from 'lucide-react'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
+import {ClientLink} from '@/src/components/shared/client-link'
 import {
   Card,
   CardHeader,
@@ -26,11 +26,7 @@ import {Typography} from '@/src/components/ui/typography'
 import {Separator} from '@/src/components/ui/separator'
 import {SlugForm} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-form'
 
-interface SlugDetailsProps {
-  slug: Slug
-}
-
-const SlugDetails: React.FC<SlugDetailsProps> = ({slug}) => {
+const SlugDetails: React.FC<{slug: Slug}> = ({slug}) => {
   const t = useTranslations('Pages.Accommodation.Slug.card')
   const oppositeSlug = slug === 'dimitra' ? 'georgia' : 'dimitra'
 
@@ -47,23 +43,23 @@ const SlugDetails: React.FC<SlugDetailsProps> = ({slug}) => {
               size='small'
               asChild
             >
-              <Link href='/accommodation'>
+              <ClientLink href='/accommodation'>
                 <ChevronLeftIcon size={16} />
                 <span>{t('links.back')}</span>
-              </Link>
+              </ClientLink>
             </Button>
             <Button
               variant='ghost'
               size='small'
               asChild
             >
-              <Link
+              <ClientLink
                 scroll={false}
                 href={`/accommodation/${oppositeSlug}`}
               >
                 <span className='capitalize'>{t('links.next', {slug})}</span>
                 <ChevronRightIcon size={16} />
-              </Link>
+              </ClientLink>
             </Button>
           </div>
           <Separator />

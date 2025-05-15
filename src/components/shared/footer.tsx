@@ -11,8 +11,8 @@ import {
   FacebookIcon,
   InstagramIcon
 } from 'lucide-react'
-import {Link} from '@/src/i18n/navigation'
 import {Container} from '@/src/components/shared/container'
+import {ClientLink} from '@/src/components/shared/client-link'
 import {LogosCarousel} from '@/src/components/shared/logos-carousel'
 import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
 import {DialogAudioPlayer} from '@/src/components/shared/dialog-audio-player'
@@ -101,30 +101,30 @@ const Footer: React.FC = () => {
               variant='link'
               asChild
             >
-              <Link href='/privacy'>
+              <ClientLink href='/privacy'>
                 <FileTextIcon size={14} />
                 <span>{t('Footer.row-1.column-2.link-1')}</span>
-              </Link>
+              </ClientLink>
             </Typography>
             <Typography
               className='flex items-center gap-1.5'
               variant='link'
               asChild
             >
-              <Link href='/cookies'>
+              <ClientLink href='/cookies'>
                 <CookieIcon size={14} />
                 <span>{t('Footer.row-1.column-2.link-2')}</span>
-              </Link>
+              </ClientLink>
             </Typography>
             <Typography
               className='flex items-center gap-1.5'
               variant='link'
               asChild
             >
-              <Link href='/rules'>
+              <ClientLink href='/rules'>
                 <BedSingleIcon size={14} />
                 <span>{t('Footer.row-1.column-2.link-3')}</span>
-              </Link>
+              </ClientLink>
             </Typography>
             <DialogAudioPlayer>
               <Typography

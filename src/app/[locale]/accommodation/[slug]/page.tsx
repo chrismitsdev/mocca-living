@@ -1,4 +1,5 @@
 import * as React from 'react'
+import type {Metadata} from 'next'
 import {Locale} from 'next-intl'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {notFound} from 'next/navigation'
@@ -13,11 +14,15 @@ type ParamsWithSlug = {
   }>
 }
 
-export async function generateMetadata({params}: ParamsWithSlug) {
+export async function generateMetadata({
+  params
+}: ParamsWithSlug): Promise<Metadata> {
   const {locale, slug} = await params
 
   if (slug !== 'dimitra' && slug !== 'georgia') {
-    return
+    return {
+      title: 'Mocca Living'
+    }
   }
 
   const t = await getTranslations({

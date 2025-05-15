@@ -1,8 +1,8 @@
 import {useTranslations} from 'next-intl'
 import {TriangleAlertIcon} from 'lucide-react'
-import {Link} from '@/src/i18n/navigation'
 import {Section} from '@/src/components/shared/section'
 import {Container} from '@/src/components/shared/container'
+import {ClientLink} from '@/src/components/shared/client-link'
 import {Typography} from '@/src/components/ui/typography'
 import {Button} from '@/src/components/ui/button'
 
@@ -29,12 +29,12 @@ export default function NotFound() {
             size='large'
             asChild
           >
-            <Link
+            <ClientLink
               href='/'
               replace
             >
               <span>{t('linkToHome')}</span>
-            </Link>
+            </ClientLink>
           </Button>
         </div>
       </Container>

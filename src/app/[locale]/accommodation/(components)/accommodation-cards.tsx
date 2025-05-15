@@ -1,6 +1,5 @@
-import * as React from 'react'
-import {useTranslations, Messages} from 'next-intl'
 import {type StaticImageData} from 'next/image'
+import {type Messages, useTranslations} from 'next-intl'
 import {
   UsersIcon,
   BedDoubleIcon,
@@ -8,9 +7,9 @@ import {
   ChevronRight,
   BabyIcon
 } from 'lucide-react'
-import {Link} from '@/src/i18n/navigation'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
+import {ClientLink} from '@/src/components/shared/client-link'
 import {
   Card,
   CardHeader,
@@ -122,13 +121,13 @@ const AccommodationCards: React.FC = () => {
                   className='w-full sm:w-auto'
                   asChild
                 >
-                  <Link href={`/accommodation/${villa.key}`}>
+                  <ClientLink href={`/accommodation/${villa.key}`}>
                     <span>{villa.button}</span>
                     <ChevronRight
                       className='mt-1'
                       size={16}
                     />
-                  </Link>
+                  </ClientLink>
                 </Button>
               </CardFooter>
             </Card>
