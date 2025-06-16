@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import {AnimatePresence, easeIn, motion, type Variants} from 'framer-motion'
+import {AnimatePresence, motion, type Variants} from 'framer-motion'
 import {FrozenRouter} from '@/src/components/shared/route-transitions/frozen-router'
 import {usePathname} from '@/src/i18n/navigation'
 
@@ -17,6 +17,8 @@ const ScaleTransition: React.FC<React.PropsWithChildren> = ({children}) => {
       custom
     }
   }
+
+  const bezierEase = [0.76, 0, 0.24, 1] as const
 
   const opacity = {
     initial: {
@@ -41,7 +43,7 @@ const ScaleTransition: React.FC<React.PropsWithChildren> = ({children}) => {
       top: '0',
       transition: {
         duration: 1,
-        ease: [0.76, 0, 0.24, 1]
+        ease: bezierEase
       }
     }
   }
@@ -63,7 +65,7 @@ const ScaleTransition: React.FC<React.PropsWithChildren> = ({children}) => {
       opacity: 0.5,
       transition: {
         duration: 1.2,
-        ease: [0.76, 0, 0.24, 1]
+        ease: bezierEase
       }
     }
   }
