@@ -13,9 +13,12 @@ const FadeTransition: React.FC<React.PropsWithChildren> = ({children}) => {
       <motion.div
         key={pathname}
         className='space-y-32'
-        initial={{opacity: 0, translateY: 24}}
-        animate={{opacity: 1, translateY: 0}}
-        exit={{opacity: 0, translateY: 24}}
+        initial={{opacity: 0, transform: 'translateY(24px)'}}
+        animate={{opacity: 1, transform: 'translateY(0px)'}}
+        exit={{opacity: 0, transform: 'translateY(24px)'}}
+        // initial={{opacity: 0, translateY: 24}}
+        // animate={{opacity: 1, translateY: 0}}
+        // exit={{opacity: 0, translateY: 24}}
         transition={{duration: 0.5, type: 'tween'}}
       >
         <FrozenRouter>{children}</FrozenRouter>
