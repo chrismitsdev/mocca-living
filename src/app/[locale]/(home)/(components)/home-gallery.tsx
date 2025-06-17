@@ -44,6 +44,7 @@ const triggerClasses: string[] = [
 interface GalleryTriggerProps {
   className: string
   src: StaticImageData
+  sizes: string
   alt: string
   onClick: () => void
 }
@@ -51,24 +52,26 @@ interface GalleryTriggerProps {
 const HomeGallery: React.FC = () => {
   const [index, setIndex] = React.useState(0)
 
-  const renderedTriggers = images.map(function (image, i) {
+  const thumbTriggers = images.map(function (image, i) {
     return (
       <Trigger
         key={image.src}
         className={triggerClasses[i]}
         src={image}
+        sizes='(min-width: 640px) 752px, calc((100vw - 32px) / 2)'
         alt={`Gallery thumbnail image ${i + 1}`}
         onClick={() => setIndex(i)}
       />
     )
   })
 
-  const renderedSlides = images.map(function (image, i) {
+  const slides = images.map(function (image, i) {
     return (
       <EmblaSlide key={image.src}>
         <CustomImage
           className='w-full h-full rounded'
           src={image}
+          sizes='(min-width: 640px) 1512px, 100vw'
           alt={`Gallery slide image ${i + 1}`}
         />
       </EmblaSlide>
@@ -80,17 +83,20 @@ const HomeGallery: React.FC = () => {
       <Section className='pt-16'>
         <Dialog>
           <div className='grid grid-cols-2 gap-2 sm:grid-cols-8 sm:grid-rows-8'>
-            {renderedTriggers}
+            {thumbTriggers}
           </div>
           <DialogPortal>
             <DialogOverlay>
-              <DialogContent className='p-0 bg-transparent max-w-[1512px]'>
+              <DialogContent
+                className='p-0 bg-transparent max-w-[1512px]'
+                onCloseAutoFocus={(e) => e.preventDefault()}
+              >
                 <VisuallyHidden>
                   <DialogTitle>Home page gallery images</DialogTitle>
                 </VisuallyHidden>
                 <EmblaCarousel options={{startIndex: index, loop: true}}>
                   <EmblaViewport>
-                    <EmblaContainer>{renderedSlides}</EmblaContainer>
+                    <EmblaContainer>{slides}</EmblaContainer>
                   </EmblaViewport>
                   <EmblaButtonPrev />
                   <EmblaButtonNext />
@@ -119,6 +125,7 @@ const Trigger: React.FC<GalleryTriggerProps> = ({
   className,
   src,
   alt,
+  sizes,
   onClick
 }) => {
   return (
@@ -133,6 +140,7 @@ const Trigger: React.FC<GalleryTriggerProps> = ({
         className='h-full w-full object-cover'
         src={src}
         alt={alt}
+        sizes={sizes}
       />
       <div className='hidden absolute inset-0 items-center justify-center group-hover:flex'>
         <ExpandIcon

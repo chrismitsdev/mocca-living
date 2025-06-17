@@ -21,7 +21,7 @@ const slugImages = {
 const SlugCarousel: React.FC<{slug: Slug}> = ({slug}) => {
   const images = slugImages[slug]
 
-  const renderedImages = images.map(function (image, i) {
+  const slides = images.map(function (image, i) {
     return (
       <EmblaSlide
         key={image.src}
@@ -30,13 +30,16 @@ const SlugCarousel: React.FC<{slug: Slug}> = ({slug}) => {
         <CustomImage
           className='w-full h-full object-cover'
           src={image}
-          alt={`${slug} carousel image ${i + 1}`}
+          alt={`${slug} page carousel image ${i + 1}`}
+          sizes='100vw'
+          quality={70}
+          priority
         />
       </EmblaSlide>
     )
   })
 
-  const renderedThumbs = images.map(function (image, i) {
+  const thumbnails = images.map(function (image, i) {
     return (
       <EmblaThumb
         key={image.src}
@@ -45,7 +48,8 @@ const SlugCarousel: React.FC<{slug: Slug}> = ({slug}) => {
         <CustomImage
           className='w-full h-full object-cover'
           src={image}
-          alt={`${slug} carousel thumb ${i + 1}`}
+          alt={`${slug} page carousel thumb ${i + 1}`}
+          sizes='(min-width: 640px) 5rem, 2.5rem'
         />
       </EmblaThumb>
     )
@@ -58,11 +62,11 @@ const SlugCarousel: React.FC<{slug: Slug}> = ({slug}) => {
     >
       <section>
         <EmblaViewport>
-          <EmblaContainer>{renderedImages}</EmblaContainer>
+          <EmblaContainer>{slides}</EmblaContainer>
         </EmblaViewport>
         <EmblaButtonPrev />
         <EmblaButtonNext />
-        <EmblaThumbsContainer>{renderedThumbs}</EmblaThumbsContainer>
+        <EmblaThumbsContainer>{thumbnails}</EmblaThumbsContainer>
       </section>
     </EmblaCarousel>
   )

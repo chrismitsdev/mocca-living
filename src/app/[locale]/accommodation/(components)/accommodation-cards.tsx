@@ -76,9 +76,9 @@ const AccommodationCards: React.FC = () => {
                 className='min-h-80 w-full object-cover'
                 src={villa.image}
                 alt={`${villa.key} indoor image`}
-                priority
+                sizes='(min-width: 640px) 730px, 343px'
               />
-              <CardHeader className='p-6 space-y-4'>
+              <CardHeader className='p-4 space-y-4 sm:p-6'>
                 <CardTitle>{villa.title}</CardTitle>
                 <CardDescription className='grid grid-cols-2 gap-3 sm:flex'>
                   <VillaDetail>
@@ -111,16 +111,13 @@ const AccommodationCards: React.FC = () => {
                   </VillaDetail>
                 </CardDescription>
               </CardHeader>
-              <CardContent className='px-6'>
+              <CardContent className='px-4 sm:px-6'>
                 <Typography className='text-lg !leading-7'>
                   {villa.description}
                 </Typography>
               </CardContent>
-              <CardFooter className='pt-8 px-6 pb-6 justify-stretch sm:justify-end'>
-                <Button
-                  className='w-full sm:w-auto'
-                  asChild
-                >
+              <CardFooter className='pt-8 px-4 pb-6 justify-end sm:px-6'>
+                <Button asChild>
                   <ClientLink href={`/accommodation/${villa.key}`}>
                     <span>{villa.button}</span>
                     <ChevronRight
@@ -140,7 +137,7 @@ const AccommodationCards: React.FC = () => {
 
 const VillaDetail: React.FC<React.PropsWithChildren> = ({children}) => {
   return (
-    <div className='px-2 shrink-0 inline-flex items-center justify-start gap-1.5 bg-surface-3 font-semibold border border-surface-4 rounded'>
+    <div className='px-2 shrink-0 inline-flex items-center justify-center gap-1.5 bg-surface-3 font-semibold border border-surface-4 rounded'>
       {children}
     </div>
   )

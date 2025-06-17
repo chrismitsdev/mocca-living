@@ -14,12 +14,14 @@ const AccommodationHero: React.FC = () => {
         className='w-full h-full object-cover sm:hidden'
         src={mobile}
         alt='Accomdation page mobile hero image'
+        sizes='100vw'
         priority
       />
       <CustomImage
         className='w-full h-full object-cover hidden sm:block'
         src={desktop}
         alt='Accomdation page desktop hero image'
+        sizes='100vw'
         priority
       />
 
