@@ -46,7 +46,7 @@ const HomeCarousel: React.FC = () => {
           className='w-full h-full object-cover'
           src={image}
           alt={`Home page carousel image thumb ${i + 1}`}
-          sizes='(min-width: 640px) 5rem, 2.5rem'
+          sizes='(min-width: 640px) 80px, 40px'
         />
       </EmblaThumb>
     )

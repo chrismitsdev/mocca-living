@@ -49,7 +49,7 @@ const SlugCarousel: React.FC<{slug: Slug}> = ({slug}) => {
           className='w-full h-full object-cover'
           src={image}
           alt={`${slug} page carousel thumb ${i + 1}`}
-          sizes='(min-width: 640px) 5rem, 2.5rem'
+          sizes='(min-width: 640px) 80px, 40px'
         />
       </EmblaThumb>
     )
