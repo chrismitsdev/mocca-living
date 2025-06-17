@@ -115,6 +115,7 @@ const Navigation: React.FC = () => {
                         className='aspect-square object-cover rounded'
                         src={dimitraCover}
                         alt='Dimitra card image'
+                        sizes='200px'
                       />
                       <Typography variant='h5'>
                         {t('accommodation.dimitra')}
@@ -130,6 +131,7 @@ const Navigation: React.FC = () => {
                         className='aspect-square object-cover rounded'
                         src={georgiaCover}
                         alt='Georgia card image'
+                        sizes='200px'
                       />
                       <Typography variant='h5'>
                         {t('accommodation.georgia')}
@@ -242,6 +244,7 @@ const Navigation: React.FC = () => {
                                 className='size-24 object-cover rounded'
                                 src={dimitraCover}
                                 alt='Dimitra cover image'
+                                sizes='96px'
                               />
                               <div className='space-y-0.5'>
                                 <Typography variant='h6'>
@@ -261,6 +264,7 @@ const Navigation: React.FC = () => {
                                 className='size-24 object-cover rounded'
                                 src={georgiaCover}
                                 alt='Georgia cover image'
+                                sizes='96px'
                               />
                               <div className='space-y-0.5'>
                                 <Typography variant='h6'>

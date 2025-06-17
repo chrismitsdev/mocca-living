@@ -185,7 +185,7 @@ const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
     >
       <DrawerTrigger asChild>
         <Button
-          className='absolute left-1/2 bottom-2 -translate-x-1/2 data-open:-translate-y-16 data-open:duration-[750ms] data-closed:duration-[375ms] transition ease-mocca sm:data-open:-translate-y-28'
+          className='absolute left-1/2 bottom-1.5 -translate-x-1/2 transition ease-mocca data-open:-translate-y-15 data-open:duration-[750ms] data-closed:duration-[375ms] sm:bottom-4 sm:data-open:-translate-y-25'
           variant={!open ? 'primary-alt' : 'error'}
           size='icon-small'
         >
@@ -204,7 +204,7 @@ const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
             <ScrollAreaViewport>
               <div
                 id='embla-thumbs-container'
-                className={cn('flex justify-center gap-2 sm:gap-3', className)}
+                className={cn('flex justify-center gap-2 sm:gap-4', className)}
                 {...props}
               />
             </ScrollAreaViewport>
@@ -228,7 +228,7 @@ const EmblaThumb: React.FC<
     <button
       id='embla-thumb'
       className={cn(
-        'size-10 sm:size-20 rounded-xs overflow-hidden grayscale-100 contrast-75 transition',
+        'size-10 rounded-xs overflow-hidden grayscale-100 contrast-75 transition sm:size-20',
         thumbIndex === selectedIndex && 'grayscale-0 contrast-100',
         className
       )}
@@ -249,7 +249,7 @@ const EmblaButtonPrev: React.FC<
     <Button
       id='embla-button-prev'
       className={cn(
-        'absolute top-1/2 -translate-y-1/2 left-2 sm:left-4',
+        'absolute top-1/2 -translate-y-1/2 left-1.5 sm:left-4',
         className
       )}
       variant='primary-alt'
@@ -273,7 +273,7 @@ const EmblaButtonNext: React.FC<
     <Button
       id='embla-button-next'
       className={cn(
-        'absolute top-1/2 -translate-y-1/2 right-2 sm:right-4',
+        'absolute top-1/2 -translate-y-1/2 right-1.5 sm:right-4',
         className
       )}
       variant='primary-alt'

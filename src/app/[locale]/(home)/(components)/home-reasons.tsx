@@ -18,6 +18,7 @@ const HomeReasons: React.FC = () => {
               className='h-full object-cover rounded shadow-small'
               src={reasonImage1}
               alt='Hello'
+              sizes='calc(100vw - 32px)'
             />
           </div>
           <div className='hidden grid-cols-3 grid-rows-2 gap-5 sm:grid'>
@@ -26,6 +27,7 @@ const HomeReasons: React.FC = () => {
                 className='h-full object-cover rounded shadow-small'
                 src={reasonImage1}
                 alt='Hello'
+                sizes='(min-width: 640px) 476px'
               />
             </div>
             <div className='row-start-2 col-span-2'>
@@ -33,6 +35,7 @@ const HomeReasons: React.FC = () => {
                 className='h-full object-cover rounded shadow-small'
                 src={reasonImage2}
                 alt='Hello'
+                sizes='(min-width: 640px) 476px'
               />
             </div>
           </div>

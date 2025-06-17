@@ -13,12 +13,12 @@ import {
   EmblaButtonNext
 } from '@/src/components/ui/embla-carousel'
 import {CustomImage} from '@/src/components/ui/custom-image'
-import * as slideShowImages from '@/public/images/home/home-slide-show'
+import * as carouselImages from '@/public/images/home/home-carousel'
 
-const images = sortImportedImagesByName(slideShowImages)
+const images = sortImportedImagesByName(carouselImages)
 
 const HomeCarousel: React.FC = () => {
-  const renderedImages = images.map(function (image, i) {
+  const slides = images.map(function (image, i) {
     return (
       <EmblaSlide
         key={image.src}
@@ -28,13 +28,15 @@ const HomeCarousel: React.FC = () => {
           className='w-full h-full object-cover'
           src={image}
           alt={`Home page carousel image slide ${i + 1}`}
+          sizes='100vw'
+          quality={70}
           priority
         />
       </EmblaSlide>
     )
   })
 
-  const renderedThumbs = images.map(function (image, i) {
+  const thumbnails = images.map(function (image, i) {
     return (
       <EmblaThumb
         key={image.src}
@@ -44,6 +46,7 @@ const HomeCarousel: React.FC = () => {
           className='w-full h-full object-cover'
           src={image}
           alt={`Home page carousel image thumb ${i + 1}`}
+          sizes='(min-width: 640px) 5rem, 2.5rem'
         />
       </EmblaThumb>
     )
@@ -57,11 +60,11 @@ const HomeCarousel: React.FC = () => {
     >
       <section>
         <EmblaViewport>
-          <EmblaContainer>{renderedImages}</EmblaContainer>
+          <EmblaContainer>{slides}</EmblaContainer>
         </EmblaViewport>
         <EmblaButtonPrev />
         <EmblaButtonNext />
-        <EmblaThumbsContainer>{renderedThumbs}</EmblaThumbsContainer>
+        <EmblaThumbsContainer>{thumbnails}</EmblaThumbsContainer>
       </section>
     </EmblaCarousel>
   )

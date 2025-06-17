@@ -26,6 +26,6 @@ const CustomImage: React.FC<CustomImageProps> = ({
   )
 }
 
-CustomImage.displayName = 'CustomIamge'
+CustomImage.displayName = 'CustomImage'
 
 export {CustomImage}
