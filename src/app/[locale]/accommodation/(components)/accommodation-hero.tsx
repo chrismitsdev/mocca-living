@@ -15,6 +15,7 @@ const AccommodationHero: React.FC = () => {
         src={mobile}
         alt='Accomdation page mobile hero image'
         sizes='100vw'
+        quality={60}
         priority
       />
       <CustomImage
@@ -22,6 +23,7 @@ const AccommodationHero: React.FC = () => {
         src={desktop}
         alt='Accomdation page desktop hero image'
         sizes='100vw'
+        quality={60}
         priority
       />
 

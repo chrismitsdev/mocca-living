@@ -32,7 +32,7 @@ const SlugCarousel: React.FC<{slug: Slug}> = ({slug}) => {
           src={image}
           alt={`${slug} page carousel image ${i + 1}`}
           sizes='100vw'
-          quality={70}
+          quality={60}
           priority
         />
       </EmblaSlide>

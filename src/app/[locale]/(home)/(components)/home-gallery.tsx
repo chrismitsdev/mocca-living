@@ -30,15 +30,39 @@ import * as galleryImages from '@/public/images/home/home-gallery'
 
 const images = sortImportedImagesByName(galleryImages)
 
-const triggerClasses: string[] = [
-  'sm:col-start-1 sm:col-end-3 sm:row-start-1 sm:row-end-3',
-  'sm:col-start-3 sm:col-end-5 sm:row-start-1 sm:row-end-4',
-  'sm:col-start-5 sm:col-end-9 sm:row-start-1 sm:row-end-6',
-  'sm:col-start-1 sm:col-end-3 sm:row-start-3 sm:row-end-9',
-  'sm:col-start-3 sm:col-end-5 sm:row-start-4 sm:row-end-7',
-  'sm:col-start-3 sm:col-end-5 sm:row-start-7 sm:row-end-9',
-  'sm:col-start-5 sm:col-end-6 sm:row-start-6 sm:row-end-9',
-  'sm:col-start-6 sm:col-end-9 sm:row-start-6 sm:row-end-9'
+const triggerData: {className: string; sizes: string}[] = [
+  {
+    className: 'sm:col-start-1 sm:col-end-3 sm:row-start-1 sm:row-end-3',
+    sizes: '(min-width: 640px) 372px, calc((100vw - 40px) / 2)'
+  },
+  {
+    className: 'sm:col-start-3 sm:col-end-5 sm:row-start-1 sm:row-end-4',
+    sizes: '(min-width: 640px) 372px, calc((100vw - 40px) / 2)'
+  },
+  {
+    className: 'sm:col-start-5 sm:col-end-9 sm:row-start-1 sm:row-end-6',
+    sizes: '(min-width: 640px) 752px, calc((100vw - 40px) / 2)'
+  },
+  {
+    className: 'sm:col-start-1 sm:col-end-3 sm:row-start-3 sm:row-end-9',
+    sizes: '(min-width: 640px) 372px, calc((100vw - 40px) / 2)'
+  },
+  {
+    className: 'sm:col-start-3 sm:col-end-5 sm:row-start-4 sm:row-end-7',
+    sizes: '(min-width: 640px) 372px, calc((100vw - 40px) / 2)'
+  },
+  {
+    className: 'sm:col-start-3 sm:col-end-5 sm:row-start-7 sm:row-end-9',
+    sizes: '(min-width: 640px) 372px, calc((100vw - 40px) / 2)'
+  },
+  {
+    className: 'sm:col-start-5 sm:col-end-6 sm:row-start-6 sm:row-end-9',
+    sizes: '(min-width: 640px) 182px, calc((100vw - 40px) / 2)'
+  },
+  {
+    className: 'sm:col-start-6 sm:col-end-9 sm:row-start-6 sm:row-end-9',
+    sizes: '(min-width: 640px) 562px, calc((100vw - 40px) / 2)'
+  }
 ]
 
 interface GalleryTriggerProps {
@@ -56,9 +80,9 @@ const HomeGallery: React.FC = () => {
     return (
       <Trigger
         key={image.src}
-        className={triggerClasses[i]}
+        className={triggerData[i].className}
         src={image}
-        sizes='(min-width: 640px) 752px, calc((100vw - 32px) / 2)'
+        sizes={triggerData[i].sizes}
         alt={`Gallery thumbnail image ${i + 1}`}
         onClick={() => setIndex(i)}
       />
@@ -141,6 +165,7 @@ const Trigger: React.FC<GalleryTriggerProps> = ({
         src={src}
         alt={alt}
         sizes={sizes}
+        quality={60}
       />
       <div className='hidden absolute inset-0 items-center justify-center group-hover:flex'>
         <ExpandIcon
