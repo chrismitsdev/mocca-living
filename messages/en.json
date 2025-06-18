@@ -5,9 +5,9 @@
       "accommodation": {
         "root": "Accommodation",
         "dimitra": "Dimitra",
-        "dimitra-caption": "Experience luxury at villa Dimitra, a gorgeous 85m² retreat for 2-5 guests.",
+        "dimitra-caption": "Experience luxury at villa Dimitra, a gorgeous 85m² retreat for 2-4 adults and 2 children.",
         "georgia": "Georgia",
-        "georgia-caption": "Discover villa Georgia, a charming 45m² retreat for 2-4 guests near the sea."
+        "georgia-caption": "Discover villa Georgia, a charming 45m² retreat for 2-4 adults and 1 child near the sea."
       },
       "contact": "Contact",
       "privacy": "Privacy policy",
@@ -89,9 +89,9 @@
         "Villas": {
           "dimitra": {
             "title": "Dimitra",
-            "description": "Embrace the luxury of space in Villa Dimitra, an 85m² sanctuary for 2-5 adults and 1 child. With 2 bedrooms and 2 bathrooms, it's ideal for a relaxed, elegant stay.",
-            "guests": "2 - 5 Adults",
-            "children": "1 Child",
+            "description": "Embrace the luxury of space in Villa Dimitra, an 85m² sanctuary for 2-4 adults and 2 children. With 2 bedrooms and 2 bathrooms, it's ideal for a relaxed, elegant stay.",
+            "guests": "2 - 4 Adults",
+            "children": "2 Children",
             "bedrooms": "2 Bedrooms",
             "bathrooms": "2 Bathrooms",
             "button": "Information"
@@ -125,8 +125,8 @@
           "content": {
             "dimitra": {
               "name": "Dimitra",
-              "guests": "2 - 5 Adults",
-              "child": "1 Child",
+              "guests": "2 - 4 Adults",
+              "child": "2 Children",
               "bedrooms": "2 Bedrooms",
               "bathrooms": "2 Bathrooms",
               "area": "85m² Area",
