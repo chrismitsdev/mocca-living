@@ -16,7 +16,7 @@ const ContactSocial: React.FC = () => {
             <Typography variant='h4'>{t('location')}</Typography>
           </SocialLink>
           <SocialLink
-            href='tel:+306936998859'
+            href='tel:+30697 3560007'
             target='_self'
           >
             <PhoneIcon size={64} />
