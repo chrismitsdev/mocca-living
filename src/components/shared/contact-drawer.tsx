@@ -65,7 +65,7 @@ const ContactDrawer: React.FC = () => {
               </span>
               <Typography variant='large'>{t('whatsapp')}</Typography>
             </ContactMethodLink>
-            <ContactMethodLink
+            {/* <ContactMethodLink
               href={`viber://chat/?number=${encodeURIComponent(PHONE)}`}
               aria-label='Viber messaging'
             >
@@ -73,7 +73,7 @@ const ContactDrawer: React.FC = () => {
                 <LogoViber />
               </span>
               <Typography variant='large'>{t('viber')}</Typography>
-            </ContactMethodLink>
+            </ContactMethodLink> */}
             <ContactMethodLink
               href={`sms:${PHONE}`}
               aria-label='Open messaging app to send a text message'
