@@ -28,12 +28,12 @@ const HomeDistances: React.FC = () => {
     <Section>
       <Container>
         <Card className='relative space-y-10 sm:p-20'>
-          <MapPinnedIcon className='hidden absolute size-3/4 top-1/2 left-1/2 -translate-1/2 text-surface-3 opacity-20 sm:block' />
+          <MapPinnedIcon className='hidden absolute size-3/4 top-1/2 left-1/2 -translate-1/2 text-surface-3 opacity-30 sm:block' />
           <CardHeader className='space-y-4'>
             <CardTitle>{t('title')}</CardTitle>
             <CardDescription>{t('description')}</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className='sm:relative'>
             <ul className='space-y-8'>
               <DistanceItem
                 title={t('airport.title')}
@@ -75,11 +75,16 @@ const DistanceItem: React.FC<{
 }> = ({title, description, icon}) => {
   return (
     <li className='space-y-2'>
-      <div className='flex items-center gap-2'>
+      <h5 className='flex items-center gap-2'>
         {React.createElement(icon, {size: 16})}
         <Typography variant='h5'>{title}</Typography>
-      </div>
-      <Typography className='leading-8 sm:pl-6'>{description}</Typography>
+      </h5>
+      <Typography
+        className='leading-8 sm:pl-6'
+        asChild
+      >
+        <p>{description}</p>
+      </Typography>
     </li>
   )
 }
