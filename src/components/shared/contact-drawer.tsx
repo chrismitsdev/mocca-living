@@ -23,7 +23,8 @@ import {Button} from '@/src/components/ui/button'
 import {Typography} from '@/src/components/ui/typography'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 
-const PHONE = '+306973560007'
+// const PHONE = '+306973560007'
+const PHONE = '+306973433980'
 
 const ContactDrawer: React.FC = () => {
   const locale = useLocale()

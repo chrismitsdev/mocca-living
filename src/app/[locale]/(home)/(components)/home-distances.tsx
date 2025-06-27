@@ -1,3 +1,4 @@
+import * as React from 'react'
 import {useTranslations} from 'next-intl'
 import {
   PlaneIcon,
@@ -6,7 +7,6 @@ import {
   UtensilsIcon,
   PlugIcon,
   MapPinnedIcon,
-  type LucideIcon,
   type LucideProps
 } from 'lucide-react'
 import {Section} from '@/src/components/shared/section'
@@ -19,7 +19,6 @@ import {
   CardContent
 } from '@/src/components/ui/card'
 import {Typography} from '@/src/components/ui/typography'
-import React from 'react'
 
 const HomeDistances: React.FC = () => {
   const t = useTranslations('Pages.Home.Distances')

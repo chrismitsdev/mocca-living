@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
             alt='Mocca Living footer logo'
           />
           <FooterColumn title={t('Footer.row-1.column-1.header')}>
-            <Typography
+            {/* <Typography
               variant='link'
               asChild
             >
@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
                 <PhoneIcon size={14} />
                 <span>{t('Footer.row-1.column-1.link-1')}</span>
               </a>
-            </Typography>
+            </Typography> */}
             <Typography
               variant='link'
               asChild
