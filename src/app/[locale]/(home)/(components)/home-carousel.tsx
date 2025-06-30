@@ -30,7 +30,7 @@ const HomeCarousel: React.FC = () => {
           alt={`Home page carousel image slide ${i + 1}`}
           sizes='100vw'
           quality={60}
-          priority
+          priority={i === 0}
         />
       </EmblaSlide>
     )
