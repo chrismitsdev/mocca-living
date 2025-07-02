@@ -23,8 +23,8 @@ import {Button} from '@/src/components/ui/button'
 import {Typography} from '@/src/components/ui/typography'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 
-// const PHONE = '+306973560007'
-const PHONE = '+306973433980'
+const PHONE = '+306973560007'
+// const PHONE = '+306973433980'
 
 const ContactDrawer: React.FC = () => {
   const locale = useLocale()
@@ -66,15 +66,6 @@ const ContactDrawer: React.FC = () => {
               </span>
               <Typography variant='large'>{t('whatsapp')}</Typography>
             </ContactMethodLink>
-            {/* <ContactMethodLink
-              href={`viber://chat/?number=${encodeURIComponent(PHONE)}`}
-              aria-label='Viber messaging'
-            >
-              <span>
-                <LogoViber />
-              </span>
-              <Typography variant='large'>{t('viber')}</Typography>
-            </ContactMethodLink> */}
             <ContactMethodLink
               href={`sms:${PHONE}`}
               aria-label='Open messaging app to send a text message'

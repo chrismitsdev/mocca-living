@@ -34,19 +34,18 @@ const Footer: React.FC = () => {
             alt='Mocca Living footer logo'
           />
           <FooterColumn title={t('Footer.row-1.column-1.header')}>
-            {/* <Typography
+            <Typography
               variant='link'
               asChild
             >
               <a
                 className='flex items-center gap-1.5'
-                href='tel:+30697 3560007'
-                target='_blank'
+                href='tel:+306973560007'
               >
                 <PhoneIcon size={14} />
                 <span>{t('Footer.row-1.column-1.link-1')}</span>
               </a>
-            </Typography> */}
+            </Typography>
             <Typography
               variant='link'
               asChild
@@ -54,7 +53,6 @@ const Footer: React.FC = () => {
               <a
                 className='flex items-center gap-1.5'
                 href='tel:+306973433980'
-                target='_blank'
               >
                 <PhoneIcon size={14} />
                 <span>{t('Footer.row-1.column-1.link-2')}</span>
