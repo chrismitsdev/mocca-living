@@ -31,8 +31,8 @@ const ContactDrawer: React.FC = () => {
   const t = useTranslations('Components.ContactDrawer')
   const message =
     locale === 'gr'
-      ? 'Γεια σας, θα ήθελα να μάθω πληροφορίες σχετικά με τη διαμονή.'
-      : 'Hello, I would like to get information about the accommodation.'
+      ? 'Γεια σας, ενδιαφέρομαι για διαμονή στις βίλες Mocca Living. Μπορείτε να μου δώσετε περισσότερες πληροφορίες;'
+      : 'Hello, I am interested in staying at Mocca Living Villas. Could you please provide me with more information?'
 
   return (
     <Drawer>
