@@ -24,7 +24,7 @@ export async function sendContactForm(
         ...(process.env.NODE_ENV === 'production'
           ? {
               subject: 'Φόρμα επικοινωνίας - Mocca Living',
-              to: ['apefthimiadou@gmail.com', 'mokalis@gmail.com'],
+              to: 'mokalis@gmail.com',
               cc: 'chrismits88@gmail.com'
             }
           : {
