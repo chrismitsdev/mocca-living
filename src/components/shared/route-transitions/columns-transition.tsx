@@ -1,6 +1,6 @@
 'use client'
 
-import {AnimatePresence, motion, type Variants} from 'framer-motion'
+import {AnimatePresence, motion, type Variants} from 'motion/react'
 import {usePathname} from '@/src/i18n/navigation'
 import {FrozenRouter} from '@/src/components/shared/route-transitions/frozen-router'
 import boxLogo from '@/public/logos/mocca-logo-box.svg'
