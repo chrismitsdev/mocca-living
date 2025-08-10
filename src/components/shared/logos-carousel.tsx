@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Autoscroll from 'embla-carousel-auto-scroll'
 import {
   EmblaCarousel,
@@ -10,6 +11,7 @@ import {
 import {YuppiiLogo} from '@/src/components/logos/yuppii-logo'
 import {StartPilatesLogo} from '@/src/components/logos/startpilates-logo'
 import {CocoMatLogo} from '@/src/components/logos/cocomat-logo'
+import christmasLogo from 'public/logos/christmas-lighthouse-logo.png'
 
 const LogosCarousel: React.FC = () => {
   return (
@@ -31,6 +33,18 @@ const LogosCarousel: React.FC = () => {
                 target='_blank'
               >
                 <StartPilatesLogo className='w-full' />
+              </a>
+            </EmblaSlide>
+            <EmblaSlide className='mr-0 flex justify-center items-center'>
+              <a
+                href='https://www.facebook.com/TheChristmasLighthouseAXD'
+                target='_blank'
+              >
+                <Image
+                  height={53}
+                  src={christmasLogo}
+                  alt='The Christmas Lighthouse logo'
+                />
               </a>
             </EmblaSlide>
             <EmblaSlide className='mr-0 flex justify-center items-center'>
