@@ -56,7 +56,7 @@ const SelectContent: React.FC<React.ComponentPropsWithRef<typeof Content>> = ({
   return (
     <Content
       className={cn(
-        'w-[var(--radix-select-trigger-width)] max-h-[var(--radix-select-content-available-height)] z-[1] overflow-hidden bg-surface-1 border border-border-hover rounded shadow data-open:data-top:animate-slide-top-show data-open:data-right:animate-slide-right-show data-open:data-bottom:animate-slide-bottom-show data-open:data-left:animate-slide-left-show data-closed:data-top:animate-slide-top-hide data-closed:data-right:animate-slide-right-hide data-closed:data-bottom:animate-slide-bottom-hide data-closed:data-left:animate-slide-left-hide',
+        'w-(--radix-select-trigger-width) max-h-(--radix-select-content-available-height) z-1 overflow-hidden bg-surface-1 border border-border-hover rounded shadow data-open:data-top:animate-slide-top-show data-open:data-right:animate-slide-right-show data-open:data-bottom:animate-slide-bottom-show data-open:data-left:animate-slide-left-show data-closed:data-top:animate-slide-top-hide data-closed:data-right:animate-slide-right-hide data-closed:data-bottom:animate-slide-bottom-hide data-closed:data-left:animate-slide-left-hide',
         className
       )}
       sideOffset={sideOffset}

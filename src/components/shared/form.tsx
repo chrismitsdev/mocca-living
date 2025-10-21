@@ -170,7 +170,7 @@ const FormControl: React.FC<
     >
       {error && (
         <Typography
-          className='absolute top-0 right-0 !leading-6 text-error-hover'
+          className='absolute top-0 right-0 leading-6 text-error-hover'
           variant='mini'
         >
           {error}

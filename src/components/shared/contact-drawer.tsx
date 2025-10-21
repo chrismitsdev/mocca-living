@@ -16,7 +16,6 @@ import {
   DrawerDescription,
   DrawerClose
 } from '@/src/components/ui/drawer'
-import {LogoViber} from '@/src/components/logos/logo-viber'
 import {LogoWhatsApp} from '@/src/components/logos/logo-whatsapp'
 import {Separator} from '@/src/components/ui/separator'
 import {Button} from '@/src/components/ui/button'

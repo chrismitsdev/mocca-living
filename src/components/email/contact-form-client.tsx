@@ -48,7 +48,7 @@ const ContactFormClient: React.FC<{
             .main-content {
               padding: 16px !important;
             }
-          
+
             @media screen and (min-width: 640px) {
               .main-content {
                 padding: 24px !important;
@@ -128,7 +128,7 @@ const ContactFormClient: React.FC<{
                   className='pr-2'
                 >
                   <Link
-                    className='p-1 bg-[#c7b492] inline-block rounded'
+                    className='p-1 bg-surface-3 inline-block rounded'
                     href='https://www.facebook.com/profile.php?id=61566665200042'
                     target='_blank'
                   >
@@ -144,7 +144,7 @@ const ContactFormClient: React.FC<{
                   className='pl-2'
                 >
                   <Link
-                    className='p-1 bg-[#c7b492] inline-block rounded'
+                    className='p-1 bg-surface-3 inline-block rounded'
                     href='https://www.instagram.com/moccaliving.premiumstay/'
                     target='_blank'
                   >

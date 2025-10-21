@@ -17,7 +17,7 @@ import {cn} from '@/src/lib/utils'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 
 const drawerContentVariants = cva(
-  ['fixed', 'z-[1]', 'bg-surface-2', 'shadow-small'],
+  ['fixed', 'z-1', 'bg-surface-2', 'shadow-small'],
   {
     variants: {
       side: {
@@ -70,7 +70,7 @@ const DrawerOverlay: React.FC<React.ComponentPropsWithRef<typeof Overlay>> = ({
   return (
     <Overlay
       className={cn(
-        'fixed inset-0 z-[1] bg-black/75 backdrop-blur-[1px] data-open:animate-overlay-open data-closed:animate-overlay-close',
+        'fixed inset-0 z-1 bg-black/75 backdrop-blur-[1px] data-open:animate-overlay-open data-closed:animate-overlay-close',
         className
       )}
       {...props}

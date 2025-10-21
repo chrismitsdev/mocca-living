@@ -100,8 +100,13 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
   React.useEffect(
     function () {
       if (!emblaApi) return
+
       onSelect(emblaApi)
       emblaApi.on('reInit', onSelect).on('select', onSelect)
+
+      return function () {
+        emblaApi.off('reInit', onSelect).off('select', onSelect)
+      }
     },
     [emblaApi, onSelect]
   )
@@ -185,7 +190,7 @@ const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
     >
       <DrawerTrigger asChild>
         <Button
-          className='absolute left-1/2 bottom-1.5 -translate-x-1/2 transition ease-mocca data-open:-translate-y-15 data-open:duration-[750ms] data-closed:duration-[375ms] sm:bottom-4 sm:data-open:-translate-y-25'
+          className='absolute left-1/2 bottom-1.5 -translate-x-1/2 transition ease-mocca data-open:-translate-y-15 data-open:duration-750 data-closed:duration-375 sm:bottom-4 sm:data-open:-translate-y-25'
           variant={!open ? 'primary-alt' : 'error'}
           size='icon-small'
         >
@@ -193,13 +198,13 @@ const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
         </Button>
       </DrawerTrigger>
       <DrawerContent
-        className='absolute bg-transparent !shadow-none'
+        className='absolute bg-transparent shadow-none! sm:w-fit sm:left-1/2 sm:-translate-x-1/2'
         side='bottom'
       >
         <VisuallyHidden>
           <DrawerTitle>Carousel thumbnails drawer</DrawerTitle>
         </VisuallyHidden>
-        <div className='py-2 px-2 m-1.5 bg-surface-2 rounded sm:py-3'>
+        <div className='py-2 px-2 m-1.5 bg-surface-2 rounded sm:py-3 sm:px-3'>
           <ScrollArea>
             <ScrollAreaViewport>
               <div
@@ -228,8 +233,8 @@ const EmblaThumb: React.FC<
     <button
       id='embla-thumb'
       className={cn(
-        'size-10 rounded-xs overflow-hidden grayscale-100 contrast-75 transition sm:size-20',
-        thumbIndex === selectedIndex && 'grayscale-0 contrast-100',
+        'size-10 rounded-xs overflow-hidden grayscale-75 opacity-75 contrast-75 transition sm:size-20',
+        thumbIndex === selectedIndex && 'grayscale-0 opacity-100 contrast-125',
         className
       )}
       onClick={() => onThumbButtonClick(thumbIndex)}

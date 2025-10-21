@@ -13,10 +13,7 @@ export default function NotFound() {
     <Section>
       <Container>
         <div className='flex flex-col items-center space-y-6'>
-          <TriangleAlertIcon
-            width={128}
-            height={128}
-          />
+          <TriangleAlertIcon size={128} />
           <Typography
             variant='h3'
             asChild
