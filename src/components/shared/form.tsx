@@ -51,6 +51,7 @@ const Form: React.FC = () => {
         })
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [state]
   )
 
@@ -170,7 +171,7 @@ const FormControl: React.FC<
     >
       {error && (
         <Typography
-          className='absolute top-0 right-0 !leading-6 text-error-hover'
+          className='absolute top-0 right-0 leading-6 text-error-hover'
           variant='mini'
         >
           {error}

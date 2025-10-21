@@ -34,6 +34,7 @@ export default async function Image({params}: ParamsWithSlug) {
         <img
           src={src}
           width='250'
+          alt={`${slug} page opengraph image`}
         />
         <p
           style={{

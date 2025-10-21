@@ -15,7 +15,7 @@ const buttonVariants = cva(
     'gap-2',
     'whitespace-nowrap',
     'font-semibold',
-    '[&>*]:shrink-0',
+    '*:shrink-0',
     'rounded',
     'ring-offset-background',
     'transition-colors',

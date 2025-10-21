@@ -59,7 +59,7 @@ const ContactFormInternal: React.FC<
                 </Heading>
               </Row>
             </Section>
-            <Hr className='my-0 !border-t-[#b1a082]' />
+            <Hr className='my-0  border-t-surface-4' />
             <Section className='px-4 pt-6 pb-8'>
               <Row className='mb-6'>
                 <Column>
@@ -69,7 +69,7 @@ const ContactFormInternal: React.FC<
                   >
                     Όνομα:
                   </Heading>
-                  <Text className='!my-0'>{firstName}</Text>
+                  <Text className='my-0'>{firstName}</Text>
                 </Column>
               </Row>
               <Row className='mb-6'>
@@ -80,7 +80,7 @@ const ContactFormInternal: React.FC<
                   >
                     Επίθετο:
                   </Heading>
-                  <Text className='!my-0'>{lastName}</Text>
+                  <Text className='my-0'>{lastName}</Text>
                 </Column>
               </Row>
               <Row className='mb-6'>
@@ -124,7 +124,7 @@ const ContactFormInternal: React.FC<
                   >
                     Μήνυμα:
                   </Heading>
-                  <Text className='!my-0'>
+                  <Text className='my-0'>
                     {message || 'Ο χρήστης δεν άφησε κάποιο μήνυμα'}
                   </Text>
                 </Column>

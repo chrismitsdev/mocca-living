@@ -18,8 +18,12 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
   }
 }
 
-export default function AccommodationPage({params}: Params) {
-  const {locale} = React.use(params)
+// export default function AccommodationPage({params}: Params) {
+export default function AccommodationPage({
+  params
+}: PageProps<'/[locale]/accommodation'>) {
+  // const {locale} = React.use(params)
+  const {locale} = React.use(params as Params['params'])
 
   setRequestLocale(locale)
 

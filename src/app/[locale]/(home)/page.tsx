@@ -17,8 +17,10 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
   }
 }
 
-export default function HomePage({params}: Params) {
-  const {locale} = React.use(params)
+// export default function HomePage({params}: Params) {
+export default function HomePage({params}: PageProps<'/[locale]'>) {
+  // const {locale} = React.use(params)
+  const {locale} = React.use(params as Params['params'])
 
   setRequestLocale(locale)
 
