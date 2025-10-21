@@ -53,6 +53,7 @@ const Navigation: React.FC = () => {
       if (hoverCardOpen) setHoverCardOpen(false)
       if (drawerOpen) setDrawerOpen(false)
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [pathname]
   )
 
@@ -183,7 +184,7 @@ const Navigation: React.FC = () => {
         </DrawerTrigger>
         <DrawerContent
           side='right'
-          className='absolute top-full h-dvh z-1 shadow-none border-t border-t-surface-3'
+          className='absolute top-full h-dvh z-1 shadow-none! border-t border-t-surface-3'
           onInteractOutside={(e) => e.preventDefault()}
         >
           <VisuallyHidden>

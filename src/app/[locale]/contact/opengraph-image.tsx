@@ -26,6 +26,7 @@ export default async function Image({params}: Params) {
         <img
           src={src}
           width='250'
+          alt='Contact page opengraph image'
         />
         <p
           style={{
