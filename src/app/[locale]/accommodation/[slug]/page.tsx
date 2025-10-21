@@ -39,11 +39,9 @@ export function generateStaticParams() {
   return [{slug: 'georgia'}, {slug: 'dimitra'}]
 }
 
-// export default function SlugPage({params}: ParamsWithSlug) {
 export default function SlugPage({
   params
 }: PageProps<'/[locale]/accommodation/[slug]'>) {
-  // const {locale, slug} = React.use(params)
   const {locale, slug} = React.use(params as ParamsWithSlug['params'])
 
   setRequestLocale(locale)

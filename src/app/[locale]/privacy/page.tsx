@@ -13,9 +13,7 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
   }
 }
 
-// export default function PrivacyPage({params}: Params) {
 export default function PrivacyPage({params}: PageProps<'/[locale]/privacy'>) {
-  // const {locale} = React.use(params)
   const {locale} = React.use(params as Params['params'])
 
   setRequestLocale(locale)

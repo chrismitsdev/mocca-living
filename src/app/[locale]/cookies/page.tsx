@@ -13,9 +13,7 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
   }
 }
 
-// export default function CookiesPage({params}: Params) {
 export default function CookiesPage({params}: PageProps<'/[locale]/cookies'>) {
-  // const {locale} = React.use(params)
   const {locale} = React.use(params as Params['params'])
 
   setRequestLocale(locale)

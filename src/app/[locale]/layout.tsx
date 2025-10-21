@@ -1,4 +1,5 @@
 import '@/src/styles/index.css'
+import * as React from 'react'
 import type {Metadata} from 'next'
 import {Commissioner} from 'next/font/google'
 import {NextIntlClientProvider, hasLocale} from 'next-intl'
@@ -40,11 +41,11 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}))
 }
 
-export default async function LocaleLayout({
+export default function LocaleLayout({
   params,
   children
 }: LayoutProps<'/[locale]'>) {
-  const {locale} = (await params) as Awaited<Params['params']>
+  const {locale} = React.use(params as Params['params'])
 
   if (!hasLocale(routing.locales, locale)) {
     notFound()

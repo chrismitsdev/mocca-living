@@ -1,5 +1,5 @@
 import {useTranslations} from 'next-intl'
-import {CornerDownRightIcon} from 'lucide-react'
+import {ArrowBigRightIcon} from 'lucide-react'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {CustomImage} from '@/src/components/ui/custom-image'
@@ -12,7 +12,7 @@ const HomeReasons: React.FC = () => {
   return (
     <Section className='bg-surface-2'>
       <Container>
-        <div className='grid gap-16 sm:grid-cols-2'>
+        <div className='grid gap-16 xl:grid-cols-2'>
           <div className='sm:hidden'>
             <CustomImage
               className='h-full object-cover rounded shadow-small'
@@ -81,10 +81,7 @@ const Reason: React.FC<{title: string; description: string}> = ({
 }) => {
   return (
     <div className='flex gap-2'>
-      <CornerDownRightIcon
-        className='shrink-0'
-        size={24}
-      />
+      <ArrowBigRightIcon className='shrink-0' />
       <div className='space-y-2'>
         <Typography variant='large'>{title}</Typography>
         <Typography className='leading-8'>{description}</Typography>
