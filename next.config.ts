@@ -3,7 +3,7 @@ import createNextIntlPlugin from 'next-intl/plugin'
 
 const nextConfig: NextConfig = {
   images: {
-    qualities: [60]
+    qualities: [60, 75]
   }
 }
 const withNextIntl = createNextIntlPlugin()
