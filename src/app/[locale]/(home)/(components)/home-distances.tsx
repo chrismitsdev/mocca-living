@@ -1,22 +1,22 @@
-import * as React from 'react'
-import {useTranslations} from 'next-intl'
 import {
-  PlaneIcon,
   Building2Icon,
-  ShellIcon,
-  UtensilsIcon,
-  PlugIcon,
+  type LucideProps,
   MapPinnedIcon,
-  type LucideProps
+  PlaneIcon,
+  PlugIcon,
+  ShellIcon,
+  UtensilsIcon
 } from 'lucide-react'
-import {Section} from '@/src/components/shared/section'
+import {useTranslations} from 'next-intl'
+import * as React from 'react'
 import {Container} from '@/src/components/shared/container'
+import {Section} from '@/src/components/shared/section'
 import {
   Card,
-  CardHeader,
-  CardTitle,
+  CardContent,
   CardDescription,
-  CardContent
+  CardHeader,
+  CardTitle
 } from '@/src/components/ui/card'
 import {Typography} from '@/src/components/ui/typography'
 

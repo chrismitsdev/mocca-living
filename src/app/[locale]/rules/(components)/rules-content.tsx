@@ -1,6 +1,6 @@
 import {useTranslations} from 'next-intl'
-import {Section} from '@/src/components/shared/section'
 import {Container} from '@/src/components/shared/container'
+import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
 const RulesContent: React.FC = () => {

@@ -1,24 +1,24 @@
 'use server'
 
+import type {Locale} from 'next-intl'
 import {
+  check,
+  email,
+  flatten,
   type InferOutput,
+  literal,
+  maxLength,
+  minLength,
+  nonEmpty,
+  notValues,
   object,
   pipe,
-  string,
-  trim,
-  nonEmpty,
-  minLength,
-  maxLength,
-  email,
-  check,
-  notValues,
-  literal,
-  flatten,
   regex,
   safeParse,
-  setSpecificMessage
+  setSpecificMessage,
+  string,
+  trim
 } from 'valibot'
-import {type Locale} from 'next-intl'
 import {sendContactForm} from '@/src/lib/send-contact-form'
 
 setSpecificMessage(string, 'Πρέπει να είναι γράμματα & αριθμοί', 'gr')

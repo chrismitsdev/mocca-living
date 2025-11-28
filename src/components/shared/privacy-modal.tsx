@@ -1,23 +1,23 @@
-import {useTranslations} from 'next-intl'
 import {XIcon} from 'lucide-react'
+import {useTranslations} from 'next-intl'
+import {Button} from '@/src/components/ui/button'
 import {
   Dialog,
-  DialogTrigger,
-  DialogPortal,
-  DialogOverlay,
+  DialogClose,
   DialogContent,
+  DialogOverlay,
+  DialogPortal,
   DialogTitle,
-  DialogClose
+  DialogTrigger
 } from '@/src/components/ui/dialog'
-import {Separator} from '@/src/components/ui/separator'
 import {
   ScrollArea,
-  ScrollAreaViewport,
-  ScrollAreaBar
+  ScrollAreaBar,
+  ScrollAreaViewport
 } from '@/src/components/ui/scrollarea'
+import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
-import {Button} from '@/src/components/ui/button'
 
 const PrivacyModal: React.FC<React.PropsWithChildren> = ({children}) => {
   const m = useTranslations('Metadata.Pages')

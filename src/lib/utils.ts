@@ -1,8 +1,8 @@
-import {type StaticImageData} from 'next/image'
-import {type Locale} from 'next-intl'
 import {type ClassValue, clsx} from 'clsx'
 import {format} from 'date-fns'
 import {el, enUS} from 'date-fns/locale'
+import type {StaticImageData} from 'next/image'
+import type {Locale} from 'next-intl'
 import {twMerge} from 'tailwind-merge'
 
 export async function sleep(sleepTime: number = 1000) {
@@ -71,7 +71,7 @@ export function formatDuration(durationInSeconds: number | null) {
 export function sortImportedImagesByName(
   importedImages: Record<string, StaticImageData>
 ) {
-  return Object.values(importedImages).sort(function (a, b) {
+  return Object.values(importedImages).sort((a, b) => {
     const numA = parseInt(a.src.match(/\d+/)?.[0] || '0', 10)
     const numB = parseInt(b.src.match(/\d+/)?.[0] || '0', 10)
     return numA - numB

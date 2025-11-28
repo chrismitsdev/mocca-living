@@ -1,25 +1,25 @@
-import Image from 'next/image'
-import {useTranslations} from 'next-intl'
 import {
-  PhoneIcon,
+  BedSingleIcon,
+  CookieIcon,
+  FacebookIcon,
+  FileTextIcon,
+  InstagramIcon,
   MailIcon,
   MapPinHouseIcon,
-  FileTextIcon,
-  CookieIcon,
-  BedSingleIcon,
   MusicIcon,
-  FacebookIcon,
-  InstagramIcon
+  PhoneIcon
 } from 'lucide-react'
-import {Container} from '@/src/components/shared/container'
+import Image from 'next/image'
+import {useTranslations} from 'next-intl'
+import logoFull from '@/public/logos/mocca-logo-full.svg'
 import {ClientLink} from '@/src/components/shared/client-link'
-import {LogosCarousel} from '@/src/components/shared/logos-carousel'
-import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
+import {Container} from '@/src/components/shared/container'
 import {DialogAudioPlayer} from '@/src/components/shared/dialog-audio-player'
+import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
+import {LogosCarousel} from '@/src/components/shared/logos-carousel'
+import {Button} from '@/src/components/ui/button'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
-import {Button} from '@/src/components/ui/button'
-import logoFull from '@/public/logos/mocca-logo-full.svg'
 
 const Footer: React.FC = () => {
   const t = useTranslations('Components')
@@ -80,6 +80,7 @@ const Footer: React.FC = () => {
                 className='flex gap-1.5'
                 href='https://maps.app.goo.gl/L6JEySni2t8jnb5m9'
                 target='_blank'
+                rel='noopener'
               >
                 <MapPinHouseIcon
                   className='mt-1'
@@ -142,6 +143,7 @@ const Footer: React.FC = () => {
               <a
                 href='https://yuppii.gr/'
                 target='_blank'
+                rel='noopener'
               >
                 {t('Footer.row-1.column-3.link-1')}
               </a>
@@ -153,6 +155,7 @@ const Footer: React.FC = () => {
               <a
                 href='https://startpilates.gr/'
                 target='_blank'
+                rel='noopener'
               >
                 {t('Footer.row-1.column-3.link-2')}
               </a>
@@ -169,6 +172,7 @@ const Footer: React.FC = () => {
                   <a
                     target='_blank'
                     href='https://www.facebook.com/profile.php?id=61566665200042'
+                    rel='noopener'
                   >
                     <FacebookIcon />
                   </a>
@@ -181,6 +185,7 @@ const Footer: React.FC = () => {
                   <a
                     target='_blank'
                     href='https://www.instagram.com/moccaliving.premiumstay'
+                    rel='noopener'
                   >
                     <InstagramIcon />
                   </a>
@@ -211,6 +216,7 @@ const Footer: React.FC = () => {
                   className='underline'
                   href='https://kyrcom.com/el/'
                   target='_blank'
+                  rel='noopener'
                 >
                   {chunks}
                 </a>
@@ -227,6 +233,7 @@ const Footer: React.FC = () => {
                   className='underline'
                   href='https://www.facebook.com/Christos.Mitsiaris/'
                   target='_blank'
+                  rel='noopener'
                 >
                   {chunks}
                 </a>

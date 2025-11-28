@@ -1,7 +1,7 @@
 'use client'
 
-import * as React from 'react'
-import {Root, Trigger, Content} from '@radix-ui/react-collapsible'
+import {Content, Root, Trigger} from '@radix-ui/react-collapsible'
+import type * as React from 'react'
 import {cn} from '@/src/lib/utils'
 
 const Collapsible: React.FC<React.ComponentPropsWithRef<typeof Root>> = ({

@@ -1,23 +1,23 @@
 'use client'
 
-import * as React from 'react'
-import {useTranslations, useLocale, Locale} from 'next-intl'
 import {GlobeIcon} from 'lucide-react'
-import {routing} from '@/src/i18n/routing'
-import {usePathname, useRouter} from '@/src/i18n/navigation'
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectPortal,
-  SelectContent,
-  SelectViewport,
-  SelectItem,
-  SelectItemText
-} from '@/src/components/ui/select'
-import {Spinner} from '@/src/components/ui/spinner'
+import {type Locale, useLocale, useTranslations} from 'next-intl'
+import * as React from 'react'
 import {EnglishFlag} from '@/src/components/flags/english-flag'
 import {GreekFlag} from '@/src/components/flags/greek-flag'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectItemText,
+  SelectPortal,
+  SelectTrigger,
+  SelectValue,
+  SelectViewport
+} from '@/src/components/ui/select'
+import {Spinner} from '@/src/components/ui/spinner'
+import {usePathname, useRouter} from '@/src/i18n/navigation'
+import {routing} from '@/src/i18n/routing'
 
 interface LocaleSwitcherProps {
   scrollTop?: boolean
@@ -36,22 +36,20 @@ const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
   const locale = useLocale()
 
   function onValueChange(value: Locale) {
-    startTransition(function () {
+    startTransition(() => {
       router.replace(pathname, {locale: value, scroll: scrollTop})
     })
   }
 
-  const renderedItems = routing.locales.map(function (locale) {
-    return (
-      <SelectItem
-        key={locale}
-        value={locale}
-      >
-        {flagLookup[locale]}
-        <SelectItemText>{t('label', {locale})}</SelectItemText>
-      </SelectItem>
-    )
-  })
+  const renderedItems = routing.locales.map((locale) => (
+    <SelectItem
+      key={locale}
+      value={locale}
+    >
+      {flagLookup[locale]}
+      <SelectItemText>{t('label', {locale})}</SelectItemText>
+    </SelectItem>
+  ))
 
   let renderedTrigger: React.JSX.Element
 

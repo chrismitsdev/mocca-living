@@ -1,9 +1,9 @@
-import {Resend} from 'resend'
-import {type Locale} from 'next-intl'
+import type {Locale} from 'next-intl'
 import {getTranslations} from 'next-intl/server'
-import {type ContactFormActionState} from '@/src/lib/actions'
-import {ContactFormInternal} from '@/src/components/email/contact-form-internal'
+import {Resend} from 'resend'
 import {ContactFormClient} from '@/src/components/email/contact-form-client'
+import {ContactFormInternal} from '@/src/components/email/contact-form-internal'
+import type {ContactFormActionState} from '@/src/lib/actions'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 

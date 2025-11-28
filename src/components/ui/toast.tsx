@@ -1,10 +1,10 @@
 'use client'
 
+import {CircleAlertIcon, CircleCheckIcon, XIcon} from 'lucide-react'
 import {toast as sonnerToast} from 'sonner'
-import {XIcon, CircleCheckIcon, CircleAlertIcon} from 'lucide-react'
-import {cn} from '@/src/lib/utils'
-import {Typography} from '@/src/components/ui/typography'
 import {Button} from '@/src/components/ui/button'
+import {Typography} from '@/src/components/ui/typography'
+import {cn} from '@/src/lib/utils'
 
 interface ToastProps {
   id: string | number

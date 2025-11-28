@@ -1,13 +1,13 @@
 'use client'
 
-import * as React from 'react'
 import {
+  Corner,
   Root,
-  Viewport,
   Scrollbar,
   Thumb,
-  Corner
+  Viewport
 } from '@radix-ui/react-scroll-area'
+import type * as React from 'react'
 import {cn} from '@/src/lib/utils'
 
 const ScrollArea: React.FC<React.ComponentPropsWithRef<typeof Root>> = ({

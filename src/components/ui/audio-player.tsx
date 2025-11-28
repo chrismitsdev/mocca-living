@@ -1,39 +1,39 @@
 'use client'
 
-import * as React from 'react'
-import ReactAudioPlayer, {RHAP_UI} from 'react-h5-audio-player'
 import {
-  PlayIcon,
+  ListIcon,
+  ListMusicIcon,
+  MusicIcon,
   PauseIcon,
+  PlayIcon,
   SkipBackIcon,
   SkipForwardIcon,
   SlashIcon,
-  ListMusicIcon,
   UserIcon,
-  MusicIcon,
-  ListIcon,
   Volume2Icon,
   VolumeOffIcon
 } from 'lucide-react'
-import {cn, formatDuration} from '@/src/lib/utils'
-import {reducer, type State} from '@/src/reducers/audo-player-reducer'
-import {
-  Collapsible,
-  CollapsibleTrigger,
-  CollapsibleContent
-} from '@/src/components/ui/collapsible'
-import {
-  ScrollArea,
-  ScrollAreaViewport,
-  ScrollAreaBar
-} from '@/src/components/ui/scrollarea'
-import {Typography} from '@/src/components/ui/typography'
-import {Spinner} from '@/src/components/ui/spinner'
-import {Separator} from '@/src/components/ui/separator'
-import {Button} from '@/src/components/ui/button'
-import {CustomImage} from '@/src/components/ui/custom-image'
+import * as React from 'react'
+import ReactAudioPlayer, {RHAP_UI} from 'react-h5-audio-player'
 import image from '@/public/images/other/playlst-image.jpg'
 import {songs} from '@/public/music/playlist'
+import {Button} from '@/src/components/ui/button'
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger
+} from '@/src/components/ui/collapsible'
+import {CustomImage} from '@/src/components/ui/custom-image'
+import {
+  ScrollArea,
+  ScrollAreaBar,
+  ScrollAreaViewport
+} from '@/src/components/ui/scrollarea'
+import {Separator} from '@/src/components/ui/separator'
+import {Spinner} from '@/src/components/ui/spinner'
+import {Typography} from '@/src/components/ui/typography'
+import {cn, formatDuration} from '@/src/lib/utils'
+import {reducer, type State} from '@/src/reducers/audo-player-reducer'
 
 const initialState: State = {
   playlist: songs,
@@ -189,23 +189,20 @@ const PlaylistTrack: React.FC<
 }) => {
   const [trackDuration, setTrackDuration] = React.useState<number | null>(null)
 
-  React.useEffect(
-    function () {
-      if (typeof window === 'undefined' || duration) return
+  React.useEffect(() => {
+    if (typeof window === 'undefined' || duration) return
 
-      const audio = new Audio(src)
+    const audio = new Audio(src)
 
-      function onMetadataLoaded() {
-        setTrackDuration(audio.duration)
-      }
+    function onMetadataLoaded() {
+      setTrackDuration(audio.duration)
+    }
 
-      audio.addEventListener('loadedmetadata', onMetadataLoaded)
-      return function () {
-        audio.removeEventListener('loadedmetadata', onMetadataLoaded)
-      }
-    },
-    [src, duration]
-  )
+    audio.addEventListener('loadedmetadata', onMetadataLoaded)
+    return () => {
+      audio.removeEventListener('loadedmetadata', onMetadataLoaded)
+    }
+  }, [src, duration])
 
   return (
     <li

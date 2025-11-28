@@ -1,11 +1,11 @@
-import * as React from 'react'
 import type {Metadata} from 'next'
-import {Locale} from 'next-intl'
-import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {notFound} from 'next/navigation'
-import {SlugHeader} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-header'
+import type {Locale} from 'next-intl'
+import {getTranslations, setRequestLocale} from 'next-intl/server'
+import * as React from 'react'
 import {SlugCarousel} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-carousel'
 import {SlugDetails} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-details'
+import {SlugHeader} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-header'
 
 type ParamsWithSlug = {
   params: Promise<{

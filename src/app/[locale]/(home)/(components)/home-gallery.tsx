@@ -1,32 +1,32 @@
 'use client'
 
+import {ExpandIcon, XIcon} from 'lucide-react'
+import type {StaticImageData} from 'next/image'
 import * as React from 'react'
-import {type StaticImageData} from 'next/image'
-import {XIcon, ExpandIcon} from 'lucide-react'
-import {cn, sortImportedImagesByName} from '@/src/lib/utils'
+import * as galleryImages from '@/public/images/home/home-gallery'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
+import {Button} from '@/src/components/ui/button'
+import {CustomImage} from '@/src/components/ui/custom-image'
 import {
   Dialog,
-  DialogTrigger,
-  DialogPortal,
-  DialogOverlay,
   DialogClose,
   DialogContent,
-  DialogTitle
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger
 } from '@/src/components/ui/dialog'
 import {
+  EmblaButtonNext,
+  EmblaButtonPrev,
   EmblaCarousel,
-  EmblaViewport,
   EmblaContainer,
   EmblaSlide,
-  EmblaButtonPrev,
-  EmblaButtonNext
+  EmblaViewport
 } from '@/src/components/ui/embla-carousel'
-import {CustomImage} from '@/src/components/ui/custom-image'
-import {Button} from '@/src/components/ui/button'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
-import * as galleryImages from '@/public/images/home/home-gallery'
+import {cn, sortImportedImagesByName} from '@/src/lib/utils'
 
 const images = sortImportedImagesByName(galleryImages)
 
@@ -76,31 +76,27 @@ interface GalleryTriggerProps {
 const HomeGallery: React.FC = () => {
   const [index, setIndex] = React.useState(0)
 
-  const thumbTriggers = images.map(function (image, i) {
-    return (
-      <Trigger
-        key={image.src}
-        className={triggerData[i].className}
-        src={image}
-        sizes={triggerData[i].sizes}
-        alt={`Gallery thumbnail image ${i + 1}`}
-        onClick={() => setIndex(i)}
-      />
-    )
-  })
+  const thumbTriggers = images.map((image, i) => (
+    <Trigger
+      key={image.src}
+      className={triggerData[i].className}
+      src={image}
+      sizes={triggerData[i].sizes}
+      alt={`Gallery thumbnail image ${i + 1}`}
+      onClick={() => setIndex(i)}
+    />
+  ))
 
-  const slides = images.map(function (image, i) {
-    return (
-      <EmblaSlide key={image.src}>
-        <CustomImage
-          className='w-full h-full rounded'
-          src={image}
-          sizes='(min-width: 640px) 1512px, 100vw'
-          alt={`Gallery slide image ${i + 1}`}
-        />
-      </EmblaSlide>
-    )
-  })
+  const slides = images.map((image, i) => (
+    <EmblaSlide key={image.src}>
+      <CustomImage
+        className='w-full h-full rounded'
+        src={image}
+        sizes='(min-width: 640px) 1512px, 100vw'
+        alt={`Gallery slide image ${i + 1}`}
+      />
+    </EmblaSlide>
+  ))
 
   return (
     <Container asChild>

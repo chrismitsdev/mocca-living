@@ -1,22 +1,22 @@
 'use client'
 
-import * as React from 'react'
-import {useTranslations} from 'next-intl'
 import cookies from 'js-cookie'
-import {CookieIcon, ChevronDownIcon} from 'lucide-react'
-import {useScrollLock} from '@/src/hooks/useScrollLock'
-import {Typography} from '@/src/components/ui/typography'
-import {
-  ScrollArea,
-  ScrollAreaViewport,
-  ScrollAreaBar
-} from '@/src/components/ui/scrollarea'
+import {ChevronDownIcon, CookieIcon} from 'lucide-react'
+import {useTranslations} from 'next-intl'
+import * as React from 'react'
+import {Button} from '@/src/components/ui/button'
 import {
   Collapsible,
-  CollapsibleTrigger,
-  CollapsibleContent
+  CollapsibleContent,
+  CollapsibleTrigger
 } from '@/src/components/ui/collapsible'
-import {Button} from '@/src/components/ui/button'
+import {
+  ScrollArea,
+  ScrollAreaBar,
+  ScrollAreaViewport
+} from '@/src/components/ui/scrollarea'
+import {Typography} from '@/src/components/ui/typography'
+import {useScrollLock} from '@/src/hooks/useScrollLock'
 
 const COOKIE_NAME = 'CONSENT_COOKIE'
 const COOKIE_VALUE = 'true'
@@ -35,7 +35,7 @@ const CookieConsent: React.FC = () => {
     setShowBanner(false)
   }
 
-  React.useEffect(function () {
+  React.useEffect(() => {
     if (!cookies.get(COOKIE_NAME)) {
       setShowBanner(true)
     }

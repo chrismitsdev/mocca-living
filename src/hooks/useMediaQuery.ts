@@ -19,7 +19,7 @@ export function useMediaQuery(
     return window.matchMedia(query).matches
   }
 
-  const [matches, setMatches] = React.useState<boolean>(function () {
+  const [matches, setMatches] = React.useState<boolean>(() => {
     if (initializeWithValue) {
       return getMatches(query)
     }
@@ -31,30 +31,27 @@ export function useMediaQuery(
     setMatches(getMatches(query))
   }
 
-  useIsomorphicLayoutEffect(
-    function () {
-      const matchMedia = window.matchMedia(query)
+  useIsomorphicLayoutEffect(() => {
+    const matchMedia = window.matchMedia(query)
 
-      // Triggered at the first client-side load and if query changes
-      handleChange()
+    // Triggered at the first client-side load and if query changes
+    handleChange()
 
-      // Use deprecated `addListener` and `removeListener` to support Safari < 14 (#135)
-      if (matchMedia.addListener) {
-        matchMedia.addListener(handleChange)
+    // Use deprecated `addListener` and `removeListener` to support Safari < 14 (#135)
+    if (matchMedia.addListener) {
+      matchMedia.addListener(handleChange)
+    } else {
+      matchMedia.addEventListener('change', handleChange)
+    }
+
+    return () => {
+      if (matchMedia.removeListener) {
+        matchMedia.removeListener(handleChange)
       } else {
-        matchMedia.addEventListener('change', handleChange)
+        matchMedia.removeEventListener('change', handleChange)
       }
-
-      return () => {
-        if (matchMedia.removeListener) {
-          matchMedia.removeListener(handleChange)
-        } else {
-          matchMedia.removeEventListener('change', handleChange)
-        }
-      }
-    },
-    [query]
-  )
+    }
+  }, [query])
 
   return matches
 }

@@ -1,24 +1,24 @@
 'use client'
 
-import * as React from 'react'
-import {useTranslations, useLocale} from 'next-intl'
 import {
-  UserIcon,
   MailIcon,
-  PhoneIcon,
   MessageCircleIcon,
-  SendHorizonalIcon
+  PhoneIcon,
+  SendHorizonalIcon,
+  UserIcon
 } from 'lucide-react'
-import {cn} from '@/src/lib/utils'
-import {type ContactFormActionState, contactFormAction} from '@/src/lib/actions'
+import {useLocale, useTranslations} from 'next-intl'
+import * as React from 'react'
 import {PrivacyModal} from '@/src/components/shared/privacy-modal'
-import {Label} from '@/src/components/ui/label'
-import {Input} from '@/src/components/ui/input'
-import {Textarea} from '@/src/components/ui/textarea'
-import {Checkbox} from '@/src/components/ui/checkbox'
-import {Typography} from '@/src/components/ui/typography'
 import {Button} from '@/src/components/ui/button'
+import {Checkbox} from '@/src/components/ui/checkbox'
+import {Input} from '@/src/components/ui/input'
+import {Label} from '@/src/components/ui/label'
+import {Textarea} from '@/src/components/ui/textarea'
 import {toast} from '@/src/components/ui/toast'
+import {Typography} from '@/src/components/ui/typography'
+import {type ContactFormActionState, contactFormAction} from '@/src/lib/actions'
+import {cn} from '@/src/lib/utils'
 
 const initialState = {
   data: {} as ContactFormActionState['data'],
@@ -34,7 +34,7 @@ const Form: React.FC = () => {
   )
 
   React.useEffect(
-    function () {
+    () => {
       if (state.ok === null) return
 
       if (state.ok) {
@@ -52,7 +52,7 @@ const Form: React.FC = () => {
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [state]
+    [state, t]
   )
 
   return (

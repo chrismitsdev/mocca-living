@@ -1,8 +1,8 @@
-import * as React from 'react'
 import type {Metadata} from 'next'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
-import {CookiesHeader} from '@/src/app/[locale]/cookies/(components)/cookies-header'
+import * as React from 'react'
 import {CookiesContent} from '@/src/app/[locale]/cookies/(components)/cookies-content'
+import {CookiesHeader} from '@/src/app/[locale]/cookies/(components)/cookies-header'
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
   const {locale} = await params

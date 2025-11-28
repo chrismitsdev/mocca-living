@@ -1,10 +1,10 @@
-import {useTranslations} from 'next-intl'
 import {TriangleAlertIcon} from 'lucide-react'
-import {Section} from '@/src/components/shared/section'
-import {Container} from '@/src/components/shared/container'
+import {useTranslations} from 'next-intl'
 import {ClientLink} from '@/src/components/shared/client-link'
-import {Typography} from '@/src/components/ui/typography'
+import {Container} from '@/src/components/shared/container'
+import {Section} from '@/src/components/shared/section'
 import {Button} from '@/src/components/ui/button'
+import {Typography} from '@/src/components/ui/typography'
 
 export default function NotFound() {
   const t = useTranslations('Pages.NotFound')

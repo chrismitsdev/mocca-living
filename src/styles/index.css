@@ -1,9 +1,9 @@
-@import 'tailwindcss';
-@import './colors.css';
-@import './typography.css';
-@import './shadows.css';
-@import './animations.css';
-@import './data-attributes.css';
+@import "tailwindcss";
+@import "./colors.css";
+@import "./typography.css";
+@import "./shadows.css";
+@import "./animations.css";
+@import "./data-attributes.css";
 
 /* General styling */
 *::selection {
@@ -43,7 +43,7 @@
 .leaflet-map-pane,
 .leaflet-left,
 .leaflet-control-zoom {
-  z-index: auto !important;
+  z-index: auto;
 }
 
 .leaflet-bottom {
@@ -101,15 +101,16 @@
   flex: 1 1 auto;
 }
 
-.rhap_stacked .rhap_controls-section {
+.rhap_controls-section {
   margin-top: 8px;
 }
 
 .rhap_horizontal {
   flex-direction: row;
-}
-.rhap_horizontal .rhap_controls-section {
-  margin-left: 8px;
+
+  .rhap_controls-section {
+    margin-left: 8px;
+  }
 }
 
 .rhap_horizontal-reverse {

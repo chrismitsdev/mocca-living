@@ -10,6 +10,8 @@ const StartPilatesLogo: React.FC<CustomIconProps> = ({
       viewBox='0 0 305 24'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      role='img'
+      aria-hidden='true'
       {...props}
     >
       <g clipPath='url(#clip0_1995_53)'>

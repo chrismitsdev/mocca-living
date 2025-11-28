@@ -1,5 +1,5 @@
+import type {LucideProps} from 'lucide-react'
 import * as React from 'react'
-import {type LucideProps} from 'lucide-react'
 import {cn} from '@/src/lib/utils'
 
 interface TextareaProps extends React.ComponentPropsWithRef<'textarea'> {

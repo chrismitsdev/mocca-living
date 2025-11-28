@@ -10,6 +10,8 @@ const MoccaLogoSimple: React.FC<CustomIconProps> = ({
       viewBox='0 0 234 362'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      role='img'
+      aria-hidden='true'
       {...props}
     >
       <path

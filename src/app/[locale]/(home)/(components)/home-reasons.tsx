@@ -1,10 +1,10 @@
-import {useTranslations} from 'next-intl'
 import {ArrowBigRightIcon} from 'lucide-react'
+import {useTranslations} from 'next-intl'
+import {reasonImage1, reasonImage2} from '@/public/images/home/home-reasons'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {Typography} from '@/src/components/ui/typography'
-import {reasonImage1, reasonImage2} from '@/public/images/home/home-reasons'
 
 const HomeReasons: React.FC = () => {
   const t = useTranslations('Pages.Home.IdealReasons')

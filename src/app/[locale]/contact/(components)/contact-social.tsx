@@ -1,5 +1,5 @@
+import {FacebookIcon, InstagramIcon, MapPin, PhoneIcon} from 'lucide-react'
 import {useTranslations} from 'next-intl'
-import {MapPin, PhoneIcon, FacebookIcon, InstagramIcon} from 'lucide-react'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'

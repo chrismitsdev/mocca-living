@@ -1,7 +1,7 @@
 'use client'
 
-import * as React from 'react'
-import {Root, Portal, Trigger, Content, Arrow} from '@radix-ui/react-hover-card'
+import {Arrow, Content, Portal, Root, Trigger} from '@radix-ui/react-hover-card'
+import type * as React from 'react'
 import {cn} from '@/src/lib/utils'
 
 const HoverCard = Root

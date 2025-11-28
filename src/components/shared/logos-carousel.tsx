@@ -1,17 +1,17 @@
 'use client'
 
-import Image from 'next/image'
 import Autoscroll from 'embla-carousel-auto-scroll'
+import Image from 'next/image'
+import christmasLogo from 'public/logos/christmas-lighthouse-logo.png'
+import {CocoMatLogo} from '@/src/components/logos/cocomat-logo'
+import {StartPilatesLogo} from '@/src/components/logos/startpilates-logo'
+import {YuppiiLogo} from '@/src/components/logos/yuppii-logo'
 import {
   EmblaCarousel,
-  EmblaViewport,
   EmblaContainer,
-  EmblaSlide
+  EmblaSlide,
+  EmblaViewport
 } from '@/src/components/ui/embla-carousel'
-import {YuppiiLogo} from '@/src/components/logos/yuppii-logo'
-import {StartPilatesLogo} from '@/src/components/logos/startpilates-logo'
-import {CocoMatLogo} from '@/src/components/logos/cocomat-logo'
-import christmasLogo from 'public/logos/christmas-lighthouse-logo.png'
 
 const LogosCarousel: React.FC = () => {
   return (
@@ -23,6 +23,7 @@ const LogosCarousel: React.FC = () => {
               <a
                 href='https://yuppii.gr/'
                 target='_blank'
+                rel='noopener'
               >
                 <YuppiiLogo className='w-full' />
               </a>
@@ -31,6 +32,7 @@ const LogosCarousel: React.FC = () => {
               <a
                 href='https://startpilates.gr/'
                 target='_blank'
+                rel='noopener'
               >
                 <StartPilatesLogo className='w-full' />
               </a>
@@ -39,6 +41,7 @@ const LogosCarousel: React.FC = () => {
               <a
                 href='https://www.facebook.com/TheChristmasLighthouseAXD'
                 target='_blank'
+                rel='noopener'
               >
                 <Image
                   height={53}

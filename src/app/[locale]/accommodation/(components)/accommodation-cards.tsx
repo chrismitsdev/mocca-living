@@ -1,27 +1,27 @@
-import {type StaticImageData} from 'next/image'
-import {type Messages, useTranslations} from 'next-intl'
 import {
-  UsersIcon,
+  BabyIcon,
   BedDoubleIcon,
-  ToiletIcon,
   ChevronRight,
-  BabyIcon
+  ToiletIcon,
+  UsersIcon
 } from 'lucide-react'
+import type {StaticImageData} from 'next/image'
+import {type Messages, useTranslations} from 'next-intl'
+import {dimitraCover, georgiaCover} from '@/public/images/covers'
+import {ClientLink} from '@/src/components/shared/client-link'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
-import {ClientLink} from '@/src/components/shared/client-link'
+import {Button} from '@/src/components/ui/button'
 import {
   Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
   CardContent,
-  CardFooter
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle
 } from '@/src/components/ui/card'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {Typography} from '@/src/components/ui/typography'
-import {Button} from '@/src/components/ui/button'
-import {dimitraCover, georgiaCover} from '@/public/images/covers'
 
 type Villas = Messages['Pages']['Accommodation']['Index']['Villas']
 
@@ -42,23 +42,20 @@ const villaInfo: Pick<VillaInfo, 'key' | 'image'>[] = [
   {key: 'georgia', image: georgiaCover}
 ]
 
-const getVillas = function (
+const getVillas = (
   t: ReturnType<typeof useTranslations<'Pages.Accommodation.Index.Villas'>>
-): VillaInfo[] {
-  return villaInfo.map(function ({key, image}) {
-    return {
-      key,
-      image,
-      title: t(`${key}.title`),
-      description: t(`${key}.description`),
-      guests: t(`${key}.guests`),
-      children: t(`${key}.children`),
-      bedrooms: t(`${key}.bedrooms`),
-      bathrooms: t(`${key}.bathrooms`),
-      button: t(`${key}.button`)
-    }
-  })
-}
+): VillaInfo[] =>
+  villaInfo.map(({key, image}) => ({
+    key,
+    image,
+    title: t(`${key}.title`),
+    description: t(`${key}.description`),
+    guests: t(`${key}.guests`),
+    children: t(`${key}.children`),
+    bedrooms: t(`${key}.bedrooms`),
+    bathrooms: t(`${key}.bathrooms`),
+    button: t(`${key}.button`)
+  }))
 
 const AccommodationCards: React.FC = () => {
   const villas = getVillas(useTranslations('Pages.Accommodation.Index.Villas'))

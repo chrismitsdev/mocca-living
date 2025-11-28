@@ -1,9 +1,9 @@
 'use client'
 
 import {AnimatePresence, motion, type Variants} from 'motion/react'
-import {usePathname} from '@/src/i18n/navigation'
-import {FrozenRouter} from '@/src/components/shared/route-transitions/frozen-router'
 import boxLogo from '@/public/logos/mocca-logo-box.svg'
+import {FrozenRouter} from '@/src/components/shared/route-transitions/frozen-router'
+import {usePathname} from '@/src/i18n/navigation'
 
 const ColumnsTransition: React.FC<React.PropsWithChildren> = ({children}) => {
   const pathname = usePathname()
@@ -73,7 +73,7 @@ const ColumnsTransition: React.FC<React.PropsWithChildren> = ({children}) => {
     }
   }
 
-  const columns = 5
+  // const columns = 5
 
   return (
     <AnimatePresence mode='wait'>
@@ -87,23 +87,49 @@ const ColumnsTransition: React.FC<React.PropsWithChildren> = ({children}) => {
           id='columns-transition-container'
           className='fixed inset-0 pointer-events-none z-50 flex'
         >
-          {Array.from({length: columns}).map(function (_, i) {
-            return (
-              <motion.div
-                key={i}
-                id='columns-transition-column'
-                className='relative h-full w-full bg-surface-3'
-                {...anim(column, columns - i)}
-              />
-            )
-          })}
+          {/*{Array.from({length: columns}).map((_, i) => (
+            <motion.div
+              key={i}
+              id='columns-transition-column'
+              className='relative h-full w-full bg-surface-3'
+              {...anim(column, columns - i)}
+            />
+          ))}*/}
 
-          <motion.img
-            src={boxLogo.src}
-            alt='Brand Logo'
-            className='absolute top-1/2 left-1/2 -translate-1/2 w-24 h-24'
-            {...anim(logo)}
+          <motion.div
+            id='columns-transition-column'
+            className='relative h-full w-full bg-surface-3'
+            {...anim(column, 5)}
           />
+          <motion.div
+            id='columns-transition-column'
+            className='relative h-full w-full bg-surface-3'
+            {...anim(column, 4)}
+          />
+          <motion.div
+            id='columns-transition-column'
+            className='relative h-full w-full bg-surface-3'
+            {...anim(column, 3)}
+          />
+          <motion.div
+            id='columns-transition-column'
+            className='relative h-full w-full bg-surface-3'
+            {...anim(column, 2)}
+          />
+          <motion.div
+            id='columns-transition-column'
+            className='relative h-full w-full bg-surface-3'
+            {...anim(column, 1)}
+          />
+
+          <picture>
+            <motion.img
+              src={boxLogo.src}
+              alt='Brand Logo'
+              className='absolute top-1/2 left-1/2 -translate-1/2 w-24 h-24'
+              {...anim(logo)}
+            />
+          </picture>
         </div>
 
         <FrozenRouter>{children}</FrozenRouter>

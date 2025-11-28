@@ -10,6 +10,8 @@ const CocoMatLogo: React.FC<CustomIconProps> = ({
       viewBox='0 0 171 45'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      role='img'
+      aria-hidden='true'
       {...props}
     >
       <path

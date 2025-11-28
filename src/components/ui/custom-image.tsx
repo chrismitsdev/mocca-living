@@ -1,5 +1,5 @@
-import * as React from 'react'
 import Image, {type StaticImageData} from 'next/image'
+import type * as React from 'react'
 import {shimmer, toBase64} from '@/src/lib/utils'
 
 interface CustomImageProps

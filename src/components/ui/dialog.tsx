@@ -1,16 +1,16 @@
 'use client'
 
-import * as React from 'react'
 import {
-  Root,
-  Trigger,
+  Close,
+  Content,
+  Description,
   Overlay,
   Portal,
-  Content,
+  Root,
   Title,
-  Description,
-  Close
+  Trigger
 } from '@radix-ui/react-dialog'
+import type * as React from 'react'
 import {cn} from '@/src/lib/utils'
 
 const Dialog = Root

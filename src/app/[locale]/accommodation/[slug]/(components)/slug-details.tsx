@@ -1,30 +1,30 @@
-import * as React from 'react'
-import {useTranslations} from 'next-intl'
 import {
-  DotIcon,
-  UsersIcon,
   BabyIcon,
   BedDoubleIcon,
-  ToiletIcon,
-  LandPlotIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-  LucideProps
+  DotIcon,
+  LandPlotIcon,
+  type LucideProps,
+  ToiletIcon,
+  UsersIcon
 } from 'lucide-react'
+import {useTranslations} from 'next-intl'
+import * as React from 'react'
+import {SlugForm} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-form'
+import {ClientLink} from '@/src/components/shared/client-link'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
-import {ClientLink} from '@/src/components/shared/client-link'
+import {Button} from '@/src/components/ui/button'
 import {
   Card,
-  CardHeader,
-  CardTitle,
   CardContent,
-  CardFooter
+  CardFooter,
+  CardHeader,
+  CardTitle
 } from '@/src/components/ui/card'
-import {Button} from '@/src/components/ui/button'
-import {Typography} from '@/src/components/ui/typography'
 import {Separator} from '@/src/components/ui/separator'
-import {SlugForm} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-form'
+import {Typography} from '@/src/components/ui/typography'
 
 const SlugDetails: React.FC<{slug: Slug}> = ({slug}) => {
   const t = useTranslations('Pages.Accommodation.Slug.card')

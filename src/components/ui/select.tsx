@@ -1,18 +1,18 @@
 'use client'
 
 import {
-  Root,
-  Portal,
-  Viewport,
-  Group,
-  Value,
-  Trigger,
   Content,
-  Label,
+  Group,
+  Icon,
   Item,
   ItemText,
+  Label,
+  Portal,
+  Root,
   Separator,
-  Icon
+  Trigger,
+  Value,
+  Viewport
 } from '@radix-ui/react-select'
 import {ChevronsUpDownIcon} from 'lucide-react'
 import {cn} from '@/src/lib/utils'

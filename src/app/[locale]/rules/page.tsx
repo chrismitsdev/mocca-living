@@ -1,8 +1,8 @@
-import * as React from 'react'
 import type {Metadata} from 'next'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
-import {RulesHeader} from '@/src/app/[locale]/rules/(components)/rules-header'
+import * as React from 'react'
 import {RulesContent} from '@/src/app/[locale]/rules/(components)/rules-content'
+import {RulesHeader} from '@/src/app/[locale]/rules/(components)/rules-header'
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
   const {locale} = await params

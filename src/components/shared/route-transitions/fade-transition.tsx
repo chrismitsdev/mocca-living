@@ -1,7 +1,7 @@
 'use client'
 
-import * as React from 'react'
 import {AnimatePresence, motion} from 'motion/react'
+import type * as React from 'react'
 import {FrozenRouter} from '@/src/components/shared/route-transitions/frozen-router'
 import {usePathname} from '@/src/i18n/navigation'
 

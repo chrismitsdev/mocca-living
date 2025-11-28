@@ -13,6 +13,8 @@ const LogoViber: React.FC<CustomIconProps> = ({
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'
       xmlSpace='preserve'
+      role='img'
+      aria-hidden='true'
       {...props}
     >
       <circle

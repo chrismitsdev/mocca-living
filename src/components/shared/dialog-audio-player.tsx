@@ -1,19 +1,19 @@
 'use client'
 
-import * as React from 'react'
 import {MinimizeIcon} from 'lucide-react'
-import {cn} from '@/src/lib/utils'
+import * as React from 'react'
+import {AudioPlayer} from '@/src/components/ui/audio-player'
+import {Button} from '@/src/components/ui/button'
 import {
   Dialog,
-  DialogTrigger,
-  DialogPortal,
+  DialogClose,
   DialogContent,
+  DialogPortal,
   DialogTitle,
-  DialogClose
+  DialogTrigger
 } from '@/src/components/ui/dialog'
-import {AudioPlayer} from '@/src/components/ui/audio-player'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
-import {Button} from '@/src/components/ui/button'
+import {cn} from '@/src/lib/utils'
 
 const DialogAudioPlayer: React.FC<React.PropsWithChildren> = ({children}) => {
   const [open, setOpen] = React.useState(false)

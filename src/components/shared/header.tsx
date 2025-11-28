@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import {Link} from '@/src/i18n/navigation'
+import logoSimple from '@/public/logos/mocca-logo-simple.svg'
 import {Container} from '@/src/components/shared/container'
 import {Navigation} from '@/src/components/shared/navigation'
-import logoSimple from '@/public/logos/mocca-logo-simple.svg'
+import {Link} from '@/src/i18n/navigation'
 
 const Header: React.FC = () => {
   return (

@@ -1,26 +1,26 @@
-import {useTranslations, useLocale} from 'next-intl'
 import {
+  MessageCircleIcon,
   MessagesSquareIcon,
-  XIcon,
   PhoneOutgoingIcon,
-  MessageCircleIcon
+  XIcon
 } from 'lucide-react'
-import {cn} from '@/src/lib/utils'
+import {useLocale, useTranslations} from 'next-intl'
+import {LogoWhatsApp} from '@/src/components/logos/logo-whatsapp'
+import {Button} from '@/src/components/ui/button'
 import {
   Drawer,
-  DrawerTrigger,
-  DrawerPortal,
-  DrawerOverlay,
+  DrawerClose,
   DrawerContent,
-  DrawerTitle,
   DrawerDescription,
-  DrawerClose
+  DrawerOverlay,
+  DrawerPortal,
+  DrawerTitle,
+  DrawerTrigger
 } from '@/src/components/ui/drawer'
-import {LogoWhatsApp} from '@/src/components/logos/logo-whatsapp'
 import {Separator} from '@/src/components/ui/separator'
-import {Button} from '@/src/components/ui/button'
 import {Typography} from '@/src/components/ui/typography'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
+import {cn} from '@/src/lib/utils'
 
 const PHONE = '+306973560007'
 // const PHONE = '+306973433980'

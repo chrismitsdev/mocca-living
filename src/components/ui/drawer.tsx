@@ -1,20 +1,20 @@
 'use client'
 
-import * as React from 'react'
-import {Slottable} from '@radix-ui/react-slot'
 import {
-  Root,
-  Trigger,
-  Portal,
-  Overlay,
+  Close,
   Content,
-  Title,
   Description,
-  Close
+  Overlay,
+  Portal,
+  Root,
+  Title,
+  Trigger
 } from '@radix-ui/react-dialog'
+import {Slottable} from '@radix-ui/react-slot'
 import {cva, type VariantProps} from 'class-variance-authority'
-import {cn} from '@/src/lib/utils'
+import type * as React from 'react'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
+import {cn} from '@/src/lib/utils'
 
 const drawerContentVariants = cva(
   ['fixed', 'z-1', 'bg-surface-2', 'shadow-small'],

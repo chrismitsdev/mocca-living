@@ -1,16 +1,16 @@
 'use client'
 
-import * as React from 'react'
 import {useTranslations} from 'next-intl'
+import type * as React from 'react'
 import {Container} from '@/src/components/shared/container'
-import {Section} from '@/src/components/shared/section'
 import {Form} from '@/src/components/shared/form'
+import {Section} from '@/src/components/shared/section'
 import {
   Card,
-  CardHeader,
-  CardTitle,
+  CardContent,
   CardDescription,
-  CardContent
+  CardHeader,
+  CardTitle
 } from '@/src/components/ui/card'
 
 const ContactForm: React.FC = () => {

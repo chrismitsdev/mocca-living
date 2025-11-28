@@ -1,10 +1,10 @@
-'use client'
+// 'use client'
 
-import * as React from 'react'
 import {Slot, Slottable} from '@radix-ui/react-slot'
 import {cva, type VariantProps} from 'class-variance-authority'
-import {cn} from '@/src/lib/utils'
+import type * as React from 'react'
 import {Spinner} from '@/src/components/ui/spinner'
+import {cn} from '@/src/lib/utils'
 
 const buttonVariants = cva(
   [

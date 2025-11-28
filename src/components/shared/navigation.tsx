@@ -1,45 +1,45 @@
 'use client'
 
-import * as React from 'react'
-import {useTranslations} from 'next-intl'
 import {
+  BedDoubleIcon,
   ChevronRightIcon,
   EllipsisVerticalIcon,
-  HomeIcon,
-  BedDoubleIcon,
-  MessageSquareIcon,
   FacebookIcon,
+  HomeIcon,
   InstagramIcon,
-  type LucideProps
+  type LucideProps,
+  MessageSquareIcon
 } from 'lucide-react'
-import {cn} from '@/src/lib/utils'
-import {Link, usePathname} from '@/src/i18n/navigation'
-import {useScrollLock} from '@/src/hooks/useScrollLock'
-import {
-  HoverCard,
-  HoverCardTrigger,
-  HoverCardPortal,
-  HoverCardContent,
-  HoverCardArrow
-} from '@/src/components/ui/hover-card'
-import {
-  Drawer,
-  DrawerTrigger,
-  DrawerContent,
-  DrawerTitle
-} from '@/src/components/ui/drawer'
-import {
-  Collapsible,
-  CollapsibleTrigger,
-  CollapsibleContent
-} from '@/src/components/ui/collapsible'
+import {useTranslations} from 'next-intl'
+import * as React from 'react'
+import {dimitraCover, georgiaCover} from '@/public/images/covers'
 import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
 import {Button} from '@/src/components/ui/button'
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger
+} from '@/src/components/ui/collapsible'
 import {CustomImage} from '@/src/components/ui/custom-image'
-import {Typography} from '@/src/components/ui/typography'
+import {
+  Drawer,
+  DrawerContent,
+  DrawerTitle,
+  DrawerTrigger
+} from '@/src/components/ui/drawer'
+import {
+  HoverCard,
+  HoverCardArrow,
+  HoverCardContent,
+  HoverCardPortal,
+  HoverCardTrigger
+} from '@/src/components/ui/hover-card'
 import {Separator} from '@/src/components/ui/separator'
+import {Typography} from '@/src/components/ui/typography'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
-import {dimitraCover, georgiaCover} from '@/public/images/covers'
+import {useScrollLock} from '@/src/hooks/useScrollLock'
+import {Link, usePathname} from '@/src/i18n/navigation'
+import {cn} from '@/src/lib/utils'
 
 const Navigation: React.FC = () => {
   const [hoverCardOpen, setHoverCardOpen] = React.useState(false)
@@ -48,14 +48,12 @@ const Navigation: React.FC = () => {
   const t = useTranslations('Metadata.Pages')
   useScrollLock({autoLock: drawerOpen})
 
-  React.useEffect(
-    function () {
-      if (hoverCardOpen) setHoverCardOpen(false)
-      if (drawerOpen) setDrawerOpen(false)
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [pathname]
-  )
+  React.useEffect(() => {
+    if (!pathname) return
+
+    setHoverCardOpen(false)
+    setDrawerOpen(false)
+  }, [pathname])
 
   return (
     <>
@@ -63,7 +61,6 @@ const Navigation: React.FC = () => {
         <ul
           aria-label='Desktop navigation menu'
           className='flex gap-x-4'
-          role='menubar'
         >
           <li role='none'>
             <NavLink
@@ -198,7 +195,6 @@ const Navigation: React.FC = () => {
               <ul
                 aria-label='Mobile navigation menu'
                 className='w-full space-y-8'
-                role='menubar'
               >
                 <li role='none'>
                   <NavLink
@@ -234,10 +230,7 @@ const Navigation: React.FC = () => {
                       </CollapsibleTrigger>
                     </div>
                     <CollapsibleContent>
-                      <ul
-                        className='mt-4 space-y-4'
-                        role='menu'
-                      >
+                      <ul className='mt-4 space-y-4'>
                         <li role='none'>
                           <Link href='/accommodation/dimitra'>
                             <div className='flex gap-3 rounded'>
@@ -304,6 +297,7 @@ const Navigation: React.FC = () => {
                   <a
                     target='_blank'
                     href='https://www.facebook.com/profile.php?id=61566665200042'
+                    rel='noopener'
                   >
                     <FacebookIcon />
                   </a>
@@ -316,6 +310,7 @@ const Navigation: React.FC = () => {
                   <a
                     target='_blank'
                     href='https://www.instagram.com/moccaliving.premiumstay'
+                    rel='noopener'
                   >
                     <InstagramIcon />
                   </a>

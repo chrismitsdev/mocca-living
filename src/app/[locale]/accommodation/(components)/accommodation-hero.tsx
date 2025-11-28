@@ -1,8 +1,8 @@
 import {useTranslations} from 'next-intl'
-import {ClientLink} from '@/src/components/shared/client-link'
-import {CustomImage} from '@/src/components/ui/custom-image'
-import {Button} from '@/src/components/ui/button'
 import {desktop, mobile} from '@/public/images/accommodation/index/index'
+import {ClientLink} from '@/src/components/shared/client-link'
+import {Button} from '@/src/components/ui/button'
+import {CustomImage} from '@/src/components/ui/custom-image'
 
 const AccommodationHero: React.FC = () => {
   const t = useTranslations('Pages.Accommodation.Index.Hero')

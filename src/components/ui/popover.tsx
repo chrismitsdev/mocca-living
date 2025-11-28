@@ -1,14 +1,14 @@
 'use client'
 
-import * as React from 'react'
 import {
-  Root,
-  Trigger,
+  Anchor,
+  Close,
   Content,
   Portal,
-  Close,
-  Anchor
+  Root,
+  Trigger
 } from '@radix-ui/react-popover'
+import type * as React from 'react'
 import {cn} from '@/src/lib/utils'
 
 const Popover = Root

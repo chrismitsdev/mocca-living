@@ -1,25 +1,25 @@
 'use client'
 
-import * as React from 'react'
-import {useTranslations} from 'next-intl'
 import {XIcon} from 'lucide-react'
+import {useTranslations} from 'next-intl'
+import type * as React from 'react'
 import {Form} from '@/src/components/shared/form'
+import {Button} from '@/src/components/ui/button'
 import {
   Drawer,
-  DrawerTrigger,
-  DrawerPortal,
-  DrawerOverlay,
+  DrawerClose,
   DrawerContent,
-  DrawerTitle,
   DrawerDescription,
-  DrawerClose
+  DrawerOverlay,
+  DrawerPortal,
+  DrawerTitle,
+  DrawerTrigger
 } from '@/src/components/ui/drawer'
 import {
   ScrollArea,
-  ScrollAreaViewport,
-  ScrollAreaBar
+  ScrollAreaBar,
+  ScrollAreaViewport
 } from '@/src/components/ui/scrollarea'
-import {Button} from '@/src/components/ui/button'
 import {Separator} from '@/src/components/ui/separator'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 

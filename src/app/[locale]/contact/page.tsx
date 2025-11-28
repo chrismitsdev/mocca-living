@@ -1,10 +1,10 @@
-import * as React from 'react'
 import type {Metadata} from 'next'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
-import {ContactHeader} from '@/src/app/[locale]/contact/(components)/contact-header'
+import * as React from 'react'
 import {ContactForm} from '@/src/app/[locale]/contact/(components)/contact-form'
-import {ContactSocial} from '@/src/app/[locale]/contact/(components)/contact-social'
+import {ContactHeader} from '@/src/app/[locale]/contact/(components)/contact-header'
 import ContactMap from '@/src/app/[locale]/contact/(components)/contact-map'
+import {ContactSocial} from '@/src/app/[locale]/contact/(components)/contact-social'
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
   const {locale} = await params

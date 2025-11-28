@@ -1,22 +1,22 @@
-import * as React from 'react'
 import {
-  Html,
-  Head,
-  Font,
-  Tailwind,
   Body,
-  Container,
-  Img,
-  Section,
-  Row,
   Column,
+  Container,
+  Font,
+  Head,
   Heading,
-  Text,
-  Link
+  Html,
+  Img,
+  Link,
+  Row,
+  Section,
+  Tailwind,
+  Text
 } from '@react-email/components'
-import {type Locale} from 'next-intl'
+import type {Locale} from 'next-intl'
 import {getTranslations} from 'next-intl/server'
-import {ContactFormActionState} from '@/src/lib/actions'
+import type * as React from 'react'
+import type {ContactFormActionState} from '@/src/lib/actions'
 
 const ContactFormClient: React.FC<{
   formData: ContactFormActionState['data']
