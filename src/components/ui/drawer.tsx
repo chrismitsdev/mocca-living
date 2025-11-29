@@ -10,10 +10,8 @@ import {
   Title,
   Trigger
 } from '@radix-ui/react-dialog'
-import {Slottable} from '@radix-ui/react-slot'
 import {cva, type VariantProps} from 'class-variance-authority'
 import type * as React from 'react'
-import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 import {cn} from '@/src/lib/utils'
 
 const drawerContentVariants = cva(
@@ -120,14 +118,14 @@ const DrawerDescription: React.FC<
 }
 
 const DrawerClose: React.FC<React.ComponentPropsWithRef<typeof Close>> = ({
-  children,
+  'aria-label': ariaLabel = 'Close drawer',
   ...props
 }) => {
   return (
-    <Close {...props}>
-      <Slottable>{children}</Slottable>
-      <VisuallyHidden>{'Close dialog'}</VisuallyHidden>
-    </Close>
+    <Close
+      aria-label={ariaLabel}
+      {...props}
+    />
   )
 }
 

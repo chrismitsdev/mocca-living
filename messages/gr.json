@@ -229,6 +229,7 @@
     "ContactDrawer": {
       "title": "Επικοινωνήστε μαζί μας",
       "description": "Επιλέξτε προτιμώμενη μέθοδο επικοινωνίας.",
+      "message": "Γειά σας, θα ήθελα πληροφορίες σχετικά με διαμονή στις βίλες Mocca Living.",
       "whatsapp": "WhatsApp",
       "viber": "Viber",
       "sms": "SMS μήνυμα",

@@ -4,7 +4,7 @@ import {
   PhoneOutgoingIcon,
   XIcon
 } from 'lucide-react'
-import {useLocale, useTranslations} from 'next-intl'
+import {useTranslations} from 'next-intl'
 import {LogoWhatsApp} from '@/src/components/logos/logo-whatsapp'
 import {Button} from '@/src/components/ui/button'
 import {
@@ -19,19 +19,12 @@ import {
 } from '@/src/components/ui/drawer'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
-import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 import {cn} from '@/src/lib/utils'
 
 const PHONE = '+306973560007'
-// const PHONE = '+306973433980'
 
 const ContactDrawer: React.FC = () => {
-  const locale = useLocale()
   const t = useTranslations('Components.ContactDrawer')
-  const message =
-    locale === 'gr'
-      ? 'Γεια σας, ενδιαφέρομαι για διαμονή στις βίλες Mocca Living. Μπορείτε να μου δώσετε περισσότερες πληροφορίες;'
-      : 'Hello, I am interested in staying at Mocca Living Villas. Could you please provide me with more information?'
 
   return (
     <Drawer>
@@ -57,7 +50,7 @@ const ContactDrawer: React.FC = () => {
           <Separator />
           <div className='p-7 space-y-6 sm:p-8'>
             <ContactMethodLink
-              href={`https://api.whatsapp.com/send/?phone=${PHONE.replace('+', '')}&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`}
+              href={`https://api.whatsapp.com/send/?phone=${PHONE.replace('+', '')}&text=${encodeURIComponent(t('message'))}&type=phone_number&app_absent=0`}
               aria-label='WhatsApp messaging'
             >
               <span>
@@ -90,7 +83,6 @@ const ContactDrawer: React.FC = () => {
               variant='ghost-error'
               size='icon-small'
             >
-              <VisuallyHidden>Close drawer</VisuallyHidden>
               <XIcon />
             </Button>
           </DrawerClose>

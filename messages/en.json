@@ -229,6 +229,7 @@
     "ContactDrawer": {
       "title": "Contact us",
       "description": "Choose your preferred contact method.",
+      "message": "Hello, I am interested in booking a stay at Mocca Living Villas. Could you please share more details?",
       "whatsapp": "WhatsApp",
       "viber": "Viber",
       "sms": "SMS message",
