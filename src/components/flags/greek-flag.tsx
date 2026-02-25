@@ -1,4 +1,4 @@
-const GreekFlag: React.FC<CustomIconProps> = ({size = 16, ...props}) => {
+function GreekFlag({size = 16, ...props}: CustomIconProps) {
   return (
     <svg
       width={size}

@@ -41,7 +41,7 @@ const ContactMap: React.FC = () => {
             icon={
               <MapPinIcon
                 size={32}
-                className='fill-primary text-surface-1'
+                className='fill-surface-1 text-primary'
               />
             }
           >

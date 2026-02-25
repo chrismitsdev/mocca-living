@@ -17,8 +17,7 @@ const buttonVariants = cva(
     'font-semibold',
     '*:shrink-0',
     'rounded',
-    'ring-offset-background',
-    'transition-colors',
+    'transition',
     'focus-visible:outline-none',
     'focus-visible:ring-2',
     'focus-visible:ring-ring',
@@ -82,12 +81,12 @@ const buttonVariants = cva(
       {
         variant: ['bordered', 'bordered-alt'],
         size: 'normal',
-        className: 'py-[7px]'
+        className: 'py-1.75'
       },
       {
         variant: ['bordered', 'bordered-alt'],
         size: 'small',
-        className: 'py-[5px]'
+        className: 'py-1.25'
       }
     ],
     defaultVariants: {

@@ -223,8 +223,8 @@
   },
   "Components": {
     "LocaleSwitcher": {
-      "label": "{locale, select, en {Αγγλικά} gr {Ελληνικά} other {Unknown}}",
-      "loadingText": "Φορτώνει"
+      "label": "{country, select, en {Αγγλικά} gr {Ελληνικά} tr {Τουρκικά} other {Unknown}}",
+      "loading": "Φορτώνει"
     },
     "ContactDrawer": {
       "title": "Επικοινωνήστε μαζί μας",

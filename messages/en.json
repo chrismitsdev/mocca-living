@@ -223,8 +223,8 @@
   },
   "Components": {
     "LocaleSwitcher": {
-      "label": "{locale, select, en {English} gr {Greek} other {Unknown}}",
-      "loadingText": "Loading"
+      "label": "{country, select, en {English} gr {Greek} tr {Turkish} other {Unknown}}",
+      "loading": "Loading"
     },
     "ContactDrawer": {
       "title": "Contact us",
