@@ -78,7 +78,7 @@ const ContactFormClient: React.FC<{
                 <Img
                   src='https://4y4jwmfhzutn57mw.myfritz.net:47971/nas/filelink.lua?id=d3daaf0543d36f96'
                   alt='Contact form received'
-                  className='max-w-[600px] w-full'
+                  className='max-w-150 w-full'
                 />
               </Row>
               <Row className='main-content'>
