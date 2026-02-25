@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import logoSimple from '@/public/logos/mocca-logo-simple.svg'
+import moccaLogoBox from '@/public/logos/mocca-logo-box.svg'
 import {Container} from '@/src/components/shared/container'
 import {Navigation} from '@/src/components/shared/navigation'
 import {Link} from '@/src/i18n/navigation'
@@ -12,7 +12,7 @@ const Header: React.FC = () => {
           <Link href='/'>
             <Image
               width={64}
-              src={logoSimple}
+              src={moccaLogoBox}
               alt='Mocca Living logo'
               priority
             />

@@ -159,7 +159,7 @@ const EmblaSlide: React.FC<React.ComponentPropsWithRef<'div'>> = ({
     <div
       id='embla-slide'
       className={cn(
-        'mr-4 grow-0 shrink-0 basis-full min-w-0 select-none',
+        'min-w-0 grow-0 shrink-0 basis-full select-none',
         className
       )}
       {...props}

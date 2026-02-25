@@ -1,7 +1,7 @@
 'use client'
 
 import {AnimatePresence, motion, type Variants} from 'motion/react'
-import boxLogo from '@/public/logos/mocca-logo-box.svg'
+import moccaLogoBox from '@/public/logos/mocca-logo-box.svg'
 import {FrozenRouter} from '@/src/components/shared/route-transitions/frozen-router'
 import {usePathname} from '@/src/i18n/navigation'
 
@@ -73,8 +73,6 @@ const ColumnsTransition: React.FC<React.PropsWithChildren> = ({children}) => {
     }
   }
 
-  // const columns = 5
-
   return (
     <AnimatePresence mode='wait'>
       <div key={pathname}>
@@ -87,15 +85,6 @@ const ColumnsTransition: React.FC<React.PropsWithChildren> = ({children}) => {
           id='columns-transition-container'
           className='fixed inset-0 pointer-events-none z-50 flex'
         >
-          {/*{Array.from({length: columns}).map((_, i) => (
-            <motion.div
-              key={i}
-              id='columns-transition-column'
-              className='relative h-full w-full bg-surface-3'
-              {...anim(column, columns - i)}
-            />
-          ))}*/}
-
           <motion.div
             id='columns-transition-column'
             className='relative h-full w-full bg-surface-3'
@@ -124,7 +113,7 @@ const ColumnsTransition: React.FC<React.PropsWithChildren> = ({children}) => {
 
           <picture>
             <motion.img
-              src={boxLogo.src}
+              src={moccaLogoBox.src}
               alt='Brand Logo'
               className='absolute top-1/2 left-1/2 -translate-1/2 w-24 h-24'
               {...anim(logo)}

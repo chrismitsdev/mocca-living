@@ -180,14 +180,14 @@ const Navigation: React.FC = () => {
           </Button>
         </DrawerTrigger>
         <DrawerContent
+          className='absolute top-full h-[calc(100dvh-100%)] border-t border-t-surface-3 shadow-none!'
           side='right'
-          className='absolute top-full h-dvh z-1 shadow-none! border-t border-t-surface-3'
           onInteractOutside={(e) => e.preventDefault()}
         >
-          <VisuallyHidden>
+          <VisuallyHidden asChild>
             <DrawerTitle>Navigation menu</DrawerTitle>
           </VisuallyHidden>
-          <div className='px-7 py-16 h-[calc(100%-64px)] grid grid-rows-[1fr_auto]'>
+          <div className='px-7 py-16 h-full grid grid-rows-[1fr_auto]'>
             <nav
               aria-label='Mobile navigation bar'
               className='flex'

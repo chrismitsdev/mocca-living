@@ -5,10 +5,11 @@ import {Marker} from '@adamscybot/react-leaflet-component-marker'
 import type L from 'leaflet'
 import type {LatLngTuple} from 'leaflet'
 import {MapPinIcon} from 'lucide-react'
+import Image from 'next/image'
 import {useTranslations} from 'next-intl'
 import * as React from 'react'
 import {MapContainer, Popup, TileLayer} from 'react-leaflet'
-import {MoccaLogoSimple} from '@/src/components/logos/mocca-logo-simple'
+import moccaLogoBox from '@/public/logos/mocca-logo-box.svg'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
@@ -26,7 +27,7 @@ const ContactMap: React.FC = () => {
 
   return (
     <Section>
-      <Container className='h-[500px] sm:h-[696px]'>
+      <Container className='h-125 sm:h-174'>
         <MapContainer
           className='h-full rounded shadow-small'
           center={coords}
@@ -44,12 +45,15 @@ const ContactMap: React.FC = () => {
               />
             }
           >
-            <Popup offset={[0, -8]}>
-              <div className='flex items-center gap-4'>
-                <MoccaLogoSimple
-                  className='text-primary'
-                  width={25.5}
-                  height={40}
+            <Popup
+              offset={[0, -8]}
+              className='w-48'
+            >
+              <div className='flex items-start gap-4'>
+                <Image
+                  src={moccaLogoBox}
+                  alt='Mocca Living logo'
+                  width={48}
                 />
                 <div>
                   <Typography
@@ -64,7 +68,7 @@ const ContactMap: React.FC = () => {
                     asChild
                   >
                     <a
-                      className='!text-inherit'
+                      className='text-inherit!'
                       href='https://www.google.com/maps?saddr=My+Location&daddr=40.848948,25.723508'
                       target='_blank'
                       rel='noopener'

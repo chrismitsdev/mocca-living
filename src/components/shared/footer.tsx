@@ -11,7 +11,7 @@ import {
 } from 'lucide-react'
 import Image from 'next/image'
 import {useTranslations} from 'next-intl'
-import logoFull from '@/public/logos/mocca-logo-full.svg'
+import logoFull from '@/public/logos/mocca-logo-box.svg'
 import {ClientLink} from '@/src/components/shared/client-link'
 import {Container} from '@/src/components/shared/container'
 import {DialogAudioPlayer} from '@/src/components/shared/dialog-audio-player'
