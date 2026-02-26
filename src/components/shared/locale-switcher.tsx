@@ -61,7 +61,7 @@ const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
       onValueChange={onValueChange}
       disabled={isPending}
     >
-      <SelectTrigger className='min-w-37.5'>
+      <SelectTrigger className='min-w-40'>
         <div className='flex items-center gap-1.5 grow'>{renderedTrigger}</div>
       </SelectTrigger>
       <SelectPortal>
