@@ -15,7 +15,7 @@ import {ColumnsTransition} from '@/src/components/shared/route-transitions'
 import {routing} from '@/src/i18n/routing'
 
 const commissioner = Commissioner({
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext', 'greek', 'cyrillic'],
   display: 'swap'
 })
 
@@ -25,7 +25,8 @@ export const metadata: Metadata = {
     canonical: '/',
     languages: {
       'en-US': '/en',
-      'el-GR': '/gr'
+      'el-GR': '/el',
+      'tr-TR': '/tr'
     }
   },
   title: 'Mocca Living | Premium • Stay • Philosophy',

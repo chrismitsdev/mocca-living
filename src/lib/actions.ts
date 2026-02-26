@@ -21,14 +21,14 @@ import {
 } from 'valibot'
 import {sendContactForm} from '@/src/lib/send-contact-form'
 
-setSpecificMessage(string, 'Πρέπει να είναι γράμματα & αριθμοί', 'gr')
-setSpecificMessage(nonEmpty, 'Υποχρεωτικό πεδίο', 'gr')
-setSpecificMessage(minLength, 'Tουλάχιστον 5 χαρακτήρες', 'gr')
-setSpecificMessage(maxLength, 'Μέγιστο 25 χαρακτήρες', 'gr')
-setSpecificMessage(email, 'Μη έγκυρη μορφή email', 'gr')
-setSpecificMessage(notValues, 'Η διεύθυνση email δεν επιτρέπεται', 'gr')
-setSpecificMessage(check, 'Αποδεκτά email: gmail, icloud, yahoo', 'gr')
-setSpecificMessage(regex, 'Μη έγκυρη μορφή αριθμού τηλεφώνου', 'gr')
+setSpecificMessage(string, 'Πρέπει να είναι γράμματα & αριθμοί', 'el')
+setSpecificMessage(nonEmpty, 'Υποχρεωτικό πεδίο', 'el')
+setSpecificMessage(minLength, 'Tουλάχιστον 5 χαρακτήρες', 'el')
+setSpecificMessage(maxLength, 'Μέγιστο 25 χαρακτήρες', 'el')
+setSpecificMessage(email, 'Μη έγκυρη μορφή email', 'el')
+setSpecificMessage(notValues, 'Η διεύθυνση email δεν επιτρέπεται', 'el')
+setSpecificMessage(check, 'Αποδεκτά email: gmail, icloud, yahoo', 'el')
+setSpecificMessage(regex, 'Μη έγκυρη μορφή αριθμού τηλεφώνου', 'el')
 
 setSpecificMessage(string, 'Must contain only letters & numbers', 'en')
 setSpecificMessage(nonEmpty, 'Mandatory field', 'en')

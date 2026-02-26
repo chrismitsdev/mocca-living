@@ -70,9 +70,9 @@ const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
               <EnglishFlag className='mt-0.5' />
               <SelectItemText>{t('label', {country: 'en'})}</SelectItemText>
             </SelectItem>
-            <SelectItem value='gr'>
+            <SelectItem value='el'>
               <GreekFlag className='mt-0.5' />
-              <SelectItemText>{t('label', {country: 'gr'})}</SelectItemText>
+              <SelectItemText>{t('label', {country: 'el'})}</SelectItemText>
             </SelectItem>
             <SelectItem value='tr'>
               <TurkishFlag className='mt-0.5' />
