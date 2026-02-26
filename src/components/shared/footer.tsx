@@ -141,7 +141,7 @@ const Footer: React.FC = () => {
               asChild
             >
               <a
-                href='https://yuppii.gr/'
+                href='https://www.yuppii.gr/'
                 target='_blank'
                 rel='noopener'
               >
@@ -153,11 +153,23 @@ const Footer: React.FC = () => {
               asChild
             >
               <a
-                href='https://startpilates.gr/'
+                href='https://www.thechristmaslighthouse.gr/'
                 target='_blank'
                 rel='noopener'
               >
                 {t('Footer.row-1.column-3.link-2')}
+              </a>
+            </Typography>
+            <Typography
+              variant='link'
+              asChild
+            >
+              <a
+                href='https://startpilates.gr/'
+                target='_blank'
+                rel='noopener'
+              >
+                {t('Footer.row-1.column-3.link-3')}
               </a>
             </Typography>
           </FooterColumn>
