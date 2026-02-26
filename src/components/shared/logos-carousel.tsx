@@ -4,7 +4,7 @@ import Autoscroll from 'embla-carousel-auto-scroll'
 import Image from 'next/image'
 import lighthouseLogo from '@/public/logos/christmas-lighthouse-logo.png'
 import cocomatLogo from '@/public/logos/cocomat-logo.png'
-import startPilatesLogo from '@/public/logos/start-pilates-logo.svg'
+import startPilatesLogo from '@/public/logos/start-pilates-logo.png'
 import yuppiiLogo from '@/public/logos/yuppii-logo.png'
 import {
   EmblaCarousel,
