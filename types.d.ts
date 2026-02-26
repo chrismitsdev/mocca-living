@@ -1,5 +1,5 @@
-import {routing} from '@/src/i18n/routing'
-import messages from '@/messages/en.json'
+import type messages from '@/messages/en.json'
+import type {routing} from '@/src/i18n/routing'
 
 type Locale = (typeof routing.locales)[number]
 type Messages = typeof messages
