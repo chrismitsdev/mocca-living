@@ -3,6 +3,7 @@
 import {GlobeIcon} from 'lucide-react'
 import {type Locale, useLocale, useTranslations} from 'next-intl'
 import * as React from 'react'
+import {BulgarianFlag} from '@/src/components/flags/bulgarian-flag'
 import {EnglishFlag} from '@/src/components/flags/english-flag'
 import {GreekFlag} from '@/src/components/flags/greek-flag'
 import {TurkishFlag} from '@/src/components/flags/turkish-flag'
@@ -41,14 +42,14 @@ const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
   if (isPending) {
     renderedTrigger = (
       <>
-        <Spinner className='h-4 w-4 mt-0.5' />
+        <Spinner className='h-4 w-4' />
         <span>{t('loading')}</span>
       </>
     )
   } else {
     renderedTrigger = (
       <>
-        <GlobeIcon className='h-4 w-4 mt-0.5' />
+        <GlobeIcon className='h-4 w-4' />
         <SelectValue />
       </>
     )
@@ -67,16 +68,20 @@ const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
         <SelectContent>
           <SelectViewport>
             <SelectItem value='en'>
-              <EnglishFlag className='mt-0.5' />
+              <EnglishFlag />
               <SelectItemText>{t('label', {country: 'en'})}</SelectItemText>
             </SelectItem>
-            <SelectItem value='gr'>
-              <GreekFlag className='mt-0.5' />
-              <SelectItemText>{t('label', {country: 'gr'})}</SelectItemText>
+            <SelectItem value='el'>
+              <GreekFlag />
+              <SelectItemText>{t('label', {country: 'el'})}</SelectItemText>
             </SelectItem>
             <SelectItem value='tr'>
-              <TurkishFlag className='mt-0.5' />
+              <TurkishFlag />
               <SelectItemText>{t('label', {country: 'tr'})}</SelectItemText>
+            </SelectItem>
+            <SelectItem value='bg'>
+              <BulgarianFlag />
+              <SelectItemText>{t('label', {country: 'bg'})}</SelectItemText>
             </SelectItem>
           </SelectViewport>
         </SelectContent>

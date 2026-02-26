@@ -21,14 +21,14 @@ import {
 } from 'valibot'
 import {sendContactForm} from '@/src/lib/send-contact-form'
 
-setSpecificMessage(string, 'Πρέπει να είναι γράμματα & αριθμοί', 'gr')
-setSpecificMessage(nonEmpty, 'Υποχρεωτικό πεδίο', 'gr')
-setSpecificMessage(minLength, 'Tουλάχιστον 5 χαρακτήρες', 'gr')
-setSpecificMessage(maxLength, 'Μέγιστο 25 χαρακτήρες', 'gr')
-setSpecificMessage(email, 'Μη έγκυρη μορφή email', 'gr')
-setSpecificMessage(notValues, 'Η διεύθυνση email δεν επιτρέπεται', 'gr')
-setSpecificMessage(check, 'Αποδεκτά email: gmail, icloud, yahoo', 'gr')
-setSpecificMessage(regex, 'Μη έγκυρη μορφή αριθμού τηλεφώνου', 'gr')
+setSpecificMessage(string, 'Πρέπει να είναι γράμματα & αριθμοί', 'el')
+setSpecificMessage(nonEmpty, 'Υποχρεωτικό πεδίο', 'el')
+setSpecificMessage(minLength, 'Tουλάχιστον 5 χαρακτήρες', 'el')
+setSpecificMessage(maxLength, 'Μέγιστο 25 χαρακτήρες', 'el')
+setSpecificMessage(email, 'Μη έγκυρη μορφή email', 'el')
+setSpecificMessage(notValues, 'Η διεύθυνση email δεν επιτρέπεται', 'el')
+setSpecificMessage(check, 'Αποδεκτά email: gmail, icloud, yahoo', 'el')
+setSpecificMessage(regex, 'Μη έγκυρη μορφή αριθμού τηλεφώνου', 'el')
 
 setSpecificMessage(string, 'Must contain only letters & numbers', 'en')
 setSpecificMessage(nonEmpty, 'Mandatory field', 'en')
@@ -47,6 +47,15 @@ setSpecificMessage(email, 'Geçersiz e-posta formatı', 'tr')
 setSpecificMessage(notValues, 'E-posta adresine izin verilmiyor', 'tr')
 setSpecificMessage(check, 'Kabul edilen e-posta: gmail, icloud, yahoo', 'tr')
 setSpecificMessage(regex, 'Geçersiz telefon numarası formatı', 'tr')
+
+setSpecificMessage(string, 'Трябва да съдържа само букви и цифри', 'bg')
+setSpecificMessage(nonEmpty, 'Задължително поле', 'bg')
+setSpecificMessage(minLength, 'Поне 5 символа', 'bg')
+setSpecificMessage(maxLength, 'Максимум 25 символа', 'bg')
+setSpecificMessage(email, 'Невалиден формат на имейл', 'bg')
+setSpecificMessage(notValues, 'Имейл адресът не е разрешен', 'bg')
+setSpecificMessage(check, 'Приети имейли: gmail, icloud, yahoo', 'bg')
+setSpecificMessage(regex, 'Невалиден формат на телефонен номер', 'bg')
 
 const ContactFormSchema = object({
   firstName: pipe(string(), trim(), nonEmpty(), minLength(5), maxLength(25)),

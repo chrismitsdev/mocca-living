@@ -1,7 +1,7 @@
 import '@/src/styles/index.css'
 import {Analytics} from '@vercel/analytics/next'
 import type {Metadata} from 'next'
-import {Commissioner} from 'next/font/google'
+import {Inter} from 'next/font/google'
 import {notFound} from 'next/navigation'
 import {hasLocale, NextIntlClientProvider} from 'next-intl'
 import {setRequestLocale} from 'next-intl/server'
@@ -14,8 +14,8 @@ import {Header} from '@/src/components/shared/header'
 import {ColumnsTransition} from '@/src/components/shared/route-transitions'
 import {routing} from '@/src/i18n/routing'
 
-const commissioner = Commissioner({
-  subsets: ['latin'],
+const inter = Inter({
+  subsets: ['latin', 'latin-ext', 'greek', 'cyrillic'],
   display: 'swap'
 })
 
@@ -25,7 +25,9 @@ export const metadata: Metadata = {
     canonical: '/',
     languages: {
       'en-US': '/en',
-      'el-GR': '/gr'
+      'el-GR': '/el',
+      'tr-TR': '/tr',
+      'bg-BG': '/bg'
     }
   },
   title: 'Mocca Living | Premium • Stay • Philosophy',
@@ -56,7 +58,7 @@ export default function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${commissioner.className}`}
+      className={`${inter.className}`}
     >
       <body className='min-h-screen grid grid-rows-[auto_1fr] relative bg-surface-1 text-foreground'>
         <NextIntlClientProvider>

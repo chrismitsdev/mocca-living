@@ -15,11 +15,11 @@ export function cn(...inputs: ClassValue[]) {
 
 export function shimmer(w: number, h: number) {
   return `
-    <svg 
-      width='${w}' 
-      height='${h}' 
-      version='1.1' 
-      xmlns='http://www.w3.org/2000/svg' 
+    <svg
+      width='${w}'
+      height='${h}'
+      version='1.1'
+      xmlns='http://www.w3.org/2000/svg'
       xmlns:xlink='http://www.w3.org/1999/xlink'
     >
       <defs>
@@ -31,13 +31,13 @@ export function shimmer(w: number, h: number) {
       </defs>
       <rect width='${w}' height='${h}' fill='#b1a082' />
       <rect id="r" width='${w}' height='${h}' fill='url(#g)' />
-      <animate 
-        xlink:href='#r' 
-        attributeName='x' 
-        from='-${w}' 
+      <animate
+        xlink:href='#r'
+        attributeName='x'
+        from='-${w}'
         to='${w}'
-        dur='1s' 
-        repeatCount='indefinite'  
+        dur='1s'
+        repeatCount='indefinite'
       />
     </svg>
   `
@@ -54,7 +54,7 @@ export function formatDate(
   locale: Locale,
   formatStr: string = 'PP'
 ): string {
-  return format(date, formatStr, {locale: locale === 'gr' ? el : enUS})
+  return format(date, formatStr, {locale: locale === 'el' ? el : enUS})
 }
 
 export function formatDuration(durationInSeconds: number | null) {

@@ -24,10 +24,10 @@ const ContactFormInternal: React.FC<
       <Head>
         <Font
           webFont={{
-            url: 'https://fonts.gstatic.com/s/commissioner/v20/tDbw2o2WnlgI0FNDgduEk4jAhwgumbU1SVfU5BD8OuRL8OstC6KOhgvBYWSFJ-Mgdrgiju6fF8m0ZEXaaR42_6ahdAo.woff2',
+            url: 'https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hiA.woff2',
             format: 'woff2'
           }}
-          fontFamily='Commissioner'
+          fontFamily='Inter'
           fontWeight={400}
           fontStyle='normal'
           fallbackFontFamily='Verdana'
