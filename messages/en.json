@@ -25,7 +25,7 @@
     "Home": {
       "Introdution": {
         "title": "Experience the epitome of luxury living",
-        "message": "Mocca Living embodies the essence of luxury living in one of Greece's most stunning coastal settings. Located in Agia Paraskevi, just 100 meters from the beautiful Agia Paraskevi beach and near the shores of Kyani Akti, Mocca Living offers an unparalleled experience for those who appreciate the finer things in life. Each detail, from the elegant design to the high-end amenities, has been carefully considered to provide guests with a sanctuary of comfort and style. Surrounded by breathtaking natural beauty and just a short stroll from the crystal-clear waters, Mocca Living is the perfect destination for a serene and sophisticated getaway. Whether you're here for a brief stay or an extended retreat, Mocca Living promises an experience that blends elegance with the tranquility of its surroundings."
+        "message": "Mocca Living is an exclusive living space reflecting the refined spirit of luxury living on one of Greece's most captivating coastlines. Located in Agia Paraskevi, just 100 meters from the stunning Agia Paraskevi Beach and adjacent to the Kyani Akti coast, Mocca Living offers a unique experience for those who appreciate the finer things in life and value exclusivity. With its elegant architecture, meticulously designed details, and high-end amenities, every element has been considered to provide guests with comfort, aesthetics, and tranquility. Surrounded by breathtaking natural beauty and just steps from crystal-clear waters, Mocca Living is the perfect destination for those seeking a calm, sophisticated, and privileged escape. Whether you plan a short stay or a longer vacation, Mocca Living promises an unforgettable experience where elegance meets the serenity of nature."
       },
       "IdealReasons": {
         "title": "Mocca Living is ideal for:",
@@ -223,8 +223,8 @@
   },
   "Components": {
     "LocaleSwitcher": {
-      "label": "{locale, select, en {English} gr {Greek} other {Unknown}}",
-      "loadingText": "Loading"
+      "label": "{country, select, en {English} gr {Greek} tr {Turkish} other {Unknown}}",
+      "loading": "Loading"
     },
     "ContactDrawer": {
       "title": "Contact us",

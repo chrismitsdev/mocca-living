@@ -5,6 +5,7 @@ import {type Locale, useLocale, useTranslations} from 'next-intl'
 import * as React from 'react'
 import {EnglishFlag} from '@/src/components/flags/english-flag'
 import {GreekFlag} from '@/src/components/flags/greek-flag'
+import {TurkishFlag} from '@/src/components/flags/turkish-flag'
 import {
   Select,
   SelectContent,
@@ -17,15 +18,9 @@ import {
 } from '@/src/components/ui/select'
 import {Spinner} from '@/src/components/ui/spinner'
 import {usePathname, useRouter} from '@/src/i18n/navigation'
-import {routing} from '@/src/i18n/routing'
 
 interface LocaleSwitcherProps {
   scrollTop?: boolean
-}
-
-const flagLookup: Record<Locale, React.ReactNode> = {
-  en: <EnglishFlag />,
-  gr: <GreekFlag />
 }
 
 const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
@@ -35,50 +30,55 @@ const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
   const router = useRouter()
   const locale = useLocale()
 
-  function onValueChange(value: Locale) {
+  const onValueChange = (value: Locale) => {
     startTransition(() => {
       router.replace(pathname, {locale: value, scroll: scrollTop})
     })
   }
 
-  const renderedItems = routing.locales.map((locale) => (
-    <SelectItem
-      key={locale}
-      value={locale}
-    >
-      {flagLookup[locale]}
-      <SelectItemText>{t('label', {locale})}</SelectItemText>
-    </SelectItem>
-  ))
-
   let renderedTrigger: React.JSX.Element
 
   if (isPending) {
     renderedTrigger = (
-      <div className='flex items-center gap-1.5 grow'>
-        <Spinner className='h-4 w-4' />
-        <span>{t('loadingText')}</span>
-      </div>
+      <>
+        <Spinner className='h-4 w-4 mt-0.5' />
+        <span>{t('loading')}</span>
+      </>
     )
   } else {
     renderedTrigger = (
-      <div className='flex items-center gap-1.5 grow'>
-        <GlobeIcon className='h-4 w-4' />
+      <>
+        <GlobeIcon className='h-4 w-4 mt-0.5' />
         <SelectValue />
-      </div>
+      </>
     )
   }
 
   return (
     <Select
+      value={locale}
       onValueChange={onValueChange}
       disabled={isPending}
-      defaultValue={locale}
     >
-      <SelectTrigger className='min-w-37.5'>{renderedTrigger}</SelectTrigger>
+      <SelectTrigger className='min-w-37.5'>
+        <div className='flex items-center gap-1.5 grow'>{renderedTrigger}</div>
+      </SelectTrigger>
       <SelectPortal>
         <SelectContent>
-          <SelectViewport>{renderedItems}</SelectViewport>
+          <SelectViewport>
+            <SelectItem value='en'>
+              <EnglishFlag className='mt-0.5' />
+              <SelectItemText>{t('label', {country: 'en'})}</SelectItemText>
+            </SelectItem>
+            <SelectItem value='gr'>
+              <GreekFlag className='mt-0.5' />
+              <SelectItemText>{t('label', {country: 'gr'})}</SelectItemText>
+            </SelectItem>
+            <SelectItem value='tr'>
+              <TurkishFlag className='mt-0.5' />
+              <SelectItemText>{t('label', {country: 'tr'})}</SelectItemText>
+            </SelectItem>
+          </SelectViewport>
         </SelectContent>
       </SelectPortal>
     </Select>

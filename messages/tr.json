@@ -1,0 +1,345 @@
+{
+  "Metadata": {
+    "Pages": {
+      "home": "Ana Sayfa",
+      "accommodation": {
+        "root": "Konaklama",
+        "dimitra": "Dimitra",
+        "dimitra-caption": "Villa Dimitra'da lüksü deneyimleyin; 2-4 yetişkin ve 2 çocuk için muhteşem bir 85m² kaçış köşesi.",
+        "georgia": "Georgia",
+        "georgia-caption": "Villa Georgia'yı keşfedin; denize yakın, 2-4 yetişkin ve 1 çocuk için şirin bir 45m² sığınak."
+      },
+      "contact": "İletişim",
+      "privacy": "Gizlilik politikası",
+      "cookies": "Çerez politikası",
+      "rules": "Konaklama politikası",
+      "not-found": "Sayfa bulunamadı"
+    },
+    "Contact": {
+      "name": "Mocca Living",
+      "location": "Agia Paraskevi Plajı, Makri",
+      "phone": "İletişim telefonu"
+    }
+  },
+  "Pages": {
+    "Home": {
+      "Introdution": {
+        "title": "Lüks yaşamın zirvesini deneyimleyin",
+        "message": "Mocca Living, Yunanistan’ın en büyüleyici kıyılarından birinde, lüks yaşamın rafine ruhunu yansıtan seçkin bir yaşam alanıdır. Agia Paraskevi’de konumlanan ve göz alıcı Agia Paraskevi Plajı’na yalnızca 100 metre mesafede, Kyani Akti sahiline komşu olan Mocca Living; hayatın inceliklerini bilen ve ayrıcalığı sevenler için benzersiz bir deneyim sunar. Zarif mimarisi, özenle tasarlanmış detayları ve üst düzey olanaklarıyla her unsur; misafirlerine konfor, estetik ve huzuru bir arada yaşatmak amacıyla düşünülmüştür. Nefes kesen doğal güzelliklerle çevrili, berrak sulara birkaç adım uzaklıkta yer alan Mocca Living; sakin, sofistike ve ayrıcalıklı bir kaçış arayanlar için kusursuz bir destinasyondur. İster kısa bir konaklama, ister uzun bir tatil planlayın; Mocca Living, zarafeti doğanın dinginliğiyle buluşturan unutulmaz bir deneyim vaat eder."
+      },
+      "IdealReasons": {
+        "title": "Mocca Living Kimler İçin İdealdir?",
+        "reasons": {
+          "reason1": {
+            "title": "Aileler",
+            "description": "Mocca Living; her yaş grubuna hitap eden olanaklarıyla, deniz kenarında birlikte kaliteli zaman geçirmek isteyen aileler için ferah, güvenli ve konforlu bir konaklama sunar. Geniş yaşam alanları ve sahile yakın konumu sayesinde ailece huzurlu bir tatil deneyimi yaşanır."
+          },
+          "reason2": {
+            "title": "Arkadaş Grupları",
+            "description": "Arkadaşlarınızla lüks bir sahil kaçamağı planlıyorsanız, Mocca Living mükemmel bir buluşma noktasıdır. Eşsiz kıyı atmosferinde paylaşılan anlar, keyifli sofralar ve gün batımı sohbetleri unutulmaz hatıralara dönüşür."
+          },
+          "reason3": {
+            "title": "VIP Misafirler",
+            "description": "Gizlilik, ayrıcalık ve üst düzey konfor arayan misafirler için Mocca Living ideal bir destinasyondur. Zarif detaylar, seçkin atmosfer ve kişiselleştirilebilir hizmet anlayışıyla özel bir lüks deneyimi sunar."
+          },
+          "reason4": {
+            "title": "Balayı Çiftleri",
+            "description": "Sevginizi, denizin huzuruyla çevrili romantik bir atmosferde kutlayın. Mocca Living; balayı çiftlerine özel, sakin ve zarif bir sahil ortamında mahremiyet dolu, unutulmaz anlar vadeder."
+          },
+          "reason5": {
+            "title": "Wellness Tutkunları",
+            "description": "Deniz kenarında yavaşlamak, nefes almak ve yenilenmek isteyenler için Mocca Living gerçek bir sığınaktır. Doğayla iç içe konumu ve dingin atmosferi sayesinde bedeninizi ve ruhunuzu dinlendirebileceğiniz ideal bir kaçış sunar."
+          }
+        }
+      },
+      "Distances": {
+        "title": "Önemli noktalara uzaklıklar",
+        "description": "Villaların havalimanı, plaj, şehir merkezi ve daha fazlasına ne kadar yakın olduğunu keşfedin.",
+        "airport": {
+          "title": "Dimokritos Havalimanı – 20 km",
+          "description": "Villalardan yalnızca 20 km uzaklıkta bulunan Dimokritos Havalimanı, hem yurt içi hem de uluslararası misafirler için kolay ulaşım imkânı sağlar. Konforlu bir yolculukla tatilinize başlayabilir, dönüşte ise zahmetsiz bir şekilde havalimanına ulaşabilirsiniz."
+        },
+        "city": {
+          "title": "Alexandroupolis Şehir Merkezi - 14 km",
+          "description": "Sadece 14 km mesafedeki Alexandroupolis merkezi;modern yaşam olanakları ile zengin kültürel dokuyu bir arada sunar. Sahil yürüyüşleri, seçkin restoranlar ve hareketli alışveriş caddeleri kısa bir sürüşle ulaşabileceğiniz keyifli alternatifler sunar."
+        },
+        "beach": {
+          "title": "Agia Paraskevi Plajı – 100 m",
+          "description": "Villalara yalnızca 100 metre mesafedeki Agia Paraskevi Plajı, berrak denizi ve doğal güzelliğiyle misafirlerini karşılar. Güneşlenmek, yüzmek ya da sahilde dingin bir yürüyüş yapmak için kusursuz bir konumdadır."
+        },
+        "restaurant": {
+          "title": "En Yakın Restoran – 100 m",
+          "description": "Villalardan 100 metre uzaklıktaki restoran; yerel ve uluslararası mutfaktan seçkin lezzetler sunar. Uzun mesafelere gitmeden, keyifli bir akşam yemeği deneyimi yaşayabilirsiniz."
+        },
+        "charge": {
+          "title": "Araç Şarj İstasyonu – 80 m",
+          "description": "Elektrikli araçla seyahat eden misafirler için yalnızca 80 metre uzaklıkta şarj istasyonu bulunmaktadır. Sürdürülebilir ve konforlu bir tatil deneyimi için pratik bir avantaj sunar."
+        }
+      }
+    },
+    "Accommodation": {
+      "Index": {
+        "Hero": {
+          "button-label": "Bize ulaşın"
+        },
+        "Intro": {
+          "title": "Özel Villalarımız",
+          "message": "Mocca Living'de modern konfor ile zamansız zarafetin mükemmel uyumunu yakalayan özel villalarımızda en yüksek lüksü deneyimleyin. Her villa, ister aile tatili ister arkadaşlarla kaçış ister romantik bir dinlenme için olsun, unutulmaz bir konaklama sunacak şekilde özenle tasarlanmıştır. Her anı benzersiz kılmayı vadeden bir mekânda lüksün tadını çıkarın ve dinlenme ile rafine estetiğin mükemmel dengesini keşfedin."
+        },
+        "Villas": {
+          "dimitra": {
+            "title": "Dimitra",
+            "description": "2-4 yetişkin ve 2 çocuk için 85m²'lik bir cennet olan Villa Dimitra'da geniş lüksü kucaklayın. 2 yatak odası ve 2 banyosuyla rahat ve zarif bir konaklama için idealdir.",
+            "guests": "2 - 4 Yetişkin",
+            "children": "2 Çocuk",
+            "bedrooms": "2 Yatak Odası",
+            "bathrooms": "2 Banyo",
+            "button": "Bilgi"
+          },
+          "georgia": {
+            "title": "Georgia",
+            "description": "2-4 yetişkin ve 1 çocuk için şirin bir 45m² sığınak olan Villa Georgia'ya adım atın. 2 yatak odası ve modern bir banyoyla denize yakın, mükemmel ve samimi bir kaçış noktasıdır.",
+            "guests": "2 - 4 Yetişkin",
+            "children": "1 Çocuk",
+            "bedrooms": "2 Yatak Odası",
+            "bathrooms": "1 Banyo",
+            "button": "Bilgi"
+          }
+        }
+      },
+      "Slug": {
+        "card": {
+          "links": {
+            "back": "Geri",
+            "next": "{slug, select, georgia {Dimitra} dimitra {Georgia} other {Unknown}}"
+          },
+          "header": {
+            "layout": "Villa Planı",
+            "amenities": {
+              "indoor": "İç mekân olanakları",
+              "outdoor": "Dış mekân olanakları"
+            },
+            "complementary": "Tamamlayıcı hizmetler",
+            "request": "Kiralık hizmetler"
+          },
+          "content": {
+            "dimitra": {
+              "name": "Dimitra",
+              "guests": "2 - 4 Yetişkin",
+              "child": "2 Çocuk",
+              "bedrooms": "2 Yatak Odası",
+              "bathrooms": "2 Banyo",
+              "area": "85m² Alan",
+              "layout": "Bir ana giriş, Geniş oturma odası alanı, Yemek odası alanı, COCOMAT yatak ve yatak örtüsü ile king-size yataklı ve özel banyolu bir ana yatak odası, COCOMAT yatak ve yatak örtüsü ile queen-size yataklı ve özel banyolu bir yatak odası, Geniş özel dış alana doğrudan erişim",
+              "amenities": {
+                "indoor": "Ücretsiz Wi-Fi, Üç adet 55\" Akıllı TV, Üç tavan vantilatörü, Mutfak, Mutfak davlumbazı, Fritöz (hava akışlı), Buzdolabı, Çamaşır makinesi, Ütü ve ütü masası, Nespresso makinesi, Ses sistemi (Marshall Acton III), Kasa",
+                "outdoor": "İki pergola ve iki oturma alanına sahip özel alan, Şemsiyeli şezlonglar, Hidromasaj ve renk terapili mini havuz, Tropikal bitkiler ve çiçeklerle özel bahçe, Duş alanı"
+              },
+              "complementary": "Karşılama yardım prosedürü, Check-in/out yardımı",
+              "request": "Kiralık iki SUP tahtası, Kiralık bir elektrikli bisiklet"
+            },
+            "georgia": {
+              "name": "Georgia",
+              "guests": "2 - 4 Yetişkin",
+              "child": "1 Çocuk",
+              "bedrooms": "2 Yatak Odası",
+              "bathrooms": "1 Banyo",
+              "area": "45m² Alan",
+              "layout": "Bir ana giriş, Geniş oturma odası alanı, Yemek odası alanı, Çift kişilik yataklı iki ana yatak odası, Ortak bir banyo, Geniş özel dış alana doğrudan erişim",
+              "amenities": {
+                "indoor": "Ücretsiz Wi-Fi, Bir adet 55\" Akıllı TV, Bir tavan vantilatörü, Tam donanımlı akıllı mutfak, Elektrikli fırın, Mutfak davlumbazı, Buzdolabı, Çamaşır makinesi, Ütü ve ütü masası, Nespresso makinesi, Marshall ses sistemi, Kasa",
+                "outdoor": "Pergolalı özel alan, Şemsiyeli şezlonglar, Oturma alanı, Hidromasaj ve renk terapili mini havuz, Tropikal bitkiler ve çiçeklerle özel bahçe, Duş alanı"
+              },
+              "complementary": "Karşılama yardım prosedürü, Check-in/out yardımı",
+              "request": "Kiralık iki SUP tahtası, Kiralık bir elektrikli bisiklet"
+            }
+          },
+          "drawer": {
+            "trigger": "{slug, select, georgia {Georgia} dimitra {Dimitra} other {Unknown}} hakkında bilgi alın",
+            "title": "{slug, select, georgia {Georgia} dimitra {Dimitra} other {Unknown}} villası için rezervasyon yapın",
+            "description": "Aşağıdaki formu doldurun, en kısa sürede sizinle iletişime geçeceğiz."
+          }
+        }
+      }
+    },
+    "Contact": {
+      "Form": {
+        "title": "Bize ulaşın",
+        "description": "Rezervasyon yapmak için aşağıdaki formu doldurun, en kısa sürede sizinle iletişime geçeceğiz."
+      },
+      "Social": {
+        "location": "Konum",
+        "instagram": "Instagram",
+        "facebook": "Facebook",
+        "phone": "Bizi arayın"
+      },
+      "Map": {
+        "title": "Mocca Living",
+        "directions": "Nasıl gelinir"
+      }
+    },
+    "Privacy": {
+      "title": "Genel koşullar",
+      "content": "Web sitemiz moccaliving.com, bilgilerinizin kişisel niteliğini korumakta ve yasal düzenlemeler kapsamındaki zorunlu durumlar dışında, yalnızca yetkili makamlara olmak kaydıyla herhangi bir üçüncü tarafa (gerçek veya tüzel kişi) açıklamamaktadır. Yasal zorunluluk halinde veya haklarımızı korumak ve/veya yargısal süreç, mahkeme kararı ya da web sitemize tebliğ edilen hukuki işlemlere uymak amacıyla kişisel bilgilerinizi ifşa etme hakkımızı saklı tutarız. Web sitemiz moccaliving.com, yalnızca iletişim amacıyla ziyaretçilerin bizzat sunduğu kişisel bilgilerin kaydını tutar. Ziyaretçiler, kişisel dosyalarının varlığını doğrulamak, düzeltmek, değiştirmek veya silmek için ilgili bölümle iletişime geçebilir. Web sitemiz moccaliving.com'un reşit olmayan ziyaretçileri veya kullanıcıları, hizmetlere yalnızca ebeveyn veya veli onayıyla erişebilir ve kişisel bilgilerini sunmak zorunda değildir. Reşit olmayanlar tarafından böyle bilgiler sunulması ve bu durumun tarafımıza ulaşması halinde şirketimiz ilgili tüm bilgileri siler. İşletmemiz, özellikle pazarlama departmanı, sunduğunuz bilgilerin bir kısmını veya tamamını istatistiksel amaçlarla ve sunulan hizmetlerin ve bilgilerin iyileştirilmesi için işleyebilir. İşletmemiz yeni ürünler sunarak gelişmeye devam ettiğinden Gizlilik Politikamız zaman zaman güncellenebilir. Kişisel bilgilerinizi yalnızca topladığımız sırada yürürlükte olan Gizlilik Politikası çerçevesinde kullanacağız.",
+      "sub-title": "Kullanıcı sözleşmesi",
+      "sub-content": "Web sitemiz moccaliving.com'un sayfa ve hizmetlerinin ziyaretçisi, web sitesinde yer alan tüm içerik, sayfa, grafik, resim, fotoğraf ve dosyalar için geçerli olan yukarıdaki kullanım koşullarını kabul etmektedir. Bu nedenle, moccaliving.com web sitesinin sayfalarını ve hizmetlerini ziyaret etmeden veya kullanmadan önce bu koşulları dikkatlice okumalıdır. Kabul etmiyorlarsa web sitesinin hizmet ve içeriklerini kullanmaktan kaçınmalıdırlar. Ziyaretçiden, olası değişiklikler için bu sayfaların içeriğini kontrol etmesi istenmektedir. Herhangi bir değişiklikten sonra bile moccaliving.com web sitesini kullanmaya devam etmek, ziyaretçinin bu koşulları koşulsuz olarak kabul ettiği anlamına gelir."
+    },
+    "Cookies": {
+      "title-1": "Çerezler nedir",
+      "content-1": {
+        "description": "Çerezler, bir web sitesini ziyaret ettiğinizde cihazınızda depolanan küçük metin dosyalarıdır. Web sitelerinin düzgün çalışmasına, kullanıcı deneyimini geliştirmesine ve analitik içgörüler sağlamasına yardımcı olurlar. Çerezler amaçlarına göre farklı türlere ayrılabilir:",
+        "bullet-1": "<strong>Zorunlu Çerezler</strong> - Web sitesinin düzgün çalışması için gereklidir.",
+        "bullet-2": "<strong>Performans Çerezleri</strong> - Ziyaretçilerin web sitesini nasıl kullandığını analiz ederek işlevselliğini iyileştirmeye yardımcı olur.",
+        "bullet-3": "<strong>İşlevsel Çerezler</strong> - Tercihleri hatırlayarak (ör. dil ayarları) kullanıcı deneyimini geliştirir.",
+        "bullet-4": "<strong>Pazarlama Çerezleri</strong> - Reklam amacıyla ve farklı web sitelerindeki kullanıcı davranışını izlemek için kullanılır."
+      },
+      "title-2": "Bu web sitesinde kullanılan çerezler",
+      "content-2": {
+        "description": "Bu web sitesi iki çerez kullanmaktadır:",
+        "bullet-1": "<strong>CONSENT_COOKIE</strong> - Daha iyi bir kullanıcı deneyimi sunmak ve web sitesi trafiğini analiz etmek amacıyla depolanan bir çerezdir.",
+        "bullet-2": "<strong>NEXT_LOCALE</strong> - Web sitesinin kullanıcı tercihlerine göre doğru dili görüntülemesini sağlamak amacıyla yerelleştirme için kullanılan bir çerezdir."
+      }
+    },
+    "Rules": {
+      "title": "Konaklama Politikası ve Konaklama Kuralları",
+      "item-1": {
+        "title": "İç mekânda sigara içmek yasaktır",
+        "description": "Tüm misafirler için taze ve konforlu bir ortam sağlamak amacıyla, villaların içinde sigara içmek kesinlikle yasaktır. Sigara içmek isteyen misafirler bunu açık alanlarda yapabilir."
+      },
+      "item-2": {
+        "title": "Sessiz saatler ve gürültü politikası",
+        "description": "Tüm misafirlerimizin huzur ve konforunu sağlamak amacıyla, yüksek sesle müzik çalmak veya yüksek sesle konuşmak da dahil olmak üzere gürültü yapmanın 14:30 - 17:30 ile 23:00 sonrasında kesinlikle yasak olduğunu hatırlatırız. İşbirliğiniz, herkes için huzurlu ve keyifli bir ortam sağlanması açısından büyük önem taşımaktadır."
+      },
+      "item-3": {
+        "title": "Evcil hayvanlara izin verilmemektedir",
+        "description": "Tüm misafirlerimiz için yüksek hijyen ve konfor standartlarını sürdürmeye çalışıyoruz. Bu nedenle, villaların içinde veya çevre mülklerde evcil hayvanlara izin verilmemektedir. Bu politikanın alerji içermeyen bir ortam sağlamamıza ve konaklamanın huzurlu atmosferini korumamıza yardımcı olduğundan anlayışınızı rica ediyoruz."
+      }
+    },
+    "NotFound": {
+      "title": "Bulunamadı",
+      "subtitle": "İstediğiniz sayfa bulunamadı",
+      "linkToHome": "Ana sayfaya dön"
+    }
+  },
+  "Components": {
+    "LocaleSwitcher": {
+      "label": "{country, select, en {İngilizce} gr {Yunanca} tr {Türkçe} other {Unknown}}",
+      "loading": "Yükleniyor"
+    },
+    "ContactDrawer": {
+      "title": "Bize ulaşın",
+      "description": "Tercih ettiğiniz iletişim yöntemini seçin.",
+      "message": "Merhaba, Mocca Living Villalarında konaklama rezervasyonu yapmak istiyorum. Lütfen daha fazla bilgi paylaşabilir misiniz?",
+      "whatsapp": "WhatsApp",
+      "viber": "Viber",
+      "sms": "SMS mesajı",
+      "call": "Doğrudan arama"
+    },
+    "CookieConsent": {
+      "title": "Çerezler",
+      "message": "Bu site, daha iyi bir kullanıcı deneyimi sunmak ve trafiği analiz etmek için çerezler kullanan hizmetler içermektedir. Kullandığımız hizmetler hakkında daha fazla bilgiyi gizlilik politikası sayfamızda bulabilirsiniz.",
+      "button-label": "Anladım",
+      "collapsible": {
+        "trigger": "Bu web sitesinde kullanılan çerezler",
+        "content": {
+          "consent": {
+            "title": "CONSENT_COOKIE",
+            "description": "Daha iyi bir kullanıcı deneyimi sunmak ve web sitesi trafiğini analiz etmek amacıyla depolanan bir çerezdir."
+          },
+          "locale": {
+            "title": "NEXT_LOCALE",
+            "description": "Web sitesinin kullanıcı tercihlerine göre doğru dili görüntülemesini sağlamak amacıyla yerelleştirme için kullanılan bir çerezdir."
+          }
+        }
+      }
+    },
+    "Form": {
+      "fields": {
+        "firstName": {
+          "label": "Ad",
+          "placeholder": "Adınızı girin"
+        },
+        "lastName": {
+          "label": "Soyad",
+          "placeholder": "Soyadınızı girin"
+        },
+        "email": {
+          "label": "E-posta",
+          "placeholder": "E-posta adresinizi girin"
+        },
+        "phone": {
+          "label": "Telefon",
+          "placeholder": "Telefon numaranızı girin"
+        },
+        "message": {
+          "label": "Mesaj",
+          "placeholder": "İsterseniz mesajınızı buraya bırakın..."
+        },
+        "consent": {
+          "label": "Kişisel verilerimin yalnızca talebimi yerine getirmek amacıyla <link>Gizlilik Politikası beyanı</link> uyarınca kullanılmasını kabul ediyorum"
+        }
+      },
+      "button": {
+        "label": "Gönder"
+      },
+      "toast": {
+        "success": {
+          "title": "Başarıyla gönderildi",
+          "description": "Form başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğiz."
+        },
+        "error": {
+          "validation": {
+            "title": "Gönderme başarısız",
+            "description": "Lütfen işaretlenmiş alanları kontrol edin ve yeniden göndermeden önce hataları düzeltin."
+          },
+          "api": {
+            "title": "Gönderme başarısız",
+            "description": "E-posta hizmetiyle iletişim kurulurken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+          }
+        }
+      }
+    },
+    "Footer": {
+      "row-1": {
+        "column-1": {
+          "header": "Bilgi",
+          "link-1": "+30 6973560007",
+          "link-2": "+30 6973433980",
+          "link-3": "info@moccaliving.com",
+          "link-4": "Agia Paraskevi Plajı, <br></br> Makri Alexandroupolis, Yunanistan"
+        },
+        "column-2": {
+          "header": "Yararlı bağlantılar",
+          "link-1": "Gizlilik politikası",
+          "link-2": "Çerez politikası",
+          "link-3": "Konaklama politikası",
+          "link-4": "Ses listesi"
+        },
+        "column-3": {
+          "header": "Daha fazlası",
+          "link-1": "Yuppii Luna Park",
+          "link-2": "Start Pilates"
+        }
+      },
+      "row-2": {
+        "copyright": "Telif hakkı © {created, date, ::yyyy} Mocca Living",
+        "manufacturer": "Proje uygulaması <a>KYRCOM</a> tarafından",
+        "developer": "Geliştirme ve tasarım <a>CM</a> tarafından"
+      }
+    },
+    "ContactFormClient": {
+      "subject": "Sorunuz için teşekkür ederiz",
+      "header": "Sayın",
+      "thanks": "Bizimle iletişime geçtiğiniz için teşekkür ederiz! Talebinizi aldık ve en kısa sürede size geri döneceğiz.",
+      "summary": "Bilgilerinizin özeti:",
+      "name": "Ad Soyad",
+      "email": "E-posta",
+      "phone": "Telefon",
+      "message": {
+        "title": "Mesaj",
+        "empty": "Mesaj girilmedi"
+      },
+      "footer": "Ek sorularınız veya özel talepleriniz varsa bu e-postayı yanıtlamaktan çekinmeyin. Sizi ağırlamak ve unutulmaz bir konaklama planlamanıza yardımcı olmaktan memnuniyet duyacağız."
+    }
+  }
+}

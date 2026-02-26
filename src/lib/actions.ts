@@ -22,21 +22,31 @@ import {
 import {sendContactForm} from '@/src/lib/send-contact-form'
 
 setSpecificMessage(string, 'Πρέπει να είναι γράμματα & αριθμοί', 'gr')
-setSpecificMessage(string, 'Must contain only letters & numbers', 'en')
 setSpecificMessage(nonEmpty, 'Υποχρεωτικό πεδίο', 'gr')
-setSpecificMessage(nonEmpty, 'Mandatory field', 'en')
 setSpecificMessage(minLength, 'Tουλάχιστον 5 χαρακτήρες', 'gr')
-setSpecificMessage(minLength, 'At least 5 characters', 'en')
 setSpecificMessage(maxLength, 'Μέγιστο 25 χαρακτήρες', 'gr')
-setSpecificMessage(maxLength, 'Maximum 25 characters', 'en')
 setSpecificMessage(email, 'Μη έγκυρη μορφή email', 'gr')
-setSpecificMessage(email, 'Invalid email format', 'en')
 setSpecificMessage(notValues, 'Η διεύθυνση email δεν επιτρέπεται', 'gr')
-setSpecificMessage(notValues, 'Email address is not allowed', 'en')
 setSpecificMessage(check, 'Αποδεκτά email: gmail, icloud, yahoo', 'gr')
-setSpecificMessage(check, 'Accepted email: gmail, icloud, yahoo', 'en')
 setSpecificMessage(regex, 'Μη έγκυρη μορφή αριθμού τηλεφώνου', 'gr')
+
+setSpecificMessage(string, 'Must contain only letters & numbers', 'en')
+setSpecificMessage(nonEmpty, 'Mandatory field', 'en')
+setSpecificMessage(minLength, 'At least 5 characters', 'en')
+setSpecificMessage(maxLength, 'Maximum 25 characters', 'en')
+setSpecificMessage(email, 'Invalid email format', 'en')
+setSpecificMessage(notValues, 'Email address is not allowed', 'en')
+setSpecificMessage(check, 'Accepted email: gmail, icloud, yahoo', 'en')
 setSpecificMessage(regex, 'Invalid phone number format', 'en')
+
+setSpecificMessage(string, 'Yalnızca harf ve rakam içermelidir', 'tr')
+setSpecificMessage(nonEmpty, 'Zorunlu alan', 'tr')
+setSpecificMessage(minLength, 'En az 5 karakter', 'tr')
+setSpecificMessage(maxLength, 'Maksimum 25 karakter', 'tr')
+setSpecificMessage(email, 'Geçersiz e-posta formatı', 'tr')
+setSpecificMessage(notValues, 'E-posta adresine izin verilmiyor', 'tr')
+setSpecificMessage(check, 'Kabul edilen e-posta: gmail, icloud, yahoo', 'tr')
+setSpecificMessage(regex, 'Geçersiz telefon numarası formatı', 'tr')
 
 const ContactFormSchema = object({
   firstName: pipe(string(), trim(), nonEmpty(), minLength(5), maxLength(25)),

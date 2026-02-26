@@ -138,7 +138,7 @@ const CurrentTrack: React.FC<
     <div className='sm:mb-0 sm:p-4'>
       <div className='flex items-start gap-2 sm:gap-4'>
         <CustomImage
-          className='w-[72px] h-[72px] sm:w-24 sm:h-24 object-cover rounded'
+          className='size-18 sm:size-24 object-cover rounded'
           src={image}
           alt='Playlist image'
         />

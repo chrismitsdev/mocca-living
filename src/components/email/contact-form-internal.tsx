@@ -35,7 +35,7 @@ const ContactFormInternal: React.FC<
       </Head>
       <Tailwind>
         <Body className='m-0 bg-[#e7d9be] text-[#453227]'>
-          <Container className='max-w-[576px]'>
+          <Container className='max-w-xl'>
             <Section className='px-4 pt-8 pb-6'>
               <Row className='mb-6'>
                 <Link

@@ -23,25 +23,25 @@ const COOKIE_VALUE = 'true'
 const EXPIRES_DAYS = 365
 
 const CookieConsent: React.FC = () => {
-  const [showBanner, setShowBanner] = React.useState(false)
+  const [show, setShow] = React.useState(false)
   const t = useTranslations('Components.CookieConsent')
-  useScrollLock({autoLock: showBanner})
+  useScrollLock({autoLock: show})
 
   function handleClick() {
     if (!cookies.get(COOKIE_NAME)) {
       cookies.set(COOKIE_NAME, COOKIE_VALUE, {expires: EXPIRES_DAYS})
     }
 
-    setShowBanner(false)
+    setShow(false)
   }
 
   React.useEffect(() => {
     if (!cookies.get(COOKIE_NAME)) {
-      setShowBanner(true)
+      setShow(true)
     }
   }, [])
 
-  if (!showBanner) {
+  if (!show) {
     return null
   }
 
