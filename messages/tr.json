@@ -28,27 +28,27 @@
         "message": "Mocca Living, Yunanistan'ın en büyüleyici kıyı mekanlarından birinde lüks yaşamın özünü yansıtmaktadır. Agia Paraskevi'de konumlanan ve güzel Agia Paraskevi plajına yalnızca 100 metre, Kyani Akti kıyılarına yakın olan Mocca Living; yaşamın inceliklerini takdir edenler için eşsiz bir deneyim sunmaktadır. Zarif tasarımdan üst düzey olanaklara kadar her ayrıntı, misafirlere konfor ve şıklık içinde bir sığınak sunmak amacıyla özenle düşünülmüştür. Nefes kesen doğal güzelliklerle çevrili ve berrak sulara yürüme mesafesinde olan Mocca Living, huzurlu ve sofistike bir kaçış için mükemmel bir destinasyondur. Kısa bir konaklama ya da uzun bir tatil için buraya gelindiğinde Mocca Living, zarafeti çevresinin dinginliğiyle harmanlayan unutulmaz bir deneyim vaat eder."
       },
       "IdealReasons": {
-        "title": "Mocca Living şunlar için idealdir:",
+        "title": "Mocca Living Kimler İçin İdealdir?",
         "reasons": {
           "reason1": {
             "title": "Aileler",
-            "description": "Mocca Living, tüm yaş gruplarına yönelik olanaklarıyla deniz kenarında birlikte kaliteli zaman geçirmek isteyen aileler için mükemmel, ferah ve konforlu konaklama imkânı sunar."
+            "description": "Mocca Living; her yaş grubuna hitap eden olanaklarıyla, deniz kenarında birlikte kaliteli zaman geçirmek isteyen aileler için ferah, güvenli ve konforlu bir konaklama sunar. Geniş yaşam alanları ve sahile yakın konumu sayesinde ailece huzurlu bir tatil deneyimi yaşanır."
           },
           "reason2": {
-            "title": "Arkadaşlar",
-            "description": "Arkadaşlarınızı Mocca Living'de lüks bir kaçış için bir araya getirin; güzel kıyı ortamında paylaşılan anlar ve unutulmaz anılar yaratın."
+            "title": "Arkadaş Grupları",
+            "description": "Arkadaşlarınızla lüks bir sahil kaçamağı planlıyorsanız, Mocca Living mükemmel bir buluşma noktasıdır. Eşsiz kıyı atmosferinde paylaşılan anlar, keyifli sofralar ve gün batımı sohbetleri unutulmaz hatıralara dönüşür."
           },
           "reason3": {
             "title": "VIP Misafirler",
-            "description": "Gizlilik, konfor ve zarafet arayan VIP misafirler için ideal destinasyon Mocca Living'de özel lüks ve kişiselleştirilmiş hizmetlerin keyfini çıkarın."
+            "description": "Gizlilik, ayrıcalık ve üst düzey konfor arayan misafirler için Mocca Living ideal bir destinasyondur. Zarif detaylar, seçkin atmosfer ve kişiselleştirilebilir hizmet anlayışıyla özel bir lüks deneyimi sunar."
           },
           "reason4": {
             "title": "Balayı Çiftleri",
-            "description": "Sevginizi Mocca Living'de kutlayın; balayı çiftlerinin huzurlu ve lüks bir sahil ortamında samimi anlar yaşayabileceği romantik bir cennet."
+            "description": "Sevginizi, denizin huzuruyla çevrili romantik bir atmosferde kutlayın. Mocca Living; balayı çiftlerine özel, sakin ve zarif bir sahil ortamında mahremiyet dolu, unutulmaz anlar vadeder."
           },
           "reason5": {
-            "title": "Wellness Tatilleri",
-            "description": "Mocca Living, deniz kenarında dinlenme ve yavaş yaşam için ideal sakin bir ortam sunarak wellness severler için mükemmel bir sığınaktır."
+            "title": "Wellness Tutkunları",
+            "description": "Deniz kenarında yavaşlamak, nefes almak ve yenilenmek isteyenler için Mocca Living gerçek bir sığınaktır. Doğayla iç içe konumu ve dingin atmosferi sayesinde bedeninizi ve ruhunuzu dinlendirebileceğiniz ideal bir kaçış sunar."
           }
         }
       },
@@ -56,24 +56,24 @@
         "title": "Önemli noktalara uzaklıklar",
         "description": "Villaların havalimanı, plaj, şehir merkezi ve daha fazlasına ne kadar yakın olduğunu keşfedin.",
         "airport": {
-          "title": "\"Dimokritos\" havalimanı – 20 km",
-          "description": "Villalardan 20 km uzaklıkta bulunan Dimokritos Havalimanı, yurt içi ve uluslararası destinasyonlardan gelen misafirler için kolay seyahat imkânı sağlar. Dinlendirici bir tatil için uçsanız da unutulmaz bir konaklamanın ardından ayrılsanız da havalimanına kolayca ulaşabilir, sorunsuz ve zahmetsiz bir yolculuğun tadını çıkarabilirsiniz."
+          "title": "Dimokritos Havalimanı – 20 km",
+          "description": "Villalardan yalnızca 20 km uzaklıkta bulunan Dimokritos Havalimanı, hem yurt içi hem de uluslararası misafirler için kolay ulaşım imkânı sağlar. Konforlu bir yolculukla tatilinize başlayabilir, dönüşte ise zahmetsiz bir şekilde havalimanına ulaşabilirsiniz."
         },
         "city": {
-          "title": "Alexandroupolis – 14 km",
-          "description": "Yalnızca 14 km uzaklıkta yer alan canlı Alexandroupolis şehri, modern olanaklar ile kültürel mirasın mükemmel bir bileşimini sunar. Ziyaretçiler, şehrin büyüleyici sahil şeridini keşfedebilir, çok sayıda restoranda yerel mutfağın tadını çıkarabilir ya da hareketli alışveriş sokaklarında dolaşabilir. Villalardan kolayca ulaşılabilen şehrin canlı atmosferine kısa bir sürüşle ulaşabilirsiniz."
+          "title": "Alexandroupolis Şehir Merkezi - 14 km",
+          "description": "Sadece 14 km mesafedeki Alexandroupolis merkezi;modern yaşam olanakları ile zengin kültürel dokuyu bir arada sunar. Sahil yürüyüşleri, seçkin restoranlar ve hareketli alışveriş caddeleri kısa bir sürüşle ulaşabileceğiniz keyifli alternatifler sunar."
         },
         "beach": {
-          "title": "Agia Paraskevi plajı – 100 m",
-          "description": "Yalnızca 100 metre uzaklıkta olan Agia Paraskevi Plajı, misafirlerini bozulmamış kumları ve berrak sularıyla buluşmaya davet eder. Güneşlenmek, yüzmek ya da sadece deniz kenarında dinlenmek için ideal olan bu yakın plaj, villalardan yürüme mesafesinde ferahlatıcı bir kıyı kaçışı için mükemmel ortam sunar."
+          "title": "Agia Paraskevi Plajı – 100 m",
+          "description": "Villalara yalnızca 100 metre mesafedeki Agia Paraskevi Plajı, berrak denizi ve doğal güzelliğiyle misafirlerini karşılar. Güneşlenmek, yüzmek ya da sahilde dingin bir yürüyüş yapmak için kusursuz bir konumdadır."
         },
         "restaurant": {
-          "title": "Restoran (En yakın) – 100 m",
-          "description": "Villalardan yalnızca 100 metre uzaklıkta, en yakın restoranın çeşitli lezzetli yerel ve uluslararası yemekler sunduğu keyifli bir yemek deneyimi sizi bekliyor. İster sıradan bir yemek ister özel bir akşam yemeği arayın, yakın mesafe uzun bir yolculuğa gerek kalmadan misafirlerin olağanüstü mutfağın tadını çıkarmasına olanak tanır."
+          "title": "En Yakın Restoran – 100 m",
+          "description": "Villalardan 100 metre uzaklıktaki restoran; yerel ve uluslararası mutfaktan seçkin lezzetler sunar. Uzun mesafelere gitmeden, keyifli bir akşam yemeği deneyimi yaşayabilirsiniz."
         },
         "charge": {
-          "title": "Araç şarj istasyonu – 80 m",
-          "description": "Elektrikli araçla seyahat eden misafirler için yalnızca 80 metre uzaklıkta kullanışlı bir araç şarj istasyonu bulunmaktadır. Bu yakın tesis, aracınızın enerjisinin tam olmasını ve bir sonraki maceranıza hazır olmasını sağlayarak sürdürülebilir seyahati zahmetsiz ve sorunsuz hale getirir."
+          "title": "Araç Şarj İstasyonu – 80 m",
+          "description": "Elektrikli araçla seyahat eden misafirler için yalnızca 80 metre uzaklıkta şarj istasyonu bulunmaktadır. Sürdürülebilir ve konforlu bir tatil deneyimi için pratik bir avantaj sunar."
         }
       }
     },
