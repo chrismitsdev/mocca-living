@@ -1,4 +1,4 @@
-function GreekFlag({size = 16, ...props}: CustomIconProps) {
+function GreekFlag({size = 20, ...props}: CustomIconProps) {
   return (
     <svg
       width={size}

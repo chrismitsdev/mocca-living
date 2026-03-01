@@ -1,14 +1,14 @@
 import {
   Building2Icon,
+  EvChargerIcon,
   type LucideProps,
   MapPinnedIcon,
   PlaneIcon,
-  PlugIcon,
-  ShellIcon,
-  UtensilsIcon
+  UtensilsIcon,
+  WavesIcon
 } from 'lucide-react'
 import {useTranslations} from 'next-intl'
-import * as React from 'react'
+import type * as React from 'react'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {
@@ -47,7 +47,7 @@ const HomeDistances: React.FC = () => {
               <DistanceItem
                 title={t('beach.title')}
                 description={t('beach.description')}
-                icon={ShellIcon}
+                icon={WavesIcon}
               />
               <DistanceItem
                 title={t('restaurant.title')}
@@ -57,7 +57,7 @@ const HomeDistances: React.FC = () => {
               <DistanceItem
                 title={t('charge.title')}
                 description={t('charge.description')}
-                icon={PlugIcon}
+                icon={EvChargerIcon}
               />
             </ul>
           </CardContent>
@@ -67,19 +67,23 @@ const HomeDistances: React.FC = () => {
   )
 }
 
-const DistanceItem: React.FC<{
+function DistanceItem({
+  title,
+  description,
+  icon: Icon
+}: {
   title: string
   description: string
   icon: React.ComponentType<LucideProps>
-}> = ({title, description, icon}) => {
+}) {
   return (
     <li className='space-y-2'>
-      <h5 className='flex items-center gap-2'>
-        {React.createElement(icon, {size: 16})}
+      <h5 className='flex gap-2'>
+        <Icon className='w-5 h-lh shrink-0' />
         <Typography variant='h5'>{title}</Typography>
       </h5>
       <Typography
-        className='leading-8 sm:pl-6'
+        className='leading-8 sm:pl-7'
         asChild
       >
         <p>{description}</p>

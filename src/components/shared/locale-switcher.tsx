@@ -42,14 +42,14 @@ const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
   if (isPending) {
     renderedTrigger = (
       <>
-        <Spinner className='h-4 w-4' />
+        <Spinner className='size-5' />
         <span>{t('loading')}</span>
       </>
     )
   } else {
     renderedTrigger = (
       <>
-        <GlobeIcon className='h-4 w-4' />
+        <GlobeIcon className='size-5' />
         <SelectValue />
       </>
     )
@@ -61,7 +61,7 @@ const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
       onValueChange={onValueChange}
       disabled={isPending}
     >
-      <SelectTrigger className='min-w-40'>
+      <SelectTrigger className='min-w-44'>
         <div className='flex items-center gap-1.5 grow'>{renderedTrigger}</div>
       </SelectTrigger>
       <SelectPortal>

@@ -1,4 +1,4 @@
-function EnglishFlag({size = 16, ...props}: CustomIconProps) {
+function EnglishFlag({size = 20, ...props}: CustomIconProps) {
   return (
     <svg
       width={size}
