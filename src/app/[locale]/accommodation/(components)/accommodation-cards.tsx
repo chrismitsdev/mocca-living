@@ -109,7 +109,7 @@ const AccommodationCards: React.FC = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent className='px-4 sm:px-6'>
-                <Typography className='text-lg !leading-7'>
+                <Typography className='text-lg leading-7!'>
                   {villa.description}
                 </Typography>
               </CardContent>
@@ -134,9 +134,9 @@ const AccommodationCards: React.FC = () => {
 
 const VillaDetail: React.FC<React.PropsWithChildren> = ({children}) => {
   return (
-    <div className='px-2 shrink-0 inline-flex items-center justify-center gap-1.5 bg-surface-3 font-semibold border border-surface-4 rounded'>
+    <span className='px-2 shrink-0 inline-flex items-center justify-center gap-1.5 bg-surface-3 font-semibold border border-surface-4 rounded'>
       {children}
-    </div>
+    </span>
   )
 }
 

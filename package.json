@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@adamscybot/react-leaflet-component-marker": "^2.0.3",
-    "@biomejs/biome": "^2.4.4",
+    "@biomejs/biome": "^2.4.5",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-collapsible": "^1.1.12",
     "@radix-ui/react-dialog": "^1.1.15",
@@ -39,7 +39,7 @@
     "embla-carousel-react": "^8.6.0",
     "js-cookie": "^3.0.5",
     "leaflet": "^1.9.4",
-    "lucide-react": "^0.575.0",
+    "lucide-react": "^0.576.0",
     "motion": "^12.34.3",
     "next": "^16.1.6",
     "next-intl": "^4.8.3",
