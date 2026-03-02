@@ -48,6 +48,15 @@ setSpecificMessage(notValues, 'E-posta adresine izin verilmiyor', 'tr')
 setSpecificMessage(check, 'Kabul edilen e-posta: gmail, icloud, yahoo', 'tr')
 setSpecificMessage(regex, 'Geçersiz telefon numarası formatı', 'tr')
 
+setSpecificMessage(string, 'Трябва да съдържа само букви и цифри', 'bg')
+setSpecificMessage(nonEmpty, 'Задължително поле', 'bg')
+setSpecificMessage(minLength, 'Поне 5 символа', 'bg')
+setSpecificMessage(maxLength, 'Максимум 25 символа', 'bg')
+setSpecificMessage(email, 'Невалиден формат на имейл', 'bg')
+setSpecificMessage(notValues, 'Имейл адресът не е разрешен', 'bg')
+setSpecificMessage(check, 'Приети имейли: gmail, icloud, yahoo', 'bg')
+setSpecificMessage(regex, 'Невалиден формат на телефонен номер', 'bg')
+
 const ContactFormSchema = object({
   firstName: pipe(string(), trim(), nonEmpty(), minLength(5), maxLength(25)),
   lastName: pipe(string(), trim(), nonEmpty(), minLength(5), maxLength(25)),

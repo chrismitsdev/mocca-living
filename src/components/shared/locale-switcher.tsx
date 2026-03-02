@@ -3,6 +3,7 @@
 import {GlobeIcon} from 'lucide-react'
 import {type Locale, useLocale, useTranslations} from 'next-intl'
 import * as React from 'react'
+import {BulgarianFlag} from '@/src/components/flags/bulgarian-flag'
 import {EnglishFlag} from '@/src/components/flags/english-flag'
 import {GreekFlag} from '@/src/components/flags/greek-flag'
 import {TurkishFlag} from '@/src/components/flags/turkish-flag'
@@ -41,14 +42,14 @@ const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
   if (isPending) {
     renderedTrigger = (
       <>
-        <Spinner className='h-4 w-4 mt-0.5' />
+        <Spinner className='size-5' />
         <span>{t('loading')}</span>
       </>
     )
   } else {
     renderedTrigger = (
       <>
-        <GlobeIcon className='h-4 w-4 mt-0.5' />
+        <GlobeIcon className='size-5' />
         <SelectValue />
       </>
     )
@@ -60,23 +61,27 @@ const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
       onValueChange={onValueChange}
       disabled={isPending}
     >
-      <SelectTrigger className='min-w-37.5'>
+      <SelectTrigger className='min-w-44'>
         <div className='flex items-center gap-1.5 grow'>{renderedTrigger}</div>
       </SelectTrigger>
       <SelectPortal>
         <SelectContent>
           <SelectViewport>
             <SelectItem value='en'>
-              <EnglishFlag className='mt-0.5' />
+              <EnglishFlag />
               <SelectItemText>{t('label', {country: 'en'})}</SelectItemText>
             </SelectItem>
             <SelectItem value='el'>
-              <GreekFlag className='mt-0.5' />
+              <GreekFlag />
               <SelectItemText>{t('label', {country: 'el'})}</SelectItemText>
             </SelectItem>
             <SelectItem value='tr'>
-              <TurkishFlag className='mt-0.5' />
+              <TurkishFlag />
               <SelectItemText>{t('label', {country: 'tr'})}</SelectItemText>
+            </SelectItem>
+            <SelectItem value='bg'>
+              <BulgarianFlag />
+              <SelectItemText>{t('label', {country: 'bg'})}</SelectItemText>
             </SelectItem>
           </SelectViewport>
         </SelectContent>

@@ -10,13 +10,13 @@ export async function getOpengraphData(): Promise<{
     join(process.cwd(), 'public/images/other/opengraph.png')
   )
   // Font loading
-  const commissionerSemiBold = await readFile(
-    join(process.cwd(), 'assets/Commissioner-SemiBold.ttf')
+  const interSemiBold = await readFile(
+    join(process.cwd(), 'assets/Inter-SemiBold.ttf')
   )
   const imgSrc = `data:image/png;base64,${logoData.toString('base64')}`
 
   return {
     src: imgSrc,
-    font: commissionerSemiBold
+    font: interSemiBold
   }
 }

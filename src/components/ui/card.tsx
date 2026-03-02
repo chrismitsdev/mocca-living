@@ -33,8 +33,8 @@ const CardTitle: React.FC<React.ComponentPropsWithRef<'h3'>> = ({
   ...props
 }) => {
   return (
-    <h2
-      className={cn('text-2xl font-semibold', className)}
+    <h3
+      className={cn('text-2xl font-semibold text-balance', className)}
       {...props}
     />
   )
@@ -45,7 +45,7 @@ const CardDescription: React.FC<React.ComponentPropsWithRef<'p'>> = ({
   ...props
 }) => {
   return (
-    <div
+    <p
       className={cn('text-sm tracking-wide', className)}
       {...props}
     />

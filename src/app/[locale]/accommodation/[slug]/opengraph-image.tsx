@@ -70,7 +70,7 @@ export default async function Image({params}: ParamsWithSlug) {
     {
       fonts: [
         {
-          name: 'Commissioner',
+          name: 'Inter',
           data: font,
           style: 'normal'
         }

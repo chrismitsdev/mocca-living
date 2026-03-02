@@ -1,4 +1,4 @@
-function BulgarianFlag({size = 16, ...props}: CustomIconProps) {
+function BulgarianFlag({size = 20, ...props}: CustomIconProps) {
   return (
     <svg
       width={size}

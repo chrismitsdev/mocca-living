@@ -29,8 +29,8 @@ const typographyVariants = cva(['block'], {
   },
   compoundVariants: [
     {
-      variant: ['hero', 'h1', 'h2', 'h3', 'h4'],
-      className: ['scroll-m-20', 'tracking-tight']
+      variant: ['hero', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+      className: ['tracking-tight', 'text-balance']
     }
   ]
 })
