@@ -1,8 +1,5 @@
 import {type ClassValue, clsx} from 'clsx'
-import {format} from 'date-fns'
-import {el, enUS} from 'date-fns/locale'
 import type {StaticImageData} from 'next/image'
-import type {Locale} from 'next-intl'
 import {twMerge} from 'tailwind-merge'
 
 export async function sleep(sleepTime: number = 1000) {
@@ -47,14 +44,6 @@ export function toBase64(str: string) {
   return typeof window === 'undefined'
     ? Buffer.from(str).toString('base64')
     : window.btoa(str)
-}
-
-export function formatDate(
-  date: Date,
-  locale: Locale,
-  formatStr: string = 'PP'
-): string {
-  return format(date, formatStr, {locale: locale === 'el' ? el : enUS})
 }
 
 export function formatDuration(durationInSeconds: number | null) {
