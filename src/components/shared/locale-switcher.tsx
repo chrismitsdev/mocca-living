@@ -1,6 +1,5 @@
 'use client'
 
-import {GlobeIcon} from 'lucide-react'
 import {type Locale, useLocale, useTranslations} from 'next-intl'
 import * as React from 'react'
 import {BulgarianFlag} from '@/src/components/flags/bulgarian-flag'
@@ -24,12 +23,20 @@ interface LocaleSwitcherProps {
   scrollTop?: boolean
 }
 
-const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
+const flags = {
+  bg: BulgarianFlag,
+  el: GreekFlag,
+  tr: TurkishFlag,
+  en: EnglishFlag
+} satisfies Record<Locale, React.ComponentType<CustomIconProps>>
+
+function LocaleSwitcher({scrollTop = false}: LocaleSwitcherProps) {
   const [isPending, startTransition] = React.useTransition()
   const t = useTranslations('Components.LocaleSwitcher')
   const pathname = usePathname()
   const router = useRouter()
   const locale = useLocale()
+  const Flag = flags[locale]
 
   const onValueChange = (value: Locale) => {
     startTransition(() => {
@@ -49,7 +56,7 @@ const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
   } else {
     renderedTrigger = (
       <>
-        <GlobeIcon className='size-5' />
+        <Flag />
         <SelectValue />
       </>
     )
@@ -62,7 +69,9 @@ const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({scrollTop = false}) => {
       disabled={isPending}
     >
       <SelectTrigger className='min-w-44'>
-        <div className='flex items-center gap-1.5 grow'>{renderedTrigger}</div>
+        <span className='flex items-center gap-1.5 grow'>
+          {renderedTrigger}
+        </span>
       </SelectTrigger>
       <SelectPortal>
         <SelectContent>

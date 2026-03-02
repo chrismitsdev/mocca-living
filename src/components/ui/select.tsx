@@ -41,7 +41,7 @@ const SelectTrigger: React.FC<React.ComponentPropsWithRef<typeof Trigger>> = ({
       asChild
       className='shrink-0 transition'
     >
-      <ChevronsUpDownIcon size={16} />
+      <ChevronsUpDownIcon className='size-5' />
     </Icon>
   </Trigger>
 )
