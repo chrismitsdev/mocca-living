@@ -14,7 +14,7 @@ import {Header} from '@/src/components/shared/header'
 import {ColumnsTransition} from '@/src/components/shared/route-transitions'
 import {routing} from '@/src/i18n/routing'
 
-const inter = Inter({
+const commissioner = Commissioner({
   subsets: ['latin', 'latin-ext', 'greek', 'cyrillic'],
   display: 'swap'
 })

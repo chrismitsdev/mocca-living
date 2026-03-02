@@ -223,7 +223,7 @@
   },
   "Components": {
     "LocaleSwitcher": {
-      "label": "{country, select, en {English} el {Greek} tr {Turkish} bg {Bulgarian} other {Unknown}}",
+      "label": "{country, select, en {English} el {Greek} tr {Turkish} other {Unknown}}",
       "loading": "Loading"
     },
     "ContactDrawer": {
