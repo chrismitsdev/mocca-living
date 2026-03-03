@@ -1,7 +1,5 @@
-import * as React from 'react'
-
-const useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect
+import {useRef, useState} from 'react'
+import {useIsomorphicLayoutEffect} from './useIsomorphicLayoutEffect'
 
 type UseScrollLockOptions = {
   autoLock?: boolean
@@ -27,9 +25,9 @@ export function useScrollLock(
   options: UseScrollLockOptions = {}
 ): UseScrollLockReturn {
   const {autoLock = true, lockTarget, widthReflow = true} = options
-  const [isLocked, setIsLocked] = React.useState(false)
-  const target = React.useRef<HTMLElement | null>(null)
-  const originalStyle = React.useRef<OriginalStyle | null>(null)
+  const [isLocked, setIsLocked] = useState(false)
+  const target = useRef<HTMLElement | null>(null)
+  const originalStyle = useRef<OriginalStyle | null>(null)
 
   const lock = () => {
     if (target.current) {

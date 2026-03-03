@@ -57,7 +57,7 @@ const getVillas = (
     button: t(`${key}.button`)
   }))
 
-const AccommodationCards: React.FC = () => {
+function AccommodationCards() {
   const villas = getVillas(useTranslations('Pages.Accommodation.Index.Villas'))
 
   return (
@@ -132,7 +132,7 @@ const AccommodationCards: React.FC = () => {
   )
 }
 
-const VillaDetail: React.FC<React.PropsWithChildren> = ({children}) => {
+function VillaDetail({children}: React.PropsWithChildren) {
   return (
     <span className='px-2 shrink-0 inline-flex items-center justify-center gap-1.5 bg-surface-3 font-semibold border border-surface-4 rounded'>
       {children}

@@ -24,35 +24,37 @@ const SelectGroup = Group
 const SelectValue = Value
 const SelectItemText = ItemText
 
-const SelectTrigger: React.FC<React.ComponentPropsWithRef<typeof Trigger>> = ({
+function SelectTrigger({
   className,
   children,
   ...props
-}) => (
-  <Trigger
-    className={cn(
-      'px-3 py-1.75 flex items-center gap-1.5 bg-surface-1 border border-border rounded font-semibold transition hover:border-border-hover focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:border-border disabled:pointer-events-none disabled:opacity-35 data-open:border-border-hover data-placeholder:[&>div>span]:text-sm data-placeholder:[&>div>span]:font-normal data-placeholder:[&>div>span]:text-foreground-muted data-open:shadow [&>div]:grow [&>div]:text-left group',
-      className
-    )}
-    {...props}
-  >
-    {children}
-    <Icon
-      asChild
-      className='shrink-0 transition'
+}: React.ComponentPropsWithRef<typeof Trigger>) {
+  return (
+    <Trigger
+      className={cn(
+        'px-3 py-1.75 flex items-center gap-1.5 bg-surface-1 border border-border rounded font-semibold transition hover:border-border-hover focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:border-border disabled:pointer-events-none disabled:opacity-35 data-open:border-border-hover data-placeholder:[&>div>span]:text-sm data-placeholder:[&>div>span]:font-normal data-placeholder:[&>div>span]:text-foreground-muted data-open:shadow [&>div]:grow [&>div]:text-left group',
+        className
+      )}
+      {...props}
     >
-      <ChevronsUpDownIcon className='size-5' />
-    </Icon>
-  </Trigger>
-)
+      {children}
+      <Icon
+        className='shrink-0 transition'
+        asChild
+      >
+        <ChevronsUpDownIcon className='size-5' />
+      </Icon>
+    </Trigger>
+  )
+}
 
-const SelectContent: React.FC<React.ComponentPropsWithRef<typeof Content>> = ({
+function SelectContent({
   className,
   children,
   position = 'popper',
   sideOffset = 6,
   ...props
-}) => {
+}: React.ComponentPropsWithRef<typeof Content>) {
   return (
     <Content
       className={cn(
@@ -68,10 +70,10 @@ const SelectContent: React.FC<React.ComponentPropsWithRef<typeof Content>> = ({
   )
 }
 
-const SelectLabel: React.FC<React.ComponentPropsWithRef<typeof Label>> = ({
+function SelectLabel({
   className,
   ...props
-}) => {
+}: React.ComponentPropsWithRef<typeof Label>) {
   return (
     <Label
       className={cn('py-1.5 pl-8 pr-2 text-sm font-semibold', className)}
@@ -80,11 +82,11 @@ const SelectLabel: React.FC<React.ComponentPropsWithRef<typeof Label>> = ({
   )
 }
 
-const SelectItem: React.FC<React.ComponentPropsWithRef<typeof Item>> = ({
+function SelectItem({
   className,
   children,
   ...props
-}) => {
+}: React.ComponentPropsWithRef<typeof Item>) {
   return (
     <Item
       className={cn(
@@ -98,9 +100,10 @@ const SelectItem: React.FC<React.ComponentPropsWithRef<typeof Item>> = ({
   )
 }
 
-const SelectSeparator: React.FC<
-  React.ComponentPropsWithRef<typeof Separator>
-> = ({className, ...props}) => {
+function SelectSeparator({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof Separator>) {
   return (
     <Separator
       className={cn('my-1 h-px bg-border', className)}

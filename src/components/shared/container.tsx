@@ -5,11 +5,7 @@ interface ContainerProps extends React.ComponentPropsWithRef<'div'> {
   asChild?: boolean
 }
 
-const Container: React.FC<ContainerProps> = ({
-  className,
-  asChild = false,
-  ...props
-}) => {
+function Container({className, asChild = false, ...props}: ContainerProps) {
   const Comp = asChild ? Slot : 'div'
 
   return (

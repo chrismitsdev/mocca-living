@@ -1,11 +1,10 @@
 import {Root} from '@radix-ui/react-label'
-import type * as React from 'react'
 import {cn} from '@/src/lib/utils'
 
-const Label: React.FC<React.ComponentPropsWithRef<typeof Root>> = ({
+function Label({
   className,
   ...props
-}) => {
+}: React.ComponentPropsWithRef<typeof Root>) {
   return (
     <Root
       className={cn('block text-sm font-semibold select-none', className)}

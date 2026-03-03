@@ -3,7 +3,7 @@ import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
-const HomeIntro: React.FC = () => {
+function HomeIntro() {
   const t = useTranslations('Pages.Home.Introdution')
 
   return (

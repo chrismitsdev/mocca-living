@@ -1,6 +1,6 @@
 import type {Metadata} from 'next'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
-import * as React from 'react'
+import {use} from 'react'
 import {AccommodationCards} from '@/src/app/[locale]/accommodation/(components)/accommodation-cards'
 import {AccommodationHeader} from '@/src/app/[locale]/accommodation/(components)/accommodation-header'
 import {AccommodationHero} from '@/src/app/[locale]/accommodation/(components)/accommodation-hero'
@@ -21,7 +21,7 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
 export default function AccommodationPage({
   params
 }: PageProps<'/[locale]/accommodation'>) {
-  const {locale} = React.use(params as Params['params'])
+  const {locale} = use(params as Params['params'])
 
   setRequestLocale(locale)
 

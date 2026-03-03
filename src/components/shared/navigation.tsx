@@ -11,7 +11,7 @@ import {
   MessageSquareIcon
 } from 'lucide-react'
 import {useTranslations} from 'next-intl'
-import * as React from 'react'
+import {useEffect, useState} from 'react'
 import {dimitraCover, georgiaCover} from '@/public/images/covers'
 import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
 import {Button} from '@/src/components/ui/button'
@@ -41,14 +41,14 @@ import {useScrollLock} from '@/src/hooks/useScrollLock'
 import {Link, usePathname} from '@/src/i18n/navigation'
 import {cn} from '@/src/lib/utils'
 
-const Navigation: React.FC = () => {
-  const [hoverCardOpen, setHoverCardOpen] = React.useState(false)
-  const [drawerOpen, setDrawerOpen] = React.useState(false)
+function Navigation() {
+  const [hoverCardOpen, setHoverCardOpen] = useState(false)
+  const [drawerOpen, setDrawerOpen] = useState(false)
   const pathname = usePathname()
   const t = useTranslations('Metadata.Pages')
   useScrollLock({autoLock: drawerOpen})
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!pathname) return
 
     setHoverCardOpen(false)
@@ -325,21 +325,19 @@ const Navigation: React.FC = () => {
   )
 }
 
-const NavLink: React.FC<
-  React.ComponentPropsWithRef<typeof Link> & {
-    pathname: string
-    icon?: React.ComponentType<LucideProps>
-  }
-> = ({
+function NavLink({
   pathname,
   draggable = false,
   role = 'menuitem',
   className,
-  icon,
+  icon: Icon,
   href,
   children,
   ...props
-}) => {
+}: React.ComponentPropsWithRef<typeof Link> & {
+  pathname: string
+  icon?: React.ComponentType<LucideProps>
+}) {
   const isActive = pathname === href
 
   return (
@@ -355,8 +353,12 @@ const NavLink: React.FC<
       {...(role === 'menuitem' && isActive ? {'aria-current': 'page'} : {})}
       {...props}
     >
-      {icon &&
-        React.createElement(icon, {size: 16, strokeWidth: isActive ? 3 : 2})}
+      {Icon && (
+        <Icon
+          className='size-4'
+          strokeWidth={isActive ? 3 : 2}
+        />
+      )}
       <Typography
         className='uppercase'
         variant='small'

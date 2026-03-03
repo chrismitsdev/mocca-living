@@ -1,8 +1,5 @@
-// 'use client'
-
 import {Slot, Slottable} from '@radix-ui/react-slot'
 import {cva, type VariantProps} from 'class-variance-authority'
-import type * as React from 'react'
 import {Spinner} from '@/src/components/ui/spinner'
 import {cn} from '@/src/lib/utils'
 
@@ -103,7 +100,7 @@ interface ButtonProps
   isLoading?: boolean
 }
 
-const Button: React.FC<ButtonProps> = ({
+function Button({
   variant,
   size,
   className,
@@ -113,7 +110,7 @@ const Button: React.FC<ButtonProps> = ({
   draggable = false,
   children,
   ...props
-}) => {
+}: ButtonProps) {
   const Comp = asChild ? Slot : 'button'
 
   return (

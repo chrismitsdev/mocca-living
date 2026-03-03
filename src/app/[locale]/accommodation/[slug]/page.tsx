@@ -2,7 +2,7 @@ import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
 import type {Locale} from 'next-intl'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
-import * as React from 'react'
+import {use} from 'react'
 import {SlugCarousel} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-carousel'
 import {SlugDetails} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-details'
 import {SlugHeader} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-header'
@@ -42,7 +42,7 @@ export function generateStaticParams() {
 export default function SlugPage({
   params
 }: PageProps<'/[locale]/accommodation/[slug]'>) {
-  const {locale, slug} = React.use(params as ParamsWithSlug['params'])
+  const {locale, slug} = use(params as ParamsWithSlug['params'])
 
   setRequestLocale(locale)
 

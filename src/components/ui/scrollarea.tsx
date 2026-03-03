@@ -7,13 +7,14 @@ import {
   Thumb,
   Viewport
 } from '@radix-ui/react-scroll-area'
-import type * as React from 'react'
 import {cn} from '@/src/lib/utils'
 
-const ScrollArea: React.FC<React.ComponentPropsWithRef<typeof Root>> = ({
+const ScrollAreaCorner = Corner
+
+function ScrollArea({
   className,
   ...props
-}) => {
+}: React.ComponentPropsWithRef<typeof Root>) {
   return (
     <Root
       className={cn('relative overflow-hidden', className)}
@@ -22,9 +23,10 @@ const ScrollArea: React.FC<React.ComponentPropsWithRef<typeof Root>> = ({
   )
 }
 
-const ScrollAreaViewport: React.FC<
-  React.ComponentPropsWithRef<typeof Viewport>
-> = ({className, ...props}) => {
+function ScrollAreaViewport({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof Viewport>) {
   return (
     <Viewport
       className={cn('h-full w-full rounded-[inherit]', className)}
@@ -33,9 +35,11 @@ const ScrollAreaViewport: React.FC<
   )
 }
 
-const ScrollAreaBar: React.FC<
-  React.ComponentPropsWithRef<typeof Scrollbar>
-> = ({className, orientation = 'vertical', ...props}) => {
+function ScrollAreaBar({
+  className,
+  orientation = 'vertical',
+  ...props
+}: React.ComponentPropsWithRef<typeof Scrollbar>) {
   return (
     <Scrollbar
       className={cn(
@@ -51,8 +55,6 @@ const ScrollAreaBar: React.FC<
     </Scrollbar>
   )
 }
-
-const ScrollAreaCorner = Corner
 
 ScrollArea.displayName = 'ScrollArea'
 ScrollAreaViewport.displayName = 'ScrollAreaViewport'

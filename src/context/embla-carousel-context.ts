@@ -1,5 +1,5 @@
 import type useEmblaCarousel from 'embla-carousel-react'
-import * as React from 'react'
+import {createContext, useContext} from 'react'
 
 interface EmblaContextProps {
   emblaRef: ReturnType<typeof useEmblaCarousel>[0]
@@ -10,10 +10,10 @@ interface EmblaContextProps {
   onThumbButtonClick(index: number): void
 }
 
-const EmblaContext = React.createContext<EmblaContextProps | null>(null)
+const EmblaContext = createContext<EmblaContextProps | null>(null)
 
 function useEmblaContext() {
-  const context = React.use(EmblaContext)
+  const context = useContext(EmblaContext)
 
   if (!context) {
     throw new Error('useEmblaContext must be used within a EmblaProvider')

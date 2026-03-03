@@ -4,7 +4,7 @@ import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
-const ContactSocial: React.FC = () => {
+function ContactSocial() {
   const t = useTranslations('Pages.Contact.Social')
 
   return (
@@ -33,10 +33,10 @@ const ContactSocial: React.FC = () => {
   )
 }
 
-const SocialLink: React.FC<React.ComponentPropsWithoutRef<'a'>> = ({
+function SocialLink({
   target = '_blank',
   ...props
-}) => {
+}: React.ComponentPropsWithoutRef<'a'>) {
   return (
     <a
       className='p-6 mx-auto w-fit flex flex-col items-center gap-4 rounded transition hover:bg-surface-3 hover:-translate-y-0.5 sm:w-full'

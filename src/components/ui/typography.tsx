@@ -41,12 +41,7 @@ interface TypographyProps
   asChild?: boolean
 }
 
-const Typography: React.FC<TypographyProps> = ({
-  className,
-  variant,
-  asChild,
-  ...props
-}) => {
+function Typography({className, variant, asChild, ...props}: TypographyProps) {
   const Comp = asChild ? Slot : 'span'
 
   return (

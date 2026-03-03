@@ -1,7 +1,7 @@
 import {useTranslations} from 'next-intl'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 
-const AccommodationHeader: React.FC = () => {
+function AccommodationHeader() {
   const t = useTranslations('Metadata.Pages')
 
   return (

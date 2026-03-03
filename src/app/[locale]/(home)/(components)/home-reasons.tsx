@@ -6,7 +6,7 @@ import {Section} from '@/src/components/shared/section'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {Typography} from '@/src/components/ui/typography'
 
-const HomeReasons: React.FC = () => {
+function HomeReasons() {
   const t = useTranslations('Pages.Home.IdealReasons')
 
   return (
@@ -75,10 +75,7 @@ const HomeReasons: React.FC = () => {
   )
 }
 
-const Reason: React.FC<{title: string; description: string}> = ({
-  title,
-  description
-}) => {
+function Reason({title, description}: {title: string; description: string}) {
   return (
     <div className='flex gap-2'>
       <ArrowBigRightIcon className='shrink-0' />

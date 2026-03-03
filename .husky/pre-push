@@ -1,0 +1,11 @@
+#!/bin/bash
+echo "⏳ Generating types..."
+pnpm next typegen
+
+echo "⏳ Type-checking..."
+pnpm type-check || { echo "❌ Type errors. Push aborted."; exit 1; }
+
+echo "⏳ Linting..."
+pnpm lint || { echo "❌ Lint errors. Push aborted."; exit 1; }
+
+echo "✅ All checks passed."

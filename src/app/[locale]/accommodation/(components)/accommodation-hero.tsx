@@ -4,7 +4,7 @@ import {ClientLink} from '@/src/components/shared/client-link'
 import {Button} from '@/src/components/ui/button'
 import {CustomImage} from '@/src/components/ui/custom-image'
 
-const AccommodationHero: React.FC = () => {
+function AccommodationHero() {
   const t = useTranslations('Pages.Accommodation.Index.Hero')
 
   return (

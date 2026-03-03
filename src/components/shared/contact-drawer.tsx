@@ -19,11 +19,10 @@ import {
 } from '@/src/components/ui/drawer'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
-import {cn} from '@/src/lib/utils'
 
 const PHONE = '+306973560007'
 
-const ContactDrawer: React.FC = () => {
+function ContactDrawer() {
   const t = useTranslations('Components.ContactDrawer')
 
   return (
@@ -40,7 +39,7 @@ const ContactDrawer: React.FC = () => {
       <DrawerPortal>
         <DrawerOverlay />
         <DrawerContent
-          className='h-full max-h-4/6'
+          className='h-full max-h-1/2'
           side='bottom'
         >
           <div className='px-7 pt-5 pb-4 space-y-2 sm:px-8 sm:py-16'>
@@ -92,13 +91,10 @@ const ContactDrawer: React.FC = () => {
   )
 }
 
-const ContactMethodLink: React.FC<React.ComponentPropsWithRef<'a'>> = ({
-  className,
-  ...props
-}) => {
+function ContactMethodLink(props: React.ComponentPropsWithRef<'a'>) {
   return (
     <a
-      className={cn('flex items-center gap-3 rounded', className)}
+      className='flex items-center gap-3 rounded'
       {...props}
     />
   )

@@ -1,6 +1,6 @@
 import type {Metadata} from 'next'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
-import * as React from 'react'
+import {use} from 'react'
 import {CookiesContent} from '@/src/app/[locale]/cookies/(components)/cookies-content'
 import {CookiesHeader} from '@/src/app/[locale]/cookies/(components)/cookies-header'
 
@@ -14,7 +14,7 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
 }
 
 export default function CookiesPage({params}: PageProps<'/[locale]/cookies'>) {
-  const {locale} = React.use(params as Params['params'])
+  const {locale} = use(params as Params['params'])
 
   setRequestLocale(locale)
 

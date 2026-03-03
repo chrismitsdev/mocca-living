@@ -21,7 +21,7 @@ import {Button} from '@/src/components/ui/button'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 
-const Footer: React.FC = () => {
+function Footer() {
   const t = useTranslations('Components')
 
   return (
@@ -258,10 +258,10 @@ const Footer: React.FC = () => {
   )
 }
 
-const FooterColumn: React.FC<React.PropsWithChildren & {title?: string}> = ({
+function FooterColumn({
   title,
   children
-}) => {
+}: React.PropsWithChildren & {title?: string}) {
   let renderedJsx: React.JSX.Element
 
   if (title) {
@@ -279,5 +279,6 @@ const FooterColumn: React.FC<React.PropsWithChildren & {title?: string}> = ({
 }
 
 Footer.displayName = 'Footer'
+FooterColumn.displayName = 'FooterColumn'
 
 export {Footer}

@@ -1,15 +1,14 @@
 'use client'
 
 import {Root} from '@radix-ui/react-separator'
-import type * as React from 'react'
 import {cn} from '@/src/lib/utils'
 
-const Separator: React.FC<React.ComponentPropsWithRef<typeof Root>> = ({
+function Separator({
   className,
   orientation = 'horizontal',
   decorative = true,
   ...props
-}) => {
+}: React.ComponentPropsWithRef<typeof Root>) {
   return (
     <Root
       className={cn(

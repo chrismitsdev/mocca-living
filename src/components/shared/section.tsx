@@ -1,9 +1,9 @@
 import {cn} from '@/src/lib/utils'
 
-const Section: React.FC<React.ComponentPropsWithRef<'section'>> = ({
+function Section({
   className,
   ...props
-}) => {
+}: React.ComponentPropsWithRef<'section'>) {
   return (
     <section
       className={cn('py-32', className)}

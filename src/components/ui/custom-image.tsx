@@ -1,5 +1,4 @@
 import Image, {type StaticImageData} from 'next/image'
-import type * as React from 'react'
 import {shimmer, toBase64} from '@/src/lib/utils'
 
 interface CustomImageProps
@@ -7,12 +6,12 @@ interface CustomImageProps
   src: StaticImageData
 }
 
-const CustomImage: React.FC<CustomImageProps> = ({
+function CustomImage({
   src,
   alt,
   draggable = false,
   ...props
-}) => {
+}: CustomImageProps) {
   return (
     <Image
       placeholder={`data:image/svg+xml;base64,${toBase64(

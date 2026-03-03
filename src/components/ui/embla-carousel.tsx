@@ -6,10 +6,9 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   ImagesIcon,
-  type LucideProps,
   XIcon
 } from 'lucide-react'
-import * as React from 'react'
+import {useCallback, useEffect, useState} from 'react'
 import {Button} from '@/src/components/ui/button'
 import {
   Drawer,
@@ -31,13 +30,13 @@ import {cn} from '@/src/lib/utils'
 
 type EmblaApiType = ReturnType<typeof useEmblaCarousel>[1]
 
-interface EmblaCarouselProps extends React.ComponentPropsWithRef<'div'> {
+interface CarouselProps extends React.ComponentPropsWithRef<'div'> {
   options?: Parameters<typeof useEmblaCarousel>[0]
   plugins?: Parameters<typeof useEmblaCarousel>[1]
   asChild?: boolean
 }
 
-const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
+function Carousel({
   className,
   options = {
     loop: true,
@@ -46,14 +45,14 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
   plugins,
   asChild = false,
   ...props
-}) => {
+}: CarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins)
-  const [selectedIndex, setSelectedIndex] = React.useState<number>(
+  const [selectedIndex, setSelectedIndex] = useState<number>(
     options.startIndex ?? 0
   )
   const Comp = asChild ? Slot : 'div'
 
-  const onPrevButtonClick = React.useCallback(() => {
+  const onPrevButtonClick = useCallback(() => {
     if (!emblaApi) return
 
     if (emblaApi.plugins()?.autoplay) {
@@ -63,7 +62,7 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
     emblaApi.scrollPrev()
   }, [emblaApi])
 
-  const onNextButtonClick = React.useCallback(() => {
+  const onNextButtonClick = useCallback(() => {
     if (!emblaApi) return
 
     if (emblaApi.plugins()?.autoplay) {
@@ -73,7 +72,7 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
     emblaApi.scrollNext()
   }, [emblaApi])
 
-  const onThumbButtonClick = React.useCallback(
+  const onThumbButtonClick = useCallback(
     (index: number) => {
       if (!emblaApi) return
 
@@ -86,12 +85,12 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
     [emblaApi]
   )
 
-  const onSelect = React.useCallback((emblaApi: EmblaApiType) => {
+  const onSelect = useCallback((emblaApi: EmblaApiType) => {
     if (!emblaApi) return
     setSelectedIndex(emblaApi.selectedScrollSnap())
   }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!emblaApi) return
 
     onSelect(emblaApi)
@@ -114,7 +113,6 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
       }}
     >
       <Comp
-        id='embla'
         className={cn('relative overflow-hidden', className)}
         {...props}
       />
@@ -122,15 +120,11 @@ const EmblaCarousel: React.FC<EmblaCarouselProps> = ({
   )
 }
 
-const EmblaViewport: React.FC<React.ComponentPropsWithRef<'div'>> = ({
-  className,
-  ...props
-}) => {
+function Viewport({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   const {emblaRef} = useEmblaContext()
 
   return (
     <div
-      id='embla-viewport'
       className={cn('overflow-hidden h-full', className)}
       ref={emblaRef}
       {...props}
@@ -138,26 +132,21 @@ const EmblaViewport: React.FC<React.ComponentPropsWithRef<'div'>> = ({
   )
 }
 
-const EmblaContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
+function SlidesContainer({
   className,
   ...props
-}) => {
+}: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      id='embla-container'
       className={cn('h-full flex', className)}
       {...props}
     />
   )
 }
 
-const EmblaSlide: React.FC<React.ComponentPropsWithRef<'div'>> = ({
-  className,
-  ...props
-}) => {
+function Slide({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      id='embla-slide'
       className={cn(
         'min-w-0 grow-0 shrink-0 basis-full select-none',
         className
@@ -167,11 +156,11 @@ const EmblaSlide: React.FC<React.ComponentPropsWithRef<'div'>> = ({
   )
 }
 
-const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
+function ThumbsContainer({
   className,
   ...props
-}) => {
-  const [open, setOpen] = React.useState<boolean>(false)
+}: React.ComponentPropsWithRef<'div'>) {
+  const [open, setOpen] = useState<boolean>(false)
 
   return (
     <Drawer
@@ -199,7 +188,6 @@ const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
           <ScrollArea>
             <ScrollAreaViewport>
               <div
-                id='embla-thumbs-container'
                 className={cn('flex justify-center gap-2 sm:gap-4', className)}
                 {...props}
               />
@@ -215,14 +203,15 @@ const EmblaThumbsContainer: React.FC<React.ComponentPropsWithRef<'div'>> = ({
   )
 }
 
-const EmblaThumb: React.FC<
-  React.ComponentPropsWithRef<'button'> & {thumbIndex: number}
-> = ({className, thumbIndex, ...props}) => {
+function Thumb({
+  className,
+  thumbIndex,
+  ...props
+}: React.ComponentPropsWithRef<'button'> & {thumbIndex: number}) {
   const {selectedIndex, onThumbButtonClick} = useEmblaContext()
 
   return (
     <button
-      id='embla-thumb'
       className={cn(
         'size-10 rounded-xs overflow-hidden grayscale-75 opacity-75 contrast-75 transition sm:size-20',
         thumbIndex === selectedIndex && 'grayscale-0 opacity-100 contrast-125',
@@ -234,70 +223,70 @@ const EmblaThumb: React.FC<
   )
 }
 
-const EmblaButtonPrev: React.FC<
-  React.ComponentPropsWithRef<typeof Button> & {
-    icon?: React.ComponentType<LucideProps>
-  }
-> = ({className, icon, ...props}) => {
+function ButtonPrev({
+  className,
+  'aria-label': ariaLabel = 'Go to previous slide',
+  ...props
+}: Omit<React.ComponentPropsWithRef<typeof Button>, 'children'>) {
   const {onPrevButtonClick} = useEmblaContext()
 
   return (
     <Button
-      id='embla-button-prev'
       className={cn(
         'absolute top-1/2 -translate-y-1/2 left-1.5 sm:left-4',
         className
       )}
+      aria-label={ariaLabel}
       variant='primary-alt'
       size='icon-small'
       onClick={onPrevButtonClick}
       {...props}
     >
-      {!icon ? <ChevronLeftIcon /> : React.createElement(icon)}
+      <ChevronLeftIcon />
     </Button>
   )
 }
 
-const EmblaButtonNext: React.FC<
-  React.ComponentPropsWithRef<typeof Button> & {
-    icon?: React.ComponentType<LucideProps>
-  }
-> = ({className, icon, ...props}) => {
+function ButtonNext({
+  className,
+  'aria-label': ariaLabel = 'Go to next slide',
+  ...props
+}: Omit<React.ComponentPropsWithRef<typeof Button>, 'children'>) {
   const {onNextButtonClick} = useEmblaContext()
 
   return (
     <Button
-      id='embla-button-next'
       className={cn(
         'absolute top-1/2 -translate-y-1/2 right-1.5 sm:right-4',
         className
       )}
+      aria-label={ariaLabel}
       variant='primary-alt'
       size='icon-small'
       onClick={onNextButtonClick}
       {...props}
     >
-      {!icon ? <ChevronRightIcon /> : React.createElement(icon)}
+      <ChevronRightIcon />
     </Button>
   )
 }
 
-EmblaCarousel.displayName = 'EmblaCarousel'
-EmblaViewport.displayName = 'EmblaViewport'
-EmblaContainer.displayName = 'EmblaContainer'
-EmblaSlide.displayName = 'EmblaSlide'
-EmblaThumbsContainer.displayName = 'EmblaThumbsContainer'
-EmblaThumb.displayName = 'EmblaThumb'
-EmblaButtonPrev.displayName = 'EmblaButtonPrev'
-EmblaButtonNext.displayName = 'EmblaButtonNext'
+Carousel.displayName = 'Carousel'
+Viewport.displayName = 'Viewport'
+SlidesContainer.displayName = 'SlidesContainer'
+Slide.displayName = 'Slide'
+ThumbsContainer.displayName = 'ThumbsContainer'
+Thumb.displayName = 'Thumb'
+ButtonPrev.displayName = 'ButtonPrev'
+ButtonNext.displayName = 'ButtonNext'
 
 export {
-  EmblaCarousel,
-  EmblaViewport,
-  EmblaContainer,
-  EmblaSlide,
-  EmblaThumbsContainer,
-  EmblaThumb,
-  EmblaButtonPrev,
-  EmblaButtonNext
+  Carousel,
+  Viewport,
+  SlidesContainer,
+  Slide,
+  ThumbsContainer,
+  Thumb,
+  ButtonPrev,
+  ButtonNext
 }

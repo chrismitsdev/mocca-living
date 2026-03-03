@@ -5,13 +5,13 @@ import {Inter} from 'next/font/google'
 import {notFound} from 'next/navigation'
 import {hasLocale, NextIntlClientProvider} from 'next-intl'
 import {setRequestLocale} from 'next-intl/server'
-import * as React from 'react'
+import {use} from 'react'
 import {Toaster} from 'sonner'
+import {ColumnsTransition} from '@/src/components/shared/columns-transition'
 import {ContactDrawer} from '@/src/components/shared/contact-drawer'
 import {CookieConsent} from '@/src/components/shared/cookie-consent'
 import {Footer} from '@/src/components/shared/footer'
 import {Header} from '@/src/components/shared/header'
-import {ColumnsTransition} from '@/src/components/shared/route-transitions'
 import {routing} from '@/src/i18n/routing'
 
 const inter = Inter({
@@ -47,7 +47,7 @@ export default function LocaleLayout({
   params,
   children
 }: LayoutProps<'/[locale]'>) {
-  const {locale} = React.use(params as Params['params'])
+  const {locale} = use(params as Params['params'])
 
   if (!hasLocale(routing.locales, locale)) {
     notFound()

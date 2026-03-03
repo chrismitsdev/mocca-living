@@ -1,10 +1,6 @@
-import type * as React from 'react'
 import {cn} from '@/src/lib/utils'
 
-const Card: React.FC<React.ComponentPropsWithRef<'div'>> = ({
-  className,
-  ...props
-}) => {
+function Card({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
       className={cn(
@@ -16,10 +12,7 @@ const Card: React.FC<React.ComponentPropsWithRef<'div'>> = ({
   )
 }
 
-const CardHeader: React.FC<React.ComponentPropsWithRef<'div'>> = ({
-  className,
-  ...props
-}) => {
+function CardHeader({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
       className={cn('space-y-2', className)}
@@ -28,10 +21,7 @@ const CardHeader: React.FC<React.ComponentPropsWithRef<'div'>> = ({
   )
 }
 
-const CardTitle: React.FC<React.ComponentPropsWithRef<'h3'>> = ({
-  className,
-  ...props
-}) => {
+function CardTitle({className, ...props}: React.ComponentPropsWithRef<'h3'>) {
   return (
     <h3
       className={cn('text-2xl font-semibold text-balance', className)}
@@ -40,10 +30,10 @@ const CardTitle: React.FC<React.ComponentPropsWithRef<'h3'>> = ({
   )
 }
 
-const CardDescription: React.FC<React.ComponentPropsWithRef<'p'>> = ({
+function CardDescription({
   className,
   ...props
-}) => {
+}: React.ComponentPropsWithRef<'p'>) {
   return (
     <p
       className={cn('text-sm tracking-wide', className)}
@@ -52,14 +42,11 @@ const CardDescription: React.FC<React.ComponentPropsWithRef<'p'>> = ({
   )
 }
 
-const CardContent: React.FC<React.ComponentPropsWithRef<'div'>> = (props) => {
+function CardContent(props: React.ComponentPropsWithRef<'div'>) {
   return <div {...props} />
 }
 
-const CardFooter: React.FC<React.ComponentPropsWithRef<'div'>> = ({
-  className,
-  ...props
-}) => {
+function CardFooter({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
       className={cn('pt-2 flex items-center', className)}

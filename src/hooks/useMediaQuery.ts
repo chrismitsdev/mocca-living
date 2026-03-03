@@ -1,4 +1,4 @@
-import * as React from 'react'
+import {useState} from 'react'
 import {useIsomorphicLayoutEffect} from '@/src/hooks/useIsomorphicLayoutEffect'
 
 type UseMediaQueryOptions = {
@@ -19,7 +19,7 @@ export function useMediaQuery(
     return window.matchMedia(query).matches
   }
 
-  const [matches, setMatches] = React.useState<boolean>(() => {
+  const [matches, setMatches] = useState<boolean>(() => {
     if (initializeWithValue) {
       return getMatches(query)
     }

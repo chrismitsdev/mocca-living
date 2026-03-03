@@ -7,7 +7,7 @@ import type {LatLngTuple} from 'leaflet'
 import {MapPinIcon} from 'lucide-react'
 import Image from 'next/image'
 import {useTranslations} from 'next-intl'
-import * as React from 'react'
+import {useCallback} from 'react'
 import {MapContainer, Popup, TileLayer} from 'react-leaflet'
 import moccaLogoBox from '@/public/logos/mocca-logo-box.svg'
 import {Container} from '@/src/components/shared/container'
@@ -16,10 +16,10 @@ import {Typography} from '@/src/components/ui/typography'
 
 const coords = [40.849038, 25.723552] satisfies LatLngTuple
 
-const ContactMap: React.FC = () => {
+function ContactMap() {
   const t = useTranslations('Pages.Contact.Map')
 
-  const handleMarkerRef = React.useCallback((marker: L.Marker | null) => {
+  const handleMarkerRef = useCallback((marker: L.Marker | null) => {
     if (marker) {
       marker.openPopup()
     }

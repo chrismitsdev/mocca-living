@@ -3,7 +3,7 @@ import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
-const CookiesContent: React.FC = () => {
+function CookiesContent() {
   const t = useTranslations('Pages.Cookies')
 
   return (

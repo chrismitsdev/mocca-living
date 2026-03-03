@@ -13,12 +13,7 @@ interface ToastProps {
   status?: 'default' | 'success' | 'error'
 }
 
-const Toast: React.FC<ToastProps> = ({
-  id,
-  title,
-  description,
-  status = 'default'
-}) => {
+function Toast({id, title, description, status = 'default'}: ToastProps) {
   return (
     <div
       className={cn(

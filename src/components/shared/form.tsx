@@ -8,7 +8,7 @@ import {
   UserIcon
 } from 'lucide-react'
 import {useLocale, useTranslations} from 'next-intl'
-import * as React from 'react'
+import {useActionState, useEffect} from 'react'
 import {PrivacyModal} from '@/src/components/shared/privacy-modal'
 import {Button} from '@/src/components/ui/button'
 import {Checkbox} from '@/src/components/ui/checkbox'
@@ -26,14 +26,14 @@ const initialState = {
   ok: null
 }
 
-const Form: React.FC = () => {
-  const t = useTranslations('Components.Form')
-  const [state, action, isPending] = React.useActionState(
+function Form() {
+  const [state, action, isPending] = useActionState(
     contactFormAction.bind(null, useLocale()),
     initialState
   )
+  const t = useTranslations('Components.Form')
 
-  React.useEffect(
+  useEffect(
     () => {
       if (state.ok === null) return
 
@@ -161,9 +161,12 @@ const Form: React.FC = () => {
   )
 }
 
-const FormControl: React.FC<
-  React.ComponentPropsWithRef<'div'> & {error?: string}
-> = ({className, error, children, ...props}) => {
+function FormControl({
+  className,
+  error,
+  children,
+  ...props
+}: React.ComponentPropsWithRef<'div'> & {error?: string}) {
   return (
     <div
       className={cn('relative flex flex-col gap-0.5', className)}

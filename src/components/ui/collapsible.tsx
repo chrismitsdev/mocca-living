@@ -1,13 +1,14 @@
 'use client'
 
 import {Content, Root, Trigger} from '@radix-ui/react-collapsible'
-import type * as React from 'react'
 import {cn} from '@/src/lib/utils'
 
-const Collapsible: React.FC<React.ComponentPropsWithRef<typeof Root>> = ({
+const CollapsibleTrigger = Trigger
+
+function Collapsible({
   className,
   ...props
-}) => {
+}: React.ComponentPropsWithRef<typeof Root>) {
   return (
     <Root
       className={cn('group', className)}
@@ -16,11 +17,10 @@ const Collapsible: React.FC<React.ComponentPropsWithRef<typeof Root>> = ({
   )
 }
 
-const CollapsibleTrigger = Trigger
-
-const CollapsibleContent: React.FC<
-  React.ComponentPropsWithRef<typeof Root>
-> = ({className, ...props}) => {
+function CollapsibleContent({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof Content>) {
   return (
     <Content
       className={cn(

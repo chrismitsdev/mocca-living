@@ -16,9 +16,13 @@ import {
 } from '@react-email/components'
 import type {ContactFormActionState} from '@/src/lib/actions'
 
-const ContactFormInternal: React.FC<
-  Readonly<ContactFormActionState['data']>
-> = ({firstName, lastName, email, phone, message}) => {
+function ContactFormInternal({
+  firstName,
+  lastName,
+  email,
+  phone,
+  message
+}: ContactFormActionState['data']) {
   return (
     <Html>
       <Head>

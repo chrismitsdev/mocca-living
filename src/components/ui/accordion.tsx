@@ -2,19 +2,14 @@
 
 import {Content, Header, Item, Root, Trigger} from '@radix-ui/react-accordion'
 import {ChevronRight} from 'lucide-react'
-import type * as React from 'react'
 import {cn} from '@/src/lib/utils'
 
-const Accordion: React.FC<React.ComponentPropsWithRef<typeof Root>> = ({
-  ...props
-}) => {
-  return <Root {...props} />
-}
+const Accordion = Root
 
-const AccordionItem: React.FC<React.ComponentPropsWithRef<typeof Item>> = ({
+function AccordionItem({
   className,
   ...props
-}) => {
+}: React.ComponentPropsWithRef<typeof Item>) {
   return (
     <Item
       className={cn(
@@ -26,9 +21,11 @@ const AccordionItem: React.FC<React.ComponentPropsWithRef<typeof Item>> = ({
   )
 }
 
-const AccordionHeader: React.FC<
-  React.ComponentPropsWithoutRef<typeof Header>
-> = ({asChild = true, children, ...props}) => {
+function AccordionHeader({
+  asChild = true,
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof Header>) {
   return (
     <Header
       asChild={asChild}
@@ -39,9 +36,11 @@ const AccordionHeader: React.FC<
   )
 }
 
-const AccordionTrigger: React.FC<
-  React.ComponentPropsWithRef<typeof Trigger>
-> = ({className, children, ...props}) => {
+function AccordionTrigger({
+  className,
+  children,
+  ...props
+}: React.ComponentPropsWithRef<typeof Trigger>) {
   return (
     <AccordionHeader>
       <Trigger
@@ -58,9 +57,10 @@ const AccordionTrigger: React.FC<
   )
 }
 
-const AccordionContent: React.FC<
-  React.ComponentPropsWithoutRef<typeof Content>
-> = ({className, ...props}) => {
+function AccordionContent({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof Content>) {
   return (
     <Content
       className={cn(

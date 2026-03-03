@@ -4,7 +4,7 @@ import {Container} from '@/src/components/shared/container'
 import {Navigation} from '@/src/components/shared/navigation'
 import {Link} from '@/src/i18n/navigation'
 
-const Header: React.FC = () => {
+function Header() {
   return (
     <header className='py-2 relative overflow-x-clip bg-surface-2'>
       <Container>

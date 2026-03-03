@@ -2,10 +2,10 @@
 
 import {AnimatePresence, motion, type Variants} from 'motion/react'
 import moccaLogoBox from '@/public/logos/mocca-logo-box.svg'
-import {FrozenRouter} from '@/src/components/shared/route-transitions/frozen-router'
+import {FrozenRouter} from '@/src/components/shared/frozen-router'
 import {usePathname} from '@/src/i18n/navigation'
 
-const ColumnsTransition: React.FC<React.PropsWithChildren> = ({children}) => {
+function ColumnsTransition({children}: React.PropsWithChildren) {
   const pathname = usePathname()
 
   function anim(variants: Variants, custom?: number) {

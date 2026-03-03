@@ -10,7 +10,6 @@ import {
   Title,
   Trigger
 } from '@radix-ui/react-dialog'
-import type * as React from 'react'
 import {cn} from '@/src/lib/utils'
 
 const Dialog = Root
@@ -18,10 +17,10 @@ const DialogTrigger = Trigger
 const DialogPortal = Portal
 const DialogClose = Close
 
-const DialogOverlay: React.FC<React.ComponentPropsWithRef<typeof Overlay>> = ({
+function DialogOverlay({
   className,
   ...props
-}) => {
+}: React.ComponentPropsWithRef<typeof Overlay>) {
   return (
     <Overlay
       className={cn(
@@ -33,28 +32,30 @@ const DialogOverlay: React.FC<React.ComponentPropsWithRef<typeof Overlay>> = ({
   )
 }
 
-const DialogContent: React.FC<React.ComponentPropsWithRef<typeof Content>> = ({
+function DialogContent({
   className,
   children,
   'aria-describedby': ariaDescribedBy = undefined,
   ...props
-}) => (
-  <Content
-    className={cn(
-      'p-6 fixed left-1/2 top-1/2 -translate-1/2 origin-center z-1 w-full max-w-xl bg-surface-2 rounded shadow-small data-open:animate-dialog-open data-closed:animate-dialog-close',
-      className
-    )}
-    aria-describedby={ariaDescribedBy}
-    {...props}
-  >
-    {children}
-  </Content>
-)
+}: React.ComponentPropsWithRef<typeof Content>) {
+  return (
+    <Content
+      className={cn(
+        'p-6 fixed left-1/2 top-1/2 -translate-1/2 origin-center z-1 w-full max-w-xl bg-surface-2 rounded shadow-small data-open:animate-dialog-open data-closed:animate-dialog-close',
+        className
+      )}
+      aria-describedby={ariaDescribedBy}
+      {...props}
+    >
+      {children}
+    </Content>
+  )
+}
 
-const DialogHeader: React.FC<React.ComponentPropsWithRef<'div'>> = ({
+function DialogHeader({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
+}: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
       className={cn('flex flex-col space-y-1.5', className)}
@@ -63,10 +64,10 @@ const DialogHeader: React.FC<React.ComponentPropsWithRef<'div'>> = ({
   )
 }
 
-const DialogTitle: React.FC<React.ComponentPropsWithRef<typeof Title>> = ({
+function DialogTitle({
   className,
   ...props
-}) => {
+}: React.ComponentPropsWithRef<typeof Title>) {
   return (
     <Title
       className={cn('text-lg font-semibold tracking-tight', className)}
@@ -75,9 +76,10 @@ const DialogTitle: React.FC<React.ComponentPropsWithRef<typeof Title>> = ({
   )
 }
 
-const DialogDescription: React.FC<
-  React.ComponentPropsWithoutRef<typeof Description>
-> = ({className, ...props}) => {
+function DialogDescription({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof Description>) {
   return (
     <Description
       className={cn('text-sm text-muted-foreground tracking-wide', className)}
@@ -86,10 +88,10 @@ const DialogDescription: React.FC<
   )
 }
 
-const DialogFooter: React.FC<React.ComponentPropsWithRef<'div'>> = ({
+function DialogFooter({
   className,
   ...props
-}) => {
+}: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
       className={cn(

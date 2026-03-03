@@ -1,22 +1,19 @@
 'use client'
 
 import {Arrow, Content, Portal, Root, Trigger} from '@radix-ui/react-hover-card'
-import type * as React from 'react'
 import {cn} from '@/src/lib/utils'
 
 const HoverCard = Root
 const HoverCardPortal = Portal
 const HoverCardTrigger = Trigger
 
-const HoverCardContent: React.FC<
-  React.ComponentPropsWithRef<typeof Content>
-> = ({
+function HoverCardContent({
   className,
   align = 'center',
   sideOffset = 8,
   side = 'bottom',
   ...props
-}) => {
+}: React.ComponentPropsWithRef<typeof Content>) {
   return (
     <Content
       className={cn(
@@ -33,10 +30,10 @@ const HoverCardContent: React.FC<
   )
 }
 
-const HoverCardArrow: React.FC<React.ComponentPropsWithRef<typeof Arrow>> = ({
+function HoverCardArrow({
   className,
   ...props
-}) => {
+}: React.ComponentPropsWithRef<typeof Arrow>) {
   return (
     <Arrow
       className={cn('fill-surface-2 w-4 h-2', className)}

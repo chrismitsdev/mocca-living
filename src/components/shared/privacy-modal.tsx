@@ -19,7 +19,7 @@ import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 
-const PrivacyModal: React.FC<React.PropsWithChildren> = ({children}) => {
+function PrivacyModal({children}: React.PropsWithChildren) {
   const m = useTranslations('Metadata.Pages')
   const p = useTranslations('Pages.Privacy')
 

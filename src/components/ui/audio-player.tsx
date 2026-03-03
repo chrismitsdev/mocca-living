@@ -13,7 +13,7 @@ import {
   Volume2Icon,
   VolumeOffIcon
 } from 'lucide-react'
-import * as React from 'react'
+import {useEffect, useReducer, useState} from 'react'
 import ReactAudioPlayer, {RHAP_UI} from 'react-h5-audio-player'
 import image from '@/public/images/other/playlst-image.jpg'
 import {songs} from '@/public/music/playlist'
@@ -42,10 +42,10 @@ const initialState: State = {
   isPlaying: false
 }
 
-const AudioPlayer: React.FC<
-  React.ComponentPropsWithRef<typeof ReactAudioPlayer>
-> = (props) => {
-  const [state, dispatch] = React.useReducer(reducer, initialState)
+function AudioPlayer(
+  props: React.ComponentPropsWithRef<typeof ReactAudioPlayer>
+) {
+  const [state, dispatch] = useReducer(reducer, initialState)
   const currentTrack = state.playlist[state.currentTrackIndex]
 
   return (
@@ -131,9 +131,11 @@ const AudioPlayer: React.FC<
   )
 }
 
-const CurrentTrack: React.FC<
-  React.ComponentPropsWithRef<'div'> & Song & {isPlaying: boolean}
-> = ({artist, title, isPlaying}) => {
+function CurrentTrack({
+  artist,
+  title,
+  isPlaying
+}: React.ComponentPropsWithRef<'div'> & Song & {isPlaying: boolean}) {
   return (
     <div className='sm:mb-0 sm:p-4'>
       <div className='flex items-start gap-2 sm:gap-4'>
@@ -163,10 +165,7 @@ const CurrentTrack: React.FC<
   )
 }
 
-const Playlist: React.FC<React.ComponentPropsWithRef<'ul'>> = ({
-  className,
-  ...props
-}) => {
+function Playlist({className, ...props}: React.ComponentPropsWithRef<'ul'>) {
   return (
     <ul
       className={cn('px-4 sm:py-4', className)}
@@ -175,9 +174,7 @@ const Playlist: React.FC<React.ComponentPropsWithRef<'ul'>> = ({
   )
 }
 
-const PlaylistTrack: React.FC<
-  React.HTMLAttributes<HTMLLIElement> & Song & {isActive: boolean}
-> = ({
+function PlaylistTrack({
   trackId,
   artist,
   title,
@@ -186,10 +183,10 @@ const PlaylistTrack: React.FC<
   isActive,
   className,
   ...props
-}) => {
-  const [trackDuration, setTrackDuration] = React.useState<number | null>(null)
+}: React.HTMLAttributes<HTMLLIElement> & Song & {isActive: boolean}) {
+  const [trackDuration, setTrackDuration] = useState<number | null>(null)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (typeof window === 'undefined' || duration) return
 
     const audio = new Audio(src)

@@ -2,7 +2,7 @@
 
 import {ExpandIcon, XIcon} from 'lucide-react'
 import type {StaticImageData} from 'next/image'
-import * as React from 'react'
+import {useState} from 'react'
 import * as galleryImages from '@/public/images/home/home-gallery'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
@@ -18,12 +18,12 @@ import {
   DialogTrigger
 } from '@/src/components/ui/dialog'
 import {
-  EmblaButtonNext,
-  EmblaButtonPrev,
-  EmblaCarousel,
-  EmblaContainer,
-  EmblaSlide,
-  EmblaViewport
+  ButtonNext,
+  ButtonPrev,
+  Carousel,
+  Slide,
+  SlidesContainer,
+  Viewport
 } from '@/src/components/ui/embla-carousel'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 import {cn, sortImportedImagesByName} from '@/src/lib/utils'
@@ -73,8 +73,8 @@ interface GalleryTriggerProps {
   onClick: () => void
 }
 
-const HomeGallery: React.FC = () => {
-  const [index, setIndex] = React.useState(0)
+function HomeGallery() {
+  const [index, setIndex] = useState(0)
 
   const thumbTriggers = images.map((image, i) => (
     <Trigger
@@ -88,14 +88,14 @@ const HomeGallery: React.FC = () => {
   ))
 
   const slides = images.map((image, i) => (
-    <EmblaSlide key={image.src}>
+    <Slide key={image.src}>
       <CustomImage
         className='w-full h-full rounded'
         src={image}
         sizes='(min-width: 640px) 1512px, 100vw'
         alt={`Gallery slide image ${i + 1}`}
       />
-    </EmblaSlide>
+    </Slide>
   ))
 
   return (
@@ -108,19 +108,19 @@ const HomeGallery: React.FC = () => {
           <DialogPortal>
             <DialogOverlay>
               <DialogContent
-                className='p-0 bg-transparent max-w-[1512px]'
+                className='p-0 bg-transparent max-w-378'
                 onCloseAutoFocus={(e) => e.preventDefault()}
               >
                 <VisuallyHidden>
                   <DialogTitle>Home page gallery images</DialogTitle>
                 </VisuallyHidden>
-                <EmblaCarousel options={{startIndex: index, loop: true}}>
-                  <EmblaViewport>
-                    <EmblaContainer>{slides}</EmblaContainer>
-                  </EmblaViewport>
-                  <EmblaButtonPrev />
-                  <EmblaButtonNext />
-                </EmblaCarousel>
+                <Carousel options={{startIndex: index, loop: true}}>
+                  <Viewport>
+                    <SlidesContainer>{slides}</SlidesContainer>
+                  </Viewport>
+                  <ButtonPrev />
+                  <ButtonNext />
+                </Carousel>
               </DialogContent>
               <DialogClose
                 className='absolute top-2 right-2 z-50'
@@ -141,13 +141,7 @@ const HomeGallery: React.FC = () => {
   )
 }
 
-const Trigger: React.FC<GalleryTriggerProps> = ({
-  className,
-  src,
-  alt,
-  sizes,
-  onClick
-}) => {
+function Trigger({className, src, alt, sizes, onClick}: GalleryTriggerProps) {
   return (
     <DialogTrigger
       className={cn(

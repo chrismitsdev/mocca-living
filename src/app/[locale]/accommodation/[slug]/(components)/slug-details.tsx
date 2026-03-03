@@ -10,7 +10,7 @@ import {
   UsersIcon
 } from 'lucide-react'
 import {useTranslations} from 'next-intl'
-import * as React from 'react'
+import type * as React from 'react'
 import {SlugForm} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-form'
 import {ClientLink} from '@/src/components/shared/client-link'
 import {Container} from '@/src/components/shared/container'
@@ -26,7 +26,7 @@ import {
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 
-const SlugDetails: React.FC<{slug: Slug}> = ({slug}) => {
+function SlugDetails({slug}: {slug: Slug}) {
   const t = useTranslations('Pages.Accommodation.Slug.card')
   const oppositeSlug = slug === 'dimitra' ? 'georgia' : 'dimitra'
 
@@ -109,21 +109,23 @@ const SlugDetails: React.FC<{slug: Slug}> = ({slug}) => {
   )
 }
 
-const SlugBadge: React.FC<
-  React.PropsWithChildren<{icon?: React.ComponentType<LucideProps>}>
-> = ({icon, children}) => {
+function SlugBadge({
+  icon: Icon,
+  children
+}: React.PropsWithChildren<{icon?: React.ComponentType<LucideProps>}>) {
   return (
-    <div className='inline-flex items-center gap-1.5 [&>*]:shrink-0'>
-      {icon && <span>{React.createElement(icon, {size: 18})}</span>}
+    <div className='inline-flex items-center gap-1.5 *:shrink-0'>
+      {Icon && (
+        <span>
+          <Icon className='size-4.5' />
+        </span>
+      )}
       <Typography variant='h5'>{children}</Typography>
     </div>
   )
 }
 
-const SlugList: React.FC<React.PropsWithChildren<{data: string}>> = ({
-  children,
-  data
-}) => {
+function SlugList({children, data}: React.PropsWithChildren<{data: string}>) {
   return (
     <article className='space-y-2'>
       <Typography

@@ -1,8 +1,4 @@
-const LogoViber: React.FC<CustomIconProps> = ({
-  width = 32,
-  height = 32,
-  ...props
-}) => {
+function LogoViber({width = 32, height = 32, ...props}: CustomIconProps) {
   return (
     <svg
       width={width}

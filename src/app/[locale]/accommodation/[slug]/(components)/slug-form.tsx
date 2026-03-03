@@ -2,7 +2,6 @@
 
 import {XIcon} from 'lucide-react'
 import {useTranslations} from 'next-intl'
-import type * as React from 'react'
 import {Form} from '@/src/components/shared/form'
 import {Button} from '@/src/components/ui/button'
 import {
@@ -23,11 +22,7 @@ import {
 import {Separator} from '@/src/components/ui/separator'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 
-interface SlugFormProps {
-  slug: Slug
-}
-
-const SlugForm: React.FC<SlugFormProps> = ({slug}) => {
+function SlugForm({slug}: {slug: Slug}) {
   const t = useTranslations('Pages.Accommodation.Slug.card.drawer')
 
   return (

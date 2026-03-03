@@ -1,13 +1,11 @@
 'use client'
-
-import type * as React from 'react'
 import {cn} from '@/src/lib/utils'
 
 interface CheckboxProps extends React.ComponentPropsWithRef<'input'> {
   error?: boolean
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({className, error, ...props}) => {
+function Checkbox({className, error, ...props}: CheckboxProps) {
   return (
     <input
       className={cn(

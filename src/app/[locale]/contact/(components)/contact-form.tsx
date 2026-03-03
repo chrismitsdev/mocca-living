@@ -1,7 +1,4 @@
-'use client'
-
 import {useTranslations} from 'next-intl'
-import type * as React from 'react'
 import {Container} from '@/src/components/shared/container'
 import {Form} from '@/src/components/shared/form'
 import {Section} from '@/src/components/shared/section'
@@ -13,7 +10,7 @@ import {
   CardTitle
 } from '@/src/components/ui/card'
 
-const ContactForm: React.FC = () => {
+function ContactForm() {
   const t = useTranslations('Pages.Contact.Form')
 
   return (

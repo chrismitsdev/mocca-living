@@ -1,10 +1,6 @@
 import {cn} from '@/src/lib/utils'
 
-const Spinner: React.FC<CustomIconProps> = ({
-  className,
-  size = 16,
-  ...props
-}) => {
+function Spinner({className, size = 16, ...props}: CustomIconProps) {
   return (
     <svg
       className={cn('animate-spin', className)}

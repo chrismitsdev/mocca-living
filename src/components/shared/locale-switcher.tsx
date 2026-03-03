@@ -1,7 +1,7 @@
 'use client'
 
 import {type Locale, useLocale, useTranslations} from 'next-intl'
-import * as React from 'react'
+import {useTransition} from 'react'
 import {BulgarianFlag} from '@/src/components/flags/bulgarian-flag'
 import {EnglishFlag} from '@/src/components/flags/english-flag'
 import {GreekFlag} from '@/src/components/flags/greek-flag'
@@ -31,7 +31,7 @@ const flags = {
 } satisfies Record<Locale, React.ComponentType<CustomIconProps>>
 
 function LocaleSwitcher({scrollTop = false}: LocaleSwitcherProps) {
-  const [isPending, startTransition] = React.useTransition()
+  const [isPending, startTransition] = useTransition()
   const t = useTranslations('Components.LocaleSwitcher')
   const pathname = usePathname()
   const router = useRouter()

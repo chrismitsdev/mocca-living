@@ -1,7 +1,7 @@
 import {useTranslations} from 'next-intl'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 
-const SlugHeader: React.FC<{slug: Slug}> = ({slug}) => {
+function SlugHeader({slug}: {slug: Slug}) {
   const t = useTranslations('Metadata.Pages.accommodation')
 
   return (

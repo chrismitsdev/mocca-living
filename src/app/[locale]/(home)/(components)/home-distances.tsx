@@ -20,7 +20,7 @@ import {
 } from '@/src/components/ui/card'
 import {Typography} from '@/src/components/ui/typography'
 
-const HomeDistances: React.FC = () => {
+function HomeDistances() {
   const t = useTranslations('Pages.Home.Distances')
 
   return (

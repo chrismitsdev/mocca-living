@@ -1,7 +1,7 @@
 import {useTranslations} from 'next-intl'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 
-const PrivacyHeader: React.FC = () => {
+function PrivacyHeader() {
   const t = useTranslations('Metadata.Pages')
 
   return (

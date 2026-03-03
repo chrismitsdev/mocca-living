@@ -3,7 +3,7 @@ import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
-const PrivacyContent: React.FC = () => {
+function PrivacyContent() {
   const t = useTranslations('Pages.Privacy')
 
   return (

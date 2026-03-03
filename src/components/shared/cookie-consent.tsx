@@ -3,7 +3,7 @@
 import cookies from 'js-cookie'
 import {ChevronDownIcon, CookieIcon} from 'lucide-react'
 import {useTranslations} from 'next-intl'
-import * as React from 'react'
+import {useEffect, useState} from 'react'
 import {Button} from '@/src/components/ui/button'
 import {
   Collapsible,
@@ -22,8 +22,8 @@ const COOKIE_NAME = 'CONSENT_COOKIE'
 const COOKIE_VALUE = 'true'
 const EXPIRES_DAYS = 365
 
-const CookieConsent: React.FC = () => {
-  const [show, setShow] = React.useState(false)
+function CookieConsent() {
+  const [show, setShow] = useState(false)
   const t = useTranslations('Components.CookieConsent')
   useScrollLock({autoLock: show})
 
@@ -35,7 +35,7 @@ const CookieConsent: React.FC = () => {
     setShow(false)
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!cookies.get(COOKIE_NAME)) {
       setShow(true)
     }
