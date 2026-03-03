@@ -145,7 +145,7 @@ function CurrentTrack({
         <CustomImage
           className='size-18 sm:size-24 object-cover rounded'
           src={image}
-          alt='Playlist image'
+          alt='Tall palm trees against a clear blue sky, viewed from below'
         />
         <div className='sm:space-y-3'>
           <div className='flex gap-2'>

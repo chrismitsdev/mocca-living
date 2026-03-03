@@ -78,10 +78,10 @@ function DistanceItem({
 }) {
   return (
     <li className='space-y-2'>
-      <h5 className='flex gap-2'>
+      <h3 className='flex gap-2'>
         <Icon className='w-5 h-lh shrink-0' />
         <Typography variant='h5'>{title}</Typography>
-      </h5>
+      </h3>
       <Typography
         className='leading-8 sm:pl-7'
         asChild
