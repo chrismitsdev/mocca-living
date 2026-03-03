@@ -8,7 +8,6 @@ import {
 import type {StaticImageData} from 'next/image'
 import {type Messages, useTranslations} from 'next-intl'
 import {dimitraCover, georgiaCover} from '@/public/images/covers'
-// import {ClientLink} from '@/src/components/shared/client-link'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Button} from '@/src/components/ui/button'

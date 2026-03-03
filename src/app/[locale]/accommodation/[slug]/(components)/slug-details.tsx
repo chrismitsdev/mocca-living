@@ -12,7 +12,6 @@ import {
 import {useTranslations} from 'next-intl'
 import type * as React from 'react'
 import {SlugForm} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-form'
-// import {ClientLink} from '@/src/components/shared/client-link'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Button} from '@/src/components/ui/button'

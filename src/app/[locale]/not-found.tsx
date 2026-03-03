@@ -1,6 +1,5 @@
 import {TriangleAlertIcon} from 'lucide-react'
 import {useTranslations} from 'next-intl'
-// import {ClientLink} from '@/src/components/shared/client-link'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Button} from '@/src/components/ui/button'
