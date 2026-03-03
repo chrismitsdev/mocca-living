@@ -29,6 +29,7 @@ function ContactDrawer() {
     <Drawer>
       <DrawerTrigger asChild>
         <Button
+          aria-label='Open contact options'
           className='fixed bottom-2 right-2 sm:hidden'
           variant='success'
           size='icon-normal'
@@ -49,8 +50,8 @@ function ContactDrawer() {
           <Separator />
           <div className='p-7 space-y-6 sm:p-8'>
             <ContactMethodLink
-              href={`https://api.whatsapp.com/send/?phone=${PHONE.replace('+', '')}&text=${encodeURIComponent(t('message'))}&type=phone_number&app_absent=0`}
               aria-label='WhatsApp messaging'
+              href={`https://api.whatsapp.com/send/?phone=${PHONE.replace('+', '')}&text=${encodeURIComponent(t('message'))}&type=phone_number&app_absent=0`}
             >
               <span>
                 <LogoWhatsApp />
@@ -58,8 +59,8 @@ function ContactDrawer() {
               <Typography variant='large'>{t('whatsapp')}</Typography>
             </ContactMethodLink>
             <ContactMethodLink
+              aria-label='SMS message'
               href={`sms:${PHONE}`}
-              aria-label='Open messaging app to send a text message'
             >
               <span className='w-8 h-8 bg-info text-info-foreground flex items-center justify-center rounded-full'>
                 <MessageCircleIcon size={17} />
@@ -67,8 +68,8 @@ function ContactDrawer() {
               <Typography variant='large'>{t('sms')}</Typography>
             </ContactMethodLink>
             <ContactMethodLink
+              aria-label='Call us'
               href={`tel:${PHONE}`}
-              aria-label='Open messaging app to send a text message'
             >
               <span className='w-8 h-8 bg-primary text-primary-foreground flex items-center justify-center rounded-full'>
                 <PhoneOutgoingIcon size={17} />

@@ -76,6 +76,9 @@ function AudioPlayer(
             RHAP_UI.VOLUME,
             <CollapsibleTrigger
               key={9998}
+              aria-label={
+                state.showPlaylist ? 'Close playlist' : 'Open playlist'
+              }
               className='ml-auto sm:ml-4'
               asChild
             >
@@ -92,7 +95,7 @@ function AudioPlayer(
             RHAP_UI.CURRENT_TIME,
             <SlashIcon
               key={9999}
-              className='mx-1 w-4 h-4'
+              className='mx-1 w-3 h-3'
             />,
             RHAP_UI.DURATION
           ]}
