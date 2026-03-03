@@ -301,30 +301,30 @@
     },
     "Footer": {
       "row-1": {
-        "column-1": {
-          "header": "Πληροφοριες",
-          "link-1": "+30 6973560007",
-          "link-2": "+30 6973433980",
-          "link-3": "info@moccaliving.com",
-          "link-4": "Παραλία Αγίας Παρασκευής, <br></br> Μάκρη Αλεξανδρούπολης, Ελλάδα"
+        "info-column": {
+          "title": "Πληροφοριες",
+          "tel-1": "+30 6973560007",
+          "tel-2": "+30 6973433980",
+          "email": "info@moccaliving.com",
+          "location": "Παραλία Αγίας Παρασκευής, Μάκρη Αλεξανδρούπολης, Ελλάδα"
         },
-        "column-2": {
-          "header": "Χρησιμοι συνδεσμοι",
-          "link-1": "Πολιτική απορρήτου",
-          "link-2": "Πολιτική cookies",
-          "link-3": "Πολιτική διαμονής",
-          "link-4": "Λίστα αναπαραγωγής ήχου"
+        "links-column": {
+          "title": "Χρησιμοι συνδεσμοι",
+          "privacy-policy": "Πολιτική απορρήτου",
+          "cookies-policy": "Πολιτική cookies",
+          "accomodation-policy": "Πολιτική διαμονής",
+          "playlist": "Λίστα αναπαραγωγής ήχου"
         },
-        "column-3": {
-          "header": "Περισσότερα",
-          "link-1": "Yuppii Luna Park",
-          "link-2": "The Christmas Lighthouse",
-          "link-3": "Start Pilates"
+        "more-column": {
+          "title": "Περισσότερα",
+          "yuppii": "Yuppii Luna Park",
+          "christmas-lighthouse": "The Christmas Lighthouse",
+          "start-pilates": "Start Pilates"
         }
       },
       "row-2": {
         "copyright": "Πνευματική ιδιοκτησία © {created, date, ::yyyy} Mocca Living",
-        "manufacturer": "Υλοποίηση έργου από <a>KYRCOM</a>",
+        "constructor": "Υλοποίηση έργου από <a>KYRCOM</a>",
         "developer": "Αναπτύχθηκε & σχεδιάστηκε από τον <a>CM</a>"
       }
     },

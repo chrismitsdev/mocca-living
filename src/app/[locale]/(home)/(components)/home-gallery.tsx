@@ -79,7 +79,10 @@ function HomeGallery() {
   const thumbTriggers = images.map((image, i) => (
     <Trigger
       key={image.src}
-      className={triggerData[i].className}
+      className={cn(
+        'focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2',
+        triggerData[i].className
+      )}
       src={image}
       sizes={triggerData[i].sizes}
       alt={`Gallery thumbnail image ${i + 1}`}

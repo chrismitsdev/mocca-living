@@ -62,4 +62,4 @@ function toast(toast: Omit<ToastProps, 'id'>) {
 
 Toast.displayName = 'Toast'
 
-export {Toast, toast}
+export {toast}

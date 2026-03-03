@@ -28,12 +28,12 @@ import {
   DrawerTrigger
 } from '@/src/components/ui/drawer'
 import {
-  HoverCard,
-  HoverCardArrow,
-  HoverCardContent,
-  HoverCardPortal,
-  HoverCardTrigger
-} from '@/src/components/ui/hover-card'
+  Popup,
+  PopupArrow,
+  PopupContent,
+  PopupPortal,
+  PopupTrigger
+} from '@/src/components/ui/popup'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
@@ -42,7 +42,7 @@ import {Link, usePathname} from '@/src/i18n/navigation'
 import {cn} from '@/src/lib/utils'
 
 function Navigation() {
-  const [hoverCardOpen, setHoverCardOpen] = useState(false)
+  const [popupOpen, setPopupOpen] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
   const pathname = usePathname()
   const t = useTranslations('Metadata.Pages')
@@ -51,7 +51,7 @@ function Navigation() {
   useEffect(() => {
     if (!pathname) return
 
-    setHoverCardOpen(false)
+    setPopupOpen(false)
     setDrawerOpen(false)
   }, [pathname])
 
@@ -75,75 +75,74 @@ function Navigation() {
             orientation='vertical'
             className='h-auto'
           />
-          <HoverCard
-            open={hoverCardOpen}
-            onOpenChange={setHoverCardOpen}
-            openDelay={50}
+          <li
+            className='flex items-center gap-1'
+            role='none'
           >
-            <li
-              className='flex items-center gap-0.5'
-              role='none'
+            <NavLink
+              href='/accommodation'
+              pathname={pathname}
+              icon={BedDoubleIcon}
             >
-              <NavLink
-                href='/accommodation'
-                pathname={pathname}
-                icon={BedDoubleIcon}
-              >
-                {t('accommodation.root')}
-              </NavLink>
-              <HoverCardTrigger asChild>
+              {t('accommodation.root')}
+            </NavLink>
+            <Popup
+              open={popupOpen}
+              onOpenChange={setPopupOpen}
+            >
+              <PopupTrigger asChild>
                 <Button
-                  className='data-open:bg-primary data-open:text-primary-foreground'
                   variant='ghost'
                   size='icon-mini'
+                  className='data-open:bg-primary data-open:text-primary-foreground'
                 >
                   <EllipsisVerticalIcon size={16} />
                 </Button>
-              </HoverCardTrigger>
-            </li>
-            <HoverCardPortal>
-              <HoverCardContent
-                sideOffset={18}
-                collisionPadding={16}
-              >
-                <section className='columns-2'>
-                  <Link href='/accommodation/dimitra'>
-                    <article className='p-3 space-y-1 rounded hover:bg-surface-3 transition'>
-                      <CustomImage
-                        className='aspect-square object-cover rounded'
-                        src={dimitraCover}
-                        alt='Dimitra card image'
-                        sizes='200px'
-                      />
-                      <Typography variant='h5'>
-                        {t('accommodation.dimitra')}
-                      </Typography>
-                      <Typography variant='small'>
-                        {t('accommodation.dimitra-caption')}
-                      </Typography>
-                    </article>
-                  </Link>
-                  <Link href='/accommodation/georgia'>
-                    <article className='p-3 space-y-1 rounded hover:bg-surface-3 transition'>
-                      <CustomImage
-                        className='aspect-square object-cover rounded'
-                        src={georgiaCover}
-                        alt='Georgia card image'
-                        sizes='200px'
-                      />
-                      <Typography variant='h5'>
-                        {t('accommodation.georgia')}
-                      </Typography>
-                      <Typography variant='small'>
-                        {t('accommodation.georgia-caption')}
-                      </Typography>
-                    </article>
-                  </Link>
-                </section>
-                <HoverCardArrow />
-              </HoverCardContent>
-            </HoverCardPortal>
-          </HoverCard>
+              </PopupTrigger>
+              <PopupPortal>
+                <PopupContent
+                  sideOffset={20}
+                  collisionPadding={16}
+                >
+                  <section className='columns-2'>
+                    <Link href='/accommodation/dimitra'>
+                      <article className='p-3 space-y-1 rounded hover:bg-surface-3 transition'>
+                        <CustomImage
+                          className='aspect-square object-cover rounded'
+                          src={dimitraCover}
+                          alt='Dimitra card image'
+                          sizes='200px'
+                        />
+                        <Typography variant='h5'>
+                          {t('accommodation.dimitra')}
+                        </Typography>
+                        <Typography variant='small'>
+                          {t('accommodation.dimitra-caption')}
+                        </Typography>
+                      </article>
+                    </Link>
+                    <Link href='/accommodation/georgia'>
+                      <article className='p-3 space-y-1 rounded hover:bg-surface-3 transition'>
+                        <CustomImage
+                          className='aspect-square object-cover rounded'
+                          src={georgiaCover}
+                          alt='Georgia card image'
+                          sizes='200px'
+                        />
+                        <Typography variant='h5'>
+                          {t('accommodation.georgia')}
+                        </Typography>
+                        <Typography variant='small'>
+                          {t('accommodation.georgia-caption')}
+                        </Typography>
+                      </article>
+                    </Link>
+                  </section>
+                  <PopupArrow />
+                </PopupContent>
+              </PopupPortal>
+            </Popup>
+          </li>
           <Separator
             orientation='vertical'
             className='h-auto'

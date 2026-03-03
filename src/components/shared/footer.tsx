@@ -12,7 +12,6 @@ import {
 import Image from 'next/image'
 import {useTranslations} from 'next-intl'
 import logoFull from '@/public/logos/mocca-logo-box.svg'
-import {ClientLink} from '@/src/components/shared/client-link'
 import {Container} from '@/src/components/shared/container'
 import {DialogAudioPlayer} from '@/src/components/shared/dialog-audio-player'
 import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
@@ -20,6 +19,7 @@ import {LogosCarousel} from '@/src/components/shared/logos-carousel'
 import {Button} from '@/src/components/ui/button'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
+import {Link} from '@/src/i18n/navigation'
 
 function Footer() {
   const t = useTranslations('Components')
@@ -27,23 +27,23 @@ function Footer() {
   return (
     <footer className='py-16 bg-surface-2'>
       <Container className='space-y-12'>
-        <div className='space-y-12 sm:space-y-0 sm:flex sm:justify-between sm:items-start'>
+        <div className='grid gap-12 sm:grid-flow-col sm:auto-cols-fr'>
           <Image
             src={logoFull}
             height={160}
             alt='Mocca Living footer logo'
           />
-          <FooterColumn title={t('Footer.row-1.column-1.header')}>
+          <FooterColumn title={t('Footer.row-1.info-column.title')}>
             <Typography
               variant='link'
               asChild
             >
               <a
-                className='flex items-center gap-1.5'
+                className='flex gap-1.5'
                 href='tel:+306973560007'
               >
-                <PhoneIcon size={14} />
-                <span>{t('Footer.row-1.column-1.link-1')}</span>
+                <PhoneIcon className='w-3.5 h-lh shrink-0' />
+                <span>{t('Footer.row-1.info-column.tel-1')}</span>
               </a>
             </Typography>
             <Typography
@@ -51,11 +51,11 @@ function Footer() {
               asChild
             >
               <a
-                className='flex items-center gap-1.5'
+                className='flex gap-1.5'
                 href='tel:+306973433980'
               >
-                <PhoneIcon size={14} />
-                <span>{t('Footer.row-1.column-1.link-2')}</span>
+                <PhoneIcon className='w-3.5 h-lh shrink-0' />
+                <span>{t('Footer.row-1.info-column.tel-2')}</span>
               </a>
             </Typography>
             <Typography
@@ -63,13 +63,13 @@ function Footer() {
               asChild
             >
               <a
-                className='flex items-center gap-1.5'
+                className='flex gap-1.5'
                 href='mailto:info@moccaliving.com'
                 target='_blank'
                 rel='noopener'
               >
-                <MailIcon size={14} />
-                <span>{t('Footer.row-1.column-1.link-3')}</span>
+                <MailIcon className='w-3.5 h-lh shrink-0' />
+                <span>{t('Footer.row-1.info-column.email')}</span>
               </a>
             </Typography>
             <Typography
@@ -82,60 +82,55 @@ function Footer() {
                 target='_blank'
                 rel='noopener'
               >
-                <MapPinHouseIcon
-                  className='mt-1'
-                  size={14}
-                />
-                <span>
-                  {t.rich('Footer.row-1.column-1.link-4', {
-                    br: () => <br />
-                  })}
-                </span>
+                <MapPinHouseIcon className='w-3.5 h-lh shrink-0' />
+                <span>{t('Footer.row-1.info-column.location')}</span>
               </a>
             </Typography>
           </FooterColumn>
-          <FooterColumn title={t('Footer.row-1.column-2.header')}>
+          <FooterColumn title={t('Footer.row-1.links-column.title')}>
             <Typography
               className='flex items-center gap-1.5'
               variant='link'
               asChild
             >
-              <ClientLink href='/privacy'>
-                <FileTextIcon size={14} />
-                <span>{t('Footer.row-1.column-2.link-1')}</span>
-              </ClientLink>
+              <Link href='/privacy'>
+                <FileTextIcon className='w-3.5 h-lh shrink-0' />
+                <span>{t('Footer.row-1.links-column.privacy-policy')}</span>
+              </Link>
             </Typography>
             <Typography
               className='flex items-center gap-1.5'
               variant='link'
               asChild
             >
-              <ClientLink href='/cookies'>
-                <CookieIcon size={14} />
-                <span>{t('Footer.row-1.column-2.link-2')}</span>
-              </ClientLink>
+              <Link href='/cookies'>
+                <CookieIcon className='w-3.5 h-lh shrink-0' />
+                <span>{t('Footer.row-1.links-column.cookies-policy')}</span>
+              </Link>
             </Typography>
             <Typography
               className='flex items-center gap-1.5'
               variant='link'
               asChild
             >
-              <ClientLink href='/rules'>
-                <BedSingleIcon size={14} />
-                <span>{t('Footer.row-1.column-2.link-3')}</span>
-              </ClientLink>
+              <Link href='/rules'>
+                <BedSingleIcon className='w-3.5 h-lh shrink-0' />
+                <span>
+                  {t('Footer.row-1.links-column.accomodation-policy')}
+                </span>
+              </Link>
             </Typography>
             <DialogAudioPlayer>
               <Typography
                 className='flex items-center gap-1.5'
                 variant='link'
               >
-                <MusicIcon size={14} />
-                <span>{t('Footer.row-1.column-2.link-4')}</span>
+                <MusicIcon className='w-3.5 h-lh shrink-0' />
+                <span>{t('Footer.row-1.links-column.playlist')}</span>
               </Typography>
             </DialogAudioPlayer>
           </FooterColumn>
-          <FooterColumn title={t('Footer.row-1.column-3.header')}>
+          <FooterColumn title={t('Footer.row-1.more-column.title')}>
             <Typography
               variant='link'
               asChild
@@ -145,7 +140,7 @@ function Footer() {
                 target='_blank'
                 rel='noopener'
               >
-                {t('Footer.row-1.column-3.link-1')}
+                {t('Footer.row-1.more-column.yuppii')}
               </a>
             </Typography>
             <Typography
@@ -157,7 +152,7 @@ function Footer() {
                 target='_blank'
                 rel='noopener'
               >
-                {t('Footer.row-1.column-3.link-2')}
+                {t('Footer.row-1.more-column.christmas-lighthouse')}
               </a>
             </Typography>
             <Typography
@@ -169,7 +164,7 @@ function Footer() {
                 target='_blank'
                 rel='noopener'
               >
-                {t('Footer.row-1.column-3.link-3')}
+                {t('Footer.row-1.more-column.start-pilates')}
               </a>
             </Typography>
           </FooterColumn>
@@ -222,7 +217,7 @@ function Footer() {
             className='order-3 sm:hidden'
             variant='mini'
           >
-            {t.rich('Footer.row-2.manufacturer', {
+            {t.rich('Footer.row-2.constructor', {
               a: (chunks) => (
                 <a
                   className='underline'

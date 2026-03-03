@@ -301,30 +301,30 @@
     },
     "Footer": {
       "row-1": {
-        "column-1": {
-          "header": "Информация",
-          "link-1": "+30 6973560007",
-          "link-2": "+30 6973433980",
-          "link-3": "info@moccaliving.com",
-          "link-4": "Плаж Агия Параскеви, <br></br> Макри Александруполис, Гърция"
+        "info-column": {
+          "title": "Информация",
+          "tel-1": "+30 6973560007",
+          "tel-2": "+30 6973433980",
+          "email": "info@moccaliving.com",
+          "location": "Плаж Агия Параскеви, Макри Александруполис, Гърция"
         },
-        "column-2": {
-          "header": "Полезни връзки",
-          "link-1": "Политика за поверителност",
-          "link-2": "Политика за бисквитки",
-          "link-3": "Политика за настаняване",
-          "link-4": "Аудио плейлист"
+        "links-column": {
+          "title": "Полезни връзки",
+          "privacy-policy": "Политика за поверителност",
+          "cookies-policy": "Политика за бисквитки",
+          "accomodation-policy": "Политика за настаняване",
+          "playlist": "Аудио плейлист"
         },
-        "column-3": {
-          "header": "Още",
-          "link-1": "Yuppii Luna Park",
-          "link-2": "The Christmas Lighthouse",
-          "link-3": "Start Pilates"
+        "more-column": {
+          "title": "Още",
+          "yuppii": "Yuppii Luna Park",
+          "christmas-lighthouse": "The Christmas Lighthouse",
+          "start-pilates": "Start Pilates"
         }
       },
       "row-2": {
         "copyright": "Авторски права © {created, date, ::yyyy} Mocca Living",
-        "manufacturer": "Реализация на проекта от <a>KYRCOM</a>",
+        "constructor": "Реализация на проекта от <a>KYRCOM</a>",
         "developer": "Разработено и проектирано от <a>CM</a>"
       }
     },

@@ -301,30 +301,30 @@
     },
     "Footer": {
       "row-1": {
-        "column-1": {
-          "header": "Information",
-          "link-1": "+30 6973560007",
-          "link-2": "+30 6973433980",
-          "link-3": "info@moccaliving.com",
-          "link-4": "Agia Paraskevi Beach, <br></br> Makri Alexandroupolis, Greece"
+        "info-column": {
+          "title": "Information",
+          "tel-1": "+30 6973560007",
+          "tel-2": "+30 6973433980",
+          "email": "info@moccaliving.com",
+          "location": "Agia Paraskevi Beach, Makri Alexandroupolis, Greece"
         },
-        "column-2": {
-          "header": "Useful links",
-          "link-1": "Privacy policy",
-          "link-2": "Cookies policy",
-          "link-3": "Accommodation policy",
-          "link-4": "Audio playlist"
+        "links-column": {
+          "title": "Useful links",
+          "privacy-policy": "Privacy policy",
+          "cookies-policy": "Cookies policy",
+          "accomodation-policy": "Accommodation policy",
+          "playlist": "Audio playlist"
         },
-        "column-3": {
-          "header": "More",
-          "link-1": "Yuppii Luna Park",
-          "link-2": "The Christmas Lighthouse",
-          "link-3": "Start Pilates"
+        "more-column": {
+          "title": "More",
+          "yuppii": "Yuppii Luna Park",
+          "christmas-lighthouse": "The Christmas Lighthouse",
+          "start-pilates": "Start Pilates"
         }
       },
       "row-2": {
         "copyright": "Copyright © {created, date, ::yyyy} Mocca Living",
-        "manufacturer": "Project implementation by <a>KYRCOM</a>",
+        "constructor": "Project implementation by <a>KYRCOM</a>",
         "developer": "Developed & designed by <a>CM</a>"
       }
     },

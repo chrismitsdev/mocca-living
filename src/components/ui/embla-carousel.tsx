@@ -184,11 +184,11 @@ function ThumbsContainer({
         <VisuallyHidden>
           <DrawerTitle>Carousel thumbnails drawer</DrawerTitle>
         </VisuallyHidden>
-        <div className='py-2 px-2 m-1.5 bg-surface-2 rounded sm:py-3 sm:px-3'>
+        <div className='p-2 m-1 bg-surface-2 rounded sm:p-3'>
           <ScrollArea>
             <ScrollAreaViewport>
               <div
-                className={cn('flex justify-center gap-2 sm:gap-4', className)}
+                className={cn('flex gap-2 sm:gap-4', className)}
                 {...props}
               />
             </ScrollAreaViewport>

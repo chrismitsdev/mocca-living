@@ -301,30 +301,30 @@
     },
     "Footer": {
       "row-1": {
-        "column-1": {
-          "header": "Bilgi",
-          "link-1": "+30 6973560007",
-          "link-2": "+30 6973433980",
-          "link-3": "info@moccaliving.com",
-          "link-4": "Agia Paraskevi Plajı, <br></br> Makri Alexandroupolis, Yunanistan"
+        "info-column": {
+          "title": "Bilgi",
+          "tel-1": "+30 6973560007",
+          "tel-2": "+30 6973433980",
+          "email": "info@moccaliving.com",
+          "location": "Agia Paraskevi Plajı, Makri Alexandroupolis, Yunanistan"
         },
-        "column-2": {
-          "header": "Yararlı bağlantılar",
-          "link-1": "Gizlilik politikası",
-          "link-2": "Çerez politikası",
-          "link-3": "Konaklama politikası",
-          "link-4": "Ses listesi"
+        "links-column": {
+          "title": "Yararlı bağlantılar",
+          "privacy-policy": "Gizlilik politikası",
+          "cookies-policy": "Çerez politikası",
+          "accomodation-policy": "Konaklama politikası",
+          "playlist": "Ses listesi"
         },
-        "column-3": {
-          "header": "Daha fazlası",
-          "link-1": "Yuppii Luna Park",
-          "link-2": "The Christmas Lighthouse",
-          "link-3": "Start Pilates"
+        "more-column": {
+          "title": "Daha fazlası",
+          "yuppii": "Yuppii Luna Park",
+          "christmas-lighthouse": "The Christmas Lighthouse",
+          "start-pilates": "Start Pilates"
         }
       },
       "row-2": {
         "copyright": "Telif hakkı © {created, date, ::yyyy} Mocca Living",
-        "manufacturer": "Proje uygulaması <a>KYRCOM</a> tarafından",
+        "constructor": "Proje uygulaması <a>KYRCOM</a> tarafından",
         "developer": "Geliştirme ve tasarım <a>CM</a> tarafından"
       }
     },

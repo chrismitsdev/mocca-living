@@ -24,7 +24,14 @@ const typographyVariants = cva(['block'], {
       small: ['text-sm', 'tracking-wide'],
       mini: ['text-xs', 'font-semibold', 'tracking-wide'],
       muted: ['text-sm', 'text-foreground-muted'],
-      link: ['text-sm', 'tracking-wide', 'hover:underline']
+      link: [
+        'text-sm',
+        'tracking-wide',
+        'hover:underline',
+        'focus-visible:outline-ring',
+        'focus-visible:outline-2',
+        'focus-visible:outline-offset-2'
+      ]
     }
   },
   compoundVariants: [

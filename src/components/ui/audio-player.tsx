@@ -75,7 +75,7 @@ function AudioPlayer(
             RHAP_UI.MAIN_CONTROLS,
             RHAP_UI.VOLUME,
             <CollapsibleTrigger
-              key={crypto.randomUUID()}
+              key={9998}
               className='ml-auto sm:ml-4'
               asChild
             >
@@ -91,7 +91,7 @@ function AudioPlayer(
             RHAP_UI.PROGRESS_BAR,
             RHAP_UI.CURRENT_TIME,
             <SlashIcon
-              key={crypto.randomUUID()}
+              key={9999}
               className='mx-1 w-4 h-4'
             />,
             RHAP_UI.DURATION
