@@ -30,7 +30,6 @@ function SelectTrigger({
   ...props
 }: React.ComponentPropsWithRef<typeof Trigger>) {
   return (
-    //     '',
     <Trigger
       className={cn(
         'px-3 py-1.75 flex items-center gap-1.5 bg-surface-1 border border-border rounded font-semibold transition hover:border-border-hover focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2  disabled:border-border disabled:pointer-events-none disabled:opacity-35 data-open:border-border-hover data-placeholder:[&>div>span]:text-sm data-placeholder:[&>div>span]:font-normal data-placeholder:[&>div>span]:text-foreground-muted data-open:shadow [&>div]:grow [&>div]:text-left group',
@@ -91,7 +90,7 @@ function SelectItem({
   return (
     <Item
       className={cn(
-        'px-3 py-2 flex items-center gap-1.5 cursor-pointer select-none outline-none data-disabled:pointer-events-none data-disabled:opacity-50',
+        'px-3 py-2 flex items-center gap-1.5 cursor-pointer select-none outline-none data-highlighted:bg-surface-3 data-disabled:pointer-events-none data-disabled:opacity-50',
         className
       )}
       {...props}

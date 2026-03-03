@@ -44,9 +44,12 @@ import {cn} from '@/src/lib/utils'
 function Navigation() {
   const [popupOpen, setPopupOpen] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [collapsibleOpen, setCollapsibleOpen] = useState(false)
   const pathname = usePathname()
   const t = useTranslations('Metadata.Pages')
   useScrollLock({autoLock: drawerOpen})
+
+  const collapsibleAriaLabel = collapsibleOpen ? 'Hide' : 'Show'
 
   useEffect(() => {
     if (!pathname) return
@@ -92,6 +95,7 @@ function Navigation() {
             >
               <PopupTrigger asChild>
                 <Button
+                  aria-label='Open accomodation popup'
                   variant='ghost'
                   size='icon-mini'
                   className='data-open:bg-primary data-open:text-primary-foreground'
@@ -169,6 +173,7 @@ function Navigation() {
           asChild
         >
           <Button
+            aria-label={`${drawerOpen ? 'Close' : 'Open'} sidebar`}
             className='flex-col z-1 *:w-[70%] *:h-0.5 *:bg-primary *:ease-mocca data-open:*:rotate-z-180 data-open:*:scale-x-125 data-open:*:duration-750 data-closed:*:duration-375 group'
             variant='ghost-alt'
             size='icon-small'
@@ -205,7 +210,11 @@ function Navigation() {
                     {t('home')}
                   </NavLink>
                 </li>
-                <Collapsible asChild>
+                <Collapsible
+                  open={collapsibleOpen}
+                  onOpenChange={setCollapsibleOpen}
+                  asChild
+                >
                   <li role='none'>
                     <div className='flex items-center justify-between gap-4'>
                       <NavLink
@@ -218,6 +227,7 @@ function Navigation() {
                       </NavLink>
                       <CollapsibleTrigger asChild>
                         <Button
+                          aria-label={`${collapsibleAriaLabel} links`}
                           variant='link'
                           size='icon-small'
                         >
@@ -289,6 +299,7 @@ function Navigation() {
             <div className='flex justify-between'>
               <div className='flex gap-2'>
                 <Button
+                  aria-label='Open facebook page in another tab'
                   variant='bordered-alt'
                   size='icon-normal'
                   asChild
@@ -302,6 +313,7 @@ function Navigation() {
                   </a>
                 </Button>
                 <Button
+                  aria-label='Open instagram page in another tab'
                   variant='bordered-alt'
                   size='icon-normal'
                   asChild
@@ -369,5 +381,6 @@ function NavLink({
 }
 
 Navigation.displayName = 'Navigation'
+NavLink.displayName = 'NavLink'
 
 export {Navigation}
