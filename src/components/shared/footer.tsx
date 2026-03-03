@@ -66,7 +66,7 @@ function Footer() {
                 className='flex gap-1.5'
                 href='mailto:info@moccaliving.com'
                 target='_blank'
-                rel='noopener'
+                rel='noopener noreferrer'
               >
                 <MailIcon className='w-3.5 h-lh shrink-0' />
                 <span>{t('Footer.row-1.info-column.email')}</span>
@@ -80,7 +80,7 @@ function Footer() {
                 className='flex gap-1.5'
                 href='https://maps.app.goo.gl/L6JEySni2t8jnb5m9'
                 target='_blank'
-                rel='noopener'
+                rel='noopener noreferrer'
               >
                 <MapPinHouseIcon className='w-3.5 h-lh shrink-0' />
                 <span>{t('Footer.row-1.info-column.location')}</span>
@@ -138,7 +138,7 @@ function Footer() {
               <a
                 href='https://www.yuppii.gr/'
                 target='_blank'
-                rel='noopener'
+                rel='noopener noreferrer'
               >
                 {t('Footer.row-1.more-column.yuppii')}
               </a>
@@ -150,7 +150,7 @@ function Footer() {
               <a
                 href='https://www.thechristmaslighthouse.gr/'
                 target='_blank'
-                rel='noopener'
+                rel='noopener noreferrer'
               >
                 {t('Footer.row-1.more-column.christmas-lighthouse')}
               </a>
@@ -162,7 +162,7 @@ function Footer() {
               <a
                 href='https://startpilates.gr/'
                 target='_blank'
-                rel='noopener'
+                rel='noopener noreferrer'
               >
                 {t('Footer.row-1.more-column.start-pilates')}
               </a>
@@ -177,9 +177,10 @@ function Footer() {
                   asChild
                 >
                   <a
-                    target='_blank'
+                    aria-label='Visit our facebook page (Opens in new tab)'
                     href='https://www.facebook.com/profile.php?id=61566665200042'
-                    rel='noopener'
+                    target='_blank'
+                    rel='noopener noreferrer'
                   >
                     <FacebookIcon />
                   </a>
@@ -190,9 +191,10 @@ function Footer() {
                   asChild
                 >
                   <a
-                    target='_blank'
+                    aria-label='Visit our instagram page (Opens in new tab)'
                     href='https://www.instagram.com/moccaliving.premiumstay'
-                    rel='noopener'
+                    target='_blank'
+                    rel='noopener noreferrer'
                   >
                     <InstagramIcon />
                   </a>
@@ -223,7 +225,7 @@ function Footer() {
                   className='underline'
                   href='https://kyrcom.com/el/'
                   target='_blank'
-                  rel='noopener'
+                  rel='noopener noreferrer'
                 >
                   {chunks}
                 </a>
@@ -240,7 +242,7 @@ function Footer() {
                   className='underline'
                   href='https://www.facebook.com/Christos.Mitsiaris/'
                   target='_blank'
-                  rel='noopener'
+                  rel='noopener noreferrer'
                 >
                   {chunks}
                 </a>

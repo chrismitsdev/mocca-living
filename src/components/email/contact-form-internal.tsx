@@ -45,6 +45,7 @@ function ContactFormInternal({
                 <Link
                   href='https://moccaliving.com'
                   target='_blank'
+                  rel='noopener noreferrer'
                 >
                   <Img
                     src='https://4y4jwmfhzutn57mw.myfritz.net:47971/nas/filelink.lua?id=2facbccd5602da0d'
@@ -115,6 +116,7 @@ function ContactFormInternal({
                     className='text-sm leading-6'
                     href={`tel:${phone}`}
                     target='_blank'
+                    rel='noopener noreferrer'
                   >
                     {phone}
                   </Link>

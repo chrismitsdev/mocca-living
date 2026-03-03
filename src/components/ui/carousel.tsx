@@ -173,6 +173,7 @@ function ThumbsContainer({
           className='absolute left-1/2 bottom-1.5 -translate-x-1/2 transition ease-mocca data-open:-translate-y-15 data-open:duration-750 data-closed:duration-375 sm:bottom-4 sm:data-open:-translate-y-25'
           variant={!open ? 'primary-alt' : 'error'}
           size='icon-small'
+          aria-label={`${open ? 'Hide' : 'Show'} thumbnail images`}
         >
           {open ? <XIcon /> : <ImagesIcon />}
         </Button>

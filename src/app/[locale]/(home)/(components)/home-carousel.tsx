@@ -2,7 +2,6 @@
 
 import Autoplay from 'embla-carousel-autoplay'
 import * as carouselImages from '@/public/images/home/home-carousel'
-import {CustomImage} from '@/src/components/ui/custom-image'
 import {
   ButtonNext,
   ButtonPrev,
@@ -12,7 +11,8 @@ import {
   Thumb,
   ThumbsContainer,
   Viewport
-} from '@/src/components/ui/embla-carousel'
+} from '@/src/components/ui/carousel'
+import {CustomImage} from '@/src/components/ui/custom-image'
 import {sortImportedImagesByName} from '@/src/lib/utils'
 
 const images = sortImportedImagesByName(carouselImages)

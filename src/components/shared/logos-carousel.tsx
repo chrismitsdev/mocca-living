@@ -11,7 +11,7 @@ import {
   Slide,
   SlidesContainer,
   Viewport
-} from '@/src/components/ui/embla-carousel'
+} from '@/src/components/ui/carousel'
 
 function LogosCarousel() {
   return (
@@ -21,9 +21,10 @@ function LogosCarousel() {
           <SlidesContainer>
             <Slide>
               <a
+                aria-label='Visit Yuppii Luna Park website (opens in new tab)'
                 href='https://www.yuppii.gr/'
                 target='_blank'
-                rel='noopener'
+                rel='noopener noreferrer'
               >
                 <Image
                   className='mx-auto'
@@ -34,9 +35,10 @@ function LogosCarousel() {
             </Slide>
             <Slide>
               <a
+                aria-label='Visit Start Pilates website (opens in new tab)'
                 href='https://www.startpilates.gr'
                 target='_blank'
-                rel='noopener'
+                rel='noopener noreferrer'
               >
                 <Image
                   className='mx-auto'
@@ -47,9 +49,10 @@ function LogosCarousel() {
             </Slide>
             <Slide>
               <a
+                aria-label='Visit Christmas Lighthouse website (opens in new tab)'
                 href='https://www.thechristmaslighthouse.gr/'
                 target='_blank'
-                rel='noopener'
+                rel='noopener noreferrer'
               >
                 <Image
                   className='mx-auto'

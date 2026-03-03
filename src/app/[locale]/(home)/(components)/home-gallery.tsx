@@ -7,6 +7,14 @@ import * as galleryImages from '@/public/images/home/home-gallery'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Button} from '@/src/components/ui/button'
+import {
+  ButtonNext,
+  ButtonPrev,
+  Carousel,
+  Slide,
+  SlidesContainer,
+  Viewport
+} from '@/src/components/ui/carousel'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {
   Dialog,
@@ -17,14 +25,6 @@ import {
   DialogTitle,
   DialogTrigger
 } from '@/src/components/ui/dialog'
-import {
-  ButtonNext,
-  ButtonPrev,
-  Carousel,
-  Slide,
-  SlidesContainer,
-  Viewport
-} from '@/src/components/ui/embla-carousel'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 import {cn, sortImportedImagesByName} from '@/src/lib/utils'
 

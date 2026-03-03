@@ -299,29 +299,29 @@ function Navigation() {
             <div className='flex justify-between'>
               <div className='flex gap-2'>
                 <Button
-                  aria-label='Open facebook page in another tab'
+                  aria-label='Visit our facebook page (Opens in new tab)'
                   variant='bordered-alt'
                   size='icon-normal'
                   asChild
                 >
                   <a
-                    target='_blank'
                     href='https://www.facebook.com/profile.php?id=61566665200042'
-                    rel='noopener'
+                    target='_blank'
+                    rel='noopener noreferrer'
                   >
                     <FacebookIcon />
                   </a>
                 </Button>
                 <Button
-                  aria-label='Open instagram page in another tab'
+                  aria-label='Visit our instagram page (Opens in new tab)'
                   variant='bordered-alt'
                   size='icon-normal'
                   asChild
                 >
                   <a
-                    target='_blank'
                     href='https://www.instagram.com/moccaliving.premiumstay'
-                    rel='noopener'
+                    target='_blank'
+                    rel='noopener noreferrer'
                   >
                     <InstagramIcon />
                   </a>

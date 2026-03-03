@@ -1,6 +1,5 @@
 import * as dimitraImages from '@/public/images/accommodation/slug/dimitra'
 import * as georgiaImages from '@/public/images/accommodation/slug/georgia'
-import {CustomImage} from '@/src/components/ui/custom-image'
 import {
   ButtonNext,
   ButtonPrev,
@@ -10,7 +9,8 @@ import {
   Thumb,
   ThumbsContainer,
   Viewport
-} from '@/src/components/ui/embla-carousel'
+} from '@/src/components/ui/carousel'
+import {CustomImage} from '@/src/components/ui/custom-image'
 import {sortImportedImagesByName} from '@/src/lib/utils'
 
 const slugImages = {

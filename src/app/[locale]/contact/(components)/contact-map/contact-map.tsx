@@ -71,7 +71,7 @@ function ContactMap() {
                       className='text-inherit!'
                       href='https://www.google.com/maps?saddr=My+Location&daddr=40.848948,25.723508'
                       target='_blank'
-                      rel='noopener'
+                      rel='noopener noreferrer'
                     >
                       {t('directions')}
                     </a>
