@@ -12,7 +12,7 @@ import {
 import {useTranslations} from 'next-intl'
 import type * as React from 'react'
 import {SlugForm} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-form'
-import {ClientLink} from '@/src/components/shared/client-link'
+// import {ClientLink} from '@/src/components/shared/client-link'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Button} from '@/src/components/ui/button'
@@ -25,16 +25,14 @@ import {
 } from '@/src/components/ui/card'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
+import {Link} from '@/src/i18n/navigation'
 
 function SlugDetails({slug}: {slug: Slug}) {
   const t = useTranslations('Pages.Accommodation.Slug.card')
   const oppositeSlug = slug === 'dimitra' ? 'georgia' : 'dimitra'
 
   return (
-    <Container
-      className='px-3'
-      asChild
-    >
+    <Container asChild>
       <Section className='space-y-4'>
         <Card className='p-0 space-y-0'>
           <div className='py-1 px-2 flex items-center justify-between'>
@@ -43,23 +41,23 @@ function SlugDetails({slug}: {slug: Slug}) {
               size='small'
               asChild
             >
-              <ClientLink href='/accommodation'>
+              <Link href='/accommodation'>
                 <ChevronLeftIcon size={16} />
                 <span>{t('links.back')}</span>
-              </ClientLink>
+              </Link>
             </Button>
             <Button
               variant='ghost'
               size='small'
               asChild
             >
-              <ClientLink
+              <Link
                 scroll={false}
                 href={`/accommodation/${oppositeSlug}`}
               >
                 <span className='capitalize'>{t('links.next', {slug})}</span>
                 <ChevronRightIcon size={16} />
-              </ClientLink>
+              </Link>
             </Button>
           </div>
           <Separator />

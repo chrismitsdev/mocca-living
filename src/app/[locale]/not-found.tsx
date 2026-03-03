@@ -1,10 +1,11 @@
 import {TriangleAlertIcon} from 'lucide-react'
 import {useTranslations} from 'next-intl'
-import {ClientLink} from '@/src/components/shared/client-link'
+// import {ClientLink} from '@/src/components/shared/client-link'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Button} from '@/src/components/ui/button'
 import {Typography} from '@/src/components/ui/typography'
+import {Link} from '@/src/i18n/navigation'
 
 export default function NotFound() {
   const t = useTranslations('Pages.NotFound')
@@ -26,12 +27,12 @@ export default function NotFound() {
             size='large'
             asChild
           >
-            <ClientLink
+            <Link
               href='/'
               replace
             >
               <span>{t('linkToHome')}</span>
-            </ClientLink>
+            </Link>
           </Button>
         </div>
       </Container>

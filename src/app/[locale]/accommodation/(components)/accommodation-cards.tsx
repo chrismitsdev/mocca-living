@@ -8,7 +8,7 @@ import {
 import type {StaticImageData} from 'next/image'
 import {type Messages, useTranslations} from 'next-intl'
 import {dimitraCover, georgiaCover} from '@/public/images/covers'
-import {ClientLink} from '@/src/components/shared/client-link'
+// import {ClientLink} from '@/src/components/shared/client-link'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Button} from '@/src/components/ui/button'
@@ -22,6 +22,7 @@ import {
 } from '@/src/components/ui/card'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {Typography} from '@/src/components/ui/typography'
+import {Link} from '@/src/i18n/navigation'
 
 type Villas = Messages['Pages']['Accommodation']['Index']['Villas']
 
@@ -115,13 +116,13 @@ function AccommodationCards() {
               </CardContent>
               <CardFooter className='pt-8 px-4 pb-6 justify-end sm:px-6'>
                 <Button asChild>
-                  <ClientLink href={`/accommodation/${villa.key}`}>
+                  <Link href={`/accommodation/${villa.key}`}>
                     <span>{villa.button}</span>
                     <ChevronRight
                       className='mt-1'
                       size={16}
                     />
-                  </ClientLink>
+                  </Link>
                 </Button>
               </CardFooter>
             </Card>
