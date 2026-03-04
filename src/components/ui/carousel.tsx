@@ -23,9 +23,9 @@ import {
 } from '@/src/components/ui/scrollarea'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 import {
-  EmblaContext,
-  useEmblaContext
-} from '@/src/context/embla-carousel-context'
+  CarouselContext,
+  useCarouselContext
+} from '@/src/context/carousel-context'
 import {cn} from '@/src/lib/utils'
 
 type EmblaApiType = ReturnType<typeof useEmblaCarousel>[1]
@@ -38,17 +38,14 @@ interface CarouselProps extends React.ComponentPropsWithRef<'div'> {
 
 function Carousel({
   className,
-  options = {
-    loop: true,
-    startIndex: 0
-  },
+  options,
   plugins,
   asChild = false,
   ...props
 }: CarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins)
   const [selectedIndex, setSelectedIndex] = useState<number>(
-    options.startIndex ?? 0
+    options?.startIndex ?? 0
   )
   const Comp = asChild ? Slot : 'div'
 
@@ -102,7 +99,7 @@ function Carousel({
   }, [emblaApi, onSelect])
 
   return (
-    <EmblaContext
+    <CarouselContext.Provider
       value={{
         emblaRef,
         emblaApi,
@@ -116,12 +113,12 @@ function Carousel({
         className={cn('relative overflow-hidden', className)}
         {...props}
       />
-    </EmblaContext>
+    </CarouselContext.Provider>
   )
 }
 
 function Viewport({className, ...props}: React.ComponentPropsWithRef<'div'>) {
-  const {emblaRef} = useEmblaContext()
+  const {emblaRef} = useCarouselContext()
 
   return (
     <div
@@ -209,7 +206,7 @@ function Thumb({
   thumbIndex,
   ...props
 }: React.ComponentPropsWithRef<'button'> & {thumbIndex: number}) {
-  const {selectedIndex, onThumbButtonClick} = useEmblaContext()
+  const {selectedIndex, onThumbButtonClick} = useCarouselContext()
 
   return (
     <button
@@ -229,7 +226,7 @@ function ButtonPrev({
   'aria-label': ariaLabel = 'Go to previous slide',
   ...props
 }: Omit<React.ComponentPropsWithRef<typeof Button>, 'children'>) {
-  const {onPrevButtonClick} = useEmblaContext()
+  const {onPrevButtonClick} = useCarouselContext()
 
   return (
     <Button
@@ -253,7 +250,7 @@ function ButtonNext({
   'aria-label': ariaLabel = 'Go to next slide',
   ...props
 }: Omit<React.ComponentPropsWithRef<typeof Button>, 'children'>) {
-  const {onNextButtonClick} = useEmblaContext()
+  const {onNextButtonClick} = useCarouselContext()
 
   return (
     <Button

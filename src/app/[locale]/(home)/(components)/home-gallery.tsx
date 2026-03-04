@@ -65,24 +65,13 @@ const triggerData: {className: string; sizes: string}[] = [
   }
 ]
 
-interface GalleryTriggerProps {
-  className: string
-  src: StaticImageData
-  sizes: string
-  alt: string
-  onClick: () => void
-}
-
 function HomeGallery() {
   const [index, setIndex] = useState(0)
 
   const thumbTriggers = images.map((image, i) => (
     <Trigger
       key={image.src}
-      className={cn(
-        'focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2',
-        triggerData[i].className
-      )}
+      className={triggerData[i].className}
       src={image}
       sizes={triggerData[i].sizes}
       alt={`Gallery thumbnail image ${i + 1}`}
@@ -144,11 +133,23 @@ function HomeGallery() {
   )
 }
 
-function Trigger({className, src, alt, sizes, onClick}: GalleryTriggerProps) {
+function Trigger({
+  className,
+  src,
+  alt,
+  sizes,
+  onClick
+}: {
+  className: string
+  src: StaticImageData
+  sizes: string
+  alt: string
+  onClick: () => void
+}) {
   return (
     <DialogTrigger
       className={cn(
-        'relative overflow-hidden rounded shadow before:absolute before:inset-0 before:duration-700 before:ease-mocca hover:before:bg-black/80 focus-visible:outline-0 group',
+        'relative overflow-hidden rounded shadow before:absolute before:inset-0 before:duration-700 before:ease-mocca hover:before:bg-black/80 focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2 group',
         className
       )}
       onClick={onClick}
@@ -161,10 +162,7 @@ function Trigger({className, src, alt, sizes, onClick}: GalleryTriggerProps) {
         quality={60}
       />
       <div className='hidden absolute inset-0 items-center justify-center group-hover:flex'>
-        <ExpandIcon
-          className='text-primary-foreground'
-          size={32}
-        />
+        <ExpandIcon className='size-8 text-primary-foreground' />
       </div>
     </DialogTrigger>
   )
