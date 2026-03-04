@@ -1,6 +1,7 @@
 import type messages from '@/messages/en.json'
 import type {routing} from '@/src/i18n/routing'
 
+// Next-intl types
 type Locale = (typeof routing.locales)[number]
 type Messages = typeof messages
 
@@ -11,6 +12,7 @@ declare module 'next-intl' {
   }
 }
 
+// Global types
 declare global {
   type Params = {
     params: Promise<{

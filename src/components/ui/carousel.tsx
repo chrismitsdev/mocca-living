@@ -117,7 +117,10 @@ function Carousel({
   )
 }
 
-function Viewport({className, ...props}: React.ComponentPropsWithRef<'div'>) {
+function CarouselViewport({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<'div'>) {
   const {emblaRef} = useCarouselContext()
 
   return (
@@ -270,7 +273,7 @@ function ButtonNext({
 }
 
 Carousel.displayName = 'Carousel'
-Viewport.displayName = 'Viewport'
+CarouselViewport.displayName = 'CarouselViewport'
 SlidesContainer.displayName = 'SlidesContainer'
 Slide.displayName = 'Slide'
 ThumbsContainer.displayName = 'ThumbsContainer'
@@ -280,7 +283,7 @@ ButtonNext.displayName = 'ButtonNext'
 
 export {
   Carousel,
-  Viewport,
+  CarouselViewport,
   SlidesContainer,
   Slide,
   ThumbsContainer,

@@ -11,9 +11,9 @@ import {
   ButtonNext,
   ButtonPrev,
   Carousel,
+  CarouselViewport,
   Slide,
-  SlidesContainer,
-  Viewport
+  SlidesContainer
 } from '@/src/components/ui/carousel'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {
@@ -107,9 +107,9 @@ function HomeGallery() {
                   <DialogTitle>Home page gallery images</DialogTitle>
                 </VisuallyHidden>
                 <Carousel options={{startIndex: index, loop: true}}>
-                  <Viewport>
+                  <CarouselViewport>
                     <SlidesContainer>{slides}</SlidesContainer>
-                  </Viewport>
+                  </CarouselViewport>
                   <ButtonPrev />
                   <ButtonNext />
                 </Carousel>

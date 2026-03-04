@@ -6,11 +6,11 @@ import {
   ButtonNext,
   ButtonPrev,
   Carousel,
+  CarouselViewport,
   Slide,
   SlidesContainer,
   Thumb,
-  ThumbsContainer,
-  Viewport
+  ThumbsContainer
 } from '@/src/components/ui/carousel'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {sortImportedImagesByName} from '@/src/lib/utils'
@@ -55,9 +55,9 @@ function HomeCarousel() {
       asChild
     >
       <section>
-        <Viewport>
+        <CarouselViewport>
           <SlidesContainer>{slides}</SlidesContainer>
-        </Viewport>
+        </CarouselViewport>
         <ButtonPrev />
         <ButtonNext />
         <ThumbsContainer>{thumbnails}</ThumbsContainer>
