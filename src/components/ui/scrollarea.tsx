@@ -9,9 +9,9 @@ import {
 } from '@radix-ui/react-scroll-area'
 import {cn} from '@/src/lib/utils'
 
-const ScrollAreaCorner = Corner
+const ScrollareaCorner = Corner
 
-function ScrollArea({
+function Scrollarea({
   className,
   ...props
 }: React.ComponentPropsWithRef<typeof Root>) {
@@ -23,7 +23,7 @@ function ScrollArea({
   )
 }
 
-function ScrollAreaViewport({
+function ScrollareaViewport({
   className,
   ...props
 }: React.ComponentPropsWithRef<typeof Viewport>) {
@@ -35,7 +35,7 @@ function ScrollAreaViewport({
   )
 }
 
-function ScrollAreaBar({
+function ScrollareaBar({
   className,
   orientation = 'vertical',
   ...props
@@ -56,9 +56,9 @@ function ScrollAreaBar({
   )
 }
 
-ScrollArea.displayName = 'ScrollArea'
-ScrollAreaViewport.displayName = 'ScrollAreaViewport'
-ScrollAreaBar.displayName = 'ScrollAreaBar'
-ScrollAreaCorner.displayName = 'ScrollAreaCorner'
+Scrollarea.displayName = 'Scrollarea'
+ScrollareaViewport.displayName = 'ScrollareaViewport'
+ScrollareaBar.displayName = 'ScrollareaBar'
+ScrollareaCorner.displayName = 'ScrollareaCorner'
 
-export {ScrollArea, ScrollAreaViewport, ScrollAreaBar, ScrollAreaCorner}
+export {Scrollarea, ScrollareaViewport, ScrollareaBar, ScrollareaCorner}

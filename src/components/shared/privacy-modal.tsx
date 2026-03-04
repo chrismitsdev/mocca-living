@@ -11,9 +11,9 @@ import {
   DialogTrigger
 } from '@/src/components/ui/dialog'
 import {
-  ScrollArea,
-  ScrollAreaBar,
-  ScrollAreaViewport
+  Scrollarea,
+  ScrollareaBar,
+  ScrollareaViewport
 } from '@/src/components/ui/scrollarea'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
@@ -33,11 +33,11 @@ function PrivacyModal({children}: React.PropsWithChildren) {
         <DialogContent className='p-0 w-[calc(100%-32px)] h-[calc(100svh-32px)] sm:h-auto sm:w-full sm:max-w-3xl'>
           <DialogTitle className='p-4'>{m('privacy')}</DialogTitle>
           <Separator />
-          <ScrollArea
+          <Scrollarea
             type='always'
             className='h-[calc(100%-61px)]'
           >
-            <ScrollAreaViewport>
+            <ScrollareaViewport>
               <div className='p-4 space-y-6'>
                 <article className='space-y-1.5'>
                   <Typography variant='h5'>{p('title')}</Typography>
@@ -52,9 +52,9 @@ function PrivacyModal({children}: React.PropsWithChildren) {
                   </Typography>
                 </article>
               </div>
-            </ScrollAreaViewport>
-            <ScrollAreaBar />
-          </ScrollArea>
+            </ScrollareaViewport>
+            <ScrollareaBar />
+          </Scrollarea>
           <DialogClose asChild>
             <Button
               className='absolute top-3 right-3'

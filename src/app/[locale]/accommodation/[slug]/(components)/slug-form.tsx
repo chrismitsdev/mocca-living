@@ -15,9 +15,9 @@ import {
   DrawerTrigger
 } from '@/src/components/ui/drawer'
 import {
-  ScrollArea,
-  ScrollAreaBar,
-  ScrollAreaViewport
+  Scrollarea,
+  ScrollareaBar,
+  ScrollareaViewport
 } from '@/src/components/ui/scrollarea'
 import {Separator} from '@/src/components/ui/separator'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
@@ -42,14 +42,14 @@ function SlugForm({slug}: {slug: Slug}) {
             <DrawerDescription>{t('description')}</DrawerDescription>
           </div>
           <Separator />
-          <ScrollArea type='always'>
-            <ScrollAreaViewport className='max-h-[calc(100dvh-128px-1px)]'>
+          <Scrollarea type='always'>
+            <ScrollareaViewport className='max-h-[calc(100dvh-128px-1px)]'>
               <div className='px-7 pt-6 pb-20 space-y-4 sm:p-8'>
                 <Form />
               </div>
-            </ScrollAreaViewport>
-            <ScrollAreaBar className='w-2 sm:w-2.5' />
-          </ScrollArea>
+            </ScrollareaViewport>
+            <ScrollareaBar className='w-2 sm:w-2.5' />
+          </Scrollarea>
           <DrawerClose asChild>
             <Button
               className='absolute top-2 right-2'

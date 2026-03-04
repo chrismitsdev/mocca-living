@@ -17,9 +17,9 @@ import {
   DrawerTrigger
 } from '@/src/components/ui/drawer'
 import {
-  ScrollArea,
-  ScrollAreaBar,
-  ScrollAreaViewport
+  Scrollarea,
+  ScrollareaBar,
+  ScrollareaViewport
 } from '@/src/components/ui/scrollarea'
 import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 import {
@@ -183,18 +183,18 @@ function ThumbsContainer({
           <DrawerTitle>Carousel thumbnails drawer</DrawerTitle>
         </VisuallyHidden>
         <div className='p-2 m-1 bg-surface-2 rounded sm:p-3'>
-          <ScrollArea>
-            <ScrollAreaViewport>
+          <Scrollarea>
+            <ScrollareaViewport>
               <div
                 className={cn('flex gap-2 sm:gap-4', className)}
                 {...props}
               />
-            </ScrollAreaViewport>
-            <ScrollAreaBar
+            </ScrollareaViewport>
+            <ScrollareaBar
               className='invisible'
               orientation='horizontal'
             />
-          </ScrollArea>
+          </Scrollarea>
         </div>
       </DrawerContent>
     </Drawer>

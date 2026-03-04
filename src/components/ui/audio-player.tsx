@@ -25,9 +25,9 @@ import {
 } from '@/src/components/ui/collapsible'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {
-  ScrollArea,
-  ScrollAreaBar,
-  ScrollAreaViewport
+  Scrollarea,
+  ScrollareaBar,
+  ScrollareaViewport
 } from '@/src/components/ui/scrollarea'
 import {Separator} from '@/src/components/ui/separator'
 import {Spinner} from '@/src/components/ui/spinner'
@@ -112,8 +112,8 @@ function AudioPlayer(
       </div>
       <Separator className={cn('hidden', state.showPlaylist && 'block')} />
       <CollapsibleContent>
-        <ScrollArea type='always'>
-          <ScrollAreaViewport className='max-h-[calc(100dvh-208px-128px-32px)] sm:max-h-[calc(100dvh-280px-32px-300px)]'>
+        <Scrollarea type='always'>
+          <ScrollareaViewport className='max-h-[calc(100dvh-208px-128px-32px)] sm:max-h-[calc(100dvh-280px-32px-300px)]'>
             <Playlist>
               {state.playlist.map((song) => (
                 <PlaylistTrack
@@ -126,9 +126,9 @@ function AudioPlayer(
                 />
               ))}
             </Playlist>
-          </ScrollAreaViewport>
-          <ScrollAreaBar className='w-2 sm:w-2.5' />
-        </ScrollArea>
+          </ScrollareaViewport>
+          <ScrollareaBar className='w-2 sm:w-2.5' />
+        </Scrollarea>
       </CollapsibleContent>
     </Collapsible>
   )

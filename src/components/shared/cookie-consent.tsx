@@ -11,9 +11,9 @@ import {
   CollapsibleTrigger
 } from '@/src/components/ui/collapsible'
 import {
-  ScrollArea,
-  ScrollAreaBar,
-  ScrollAreaViewport
+  Scrollarea,
+  ScrollareaBar,
+  ScrollareaViewport
 } from '@/src/components/ui/scrollarea'
 import {Typography} from '@/src/components/ui/typography'
 import {useScrollLock} from '@/src/hooks/useScrollLock'
@@ -56,8 +56,8 @@ function CookieConsent() {
         role='dialog'
         aria-live='polite'
       >
-        <ScrollArea type='always'>
-          <ScrollAreaViewport className='max-h-[calc(100dvh-16px)]'>
+        <Scrollarea type='always'>
+          <ScrollareaViewport className='max-h-[calc(100dvh-16px)]'>
             <div className='p-8 space-y-4'>
               <div className='flex items-center gap-3'>
                 <CookieIcon
@@ -121,9 +121,9 @@ function CookieConsent() {
                 </Button>
               </div>
             </div>
-          </ScrollAreaViewport>
-          <ScrollAreaBar />
-        </ScrollArea>
+          </ScrollareaViewport>
+          <ScrollareaBar />
+        </Scrollarea>
       </div>
     </div>
   )
