@@ -56,10 +56,10 @@ PopupArrow.displayName = 'PopupArrow'
 
 export {
   Popup,
-  PopupTrigger,
   PopupAnchor,
-  PopupPortal,
-  PopupContent,
+  PopupArrow,
   PopupClose,
-  PopupArrow
+  PopupContent,
+  PopupPortal,
+  PopupTrigger
 }

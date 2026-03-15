@@ -282,12 +282,12 @@ ButtonPrev.displayName = 'ButtonPrev'
 ButtonNext.displayName = 'ButtonNext'
 
 export {
+  ButtonNext,
+  ButtonPrev,
   Carousel,
   CarouselViewport,
-  SlidesContainer,
   Slide,
-  ThumbsContainer,
+  SlidesContainer,
   Thumb,
-  ButtonPrev,
-  ButtonNext
+  ThumbsContainer
 }

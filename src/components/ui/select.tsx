@@ -126,14 +126,14 @@ SelectSeparator.displayName = 'SelectSeparator'
 
 export {
   Select,
-  SelectTrigger,
-  SelectValue,
-  SelectPortal,
   SelectContent,
-  SelectViewport,
   SelectGroup,
-  SelectLabel,
   SelectItem,
   SelectItemText,
-  SelectSeparator
+  SelectLabel,
+  SelectPortal,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+  SelectViewport
 }

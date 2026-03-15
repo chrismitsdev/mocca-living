@@ -61,4 +61,4 @@ ScrollareaViewport.displayName = 'ScrollareaViewport'
 ScrollareaBar.displayName = 'ScrollareaBar'
 ScrollareaCorner.displayName = 'ScrollareaCorner'
 
-export {Scrollarea, ScrollareaViewport, ScrollareaBar, ScrollareaCorner}
+export {Scrollarea, ScrollareaBar, ScrollareaCorner, ScrollareaViewport}

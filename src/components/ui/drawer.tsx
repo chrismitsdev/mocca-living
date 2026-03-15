@@ -138,11 +138,11 @@ DrawerClose.displayName = 'DrawerClose'
 
 export {
   Drawer,
-  DrawerTrigger,
-  DrawerPortal,
-  DrawerOverlay,
+  DrawerClose,
   DrawerContent,
-  DrawerTitle,
   DrawerDescription,
-  DrawerClose
+  DrawerOverlay,
+  DrawerPortal,
+  DrawerTitle,
+  DrawerTrigger
 }

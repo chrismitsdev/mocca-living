@@ -80,8 +80,8 @@ AccordionContent.displayName = 'AccordionContent'
 
 export {
   Accordion,
-  AccordionItem,
+  AccordionContent,
   AccordionHeader,
-  AccordionTrigger,
-  AccordionContent
+  AccordionItem,
+  AccordionTrigger
 }
