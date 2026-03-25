@@ -1,25 +1,20 @@
-import {Slot, Slottable} from '@radix-ui/react-slot'
+import {Slot} from '@radix-ui/react-slot'
 import {cva, type VariantProps} from 'class-variance-authority'
+import {Children, cloneElement, Fragment} from 'react'
 import {Spinner} from '@/src/components/ui/spinner'
-import {cn} from '@/src/lib/utils'
 
-const buttonVariants = cva(
+const buttonProps = cva(
   [
-    'relative',
     'inline-flex',
     'justify-center',
     'items-center',
-    'gap-2',
     'whitespace-nowrap',
-    'font-semibold',
-    '*:shrink-0',
-    'rounded',
+    'font-bold',
     'transition',
-    'focus-visible:outline-ring',
     'focus-visible:outline-2',
+    'focus-visible:outline-ring',
     'focus-visible:outline-offset-2',
-    'disabled:pointer-events-none',
-    'disabled:opacity-35'
+    'aria-disabled:opacity-30'
   ],
   {
     variants: {
@@ -27,64 +22,33 @@ const buttonVariants = cva(
         primary: [
           'bg-primary',
           'text-primary-foreground',
-          'hover:bg-primary-hover'
+          'hover:bg-primary-hover',
+          'data-open:bg-primary-hover'
         ],
-        'primary-alt': ['bg-surface-1', 'text-primary', 'hover:bg-surface-2'],
-        bordered: ['border', 'border-border', 'hover:border-border-hover'],
-        'bordered-alt': [
+        outline: [
           'bg-surface-1',
+          'text-foreground',
           'border',
           'border-border',
-          'hover:border-border-hover'
+          'hover:bg-surface-2',
+          'hover:border-border-hover',
+          'data-open:bg-surface-2',
+          'data-open:border-border-hover'
         ],
-        ghost: ['hover:bg-primary', 'hover:text-primary-foreground'],
-        'ghost-alt': ['hover:bg-surface-2', 'hover:text-foreground'],
-        success: [
-          'bg-success',
-          'text-success-foreground',
-          'hover:bg-success-hover'
-        ],
-        error: ['bg-error', 'text-error-foreground', 'hover:bg-error-hover'],
-        info: ['bg-info', 'text-info-foreground', 'hover:bg-info-hover'],
-        warning: [
-          'bg-warning',
-          'text-warning-foreground',
-          'hover:bg-warning-hover'
-        ],
-        'ghost-success': [
-          'hover:bg-success-hover',
-          'hover:text-success-foreground'
-        ],
-        'ghost-error': ['hover:bg-error-hover', 'hover:text-error-foreground'],
-        'ghost-info': ['hover:bg-info-hover', 'hover:text-info-foreground'],
-        'ghost-warning': [
-          'hover:bg-warning-hover',
-          'hover:text-warning-foreground'
-        ],
-        link: ['underline-offset-4', 'hover:underline']
+        ghost: [
+          'text-foreground',
+          'hover:bg-primary',
+          'hover:text-primary-foreground',
+          'data-open:bg-primary',
+          'data-open:text-primary-foreground'
+        ]
       },
       size: {
-        large: ['px-6', 'py-3', 'text-lg'],
-        normal: ['px-4', 'py-2'],
-        small: ['px-2', 'py-1.5', 'text-sm', 'gap-1'],
-        mini: ['px-2', 'py-0', 'text-sm', 'gap-1'],
-        'icon-normal': ['h-10', 'w-10'],
-        'icon-small': ['h-8', 'w-8'],
-        'icon-mini': ['h-6', 'w-6']
+        large: ['px-6', 'h-14', 'text-lg', 'gap-x-1.5', '[&_svg]:size-7'],
+        normal: ['px-4', 'h-10', 'text-base', 'gap-x-1', '[&_svg]:size-6'],
+        small: ['px-2', 'h-6', 'text-sm', 'gap-x-0.5', '[&_svg]:size-5']
       }
     },
-    compoundVariants: [
-      {
-        variant: ['bordered', 'bordered-alt'],
-        size: 'normal',
-        className: 'py-1.75'
-      },
-      {
-        variant: ['bordered', 'bordered-alt'],
-        size: 'small',
-        className: 'py-1.25'
-      }
-    ],
     defaultVariants: {
       variant: 'primary',
       size: 'normal'
@@ -93,51 +57,69 @@ const buttonVariants = cva(
 )
 
 interface ButtonProps
-  extends React.ComponentPropsWithRef<'button'>,
-    VariantProps<typeof buttonVariants> {
+  extends Omit<
+      React.ComponentPropsWithRef<'button'>,
+      'aria-busy' | 'aria-disabled'
+    >,
+    VariantProps<typeof buttonProps> {
   asChild?: boolean
   isLoading?: boolean
 }
 
 function Button({
+  className,
   variant,
   size,
-  className,
-  asChild = false,
-  isLoading = false,
+  disabled,
   type = 'button',
-  draggable = false,
+  isLoading = false,
+  asChild = false,
   children,
   ...props
 }: ButtonProps) {
   const Comp = asChild ? Slot : 'button'
 
+  const loadingSkeleton = (children: React.ReactNode) => {
+    return (
+      <Fragment>
+        <span className='invisible'>{children}</span>
+        <span className='absolute inset-0 flex items-center justify-center'>
+          <Spinner />
+        </span>
+      </Fragment>
+    )
+  }
+
+  if (asChild && isLoading) {
+    const child = Children.only(children) as React.ReactElement<{
+      children: React.ReactNode
+    }>
+    return (
+      <Comp
+        className={buttonProps({variant, size, className})}
+        aria-busy
+        aria-disabled
+        {...props}
+      >
+        {cloneElement(child, {}, loadingSkeleton(child.props.children))}
+      </Comp>
+    )
+  }
+
   return (
     <Comp
-      className={cn(
-        buttonVariants({
-          variant,
-          size,
-          className: cn(
-            isLoading && '[&>*:not(span:last-child)]:invisible',
-            className
-          )
-        })
-      )}
-      type={type}
-      draggable={draggable}
+      className={buttonProps({variant, size, className})}
+      type={asChild ? undefined : type}
+      aria-busy={isLoading || undefined}
+      aria-disabled={isLoading || disabled || undefined}
+      disabled={asChild ? undefined : disabled || isLoading}
       {...props}
     >
-      <Slottable>{children}</Slottable>
-      {isLoading && (
-        <span className='absolute inset-0 flex items-center justify-center'>
-          <Spinner size={size === 'large' ? 24 : 16} />
-        </span>
-      )}
+      {isLoading ? loadingSkeleton(children) : children}
     </Comp>
   )
 }
 
 Button.displayName = 'Button'
 
-export {Button, buttonVariants}
+export {Button}

@@ -1,7 +1,6 @@
-import {ArrowBigRightIcon} from 'lucide-react'
 import {useTranslations} from 'next-intl'
 import {dimitraCover, georgiaCover} from '@/public/images/covers'
-import {reasonImage1, reasonImage2} from '@/public/images/home/home-reasons'
+import {homeReasonsImages} from '@/public/images/home/home-reasons'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {CustomImage} from '@/src/components/ui/custom-image'
@@ -13,67 +12,35 @@ function HomeReasons() {
   return (
     <Section className='bg-surface-2'>
       <Container>
-        <div className='grid gap-16 xl:grid-cols-2'>
-          <div className='sm:hidden'>
+        <div className='grid gap-16 sm:grid-cols-2'>
+          <div className='grid grid-cols-2 gap-4'>
             <CustomImage
-              className='h-full object-cover rounded shadow-small'
-              src={reasonImage1}
-              alt='Handmade ceramic cups and a bowl displayed on a dark round table'
-              sizes='calc(100vw - 32px)'
-            />
-          </div>
-          <div className='hidden grid-cols-2 grid-rows-2 gap-5 sm:grid'>
-            <CustomImage
-              className='object-cover rounded shadow-small self-end'
+              className='h-auto self-end'
               src={dimitraCover}
               alt='Dimitra villa'
-              sizes='(min-width: 1024px) 490px, (min-width: 768px) 362px, (min-width: 640px) 298px, 100vw'
             />
             <CustomImage
-              className='h-full object-cover rounded shadow-small'
-              src={reasonImage1}
-              alt='Handmade ceramic cups and a bowl displayed on a dark round table'
-              sizes='(min-width: 1024px) 490px, (min-width: 768px) 362px, (min-width: 640px) 298px, 100vw'
+              src={homeReasonsImages[0]}
+              alt='Handmade ceramic cups and a bowl on a dark round table'
             />
             <CustomImage
-              className='h-full object-cover rounded shadow-small'
-              src={reasonImage2}
+              src={homeReasonsImages[1]}
               alt='Handmade ceramic cups arranged on a wooden shelf'
-              sizes='(min-width: 1024px) 490px, (min-width: 768px) 362px, (min-width: 640px) 298px, 100vw'
             />
             <CustomImage
-              className='object-cover rounded shadow-small self-start'
+              className='h-auto self-start'
               src={georgiaCover}
               alt='Georgia villa'
-              sizes='(min-width: 1024px) 490px, (min-width: 768px) 362px, (min-width: 640px) 298px, 100vw'
             />
           </div>
-          {/*<div className='hidden grid-cols-2 grid-rows-2 gap-5 sm:grid'>
-            <div className='col-start-2'>
-              <CustomImage
-                className='h-full object-cover rounded shadow-small'
-                src={reasonImage1}
-                alt='Handmade ceramic cups and a bowl displayed on a dark round table'
-                sizes='(min-width: 640px) 476px'
-              />
-            </div>
-            <div className='row-start-2'>
-              <CustomImage
-                className='h-full object-cover rounded shadow-small'
-                src={reasonImage2}
-                alt='Handmade ceramic cups arranged on a wooden shelf'
-                sizes='(min-width: 640px) 476px'
-              />
-            </div>
-          </div>*/}
-          <div>
+          <div className='space-y-12'>
             <Typography
               variant='h3'
               asChild
             >
               <h2>{t('title')}</h2>
             </Typography>
-            <div className='mt-12 space-y-14'>
+            <div className='space-y-14'>
               <Reason
                 title={t('reasons.reason1.title')}
                 description={t('reasons.reason1.description')}
@@ -104,12 +71,9 @@ function HomeReasons() {
 
 function Reason({title, description}: {title: string; description: string}) {
   return (
-    <div className='flex gap-2'>
-      <ArrowBigRightIcon className='shrink-0' />
-      <div className='space-y-2'>
-        <Typography variant='large'>{title}</Typography>
-        <Typography className='leading-8'>{description}</Typography>
-      </div>
+    <div className='space-y-2'>
+      <Typography variant='lead'>{title}</Typography>
+      <Typography>{description}</Typography>
     </div>
   )
 }

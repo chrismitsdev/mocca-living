@@ -1,14 +1,9 @@
 import {useTranslations} from 'next-intl'
-import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 
 function CookiesHeader() {
   const t = useTranslations('Metadata.Pages')
 
-  return (
-    <VisuallyHidden>
-      <h1>{t('cookies')}</h1>
-    </VisuallyHidden>
-  )
+  return <h1 className='sr-only'>{t('cookies')}</h1>
 }
 
 CookiesHeader.displayName = 'CookiesHeader'

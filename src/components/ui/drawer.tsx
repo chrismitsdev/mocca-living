@@ -10,7 +10,9 @@ import {
   Title,
   Trigger
 } from '@radix-ui/react-dialog'
+import {IconX} from '@tabler/icons-react'
 import {cva, type VariantProps} from 'class-variance-authority'
+import {IconButton} from '@/src/components/ui/icon-button'
 import {cn} from '@/src/lib/utils'
 
 const Drawer = Root
@@ -32,59 +34,56 @@ function DrawerOverlay({
   )
 }
 
-const drawerContentVariants = cva(
-  ['fixed', 'z-1', 'bg-surface-2', 'shadow-small'],
-  {
-    variants: {
-      side: {
-        top: [
-          'inset-x-0',
-          'inset-bs-0',
-          'data-open:animate-drawer-top-open',
-          'data-closed:animate-drawer-top-close'
-        ],
-        right: [
-          'inset-y-0',
-          'inset-e-0',
-          'h-full',
-          'w-full',
-          'data-open:animate-drawer-right-open',
-          'data-closed:animate-drawer-right-close',
-          'sm:max-w-sm'
-        ],
-        bottom: [
-          'inset-x-0',
-          'inset-be-0',
-          'data-open:animate-drawer-bottom-open',
-          'data-closed:animate-drawer-bottom-close'
-        ],
-        left: [
-          'inset-y-0',
-          'inset-s-0',
-          'h-full',
-          'w-full',
-          'data-open:animate-drawer-left-open',
-          'data-closed:animate-drawer-left-close',
-          'sm:max-w-sm'
-        ]
-      }
-    },
-    defaultVariants: {
-      side: 'right'
+const drawerProps = cva(['fixed', 'z-1', 'bg-surface-2', 'shadow-small'], {
+  variants: {
+    side: {
+      top: [
+        'inset-x-0',
+        'inset-bs-0',
+        'data-open:animate-drawer-top-open',
+        'data-closed:animate-drawer-top-close'
+      ],
+      right: [
+        'inset-y-0',
+        'inset-e-0',
+        'h-full',
+        'w-full',
+        'data-open:animate-drawer-right-open',
+        'data-closed:animate-drawer-right-close',
+        'sm:max-w-sm'
+      ],
+      bottom: [
+        'inset-x-0',
+        'inset-be-0',
+        'data-open:animate-drawer-bottom-open',
+        'data-closed:animate-drawer-bottom-close'
+      ],
+      left: [
+        'inset-y-0',
+        'inset-s-0',
+        'h-full',
+        'w-full',
+        'data-open:animate-drawer-left-open',
+        'data-closed:animate-drawer-left-close',
+        'sm:max-w-sm'
+      ]
     }
+  },
+  defaultVariants: {
+    side: 'right'
   }
-)
+})
 
 function DrawerContent({
-  side = 'right',
   className,
+  side,
   'aria-describedby': ariaDescribedBy = undefined,
   ...props
 }: React.ComponentPropsWithRef<typeof Content> &
-  VariantProps<typeof drawerContentVariants>) {
+  VariantProps<typeof drawerProps>) {
   return (
     <Content
-      className={cn(drawerContentVariants({side}), className)}
+      className={drawerProps({side, className})}
       aria-describedby={ariaDescribedBy}
       {...props}
     />
@@ -97,7 +96,7 @@ function DrawerTitle({
 }: React.ComponentPropsWithRef<typeof Title>) {
   return (
     <Title
-      className={cn('text-lg font-semibold text-foreground', className)}
+      className={cn('text-lg font-bold text-foreground', className)}
       {...props}
     />
   )
@@ -109,21 +108,29 @@ function DrawerDescription({
 }: React.ComponentPropsWithRef<typeof Description>) {
   return (
     <Description
-      className={cn('text-sm text-muted-foreground', className)}
+      className={cn('text-sm', className)}
       {...props}
     />
   )
 }
 
 function DrawerClose({
-  'aria-label': ariaLabel = 'Close drawer',
+  'aria-label': ariaLabel,
   ...props
-}: React.ComponentPropsWithRef<typeof Close>) {
+}: Omit<React.ComponentPropsWithRef<typeof Close>, 'asChild' | 'children'>) {
   return (
     <Close
-      aria-label={ariaLabel}
       {...props}
-    />
+      asChild
+    >
+      <IconButton
+        aria-label={ariaLabel || 'Close drawer'}
+        variant='ghost'
+        size='small'
+      >
+        <IconX />
+      </IconButton>
+    </Close>
   )
 }
 

@@ -25,7 +25,7 @@ function PopupContent({
   return (
     <Content
       className={cn(
-        'p-6 min-inline-60 max-w-lg bg-surface-2 rounded drop-shadow-medium outline-none data-open:data-top:animate-slide-top-show data-open:data-right:animate-slide-right-show data-open:data-bottom:animate-slide-bottom-show data-open:data-left:animate-slide-left-show data-closed:data-top:animate-slide-top-hide data-closed:data-right:animate-slide-right-hide data-closed:data-bottom:animate-slide-bottom-hide data-closed:data-left:animate-slide-left-hide',
+        'p-6 min-inline-60 max-w-lg bg-surface-2 drop-shadow-medium outline-none data-open:data-top:animate-slide-top-show data-open:data-right:animate-slide-right-show data-open:data-bottom:animate-slide-bottom-show data-open:data-left:animate-slide-left-show data-closed:data-top:animate-slide-top-hide data-closed:data-right:animate-slide-right-hide data-closed:data-bottom:animate-slide-bottom-hide data-closed:data-left:animate-slide-left-hide',
         className
       )}
       collisionPadding={collisionPadding}

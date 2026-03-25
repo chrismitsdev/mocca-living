@@ -1,15 +1,15 @@
 'use client'
 
 import {
-  MailIcon,
-  MessageCircleIcon,
-  PhoneIcon,
-  SendHorizonalIcon,
-  UserIcon
-} from 'lucide-react'
+  IconMail,
+  IconMessage,
+  IconPhone,
+  IconSend2,
+  IconUser
+} from '@tabler/icons-react'
 import {useLocale, useTranslations} from 'next-intl'
 import {useActionState, useEffect} from 'react'
-import {PrivacyModal} from '@/src/components/shared/privacy-modal'
+import {FormDialog} from '@/src/components/shared/form-dialog'
 import {Button} from '@/src/components/ui/button'
 import {Checkbox} from '@/src/components/ui/checkbox'
 import {Input} from '@/src/components/ui/input'
@@ -33,27 +33,23 @@ function Form() {
   )
   const t = useTranslations('Components.Form')
 
-  useEffect(
-    () => {
-      if (state.ok === null) return
+  useEffect(() => {
+    if (state.ok === null) return
 
-      if (state.ok) {
-        toast({
-          title: t('toast.success.title'),
-          description: t('toast.success.description'),
-          status: 'success'
-        })
-      } else if (!state.ok) {
-        toast({
-          title: t(`toast.error.${state.type}.title`),
-          description: t(`toast.error.${state.type}.description`),
-          status: 'error'
-        })
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [state, t]
-  )
+    if (state.ok) {
+      toast({
+        title: t('toast.success.title'),
+        description: t('toast.success.description'),
+        status: 'success'
+      })
+    } else if (!state.ok) {
+      toast({
+        title: t(`toast.error.${state.type}.title`),
+        description: t(`toast.error.${state.type}.description`),
+        status: 'error'
+      })
+    }
+  }, [state, t])
 
   return (
     <form
@@ -61,7 +57,6 @@ function Form() {
       action={action}
       noValidate
     >
-      <div />
       <div className='grid gap-x-10 gap-y-6 @xl:grid-cols-2'>
         <FormControl error={state.errors.firstName}>
           <Label htmlFor='firstName'>{t('fields.firstName.label')}</Label>
@@ -71,7 +66,7 @@ function Form() {
             autoComplete='username'
             defaultValue={state.data.firstName}
             placeholder={t('fields.firstName.placeholder')}
-            icon={UserIcon}
+            icon={IconUser}
             error={Boolean(state.errors.firstName)}
             disabled={isPending}
           />
@@ -84,7 +79,7 @@ function Form() {
             autoComplete='family-name'
             defaultValue={state.data.lastName}
             placeholder={t('fields.lastName.placeholder')}
-            icon={UserIcon}
+            icon={IconUser}
             error={Boolean(state.errors.lastName)}
             disabled={isPending}
           />
@@ -97,7 +92,7 @@ function Form() {
             autoComplete='email'
             defaultValue={state.data.email}
             placeholder={t('fields.email.placeholder')}
-            icon={MailIcon}
+            icon={IconMail}
             error={Boolean(state.errors.email)}
             disabled={isPending}
             type='email'
@@ -111,7 +106,7 @@ function Form() {
             autoComplete='mobile tel'
             defaultValue={state.data.phone}
             placeholder={t('fields.phone.placeholder')}
-            icon={PhoneIcon}
+            icon={IconPhone}
             error={Boolean(state.errors.phone)}
             disabled={isPending}
             type='tel'
@@ -124,7 +119,7 @@ function Form() {
             name='message'
             defaultValue={state.data.message}
             placeholder={t('fields.message.placeholder')}
-            icon={MessageCircleIcon}
+            icon={IconMessage}
             disabled={isPending}
           />
         </FormControl>
@@ -138,7 +133,7 @@ function Form() {
           />
           <Label htmlFor='consent'>
             {t.rich('fields.consent.label', {
-              link: (string) => <PrivacyModal>{string}</PrivacyModal>
+              link: (string) => <FormDialog>{string}</FormDialog>
             })}
           </Label>
         </FormControl>
@@ -151,10 +146,7 @@ function Form() {
           isLoading={isPending}
         >
           <span>{t('button.label')}</span>
-          <SendHorizonalIcon
-            className='mt-0.5'
-            size={16}
-          />
+          <IconSend2 />
         </Button>
       </div>
     </form>
@@ -174,7 +166,7 @@ function FormControl({
     >
       {error && (
         <Typography
-          className='absolute top-0 right-0 leading-6 text-error-hover'
+          className='absolute inset-bs-2 inset-e-0 text-danger-hover font-bold'
           variant='mini'
         >
           {error}

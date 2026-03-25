@@ -10,7 +10,7 @@ function Container({className, asChild = false, ...props}: ContainerProps) {
 
   return (
     <Comp
-      className={cn('px-3 container mx-auto', className)}
+      className={cn('container', className)}
       {...props}
     />
   )

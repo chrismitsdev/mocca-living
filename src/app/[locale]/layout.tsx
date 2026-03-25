@@ -72,6 +72,7 @@ export default function LocaleLayout({
           <Toaster
             position='top-center'
             mobileOffset={12}
+            duration={100000}
           />
         </NextIntlClientProvider>
         <Analytics />

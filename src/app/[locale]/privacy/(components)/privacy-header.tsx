@@ -1,14 +1,9 @@
 import {useTranslations} from 'next-intl'
-import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 
 function PrivacyHeader() {
   const t = useTranslations('Metadata.Pages')
 
-  return (
-    <VisuallyHidden>
-      <h1>{t('privacy')}</h1>
-    </VisuallyHidden>
-  )
+  return <h1 className='sr-only'>{t('privacy')}</h1>
 }
 
 PrivacyHeader.displayName = 'PrivacyHeader'

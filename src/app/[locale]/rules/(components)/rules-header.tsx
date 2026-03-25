@@ -1,14 +1,9 @@
 import {useTranslations} from 'next-intl'
-import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 
 function RulesHeader() {
   const t = useTranslations('Metadata.Pages')
 
-  return (
-    <VisuallyHidden>
-      <h1>{t('rules')}</h1>
-    </VisuallyHidden>
-  )
+  return <h1 className='sr-only'>{t('rules')}</h1>
 }
 
 RulesHeader.displayName = 'RulesHeader'

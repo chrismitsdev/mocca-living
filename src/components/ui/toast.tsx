@@ -1,8 +1,13 @@
 'use client'
 
-import {CircleAlertIcon, CircleCheckIcon, XIcon} from 'lucide-react'
+import {
+  IconCircleCheck,
+  IconCircleX,
+  type IconProps,
+  IconX
+} from '@tabler/icons-react'
 import {toast as sonnerToast} from 'sonner'
-import {Button} from '@/src/components/ui/button'
+import {IconButton} from '@/src/components/ui/icon-button'
 import {Typography} from '@/src/components/ui/typography'
 import {cn} from '@/src/lib/utils'
 
@@ -10,38 +15,47 @@ interface ToastProps {
   id: string | number
   title: string
   description: string
-  status?: 'default' | 'success' | 'error'
+  status: 'success' | 'error'
 }
 
-function Toast({id, title, description, status = 'default'}: ToastProps) {
+const icons: Record<ToastProps['status'], React.ComponentType<IconProps>> = {
+  success: IconCircleCheck,
+  error: IconCircleX
+}
+
+function Toast({id, title, description, status}: ToastProps) {
+  const Icon = icons[status]
+
   return (
     <div
       className={cn(
-        'pl-4 py-4 pr-10 relative bg-surface-2 border border-surface-3 rounded shadow-small',
-        status === 'success' && 'bg-success-foreground border-green-7',
-        status === 'error' && 'bg-error-foreground border-red-7'
+        'p-6 border shadow-md',
+        status === 'success' && 'bg-success-foreground border-success',
+        status === 'error' && 'bg-danger-foreground border-danger'
       )}
     >
       <div className='flex gap-2'>
-        {status === 'success' && (
-          <CircleCheckIcon className='mt-0.5 shrink-0 size-5 text-success' />
-        )}
-        {status === 'error' && (
-          <CircleAlertIcon className='mt-0.5 shrink-0 size-5 text-error' />
-        )}
+        <Icon
+          className={cn(
+            'shrink-0',
+            status === 'success' && 'text-success',
+            status === 'error' && 'text-danger'
+          )}
+        />
         <div className='space-y-1'>
-          <Typography variant='h5'>{title}</Typography>
+          <Typography variant='large'>{title}</Typography>
           <Typography variant='small'>{description}</Typography>
         </div>
       </div>
-      <div className='absolute top-1 right-1'>
-        <Button
-          variant='ghost-error'
-          size='icon-mini'
+      <div className='absolute inset-bs-4 inset-e-4'>
+        <IconButton
+          aria-label='Close toast notification'
+          variant='ghost'
+          size='small'
           onClick={() => sonnerToast.dismiss(id)}
         >
-          <XIcon size={16} />
-        </Button>
+          <IconX />
+        </IconButton>
       </div>
     </div>
   )

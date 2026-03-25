@@ -1,24 +1,16 @@
 @import "tailwindcss";
-@import "./colors.css";
-@import "./typography.css";
-@import "./shadows.css";
 @import "./animations.css";
+@import "./colors.css";
 @import "./data-attributes.css";
+@import "./shadows.css";
 
 /* General styling */
 *::selection {
-  background-color: var(--color-primary);
-  color: var(--color-primary-foreground);
+  @apply bg-primary text-primary-foreground;
 }
 
-.bg-striped {
-  background: repeating-linear-gradient(
-    -45deg,
-    var(--color-red-9) 0px,
-    var(--color-red-9) 3px,
-    var(--color-surface-1) 3px,
-    var(--color-surface-1) 6px
-  );
+@utility container {
+  @apply px-3 mx-auto;
 }
 
 /* Leaflet styling */

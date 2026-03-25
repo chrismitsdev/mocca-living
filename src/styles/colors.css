@@ -27,19 +27,6 @@
   --color-brand-11: #491400; /* rgba(73, 20, 0, 1) */
   --color-brand-12: #453227; /* rgba(69, 50, 39, 1) */
 
-  --color-gray-1: #c5c3c3;
-  --color-gray-2: #bdbcbb;
-  --color-gray-3: #b1afae;
-  --color-gray-4: #a5a4a3;
-  --color-gray-5: #9b9998;
-  --color-gray-6: #908e8d;
-  --color-gray-7: #838180;
-  --color-gray-8: #6f6d6c;
-  --color-gray-9: #444140;
-  --color-gray-10: #3b3837;
-  --color-gray-11: #242221;
-  --color-gray-12: #211f1e; /* rgba(33, 31, 30, 1) */
-
   --color-green-1: #fbfefc;
   --color-green-2: #f4fbf6;
   --color-green-3: #e6f6eb;
@@ -52,32 +39,6 @@
   --color-green-10: #2b9a66;
   --color-green-11: #218358;
   --color-green-12: #193b2d;
-
-  --color-red-1: #fffcfc;
-  --color-red-2: #fff7f7;
-  --color-red-3: #feebec;
-  --color-red-4: #ffdbdc;
-  --color-red-5: #ffcdce;
-  --color-red-6: #fdbdbe;
-  --color-red-7: #f4a9aa;
-  --color-red-8: #eb8e90;
-  --color-red-9: #e5484d;
-  --color-red-10: #dc3e42;
-  --color-red-11: #ce2c31;
-  --color-red-12: #641723;
-
-  --color-yellow-1: #fdfdf9;
-  --color-yellow-2: #fefce9;
-  --color-yellow-3: #fffab8;
-  --color-yellow-4: #fff394;
-  --color-yellow-5: #ffe770;
-  --color-yellow-6: #f3d768;
-  --color-yellow-7: #e4c767;
-  --color-yellow-8: #d5ae39;
-  --color-yellow-9: #ffe629;
-  --color-yellow-10: #ffdc00;
-  --color-yellow-11: #9e6c00;
-  --color-yellow-12: #473b1f;
 
   --color-blue-1: #fbfdff;
   --color-blue-2: #f4faff;
@@ -92,6 +53,32 @@
   --color-blue-11: #0d74ce;
   --color-blue-12: #113264;
 
+  --color-yellow-1: #fdfdf9;
+  --color-yellow-2: #fefce9;
+  --color-yellow-3: #fffab8;
+  --color-yellow-4: #fff394;
+  --color-yellow-5: #ffe770;
+  --color-yellow-6: #f3d768;
+  --color-yellow-7: #e4c767;
+  --color-yellow-8: #d5ae39;
+  --color-yellow-9: #ffe629;
+  --color-yellow-10: #ffdc00;
+  --color-yellow-11: #9e6c00;
+  --color-yellow-12: #473b1f;
+
+  --color-red-1: #fffcfc;
+  --color-red-2: #fff7f7;
+  --color-red-3: #feebec;
+  --color-red-4: #ffdbdc;
+  --color-red-5: #ffcdce;
+  --color-red-6: #fdbdbe;
+  --color-red-7: #f4a9aa;
+  --color-red-8: #eb8e90;
+  --color-red-9: #e5484d;
+  --color-red-10: #dc3e42;
+  --color-red-11: #ce2c31;
+  --color-red-12: #641723;
+
   /* Surface colors */
   --color-surface-1: #e7d9be; /* rgba(231, 217, 190, 1) */
   --color-surface-2: #ddc8a2; /* rgba(221, 200, 162, 1) */
@@ -101,43 +88,35 @@
 
   /* Semantic colors */
   --color-foreground: var(--color-brand-12);
-  --color-foreground-muted: var(--color-brand-6);
 
   --color-primary: var(--color-brand-9);
   --color-primary-foreground: var(--color-surface-1);
   --color-primary-hover: var(--color-brand-10);
 
-  --color-muted: var(--color-brand-4);
-  --color-muted-foreground: var(--color-brand-12);
-  --color-muted-hover: var(--color-brand-5);
-
   --color-success: var(--color-green-9);
   --color-success-foreground: var(--color-green-3);
   --color-success-hover: var(--color-green-10);
-
-  --color-error: var(--color-red-9);
-  --color-error-foreground: var(--color-red-3);
-  --color-error-hover: var(--color-red-10);
-
-  --color-warning: var(--color-yellow-9);
-  --color-warning-foreground: var(--color-brand-12);
-  --color-warning-hover: var(--color-yellow-10);
 
   --color-info: var(--color-blue-9);
   --color-info-foreground: var(--color-blue-3);
   --color-info-hover: var(--color-blue-10);
 
+  --color-warning: var(--color-yellow-9);
+  --color-warning-foreground: var(--color-brand-12);
+  --color-warning-hover: var(--color-yellow-10);
+
+  --color-danger: var(--color-red-9);
+  --color-danger-foreground: var(--color-red-3);
+  --color-danger-hover: var(--color-red-10);
+
   --color-border: var(--color-brand-6);
   --color-border-hover: var(--color-brand-8);
-
-  --color-border-muted: var(--color-brand-4);
-  --color-border-muted-hover: var(--color-brand-5);
 
   --color-border-success: var(--color-green-6);
   --color-border-success-hover: var(--color-green-8);
 
-  --color-border-error: var(--color-red-6);
-  --color-border-error-hover: var(--color-red-8);
+  --color-border-danger: var(--color-red-6);
+  --color-border-danger-hover: var(--color-red-8);
 
   --color-border-info: var(--color-blue-6);
   --color-border-info-hover: var(--color-blue-8);

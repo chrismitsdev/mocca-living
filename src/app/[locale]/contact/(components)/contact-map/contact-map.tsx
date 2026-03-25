@@ -29,7 +29,7 @@ function ContactMap() {
     <Section>
       <Container className='h-125 sm:h-174'>
         <MapContainer
-          className='h-full rounded shadow-small'
+          className='h-full shadow-small'
           center={coords}
           zoom={17}
           scrollWheelZoom
@@ -57,7 +57,7 @@ function ContactMap() {
                 />
                 <div>
                   <Typography
-                    className='font-semibold text-primary'
+                    className='font-bold text-primary'
                     variant='small'
                   >
                     {t('title')}

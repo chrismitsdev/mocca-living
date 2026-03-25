@@ -66,7 +66,7 @@ async function ContactFormClient({
             </Section>
 
             <Section
-              className='overflow-hidden rounded'
+              className='overflow-hidden'
               style={{border: '1px solid #c7b492'}}
             >
               <Row>
@@ -124,7 +124,7 @@ async function ContactFormClient({
                   className='pr-2'
                 >
                   <Link
-                    className='p-1 bg-surface-3 inline-block rounded'
+                    className='p-1 bg-surface-3 inline-block'
                     href='https://www.facebook.com/profile.php?id=61566665200042'
                     target='_blank'
                     rel='noopener noreferrer'
@@ -141,7 +141,7 @@ async function ContactFormClient({
                   className='pl-2'
                 >
                   <Link
-                    className='p-1 bg-surface-3 inline-block rounded'
+                    className='p-1 bg-surface-3 inline-block'
                     href='https://www.instagram.com/moccaliving.premiumstay/'
                     target='_blank'
                     rel='noopener noreferrer'

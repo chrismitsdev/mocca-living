@@ -3,10 +3,7 @@ import {cn} from '@/src/lib/utils'
 function Card({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      className={cn(
-        'p-6 space-y-6 bg-surface-2 border border-surface-3 rounded',
-        className
-      )}
+      className={cn('bg-surface-2 border border-border', className)}
       {...props}
     />
   )
@@ -15,7 +12,7 @@ function Card({className, ...props}: React.ComponentPropsWithRef<'div'>) {
 function CardHeader({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      className={cn('space-y-2', className)}
+      className={cn('px-4 pt-4 sm:px-6 sm:pt-6 space-y-4', className)}
       {...props}
     />
   )
@@ -24,7 +21,7 @@ function CardHeader({className, ...props}: React.ComponentPropsWithRef<'div'>) {
 function CardTitle({className, ...props}: React.ComponentPropsWithRef<'h3'>) {
   return (
     <h3
-      className={cn('text-2xl font-semibold text-balance', className)}
+      className={cn('text-2xl text-balance font-bold', className)}
       {...props}
     />
   )
@@ -36,20 +33,28 @@ function CardDescription({
 }: React.ComponentPropsWithRef<'p'>) {
   return (
     <p
-      className={cn('text-sm tracking-wide', className)}
+      className={cn('text-sm text-balance', className)}
       {...props}
     />
   )
 }
 
-function CardContent(props: React.ComponentPropsWithRef<'div'>) {
-  return <div {...props} />
+function CardContent({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<'div'>) {
+  return (
+    <div
+      className={cn('p-4 sm:p-6', className)}
+      {...props}
+    />
+  )
 }
 
 function CardFooter({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      className={cn('pt-2 flex items-center', className)}
+      className={cn('px-4 pb-4 sm:px-6 sm:pb-6 flex items-center', className)}
       {...props}
     />
   )

@@ -1,5 +1,5 @@
-import * as dimitraImages from '@/public/images/accommodation/slug/dimitra'
-import * as georgiaImages from '@/public/images/accommodation/slug/georgia'
+import {dimitraCarouselImages} from '@/public/images/accommodation/slug/dimitra'
+import {georgiaCarouselImages} from '@/public/images/accommodation/slug/georgia'
 import {
   ButtonNext,
   ButtonPrev,
@@ -11,28 +11,22 @@ import {
   ThumbsContainer
 } from '@/src/components/ui/carousel'
 import {CustomImage} from '@/src/components/ui/custom-image'
-import {sortImportedImagesByName} from '@/src/lib/utils'
 
 const slugImages = {
-  georgia: sortImportedImagesByName(georgiaImages),
-  dimitra: sortImportedImagesByName(dimitraImages)
+  georgia: georgiaCarouselImages,
+  dimitra: dimitraCarouselImages
 }
 
 function SlugCarousel({slug}: {slug: Slug}) {
   const images = slugImages[slug]
 
   const slides = images.map((image, i) => (
-    <Slide
-      key={image.src}
-      className='mr-0'
-    >
+    <Slide key={image.src}>
       <CustomImage
-        className='w-full h-full object-cover'
         src={image}
         alt={`${slug} page carousel image ${i + 1}`}
         sizes='100vw'
         quality={60}
-        priority={i === 0}
       />
     </Slide>
   ))
@@ -43,7 +37,6 @@ function SlugCarousel({slug}: {slug: Slug}) {
       thumbIndex={i}
     >
       <CustomImage
-        className='w-full h-full object-cover'
         src={image}
         alt={`${slug} page carousel thumb ${i + 1}`}
         sizes='(min-width: 640px) 80px, 40px'
@@ -52,18 +45,13 @@ function SlugCarousel({slug}: {slug: Slug}) {
   ))
 
   return (
-    <Carousel
-      className='sm:h-[calc(100svh-80px)]'
-      asChild
-    >
-      <section>
-        <CarouselViewport>
-          <SlidesContainer>{slides}</SlidesContainer>
-        </CarouselViewport>
-        <ButtonPrev />
-        <ButtonNext />
-        <ThumbsContainer>{thumbnails}</ThumbsContainer>
-      </section>
+    <Carousel className='sm:h-[calc(100svh-80px)]'>
+      <CarouselViewport>
+        <SlidesContainer>{slides}</SlidesContainer>
+      </CarouselViewport>
+      <ButtonPrev />
+      <ButtonNext />
+      <ThumbsContainer>{thumbnails}</ThumbsContainer>
     </Carousel>
   )
 }

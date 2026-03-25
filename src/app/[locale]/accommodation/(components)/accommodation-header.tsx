@@ -1,14 +1,9 @@
 import {useTranslations} from 'next-intl'
-import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 
 function AccommodationHeader() {
   const t = useTranslations('Metadata.Pages')
 
-  return (
-    <VisuallyHidden>
-      <h1>{t('accommodation.root')}</h1>
-    </VisuallyHidden>
-  )
+  return <h1 className='sr-only'>{t('accommodation.root')}</h1>
 }
 
 AccommodationHeader.displayName = 'AccommodationHeader'

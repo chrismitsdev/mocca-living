@@ -117,7 +117,7 @@ function SlugBadge({
           <Icon className='size-4.5' />
         </span>
       )}
-      <Typography variant='h5'>{children}</Typography>
+      <Typography variant='h4'>{children}</Typography>
     </div>
   )
 }
@@ -126,7 +126,7 @@ function SlugList({children, data}: React.PropsWithChildren<{data: string}>) {
   return (
     <article className='space-y-2'>
       <Typography
-        variant='h5'
+        variant='h4'
         asChild
       >
         <h5>{children}</h5>

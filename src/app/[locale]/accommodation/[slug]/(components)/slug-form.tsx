@@ -1,6 +1,5 @@
 'use client'
 
-import {XIcon} from 'lucide-react'
 import {useTranslations} from 'next-intl'
 import {Form} from '@/src/components/shared/form'
 import {Button} from '@/src/components/ui/button'
@@ -20,7 +19,6 @@ import {
   ScrollareaViewport
 } from '@/src/components/ui/scrollarea'
 import {Separator} from '@/src/components/ui/separator'
-import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 
 function SlugForm({slug}: {slug: Slug}) {
   const t = useTranslations('Pages.Accommodation.Slug.card.drawer')
@@ -50,16 +48,7 @@ function SlugForm({slug}: {slug: Slug}) {
             </ScrollareaViewport>
             <ScrollareaBar className='w-2 sm:w-2.5' />
           </Scrollarea>
-          <DrawerClose asChild>
-            <Button
-              className='absolute top-2 right-2'
-              variant='ghost-alt'
-              size='icon-small'
-            >
-              <VisuallyHidden>Close drawer</VisuallyHidden>
-              <XIcon />
-            </Button>
-          </DrawerClose>
+          <DrawerClose className='absolute top-2 right-2' />
         </DrawerContent>
       </DrawerPortal>
     </Drawer>

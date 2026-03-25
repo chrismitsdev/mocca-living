@@ -2,44 +2,31 @@ import {Slot} from '@radix-ui/react-slot'
 import {cva, type VariantProps} from 'class-variance-authority'
 import {cn} from '@/src/lib/utils'
 
-const typographyVariants = cva(['block'], {
+const typographyVariants = cva(['block', 'text-balance'], {
   variants: {
     variant: {
-      hero: ['text-5xl', 'font-extrabold', 'lg:text-6xl'],
-      h1: ['text-4xl', 'font-extrabold', 'lg:text-5xl'],
-      h2: [
-        'pb-2',
-        'text-3xl',
-        'font-semibold',
-        'border-b',
-        'border-b-surface-3'
-      ],
-      h3: ['text-2xl', 'font-semibold'],
-      h4: ['text-xl', 'font-semibold'],
-      h5: ['text-base', 'font-semibold'],
-      h6: ['text-sm', 'font-semibold'],
-      blockquote: ['pl-6', 'mt-6', 'italic', 'border-l-2'],
-      lead: ['text-xl', 'text-muted-foreground'],
-      large: ['text-lg', 'font-semibold'],
-      small: ['text-sm', 'tracking-wide'],
-      mini: ['text-xs', 'font-semibold', 'tracking-wide'],
-      muted: ['text-sm', 'text-foreground-muted'],
-      link: [
-        'text-sm',
-        'tracking-wide',
-        'hover:underline',
-        'focus-visible:outline-ring',
-        'focus-visible:outline-2',
-        'focus-visible:outline-offset-2'
-      ]
+      h1: ['text-5xl'],
+      h2: ['text-4xl'],
+      h3: ['text-3xl'],
+      h4: ['text-2xl'],
+      lead: ['text-xl'],
+      large: ['text-base'],
+      p: ['text-base'],
+      small: ['text-sm'],
+      tiny: ['text-xs'],
+      mini: ['text-[10px]', 'leading-4', 'tracking-wider']
     }
   },
   compoundVariants: [
     {
-      variant: ['hero', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-      className: ['tracking-tight', 'text-balance']
-    }
-  ]
+      variant: ['h1', 'h2', 'h3', 'h4', 'lead', 'large'],
+      className: 'font-bold'
+    },
+    {variant: ['p', 'small', 'tiny'], className: 'leading-6'}
+  ],
+  defaultVariants: {
+    variant: 'p'
+  }
 })
 
 interface TypographyProps

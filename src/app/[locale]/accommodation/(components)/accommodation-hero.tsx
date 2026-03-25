@@ -16,7 +16,6 @@ function AccommodationHero() {
         alt='Accomdation page mobile hero image'
         sizes='100vw'
         quality={60}
-        priority
       />
       <CustomImage
         className='w-full h-full object-cover hidden sm:block'
@@ -24,13 +23,11 @@ function AccommodationHero() {
         alt='Accomdation page desktop hero image'
         sizes='100vw'
         quality={60}
-        priority
       />
-
       <Button
         className='absolute bottom-10 left-1/2 -translate-x-1/2'
-        variant='primary-alt'
         size='large'
+        variant='outline'
         asChild
       >
         <Link href='/contact'>

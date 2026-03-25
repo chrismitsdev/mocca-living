@@ -29,7 +29,7 @@ function ScrollareaViewport({
 }: React.ComponentPropsWithRef<typeof Viewport>) {
   return (
     <Viewport
-      className={cn('h-full w-full rounded-[inherit]', className)}
+      className={cn('size-full', className)}
       {...props}
     />
   )
@@ -37,21 +37,17 @@ function ScrollareaViewport({
 
 function ScrollareaBar({
   className,
-  orientation = 'vertical',
   ...props
 }: React.ComponentPropsWithRef<typeof Scrollbar>) {
   return (
     <Scrollbar
       className={cn(
-        'flex touch-none select-none transition-colors',
-        orientation === 'vertical' && 'h-full w-2.5 p-px',
-        orientation === 'horizontal' && 'h-2.5 flex-col p-px',
+        'p-px flex touch-none select-none transition-colors data-vertical:h-full data-vertical:w-2.5 data-horizontal:flex-col data-horizontal:h-2.5',
         className
       )}
-      orientation={orientation}
       {...props}
     >
-      <Thumb className='relative flex-1 bg-border-muted rounded-full active:bg-border hover:bg-border transition-colors' />
+      <Thumb className='flex-1 relative rounded-full bg-surface-3 transition-colors hover:bg-surface-4' />
     </Scrollbar>
   )
 }

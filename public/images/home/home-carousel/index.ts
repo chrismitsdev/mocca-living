@@ -1,14 +1,31 @@
-export {default as slideShowImage1} from './1.webp'
-export {default as slideShowImage2} from './2.webp'
-export {default as slideShowImage3} from './3.webp'
-export {default as slideShowImage4} from './4.webp'
-export {default as slideShowImage5} from './5.webp'
-export {default as slideShowImage6} from './6.webp'
-export {default as slideShowImage7} from './7.webp'
-export {default as slideShowImage8} from './8.webp'
-export {default as slideShowImage9} from './9.webp'
-export {default as slideShowImage10} from './10.webp'
-export {default as slideShowImage11} from './11.webp'
-export {default as slideShowImage12} from './12.webp'
-export {default as slideShowImage13} from './13.webp'
-export {default as slideShowImage14} from './14.webp'
+import homeCarouselImage1 from './1.webp'
+import homeCarouselImage2 from './2.webp'
+import homeCarouselImage3 from './3.webp'
+import homeCarouselImage4 from './4.webp'
+import homeCarouselImage5 from './5.webp'
+import homeCarouselImage6 from './6.webp'
+import homeCarouselImage7 from './7.webp'
+import homeCarouselImage8 from './8.webp'
+import homeCarouselImage9 from './9.webp'
+import homeCarouselImage10 from './10.webp'
+import homeCarouselImage11 from './11.webp'
+import homeCarouselImage12 from './12.webp'
+import homeCarouselImage13 from './13.webp'
+import homeCarouselImage14 from './14.webp'
+
+export const homeCarouselImages = [
+  homeCarouselImage1,
+  homeCarouselImage2,
+  homeCarouselImage3,
+  homeCarouselImage4,
+  homeCarouselImage5,
+  homeCarouselImage6,
+  homeCarouselImage7,
+  homeCarouselImage8,
+  homeCarouselImage9,
+  homeCarouselImage10,
+  homeCarouselImage11,
+  homeCarouselImage12,
+  homeCarouselImage13,
+  homeCarouselImage14
+]

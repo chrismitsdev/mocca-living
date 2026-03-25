@@ -1,12 +1,12 @@
 import type {Metadata} from 'next'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {use} from 'react'
-import {HomeCarousel} from '@/src/app/[locale]/(home)/(components)/home-carousel'
-import {HomeDistances} from '@/src/app/[locale]/(home)/(components)/home-distances'
-import {HomeGallery} from '@/src/app/[locale]/(home)/(components)/home-gallery'
-import {HomeHeader} from '@/src/app/[locale]/(home)/(components)/home-header'
-import {HomeIntro} from '@/src/app/[locale]/(home)/(components)/home-intro'
-import {HomeReasons} from '@/src/app/[locale]/(home)/(components)/home-reasons'
+import {HomeCarousel} from './(components)/home-carousel'
+import {HomeDistances} from './(components)/home-distances'
+import {HomeGallery} from './(components)/home-gallery'
+import {HomeHeader} from './(components)/home-header'
+import {HomeIntro} from './(components)/home-intro'
+import {HomeReasons} from './(components)/home-reasons'
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
   const {locale} = await params

@@ -7,7 +7,7 @@ function Label({
 }: React.ComponentPropsWithRef<typeof Root>) {
   return (
     <Root
-      className={cn('block text-sm font-semibold select-none', className)}
+      className={cn('block text-sm leading-6 font-bold select-none', className)}
       {...props}
     />
   )

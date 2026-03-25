@@ -18,7 +18,7 @@ function AccommodationIntro() {
         >
           <h2>{t('title')}</h2>
         </Typography>
-        <Typography className='leading-8'>{t('message')}</Typography>
+        <Typography>{t('message')}</Typography>
       </Section>
     </Container>
   )

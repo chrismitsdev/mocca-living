@@ -1,5 +1,5 @@
 import Image, {type StaticImageData} from 'next/image'
-import {shimmer, toBase64} from '@/src/lib/utils'
+import {cn} from '@/src/lib/utils'
 
 interface CustomImageProps
   extends Omit<React.ComponentPropsWithRef<typeof Image>, 'src'> {
@@ -7,6 +7,7 @@ interface CustomImageProps
 }
 
 function CustomImage({
+  className,
   src,
   alt,
   draggable = false,
@@ -14,6 +15,7 @@ function CustomImage({
 }: CustomImageProps) {
   return (
     <Image
+      className={cn('w-full h-full object-cover', className)}
       placeholder={`data:image/svg+xml;base64,${toBase64(
         shimmer(src.width, src.height)
       )}`}
@@ -28,3 +30,39 @@ function CustomImage({
 CustomImage.displayName = 'CustomImage'
 
 export {CustomImage}
+
+function shimmer(w: number, h: number) {
+  return `
+    <svg
+      width='${w}'
+      height='${h}'
+      version='1.1'
+      xmlns='http://www.w3.org/2000/svg'
+      xmlns:xlink='http://www.w3.org/1999/xlink'
+    >
+      <defs>
+        <linearGradient id='g'>
+          <stop stop-color='#b1a082' offset='20%' />
+          <stop stop-color='#9b8c71' offset='50%' />
+          <stop stop-color='#b1a082' offset='70%' />
+        </linearGradient>
+      </defs>
+      <rect width='${w}' height='${h}' fill='#b1a082' />
+      <rect id="r" width='${w}' height='${h}' fill='url(#g)' />
+      <animate
+        xlink:href='#r'
+        attributeName='x'
+        from='-${w}'
+        to='${w}'
+        dur='1s'
+        repeatCount='indefinite'
+      />
+    </svg>
+  `
+}
+
+function toBase64(str: string) {
+  return typeof window === 'undefined'
+    ? Buffer.from(str).toString('base64')
+    : window.btoa(str)
+}

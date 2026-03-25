@@ -1,9 +1,7 @@
 'use client'
 
-import {MinimizeIcon} from 'lucide-react'
 import {useState} from 'react'
 import {AudioPlayer} from '@/src/components/ui/audio-player'
-import {Button} from '@/src/components/ui/button'
 import {
   Dialog,
   DialogClose,
@@ -12,7 +10,6 @@ import {
   DialogTitle,
   DialogTrigger
 } from '@/src/components/ui/dialog'
-import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 import {cn} from '@/src/lib/utils'
 
 function DialogAudioPlayer({children}: React.PropsWithChildren) {
@@ -24,29 +21,21 @@ function DialogAudioPlayer({children}: React.PropsWithChildren) {
       onOpenChange={setOpen}
       modal={false}
     >
-      <DialogTrigger>{children}</DialogTrigger>
+      <DialogTrigger className='focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2'>
+        {children}
+      </DialogTrigger>
       <DialogPortal forceMount>
         <DialogContent
           className={cn(
             'p-0 w-[calc(100%-16px)] max-w-3xl',
             !open && 'invisible'
           )}
-          aria-describedby={undefined}
         >
-          <VisuallyHidden>
-            <DialogTitle>{'Mocca Living audio playlist 2024'}</DialogTitle>
-          </VisuallyHidden>
+          <DialogClose className='absolute top-3 right-3 group' />
+          <DialogTitle className='sr-only'>
+            Mocca Living audio playlist 2024
+          </DialogTitle>
           <AudioPlayer />
-          <DialogClose asChild>
-            <Button
-              aria-label='Close dialog'
-              className='absolute top-3 right-3 group'
-              variant='ghost-error'
-              size='icon-normal'
-            >
-              <MinimizeIcon className='group-hover:scale-90' />
-            </Button>
-          </DialogClose>
         </DialogContent>
       </DialogPortal>
     </Dialog>

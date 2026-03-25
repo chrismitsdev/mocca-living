@@ -16,7 +16,7 @@ function ContactForm() {
   return (
     <Section>
       <Container>
-        <Card className='px-4 py-8 space-y-8 sm:p-16 w-full'>
+        <Card className='space-y-10 sm:p-20'>
           <CardHeader>
             <CardTitle>{t('title')}</CardTitle>
             <CardDescription>{t('description')}</CardDescription>

@@ -1,12 +1,10 @@
 import {
-  MessageCircleIcon,
-  MessagesSquareIcon,
-  PhoneOutgoingIcon,
-  XIcon
-} from 'lucide-react'
+  IconBrandWhatsapp,
+  IconDeviceMobileMessage,
+  IconMessages,
+  IconPhoneCall
+} from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
-import {LogoWhatsApp} from '@/src/components/logos/logo-whatsapp'
-import {Button} from '@/src/components/ui/button'
 import {
   Drawer,
   DrawerClose,
@@ -17,6 +15,7 @@ import {
   DrawerTitle,
   DrawerTrigger
 } from '@/src/components/ui/drawer'
+import {IconButton} from '@/src/components/ui/icon-button'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 
@@ -28,64 +27,48 @@ function ContactDrawer() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button
+        <IconButton
+          className='fixed inset-be-3 inset-e-3 sm:hidden'
           aria-label='Open contact options'
-          className='fixed bottom-2 right-2 sm:hidden'
-          variant='success'
-          size='icon-normal'
         >
-          <MessagesSquareIcon />
-        </Button>
+          <IconMessages />
+        </IconButton>
       </DrawerTrigger>
       <DrawerPortal>
         <DrawerOverlay />
         <DrawerContent
-          className='h-full max-h-1/2'
+          className='h-full max-h-3/4'
           side='bottom'
         >
-          <div className='px-7 pt-5 pb-4 space-y-2 sm:px-8 sm:py-16'>
+          <DrawerClose className='absolute top-5 right-4' />
+          <div className='p-6 space-y-4'>
             <DrawerTitle>{t('title')}</DrawerTitle>
             <DrawerDescription>{t('description')}</DrawerDescription>
           </div>
           <Separator />
-          <div className='p-7 space-y-6 sm:p-8'>
+          <div className='p-6 space-y-4'>
             <ContactMethodLink
               aria-label='WhatsApp messaging'
               href={`https://api.whatsapp.com/send/?phone=${PHONE.replace('+', '')}&text=${encodeURIComponent(t('message'))}&type=phone_number&app_absent=0`}
             >
-              <span>
-                <LogoWhatsApp />
-              </span>
+              <IconBrandWhatsapp />
               <Typography variant='large'>{t('whatsapp')}</Typography>
             </ContactMethodLink>
             <ContactMethodLink
               aria-label='SMS message'
               href={`sms:${PHONE}`}
             >
-              <span className='w-8 h-8 bg-info text-info-foreground flex items-center justify-center rounded-full'>
-                <MessageCircleIcon size={17} />
-              </span>
+              <IconDeviceMobileMessage />
               <Typography variant='large'>{t('sms')}</Typography>
             </ContactMethodLink>
             <ContactMethodLink
               aria-label='Call us'
               href={`tel:${PHONE}`}
             >
-              <span className='w-8 h-8 bg-primary text-primary-foreground flex items-center justify-center rounded-full'>
-                <PhoneOutgoingIcon size={17} />
-              </span>
+              <IconPhoneCall />
               <Typography variant='large'>{t('call')}</Typography>
             </ContactMethodLink>
           </div>
-          <DrawerClose asChild>
-            <Button
-              className='absolute top-4 right-5'
-              variant='ghost-error'
-              size='icon-small'
-            >
-              <XIcon />
-            </Button>
-          </DrawerClose>
         </DrawerContent>
       </DrawerPortal>
     </Drawer>
@@ -95,7 +78,7 @@ function ContactDrawer() {
 function ContactMethodLink(props: React.ComponentPropsWithRef<'a'>) {
   return (
     <a
-      className='flex items-center gap-3 rounded'
+      className='py-4 flex items-center gap-3'
       {...props}
     />
   )

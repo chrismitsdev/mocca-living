@@ -17,13 +17,13 @@ import {useEffect, useReducer, useState} from 'react'
 import ReactAudioPlayer, {RHAP_UI} from 'react-h5-audio-player'
 import image from '@/public/images/other/playlst-image.jpg'
 import {songs} from '@/public/music/playlist'
-import {Button} from '@/src/components/ui/button'
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger
 } from '@/src/components/ui/collapsible'
 import {CustomImage} from '@/src/components/ui/custom-image'
+import {IconButton} from '@/src/components/ui/icon-button'
 import {
   Scrollarea,
   ScrollareaBar,
@@ -32,7 +32,7 @@ import {
 import {Separator} from '@/src/components/ui/separator'
 import {Spinner} from '@/src/components/ui/spinner'
 import {Typography} from '@/src/components/ui/typography'
-import {cn, formatDuration} from '@/src/lib/utils'
+import {cn} from '@/src/lib/utils'
 import {reducer, type State} from '@/src/reducers/audo-player-reducer'
 
 const initialState: State = {
@@ -82,12 +82,12 @@ function AudioPlayer(
               className='ml-auto sm:ml-4'
               asChild
             >
-              <Button
+              <IconButton
+                aria-label='List music tracks'
                 variant={state.showPlaylist ? 'primary' : 'ghost'}
-                size='icon-small'
               >
                 <ListMusicIcon />
-              </Button>
+              </IconButton>
             </CollapsibleTrigger>
           ]}
           customProgressBarSection={[
@@ -143,7 +143,7 @@ function CurrentTrack({
     <div className='sm:mb-0 sm:p-4'>
       <div className='flex items-start gap-2 sm:gap-4'>
         <CustomImage
-          className='size-18 sm:size-24 object-cover rounded'
+          className='size-18 sm:size-24 object-cover'
           src={image}
           alt='Tall palm trees against a clear blue sky, viewed from below'
         />
@@ -208,7 +208,7 @@ function PlaylistTrack({
     <li
       className={cn(
         'py-4 grid grid-cols-2 items-center gap-2 cursor-pointer duration-375 hover:bg-surface-3 sm:grid-cols-[24px_repeat(3,1fr)] sm:p-4',
-        isActive && 'font-semibold',
+        isActive && 'font-bold',
         className
       )}
       {...props}
@@ -247,3 +247,14 @@ Playlist.displayName = 'Playlist'
 PlaylistTrack.displayName = 'PlaylistTrack'
 
 export {AudioPlayer}
+
+function formatDuration(durationInSeconds: number | null) {
+  if (durationInSeconds === null) return null
+
+  const minutes = Math.floor(durationInSeconds / 60)
+  const seconds = Math.floor(durationInSeconds % 60)
+    .toString()
+    .padStart(2, '0')
+
+  return `${minutes}:${seconds}`
+}

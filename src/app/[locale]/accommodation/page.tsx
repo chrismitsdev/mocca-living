@@ -1,10 +1,10 @@
 import type {Metadata} from 'next'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {use} from 'react'
-import {AccommodationCards} from '@/src/app/[locale]/accommodation/(components)/accommodation-cards'
-import {AccommodationHeader} from '@/src/app/[locale]/accommodation/(components)/accommodation-header'
-import {AccommodationHero} from '@/src/app/[locale]/accommodation/(components)/accommodation-hero'
-import {AccommodationIntro} from '@/src/app/[locale]/accommodation/(components)/accommodation-intro'
+import {AccommodationCards} from './(components)/accommodation-cards'
+import {AccommodationHeader} from './(components)/accommodation-header'
+import {AccommodationHero} from './(components)/accommodation-hero'
+import {AccommodationIntro} from './(components)/accommodation-intro'
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
   const {locale} = await params

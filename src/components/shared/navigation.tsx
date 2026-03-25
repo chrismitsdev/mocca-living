@@ -1,20 +1,15 @@
 'use client'
 
 import {
-  BedDoubleIcon,
-  ChevronRightIcon,
-  EllipsisVerticalIcon,
-  FacebookIcon,
-  HomeIcon,
-  InstagramIcon,
-  type LucideProps,
-  MessageSquareIcon
-} from 'lucide-react'
+  IconBrandFacebook,
+  IconBrandInstagram,
+  IconChevronRight,
+  IconDotsVertical
+} from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
 import {useEffect, useState} from 'react'
 import {dimitraCover, georgiaCover} from '@/public/images/covers'
 import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
-import {Button} from '@/src/components/ui/button'
 import {
   Collapsible,
   CollapsibleContent,
@@ -27,6 +22,7 @@ import {
   DrawerTitle,
   DrawerTrigger
 } from '@/src/components/ui/drawer'
+import {IconButton} from '@/src/components/ui/icon-button'
 import {
   Popup,
   PopupArrow,
@@ -36,7 +32,6 @@ import {
 } from '@/src/components/ui/popup'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
-import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 import {useScrollLock} from '@/src/hooks/useScrollLock'
 import {Link, usePathname} from '@/src/i18n/navigation'
 import {cn} from '@/src/lib/utils'
@@ -44,12 +39,9 @@ import {cn} from '@/src/lib/utils'
 function Navigation() {
   const [popupOpen, setPopupOpen] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
-  const [collapsibleOpen, setCollapsibleOpen] = useState(false)
   const pathname = usePathname()
   const t = useTranslations('Metadata.Pages')
   useScrollLock({autoLock: drawerOpen})
-
-  const collapsibleAriaLabel = collapsibleOpen ? 'Hide' : 'Show'
 
   useEffect(() => {
     if (!pathname) return
@@ -69,7 +61,6 @@ function Navigation() {
             <NavLink
               href='/'
               pathname={pathname}
-              icon={HomeIcon}
             >
               {t('home')}
             </NavLink>
@@ -85,7 +76,6 @@ function Navigation() {
             <NavLink
               href='/accommodation'
               pathname={pathname}
-              icon={BedDoubleIcon}
             >
               {t('accommodation.root')}
             </NavLink>
@@ -94,30 +84,29 @@ function Navigation() {
               onOpenChange={setPopupOpen}
             >
               <PopupTrigger asChild>
-                <Button
+                <IconButton
                   aria-label='Open accomodation popup'
                   variant='ghost'
-                  size='icon-mini'
-                  className='data-open:bg-primary data-open:text-primary-foreground'
+                  size='small'
                 >
-                  <EllipsisVerticalIcon size={16} />
-                </Button>
+                  <IconDotsVertical />
+                </IconButton>
               </PopupTrigger>
               <PopupPortal>
                 <PopupContent
-                  sideOffset={20}
+                  sideOffset={16}
                   collisionPadding={16}
                 >
                   <section className='columns-2'>
                     <Link href='/accommodation/dimitra'>
-                      <article className='p-3 space-y-1 rounded hover:bg-surface-3 transition'>
+                      <article className='p-3 space-y-2 hover:bg-surface-3'>
                         <CustomImage
-                          className='aspect-square object-cover rounded'
+                          className='aspect-square'
                           src={dimitraCover}
                           alt='Dimitra card image'
                           sizes='200px'
                         />
-                        <Typography variant='h5'>
+                        <Typography variant='large'>
                           {t('accommodation.dimitra')}
                         </Typography>
                         <Typography variant='small'>
@@ -126,14 +115,14 @@ function Navigation() {
                       </article>
                     </Link>
                     <Link href='/accommodation/georgia'>
-                      <article className='p-3 space-y-1 rounded hover:bg-surface-3 transition'>
+                      <article className='p-3 space-y-2 hover:bg-surface-3'>
                         <CustomImage
-                          className='aspect-square object-cover rounded'
+                          className='aspect-square object-cover'
                           src={georgiaCover}
                           alt='Georgia card image'
                           sizes='200px'
                         />
-                        <Typography variant='h5'>
+                        <Typography variant='large'>
                           {t('accommodation.georgia')}
                         </Typography>
                         <Typography variant='small'>
@@ -155,7 +144,6 @@ function Navigation() {
             <NavLink
               href='/contact'
               pathname={pathname}
-              icon={MessageSquareIcon}
             >
               {t('contact')}
             </NavLink>
@@ -172,25 +160,22 @@ function Navigation() {
           className='sm:hidden'
           asChild
         >
-          <Button
-            aria-label={`${drawerOpen ? 'Close' : 'Open'} sidebar`}
-            className='flex-col z-1 *:w-[70%] *:h-0.5 *:bg-primary *:ease-mocca data-open:*:rotate-z-180 data-open:*:scale-x-125 data-open:*:duration-750 data-closed:*:duration-375 group'
-            variant='ghost-alt'
-            size='icon-small'
+          <button
+            aria-label='Show sidebar menu'
+            className='size-8 flex flex-col justify-center items-center gap-y-2 focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 *:w-3/4 *:h-0.5 *:bg-primary *:ease-mocca data-open:*:rotate-z-180 data-open:*:scale-x-125 data-open:*:duration-750 data-closed:*:duration-375 group'
+            type='button'
           >
             <div className='group-data-open:translate-y-2.5 group-data-open:rotate-45' />
             <div className='group-data-open:opacity-0' />
             <div className='group-data-open:-translate-y-2.5 group-data-open:-rotate-45' />
-          </Button>
+          </button>
         </DrawerTrigger>
         <DrawerContent
           className='absolute top-full h-[calc(100dvh-100%)] border-t border-t-surface-3 shadow-none!'
           side='right'
           onInteractOutside={(e) => e.preventDefault()}
         >
-          <VisuallyHidden asChild>
-            <DrawerTitle>Navigation menu</DrawerTitle>
-          </VisuallyHidden>
+          <DrawerTitle className='sr-only'>Navigation menu</DrawerTitle>
           <div className='px-7 py-16 h-full grid grid-rows-[1fr_auto]'>
             <nav
               aria-label='Mobile navigation bar'
@@ -205,52 +190,43 @@ function Navigation() {
                     className='pl-0'
                     href='/'
                     pathname={pathname}
-                    icon={HomeIcon}
                   >
                     {t('home')}
                   </NavLink>
                 </li>
-                <Collapsible
-                  open={collapsibleOpen}
-                  onOpenChange={setCollapsibleOpen}
-                  asChild
-                >
+                <Collapsible asChild>
                   <li role='none'>
                     <div className='flex items-center justify-between gap-4'>
                       <NavLink
                         className='pl-0 grow'
                         href='/accommodation'
                         pathname={pathname}
-                        icon={BedDoubleIcon}
                       >
                         {t('accommodation.root')}
                       </NavLink>
                       <CollapsibleTrigger asChild>
-                        <Button
-                          aria-label={`${collapsibleAriaLabel} links`}
-                          variant='link'
-                          size='icon-small'
+                        <IconButton
+                          aria-label='Show accomodation options'
+                          variant='ghost'
+                          size='small'
                         >
-                          <ChevronRightIcon
-                            className='group-data-open:rotate-90 group-data-open:duration-750 group-data-closed:duration-375'
-                            size={24}
-                          />
-                        </Button>
+                          <IconChevronRight className='group-data-open:rotate-90 group-data-open:duration-750 group-data-closed:duration-375' />
+                        </IconButton>
                       </CollapsibleTrigger>
                     </div>
                     <CollapsibleContent>
                       <ul className='mt-4 space-y-4'>
                         <li role='none'>
                           <Link href='/accommodation/dimitra'>
-                            <div className='flex gap-3 rounded'>
+                            <div className='flex gap-3'>
                               <CustomImage
-                                className='size-24 object-cover rounded'
+                                className='size-24 object-cover'
                                 src={dimitraCover}
                                 alt='Dimitra cover image'
                                 sizes='96px'
                               />
                               <div className='space-y-0.5'>
-                                <Typography variant='h6'>
+                                <Typography variant='lead'>
                                   {t('accommodation.dimitra')}
                                 </Typography>
                                 <Typography variant='small'>
@@ -262,15 +238,15 @@ function Navigation() {
                         </li>
                         <li role='none'>
                           <Link href='/accommodation/georgia'>
-                            <div className='flex gap-3 rounded'>
+                            <div className='flex gap-3'>
                               <CustomImage
-                                className='size-24 object-cover rounded'
+                                className='size-24 object-cover'
                                 src={georgiaCover}
                                 alt='Georgia cover image'
                                 sizes='96px'
                               />
                               <div className='space-y-0.5'>
-                                <Typography variant='h6'>
+                                <Typography variant='lead'>
                                   {t('accommodation.georgia')}
                                 </Typography>
                                 <Typography variant='small'>
@@ -289,7 +265,6 @@ function Navigation() {
                     className='pl-0'
                     href='/contact'
                     pathname={pathname}
-                    icon={MessageSquareIcon}
                   >
                     {t('contact')}
                   </NavLink>
@@ -298,10 +273,9 @@ function Navigation() {
             </nav>
             <div className='flex justify-between'>
               <div className='flex gap-2'>
-                <Button
-                  aria-label='Visit our facebook page (Opens in new tab)'
-                  variant='bordered-alt'
-                  size='icon-normal'
+                <IconButton
+                  aria-label='Visit our Facebook page (Opens in new tab)'
+                  variant='outline'
                   asChild
                 >
                   <a
@@ -309,13 +283,12 @@ function Navigation() {
                     target='_blank'
                     rel='noopener noreferrer'
                   >
-                    <FacebookIcon />
+                    <IconBrandFacebook />
                   </a>
-                </Button>
-                <Button
+                </IconButton>
+                <IconButton
                   aria-label='Visit our instagram page (Opens in new tab)'
-                  variant='bordered-alt'
-                  size='icon-normal'
+                  variant='outline'
                   asChild
                 >
                   <a
@@ -323,9 +296,9 @@ function Navigation() {
                     target='_blank'
                     rel='noopener noreferrer'
                   >
-                    <InstagramIcon />
+                    <IconBrandInstagram />
                   </a>
-                </Button>
+                </IconButton>
               </div>
               <LocaleSwitcher />
             </div>
@@ -337,17 +310,14 @@ function Navigation() {
 }
 
 function NavLink({
-  pathname,
-  draggable = false,
   role = 'menuitem',
+  pathname,
   className,
-  icon: Icon,
   href,
   children,
   ...props
 }: React.ComponentPropsWithRef<typeof Link> & {
   pathname: string
-  icon?: React.ComponentType<LucideProps>
 }) {
   const isActive = pathname === href
 
@@ -359,17 +329,10 @@ function NavLink({
         className
       )}
       href={href}
-      draggable={draggable}
       role={role}
       {...(role === 'menuitem' && isActive ? {'aria-current': 'page'} : {})}
       {...props}
     >
-      {Icon && (
-        <Icon
-          className='size-4'
-          strokeWidth={isActive ? 3 : 2}
-        />
-      )}
       <Typography
         className='uppercase'
         variant='small'

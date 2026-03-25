@@ -10,12 +10,13 @@ import {
   Title,
   Trigger
 } from '@radix-ui/react-dialog'
+import {IconX} from '@tabler/icons-react'
+import {IconButton} from '@/src/components/ui/icon-button'
 import {cn} from '@/src/lib/utils'
 
 const Dialog = Root
 const DialogTrigger = Trigger
 const DialogPortal = Portal
-const DialogClose = Close
 
 function DialogOverlay({
   className,
@@ -24,7 +25,7 @@ function DialogOverlay({
   return (
     <Overlay
       className={cn(
-        'fixed inset-0 z-1 bg-black/75 backdrop-blur-[1px] data-open:animate-overlay-open data-closed:animate-overlay-close',
+        'fixed inset-0 z-50 bg-black/75 backdrop-blur-[1px] data-open:animate-overlay-open data-closed:animate-overlay-close',
         className
       )}
       {...props}
@@ -34,21 +35,18 @@ function DialogOverlay({
 
 function DialogContent({
   className,
-  children,
-  'aria-describedby': ariaDescribedBy = undefined,
+  'aria-describedby': ariaDescribedBy,
   ...props
 }: React.ComponentPropsWithRef<typeof Content>) {
   return (
     <Content
       className={cn(
-        'p-6 fixed left-1/2 top-1/2 -translate-1/2 origin-center z-1 w-full max-w-xl bg-surface-2 rounded shadow-small data-open:animate-dialog-open data-closed:animate-dialog-close',
+        'w-full h-auto max-w-[calc(100%-24px)] fixed inset-bs-1/2 inset-s-1/2 -translate-1/2 origin-center z-50 bg-surface-2 shadow-md data-open:animate-dialog-open data-closed:animate-dialog-close sm:max-w-378',
         className
       )}
-      aria-describedby={ariaDescribedBy}
+      aria-describedby={ariaDescribedBy || undefined}
       {...props}
-    >
-      {children}
-    </Content>
+    />
   )
 }
 
@@ -58,7 +56,7 @@ function DialogHeader({
 }: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      className={cn('flex flex-col space-y-1.5', className)}
+      className={cn('px-6 pt-6 space-y-2', className)}
       {...props}
     />
   )
@@ -70,7 +68,7 @@ function DialogTitle({
 }: React.ComponentPropsWithRef<typeof Title>) {
   return (
     <Title
-      className={cn('text-lg font-semibold tracking-tight', className)}
+      className={cn('text-lg font-bold', className)}
       {...props}
     />
   )
@@ -82,7 +80,16 @@ function DialogDescription({
 }: React.ComponentPropsWithoutRef<typeof Description>) {
   return (
     <Description
-      className={cn('text-sm text-muted-foreground tracking-wide', className)}
+      className={cn('text-sm', className)}
+      {...props}
+    />
+  )
+}
+
+function DialogBody({className, ...props}: React.ComponentPropsWithRef<'div'>) {
+  return (
+    <div
+      className={cn('p-6', className)}
       {...props}
     />
   )
@@ -94,12 +101,30 @@ function DialogFooter({
 }: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      className={cn(
-        'flex flex-col-reverse sm:space-x-2 sm:flex-row sm:justify-end',
-        className
-      )}
+      className={cn('px-6 pb-6', className)}
       {...props}
     />
+  )
+}
+
+function DialogClose({
+  'aria-label': ariaLabel,
+  ...props
+}: Omit<React.ComponentPropsWithRef<typeof Close>, 'asChild' | 'children'>) {
+  return (
+    <Close
+      className='absolute inset-bs-5 inset-e-4 z-50'
+      {...props}
+      asChild
+    >
+      <IconButton
+        aria-label={ariaLabel || 'Close dialog'}
+        variant='ghost'
+        size='small'
+      >
+        <IconX />
+      </IconButton>
+    </Close>
   )
 }
 
@@ -111,11 +136,13 @@ DialogContent.displayName = 'DialogContent'
 DialogHeader.displayName = 'DialogHeader'
 DialogTitle.displayName = 'DialogTitle'
 DialogDescription.displayName = 'DialogDescription'
+DialogBody.displayName = 'DialogBody'
 DialogFooter.displayName = 'DialogFooter'
 DialogClose.displayName = 'DialogClose'
 
 export {
   Dialog,
+  DialogBody,
   DialogClose,
   DialogContent,
   DialogDescription,

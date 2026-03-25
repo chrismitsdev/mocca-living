@@ -1,8 +1,8 @@
 import type {Metadata} from 'next'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {use} from 'react'
-import {PrivacyContent} from '@/src/app/[locale]/privacy/(components)/privacy-content'
-import {PrivacyHeader} from '@/src/app/[locale]/privacy/(components)/privacy-header'
+import {PrivacyContent} from './(components)/privacy-content'
+import {PrivacyHeader} from './(components)/privacy-header'
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
   const {locale} = await params

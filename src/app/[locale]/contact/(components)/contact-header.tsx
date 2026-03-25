@@ -1,14 +1,9 @@
 import {useTranslations} from 'next-intl'
-import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
 
 function ContactHeader() {
   const t = useTranslations('Metadata.Pages')
 
-  return (
-    <VisuallyHidden>
-      <h1>{t('contact')}</h1>
-    </VisuallyHidden>
-  )
+  return <h1 className='sr-only'>{t('contact')}</h1>
 }
 
 ContactHeader.displayName = 'ContactHeader'

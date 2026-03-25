@@ -1,116 +1,134 @@
 'use client'
 
-import {Slot} from '@radix-ui/react-slot'
-import useEmblaCarousel from 'embla-carousel-react'
 import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ImagesIcon,
-  XIcon
-} from 'lucide-react'
-import {useCallback, useEffect, useState} from 'react'
-import {Button} from '@/src/components/ui/button'
+  IconChevronLeft,
+  IconChevronRight,
+  IconLibraryPhoto,
+  IconX
+} from '@tabler/icons-react'
+import useEmblaCarousel from 'embla-carousel-react'
+import {useCallback, useEffect, useMemo, useState} from 'react'
 import {
   Drawer,
   DrawerContent,
   DrawerTitle,
   DrawerTrigger
 } from '@/src/components/ui/drawer'
+import {IconButton} from '@/src/components/ui/icon-button'
 import {
   Scrollarea,
   ScrollareaBar,
   ScrollareaViewport
 } from '@/src/components/ui/scrollarea'
-import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
-import {
-  CarouselContext,
-  useCarouselContext
-} from '@/src/context/carousel-context'
+import {CarouselContext, useCarousel} from '@/src/context/carousel-context'
 import {cn} from '@/src/lib/utils'
 
-type EmblaApiType = ReturnType<typeof useEmblaCarousel>[1]
+type EmblaApi = ReturnType<typeof useEmblaCarousel>[1]
 
 interface CarouselProps extends React.ComponentPropsWithRef<'div'> {
   options?: Parameters<typeof useEmblaCarousel>[0]
   plugins?: Parameters<typeof useEmblaCarousel>[1]
-  asChild?: boolean
 }
 
-function Carousel({
-  className,
-  options,
-  plugins,
-  asChild = false,
-  ...props
-}: CarouselProps) {
+function Carousel({className, options, plugins, ...props}: CarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins)
-  const [selectedIndex, setSelectedIndex] = useState<number>(
-    options?.startIndex ?? 0
-  )
-  const Comp = asChild ? Slot : 'div'
+  const [selectedSnap, setSelectedSnap] = useState(0)
+  const [prevButtonDisabled, setPrevButtonDisabled] = useState(true)
+  const [nextButtonDisabled, setNextButtonDisabled] = useState(true)
 
-  const onPrevButtonClick = useCallback(() => {
+  const stopAutoplay = useCallback(() => {
     if (!emblaApi) return
 
-    if (emblaApi.plugins()?.autoplay) {
-      emblaApi.plugins().autoplay.stop()
-    }
+    emblaApi.plugins()?.autoplay?.stop()
+  }, [emblaApi])
 
+  const handleScrollPrev = useCallback(() => {
+    if (!emblaApi) return
+
+    stopAutoplay()
     emblaApi.scrollPrev()
-  }, [emblaApi])
+  }, [emblaApi, stopAutoplay])
 
-  const onNextButtonClick = useCallback(() => {
+  const handleScrollNext = useCallback(() => {
     if (!emblaApi) return
 
-    if (emblaApi.plugins()?.autoplay) {
-      emblaApi.plugins().autoplay.stop()
-    }
-
+    stopAutoplay()
     emblaApi.scrollNext()
-  }, [emblaApi])
+  }, [emblaApi, stopAutoplay])
 
-  const onThumbButtonClick = useCallback(
+  const handleScrollTo = useCallback(
     (index: number) => {
       if (!emblaApi) return
 
-      if (emblaApi.plugins()?.autoplay) {
-        emblaApi.plugins().autoplay.stop()
-      }
-
+      stopAutoplay()
       emblaApi.scrollTo(index)
     },
-    [emblaApi]
+    [emblaApi, stopAutoplay]
   )
 
-  const onSelect = useCallback((emblaApi: EmblaApiType) => {
+  const handleSelect = useCallback((emblaApi: EmblaApi) => {
     if (!emblaApi) return
-    setSelectedIndex(emblaApi.selectedScrollSnap())
+
+    setSelectedSnap(emblaApi.selectedScrollSnap())
+  }, [])
+
+  const handleButtonsDisabled = useCallback((emblaApi: EmblaApi) => {
+    if (!emblaApi) return
+
+    setPrevButtonDisabled(!emblaApi?.canScrollPrev())
+    setNextButtonDisabled(!emblaApi?.canScrollNext())
   }, [])
 
   useEffect(() => {
     if (!emblaApi) return
 
-    onSelect(emblaApi)
-    emblaApi.on('reInit', onSelect).on('select', onSelect)
+    handleSelect(emblaApi)
+    handleButtonsDisabled(emblaApi)
+
+    emblaApi.on('reInit', handleSelect)
+    emblaApi.on('reInit', handleButtonsDisabled)
+    emblaApi.on('select', handleSelect)
+    emblaApi.on('select', handleButtonsDisabled)
 
     return () => {
-      emblaApi.off('reInit', onSelect).off('select', onSelect)
+      emblaApi.off('reInit', handleSelect)
+      emblaApi.off('reInit', handleButtonsDisabled)
+      emblaApi.off('select', handleSelect)
+      emblaApi.off('select', handleButtonsDisabled)
     }
-  }, [emblaApi, onSelect])
+  }, [emblaApi, handleSelect, handleButtonsDisabled])
+
+  const contextValue = useMemo(() => {
+    return {
+      emblaRef,
+      emblaApi,
+      selectedSnap,
+      prevButtonDisabled,
+      nextButtonDisabled,
+      handleScrollPrev,
+      handleScrollNext,
+      handleScrollTo
+    }
+  }, [
+    emblaRef,
+    emblaApi,
+    selectedSnap,
+    prevButtonDisabled,
+    nextButtonDisabled,
+    handleScrollPrev,
+    handleScrollNext,
+    handleScrollTo
+  ])
 
   return (
-    <CarouselContext.Provider
-      value={{
-        emblaRef,
-        emblaApi,
-        selectedIndex,
-        onPrevButtonClick,
-        onNextButtonClick,
-        onThumbButtonClick
-      }}
-    >
-      <Comp
-        className={cn('relative overflow-hidden', className)}
+    <CarouselContext.Provider value={contextValue}>
+      <section
+        className={cn(
+          '[--slides-gap:--spacing(4)] relative overflow-hidden',
+          className
+        )}
+        role='region'
+        aria-roledescription='carousel'
         {...props}
       />
     </CarouselContext.Provider>
@@ -121,11 +139,11 @@ function CarouselViewport({
   className,
   ...props
 }: React.ComponentPropsWithRef<'div'>) {
-  const {emblaRef} = useCarouselContext()
+  const {emblaRef} = useCarousel()
 
   return (
     <div
-      className={cn('overflow-hidden h-full', className)}
+      className={cn('h-full overflow-hidden', className)}
       ref={emblaRef}
       {...props}
     />
@@ -138,7 +156,7 @@ function SlidesContainer({
 }: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      className={cn('h-full flex', className)}
+      className={cn('-ml-(--slides-gap) h-full flex', className)}
       {...props}
     />
   )
@@ -146,11 +164,14 @@ function SlidesContainer({
 
 function Slide({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   return (
+    // biome-ignore lint/a11y/useSemanticElements: false-positive
     <div
       className={cn(
-        'min-w-0 grow-0 shrink-0 basis-full select-none',
+        'pl-(--slides-gap) min-w-0 grow-0 shrink-0 basis-full select-none',
         className
       )}
+      role='group'
+      aria-roledescription='slide'
       {...props}
     />
   )
@@ -166,26 +187,26 @@ function ThumbsContainer({
     <Drawer
       open={open}
       onOpenChange={setOpen}
-      modal={false}
     >
       <DrawerTrigger asChild>
-        <Button
-          className='absolute left-1/2 bottom-1.5 -translate-x-1/2 transition ease-mocca data-open:-translate-y-15 data-open:duration-750 data-closed:duration-375 sm:bottom-4 sm:data-open:-translate-y-25'
-          variant={!open ? 'primary-alt' : 'error'}
-          size='icon-small'
-          aria-label={`${open ? 'Hide' : 'Show'} thumbnail images`}
+        <IconButton
+          aria-label='Show thumbnails images container'
+          className='absolute inset-s-1/2 inset-be-1.5 -translate-x-1/2 ease-mocca data-open:-translate-y-15 data-open:duration-750 data-closed:duration-375 sm:inset-be-4 sm:data-open:-translate-y-25'
+          variant='outline'
+          size='small'
         >
-          {open ? <XIcon /> : <ImagesIcon />}
-        </Button>
+          {open ? <IconX /> : <IconLibraryPhoto />}
+        </IconButton>
       </DrawerTrigger>
       <DrawerContent
         className='absolute bg-transparent shadow-none! sm:w-fit sm:left-1/2 sm:-translate-x-1/2'
         side='bottom'
       >
-        <VisuallyHidden>
-          <DrawerTitle>Carousel thumbnails drawer</DrawerTitle>
-        </VisuallyHidden>
-        <div className='p-2 m-1 bg-surface-2 rounded sm:p-3'>
+        <DrawerTitle className='sr-only'>
+          Carousel thumbnails drawer
+        </DrawerTitle>
+
+        <div className='p-2 m-1 bg-surface-2 border border-border sm:p-3'>
           <Scrollarea>
             <ScrollareaViewport>
               <div
@@ -208,67 +229,61 @@ function Thumb({
   className,
   thumbIndex,
   ...props
-}: React.ComponentPropsWithRef<'button'> & {thumbIndex: number}) {
-  const {selectedIndex, onThumbButtonClick} = useCarouselContext()
+}: React.ComponentPropsWithRef<'button'> & {
+  thumbIndex: number
+}) {
+  const {selectedSnap, handleScrollTo} = useCarousel()
 
   return (
     <button
       className={cn(
-        'size-10 rounded-xs overflow-hidden grayscale-75 opacity-75 contrast-75 transition sm:size-20',
-        thumbIndex === selectedIndex && 'grayscale-0 opacity-100 contrast-125',
+        'size-10 overflow-hidden grayscale-75 opacity-75 contrast-75 transition sm:size-20',
+        thumbIndex === selectedSnap && 'grayscale-0 opacity-100 contrast-125',
         className
       )}
-      onClick={() => onThumbButtonClick(thumbIndex)}
+      onClick={() => handleScrollTo(thumbIndex)}
       {...props}
     />
   )
 }
 
-function ButtonPrev({
-  className,
-  'aria-label': ariaLabel = 'Go to previous slide',
-  ...props
-}: Omit<React.ComponentPropsWithRef<typeof Button>, 'children'>) {
-  const {onPrevButtonClick} = useCarouselContext()
+function ButtonPrev({className}: {className?: string}) {
+  const {handleScrollPrev, prevButtonDisabled} = useCarousel()
 
   return (
-    <Button
+    <IconButton
+      aria-label='Go to previous slide'
       className={cn(
-        'absolute top-1/2 -translate-y-1/2 left-1.5 sm:left-4',
+        'absolute inset-bs-1/2 -translate-y-1/2 inset-s-4',
         className
       )}
-      aria-label={ariaLabel}
-      variant='primary-alt'
-      size='icon-small'
-      onClick={onPrevButtonClick}
-      {...props}
+      variant='outline'
+      size='small'
+      onClick={handleScrollPrev}
+      disabled={prevButtonDisabled}
     >
-      <ChevronLeftIcon />
-    </Button>
+      <IconChevronLeft />
+    </IconButton>
   )
 }
 
-function ButtonNext({
-  className,
-  'aria-label': ariaLabel = 'Go to next slide',
-  ...props
-}: Omit<React.ComponentPropsWithRef<typeof Button>, 'children'>) {
-  const {onNextButtonClick} = useCarouselContext()
+function ButtonNext({className}: {className?: string}) {
+  const {handleScrollNext, nextButtonDisabled} = useCarousel()
 
   return (
-    <Button
+    <IconButton
+      aria-label='Go to next slide'
       className={cn(
-        'absolute top-1/2 -translate-y-1/2 right-1.5 sm:right-4',
+        'absolute inset-bs-1/2 -translate-y-1/2 inset-e-4',
         className
       )}
-      aria-label={ariaLabel}
-      variant='primary-alt'
-      size='icon-small'
-      onClick={onNextButtonClick}
-      {...props}
+      variant='outline'
+      size='small'
+      onClick={handleScrollNext}
+      disabled={nextButtonDisabled}
     >
-      <ChevronRightIcon />
-    </Button>
+      <IconChevronRight />
+    </IconButton>
   )
 }
 
