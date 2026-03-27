@@ -4,7 +4,7 @@ import {
   IconMail,
   IconMessage,
   IconPhone,
-  IconSend2,
+  IconSend,
   IconUser
 } from '@tabler/icons-react'
 import {useLocale, useTranslations} from 'next-intl'
@@ -142,11 +142,12 @@ function Form() {
         <Button
           className='w-full @xl:w-auto'
           type='submit'
+          size='large'
           disabled={isPending}
           isLoading={isPending}
         >
           <span>{t('button.label')}</span>
-          <IconSend2 />
+          <IconSend />
         </Button>
       </div>
     </form>
@@ -166,8 +167,8 @@ function FormControl({
     >
       {error && (
         <Typography
-          className='absolute inset-bs-2 inset-e-0 text-danger-hover font-bold'
-          variant='mini'
+          className='absolute inset-bs-0.5 inset-e-0 text-danger-hover'
+          variant='tiny'
         >
           {error}
         </Typography>

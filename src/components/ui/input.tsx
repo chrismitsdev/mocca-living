@@ -11,9 +11,9 @@ function Input({className, error, icon: Icon, ...props}: InputProps) {
     <div className='relative'>
       <input
         className={cn(
-          'py-1.75 w-full block bg-surface-1 border border-border font-bold outline-0 transition placeholder:text-sm placeholder:font-normal focus:border-border-hover focus:shadow disabled:pointer-events-none disabled:opacity-35 autofill:bg-surface-1',
-          error && 'border-danger',
-          Icon ? 'pl-9 pr-3' : 'px-3',
+          'py-3.75 w-full block bg-surface-1 border border-border font-bold outline-0 transition placeholder:font-normal focus:border-border-hover focus:shadow-sm disabled:pointer-events-none disabled:opacity-35 autofill:bg-surface-1',
+          error && 'border-danger focus:border-danger',
+          Icon ? 'pl-10 pr-3.75' : 'px-3.75',
           className
         )}
         {...props}
@@ -21,11 +21,11 @@ function Input({className, error, icon: Icon, ...props}: InputProps) {
       {Icon && (
         <span
           className={cn(
-            'absolute left-3 top-1/2 -translate-y-1/2',
+            'absolute inset-bs-1/2 inset-s-3 -translate-y-1/2',
             props.disabled && 'opacity-35'
           )}
         >
-          <Icon className='size-4' />
+          <Icon className='size-5' />
         </span>
       )}
     </div>

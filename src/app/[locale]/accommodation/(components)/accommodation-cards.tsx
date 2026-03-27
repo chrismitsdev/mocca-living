@@ -62,8 +62,8 @@ function AccommodationCards() {
 
   return (
     <Container asChild>
-      <Section className='pt-16'>
-        <div className='grid gap-12 sm:grid-cols-2'>
+      <Section>
+        <div className='grid gap-12 md:grid-cols-2'>
           {villas.map((villa) => (
             <Card key={villa.key}>
               <CustomImage
@@ -74,7 +74,7 @@ function AccommodationCards() {
               />
               <CardHeader>
                 <CardTitle>{villa.title}</CardTitle>
-                <CardDescription className='grid grid-cols-2 gap-3 sm:flex'>
+                <CardDescription className='grid grid-cols-2 gap-3 sm:flex sm:flex-wrap'>
                   <VillaDetail>
                     <IconUsers className='size-5' />
                     <span>{villa.guests}</span>

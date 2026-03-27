@@ -316,7 +316,7 @@
           "playlist": "Λίστα αναπαραγωγής ήχου"
         },
         "more-column": {
-          "title": "Περισσότερα",
+          "title": "Περισσοτερα",
           "yuppii": "Yuppii Luna Park",
           "christmas-lighthouse": "The Christmas Lighthouse",
           "start-pilates": "Start Pilates"
@@ -324,8 +324,8 @@
       },
       "row-2": {
         "copyright": "Πνευματική ιδιοκτησία © {created, date, ::yyyy} Mocca Living",
-        "constructor": "Υλοποίηση έργου από <a>KYRCOM</a>",
-        "developer": "Αναπτύχθηκε & σχεδιάστηκε από τον <a>CM</a>"
+        "constructor": "Υλοποίηση έργου από KYRCOM",
+        "developer": "Αναπτύχθηκε & σχεδιάστηκε από τον CM"
       }
     },
     "ContactFormClient": {

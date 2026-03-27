@@ -19,18 +19,20 @@ const PopupClose = Close
 
 function PopupContent({
   className,
-  collisionPadding = 16,
+  children,
   ...props
 }: React.ComponentPropsWithRef<typeof Content>) {
   return (
     <Content
       className={cn(
-        'p-6 min-inline-60 max-w-lg bg-surface-2 drop-shadow-medium outline-none data-open:data-top:animate-slide-top-show data-open:data-right:animate-slide-right-show data-open:data-bottom:animate-slide-bottom-show data-open:data-left:animate-slide-left-show data-closed:data-top:animate-slide-top-hide data-closed:data-right:animate-slide-right-hide data-closed:data-bottom:animate-slide-bottom-hide data-closed:data-left:animate-slide-left-hide',
+        'p-6 relative z-50 min-inline-60 max-w-lg bg-surface-2 drop-shadow-sm outline-none data-open:data-top:animate-slide-top-show data-open:data-right:animate-slide-right-show data-open:data-bottom:animate-slide-bottom-show data-open:data-left:animate-slide-left-show data-closed:data-top:animate-slide-top-hide data-closed:data-right:animate-slide-right-hide data-closed:data-bottom:animate-slide-bottom-hide data-closed:data-left:animate-slide-left-hide',
         className
       )}
-      collisionPadding={collisionPadding}
       {...props}
-    />
+    >
+      {children}
+      <PopupArrow />
+    </Content>
   )
 }
 
@@ -40,7 +42,7 @@ function PopupArrow({
 }: React.ComponentPropsWithRef<typeof Arrow>) {
   return (
     <Arrow
-      className={cn('w-4 h-2 fill-surface-2')}
+      className={cn('w-5 h-2.5 fill-surface-2')}
       {...props}
     />
   )
@@ -54,12 +56,4 @@ PopupContent.displayName = 'PopupContent'
 PopupClose.displayName = 'PopupClose'
 PopupArrow.displayName = 'PopupArrow'
 
-export {
-  Popup,
-  PopupAnchor,
-  PopupArrow,
-  PopupClose,
-  PopupContent,
-  PopupPortal,
-  PopupTrigger
-}
+export {Popup, PopupAnchor, PopupClose, PopupContent, PopupPortal, PopupTrigger}

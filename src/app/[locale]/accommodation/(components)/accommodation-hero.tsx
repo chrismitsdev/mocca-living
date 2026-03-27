@@ -30,9 +30,7 @@ function AccommodationHero() {
         variant='outline'
         asChild
       >
-        <Link href='/contact'>
-          <span>{t('button-label')}</span>
-        </Link>
+        <Link href='/contact'>{t('button-label')}</Link>
       </Button>
     </section>
   )

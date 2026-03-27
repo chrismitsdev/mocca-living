@@ -72,7 +72,7 @@ function HomeReasons() {
 function Reason({title, description}: {title: string; description: string}) {
   return (
     <div className='space-y-2'>
-      <Typography variant='lead'>{title}</Typography>
+      <Typography variant='large'>{title}</Typography>
       <Typography>{description}</Typography>
     </div>
   )

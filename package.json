@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc",
+    "typecheck": "tsc",
     "lint": "biome check",
     "clean": "rimraf .next dist node_modules pnpm-lock.yaml"
   },

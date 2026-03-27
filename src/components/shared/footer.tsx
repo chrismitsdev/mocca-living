@@ -144,44 +144,22 @@ function Footer() {
         <div className='flex flex-col justify-between gap-3 sm:items-center sm:flex-row'>
           <Typography
             className='order-2 sm:order-1'
-            variant='mini'
+            variant='tiny'
           >
             {t('row-2.copyright', {created: new Date()})}
           </Typography>
           <LogosCarousel />
           <Typography
             className='order-3 sm:hidden'
-            variant='mini'
+            variant='tiny'
           >
-            {t.rich('row-2.constructor', {
-              a: (chunks) => (
-                <a
-                  className='underline'
-                  href='https://kyrcom.com/el/'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  {chunks}
-                </a>
-              )
-            })}
+            {t('row-2.constructor')}
           </Typography>
           <Typography
             className='order-4 sm:order-3'
-            variant='mini'
+            variant='tiny'
           >
-            {t.rich('row-2.developer', {
-              a: (chunks) => (
-                <a
-                  className='underline'
-                  href='https://www.facebook.com/Christos.Mitsiaris/'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  {chunks}
-                </a>
-              )
-            })}
+            {t('row-2.developer')}
           </Typography>
         </div>
       </Container>
@@ -196,7 +174,12 @@ function FooterColumn({
   if (title) {
     return (
       <div className='w-fit space-y-2 sm:space-y-4'>
-        <Typography variant='large'>{title}</Typography>
+        <Typography
+          variant='large'
+          className='uppercase'
+        >
+          {title}
+        </Typography>
         <div className='space-y-2'>{children}</div>
       </div>
     )

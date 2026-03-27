@@ -29,7 +29,7 @@ function Toast({id, title, description, status}: ToastProps) {
   return (
     <div
       className={cn(
-        'p-6 border shadow-md',
+        'p-6 border shadow-sm',
         status === 'success' && 'bg-success-foreground border-success',
         status === 'error' && 'bg-danger-foreground border-danger'
       )}

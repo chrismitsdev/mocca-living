@@ -17,6 +17,14 @@
 @custom-variant data-horizontal (&[data-orientation~="horizontal"]);
 @custom-variant data-vertical (&[data-orientation~="vertical"]);
 
+@custom-variant data-variant-primary (&[data-variant~="primary"]);
+@custom-variant data-variant-outline (&[data-variant~="outline"]);
+@custom-variant data-variant-ghost (&[data-variant~="ghost"]);
+
+@custom-variant data-size-large (&[data-size~="large"]);
+@custom-variant data-size-normal (&[data-size~="normal"]);
+@custom-variant data-size-small (&[data-size~="small"]);
+
 @custom-variant data-highlighted (&[data-highlighted]);
 @custom-variant data-placeholder (&[data-placeholder]);
 @custom-variant data-disabled (&[data-disabled]);

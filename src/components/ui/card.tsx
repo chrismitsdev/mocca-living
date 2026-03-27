@@ -54,7 +54,7 @@ function CardContent({
 function CardFooter({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      className={cn('px-4 pb-4 sm:px-6 sm:pb-6 flex items-center', className)}
+      className={cn('px-4 pb-4 flex sm:justify-end sm:px-6 sm:pb-6', className)}
       {...props}
     />
   )

@@ -29,7 +29,7 @@ function ContactMap() {
     <Section>
       <Container className='h-125 sm:h-174'>
         <MapContainer
-          className='h-full shadow-small'
+          className='h-full shadow-sm'
           center={coords}
           zoom={17}
           scrollWheelZoom

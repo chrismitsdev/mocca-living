@@ -17,9 +17,9 @@ function Textarea({
     <div className='relative group'>
       <textarea
         className={cn(
-          'py-1.75 w-full block bg-surface-1 border border-border font-bold outline-0 transition placeholder:text-sm placeholder:font-normal focus:border-border-hover focus:shadow disabled:pointer-events-none disabled:opacity-35',
-          error && 'border-error',
-          Icon ? 'pl-9 pr-3' : 'px-3',
+          'py-3.75 w-full block bg-surface-1 border border-border font-bold outline-0 transition placeholder:font-normal focus:border-border-hover focus:shadow-sm disabled:pointer-events-none disabled:opacity-35',
+          error && 'border-error focus:border-danger',
+          Icon ? 'pl-10 pr-3.75' : 'px-3.75',
           className
         )}
         rows={rows}
@@ -28,11 +28,11 @@ function Textarea({
       {Icon && (
         <span
           className={cn(
-            'absolute left-3 top-3',
+            'absolute inset-bs-4.5 inset-s-3',
             props.disabled && 'opacity-35'
           )}
         >
-          <Icon className='size-4' />
+          <Icon className='size-5' />
         </span>
       )}
     </div>

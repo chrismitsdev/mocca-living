@@ -52,7 +52,7 @@ function CookieConsent() {
     >
       <div
         id='consent-cookie-banner'
-        className='absolute bottom-2 left-2 w-[calc(100%-16px)] bg-surface-2 shadow-small sm:bottom-1/2 sm:left-1/2 sm:translate-y-1/2 sm:-translate-x-1/2 sm:w-lg'
+        className='absolute bottom-2 left-2 w-[calc(100%-16px)] bg-surface-2 shadow-sm sm:bottom-1/2 sm:left-1/2 sm:translate-y-1/2 sm:-translate-x-1/2 sm:w-lg'
         role='dialog'
         aria-live='polite'
       >
@@ -93,7 +93,7 @@ function CookieConsent() {
                 <CollapsibleContent>
                   <div className='pt-2 space-y-4'>
                     <div>
-                      <Typography variant='mini'>
+                      <Typography variant='tiny'>
                         {t('collapsible.content.consent.title')}
                       </Typography>
                       <Typography variant='small'>
@@ -101,7 +101,7 @@ function CookieConsent() {
                       </Typography>
                     </div>
                     <div>
-                      <Typography variant='mini'>
+                      <Typography variant='tiny'>
                         {t('collapsible.content.locale.title')}
                       </Typography>
                       <Typography variant='small'>

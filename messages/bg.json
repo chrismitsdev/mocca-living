@@ -324,8 +324,8 @@
       },
       "row-2": {
         "copyright": "Авторски права © {created, date, ::yyyy} Mocca Living",
-        "constructor": "Реализация на проекта от <a>KYRCOM</a>",
-        "developer": "Разработено и проектирано от <a>CM</a>"
+        "constructor": "Реализация на проекта от KYRCOM",
+        "developer": "Разработено и проектирано от CM"
       }
     },
     "ContactFormClient": {

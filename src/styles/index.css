@@ -1,8 +1,7 @@
 @import "tailwindcss";
-@import "./animations.css";
 @import "./colors.css";
 @import "./data-attributes.css";
-@import "./shadows.css";
+@import "./animations.css";
 
 /* General styling */
 *::selection {

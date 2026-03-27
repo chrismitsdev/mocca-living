@@ -96,7 +96,7 @@ function SlugDetails({slug}: {slug: Slug}) {
             <SlugList data={t(`content.${slug}.request`)}>
               {t('header.request')}
             </SlugList>
-            <CardFooter className='justify-end'>
+            <CardFooter>
               <SlugForm slug={slug} />
             </CardFooter>
           </CardContent>

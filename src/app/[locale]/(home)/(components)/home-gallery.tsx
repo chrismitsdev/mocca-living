@@ -90,7 +90,7 @@ function HomeGallery() {
 
   return (
     <Container asChild>
-      <Section className='pt-16'>
+      <Section>
         <Dialog>
           <div className='grid grid-cols-2 gap-2 sm:grid-cols-8 sm:grid-rows-8'>
             {renderedTriggers}
@@ -98,7 +98,10 @@ function HomeGallery() {
           <DialogPortal>
             <DialogOverlay />
             <DialogContent onCloseAutoFocus={(e) => e.preventDefault()}>
-              <DialogClose />
+              <DialogClose
+                variant='outline'
+                className='inset-bs-2 inset-e-2'
+              />
               <DialogTitle className='sr-only'>
                 Home page gallery images
               </DialogTitle>
@@ -133,7 +136,7 @@ function HomeGalleryTrigger({
   return (
     <DialogTrigger
       className={cn(
-        'relative overflow-hidden shadow before:absolute before:inset-0 before:duration-700 before:ease-mocca hover:before:bg-black/80 focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2 group',
+        'relative overflow-hidden shadow-sm before:absolute before:inset-0 before:duration-700 before:ease-mocca hover:before:bg-black/75 focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2 group',
         className
       )}
       onClick={onClick}

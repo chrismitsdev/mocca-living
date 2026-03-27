@@ -41,7 +41,7 @@ function DialogContent({
   return (
     <Content
       className={cn(
-        'w-full h-auto max-w-[calc(100%-24px)] fixed inset-bs-1/2 inset-s-1/2 -translate-1/2 origin-center z-50 bg-surface-2 shadow-md data-open:animate-dialog-open data-closed:animate-dialog-close sm:max-w-378',
+        'fixed inset-bs-1/2 inset-s-1/2 -translate-1/2 origin-center z-50 w-full max-w-[calc(100%-24px)] h-auto bg-surface-2 shadow-sm data-open:animate-dialog-open data-closed:animate-dialog-close sm:max-w-378',
         className
       )}
       aria-describedby={ariaDescribedBy || undefined}
@@ -109,17 +109,21 @@ function DialogFooter({
 
 function DialogClose({
   'aria-label': ariaLabel,
+  className,
+  variant = 'ghost',
   ...props
-}: Omit<React.ComponentPropsWithRef<typeof Close>, 'asChild' | 'children'>) {
+}: Omit<React.ComponentPropsWithRef<typeof Close>, 'asChild' | 'children'> & {
+  variant?: React.ComponentPropsWithRef<typeof IconButton>['variant']
+}) {
   return (
     <Close
-      className='absolute inset-bs-5 inset-e-4 z-50'
+      className={cn('absolute inset-bs-5 inset-e-4 z-50', className)}
       {...props}
       asChild
     >
       <IconButton
         aria-label={ariaLabel || 'Close dialog'}
-        variant='ghost'
+        variant={variant}
         size='small'
       >
         <IconX />

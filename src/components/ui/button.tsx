@@ -1,76 +1,29 @@
-import {Slot} from '@radix-ui/react-slot'
-import {cva, type VariantProps} from 'class-variance-authority'
-import {Children, cloneElement, Fragment} from 'react'
+import {Slot, Slottable} from '@radix-ui/react-slot'
 import {Spinner} from '@/src/components/ui/spinner'
+import {cn} from '@/src/lib/utils'
 
-const buttonProps = cva(
-  [
-    'inline-flex',
-    'justify-center',
-    'items-center',
-    'whitespace-nowrap',
-    'font-bold',
-    'transition',
-    'focus-visible:outline-2',
-    'focus-visible:outline-ring',
-    'focus-visible:outline-offset-2',
-    'aria-disabled:opacity-30'
-  ],
-  {
-    variants: {
-      variant: {
-        primary: [
-          'bg-primary',
-          'text-primary-foreground',
-          'hover:bg-primary-hover',
-          'data-open:bg-primary-hover'
-        ],
-        outline: [
-          'bg-surface-1',
-          'text-foreground',
-          'border',
-          'border-border',
-          'hover:bg-surface-2',
-          'hover:border-border-hover',
-          'data-open:bg-surface-2',
-          'data-open:border-border-hover'
-        ],
-        ghost: [
-          'text-foreground',
-          'hover:bg-primary',
-          'hover:text-primary-foreground',
-          'data-open:bg-primary',
-          'data-open:text-primary-foreground'
-        ]
-      },
-      size: {
-        large: ['px-6', 'h-14', 'text-lg', 'gap-x-1.5', '[&_svg]:size-7'],
-        normal: ['px-4', 'h-10', 'text-base', 'gap-x-1', '[&_svg]:size-6'],
-        small: ['px-2', 'h-6', 'text-sm', 'gap-x-0.5', '[&_svg]:size-5']
+type ButtonProps = Omit<
+  React.ComponentPropsWithRef<'button'>,
+  'aria-busy' | 'aria-disabled'
+> & {
+  variant?: 'primary' | 'outline' | 'ghost'
+  size?: 'large' | 'normal' | 'small'
+} & (
+    | {
+        asChild?: false
+        isLoading?: boolean
       }
-    },
-    defaultVariants: {
-      variant: 'primary',
-      size: 'normal'
-    }
-  }
-)
-
-interface ButtonProps
-  extends Omit<
-      React.ComponentPropsWithRef<'button'>,
-      'aria-busy' | 'aria-disabled'
-    >,
-    VariantProps<typeof buttonProps> {
-  asChild?: boolean
-  isLoading?: boolean
-}
+    | {
+        asChild?: true
+        isLoading?: never
+      }
+  )
 
 function Button({
   className,
-  variant,
-  size,
   disabled,
+  variant = 'primary',
+  size = 'normal',
   type = 'button',
   isLoading = false,
   asChild = false,
@@ -79,43 +32,40 @@ function Button({
 }: ButtonProps) {
   const Comp = asChild ? Slot : 'button'
 
-  const loadingSkeleton = (children: React.ReactNode) => {
-    return (
-      <Fragment>
-        <span className='invisible'>{children}</span>
+  return (
+    <Comp
+      className={cn(
+        'relative inline-flex justify-center items-center whitespace-nowrap font-bold transition focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 aria-disabled:opacity-30 aria-disabled:pointer-events-none',
+        // primary
+        'data-variant-primary:bg-primary data-variant-primary:text-primary-foreground data-variant-primary:hover:bg-primary-hover data-variant-primary:data-open:bg-primary-hover',
+        // outline
+        'data-variant-outline:bg-surface-1 data-variant-outline:text-foreground data-variant-outline:border data-variant-outline:border-border data-variant-outline:hover:bg-surface-3 data-variant-outline:hover:border-border-hover data-variant-outline:data-open:bg-surface-3 data-variant-outline:data-open:border-border-hover',
+        // ghost
+        'data-variant-ghost:text-foreground data-variant-ghost:hover:bg-primary data-variant-ghost:hover:text-primary-foreground data-variant-ghost:data-open:bg-primary data-variant-ghost:data-open:text-primary-foreground',
+        // large
+        'data-size-large:px-6 data-size-large:h-14 data-size-large:text-lg data-size-large:gap-x-1.5 data-size-large:[&_svg]:size-6',
+        // normal
+        'data-size-normal:px-4 data-size-normal:h-10 data-size-normal:text-base data-size-normal:gap-x-1 data-size-normal:[&_svg]:size-5',
+        // small
+        'data-size-small:px-2 data-size-small:h-6 data-size-small:text-sm data-size-small:gap-x-0.5 data-size-small:[&_svg]:size-4',
+        className
+      )}
+      aria-busy={isLoading || undefined}
+      aria-disabled={isLoading || disabled || undefined}
+      type={asChild ? undefined : type}
+      disabled={asChild ? undefined : disabled || isLoading}
+      data-variant={variant}
+      data-size={size}
+      {...props}
+    >
+      <Slottable>
+        {isLoading ? <span className='invisible'>{children}</span> : children}
+      </Slottable>
+      {isLoading && (
         <span className='absolute inset-0 flex items-center justify-center'>
           <Spinner />
         </span>
-      </Fragment>
-    )
-  }
-
-  if (asChild && isLoading) {
-    const child = Children.only(children) as React.ReactElement<{
-      children: React.ReactNode
-    }>
-    return (
-      <Comp
-        className={buttonProps({variant, size, className})}
-        aria-busy
-        aria-disabled
-        {...props}
-      >
-        {cloneElement(child, {}, loadingSkeleton(child.props.children))}
-      </Comp>
-    )
-  }
-
-  return (
-    <Comp
-      className={buttonProps({variant, size, className})}
-      type={asChild ? undefined : type}
-      aria-busy={isLoading || undefined}
-      aria-disabled={isLoading || disabled || undefined}
-      disabled={asChild ? undefined : disabled || isLoading}
-      {...props}
-    >
-      {isLoading ? loadingSkeleton(children) : children}
+      )}
     </Comp>
   )
 }

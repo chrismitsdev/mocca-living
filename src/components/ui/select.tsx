@@ -32,7 +32,7 @@ function SelectTrigger({
   return (
     <Trigger
       className={cn(
-        'px-3 py-1.75 flex items-center gap-1.5 bg-surface-1 border border-border font-bold transition hover:border-border-hover focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2  disabled:border-border disabled:pointer-events-none disabled:opacity-35 data-open:border-border-hover data-placeholder:[&>div>span]:text-sm data-placeholder:[&>div>span]:font-normal data-open:shadow [&>div]:grow [&>div]:text-left group',
+        'px-3 py-1.75 flex items-center gap-1.5 bg-surface-1 border border-border font-bold transition hover:border-border-hover focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2  disabled:border-border disabled:pointer-events-none disabled:opacity-35 data-open:border-border-hover data-placeholder:[&>div>span]:text-sm data-placeholder:[&>div>span]:font-normal data-open:shadow-sm [&>div]:grow [&>div]:text-left group',
         className
       )}
       {...props}
@@ -58,7 +58,7 @@ function SelectContent({
   return (
     <Content
       className={cn(
-        'w-(--radix-select-trigger-width) max-h-(--radix-select-content-available-height) z-1 overflow-hidden bg-surface-1 border border-border-hover shadow data-open:data-top:animate-slide-top-show data-open:data-right:animate-slide-right-show data-open:data-bottom:animate-slide-bottom-show data-open:data-left:animate-slide-left-show data-closed:data-top:animate-slide-top-hide data-closed:data-right:animate-slide-right-hide data-closed:data-bottom:animate-slide-bottom-hide data-closed:data-left:animate-slide-left-hide',
+        'w-(--radix-select-trigger-width) max-h-(--radix-select-content-available-height) z-50 overflow-hidden bg-surface-1 border border-border-hover shadow-sm data-open:data-top:animate-slide-top-show data-open:data-right:animate-slide-right-show data-open:data-bottom:animate-slide-bottom-show data-open:data-left:animate-slide-left-show data-closed:data-top:animate-slide-top-hide data-closed:data-right:animate-slide-right-hide data-closed:data-bottom:animate-slide-bottom-hide data-closed:data-left:animate-slide-left-hide',
         className
       )}
       sideOffset={sideOffset}

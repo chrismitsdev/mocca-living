@@ -22,7 +22,7 @@ function FormDialog({children}: React.PropsWithChildren) {
   const t = useTranslations()
 
   return (
-    <Dialog open>
+    <Dialog>
       <DialogTrigger className='underline font-bold text-brand-10'>
         {children}
       </DialogTrigger>

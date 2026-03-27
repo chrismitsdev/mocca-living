@@ -5,24 +5,22 @@ import {cn} from '@/src/lib/utils'
 const typographyVariants = cva(['block', 'text-balance'], {
   variants: {
     variant: {
-      h1: ['text-5xl'],
-      h2: ['text-4xl'],
-      h3: ['text-3xl'],
-      h4: ['text-2xl'],
-      lead: ['text-xl'],
+      h1: ['text-4xl'],
+      h2: ['text-3xl'],
+      h3: ['text-2xl'],
+      h4: ['text-xl'],
       large: ['text-base'],
-      p: ['text-base'],
+      p: ['text-base', 'leading-8'],
       small: ['text-sm'],
-      tiny: ['text-xs'],
-      mini: ['text-[10px]', 'leading-4', 'tracking-wider']
+      tiny: ['text-xs']
     }
   },
   compoundVariants: [
     {
-      variant: ['h1', 'h2', 'h3', 'h4', 'lead', 'large'],
+      variant: ['h1', 'h2', 'h3', 'h4', 'large', 'tiny'],
       className: 'font-bold'
     },
-    {variant: ['p', 'small', 'tiny'], className: 'leading-6'}
+    {variant: ['small', 'tiny'], className: 'leading-6'}
   ],
   defaultVariants: {
     variant: 'p'
