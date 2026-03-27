@@ -18,12 +18,12 @@ import {
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 
-function FormDialog({children}: React.PropsWithChildren) {
+function PrivacyPolicyDialog({children}: React.PropsWithChildren) {
   const t = useTranslations()
 
   return (
     <Dialog>
-      <DialogTrigger className='underline font-bold text-brand-10'>
+      <DialogTrigger className='underline focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2'>
         {children}
       </DialogTrigger>
       <DialogPortal>
@@ -35,16 +35,16 @@ function FormDialog({children}: React.PropsWithChildren) {
           </DialogHeader>
           <Separator />
           <Scrollarea
-            // className='h-96'
-            className='h-[calc(100%-76px)]'
+            className='block-[calc(100%-77px)]'
             type='always'
           >
             <ScrollareaViewport>
-              <DialogBody>
+              <DialogBody className='space-y-4'>
                 <Typography variant='large'>
                   {t('Pages.Privacy.title')}
                 </Typography>
                 <Typography>{t('Pages.Privacy.content')}</Typography>
+                <Separator />
                 <Typography variant='large'>
                   {t('Pages.Privacy.sub-title')}
                 </Typography>
@@ -59,6 +59,6 @@ function FormDialog({children}: React.PropsWithChildren) {
   )
 }
 
-FormDialog.displayName = 'FormDialog'
+PrivacyPolicyDialog.displayName = 'PrivacyPolicyDialog'
 
-export {FormDialog}
+export {PrivacyPolicyDialog}

@@ -9,7 +9,7 @@ import {
 } from '@tabler/icons-react'
 import {useLocale, useTranslations} from 'next-intl'
 import {useActionState, useEffect} from 'react'
-import {FormDialog} from '@/src/components/shared/form-dialog'
+import {PrivacyPolicyDialog} from '@/src/components/shared/privacy-policy-dialog'
 import {Button} from '@/src/components/ui/button'
 import {Checkbox} from '@/src/components/ui/checkbox'
 import {Input} from '@/src/components/ui/input'
@@ -133,7 +133,9 @@ function Form() {
           />
           <Label htmlFor='consent'>
             {t.rich('fields.consent.label', {
-              link: (string) => <FormDialog>{string}</FormDialog>
+              link: (string) => (
+                <PrivacyPolicyDialog>{string}</PrivacyPolicyDialog>
+              )
             })}
           </Label>
         </FormControl>
