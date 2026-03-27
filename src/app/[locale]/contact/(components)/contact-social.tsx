@@ -1,5 +1,9 @@
-import {IconBrandFacebook, IconBrandInstagram} from '@tabler/icons-react'
-import {MapPin, PhoneIcon} from 'lucide-react'
+import {
+  IconBrandFacebook,
+  IconBrandInstagram,
+  IconMapPin,
+  IconPhone
+} from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
@@ -13,11 +17,11 @@ function ContactSocial() {
       <Container>
         <div className='grid gap-8 sm:grid-cols-2'>
           <SocialLink href='https://www.google.com/maps?saddr=My+Location&daddr=40.848948,25.723508'>
-            <MapPin size={64} />
+            <IconMapPin className='size-16' />
             <Typography variant='h4'>{t('location')}</Typography>
           </SocialLink>
           <SocialLink href='tel:+306973560007'>
-            <PhoneIcon size={64} />
+            <IconPhone className='size-16' />
             <Typography variant='h4'>{t('phone')}</Typography>
           </SocialLink>
           <SocialLink href='https://www.instagram.com/moccaliving.premiumstay'>

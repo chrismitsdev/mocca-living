@@ -1,7 +1,7 @@
 'use client'
 
+import {IconChevronDown, IconCookie} from '@tabler/icons-react'
 import cookies from 'js-cookie'
-import {ChevronDownIcon, CookieIcon} from 'lucide-react'
 import {useTranslations} from 'next-intl'
 import {useEffect, useState} from 'react'
 import {Button} from '@/src/components/ui/button'
@@ -60,7 +60,7 @@ function CookieConsent() {
           <ScrollareaViewport className='max-h-[calc(100dvh-16px)]'>
             <div className='p-8 space-y-4'>
               <div className='flex items-center gap-3'>
-                <CookieIcon
+                <IconCookie
                   className='mt-0.5'
                   size={24}
                 />
@@ -85,7 +85,7 @@ function CookieConsent() {
                   >
                     {t('collapsible.trigger')}
                   </Typography>
-                  <ChevronDownIcon
+                  <IconChevronDown
                     className='mt-1 transition-transform group-data-open:rotate-180'
                     size={16}
                   />

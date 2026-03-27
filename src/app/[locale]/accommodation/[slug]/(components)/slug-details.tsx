@@ -1,16 +1,15 @@
 import {
-  BabyIcon,
-  BedDoubleIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  DotIcon,
-  LandPlotIcon,
-  type LucideProps,
-  ToiletIcon,
-  UsersIcon
-} from 'lucide-react'
+  IconBadgeWc,
+  IconBed,
+  IconChevronLeft,
+  IconChevronRight,
+  IconDimensions,
+  IconMoodKid,
+  IconPoint,
+  type IconProps,
+  IconUsers
+} from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
-import type * as React from 'react'
 import {SlugForm} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-form'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
@@ -41,7 +40,7 @@ function SlugDetails({slug}: {slug: Slug}) {
               asChild
             >
               <Link href='/accommodation'>
-                <ChevronLeftIcon size={16} />
+                <IconChevronLeft className='size-4' />
                 <span>{t('links.back')}</span>
               </Link>
             </Button>
@@ -55,7 +54,7 @@ function SlugDetails({slug}: {slug: Slug}) {
                 href={`/accommodation/${oppositeSlug}`}
               >
                 <span className='capitalize'>{t('links.next', {slug})}</span>
-                <ChevronRightIcon size={16} />
+                <IconChevronRight className='size-4' />
               </Link>
             </Button>
           </div>
@@ -64,19 +63,19 @@ function SlugDetails({slug}: {slug: Slug}) {
             <CardHeader className='space-y-6'>
               <CardTitle>{t(`content.${slug}.name`)}</CardTitle>
               <div className='grid grid-cols-2 gap-y-2 gap-x-6 sm:grid-cols-none sm:grid-flow-col sm:auto-cols-max sm:gap-8'>
-                <SlugBadge icon={UsersIcon}>
+                <SlugBadge icon={IconUsers}>
                   {t(`content.${slug}.guests`)}
                 </SlugBadge>
-                <SlugBadge icon={BabyIcon}>
+                <SlugBadge icon={IconMoodKid}>
                   {t(`content.${slug}.child`)}
                 </SlugBadge>
-                <SlugBadge icon={BedDoubleIcon}>
+                <SlugBadge icon={IconBed}>
                   {t(`content.${slug}.bedrooms`)}
                 </SlugBadge>
-                <SlugBadge icon={ToiletIcon}>
+                <SlugBadge icon={IconBadgeWc}>
                   {t(`content.${slug}.bathrooms`)}
                 </SlugBadge>
-                <SlugBadge icon={LandPlotIcon}>
+                <SlugBadge icon={IconDimensions}>
                   {t(`content.${slug}.area`)}
                 </SlugBadge>
               </div>
@@ -109,7 +108,7 @@ function SlugDetails({slug}: {slug: Slug}) {
 function SlugBadge({
   icon: Icon,
   children
-}: React.PropsWithChildren<{icon?: React.ComponentType<LucideProps>}>) {
+}: React.PropsWithChildren<{icon?: React.ComponentType<IconProps>}>) {
   return (
     <div className='inline-flex items-center gap-1.5 *:shrink-0'>
       {Icon && (
@@ -137,10 +136,7 @@ function SlugList({children, data}: React.PropsWithChildren<{data: string}>) {
             key={entry}
             className='flex gap-1 -ml-1.5'
           >
-            <DotIcon
-              className='shrink-0 mt-1'
-              size={16}
-            />
+            <IconPoint className='shrink-0 size-4 mt-1' />
             <Typography>{entry}</Typography>
           </li>
         ))}

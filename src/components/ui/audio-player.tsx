@@ -1,18 +1,18 @@
 'use client'
 
 import {
-  ListIcon,
-  ListMusicIcon,
-  MusicIcon,
-  PauseIcon,
-  PlayIcon,
-  SkipBackIcon,
-  SkipForwardIcon,
-  SlashIcon,
-  UserIcon,
-  Volume2Icon,
-  VolumeOffIcon
-} from 'lucide-react'
+  IconList,
+  IconMusic,
+  IconPlayerPause,
+  IconPlayerPlay,
+  IconPlayerSkipBack,
+  IconPlayerSkipForward,
+  IconPlaylist,
+  IconSlash,
+  IconUser,
+  IconVolume,
+  IconVolumeOff
+} from '@tabler/icons-react'
 import {useEffect, useReducer, useState} from 'react'
 import ReactAudioPlayer, {RHAP_UI} from 'react-h5-audio-player'
 import image from '@/public/images/other/playlst-image.jpg'
@@ -86,26 +86,26 @@ function AudioPlayer(
                 aria-label='List music tracks'
                 variant={state.showPlaylist ? 'primary' : 'ghost'}
               >
-                <ListMusicIcon />
+                <IconPlaylist />
               </IconButton>
             </CollapsibleTrigger>
           ]}
           customProgressBarSection={[
             RHAP_UI.PROGRESS_BAR,
             RHAP_UI.CURRENT_TIME,
-            <SlashIcon
+            <IconSlash
               key={9999}
               className='mx-1 w-3 h-3'
             />,
             RHAP_UI.DURATION
           ]}
           customIcons={{
-            play: <PlayIcon className='sm:w-10 sm:h-10' />,
-            pause: <PauseIcon className='sm:w-10 sm:h-10' />,
-            next: <SkipForwardIcon />,
-            previous: <SkipBackIcon />,
-            volume: <Volume2Icon />,
-            volumeMute: <VolumeOffIcon />
+            play: <IconPlayerPlay className='sm:w-10 sm:h-10' />,
+            pause: <IconPlayerPause className='sm:w-10 sm:h-10' />,
+            next: <IconPlayerSkipForward />,
+            previous: <IconPlayerSkipBack />,
+            volume: <IconVolume />,
+            volumeMute: <IconVolumeOff />
           }}
           {...props}
         />
@@ -149,18 +149,18 @@ function CurrentTrack({
         />
         <div className='sm:space-y-3'>
           <div className='flex gap-2'>
-            <MusicIcon className='mt-1 w-4 h-4' />
+            <IconMusic className='mt-1 w-4 h-4' />
             {isPlaying ? title : '---'}
           </div>
           <div className='flex gap-2'>
-            <UserIcon className='mt-1 w-4 h-4' />
+            <IconUser className='mt-1 w-4 h-4' />
             <Typography variant='small'>
               {isPlaying ? artist : '---'}
             </Typography>
           </div>
           <div className='flex gap-2'>
-            <ListIcon className='mt-1 w-4 h-4' />
-            <Typography variant='small'>{'Mocca Living playlist'}</Typography>
+            <IconList className='mt-1 w-4 h-4' />
+            <Typography variant='small'>Mocca Living playlist</Typography>
           </div>
         </div>
       </div>

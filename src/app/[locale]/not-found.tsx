@@ -1,4 +1,4 @@
-import {TriangleAlertIcon} from 'lucide-react'
+import {IconAlertCircle} from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
@@ -13,7 +13,7 @@ export default function NotFound() {
     <Section>
       <Container>
         <div className='flex flex-col items-center space-y-6'>
-          <TriangleAlertIcon size={128} />
+          <IconAlertCircle className='size-32' />
           <Typography
             variant='h3'
             asChild
