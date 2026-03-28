@@ -59,7 +59,13 @@ function Button({
       {...props}
     >
       <Slottable>
-        {isLoading ? <span className='invisible'>{children}</span> : children}
+        {isLoading ? (
+          <span className='invisible inline-flex justify-center items-center gap-x-[inherit]'>
+            {children}
+          </span>
+        ) : (
+          children
+        )}
       </Slottable>
       {isLoading && (
         <span className='absolute inset-0 flex items-center justify-center'>

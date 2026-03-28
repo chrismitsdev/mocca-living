@@ -1,44 +1,34 @@
 import {Slot} from '@radix-ui/react-slot'
-import {cva, type VariantProps} from 'class-variance-authority'
 import {cn} from '@/src/lib/utils'
 
-const typographyVariants = cva(['block', 'text-balance'], {
-  variants: {
-    variant: {
-      h1: ['text-4xl'],
-      h2: ['text-3xl'],
-      h3: ['text-2xl'],
-      h4: ['text-xl'],
-      large: ['text-base'],
-      p: ['text-base', 'leading-8'],
-      small: ['text-sm'],
-      tiny: ['text-xs']
-    }
-  },
-  compoundVariants: [
-    {
-      variant: ['h1', 'h2', 'h3', 'h4', 'large', 'tiny'],
-      className: 'font-bold'
-    },
-    {variant: ['small', 'tiny'], className: 'leading-6'}
-  ],
-  defaultVariants: {
-    variant: 'p'
-  }
-})
-
-interface TypographyProps
-  extends React.ComponentPropsWithRef<'span'>,
-    VariantProps<typeof typographyVariants> {
+interface TypographyProps extends React.ComponentPropsWithRef<'span'> {
+  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'large' | 'p' | 'small' | 'tiny'
   asChild?: boolean
 }
 
-function Typography({className, variant, asChild, ...props}: TypographyProps) {
+function Typography({
+  className,
+  variant = 'p',
+  asChild = false,
+  ...props
+}: TypographyProps) {
   const Comp = asChild ? Slot : 'span'
 
   return (
     <Comp
-      className={cn(typographyVariants({variant, className}))}
+      className={cn(
+        'block text-balance',
+        'data-[variant="h1"]:text-4xl data-[variant="h1"]:font-bold',
+        'data-[variant="h2"]:text-3xl data-[variant="h2"]:font-bold',
+        'data-[variant="h3"]:text-2xl data-[variant="h3"]:font-bold',
+        'data-[variant="h4"]:text-xl data-[variant="h4"]:font-bold',
+        'data-[variant="large"]:text-base data-[variant="large"]:font-bold',
+        'data-[variant="p"]:text-base data-[variant="p"]:leading-8',
+        'data-[variant="small"]:text-sm data-[variant="small"]:leading-6',
+        'data-[variant="tiny"]:text-xs data-[variant="tiny"]:font-bold data-[variant="tiny"]:leading-6',
+        className
+      )}
+      data-variant={variant}
       {...props}
     />
   )
