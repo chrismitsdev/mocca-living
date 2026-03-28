@@ -3,9 +3,9 @@ import {notFound} from 'next/navigation'
 import type {Locale} from 'next-intl'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {use} from 'react'
-import {SlugCarousel} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-carousel'
-import {SlugDetails} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-details'
-import {SlugHeader} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-header'
+import {SlugCarousel} from './(components)/slug-carousel'
+import {SlugDetails} from './(components)/slug-details'
+import {SlugHeader} from './(components)/slug-header'
 
 type ParamsWithSlug = {
   params: Promise<{
@@ -16,22 +16,13 @@ type ParamsWithSlug = {
 
 export async function generateMetadata({
   params
-}: ParamsWithSlug): Promise<Metadata> {
+}: ParamsWithSlug): Promise<Metadata | undefined> {
   const {locale, slug} = await params
-
-  if (slug !== 'dimitra' && slug !== 'georgia') {
-    return {
-      title: 'Mocca Living'
-    }
-  }
-
-  const t = await getTranslations({
-    locale,
-    namespace: 'Metadata.Pages.accommodation'
-  })
+  const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
+  const unknownSlug = slug !== 'dimitra' && slug !== 'georgia'
 
   return {
-    title: `${t(slug)} | Mocca Living`
+    title: t(unknownSlug ? 'not-found' : `accommodation.${slug}`)
   }
 }
 
@@ -43,10 +34,11 @@ export default function SlugPage({
   params
 }: PageProps<'/[locale]/accommodation/[slug]'>) {
   const {locale, slug} = use(params as ParamsWithSlug['params'])
+  const unknownSlug = slug !== 'dimitra' && slug !== 'georgia'
 
   setRequestLocale(locale)
 
-  if (slug !== 'georgia' && slug !== 'dimitra') {
+  if (unknownSlug) {
     notFound()
   }
 

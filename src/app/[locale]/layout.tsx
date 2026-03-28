@@ -30,7 +30,11 @@ export const metadata: Metadata = {
       'bg-BG': '/bg'
     }
   },
-  title: 'Mocca Living | Premium • Stay • Philosophy',
+  // title: 'Mocca Living | Premium • Stay • Philosophy',
+  title: {
+    template: '%s | Mocca Living',
+    default: 'Mocca Living'
+  },
   description:
     'Luxury villas Georgia & Dimitra for seaside escapes at Mocca Living.',
   formatDetection: {

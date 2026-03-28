@@ -26,7 +26,7 @@ function DesktopNavigation() {
         <NavigationListItemLink
           className='flex'
           href='/accommodation'
-          label={t('accommodation.root')}
+          label={t('accommodation.index')}
         >
           <Popup>
             <PopupTrigger asChild>

@@ -8,13 +8,10 @@ import {AccommodationIntro} from './(components)/accommodation-intro'
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
   const {locale} = await params
-  const t = await getTranslations({
-    locale,
-    namespace: 'Metadata.Pages.accommodation'
-  })
+  const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
 
   return {
-    title: `${t('root')} | Mocca Living`
+    title: t('accommodation.index')
   }
 }
 

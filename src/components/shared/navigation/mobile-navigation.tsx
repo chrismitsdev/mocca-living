@@ -78,7 +78,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
               >
                 <NavigationListItemLink
                   href='/accommodation'
-                  label={t('accommodation.root')}
+                  label={t('accommodation.index')}
                 >
                   <CollapsibleTrigger asChild>
                     <IconButton
