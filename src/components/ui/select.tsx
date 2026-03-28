@@ -90,7 +90,7 @@ function SelectItem({
   return (
     <Item
       className={cn(
-        'px-3 py-2 flex items-center gap-1.5 cursor-pointer select-none outline-none data-highlighted:bg-surface-3 data-disabled:pointer-events-none data-disabled:opacity-50',
+        'px-3 py-2 flex items-center gap-1.5 cursor-pointer select-none outline-none data-highlighted:bg-surface-2 data-disabled:pointer-events-none data-disabled:opacity-50',
         className
       )}
       {...props}

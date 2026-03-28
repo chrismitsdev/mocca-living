@@ -12,7 +12,7 @@ function Card({className, ...props}: React.ComponentPropsWithRef<'div'>) {
 function CardHeader({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      className={cn('px-4 pt-4 sm:px-6 sm:pt-6 space-y-4', className)}
+      className={cn('px-4 pt-6 space-y-4 sm:px-6 sm:pt-8', className)}
       {...props}
     />
   )
@@ -30,10 +30,10 @@ function CardTitle({className, ...props}: React.ComponentPropsWithRef<'h3'>) {
 function CardDescription({
   className,
   ...props
-}: React.ComponentPropsWithRef<'p'>) {
+}: React.ComponentPropsWithRef<'div'>) {
   return (
-    <p
-      className={cn('text-sm text-balance', className)}
+    <div
+      className={cn('text-balance', className)}
       {...props}
     />
   )
@@ -45,7 +45,7 @@ function CardContent({
 }: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      className={cn('p-4 sm:p-6', className)}
+      className={cn('px-4 py-6 sm:px-6 sm:py-8', className)}
       {...props}
     />
   )
@@ -54,7 +54,7 @@ function CardContent({
 function CardFooter({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      className={cn('px-4 pb-4 flex sm:justify-end sm:px-6 sm:pb-6', className)}
+      className={cn('px-4 pb-6 sm:px-6 sm:pb-8', className)}
       {...props}
     />
   )

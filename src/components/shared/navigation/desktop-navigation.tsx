@@ -39,7 +39,7 @@ function DesktopNavigation() {
               </IconButton>
             </PopupTrigger>
             <PopupContent
-              sideOffset={8}
+              sideOffset={14}
               collisionPadding={16}
             >
               <ul className='columns-2'>
@@ -65,7 +65,7 @@ function DesktopNavigation() {
                   <Link href='/accommodation/georgia'>
                     <article className='p-3 space-y-2 hover:bg-surface-3'>
                       <CustomImage
-                        className='aspect-square object-cover'
+                        className='aspect-square'
                         src={georgiaCover}
                         alt='Georgia card image'
                         sizes='200px'

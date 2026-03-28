@@ -113,7 +113,7 @@ function AudioPlayer(
       <Separator className={cn('hidden', state.showPlaylist && 'block')} />
       <CollapsibleContent>
         <Scrollarea type='always'>
-          <ScrollareaViewport className='max-h-[calc(100dvh-208px-128px-32px)] sm:max-h-[calc(100dvh-280px-32px-300px)]'>
+          <ScrollareaViewport className='max-h-[calc(100svh-208px-128px-32px)] sm:max-h-[calc(100svh-280px-32px-300px)]'>
             <Playlist>
               {state.playlist.map((song) => (
                 <PlaylistTrack
@@ -143,7 +143,7 @@ function CurrentTrack({
     <div className='sm:mb-0 sm:p-4'>
       <div className='flex items-start gap-2 sm:gap-4'>
         <CustomImage
-          className='size-18 sm:size-24 object-cover'
+          className='size-18 sm:size-24'
           src={image}
           alt='Tall palm trees against a clear blue sky, viewed from below'
         />

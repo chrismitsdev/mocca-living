@@ -1,27 +1,25 @@
 import {
-  IconBadgeWc,
-  IconBed,
+  IconArrowAutofitContentFilled,
+  IconBadgeWcFilled,
+  IconBedFilled,
   IconChevronLeft,
   IconChevronRight,
-  IconDimensions,
-  IconMoodKid,
-  IconPoint,
-  type IconProps,
-  IconUsers
+  IconMoodKidFilled,
+  IconPointFilled,
+  IconUserFilled
 } from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
-import {SlugForm} from '@/src/app/[locale]/accommodation/[slug]/(components)/slug-form'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
+import {Badge} from '@/src/components/ui/badge'
 import {Button} from '@/src/components/ui/button'
 import {
   Card,
   CardContent,
-  CardFooter,
+  CardDescription,
   CardHeader,
   CardTitle
 } from '@/src/components/ui/card'
-import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 import {Link} from '@/src/i18n/navigation'
 
@@ -30,56 +28,52 @@ function SlugDetails({slug}: {slug: Slug}) {
   const oppositeSlug = slug === 'dimitra' ? 'georgia' : 'dimitra'
 
   return (
-    <Container asChild>
-      <Section className='space-y-4'>
-        <Card className='p-0 space-y-0'>
-          <div className='py-1 px-2 flex items-center justify-between'>
-            <Button
-              variant='ghost'
-              size='small'
-              asChild
-            >
-              <Link href='/accommodation'>
-                <IconChevronLeft className='size-4' />
-                <span>{t('links.back')}</span>
-              </Link>
-            </Button>
-            <Button
-              variant='ghost'
-              size='small'
-              asChild
-            >
-              <Link
-                scroll={false}
-                href={`/accommodation/${oppositeSlug}`}
-              >
-                <span className='capitalize'>{t('links.next', {slug})}</span>
-                <IconChevronRight className='size-4' />
-              </Link>
-            </Button>
-          </div>
-          <Separator />
-          <CardContent className='px-4 py-6 space-y-10 sm:p-6'>
-            <CardHeader className='space-y-6'>
-              <CardTitle>{t(`content.${slug}.name`)}</CardTitle>
-              <div className='grid grid-cols-2 gap-y-2 gap-x-6 sm:grid-cols-none sm:grid-flow-col sm:auto-cols-max sm:gap-8'>
-                <SlugBadge icon={IconUsers}>
-                  {t(`content.${slug}.guests`)}
-                </SlugBadge>
-                <SlugBadge icon={IconMoodKid}>
-                  {t(`content.${slug}.child`)}
-                </SlugBadge>
-                <SlugBadge icon={IconBed}>
-                  {t(`content.${slug}.bedrooms`)}
-                </SlugBadge>
-                <SlugBadge icon={IconBadgeWc}>
-                  {t(`content.${slug}.bathrooms`)}
-                </SlugBadge>
-                <SlugBadge icon={IconDimensions}>
-                  {t(`content.${slug}.area`)}
-                </SlugBadge>
-              </div>
-            </CardHeader>
+    <Section>
+      <Container>
+        <Card className='sm:p-20'>
+          <CardHeader className='space-y-6'>
+            <div className='flex gap-4 not-sm:justify-between'>
+              <Button asChild>
+                <Link href='/accommodation'>
+                  <IconChevronLeft />
+                  <span>{t('links.back')}</span>
+                </Link>
+              </Button>
+              <Button asChild>
+                <Link
+                  href={`/accommodation/${oppositeSlug}`}
+                  scroll={false}
+                >
+                  <span className='capitalize'>{t('links.next', {slug})}</span>
+                  <IconChevronRight />
+                </Link>
+              </Button>
+            </div>
+            <CardTitle>{t(`content.${slug}.name`)}</CardTitle>
+            <CardDescription className='flex flex-wrap gap-2'>
+              <Badge>
+                <IconUserFilled />
+                <span>{t(`content.${slug}.guests`)}</span>
+              </Badge>
+              <Badge>
+                <IconMoodKidFilled />
+                <span>{t(`content.${slug}.child`)}</span>
+              </Badge>
+              <Badge>
+                <IconBedFilled />
+                <span>{t(`content.${slug}.bedrooms`)}</span>
+              </Badge>
+              <Badge>
+                <IconBadgeWcFilled />
+                <span>{t(`content.${slug}.bathrooms`)}</span>
+              </Badge>
+              <Badge>
+                <IconArrowAutofitContentFilled />
+                <span>{t(`content.${slug}.area`)}</span>
+              </Badge>
+            </CardDescription>
+          </CardHeader>
+          <CardContent className='space-y-8'>
             <SlugList data={t(`content.${slug}.layout`)}>
               {t('header.layout')}
             </SlugList>
@@ -95,58 +89,35 @@ function SlugDetails({slug}: {slug: Slug}) {
             <SlugList data={t(`content.${slug}.request`)}>
               {t('header.request')}
             </SlugList>
-            <CardFooter>
-              <SlugForm slug={slug} />
-            </CardFooter>
           </CardContent>
         </Card>
-      </Section>
-    </Container>
+      </Container>
+    </Section>
   )
 }
 
-function SlugBadge({
-  icon: Icon,
-  children
-}: React.PropsWithChildren<{icon?: React.ComponentType<IconProps>}>) {
-  return (
-    <div className='inline-flex items-center gap-1.5 *:shrink-0'>
-      {Icon && (
-        <span>
-          <Icon className='size-4.5' />
-        </span>
-      )}
-      <Typography variant='h4'>{children}</Typography>
-    </div>
-  )
-}
+function SlugList({data, children}: React.PropsWithChildren<{data: string}>) {
+  const renderedData = data.split(', ').map((entry) => {
+    return (
+      <li
+        key={entry}
+        className='flex gap-1'
+      >
+        <IconPointFilled className='shrink-0 w-4 h-8' />
+        <Typography>{entry}</Typography>
+      </li>
+    )
+  })
 
-function SlugList({children, data}: React.PropsWithChildren<{data: string}>) {
   return (
     <article className='space-y-2'>
-      <Typography
-        variant='h4'
-        asChild
-      >
-        <h5>{children}</h5>
-      </Typography>
-      <ul className='space-y-1'>
-        {data.split(',').map((entry) => (
-          <li
-            key={entry}
-            className='flex gap-1 -ml-1.5'
-          >
-            <IconPoint className='shrink-0 size-4 mt-1' />
-            <Typography>{entry}</Typography>
-          </li>
-        ))}
-      </ul>
+      <Typography variant='large'>{children}</Typography>
+      <ul className='-ms-1'>{renderedData}</ul>
     </article>
   )
 }
 
 SlugDetails.displayName = 'SlugDetails'
-SlugBadge.displayName = 'SlugBadge'
 SlugList.displayName = 'SlugList'
 
 export {SlugDetails}

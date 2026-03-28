@@ -44,7 +44,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
       >
         <button
           aria-label='Show sidebar menu'
-          className='size-8 flex flex-col justify-center items-center gap-y-2 focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 *:w-3/4 *:h-0.5 *:bg-primary *:ease-mocca data-open:*:rotate-z-180 data-open:*:scale-x-125 data-open:*:duration-750 data-closed:*:duration-375 group'
+          className='size-8 flex flex-col justify-center items-center gap-y-2 focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 *:w-3/4 *:h-0.5 *:bg-foreground *:ease-mocca data-open:*:rotate-z-180 data-open:*:scale-x-125 data-open:*:duration-750 data-closed:*:duration-375 group'
           type='button'
         >
           <span className='group-data-open:translate-y-2.5 group-data-open:rotate-45' />
@@ -53,7 +53,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
         </button>
       </DrawerTrigger>
       <DrawerContent
-        className='absolute border-t border-t-border shadow-none data-right:inset-bs-full data-right:h-[calc(100dvh-100%)]'
+        className='absolute border-t border-t-border shadow-none data-right:inset-bs-full data-right:h-[calc(100svh-100%)]'
         side='right'
         onInteractOutside={(e) => e.preventDefault()}
       >
@@ -97,7 +97,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                           href='/accommodation/dimitra'
                         >
                           <CustomImage
-                            className='size-24 object-cover'
+                            className='aspect-square inline-24'
                             src={dimitraCover}
                             alt='Dimitra cover image'
                             sizes='96px'
@@ -118,7 +118,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                           href='/accommodation/georgia'
                         >
                           <CustomImage
-                            className='size-24 object-cover'
+                            className='aspect-square inline-24'
                             src={georgiaCover}
                             alt='Georgia cover image'
                             sizes='96px'

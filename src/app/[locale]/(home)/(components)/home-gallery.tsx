@@ -32,35 +32,35 @@ const triggers: {
 }[] = [
   {
     className: 'sm:col-start-1 sm:col-end-3 sm:row-start-1 sm:row-end-3',
-    sizes: '(min-width: 640px) 372px, calc((100vw - 40px) / 2)'
+    sizes: '(min-width: 640px) 372px'
   },
   {
     className: 'sm:col-start-3 sm:col-end-5 sm:row-start-1 sm:row-end-4',
-    sizes: '(min-width: 640px) 372px, calc((100vw - 40px) / 2)'
+    sizes: '(min-width: 640px) 372px'
   },
   {
     className: 'sm:col-start-5 sm:col-end-9 sm:row-start-1 sm:row-end-6',
-    sizes: '(min-width: 640px) 752px, calc((100vw - 40px) / 2)'
+    sizes: '(min-width: 640px) 752px'
   },
   {
     className: 'sm:col-start-1 sm:col-end-3 sm:row-start-3 sm:row-end-9',
-    sizes: '(min-width: 640px) 372px, calc((100vw - 40px) / 2)'
+    sizes: '(min-width: 640px) 372px'
   },
   {
     className: 'sm:col-start-3 sm:col-end-5 sm:row-start-4 sm:row-end-7',
-    sizes: '(min-width: 640px) 372px, calc((100vw - 40px) / 2)'
+    sizes: '(min-width: 640px) 372px'
   },
   {
     className: 'sm:col-start-3 sm:col-end-5 sm:row-start-7 sm:row-end-9',
-    sizes: '(min-width: 640px) 372px, calc((100vw - 40px) / 2)'
+    sizes: '(min-width: 640px) 372px'
   },
   {
     className: 'sm:col-start-5 sm:col-end-6 sm:row-start-6 sm:row-end-9',
-    sizes: '(min-width: 640px) 182px, calc((100vw - 40px) / 2)'
+    sizes: '(min-width: 640px) 182px'
   },
   {
     className: 'sm:col-start-6 sm:col-end-9 sm:row-start-6 sm:row-end-9',
-    sizes: '(min-width: 640px) 562px, calc((100vw - 40px) / 2)'
+    sizes: '(min-width: 640px) 562px'
   }
 ]
 
@@ -72,7 +72,7 @@ function HomeGallery() {
       key={image.src}
       className={triggers[i].className}
       src={image}
-      sizes={triggers[i].sizes}
+      sizes={triggers[i].sizes.concat(', calc((100vw - 40px) / 2)')}
       alt={`Gallery thumbnail image ${i + 1}`}
       onClick={() => setIndex(i)}
     />
@@ -89,15 +89,18 @@ function HomeGallery() {
   ))
 
   return (
-    <Container asChild>
-      <Section>
+    <Section>
+      <Container>
         <Dialog>
           <div className='grid grid-cols-2 gap-2 sm:grid-cols-8 sm:grid-rows-8'>
             {renderedTriggers}
           </div>
           <DialogPortal>
             <DialogOverlay />
-            <DialogContent onCloseAutoFocus={(e) => e.preventDefault()}>
+            <DialogContent
+              className='block-auto'
+              onCloseAutoFocus={(e) => e.preventDefault()}
+            >
               <DialogClose
                 variant='outline'
                 className='inset-bs-2 inset-e-2'
@@ -115,8 +118,8 @@ function HomeGallery() {
             </DialogContent>
           </DialogPortal>
         </Dialog>
-      </Section>
-    </Container>
+      </Container>
+    </Section>
   )
 }
 

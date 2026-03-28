@@ -2,8 +2,8 @@
 
 import {
   IconBrandWhatsapp,
+  IconBubbleTextFilled,
   IconDeviceMobileMessage,
-  IconMessages,
   IconPhoneCall
 } from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
@@ -30,10 +30,11 @@ function ContactDrawer() {
     <Drawer>
       <DrawerTrigger asChild>
         <IconButton
-          className='fixed inset-be-3 inset-e-3 sm:hidden'
           aria-label='Open contact options'
+          className='fixed inset-be-3 inset-e-3 sm:hidden'
+          variant='outline'
         >
-          <IconMessages />
+          <IconBubbleTextFilled />
         </IconButton>
       </DrawerTrigger>
       <DrawerPortal>

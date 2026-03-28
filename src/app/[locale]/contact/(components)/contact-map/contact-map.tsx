@@ -2,7 +2,7 @@
 
 import 'leaflet/dist/leaflet.css'
 import {Marker} from '@adamscybot/react-leaflet-component-marker'
-import {IconMapPin} from '@tabler/icons-react'
+import {IconMapPinFilled} from '@tabler/icons-react'
 import type L from 'leaflet'
 import type {LatLngTuple} from 'leaflet'
 import Image from 'next/image'
@@ -38,7 +38,7 @@ function ContactMap() {
           <Marker
             position={coords}
             ref={handleMarkerRef}
-            icon={<IconMapPin className='size-8 fill-surface-1 text-primary' />}
+            icon={<IconMapPinFilled className='text-primary' />}
           >
             <Popup
               offset={[0, -8]}

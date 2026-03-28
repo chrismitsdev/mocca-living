@@ -10,12 +10,13 @@ import {IconButton} from '@/src/components/ui/icon-button'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 import {Link} from '@/src/i18n/navigation'
+import {cn} from '@/src/lib/utils'
 
 function Footer() {
   const t = useTranslations('Components.Footer')
 
   return (
-    <footer className='py-16 bg-surface-2'>
+    <footer className='py-16 bg-surface-3'>
       <Container className='space-y-12'>
         <div className='grid gap-12 sm:grid-flow-col sm:auto-cols-fr'>
           <Image
@@ -24,17 +25,17 @@ function Footer() {
             alt='Mocca Living footer logo'
           />
           <FooterColumn title={t('row-1.info-column.title')}>
-            <Link href='tel:+306973560007'>
+            <FooterLink href='tel:+306973560007'>
               <Typography variant='small'>
                 {t('row-1.info-column.tel-1')}
               </Typography>
-            </Link>
-            <Link href='tel:+306973433980'>
+            </FooterLink>
+            <FooterLink href='tel:+306973433980'>
               <Typography variant='small'>
                 {t('row-1.info-column.tel-2')}
               </Typography>
-            </Link>
-            <Link
+            </FooterLink>
+            <FooterLink
               href='mailto:info@moccaliving.com'
               target='_blank'
               rel='noopener noreferrer'
@@ -42,8 +43,8 @@ function Footer() {
               <Typography variant='small'>
                 {t('row-1.info-column.email')}
               </Typography>
-            </Link>
-            <Link
+            </FooterLink>
+            <FooterLink
               href='https://maps.app.goo.gl/L6JEySni2t8jnb5m9'
               target='_blank'
               rel='noopener noreferrer'
@@ -51,24 +52,24 @@ function Footer() {
               <Typography variant='small'>
                 {t('row-1.info-column.location')}
               </Typography>
-            </Link>
+            </FooterLink>
           </FooterColumn>
           <FooterColumn title={t('row-1.links-column.title')}>
-            <Link href='/privacy'>
+            <FooterLink href='/privacy'>
               <Typography variant='small'>
                 {t('row-1.links-column.privacy-policy')}
               </Typography>
-            </Link>
-            <Link href='/cookies'>
+            </FooterLink>
+            <FooterLink href='/cookies'>
               <Typography variant='small'>
                 {t('row-1.links-column.cookies-policy')}
               </Typography>
-            </Link>
-            <Link href='/rules'>
+            </FooterLink>
+            <FooterLink href='/rules'>
               <Typography variant='small'>
                 {t('row-1.links-column.accomodation-policy')}
               </Typography>
-            </Link>
+            </FooterLink>
             <DialogAudioPlayer>
               <Typography variant='small'>
                 {t('row-1.links-column.playlist')}
@@ -76,7 +77,7 @@ function Footer() {
             </DialogAudioPlayer>
           </FooterColumn>
           <FooterColumn title={t('row-1.more-column.title')}>
-            <Link
+            <FooterLink
               href='https://www.yuppii.gr/'
               target='_blank'
               rel='noopener noreferrer'
@@ -84,8 +85,8 @@ function Footer() {
               <Typography variant='small'>
                 {t('row-1.more-column.yuppii')}
               </Typography>
-            </Link>
-            <Link
+            </FooterLink>
+            <FooterLink
               href='https://www.thechristmaslighthouse.gr/'
               target='_blank'
               rel='noopener noreferrer'
@@ -93,8 +94,8 @@ function Footer() {
               <Typography variant='small'>
                 {t('row-1.more-column.christmas-lighthouse')}
               </Typography>
-            </Link>
-            <Link
+            </FooterLink>
+            <FooterLink
               href='https://startpilates.gr/'
               target='_blank'
               rel='noopener noreferrer'
@@ -102,7 +103,7 @@ function Footer() {
               <Typography variant='small'>
                 {t('row-1.more-column.start-pilates')}
               </Typography>
-            </Link>
+            </FooterLink>
           </FooterColumn>
           <FooterColumn>
             <div className='flex gap-2 sm:flex-col'>
@@ -186,6 +187,18 @@ function FooterColumn({
   }
 
   return <div className='w-fit space-y-2 sm:space-y-4'>{children}</div>
+}
+
+function FooterLink({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof Link>) {
+  return (
+    <Link
+      className={cn('hover:underline', className)}
+      {...props}
+    />
+  )
 }
 
 Footer.displayName = 'Footer'

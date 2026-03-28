@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle
 } from '@/src/components/ui/card'
+import {Typography} from '@/src/components/ui/typography'
 
 function ContactForm() {
   const t = useTranslations('Pages.Contact.Form')
@@ -16,10 +17,12 @@ function ContactForm() {
   return (
     <Section>
       <Container>
-        <Card className='space-y-10 sm:p-20'>
+        <Card className='sm:p-20'>
           <CardHeader>
             <CardTitle>{t('title')}</CardTitle>
-            <CardDescription>{t('description')}</CardDescription>
+            <CardDescription>
+              <Typography>{t('description')}</Typography>
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <Form />

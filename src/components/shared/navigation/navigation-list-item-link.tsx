@@ -19,8 +19,8 @@ function NavigationListItemLink({
     <li {...props}>
       <Link
         className={cn(
-          'p-1.5 text-sm uppercase underline-offset-8',
-          pathname === href && 'font-bold underline'
+          'p-1.5 text-sm uppercase underline-offset-4',
+          pathname === href && 'font-bold underline decoration-2'
         )}
         href={href}
         {...(pathname === href && {'aria-current': 'page'})}

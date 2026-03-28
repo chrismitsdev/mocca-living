@@ -18,6 +18,7 @@ function HomeCarousel() {
   const slides = homeCarouselImages.map((image, i) => (
     <Slide key={image.src}>
       <CustomImage
+        className='min-block-96'
         src={image}
         alt={`Home page carousel image slide ${i + 1}`}
         sizes='100vw'

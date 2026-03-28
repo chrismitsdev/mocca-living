@@ -47,7 +47,7 @@ function ScrollareaBar({
       )}
       {...props}
     >
-      <Thumb className='flex-1 relative rounded-full bg-border transition-colors hover:bg-surface-4' />
+      <Thumb className='flex-1 relative rounded-full bg-surface-4 transition-colors hover:bg-surface-5' />
     </Scrollbar>
   )
 }

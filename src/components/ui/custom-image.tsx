@@ -15,7 +15,7 @@ function CustomImage({
 }: CustomImageProps) {
   return (
     <Image
-      className={cn('w-full h-full object-cover', className)}
+      className={cn('block-full inline-full object-cover', className)}
       placeholder={`data:image/svg+xml;base64,${toBase64(
         shimmer(src.width, src.height)
       )}`}

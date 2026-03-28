@@ -57,13 +57,10 @@ function CookieConsent() {
         aria-live='polite'
       >
         <Scrollarea type='always'>
-          <ScrollareaViewport className='max-h-[calc(100dvh-16px)]'>
+          <ScrollareaViewport className='max-h-[calc(100svh-16px)]'>
             <div className='p-8 space-y-4'>
               <div className='flex items-center gap-3'>
-                <IconCookie
-                  className='mt-0.5'
-                  size={24}
-                />
+                <IconCookie />
                 <Typography
                   variant='h3'
                   asChild
@@ -85,10 +82,7 @@ function CookieConsent() {
                   >
                     {t('collapsible.trigger')}
                   </Typography>
-                  <IconChevronDown
-                    className='mt-1 transition-transform group-data-open:rotate-180'
-                    size={16}
-                  />
+                  <IconChevronDown className='size-4 transition-transform group-data-open:rotate-180' />
                 </CollapsibleTrigger>
                 <CollapsibleContent>
                   <div className='pt-2 space-y-4'>

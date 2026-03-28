@@ -2,7 +2,6 @@ import {
   IconBeach,
   IconBuildingBank,
   IconChargingPile,
-  IconMapPin,
   IconPlane,
   type IconProps,
   IconToolsKitchen3
@@ -26,13 +25,14 @@ function HomeDistances() {
   return (
     <Section>
       <Container>
-        <Card className='relative space-y-10 sm:p-20'>
-          <IconMapPin className='hidden absolute size-3/4 top-1/2 left-1/2 -translate-1/2 text-surface-3 opacity-30 sm:block' />
+        <Card className='sm:p-20'>
           <CardHeader>
             <CardTitle>{t('title')}</CardTitle>
-            <CardDescription>{t('description')}</CardDescription>
+            <CardDescription>
+              <Typography>{t('description')}</Typography>
+            </CardDescription>
           </CardHeader>
-          <CardContent className='sm:relative'>
+          <CardContent>
             <ul className='space-y-10'>
               <DistanceItem
                 title={t('airport.title')}

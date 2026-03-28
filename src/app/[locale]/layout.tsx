@@ -30,7 +30,6 @@ export const metadata: Metadata = {
       'bg-BG': '/bg'
     }
   },
-  // title: 'Mocca Living | Premium • Stay • Philosophy',
   title: {
     template: '%s | Mocca Living',
     default: 'Mocca Living'
@@ -64,7 +63,7 @@ export default function LocaleLayout({
       lang={locale}
       className={`${inter.className}`}
     >
-      <body className='min-h-screen grid grid-rows-[auto_1fr] relative bg-surface-1 text-foreground'>
+      <body className='bg-surface-1 text-foreground'>
         <NextIntlClientProvider>
           <Header />
           <main>

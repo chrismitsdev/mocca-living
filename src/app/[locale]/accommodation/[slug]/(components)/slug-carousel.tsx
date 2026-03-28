@@ -23,6 +23,7 @@ function SlugCarousel({slug}: {slug: Slug}) {
   const slides = images.map((image, i) => (
     <Slide key={image.src}>
       <CustomImage
+        className='min-block-96'
         src={image}
         alt={`${slug} page carousel image ${i + 1}`}
         sizes='100vw'
