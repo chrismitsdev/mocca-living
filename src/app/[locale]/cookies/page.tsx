@@ -6,7 +6,7 @@ import {CookiesHeader} from './(components)/cookies-header'
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
   const {locale} = await params
-  const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
+  const t = await getTranslations({locale, namespace: 'Metadata'})
 
   return {
     title: t('cookies')

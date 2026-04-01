@@ -1,5 +1,9 @@
 import {useTranslations} from 'next-intl'
-import {dimitraCover, georgiaCover} from '@/public/images/covers'
+import {
+  cityGeorgiaCover,
+  seaDimitraCover,
+  seaGeorgiaCover
+} from '@/public/images/covers'
 import {homeReasonsImages} from '@/public/images/home/home-reasons'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
@@ -12,7 +16,7 @@ import {
 import {Typography} from '@/src/components/ui/typography'
 
 function HomeReasons() {
-  const t = useTranslations('Pages.Home.IdealReasons')
+  const t = useTranslations('Pages.home.home-reasons')
 
   return (
     <Section className='bg-surface-2 space-y-4'>
@@ -21,8 +25,8 @@ function HomeReasons() {
           <div className='px-3 inline-max grid grid-flow-col gap-x-3'>
             <CustomImage
               className='aspect-3/4 block-96'
-              src={dimitraCover}
-              alt='Dimitra villa'
+              src={seaDimitraCover}
+              alt='Mocca Sea Dimitra cover'
             />
             <CustomImage
               className='aspect-3/4 block-96'
@@ -31,13 +35,18 @@ function HomeReasons() {
             />
             <CustomImage
               className='aspect-3/4 block-96'
+              src={cityGeorgiaCover}
+              alt='Mocca City Georgia villa'
+            />
+            <CustomImage
+              className='aspect-3/4 block-96'
               src={homeReasonsImages[1]}
               alt='Handmade ceramic cups arranged on a wooden shelf'
             />
             <CustomImage
               className='aspect-3/4 block-96'
-              src={georgiaCover}
-              alt='Georgia villa'
+              src={seaGeorgiaCover}
+              alt='Mocca Sea Georgia cover'
             />
           </div>
         </ScrollareaViewport>
@@ -49,49 +58,55 @@ function HomeReasons() {
       <Container>
         <div className='space-y-12'>
           <Typography
-            variant='h3'
+            variant='h2'
             asChild
           >
             <h2>{t('title')}</h2>
           </Typography>
-          <div className='space-y-10'>
-            <Reason
-              title={t('reasons.reason1.title')}
-              description={t('reasons.reason1.description')}
+          <ul className='space-y-10'>
+            <ReasonItem
+              title={t('reason1.title')}
+              description={t('reason1.description')}
             />
-            <Reason
-              title={t('reasons.reason2.title')}
-              description={t('reasons.reason2.description')}
+            <ReasonItem
+              title={t('reason2.title')}
+              description={t('reason2.description')}
             />
-            <Reason
-              title={t('reasons.reason3.title')}
-              description={t('reasons.reason3.description')}
+            <ReasonItem
+              title={t('reason3.title')}
+              description={t('reason3.description')}
             />
-            <Reason
-              title={t('reasons.reason4.title')}
-              description={t('reasons.reason4.description')}
+            <ReasonItem
+              title={t('reason4.title')}
+              description={t('reason4.description')}
             />
-            <Reason
-              title={t('reasons.reason5.title')}
-              description={t('reasons.reason5.description')}
+            <ReasonItem
+              title={t('reason5.title')}
+              description={t('reason5.description')}
             />
-          </div>
+          </ul>
         </div>
       </Container>
     </Section>
   )
 }
 
-function Reason({title, description}: {title: string; description: string}) {
+function ReasonItem({
+  title,
+  description
+}: {
+  title: string
+  description: string
+}) {
   return (
-    <div className='space-y-1'>
+    <li className='space-y-1'>
       <Typography variant='large'>{title}</Typography>
       <Typography>{description}</Typography>
-    </div>
+    </li>
   )
 }
 
 HomeReasons.displayName = 'HomeReasons'
-Reason.displayName = 'Reason'
+ReasonItem.displayName = 'ReasonItem'
 
 export {HomeReasons}

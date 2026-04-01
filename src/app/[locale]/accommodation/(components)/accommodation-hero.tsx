@@ -5,7 +5,7 @@ import {CustomImage} from '@/src/components/ui/custom-image'
 import {Link} from '@/src/i18n/navigation'
 
 function AccommodationHero() {
-  const t = useTranslations('Pages.Accommodation.Index.Hero')
+  const t = useTranslations('Pages.accommodation.index.hero')
 
   return (
     <section className='relative h-[calc(100svh-80px)]'>

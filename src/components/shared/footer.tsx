@@ -13,7 +13,7 @@ import {Link} from '@/src/i18n/navigation'
 import {cn} from '@/src/lib/utils'
 
 function Footer() {
-  const t = useTranslations('Components.Footer')
+  const t = useTranslations('Components.footer')
 
   return (
     <footer className='py-16 bg-surface-3'>
@@ -44,15 +44,9 @@ function Footer() {
                 {t('row-1.info-column.email')}
               </Typography>
             </FooterLink>
-            <FooterLink
-              href='https://maps.app.goo.gl/L6JEySni2t8jnb5m9'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <Typography variant='small'>
-                {t('row-1.info-column.location')}
-              </Typography>
-            </FooterLink>
+            <Typography variant='small'>
+              {t('row-1.info-column.location')}
+            </Typography>
           </FooterColumn>
           <FooterColumn title={t('row-1.links-column.title')}>
             <FooterLink href='/privacy'>

@@ -14,7 +14,7 @@ function Header() {
               width={64}
               src={moccaLogoBox}
               alt='Mocca Living logo'
-              preload
+              loading='eager'
             />
           </Link>
 

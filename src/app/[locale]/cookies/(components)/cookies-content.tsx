@@ -4,7 +4,7 @@ import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
 function CookiesContent() {
-  const t = useTranslations('Pages.Cookies')
+  const t = useTranslations('Pages.cookies')
 
   return (
     <Section>

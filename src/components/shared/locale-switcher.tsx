@@ -32,7 +32,7 @@ const flags = {
 
 function LocaleSwitcher({scrollTop = false}: LocaleSwitcherProps) {
   const [isPending, startTransition] = useTransition()
-  const t = useTranslations('Components.LocaleSwitcher')
+  const t = useTranslations('Components.locale_select')
   const pathname = usePathname()
   const router = useRouter()
   const locale = useLocale()

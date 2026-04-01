@@ -24,7 +24,7 @@ import {Typography} from '@/src/components/ui/typography'
 const PHONE = '+306973560007'
 
 function ContactDrawer() {
-  const t = useTranslations('Components.ContactDrawer')
+  const t = useTranslations('Components.contact_drawer')
 
   return (
     <Drawer>

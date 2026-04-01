@@ -8,7 +8,7 @@ import {ContactSocial} from './(components)/contact-social'
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
   const {locale} = await params
-  const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
+  const t = await getTranslations({locale, namespace: 'Metadata'})
 
   return {
     title: t('contact')

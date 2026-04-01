@@ -1,7 +1,7 @@
 import {useTranslations} from 'next-intl'
 
 function RulesHeader() {
-  const t = useTranslations('Metadata.Pages')
+  const t = useTranslations('Metadata')
 
   return <h1 className='sr-only'>{t('rules')}</h1>
 }

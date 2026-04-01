@@ -16,7 +16,7 @@
 .leaflet-map-pane,
 .leaflet-left,
 .leaflet-control-zoom {
-  z-index: auto;
+  @apply z-auto!;
 }
 
 .leaflet-bottom {

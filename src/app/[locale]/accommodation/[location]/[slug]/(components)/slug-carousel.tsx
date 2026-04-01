@@ -1,5 +1,7 @@
-import {dimitraCarouselImages} from '@/public/images/accommodation/slug/dimitra'
-import {georgiaCarouselImages} from '@/public/images/accommodation/slug/georgia'
+import type {StaticImageData} from 'next/image'
+import {georgiaCityImages} from '@/public/images/accommodation/city-georgia'
+import {dimitraSeaImages} from '@/public/images/accommodation/sea-dimitra'
+import {georgiaSeaImages} from '@/public/images/accommodation/sea-georgia'
 import {
   ButtonNext,
   ButtonPrev,
@@ -12,15 +14,16 @@ import {
 } from '@/src/components/ui/carousel'
 import {CustomImage} from '@/src/components/ui/custom-image'
 
-const slugImages = {
-  georgia: georgiaCarouselImages,
-  dimitra: dimitraCarouselImages
+const slugImages: Record<PropertySlug, StaticImageData[]> = {
+  'sea-dimitra': dimitraSeaImages,
+  'sea-georgia': georgiaSeaImages,
+  'city-georgia': georgiaCityImages
 }
 
-function SlugCarousel({slug}: {slug: Slug}) {
+function SlugCarousel({slug}: {slug: PropertySlug}) {
   const images = slugImages[slug]
 
-  const slides = images.map((image, i) => (
+  const renderedSlides = images.map((image, i) => (
     <Slide key={image.src}>
       <CustomImage
         className='min-block-96'
@@ -32,7 +35,7 @@ function SlugCarousel({slug}: {slug: Slug}) {
     </Slide>
   ))
 
-  const thumbnails = images.map((image, i) => (
+  const renderedThumbnails = images.map((image, i) => (
     <Thumb
       key={image.src}
       thumbIndex={i}
@@ -48,11 +51,11 @@ function SlugCarousel({slug}: {slug: Slug}) {
   return (
     <Carousel className='sm:h-[calc(100svh-80px)]'>
       <CarouselViewport>
-        <SlidesContainer>{slides}</SlidesContainer>
+        <SlidesContainer>{renderedSlides}</SlidesContainer>
       </CarouselViewport>
       <ButtonPrev />
       <ButtonNext />
-      <ThumbsContainer>{thumbnails}</ThumbsContainer>
+      <ThumbsContainer>{renderedThumbnails}</ThumbsContainer>
     </Carousel>
   )
 }

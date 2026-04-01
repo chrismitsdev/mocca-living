@@ -1,7 +1,10 @@
 import {IconDotsVertical} from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
-import dimitraCover from '@/public/images/covers/dimitra.webp'
-import georgiaCover from '@/public/images/covers/georgia.webp'
+import {
+  cityGeorgiaCover,
+  seaDimitraCover,
+  seaGeorgiaCover
+} from '@/public/images/covers'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {IconButton} from '@/src/components/ui/icon-button'
 import {Popup, PopupContent, PopupTrigger} from '@/src/components/ui/popup'
@@ -10,7 +13,7 @@ import {Link} from '@/src/i18n/navigation'
 import {NavigationListItemLink} from './navigation-list-item-link'
 
 function DesktopNavigation() {
-  const t = useTranslations('Metadata.Pages')
+  const t = useTranslations('Metadata')
 
   return (
     <nav className='hidden sm:block'>
@@ -26,7 +29,7 @@ function DesktopNavigation() {
         <NavigationListItemLink
           className='flex'
           href='/accommodation'
-          label={t('accommodation.index')}
+          label={t('accommodation.title')}
         >
           <Popup>
             <PopupTrigger asChild>
@@ -42,39 +45,57 @@ function DesktopNavigation() {
               sideOffset={14}
               collisionPadding={16}
             >
-              <ul className='columns-2'>
+              <ul className='grid grid-cols-3 auto-rows-fr'>
                 <li>
-                  <Link href='/accommodation/dimitra'>
-                    <article className='p-3 space-y-2 hover:bg-surface-3'>
+                  <Link href='/accommodation/sea/sea-dimitra'>
+                    <article className='p-2 space-y-2 hover:bg-surface-3'>
                       <CustomImage
                         className='aspect-square'
-                        src={dimitraCover}
-                        alt='Dimitra card image'
+                        src={seaDimitraCover}
+                        alt='Mocca Sea Dimitra cover image'
                         sizes='200px'
                       />
                       <Typography variant='large'>
-                        {t('accommodation.dimitra')}
+                        {t('accommodation.slug.sea-dimitra.title')}
                       </Typography>
                       <Typography variant='small'>
-                        {t('accommodation.dimitra-caption')}
+                        {t('accommodation.slug.sea-dimitra.description')}
                       </Typography>
                     </article>
                   </Link>
                 </li>
                 <li>
-                  <Link href='/accommodation/georgia'>
-                    <article className='p-3 space-y-2 hover:bg-surface-3'>
+                  <Link href='/accommodation/sea/sea-georgia'>
+                    <article className='p-2 space-y-2 hover:bg-surface-3'>
                       <CustomImage
                         className='aspect-square'
-                        src={georgiaCover}
-                        alt='Georgia card image'
+                        src={seaGeorgiaCover}
+                        alt='Mocca Sea Georgia cover image'
                         sizes='200px'
                       />
                       <Typography variant='large'>
-                        {t('accommodation.georgia')}
+                        {t('accommodation.slug.sea-georgia.title')}
                       </Typography>
                       <Typography variant='small'>
-                        {t('accommodation.georgia-caption')}
+                        {t('accommodation.slug.sea-georgia.description')}
+                      </Typography>
+                    </article>
+                  </Link>
+                </li>
+                <li>
+                  <Link href='/accommodation/city/city-georgia'>
+                    <article className='p-2 space-y-2 hover:bg-surface-3'>
+                      <CustomImage
+                        className='aspect-square'
+                        src={cityGeorgiaCover}
+                        alt='Mocca City Georgia cover image'
+                        sizes='200px'
+                      />
+                      <Typography variant='large'>
+                        {t('accommodation.slug.city-georgia.title')}
+                      </Typography>
+                      <Typography variant='small'>
+                        {t('accommodation.slug.city-georgia.description')}
                       </Typography>
                     </article>
                   </Link>

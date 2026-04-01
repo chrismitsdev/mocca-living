@@ -1,190 +1,248 @@
 {
   "Metadata": {
-    "Pages": {
-      "home": "Home",
-      "accommodation": {
-        "index": "Accommodation",
-        "dimitra": "Dimitra",
-        "dimitra-caption": "Experience luxury at villa Dimitra, a gorgeous 85m² retreat for 2-4 adults and 2 children.",
-        "georgia": "Georgia",
-        "georgia-caption": "Discover villa Georgia, a charming 45m² retreat for 2-4 adults and 1 child near the sea."
-      },
-      "contact": "Contact",
-      "privacy": "Privacy policy",
-      "cookies": "Cookies policy",
-      "rules": "Accommodation policy",
-      "not-found": "Page not found"
-    },
-    "Contact": {
-      "name": "Mocca Living",
-      "location": "Agia Paraskevi Beach, Makri",
-      "phone": "Contact phone"
-    }
-  },
-  "Pages": {
-    "Home": {
-      "Introdution": {
-        "title": "Experience the epitome of luxury living",
-        "message": "Mocca Living is an exclusive living space reflecting the refined spirit of luxury living on one of Greece's most captivating coastlines. Located in Agia Paraskevi, just 100 meters from the stunning Agia Paraskevi Beach and adjacent to the Kyani Akti coast, Mocca Living offers a unique experience for those who appreciate the finer things in life and value exclusivity. With its elegant architecture, meticulously designed details, and high-end amenities, every element has been considered to provide guests with comfort, aesthetics, and tranquility. Surrounded by breathtaking natural beauty and just steps from crystal-clear waters, Mocca Living is the perfect destination for those seeking a calm, sophisticated, and privileged escape. Whether you plan a short stay or a longer vacation, Mocca Living promises an unforgettable experience where elegance meets the serenity of nature."
-      },
-      "IdealReasons": {
-        "title": "Mocca Living is ideal for:",
-        "reasons": {
-          "reason1": {
-            "title": "Families",
-            "description": "Mocca Living offers spacious, comfortable accommodations, perfect for families seeking quality time together by the sea, with amenities designed for all ages."
-          },
-          "reason2": {
-            "title": "Friends",
-            "description": "Gather your friends for a luxurious getaway at Mocca Living, where shared moments and unforgettable memories are made in an idyllic coastal setting."
-          },
-          "reason3": {
-            "title": "VIP Guests",
-            "description": "Experience exclusive luxury and personalized services at Mocca Living, the ideal destination for VIP guests who demand privacy, comfort, and elegance."
-          },
-          "reason4": {
-            "title": "Honeymooners",
-            "description": "Celebrate your love at Mocca Living, a romantic haven where honeymooners can enjoy intimate moments in a serene and luxurious beachfront environment."
-          },
-          "reason5": {
-            "title": "Wellness Retreats",
-            "description": "Mocca Living is the perfect haven for wellness lovers, offering a peaceful environment ideal for relaxation and slow-living by the sea."
-          }
+    "home": "Home",
+    "accommodation": {
+      "title": "Accommodation",
+      "location": {
+        "mocca-sea": {
+          "title": "Mocca Sea"
+        },
+        "mocca-city": {
+          "title": "Mocca City"
         }
       },
-      "Distances": {
-        "title": "Distances to key locations",
-        "description": "Discover how close the villas are to key locations, including the airport, beach, city center, and more.",
-        "airport": {
-          "title": "\"Dimokritos\" airport – 20 km",
-          "description": "The Dimokritos Airport, situated 20 km from the villas, ensures convenient travel for guests arriving from domestic and international destinations. Whether you're flying in for a relaxing getaway or departing after a memorable stay, the airport is easily accessible, offering a smooth and hassle-free journey."
+      "slug": {
+        "sea-dimitra": {
+          "title": "Dimitra",
+          "description": "Experience the luxury of villa Dimitra, an 85m² retreat in Makri for 2-4 adults and 2 children."
         },
-        "city": {
-          "title": "Alexandroupolis – 14 km",
-          "description": "Located just 14 km away, the vibrant city of Alexandroupolis offers a perfect blend of modern amenities and cultural heritage. Visitors can explore its charming waterfront, indulge in local cuisine at the numerous restaurants, or take a stroll through its bustling shopping streets. With easy access from the villas, a short drive will bring you to the heart of the city’s lively atmosphere."
+        "sea-georgia": {
+          "title": "Georgia",
+          "description": "Discover villa Georgia, a charming 45m² retreat in Makri for 2-4 adults and 1 child."
         },
-        "beach": {
-          "title": "Agia Paraskevi beach – 100 m",
-          "description": "Just a mere 100 meters away, Agia Paraskevi Beach invites guests to experience its pristine sands and crystal-clear waters. Perfect for sunbathing, swimming, or simply unwinding by the sea, this nearby beach provides the ideal setting for a refreshing coastal escape within walking distance of the villas."
-        },
-        "restaurant": {
-          "title": "Restaurant (Closest) – 100 m",
-          "description": "A delightful dining experience awaits just 100 meters from the villas, where the nearest restaurant serves a variety of delicious local and international dishes. Whether you’re looking for a casual meal or a fine dining experience, the close proximity allows guests to enjoy exceptional cuisine without the need for extensive travel."
-        },
-        "charge": {
-          "title": "Car charging station – 80 m",
-          "description": "For guests traveling with electric vehicles, a convenient car charging station is located just 80 meters away. This nearby facility ensures that your vehicle remains powered and ready for your next adventure, making sustainable travel effortless and hassle-free."
+        "city-georgia": {
+          "title": "Georgia",
+          "description": "Discover Georgia, a renovated 50m² apartment in Alexandroupolis for 2 adults and 2 children."
         }
       }
     },
-    "Accommodation": {
-      "Index": {
-        "Hero": {
+    "contact": "Contact",
+    "privacy": "Privacy policy",
+    "cookies": "Cookies policy",
+    "rules": "Accommodation policy",
+    "not_found": "Page not found"
+  },
+  "Pages": {
+    "home": {
+      "home-intro": {
+        "title": "Experience refined living across unique destinations",
+        "message": "Mocca Living offers carefully designed living spaces in Makri and Alexandroupoli, providing refined stays that combine comfort, style, and local character. Each property is curated to deliver a unique experience — whether by the sea in Makri and Agia Paraskevi or in the heart of Alexandroupoli — with high standards of elegance, privacy, and modern amenities."
+      },
+      "home-reasons": {
+        "title": "Mocca Living is ideal for:",
+        "reason1": {
+          "title": "Families",
+          "description": "Mocca Living offers comfortable and well-equipped accommodations, perfect for families looking to enjoy quality time together in a relaxing and convenient setting."
+        },
+        "reason2": {
+          "title": "Friends",
+          "description": "Gather with friends for a memorable stay at Mocca Living, where shared experiences and moments of relaxation create lasting memories."
+        },
+        "reason3": {
+          "title": "VIP Guests",
+          "description": "Experience privacy, comfort, and attentive service at Mocca Living, designed for guests who appreciate a refined and exclusive environment."
+        },
+        "reason4": {
+          "title": "Couples",
+          "description": "Mocca Living is a welcoming and serene space for couples seeking a peaceful getaway, offering a relaxing atmosphere for shared moments."
+        },
+        "reason5": {
+          "title": "Wellness & Relaxation",
+          "description": "Whether for short stays or extended retreats, Mocca Living provides a calm and comfortable environment ideal for rest, wellness, and slow-living."
+        }
+      },
+      "home-distances": {
+        "title": "Distances to key locations",
+        "description": "Explore distances to key locations for each Mocca Living property.",
+        "locations": {
+          "mocca-sea": {
+            "label": "Mocca Sea",
+            "intro": "Ideal for a relaxing seaside stay, just steps from the beach with easy access to nearby amenities.",
+            "items": {
+              "charging_station": {
+                "title": "Car charging station – 80 m",
+                "description": "At 80 meters, a charging station serves electric vehicles, providing a practical and reliable solution for convenient daily transportation without hassle."
+              },
+              "beach": {
+                "title": "Agia Paraskevi beach – 100 m",
+                "description": "Just 100 meters away, Agia Paraskevi Beach offers clear waters and ideal conditions for relaxation, swimming, and sunbathing by the sea."
+              },
+              "restaurant": {
+                "title": "Closest restaurant – 100 m",
+                "description": "Within 100 meters, the nearest restaurant offers a pleasant dining experience with a selection of local and international dishes in a comfortable setting."
+              },
+              "city": {
+                "title": "Alexandroupoli – 14 km",
+                "description": "At a distance of 14 km, Alexandroupoli combines modern amenities with local character, featuring a lively seafront, restaurants, and shops for visitors to explore."
+              },
+              "airport": {
+                "title": "Airport – 20 km",
+                "description": "Dimokritos Airport, located 20 km from the properties, offers convenient access for domestic and international travelers, ensuring smooth and comfortable arrivals and departures."
+              }
+            }
+          },
+          "mocca-city": {
+            "label": "Mocca City",
+            "intro": "Perfect for staying in the heart of Alexandroupoli, with everything within walking distance.",
+            "items": {
+              "city_center": {
+                "title": "City center",
+                "description": "Located directly on Dimokratias Avenue, the apartment sits in the very center of Alexandroupoli, surrounded by shops, cafes, and everyday amenities, allowing guests to fully experience the city's vibrant atmosphere without the need for transportation."
+              },
+              "bus_station": {
+                "title": "Bus station – ~300 m",
+                "description": "The central bus station is just a short walk away, offering easy and reliable connections to nearby areas and regional destinations, making day trips simple and accessible."
+              },
+              "seafront": {
+                "title": "Seafront promenade – ~500 m",
+                "description": "Within a short and pleasant walk, guests can reach the city’s seafront promenade, ideal for relaxing strolls, seaside dining, and enjoying the coastal atmosphere that defines Alexandroupoli."
+              },
+              "port": {
+                "title": "Port of Alexandroupoli – ~1 km",
+                "description": "Approximately 1 km away, the port area offers a lively setting with restaurants, cafes, and connections to nearby destinations, making it a great spot for both leisure and exploration."
+              },
+              "airport": {
+                "title": "Airport – ~7 km",
+                "description": "Located around 7 km from the apartment, Dimokritos Airport provides convenient access for both arrivals and departures, ensuring a smooth and comfortable travel experience."
+              }
+            }
+          }
+        }
+      }
+    },
+    "accommodation": {
+      "index": {
+        "hero": {
           "button-label": "Contact us"
         },
-        "Intro": {
-          "title": "Our Exclusive Villas",
-          "message": "Experience ultimate luxury at Mocca Living, where our exclusive villas perfectly blend modern comfort with timeless elegance. Each villa is carefully designed to offer an unforgettable stay, whether you're here for a family vacation, a getaway with friends, or a romantic retreat. Indulge in luxury and discover the perfect balance between relaxation and refined aesthetics in a space that promises to make every moment unique."
+        "intro": {
+          "title": "Our Exclusive Accommodations",
+          "message": "Experience ultimate luxury at Mocca Living, where our exclusive accommodations perfectly blend modern comfort with timeless elegance. Each property is carefully designed to offer an unforgettable stay, whether you're here for a family vacation, a getaway with friends, or a romantic retreat. Indulge in luxury and discover the perfect balance between relaxation and refined aesthetics in a space that promises to make every moment unique."
         },
-        "Villas": {
-          "dimitra": {
+        "cards": {
+          "sea-dimitra": {
             "title": "Dimitra",
-            "description": "Embrace the luxury of space in Villa Dimitra, an 85m² sanctuary for 2-4 adults and 2 children. With 2 bedrooms and 2 bathrooms, it's ideal for a relaxed, elegant stay.",
+            "description": "Embrace the luxury of villa Dimitra in Makri, an 85m² sanctuary for 2-4 adults and 2 children. With 2 bedrooms and 2 bathrooms, it's ideal for a relaxed, elegant stay.",
             "guests": "2 - 4 Adults",
             "children": "2 Children",
             "bedrooms": "2 Bedrooms",
-            "bathrooms": "2 Bathrooms",
-            "button": "Information"
+            "bathrooms": "2 Bathrooms"
           },
-          "georgia": {
+          "sea-georgia": {
             "title": "Georgia",
-            "description": "Step into Villa Georgia, a charming 45m² haven for 2-4 adults and 1 child. Featuring 2 bedrooms and a modern bathroom, it's the perfect cozy escape near the sea.",
+            "description": "Discover villa Georgia in Makri, a charming 45m² haven for 2-4 adults and 1 child. With 2 bedrooms and a modern bathroom, perfect for a cozy escape near the sea.",
             "guests": "2 - 4 Adults",
             "children": "1 Child",
             "bedrooms": "2 Bedrooms",
-            "bathrooms": "1 Bathroom",
-            "button": "Information"
+            "bathrooms": "1 Bathroom"
+          },
+          "city-georgia": {
+            "title": "Georgia",
+            "description": "Discover Georgia in Alexandroupolis, a fully renovated 50m² apartment for 2 adults and 2 children. With 1 bedroom, a sofa bed, and views over Leoforos Dimokratias.",
+            "guests": "2 Adults",
+            "children": "2 Children",
+            "bedrooms": "1 Bedroom",
+            "bathrooms": "1 Bathroom"
+          },
+          "static": {
+            "location_button": "Location",
+            "more_button": "Information"
           }
         }
       },
-      "Slug": {
-        "card": {
-          "links": {
-            "back": "Back",
-            "next": "{slug, select, georgia {Dimitra} dimitra {Georgia} other {Unknown}}"
+      "slug": {
+        "sea-dimitra": {
+          "title": "Dimitra",
+          "guests": "2 - 4 Adults",
+          "child": "2 Children",
+          "bedrooms": "2 Bedrooms",
+          "bathrooms": "2 Bathrooms",
+          "area": "85m² Area",
+          "layout": "One main entrance|Big living room area|Dining room area|One master bedroom with king-sized bed (COCOMAT mattress and bed cover) and en-suite bathroom|One bedroom with queen-sized bed (COCOMAT mattress and bed cover) and en-suite bathroom|Direct access to big private outdoor area",
+          "amenities": {
+            "indoor": "Free Wi-Fi|Three 55\" Smart TVs|Three ceiling fans|Kitchen|Kitchen extractor hood|Air fryer|Fridge|Clothes washer|Clothes iron & ironing board|Nespresso machine|Sound system (Marshall Acton III)|Safe box",
+            "outdoor": "Private area with two pergolas and two sitting areas|Sunbeds with umbrella|Mini pool with hydromassage & color-therapy|Private garden with tropical plants and flowers|Shower area"
           },
-          "header": {
-            "layout": "Villa Layout",
-            "amenities": {
-              "indoor": "Indoor amenities",
-              "outdoor": "Outdoor amenities"
-            },
-            "complementary": "Complementary services",
-            "request": "Rental services"
+          "complementary": "Welcome assistance procedure|Check-in/out assistance",
+          "request": "Two SUP boards for rental|One electric-bike for rental"
+        },
+        "sea-georgia": {
+          "title": "Georgia",
+          "guests": "2 - 4 Adults",
+          "child": "1 Child",
+          "bedrooms": "2 Bedrooms",
+          "bathrooms": "1 Bathroom",
+          "area": "45m² Area",
+          "layout": "One main entrance|Big living room area|Dining room area|Two master bedrooms with double-sized beds|One shared bathroom|Direct access to big private outdoor area",
+          "amenities": {
+            "indoor": "Free Wi-Fi|One 55\" Smart TV|One ceiling fan|Fully equipped kitchen|Electric oven|Kitchen extractor hood|Fridge|Clothes washer|Clothes iron & ironing board|Nespresso machine|Sound system Marshall|Safe box",
+            "outdoor": "Private area with pergola|Sunbeds with umbrella|Sitting area|Mini pool with hydromassage & color-therapy|Private garden with tropical plants and flowers|Shower area"
           },
-          "content": {
-            "dimitra": {
-              "name": "Dimitra",
-              "guests": "2 - 4 Adults",
-              "child": "2 Children",
-              "bedrooms": "2 Bedrooms",
-              "bathrooms": "2 Bathrooms",
-              "area": "85m² Area",
-              "layout": "One main entrance, Big living room area, Dining room area, One master bedroom with king-sized bed (COCOMAT mattress and bed cover) and en-suite bathroom, One bedroom with queen-sized bed (COCOMAT mattress and bed cover) and en-suite bathroom, Direct access to big private outdoor area",
-              "amenities": {
-                "indoor": "Free Wi-Fi, Three 55\" Smart TV, Three ceiling fans, Kitchen, Kitchen extractor hood, Air fryer, Fridge, Clothes washer, Clothes iron & ironing board, Nespresso machine, Sound system (Marshall Acton III), Safe box",
-                "outdoor": "Private area with two pergolas and two sitting areas, Sunbeds with umbrella, Mini pool with hydromassage & color-therapy, Private garden with tropical plants and flowers, Shower area"
-              },
-              "complementary": "Welcome assistance procedure, Check-in/out assistance",
-              "request": "Two SUP boards for rental, One electric-bike for rental"
-            },
-            "georgia": {
-              "name": "Georgia",
-              "guests": "2 - 4 Adults",
-              "child": "1 Child",
-              "bedrooms": "2 Bedrooms",
-              "bathrooms": "1 Bathroom",
-              "area": "45m² Area",
-              "layout": "One main entrance, Big living room area, Dining room area, Two master bedrooms with double-sized beds, One shared bathroom, Direct access to big private outdoor area",
-              "amenities": {
-                "indoor": "Free Wi-Fi, One 55\" Smart TV, One ceiling fan, Fully provisioned smart-equipped kitchen, Electric oven, Kitchen extractor hood, Fridge, Clothes washer, Clothes iron & ironing board, Nespresso machine, Sound system Marshall, Safe box",
-                "outdoor": "Private area with pergola, Sunbeds with umbrella, Sitting area, Mini pool with hydromassage & color-therapy, Private garden with tropical plants and flowers, Shower area"
-              },
-              "complementary": "Welcome assistance procedure, Check-in/out assistance",
-              "request": "Two SUP boards for rental, One electric-bike for rental"
-            }
+          "complementary": "Welcome assistance procedure|Check-in/out assistance",
+          "request": "Two SUP boards for rental|One electric-bike for rental"
+        },
+        "city-georgia": {
+          "title": "Georgia",
+          "guests": "2 Adults",
+          "child": "2 Children",
+          "bedrooms": "1 Bedroom",
+          "bathrooms": "1 Bathroom",
+          "area": "50m² Area",
+          "layout": "Balcony views over the city's main avenue|Living room with sofa bed|Fully equipped kitchen with dining area|Bedroom with double bed|Bathroom with shower",
+          "amenities": {
+            "indoor": "Free Wi-Fi|55\" Smart TV|Fully equipped kitchen|Multiple storage spaces and wardrobes|Desk with stool|New energy-efficient double-glazed windows|Secure external security door",
+            "outdoor": ""
           },
-          "drawer": {
-            "trigger": "Enquire about {slug, select, georgia {Georgia} dimitra {Dimitra} other {Unknown}}",
-            "title": "Make a reservartion for villa {slug, select, georgia {Georgia} dimitra {Dimitra} other {Unknown}}",
-            "description": "Fill out the form below and we will contact you shortly."
-          }
+          "complementary": "Welcome assistance procedure|Check-in/out assistance",
+          "request": ""
+        },
+        "static": {
+          "layout_title": "Property Layout",
+          "amenities_indoor_title": "Indoor amenities",
+          "amenities_outdoor_title": "Outdoor amenities",
+          "complementary_title": "Complementary services",
+          "request_title": "Rental services",
+          "back_button": "Back"
         }
       }
     },
-    "Contact": {
-      "Form": {
+    "contact": {
+      "contact-form": {
         "title": "Contact us",
         "description": "Fill out the form below to make a booking, and we will contact you shortly."
       },
-      "Social": {
+      "contact-social": {
         "location": "Location",
         "instagram": "Instagram",
         "facebook": "Facebook",
         "phone": "Call us"
       },
-      "Map": {
+      "contact-map": {
         "title": "Mocca Living",
         "directions": "How to get here"
       }
     },
-    "Privacy": {
-      "title": "General terms",
-      "content": "Our website moccaliving.com safeguards the personal nature of your information and cannot disclose it to any third party (natural or legal entity) for any reason, except for relevant legal provisions and solely to the competent authorities. We reserve the right to disclose your personally identifiable information as required by law and when we believe that disclosure is necessary to protect our rights and/or comply with a judicial proceeding, court order, or legal process served on our website. Our website moccaliving.com keeps records of personal information that visitors exclusively submit for communication purposes. Visitors can contact the appropriate department to verify the existence of their personal file, correct it, change it, or delete it. Visitors or users of our website moccaliving.com who are minors have access to its services only with the consent of their parents or guardians and are not obliged to submit their personal information. In case such information is submitted by minors and if the fact becomes known to us, our company deletes all related information. Our business, particularly the marketing department, may process part or all of the information you have submitted for statistical and improvement purposes of the provided services and information. As our business continues to evolve by introducing new products, our Privacy Policy may be updated from time to time. We will only use your personal information in accordance with the Privacy Policy in effect at the time we collected your personal information.",
-      "sub-title": "User agreement",
-      "sub-content": "The visitor of the pages and services of our website moccaliving.com grants their consent to the above terms of use, which apply to the entirety of the content, pages, graphics, images, photographs, and files included on the website. Therefore, they should carefully read these terms before visiting or using the pages and services of the moccaliving.com website. If they do not agree, they should refrain from using the services and content of the website. The visitor is requested to check the content of these pages for any possible changes. The continued use of the moccaliving.com website, even after any changes, signifies the visitor's unconditional acceptance of these terms."
+    "privacy": {
+      "terms": {
+        "title": "General terms",
+        "description": "Our website moccaliving.com safeguards the personal nature of your information and cannot disclose it to any third party (natural or legal entity) for any reason, except for relevant legal provisions and solely to the competent authorities. We reserve the right to disclose your personally identifiable information as required by law and when we believe that disclosure is necessary to protect our rights and/or comply with a judicial proceeding, court order, or legal process served on our website. Our website moccaliving.com keeps records of personal information that visitors exclusively submit for communication purposes. Visitors can contact the appropriate department to verify the existence of their personal file, correct it, change it, or delete it. Visitors or users of our website moccaliving.com who are minors have access to its services only with the consent of their parents or guardians and are not obliged to submit their personal information. In case such information is submitted by minors and if the fact becomes known to us, our company deletes all related information. Our business, particularly the marketing department, may process part or all of the information you have submitted for statistical and improvement purposes of the provided services and information. As our business continues to evolve by introducing new products, our Privacy Policy may be updated from time to time. We will only use your personal information in accordance with the Privacy Policy in effect at the time we collected your personal information."
+      },
+      "agreement": {
+        "title": "User agreement",
+        "description": "The visitor of the pages and services of our website moccaliving.com grants their consent to the above terms of use, which apply to the entirety of the content, pages, graphics, images, photographs, and files included on the website. Therefore, they should carefully read these terms before visiting or using the pages and services of the moccaliving.com website. If they do not agree, they should refrain from using the services and content of the website. The visitor is requested to check the content of these pages for any possible changes. The continued use of the moccaliving.com website, even after any changes, signifies the visitor's unconditional acceptance of these terms."
+      }
     },
-    "Cookies": {
+    "cookies": {
       "title-1": "What are cookies",
       "content-1": {
         "description": "Cookies are small text files stored on your device when you visit a website. They help websites function properly, enhance user experience, and provide analytical insights. Cookies can be categorized into different types based on their purpose:",
@@ -200,11 +258,11 @@
         "bullet-2": "<strong>NEXT_LOCALE</strong> - This cookie is used for internalization purposes, ensuring the website displays the correct language based on user preferences."
       }
     },
-    "Rules": {
+    "rules": {
       "title": "Accommodation Policy & stay rules",
       "item-1": {
         "title": "Smoking prohibited indoors",
-        "description": "To ensure a fresh and comfortable environment for all guests, smoking is strictly prohibited inside the villas. Guests who wish to smoke may do so in outdoor areas."
+        "description": "To ensure a fresh and comfortable environment for all guests, smoking is strictly prohibited inside the property. Guests who wish to smoke may do so in outdoor areas."
       },
       "item-2": {
         "title": "Quiet hours & noise policy",
@@ -212,30 +270,44 @@
       },
       "item-3": {
         "title": "Pets are not permitted",
-        "description": "We strive to maintain a high standard of cleanliness and comfort for all guests. For this reason, pets are not permitted within the villas or on the surrounding property. We kindly ask for your understanding, as this policy helps us ensure an allergy-free environment and preserve the serene atmosphere of the accommodation."
+        "description": "We strive to maintain a high standard of cleanliness and comfort for all guests. For this reason, pets are not permitted within the accommodation or on the surrounding property. We kindly ask for your understanding, as this policy helps us ensure an allergy-free environment and preserve the serene atmosphere of the accommodation."
       }
     },
-    "NotFound": {
+    "not_found": {
       "title": "Not found",
       "subtitle": "The page you requested was not found",
       "linkToHome": "Back to home page"
     }
   },
   "Components": {
-    "LocaleSwitcher": {
+    "locale_select": {
       "label": "{country, select, en {English} el {Greek} tr {Turkish} bg {Bulgarian} other {Unknown}}",
       "loading": "Loading"
     },
-    "ContactDrawer": {
+    "contact_drawer": {
       "title": "Contact us",
       "description": "Choose your preferred contact method.",
-      "message": "Hello, I am interested in booking a stay at Mocca Living Villas. Could you please share more details?",
+      "message": "Hello, I am interested in booking a stay at Mocca Living. Could you please share more details?",
       "whatsapp": "WhatsApp",
       "viber": "Viber",
       "sms": "SMS message",
       "call": "Direct call"
     },
-    "CookieConsent": {
+    "contact_form_client": {
+      "subject": "Thank you for your inquiry",
+      "header": "Dear",
+      "thanks": "Thank you for reaching out to us! We have received your inquiry and will get back to you as soon as possible.",
+      "summary": "Here’s a summary of your details:",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": {
+        "title": "Message",
+        "empty": "No message provided"
+      },
+      "footer": "If you have any additional questions or specific requests, feel free to reply to this email. We look forward to assisting you and helping you plan a memorable stay."
+    },
+    "cookie_consent_banner": {
       "title": "Cookies",
       "message": "This site uses services that use cookies to deliver a better user experience and analyze traffic. You can learn more about the services we use at our privacy policy page.",
       "button-label": "Understood",
@@ -253,7 +325,7 @@
         }
       }
     },
-    "Form": {
+    "form": {
       "fields": {
         "firstName": {
           "label": "First name",
@@ -299,14 +371,14 @@
         }
       }
     },
-    "Footer": {
+    "footer": {
       "row-1": {
         "info-column": {
           "title": "Information",
           "tel-1": "+30 6973560007",
           "tel-2": "+30 6973433980",
           "email": "info@moccaliving.com",
-          "location": "Agia Paraskevi Beach, Makri Alexandroupolis, Greece"
+          "location": "Alexandroupolis, Greece"
         },
         "links-column": {
           "title": "Useful links",
@@ -327,20 +399,6 @@
         "constructor": "Project implementation by KYRCOM",
         "developer": "Developed & designed by CM"
       }
-    },
-    "ContactFormClient": {
-      "subject": "Thank you for your inquiry",
-      "header": "Dear",
-      "thanks": "Thank you for reaching out to us! We have received your inquiry and will get back to you as soon as possible.",
-      "summary": "Here’s a summary of your details:",
-      "name": "Name",
-      "email": "Email",
-      "phone": "Phone",
-      "message": {
-        "title": "Message",
-        "empty": "No message provided"
-      },
-      "footer": "If you have any additional questions or specific requests, feel free to reply to this email. We look forward to assisting you and helping you plan a memorable stay."
     }
   }
 }

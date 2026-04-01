@@ -7,7 +7,7 @@ import {Typography} from '@/src/components/ui/typography'
 import {Link} from '@/src/i18n/navigation'
 
 export default function NotFound() {
-  const t = useTranslations('Pages.NotFound')
+  const t = useTranslations('Pages.not_found')
 
   return (
     <Section>

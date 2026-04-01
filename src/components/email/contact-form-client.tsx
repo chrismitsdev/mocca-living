@@ -23,7 +23,7 @@ async function ContactFormClient({
   phone,
   message
 }: ContactFormActionState['data']) {
-  const t = await getTranslations('Components.ContactFormClient')
+  const t = await getTranslations('Components.contact_form_client')
 
   return (
     <Html>

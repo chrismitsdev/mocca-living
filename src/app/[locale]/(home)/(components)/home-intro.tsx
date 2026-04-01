@@ -4,7 +4,7 @@ import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
 function HomeIntro() {
-  const t = useTranslations('Pages.Home.Introdution')
+  const t = useTranslations('Pages.home.home-intro')
 
   return (
     <Container
@@ -13,7 +13,7 @@ function HomeIntro() {
     >
       <Section>
         <Typography
-          variant='h3'
+          variant='h2'
           asChild
         >
           <h2>{t('title')}</h2>

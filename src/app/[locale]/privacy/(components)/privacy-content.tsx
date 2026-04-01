@@ -4,7 +4,7 @@ import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
 function PrivacyContent() {
-  const t = useTranslations('Pages.Privacy')
+  const t = useTranslations('Pages.privacy')
 
   return (
     <Section>
@@ -14,18 +14,18 @@ function PrivacyContent() {
             variant='h4'
             asChild
           >
-            <h2>{t('title')}</h2>
+            <h2>{t('terms.title')}</h2>
           </Typography>
-          <Typography>{t('content')}</Typography>
+          <Typography>{t('terms.description')}</Typography>
         </article>
         <article className='space-y-4'>
           <Typography
             variant='h4'
             asChild
           >
-            <h2>{t('sub-title')}</h2>
+            <h2>{t('agreement.title')}</h2>
           </Typography>
-          <Typography>{t('sub-content')}</Typography>
+          <Typography>{t('agreement.description')}</Typography>
         </article>
       </Container>
     </Section>

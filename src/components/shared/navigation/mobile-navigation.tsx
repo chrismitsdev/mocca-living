@@ -4,8 +4,11 @@ import {
   IconChevronRight
 } from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
-import dimitraCover from '@/public/images/covers/dimitra.webp'
-import georgiaCover from '@/public/images/covers/georgia.webp'
+import {
+  cityGeorgiaCover,
+  seaDimitraCover,
+  seaGeorgiaCover
+} from '@/public/images/covers'
 import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
 import {
   Collapsible,
@@ -30,7 +33,7 @@ interface MobileNavigationProps {
 }
 
 function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
-  const t = useTranslations('Metadata.Pages')
+  const t = useTranslations('Metadata')
 
   return (
     <Drawer
@@ -44,7 +47,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
       >
         <button
           aria-label='Show sidebar menu'
-          className='size-8 flex flex-col justify-center items-center gap-y-2 focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 *:w-3/4 *:h-0.5 *:bg-foreground *:ease-mocca data-open:*:rotate-z-180 data-open:*:scale-x-125 data-open:*:duration-750 data-closed:*:duration-375 group'
+          className='size-8 flex flex-col justify-center items-center gap-y-2 focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 *:inline-3/4 *:block-0.5 *:bg-foreground *:ease-mocca data-open:*:rotate-z-180 data-open:*:scale-x-125 data-open:*:duration-750 data-closed:*:duration-375 group'
           type='button'
         >
           <span className='group-data-open:translate-y-2.5 group-data-open:rotate-45' />
@@ -73,12 +76,12 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
               />
 
               <Collapsible
-                className='grid grid-cols-[96px_auto] gap-x-4'
+                className='grid grid-cols-[1fr_auto] gap-x-4'
                 asChild
               >
                 <NavigationListItemLink
                   href='/accommodation'
-                  label={t('accommodation.index')}
+                  label={t('accommodation.title')}
                 >
                   <CollapsibleTrigger asChild>
                     <IconButton
@@ -90,45 +93,66 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                     </IconButton>
                   </CollapsibleTrigger>
                   <CollapsibleContent className='col-span-full'>
-                    <ul>
+                    <ul className='mt-6 space-y-4'>
                       <li>
                         <Link
-                          className='pt-6 flex gap-4'
-                          href='/accommodation/dimitra'
+                          className='p-1 flex gap-4'
+                          href='/accommodation/sea/sea-dimitra'
                         >
                           <CustomImage
-                            className='aspect-square inline-24'
-                            src={dimitraCover}
-                            alt='Dimitra cover image'
+                            className='shrink-0 block-auto inline-16'
+                            src={seaDimitraCover}
+                            alt='Mocca Sea Dimitra cover image'
                             sizes='96px'
                           />
                           <div>
                             <Typography variant='large'>
-                              {t('accommodation.dimitra')}
+                              {t('accommodation.slug.sea-dimitra.title')}
                             </Typography>
                             <Typography variant='small'>
-                              {t('accommodation.dimitra-caption')}
+                              {t('accommodation.slug.sea-dimitra.description')}
                             </Typography>
                           </div>
                         </Link>
                       </li>
                       <li>
                         <Link
-                          className='pt-6 flex gap-4'
-                          href='/accommodation/georgia'
+                          className='p-1 flex gap-4'
+                          href='/accommodation/sea/sea-georgia'
                         >
                           <CustomImage
-                            className='aspect-square inline-24'
-                            src={georgiaCover}
-                            alt='Georgia cover image'
+                            className='shrink-0 block-auto inline-16'
+                            src={seaGeorgiaCover}
+                            alt='Mocca Sea Georgia cover image'
                             sizes='96px'
                           />
                           <div>
                             <Typography variant='large'>
-                              {t('accommodation.georgia')}
+                              {t('accommodation.slug.sea-georgia.title')}
                             </Typography>
                             <Typography variant='small'>
-                              {t('accommodation.georgia-caption')}
+                              {t('accommodation.slug.sea-georgia.description')}
+                            </Typography>
+                          </div>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          className='p-1 flex gap-4'
+                          href='/accommodation/city/city-georgia'
+                        >
+                          <CustomImage
+                            className='shrink-0 block-auto inline-16'
+                            src={cityGeorgiaCover}
+                            alt='Mocca City Georgia cover image'
+                            sizes='96px'
+                          />
+                          <div>
+                            <Typography variant='large'>
+                              {t('accommodation.slug.city-georgia.title')}
+                            </Typography>
+                            <Typography variant='small'>
+                              {t('accommodation.slug.city-georgia.description')}
                             </Typography>
                           </div>
                         </Link>

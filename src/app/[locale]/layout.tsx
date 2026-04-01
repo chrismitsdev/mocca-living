@@ -9,7 +9,7 @@ import {use} from 'react'
 import {Toaster} from 'sonner'
 import {ColumnsTransition} from '@/src/components/shared/columns-transition'
 import {ContactDrawer} from '@/src/components/shared/contact-drawer'
-import {CookieConsent} from '@/src/components/shared/cookie-consent'
+import {CookieConsentBanner} from '@/src/components/shared/cookie-consent_banner'
 import {Footer} from '@/src/components/shared/footer'
 import {Header} from '@/src/components/shared/header'
 import {routing} from '@/src/i18n/routing'
@@ -42,10 +42,6 @@ export const metadata: Metadata = {
   }
 }
 
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({locale}))
-}
-
 export default function LocaleLayout({
   params,
   children
@@ -71,14 +67,22 @@ export default function LocaleLayout({
           </main>
           <Footer />
           <ContactDrawer />
-          <CookieConsent />
+          <CookieConsentBanner />
           <Toaster
             position='top-center'
             mobileOffset={12}
           />
         </NextIntlClientProvider>
-        <Analytics />
+        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => {
+    return {
+      locale
+    }
+  })
 }

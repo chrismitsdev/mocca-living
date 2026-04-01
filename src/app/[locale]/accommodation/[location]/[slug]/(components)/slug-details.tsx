@@ -3,7 +3,7 @@ import {
   IconBadgeWcFilled,
   IconBedFilled,
   IconChevronLeft,
-  IconChevronRight,
+  // IconChevronRight,
   IconMoodKidFilled,
   IconPointFilled,
   IconUserFilled
@@ -23,9 +23,9 @@ import {
 import {Typography} from '@/src/components/ui/typography'
 import {Link} from '@/src/i18n/navigation'
 
-function SlugDetails({slug}: {slug: Slug}) {
-  const t = useTranslations('Pages.Accommodation.Slug.card')
-  const oppositeSlug = slug === 'dimitra' ? 'georgia' : 'dimitra'
+function SlugDetails({slug}: {slug: PropertySlug}) {
+  const t = useTranslations('Pages.accommodation.slug')
+  // const oppositeSlug = slug === 'sea-dimitra' ? 'georgia' : 'dimitra'
 
   return (
     <Section>
@@ -36,58 +36,58 @@ function SlugDetails({slug}: {slug: Slug}) {
               <Button asChild>
                 <Link href='/accommodation'>
                   <IconChevronLeft />
-                  <span>{t('links.back')}</span>
+                  <span>{t('static.back_button')}</span>
                 </Link>
               </Button>
               <Button asChild>
-                <Link
+                {/*<Link
                   href={`/accommodation/${oppositeSlug}`}
                   scroll={false}
                 >
                   <span className='capitalize'>{t('links.next', {slug})}</span>
                   <IconChevronRight />
-                </Link>
+                </Link>*/}
               </Button>
             </div>
-            <CardTitle>{t(`content.${slug}.name`)}</CardTitle>
+            <CardTitle>{t(`${slug}.title`)}</CardTitle>
             <CardDescription className='flex flex-wrap gap-2'>
               <Badge>
                 <IconUserFilled />
-                <span>{t(`content.${slug}.guests`)}</span>
+                <span>{t(`${slug}.guests`)}</span>
               </Badge>
               <Badge>
                 <IconMoodKidFilled />
-                <span>{t(`content.${slug}.child`)}</span>
+                <span>{t(`${slug}.child`)}</span>
               </Badge>
               <Badge>
                 <IconBedFilled />
-                <span>{t(`content.${slug}.bedrooms`)}</span>
+                <span>{t(`${slug}.bedrooms`)}</span>
               </Badge>
               <Badge>
                 <IconBadgeWcFilled />
-                <span>{t(`content.${slug}.bathrooms`)}</span>
+                <span>{t(`${slug}.bathrooms`)}</span>
               </Badge>
               <Badge>
                 <IconArrowAutofitContentFilled />
-                <span>{t(`content.${slug}.area`)}</span>
+                <span>{t(`${slug}.area`)}</span>
               </Badge>
             </CardDescription>
           </CardHeader>
           <CardContent className='space-y-8'>
-            <SlugList data={t(`content.${slug}.layout`)}>
-              {t('header.layout')}
+            <SlugList data={t(`${slug}.layout`)}>
+              {t('static.layout_title')}
             </SlugList>
-            <SlugList data={t(`content.${slug}.amenities.indoor`)}>
-              {t('header.amenities.indoor')}
+            <SlugList data={t(`${slug}.amenities.indoor`)}>
+              {t('static.amenities_indoor_title')}
             </SlugList>
-            <SlugList data={t(`content.${slug}.amenities.outdoor`)}>
-              {t('header.amenities.outdoor')}
+            <SlugList data={t(`${slug}.amenities.outdoor`)}>
+              {t('static.amenities_outdoor_title')}
             </SlugList>
-            <SlugList data={t(`content.${slug}.complementary`)}>
-              {t('header.complementary')}
+            <SlugList data={t(`${slug}.complementary`)}>
+              {t('static.complementary_title')}
             </SlugList>
-            <SlugList data={t(`content.${slug}.request`)}>
-              {t('header.request')}
+            <SlugList data={t(`${slug}.request`)}>
+              {t('static.request_title')}
             </SlugList>
           </CardContent>
         </Card>
@@ -97,7 +97,9 @@ function SlugDetails({slug}: {slug: Slug}) {
 }
 
 function SlugList({data, children}: React.PropsWithChildren<{data: string}>) {
-  const renderedData = data.split(', ').map((entry) => {
+  if (!data) return null
+
+  const renderedData = data.split('|').map((entry) => {
     return (
       <li
         key={entry}

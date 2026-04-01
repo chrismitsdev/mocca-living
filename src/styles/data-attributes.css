@@ -8,8 +8,8 @@
 @custom-variant data-right (&[data-side~="right"]);
 @custom-variant data-bottom (&[data-side~="bottom"]);
 @custom-variant data-left (&[data-side~="left"]);
-@custom-variant data-active (&[state="active"]);
-@custom-variant data-inactive (&[state="inactive"]);
+@custom-variant data-active (&[data-state="active"]);
+@custom-variant data-inactive (&[data-state="inactive"]);
 @custom-variant data-success (&[data-type~="success"]);
 @custom-variant data-error (&[data-type~="error"]);
 @custom-variant data-info (&[data-type~="info"]);

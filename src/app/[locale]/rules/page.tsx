@@ -6,7 +6,7 @@ import {RulesHeader} from './(components)/rules-header'
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
   const {locale} = await params
-  const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
+  const t = await getTranslations({locale, namespace: 'Metadata'})
 
   return {
     title: t('rules')

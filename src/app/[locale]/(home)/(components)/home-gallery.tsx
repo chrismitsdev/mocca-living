@@ -98,7 +98,7 @@ function HomeGallery() {
           <DialogPortal>
             <DialogOverlay />
             <DialogContent
-              className='block-auto'
+              className='block-auto bg-transparent'
               onCloseAutoFocus={(e) => e.preventDefault()}
             >
               <DialogClose

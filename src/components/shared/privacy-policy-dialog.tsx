@@ -31,7 +31,7 @@ function PrivacyPolicyDialog({children}: React.PropsWithChildren) {
         <DialogContent>
           <DialogClose />
           <DialogHeader className='pb-6'>
-            <DialogTitle>{t('Metadata.Pages.privacy')}</DialogTitle>
+            <DialogTitle>{t('Metadata.privacy')}</DialogTitle>
           </DialogHeader>
           <Separator />
           <Scrollarea
@@ -41,14 +41,16 @@ function PrivacyPolicyDialog({children}: React.PropsWithChildren) {
             <ScrollareaViewport>
               <DialogBody className='space-y-4'>
                 <Typography variant='large'>
-                  {t('Pages.Privacy.title')}
+                  {t('Pages.privacy.terms.title')}
                 </Typography>
-                <Typography>{t('Pages.Privacy.content')}</Typography>
+                <Typography>{t('Pages.privacy.terms.description')}</Typography>
                 <Separator />
                 <Typography variant='large'>
-                  {t('Pages.Privacy.sub-title')}
+                  {t('Pages.privacy.agreement.title')}
                 </Typography>
-                <Typography>{t('Pages.Privacy.sub-content')}</Typography>
+                <Typography>
+                  {t('Pages.privacy.agreement.description')}
+                </Typography>
               </DialogBody>
             </ScrollareaViewport>
             <ScrollareaBar />

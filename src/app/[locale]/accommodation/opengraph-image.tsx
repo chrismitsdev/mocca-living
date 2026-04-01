@@ -4,7 +4,7 @@ import {getOpengraphData} from '@/src/lib/get-opengraph-data'
 
 export default async function Image({params}: Params) {
   const {locale} = await params
-  const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
+  const t = await getTranslations({locale, namespace: 'Metadata'})
   const {src, font} = await getOpengraphData()
 
   return new ImageResponse(
@@ -56,7 +56,7 @@ export default async function Image({params}: Params) {
           <path d='M12 4v6' />
           <path d='M2 18h20' />
         </svg>
-        <span>{`${t('accommodation.index')} • Mocca Living`}</span>
+        <span>{`${t('accommodation.title')} • Mocca Living`}</span>
       </p>
     </div>,
     {

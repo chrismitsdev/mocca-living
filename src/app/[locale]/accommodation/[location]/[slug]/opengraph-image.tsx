@@ -6,13 +6,13 @@ import {getOpengraphData} from '@/src/lib/get-opengraph-data'
 type ParamsWithSlug = {
   params: Promise<{
     locale: Locale
-    slug: Slug
+    slug: PropertySlug
   }>
 }
 
 export default async function Image({params}: ParamsWithSlug) {
   const {locale, slug} = await params
-  const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
+  const t = await getTranslations({locale, namespace: 'Metadata'})
   const {src, font} = await getOpengraphData()
 
   return new ImageResponse(
@@ -64,7 +64,7 @@ export default async function Image({params}: ParamsWithSlug) {
           <path d='M12 4v6' />
           <path d='M2 18h20' />
         </svg>
-        <span>{`${t(`accommodation.${slug}`)} • Mocca Living`}</span>
+        <span>{`${t(`accommodation.slug.${slug}.title`)} • Mocca Living`}</span>
       </p>
     </div>,
     {

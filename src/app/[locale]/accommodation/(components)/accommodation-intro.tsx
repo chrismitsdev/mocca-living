@@ -4,7 +4,7 @@ import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
 function AccommodationIntro() {
-  const t = useTranslations('Pages.Accommodation.Index.Intro')
+  const t = useTranslations('Pages.accommodation.index.intro')
 
   return (
     <Container
