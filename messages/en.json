@@ -5,7 +5,7 @@
       "title": "Accommodation",
       "location": {
         "mocca-sea": {
-          "title": "Mocca Sea"
+          "title": "Mocca by the Sea"
         },
         "mocca-city": {
           "title": "Mocca City"
@@ -20,9 +20,9 @@
           "title": "Georgia",
           "description": "Discover villa Georgia, a charming 45m² retreat in Makri for 2-4 adults and 1 child."
         },
-        "city-georgia": {
-          "title": "Georgia",
-          "description": "Discover Georgia, a renovated 50m² apartment in Alexandroupolis for 2 adults and 2 children."
+        "city-dimitra": {
+          "title": "Dimitra",
+          "description": "Discover Dimitra, a renovated 50m² apartment in Alexandroupolis for 2 adults and 2 children."
         }
       }
     },
@@ -61,60 +61,58 @@
           "description": "Whether for short stays or extended retreats, Mocca Living provides a calm and comfortable environment ideal for rest, wellness, and slow-living."
         }
       },
-      "home-distances": {
+      "home-locations": {
         "title": "Distances to key locations",
         "description": "Explore distances to key locations for each Mocca Living property.",
-        "locations": {
-          "mocca-sea": {
-            "label": "Mocca Sea",
-            "intro": "Ideal for a relaxing seaside stay, just steps from the beach with easy access to nearby amenities.",
-            "items": {
-              "charging_station": {
-                "title": "Car charging station – 80 m",
-                "description": "At 80 meters, a charging station serves electric vehicles, providing a practical and reliable solution for convenient daily transportation without hassle."
-              },
-              "beach": {
-                "title": "Agia Paraskevi beach – 100 m",
-                "description": "Just 100 meters away, Agia Paraskevi Beach offers clear waters and ideal conditions for relaxation, swimming, and sunbathing by the sea."
-              },
-              "restaurant": {
-                "title": "Closest restaurant – 100 m",
-                "description": "Within 100 meters, the nearest restaurant offers a pleasant dining experience with a selection of local and international dishes in a comfortable setting."
-              },
-              "city": {
-                "title": "Alexandroupoli – 14 km",
-                "description": "At a distance of 14 km, Alexandroupoli combines modern amenities with local character, featuring a lively seafront, restaurants, and shops for visitors to explore."
-              },
-              "airport": {
-                "title": "Airport – 20 km",
-                "description": "Dimokritos Airport, located 20 km from the properties, offers convenient access for domestic and international travelers, ensuring smooth and comfortable arrivals and departures."
-              }
+        "mocca-sea": {
+          "title": "Mocca by the Sea",
+          "description": "Ideal for a relaxing seaside stay, just steps from the beach with easy access to nearby amenities.",
+          "items": {
+            "charging_station": {
+              "title": "Car charging station ~80 m",
+              "description": "At 80 meters, a charging station serves electric vehicles, providing a practical and reliable solution for convenient daily transportation without hassle."
+            },
+            "beach": {
+              "title": "Agia Paraskevi beach ~100 m",
+              "description": "Just 100 meters away, Agia Paraskevi Beach offers clear waters and ideal conditions for relaxation, swimming, and sunbathing by the sea."
+            },
+            "restaurant": {
+              "title": "Closest restaurant ~100 m",
+              "description": "Within 100 meters, the nearest restaurant offers a pleasant dining experience with a selection of local and international dishes in a comfortable setting."
+            },
+            "city": {
+              "title": "Alexandroupoli ~14 km",
+              "description": "At a distance of 14 km, Alexandroupoli combines modern amenities with local character, featuring a lively seafront, restaurants, and shops for visitors to explore."
+            },
+            "airport": {
+              "title": "Airport ~20 km",
+              "description": "Dimokritos Airport, located 20 km from the properties, offers convenient access for domestic and international travelers, ensuring smooth and comfortable arrivals and departures."
             }
-          },
-          "mocca-city": {
-            "label": "Mocca City",
-            "intro": "Perfect for staying in the heart of Alexandroupoli, with everything within walking distance.",
-            "items": {
-              "city_center": {
-                "title": "City center",
-                "description": "Located directly on Dimokratias Avenue, the apartment sits in the very center of Alexandroupoli, surrounded by shops, cafes, and everyday amenities, allowing guests to fully experience the city's vibrant atmosphere without the need for transportation."
-              },
-              "bus_station": {
-                "title": "Bus station – ~300 m",
-                "description": "The central bus station is just a short walk away, offering easy and reliable connections to nearby areas and regional destinations, making day trips simple and accessible."
-              },
-              "seafront": {
-                "title": "Seafront promenade – ~500 m",
-                "description": "Within a short and pleasant walk, guests can reach the city’s seafront promenade, ideal for relaxing strolls, seaside dining, and enjoying the coastal atmosphere that defines Alexandroupoli."
-              },
-              "port": {
-                "title": "Port of Alexandroupoli – ~1 km",
-                "description": "Approximately 1 km away, the port area offers a lively setting with restaurants, cafes, and connections to nearby destinations, making it a great spot for both leisure and exploration."
-              },
-              "airport": {
-                "title": "Airport – ~7 km",
-                "description": "Located around 7 km from the apartment, Dimokritos Airport provides convenient access for both arrivals and departures, ensuring a smooth and comfortable travel experience."
-              }
+          }
+        },
+        "mocca-city": {
+          "title": "Mocca City",
+          "description": "Perfect for staying in the heart of Alexandroupoli, with everything within walking distance.",
+          "items": {
+            "city_center": {
+              "title": "City center",
+              "description": "Located directly on Dimokratias Avenue, the apartment sits in the very center of Alexandroupoli, surrounded by shops, cafes, and everyday amenities, allowing guests to fully experience the city's vibrant atmosphere without the need for transportation."
+            },
+            "bus_station": {
+              "title": "Bus station ~300 m",
+              "description": "The central bus station is just a short walk away, offering easy and reliable connections to nearby areas and regional destinations, making day trips simple and accessible."
+            },
+            "seafront": {
+              "title": "Seafront promenade ~500 m",
+              "description": "Within a short and pleasant walk, guests can reach the city’s seafront promenade, ideal for relaxing strolls, seaside dining, and enjoying the coastal atmosphere that defines Alexandroupoli."
+            },
+            "port": {
+              "title": "Port of Alexandroupoli ~1 km",
+              "description": "Approximately 1 km away, the port area offers a lively setting with restaurants, cafes, and connections to nearby destinations, making it a great spot for both leisure and exploration."
+            },
+            "airport": {
+              "title": "Airport ~7 km",
+              "description": "Located around 7 km from the apartment, Dimokritos Airport provides convenient access for both arrivals and departures, ensuring a smooth and comfortable travel experience."
             }
           }
         }
@@ -146,9 +144,9 @@
             "bedrooms": "2 Bedrooms",
             "bathrooms": "1 Bathroom"
           },
-          "city-georgia": {
-            "title": "Georgia",
-            "description": "Discover Georgia in Alexandroupolis, a fully renovated 50m² apartment for 2 adults and 2 children. With 1 bedroom, a sofa bed, and views over Leoforos Dimokratias.",
+          "city-dimitra": {
+            "title": "Dimitra",
+            "description": "Discover Dimitra in Alexandroupolis, a fully renovated 50m² apartment for 2 adults and 2 children. With 1 bedroom, a sofa bed, and views over Leoforos Dimokratias.",
             "guests": "2 Adults",
             "children": "2 Children",
             "bedrooms": "1 Bedroom",
@@ -191,8 +189,8 @@
           "complementary": "Welcome assistance procedure|Check-in/out assistance",
           "request": "Two SUP boards for rental|One electric-bike for rental"
         },
-        "city-georgia": {
-          "title": "Georgia",
+        "city-dimitra": {
+          "title": "Dimitra",
           "guests": "2 Adults",
           "child": "2 Children",
           "bedrooms": "1 Bedroom",

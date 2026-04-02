@@ -19,7 +19,7 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
   const {locale, slug} = await params
   const t = await getTranslations({locale, namespace: 'Metadata'})
   const unknownSlug =
-    slug !== 'sea-dimitra' && slug !== 'sea-georgia' && slug !== 'city-georgia'
+    slug !== 'sea-dimitra' && slug !== 'sea-georgia' && slug !== 'city-dimitra'
 
   return {
     title: t(unknownSlug ? 'not_found' : `accommodation.slug.${slug}.title`)
@@ -31,7 +31,7 @@ export default function AccomodationSlugPage({
 }: PageProps<'/[locale]/accommodation/[location]/[slug]'>) {
   const {locale, slug} = use(params as Params['params'])
   const unknownSlug =
-    slug !== 'sea-dimitra' && slug !== 'sea-georgia' && slug !== 'city-georgia'
+    slug !== 'sea-dimitra' && slug !== 'sea-georgia' && slug !== 'city-dimitra'
 
   setRequestLocale(locale)
 
@@ -52,6 +52,6 @@ export function generateStaticParams() {
   return [
     {location: 'mocca-sea', slug: 'sea-dimitra'},
     {location: 'mocca-sea', slug: 'sea-georgia'},
-    {location: 'mocca-city', slug: 'city-georgia'}
+    {location: 'mocca-city', slug: 'city-dimitra'}
   ]
 }

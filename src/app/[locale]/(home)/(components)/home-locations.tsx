@@ -22,7 +22,7 @@ import {
 import {Typography} from '@/src/components/ui/typography'
 
 function HomeLocations() {
-  const t = useTranslations('Pages.home.home-distances')
+  const t = useTranslations('Pages.home.home-locations')
 
   return (
     <Section>
@@ -38,82 +38,66 @@ function HomeLocations() {
         </div>
         <Tabs defaultValue='sea'>
           <TabsList>
-            <TabsTrigger value='sea'>
-              {t('locations.mocca-sea.label')}
-            </TabsTrigger>
-            <TabsTrigger value='city'>
-              {t('locations.mocca-city.label')}
-            </TabsTrigger>
+            <TabsTrigger value='sea'>{t('mocca-sea.title')}</TabsTrigger>
+            <TabsTrigger value='city'>{t('mocca-city.title')}</TabsTrigger>
           </TabsList>
           <TabsContent value='sea'>
-            <Typography>{t('locations.mocca-sea.intro')}</Typography>
+            <Typography>{t('mocca-sea.description')}</Typography>
             <ul className='space-y-10'>
               <LocationItem
-                title={t('locations.mocca-sea.items.charging_station.title')}
-                description={t(
-                  'locations.mocca-sea.items.charging_station.description'
-                )}
+                title={t('mocca-sea.items.charging_station.title')}
+                description={t('mocca-sea.items.charging_station.description')}
                 icon={IconChargingPile}
               />
               <LocationItem
-                title={t('locations.mocca-sea.items.beach.title')}
-                description={t('locations.mocca-sea.items.beach.description')}
+                title={t('mocca-sea.items.beach.title')}
+                description={t('mocca-sea.items.beach.description')}
                 icon={IconBeach}
               />
               <LocationItem
-                title={t('locations.mocca-sea.items.restaurant.title')}
-                description={t(
-                  'locations.mocca-sea.items.restaurant.description'
-                )}
+                title={t('mocca-sea.items.restaurant.title')}
+                description={t('mocca-sea.items.restaurant.description')}
                 icon={IconToolsKitchen3}
               />
               <LocationItem
-                title={t('locations.mocca-sea.items.city.title')}
-                description={t('locations.mocca-sea.items.city.description')}
+                title={t('mocca-sea.items.city.title')}
+                description={t('mocca-sea.items.city.description')}
                 icon={IconBuildingBank}
               />
               <LocationItem
-                title={t('locations.mocca-sea.items.airport.title')}
-                description={t('locations.mocca-sea.items.airport.description')}
+                title={t('mocca-sea.items.airport.title')}
+                description={t('mocca-sea.items.airport.description')}
                 icon={IconPlane}
               />
             </ul>
           </TabsContent>
           <TabsContent value='city'>
-            <Typography>{t('locations.mocca-city.intro')}</Typography>
+            <Typography>{t('mocca-city.description')}</Typography>
             <ul className='space-y-10'>
               <LocationItem
-                title={t('locations.mocca-city.items.city_center.title')}
-                description={t(
-                  'locations.mocca-city.items.city_center.description'
-                )}
+                title={t('mocca-city.items.city_center.title')}
+                description={t('mocca-city.items.city_center.description')}
                 icon={IconBuildingBank}
               />
               <LocationItem
-                title={t('locations.mocca-city.items.seafront.title')}
-                description={t(
-                  'locations.mocca-city.items.seafront.description'
-                )}
+                title={t('mocca-city.items.bus_station.title')}
+                description={t('mocca-city.items.bus_station.description')}
+                icon={IconBus}
+              />
+              <LocationItem
+                title={t('mocca-city.items.seafront.title')}
+                description={t('mocca-city.items.seafront.description')}
                 icon={IconWalk}
               />
               <LocationItem
-                title={t('locations.mocca-city.items.port.title')}
-                description={t('locations.mocca-city.items.port.description')}
+                title={t('mocca-city.items.port.title')}
+                description={t('mocca-city.items.port.description')}
                 icon={IconFerry}
               />
               <LocationItem
-                title={t('locations.mocca-city.items.airport.title')}
-                description={t(
-                  'locations.mocca-city.items.airport.description'
-                )}
+                title={t('mocca-city.items.airport.title')}
+                description={t('mocca-city.items.airport.description')}
                 icon={IconPlane}
-              />
-              <LocationItem
-                title={t('locations.mocca-city.items.bus_station.title')}
-                description={t(
-                  'locations.mocca-city.items.bus_station.description'
-                )}
-                icon={IconBus}
               />
             </ul>
           </TabsContent>

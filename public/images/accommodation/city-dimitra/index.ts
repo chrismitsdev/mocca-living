@@ -12,7 +12,7 @@ import image11 from './11.webp'
 import image12 from './12.webp'
 import image13 from './13.webp'
 
-export const georgiaCityImages = [
+export const dimitraCityImages = [
   image1,
   image2,
   image3,

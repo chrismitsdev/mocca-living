@@ -1,5 +1,5 @@
 import type {StaticImageData} from 'next/image'
-import {georgiaCityImages} from '@/public/images/accommodation/city-georgia'
+import {dimitraCityImages} from '@/public/images/accommodation/city-dimitra'
 import {dimitraSeaImages} from '@/public/images/accommodation/sea-dimitra'
 import {georgiaSeaImages} from '@/public/images/accommodation/sea-georgia'
 import {
@@ -17,7 +17,7 @@ import {CustomImage} from '@/src/components/ui/custom-image'
 const slugImages: Record<PropertySlug, StaticImageData[]> = {
   'sea-dimitra': dimitraSeaImages,
   'sea-georgia': georgiaSeaImages,
-  'city-georgia': georgiaCityImages
+  'city-dimitra': dimitraCityImages
 }
 
 function SlugCarousel({slug}: {slug: PropertySlug}) {

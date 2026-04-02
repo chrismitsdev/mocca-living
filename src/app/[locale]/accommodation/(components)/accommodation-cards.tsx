@@ -7,7 +7,7 @@ import {
 import type {StaticImageData} from 'next/image'
 import {useTranslations} from 'next-intl'
 import {
-  cityGeorgiaCover,
+  cityDimitraCover,
   seaDimitraCover,
   seaGeorgiaCover
 } from '@/public/images/covers'
@@ -40,7 +40,7 @@ const data: {location: PropertyLocation; slugs: PropertyCard[]}[] = [
   },
   {
     location: 'mocca-city',
-    slugs: [{key: 'city-georgia', cover: cityGeorgiaCover}]
+    slugs: [{key: 'city-dimitra', cover: cityDimitraCover}]
   }
 ]
 
@@ -141,110 +141,3 @@ function AccommodationCards() {
 AccommodationCards.displayName = 'AccommodationCards'
 
 export {AccommodationCards}
-
-// import {
-//   IconBadgeWcFilled,
-//   IconBedFilled,
-//   IconMoodKidFilled,
-//   IconUserFilled
-// } from '@tabler/icons-react'
-// import type {StaticImageData} from 'next/image'
-// import {useTranslations} from 'next-intl'
-// import {
-//   cityGeorgiaCover,
-//   seaDimitraCover,
-//   seaGeorgiaCover
-// } from '@/public/images/covers'
-// import {Container} from '@/src/components/shared/container'
-// import {Section} from '@/src/components/shared/section'
-// import {Badge} from '@/src/components/ui/badge'
-// import {Button} from '@/src/components/ui/button'
-// import {
-//   Card,
-//   CardContent,
-//   CardDescription,
-//   CardFooter,
-//   CardHeader,
-//   CardTitle
-// } from '@/src/components/ui/card'
-// import {CustomImage} from '@/src/components/ui/custom-image'
-// import {Typography} from '@/src/components/ui/typography'
-// import {Link} from '@/src/i18n/navigation'
-// import {CITY_GEORGIA_GMAP, SEA_GMAP} from '@/src/lib/utils'
-
-// type PropertyCard = {key: PropertySlug; cover: StaticImageData}
-
-// const slugs: PropertyCard[] = [
-//   {key: 'sea-dimitra', cover: seaDimitraCover},
-//   {key: 'sea-georgia', cover: seaGeorgiaCover},
-//   {key: 'city-georgia', cover: cityGeorgiaCover}
-// ]
-
-// function AccommodationCards() {
-//   const t = useTranslations('Pages.accommodation.index.cards')
-
-//   const renderedCards = slugs.map(({key, cover}) => {
-//     return (
-//       <Card key={key}>
-//         <CustomImage
-//           className='block-auto min-block-80'
-//           src={cover}
-//           alt={`${key} indoor image`}
-//           sizes='(min-width: 640px) 730px, 343px'
-//         />
-//         <CardHeader>
-//           <CardTitle>{t(`${key}.title`)}</CardTitle>
-//           <CardDescription className='grid grid-cols-2 gap-2'>
-//             <Badge>
-//               <IconUserFilled />
-//               <span>{t(`${key}.guests`)}</span>
-//             </Badge>
-//             <Badge>
-//               <IconMoodKidFilled />
-//               <span>{t(`${key}.children`)}</span>
-//             </Badge>
-//             <Badge>
-//               <IconBedFilled />
-//               <span>{t(`${key}.bedrooms`)}</span>
-//             </Badge>
-//             <Badge>
-//               <IconBadgeWcFilled />
-//               <span>{t(`${key}.bathrooms`)}</span>
-//             </Badge>
-//           </CardDescription>
-//         </CardHeader>
-//         <CardContent>
-//           <Typography>{t(`${key}.description`)}</Typography>
-//         </CardContent>
-//         <CardFooter className='flex flex-wrap justify-between'>
-//           <Button asChild>
-//             <Link
-//               href={key.includes('sea') ? SEA_GMAP : CITY_GEORGIA_GMAP}
-//               target='_blank'
-//               rel='noopener noreferrer'
-//             >
-//               {t(`location-button`)}
-//             </Link>
-//           </Button>
-//           <Button asChild>
-//             <Link href={`/accommodation/${key.split('-')[0]}/${key}`}>
-//               {t(`more-button`)}
-//             </Link>
-//           </Button>
-//         </CardFooter>
-//       </Card>
-//     )
-//   })
-
-//   return (
-//     <Section>
-//       <Container>
-//         <div className='grid gap-10 md:grid-cols-3'>{renderedCards}</div>
-//       </Container>
-//     </Section>
-//   )
-// }
-
-// AccommodationCards.displayName = 'AccommodationCards'
-
-// export {AccommodationCards}

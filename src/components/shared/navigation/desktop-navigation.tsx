@@ -1,7 +1,7 @@
 import {IconDotsVertical} from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
 import {
-  cityGeorgiaCover,
+  cityDimitraCover,
   seaDimitraCover,
   seaGeorgiaCover
 } from '@/public/images/covers'
@@ -83,19 +83,19 @@ function DesktopNavigation() {
                   </Link>
                 </li>
                 <li>
-                  <Link href='/accommodation/city/city-georgia'>
+                  <Link href='/accommodation/city/city-dimitra'>
                     <article className='p-2 space-y-2 hover:bg-surface-3'>
                       <CustomImage
                         className='aspect-square'
-                        src={cityGeorgiaCover}
+                        src={cityDimitraCover}
                         alt='Mocca City Georgia cover image'
                         sizes='200px'
                       />
                       <Typography variant='large'>
-                        {t('accommodation.slug.city-georgia.title')}
+                        {t('accommodation.slug.city-dimitra.title')}
                       </Typography>
                       <Typography variant='small'>
-                        {t('accommodation.slug.city-georgia.description')}
+                        {t('accommodation.slug.city-dimitra.description')}
                       </Typography>
                     </article>
                   </Link>

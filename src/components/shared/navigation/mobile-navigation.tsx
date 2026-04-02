@@ -5,7 +5,7 @@ import {
 } from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
 import {
-  cityGeorgiaCover,
+  cityDimitraCover,
   seaDimitraCover,
   seaGeorgiaCover
 } from '@/public/images/covers'
@@ -139,20 +139,20 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                       <li>
                         <Link
                           className='p-1 flex gap-4'
-                          href='/accommodation/city/city-georgia'
+                          href='/accommodation/city/city-dimitra'
                         >
                           <CustomImage
                             className='shrink-0 block-auto inline-16'
-                            src={cityGeorgiaCover}
+                            src={cityDimitraCover}
                             alt='Mocca City Georgia cover image'
                             sizes='96px'
                           />
                           <div>
                             <Typography variant='large'>
-                              {t('accommodation.slug.city-georgia.title')}
+                              {t('accommodation.slug.city-dimitra.title')}
                             </Typography>
                             <Typography variant='small'>
-                              {t('accommodation.slug.city-georgia.description')}
+                              {t('accommodation.slug.city-dimitra.description')}
                             </Typography>
                           </div>
                         </Link>

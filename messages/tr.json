@@ -5,7 +5,7 @@
       "title": "Konaklama",
       "location": {
         "mocca-sea": {
-          "title": "Mocca Sea"
+          "title": "Mocca by the Sea"
         },
         "mocca-city": {
           "title": "Mocca City"
@@ -20,9 +20,9 @@
           "title": "Georgia",
           "description": "Makri'de 2-4 yetişkin ve 1 çocuk için şirin bir 45m² sığınak olan Villa Georgia'yı keşfedin."
         },
-        "city-georgia": {
-          "title": "Georgia",
-          "description": "Aleksandrupolis'te 2 yetişkin ve 2 çocuk için yenilenmiş 50m²'lik Georgia dairesini keşfedin."
+        "city-dimitra": {
+          "title": "Dimitra",
+          "description": "Aleksandrupolis'te 2 yetişkin ve 2 çocuk için yenilenmiş 50m²'lik Dimitra dairesini keşfedin."
         }
       }
     },
@@ -61,60 +61,58 @@
           "description": "Kısa konaklamalar veya uzun süreli kaçamaklar için, Mocca Living dinlenme, wellness ve yavaş yaşam için ideal, sakin ve konforlu bir ortam sunar."
         }
       },
-      "home-distances": {
+      "home-locations": {
         "title": "Önemli noktalara mesafeler",
         "description": "Her Mocca Living konaklaması için önemli noktalara olan mesafeleri keşfedin.",
-        "locations": {
-          "mocca-sea": {
-            "label": "Mocca Sea",
-            "intro": "Plaja sadece birkaç adım mesafede, olanaklara kolay erişimle huzurlu bir sahil konaklaması için ideal.",
-            "items": {
-              "charging_station": {
-                "title": "Araç şarj istasyonu – 80 m",
-                "description": "80 metre uzaklıktaki şarj istasyonu, elektrikli araçlar için pratik ve güvenilir bir çözüm sunarak günlük ulaşımı kolaylaştırır."
-              },
-              "beach": {
-                "title": "Agia Paraskevi Plajı – 100 m",
-                "description": "Sadece 100 metre uzaklıktaki Agia Paraskevi Plajı, berrak suları ile dinlenme, yüzme ve güneşlenme için ideal bir sahil deneyimi sunar."
-              },
-              "restaurant": {
-                "title": "En yakın restoran – 100 m",
-                "description": "100 metre mesafedeki en yakın restoran, yerel ve uluslararası lezzetler sunarak konforlu bir ortamda keyifli bir yemek deneyimi sağlar."
-              },
-              "city": {
-                "title": "Dedeağaç – 14 km",
-                "description": "14 km uzaklıktaki Dedeağaç, modern olanaklar ile yerel atmosferi bir araya getirir; sahil, restoranlar ve mağazalar ziyaretçiler için keyifli bir ortam sunar."
-              },
-              "airport": {
-                "title": "Havalimanı – 20 km",
-                "description": "Mülklere 20 km uzaklıktaki Demokritos Havalimanı, yurt içi ve uluslararası yolculara sorunsuz ve konforlu varış ve kalkışlar sağlayarak kolay erişim sunmaktadır."
-              }
+        "mocca-sea": {
+          "title": "Mocca by the Sea",
+          "description": "Plaja sadece birkaç adım mesafede, olanaklara kolay erişimle huzurlu bir sahil konaklaması için ideal.",
+          "items": {
+            "charging_station": {
+              "title": "Araç şarj istasyonu ~80 m",
+              "description": "80 metre uzaklıktaki şarj istasyonu, elektrikli araçlar için pratik ve güvenilir bir çözüm sunarak günlük ulaşımı kolaylaştırır."
+            },
+            "beach": {
+              "title": "Agia Paraskevi Plajı ~100 m",
+              "description": "Sadece 100 metre uzaklıktaki Agia Paraskevi Plajı, berrak suları ile dinlenme, yüzme ve güneşlenme için ideal bir sahil deneyimi sunar."
+            },
+            "restaurant": {
+              "title": "En yakın restoran ~100 m",
+              "description": "100 metre mesafedeki en yakın restoran, yerel ve uluslararası lezzetler sunarak konforlu bir ortamda keyifli bir yemek deneyimi sağlar."
+            },
+            "city": {
+              "title": "Dedeağaç ~14 km",
+              "description": "14 km uzaklıktaki Dedeağaç, modern olanaklar ile yerel atmosferi bir araya getirir; sahil, restoranlar ve mağazalar ziyaretçiler için keyifli bir ortam sunar."
+            },
+            "airport": {
+              "title": "Havalimanı ~20 km",
+              "description": "Mülklere 20 km uzaklıktaki Demokritos Havalimanı, yurt içi ve uluslararası yolculara sorunsuz ve konforlu varış ve kalkışlar sağlayarak kolay erişim sunmaktadır."
             }
-          },
-          "mocca-city": {
-            "label": "Mocca City",
-            "intro": "Her şeyin yürüme mesafesinde olduğu Alexandroupoli merkezinde konaklamak için ideal.",
-            "items": {
-              "city_center": {
-                "title": "Şehir merkezi",
-                "description": "Dimokratias Caddesi üzerinde, Dedeağaç’ın tam merkezinde yer almaktadır."
-              },
-              "bus_station": {
-                "title": "Otobüs terminali – ~300 m",
-                "description": "Otobüs terminali yürüme mesafesindedir ve kolay ulaşım imkanı sunar."
-              },
-              "seafront": {
-                "title": "Sahil yolu – ~500 m",
-                "description": "Kısa bir yürüyüşle sahil yoluna ulaşabilir, yürüyüş ve dinlenmenin keyfini çıkarabilirsiniz."
-              },
-              "port": {
-                "title": "Dedeağaç Limanı – ~1 km",
-                "description": "Yaklaşık 1 km uzaklıktaki liman, restoranlar ve kafeler ile canlı bir ortam sunar."
-              },
-              "airport": {
-                "title": "Havalimanı – ~7 km",
-                "description": "Havalimanına kısa sürede ulaşım sağlanabilir."
-              }
+          }
+        },
+        "mocca-city": {
+          "title": "Mocca City",
+          "description": "Her şeyin yürüme mesafesinde olduğu Alexandroupoli merkezinde konaklamak için ideal.",
+          "items": {
+            "city_center": {
+              "title": "Şehir merkezi",
+              "description": "Dimokratias Caddesi üzerinde, Dedeağaç’ın tam merkezinde yer almaktadır."
+            },
+            "bus_station": {
+              "title": "Otobüs terminali ~300 m",
+              "description": "Otobüs terminali yürüme mesafesindedir ve kolay ulaşım imkanı sunar."
+            },
+            "seafront": {
+              "title": "Sahil yolu ~500 m",
+              "description": "Kısa bir yürüyüşle sahil yoluna ulaşabilir, yürüyüş ve dinlenmenin keyfini çıkarabilirsiniz."
+            },
+            "port": {
+              "title": "Dedeağaç Limanı ~1 km",
+              "description": "Yaklaşık 1 km uzaklıktaki liman, restoranlar ve kafeler ile canlı bir ortam sunar."
+            },
+            "airport": {
+              "title": "Havalimanı ~7 km",
+              "description": "Havalimanına kısa sürede ulaşım sağlanabilir."
             }
           }
         }
@@ -146,9 +144,9 @@
             "bedrooms": "2 Yatak Odası",
             "bathrooms": "1 Banyo"
           },
-          "city-georgia": {
-            "title": "Georgia",
-            "description": "Aleksandrupolis'teki Georgia'yı keşfedin, 2 yetişkin ve 2 çocuk için tam yenilenmiş 50m²'lik bir daire. 1 yatak odası, kanepe yatağı ve Leoforos Dimokratias manzarasıyla.",
+          "city-dimitra": {
+            "title": "Dimitra",
+            "description": "Aleksandrupolis'teki Dimitra'yı keşfedin, 2 yetişkin ve 2 çocuk için tam yenilenmiş 50m²'lik bir daire. 1 yatak odası, kanepe yatağı ve Leoforos Dimokratias manzarasıyla.",
             "guests": "2 Yetişkin",
             "children": "2 Çocuk",
             "bedrooms": "1 Yatak Odası",
@@ -191,8 +189,8 @@
           "complementary": "Karşılama yardım prosedürü|Check-in/out yardımı",
           "request": "Kiralık iki SUP tahtası|Kiralık bir elektrikli bisiklet"
         },
-        "city-georgia": {
-          "title": "Georgia",
+        "city-dimitra": {
+          "title": "Dimitra",
           "guests": "2 Yetişkin",
           "child": "2 Çocuk",
           "bedrooms": "1 Yatak Odası",

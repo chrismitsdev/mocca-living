@@ -1,6 +1,6 @@
 import {useTranslations} from 'next-intl'
 import {
-  cityGeorgiaCover,
+  cityDimitraCover,
   seaDimitraCover,
   seaGeorgiaCover
 } from '@/public/images/covers'
@@ -35,7 +35,7 @@ function HomeReasons() {
             />
             <CustomImage
               className='aspect-3/4 block-96'
-              src={cityGeorgiaCover}
+              src={cityDimitraCover}
               alt='Mocca City Georgia villa'
             />
             <CustomImage
