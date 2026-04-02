@@ -3,6 +3,7 @@ import {notFound} from 'next/navigation'
 import type {Locale} from 'next-intl'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {use} from 'react'
+import {isValidLocation} from '@/src/lib/utils'
 
 type Params = {
   params: Promise<{
@@ -14,32 +15,28 @@ type Params = {
 export async function generateMetadata({params}: Params): Promise<Metadata> {
   const {locale, location} = await params
   const t = await getTranslations({locale, namespace: 'Metadata'})
-  const unknownLocation = location !== 'mocca-sea' && location !== 'mocca-city'
+  const validLocation = isValidLocation(location)
 
   return {
     title: t(
-      unknownLocation ? 'not_found' : `accommodation.location.${location}.title`
+      validLocation ? `accommodation.location.${location}.title` : 'not_found'
     )
   }
 }
 
 export default function AccomodationLocationPage({params}: Params) {
   const {locale, location} = use(params as Params['params'])
-  const unknownLocation = location !== 'mocca-sea' && location !== 'mocca-city'
+  const validLocation = isValidLocation(location)
 
   setRequestLocale(locale)
 
-  if (unknownLocation) {
+  if (!validLocation) {
     notFound()
   }
 
-  return (
-    <div>
-      <h1>{location}</h1>
-    </div>
-  )
+  return null
 }
 
-export function generateStaticParams() {
+export function generateStaticParams(): {location: PropertyLocation}[] {
   return [{location: 'mocca-sea'}, {location: 'mocca-city'}]
 }

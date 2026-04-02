@@ -116,7 +116,7 @@ function AccommodationCards() {
                     </Link>
                   </Button>
                   <Button asChild>
-                    <Link href={`/accommodation/${key.split('-')[0]}/${key}`}>
+                    <Link href={`/accommodation/${location}/${key}`}>
                       {t(`Pages.accommodation.index.cards.static.more_button`)}
                     </Link>
                   </Button>

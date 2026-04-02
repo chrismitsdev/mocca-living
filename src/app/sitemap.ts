@@ -12,13 +12,19 @@ const host =
 
 const routes = [
   'accommodation',
-  'accommodation/dimitra',
-  'accommodation/georgia',
+  'accommodation/mocca-sea/sea-dimitra',
+  'accommodation/mocca-sea/sea-georgia',
+  'accommodation/mocca-city/city-dimitra',
   'contact',
   'privacy',
   'cookies',
   'rules'
 ]
+
+function getUrl(href: Href, locale: Locale) {
+  const pathname = getPathname({locale, href})
+  return host + pathname
+}
 
 function getEntry(href: Href): MetadataRoute.Sitemap[0] {
   return {
@@ -32,11 +38,6 @@ function getEntry(href: Href): MetadataRoute.Sitemap[0] {
   }
 }
 
-function getUrl(href: Href, locale: Locale) {
-  const pathname = getPathname({locale, href})
-  return host + pathname
-}
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [getEntry('/'), ...routes.map((s) => getEntry(`/${s}`))]
+  return [getEntry('/'), ...routes.map((route) => getEntry(`/${route}`))]
 }

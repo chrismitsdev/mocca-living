@@ -97,7 +97,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                       <li>
                         <Link
                           className='p-1 flex gap-4'
-                          href='/accommodation/sea/sea-dimitra'
+                          href='/accommodation/mocca-sea/sea-dimitra'
                         >
                           <CustomImage
                             className='shrink-0 block-auto inline-16'
@@ -118,7 +118,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                       <li>
                         <Link
                           className='p-1 flex gap-4'
-                          href='/accommodation/sea/sea-georgia'
+                          href='/accommodation/mocca-sea/sea-georgia'
                         >
                           <CustomImage
                             className='shrink-0 block-auto inline-16'
@@ -139,7 +139,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                       <li>
                         <Link
                           className='p-1 flex gap-4'
-                          href='/accommodation/city/city-dimitra'
+                          href='/accommodation/mocca-city/city-dimitra'
                         >
                           <CustomImage
                             className='shrink-0 block-auto inline-16'

@@ -47,7 +47,7 @@ function DesktopNavigation() {
             >
               <ul className='grid grid-cols-3 auto-rows-fr'>
                 <li>
-                  <Link href='/accommodation/sea/sea-dimitra'>
+                  <Link href='/accommodation/mocca-sea/sea-dimitra'>
                     <article className='p-2 space-y-2 hover:bg-surface-3'>
                       <CustomImage
                         className='aspect-square'
@@ -65,7 +65,7 @@ function DesktopNavigation() {
                   </Link>
                 </li>
                 <li>
-                  <Link href='/accommodation/sea/sea-georgia'>
+                  <Link href='/accommodation/mocca-sea/sea-georgia'>
                     <article className='p-2 space-y-2 hover:bg-surface-3'>
                       <CustomImage
                         className='aspect-square'
@@ -83,7 +83,7 @@ function DesktopNavigation() {
                   </Link>
                 </li>
                 <li>
-                  <Link href='/accommodation/city/city-dimitra'>
+                  <Link href='/accommodation/mocca-city/city-dimitra'>
                     <article className='p-2 space-y-2 hover:bg-surface-3'>
                       <CustomImage
                         className='aspect-square'
