@@ -54,6 +54,13 @@ export default function AccomodationSlugPage({
   )
 }
 
-export function generateStaticParams(): {slug: PropertySlug}[] {
-  return [{slug: 'sea-dimitra'}, {slug: 'sea-georgia'}, {slug: 'city-dimitra'}]
+export function generateStaticParams(): {
+  location: PropertyLocation
+  slug: PropertySlug
+}[] {
+  return [
+    {location: 'mocca-sea', slug: 'sea-dimitra'},
+    {location: 'mocca-sea', slug: 'sea-georgia'},
+    {location: 'mocca-city', slug: 'city-dimitra'}
+  ]
 }
