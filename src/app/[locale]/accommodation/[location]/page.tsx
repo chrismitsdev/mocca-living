@@ -39,3 +39,7 @@ export default function AccomodationLocationPage({params}: Params) {
     </div>
   )
 }
+
+export function generateStaticParams() {
+  return [{location: 'mocca-sea'}, {location: 'mocca-city'}]
+}
