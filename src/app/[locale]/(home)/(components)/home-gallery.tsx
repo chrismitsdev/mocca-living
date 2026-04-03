@@ -148,7 +148,6 @@ function HomeGalleryTrigger({
         src={src}
         alt={alt}
         sizes={sizes}
-        quality={60}
       />
       <span className='hidden absolute inset-0 content-center group-hover:block'>
         <IconMaximize className='mx-auto size-8 text-primary-foreground' />

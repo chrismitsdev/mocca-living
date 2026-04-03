@@ -2,7 +2,6 @@ import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
 import type {Locale} from 'next-intl'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
-import {use} from 'react'
 import {isValidLocation} from '@/src/lib/utils'
 import {SlugCarousel} from './(components)/slug-carousel'
 import {SlugDetails} from './(components)/slug-details'
@@ -32,10 +31,10 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
   }
 }
 
-export default function AccomodationSlugPage({
+export default async function AccomodationSlugPage({
   params
 }: PageProps<'/[locale]/accommodation/[location]/[slug]'>) {
-  const {locale, location, slug} = use(params as Params['params'])
+  const {locale, location, slug} = await (params as Params['params'])
   const valid =
     isValidLocation(location) && slugsByLocation[location].includes(slug)
 

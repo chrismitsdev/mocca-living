@@ -1,6 +1,5 @@
 import type {Metadata} from 'next'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
-import {use} from 'react'
 import {ContactForm} from './(components)/contact-form'
 import {ContactHeader} from './(components)/contact-header'
 import ContactMap from './(components)/contact-map'
@@ -15,8 +14,10 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
   }
 }
 
-export default function ContactPage({params}: PageProps<'/[locale]/contact'>) {
-  const {locale} = use(params as Params['params'])
+export default async function ContactPage({
+  params
+}: PageProps<'/[locale]/contact'>) {
+  const {locale} = await (params as Params['params'])
 
   setRequestLocale(locale)
 

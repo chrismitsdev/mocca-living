@@ -7,18 +7,24 @@ import {DesktopNavigation} from './desktop-navigation'
 import {MobileNavigation} from './mobile-navigation'
 
 function Navigation() {
+  const [popupOpen, setPopupOpen] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
   const pathname = usePathname()
   useScrollLock({autoLock: drawerOpen})
 
   useEffect(() => {
     if (!pathname) return
+
+    setPopupOpen(false)
     setDrawerOpen(false)
   }, [pathname])
 
   return (
     <>
-      <DesktopNavigation />
+      <DesktopNavigation
+        open={popupOpen}
+        onOpenChange={setPopupOpen}
+      />
       <MobileNavigation
         open={drawerOpen}
         onOpenChange={setDrawerOpen}

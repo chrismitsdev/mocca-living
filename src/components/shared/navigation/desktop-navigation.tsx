@@ -12,7 +12,12 @@ import {Typography} from '@/src/components/ui/typography'
 import {Link} from '@/src/i18n/navigation'
 import {NavigationListItemLink} from './navigation-list-item-link'
 
-function DesktopNavigation() {
+type DesktopNavigationProps = {
+  open: boolean
+  onOpenChange: (open: boolean) => void
+}
+
+function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
   const t = useTranslations('Metadata')
 
   return (
@@ -31,7 +36,10 @@ function DesktopNavigation() {
           href='/accommodation'
           label={t('accommodation.title')}
         >
-          <Popup>
+          <Popup
+            open={open}
+            onOpenChange={onOpenChange}
+          >
             <PopupTrigger asChild>
               <IconButton
                 aria-label='Open accomodation popup'

@@ -5,7 +5,6 @@ import {Inter} from 'next/font/google'
 import {notFound} from 'next/navigation'
 import {hasLocale, NextIntlClientProvider} from 'next-intl'
 import {setRequestLocale} from 'next-intl/server'
-import {use} from 'react'
 import {Toaster} from 'sonner'
 import {ColumnsTransition} from '@/src/components/shared/columns-transition'
 import {ContactDrawer} from '@/src/components/shared/contact-drawer'
@@ -42,11 +41,11 @@ export const metadata: Metadata = {
   }
 }
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   params,
   children
 }: LayoutProps<'/[locale]'>) {
-  const {locale} = use(params as Params['params'])
+  const {locale} = await params
 
   if (!hasLocale(routing.locales, locale)) {
     notFound()

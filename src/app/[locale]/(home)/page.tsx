@@ -1,6 +1,5 @@
 import type {Metadata} from 'next'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
-import {use} from 'react'
 import {HomeCarousel} from './(components)/home-carousel'
 import {HomeGallery} from './(components)/home-gallery'
 import {HomeHeader} from './(components)/home-header'
@@ -17,8 +16,8 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
   }
 }
 
-export default function HomePage({params}: PageProps<'/[locale]'>) {
-  const {locale} = use(params as Params['params'])
+export default async function HomePage({params}: PageProps<'/[locale]'>) {
+  const {locale} = await (params as Params['params'])
 
   setRequestLocale(locale)
 

@@ -2,7 +2,6 @@ import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
 import type {Locale} from 'next-intl'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
-import {use} from 'react'
 import {isValidLocation} from '@/src/lib/utils'
 
 type Params = {
@@ -24,8 +23,8 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
   }
 }
 
-export default function AccomodationLocationPage({params}: Params) {
-  const {locale, location} = use(params as Params['params'])
+export default async function AccomodationLocationPage({params}: Params) {
+  const {locale, location} = await (params as Params['params'])
   const validLocation = isValidLocation(location)
 
   setRequestLocale(locale)
