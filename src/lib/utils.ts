@@ -17,3 +17,4 @@ export function isValidLocation(
 
 export const SEA_GMAP = 'https://maps.app.goo.gl/L6JEySni2t8jnb5m9'
 export const CITY_GEORGIA_GMAP = 'https://maps.app.goo.gl/pLsA8svYzYq5Z9GK9'
+export const PHONE = '+306973433980'

@@ -20,8 +20,7 @@ import {
 import {IconButton} from '@/src/components/ui/icon-button'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
-
-const PHONE = '+306973560007'
+import {PHONE} from '@/src/lib/utils'
 
 function ContactDrawer() {
   const t = useTranslations('Components.contact_drawer')
