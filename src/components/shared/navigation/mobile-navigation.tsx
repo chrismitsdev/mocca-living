@@ -39,7 +39,6 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
   return (
     <div className='flex items-center gap-2 sm:hidden'>
       <Button
-        variant='ghost'
         size='small'
         asChild
       >
