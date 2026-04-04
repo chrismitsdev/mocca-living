@@ -25,14 +25,9 @@ function Footer() {
             alt='Mocca Living footer logo'
           />
           <FooterColumn title={t('row-1.info-column.title')}>
-            <FooterLink href='tel:+306973560007'>
-              <Typography variant='small'>
-                {t('row-1.info-column.tel-1')}
-              </Typography>
-            </FooterLink>
             <FooterLink href='tel:+306973433980'>
               <Typography variant='small'>
-                {t('row-1.info-column.tel-2')}
+                {t('row-1.info-column.phone')}
               </Typography>
             </FooterLink>
             <FooterLink
