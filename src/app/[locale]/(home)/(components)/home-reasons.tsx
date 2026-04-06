@@ -24,27 +24,27 @@ function HomeReasons() {
         <ScrollareaViewport>
           <div className='px-3 inline-max grid grid-flow-col gap-x-3'>
             <CustomImage
-              className='aspect-3/4 block-96'
+              className='aspect-3/4 inline-[calc(100vw-24px)]'
               src={seaDimitraCover}
               alt='Mocca Sea Dimitra cover'
             />
             <CustomImage
-              className='aspect-3/4 block-96'
+              className='aspect-3/4 inline-[calc(100vw-24px)]'
               src={homeReasonsImages[0]}
               alt='Handmade ceramic cups and a bowl on a dark round table'
             />
             <CustomImage
-              className='aspect-3/4 block-96'
+              className='aspect-3/4 inline-[calc(100vw-24px)]'
               src={cityDimitraCover}
               alt='Mocca City Georgia villa'
             />
             <CustomImage
-              className='aspect-3/4 block-96'
+              className='aspect-3/4 inline-[calc(100vw-24px)]'
               src={homeReasonsImages[1]}
               alt='Handmade ceramic cups arranged on a wooden shelf'
             />
             <CustomImage
-              className='aspect-3/4 block-96'
+              className='aspect-3/4 inline-[calc(100vw-24px)]'
               src={seaGeorgiaCover}
               alt='Mocca Sea Georgia cover'
             />
