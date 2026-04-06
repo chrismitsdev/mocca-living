@@ -18,7 +18,12 @@ function HomeIntro() {
         >
           <h2>{t('title')}</h2>
         </Typography>
-        <Typography>{t('message')}</Typography>
+        <Typography>
+          {t.rich('message', {
+            br: () => <br />,
+            strong: (text) => <span className='font-bold'>{text}</span>
+          })}
+        </Typography>
       </Section>
     </Container>
   )
