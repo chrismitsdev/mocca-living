@@ -8,7 +8,7 @@ import {setRequestLocale} from 'next-intl/server'
 import {Toaster} from 'sonner'
 import {ColumnsTransition} from '@/src/components/shared/columns-transition'
 import {ContactDrawer} from '@/src/components/shared/contact-drawer'
-import {CookieConsentBanner} from '@/src/components/shared/cookie-consent_banner'
+import {CookieBanner} from '@/src/components/shared/cookie-banner'
 import {Footer} from '@/src/components/shared/footer'
 import {Header} from '@/src/components/shared/header'
 import {routing} from '@/src/i18n/routing'
@@ -66,7 +66,7 @@ export default async function LocaleLayout({
           </main>
           <Footer />
           <ContactDrawer />
-          <CookieConsentBanner />
+          <CookieBanner />
           <Toaster
             position='top-center'
             mobileOffset={12}

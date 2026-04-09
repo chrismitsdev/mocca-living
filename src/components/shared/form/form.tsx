@@ -16,9 +16,9 @@ import {Input} from '@/src/components/ui/input'
 import {Label} from '@/src/components/ui/label'
 import {Textarea} from '@/src/components/ui/textarea'
 import {toast} from '@/src/components/ui/toast'
-import {Typography} from '@/src/components/ui/typography'
 import {type ContactFormActionState, contactFormAction} from '@/src/lib/actions'
-import {cn} from '@/src/lib/utils'
+import {FormControl} from './form-control'
+import {HoneyPot} from './honeypot'
 
 const initialState = {
   data: {} as ContactFormActionState['data'],
@@ -36,19 +36,15 @@ function Form() {
   useEffect(() => {
     if (state.ok === null) return
 
-    if (state.ok) {
-      toast({
-        title: t('toast.success.title'),
-        description: t('toast.success.description'),
-        status: 'success'
-      })
-    } else if (!state.ok) {
-      toast({
-        title: t(`toast.error.${state.type}.title`),
-        description: t(`toast.error.${state.type}.description`),
-        status: 'error'
-      })
-    }
+    toast({
+      title: state.ok
+        ? t('toast.success.title')
+        : t(`toast.error.${state.type}.title`),
+      description: state.ok
+        ? t('toast.success.description')
+        : t(`toast.error.${state.type}.description`),
+      status: state.ok ? 'success' : 'error'
+    })
   }, [state, t])
 
   return (
@@ -57,73 +53,82 @@ function Form() {
       action={action}
       noValidate
     >
-      <div className='grid gap-x-10 gap-y-6 @xl:grid-cols-2'>
-        <FormControl error={state.errors.firstName}>
-          <Label htmlFor='firstName'>{t('fields.firstName.label')}</Label>
+      <HoneyPot />
+      <div className='grid gap-x-10 gap-y-4 @xl:grid-cols-2'>
+        <FormControl
+          id='fullname'
+          error={state.errors.fullname}
+          className='col-span-full'
+        >
+          <Label htmlFor='fullname'>{t('fields.fullname.label')}</Label>
           <Input
-            id='firstName'
-            name='firstName'
-            autoComplete='username'
-            defaultValue={state.data.firstName}
-            placeholder={t('fields.firstName.placeholder')}
+            id='fullname'
+            name='fullname'
+            autoComplete='name'
+            placeholder={t('fields.fullname.placeholder')}
+            defaultValue={state.data.fullname}
             icon={IconUser}
-            error={Boolean(state.errors.firstName)}
+            error={Boolean(state.errors.fullname)}
             disabled={isPending}
           />
         </FormControl>
-        <FormControl error={state.errors.lastName}>
-          <Label htmlFor='lastName'>{t('fields.lastName.label')}</Label>
-          <Input
-            id='lastName'
-            name='lastName'
-            autoComplete='family-name'
-            defaultValue={state.data.lastName}
-            placeholder={t('fields.lastName.placeholder')}
-            icon={IconUser}
-            error={Boolean(state.errors.lastName)}
-            disabled={isPending}
-          />
-        </FormControl>
-        <FormControl error={state.errors.email}>
+
+        <FormControl
+          id='email'
+          error={state.errors.email}
+        >
           <Label htmlFor='email'>{t('fields.email.label')}</Label>
           <Input
             id='email'
             name='email'
             autoComplete='email'
-            defaultValue={state.data.email}
             placeholder={t('fields.email.placeholder')}
+            defaultValue={state.data.email}
             icon={IconMail}
             error={Boolean(state.errors.email)}
             disabled={isPending}
             type='email'
           />
         </FormControl>
-        <FormControl error={state.errors.phone}>
+
+        <FormControl
+          id='phone'
+          error={state.errors.phone}
+        >
           <Label htmlFor='phone'>{t('fields.phone.label')}</Label>
           <Input
             id='phone'
             name='phone'
             autoComplete='mobile tel'
-            defaultValue={state.data.phone}
             placeholder={t('fields.phone.placeholder')}
+            defaultValue={state.data.phone}
             icon={IconPhone}
             error={Boolean(state.errors.phone)}
             disabled={isPending}
             type='tel'
           />
         </FormControl>
-        <FormControl className='col-span-full'>
+
+        <FormControl
+          id='message'
+          error={state.errors.message}
+          className='col-span-full'
+        >
           <Label htmlFor='message'>{t('fields.message.label')}</Label>
           <Textarea
             id='message'
             name='message'
-            defaultValue={state.data.message}
             placeholder={t('fields.message.placeholder')}
+            defaultValue={state.data.message}
             icon={IconMessage}
+            error={Boolean(state.errors.message)}
             disabled={isPending}
           />
         </FormControl>
-        <FormControl className='col-span-full flex-row gap-2'>
+        <FormControl
+          id='consent'
+          className='col-span-full flex-row gap-2'
+        >
           <Checkbox
             id='consent'
             name='consent'
@@ -156,31 +161,6 @@ function Form() {
   )
 }
 
-function FormControl({
-  className,
-  error,
-  children,
-  ...props
-}: React.ComponentPropsWithRef<'div'> & {error?: string}) {
-  return (
-    <div
-      className={cn('relative flex flex-col gap-0.5', className)}
-      {...props}
-    >
-      {error && (
-        <Typography
-          className='absolute inset-bs-0.5 inset-e-0 text-danger-hover'
-          variant='tiny'
-        >
-          {error}
-        </Typography>
-      )}
-      {children}
-    </div>
-  )
-}
-
 Form.displayName = 'Form'
-FormControl.displayName = 'FormControl'
 
 export {Form}

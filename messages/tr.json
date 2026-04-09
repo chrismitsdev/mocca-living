@@ -296,7 +296,7 @@
       "header": "Sayın",
       "thanks": "Bizimle iletişime geçtiğiniz için teşekkür ederiz! Talebinizi aldık ve en kısa sürede size geri döneceğiz.",
       "summary": "Bilgilerinizin özeti:",
-      "name": "Ad Soyad",
+      "fullname": "Ad Soyad",
       "email": "E-posta",
       "phone": "Telefon",
       "message": {
@@ -325,13 +325,9 @@
     },
     "form": {
       "fields": {
-        "firstName": {
-          "label": "Ad",
-          "placeholder": "Adınızı girin"
-        },
-        "lastName": {
-          "label": "Soyad",
-          "placeholder": "Soyadınızı girin"
+        "fullname": {
+          "label": "Ad Soyad",
+          "placeholder": "Adınızı ve soyadınızı girin"
         },
         "email": {
           "label": "E-posta",

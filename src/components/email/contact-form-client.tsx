@@ -17,8 +17,7 @@ import {getTranslations} from 'next-intl/server'
 import type {ContactFormActionState} from '@/src/lib/actions'
 
 async function ContactFormClient({
-  firstName,
-  lastName,
+  fullname,
   email,
   phone,
   message
@@ -67,7 +66,7 @@ async function ContactFormClient({
 
             <Section
               className='overflow-hidden'
-              style={{border: '1px solid #c7b492'}}
+              style={{backgroundColor: '#ddc8a2', border: '1px solid #c7b492'}}
             >
               <Row>
                 <Img
@@ -79,13 +78,13 @@ async function ContactFormClient({
               <Row className='main-content'>
                 <Column>
                   <Heading className='text-lg'>
-                    {t('header')} {firstName} {lastName},
+                    {t('header')} {fullname},
                   </Heading>
                   <Text>{t('thanks')}</Text>
-
                   <Text>{t('summary')}</Text>
+
                   <Text className='my-0'>
-                    {t('name')}: {firstName} {lastName}
+                    {t('fullname')}: {fullname}
                   </Text>
                   <Text className='my-0'>
                     {t('email')}: {email}

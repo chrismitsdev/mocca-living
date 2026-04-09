@@ -17,8 +17,7 @@ import {
 import type {ContactFormActionState} from '@/src/lib/actions'
 
 function ContactFormInternal({
-  firstName,
-  lastName,
+  fullname,
   email,
   phone,
   message
@@ -72,20 +71,9 @@ function ContactFormInternal({
                     as='h5'
                     className='my-0 leading-6'
                   >
-                    Όνομα:
+                    Όνοματεπώνυμο:
                   </Heading>
-                  <Text className='my-0'>{firstName}</Text>
-                </Column>
-              </Row>
-              <Row className='mb-6'>
-                <Column>
-                  <Heading
-                    as='h5'
-                    className='my-0 leading-6'
-                  >
-                    Επίθετο:
-                  </Heading>
-                  <Text className='my-0'>{lastName}</Text>
+                  <Text className='my-0'>{fullname}</Text>
                 </Column>
               </Row>
               <Row className='mb-6'>

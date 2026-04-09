@@ -22,7 +22,7 @@ const COOKIE_NAME = 'CONSENT_COOKIE'
 const COOKIE_VALUE = 'true'
 const EXPIRES_DAYS = 365
 
-function CookieConsentBanner() {
+function CookieBanner() {
   const [show, setShow] = useState(false)
   const t = useTranslations('Components.cookie_consent_banner')
   useScrollLock({autoLock: show})
@@ -123,6 +123,6 @@ function CookieConsentBanner() {
   )
 }
 
-CookieConsentBanner.displayName = 'CookieConsentBanner'
+CookieBanner.displayName = 'CookieBanner'
 
-export {CookieConsentBanner}
+export {CookieBanner}

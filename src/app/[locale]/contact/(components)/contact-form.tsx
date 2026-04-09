@@ -1,6 +1,6 @@
 import {useTranslations} from 'next-intl'
 import {Container} from '@/src/components/shared/container'
-import {Form} from '@/src/components/shared/form'
+import {Form} from '@/src/components/shared/form/form'
 import {Section} from '@/src/components/shared/section'
 import {
   Card,
