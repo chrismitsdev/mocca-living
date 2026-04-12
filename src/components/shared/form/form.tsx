@@ -4,8 +4,8 @@ import {
   IconMail,
   IconMessage,
   IconPhone,
-  IconSend,
-  IconUser
+  IconSend2,
+  IconUserCircle
 } from '@tabler/icons-react'
 import {useLocale, useTranslations} from 'next-intl'
 import {useActionState, useEffect} from 'react'
@@ -67,7 +67,7 @@ function Form() {
             autoComplete='name'
             placeholder={t('fields.fullname.placeholder')}
             defaultValue={state.data.fullname}
-            icon={IconUser}
+            icon={IconUserCircle}
             error={Boolean(state.errors.fullname)}
             disabled={isPending}
           />
@@ -145,7 +145,8 @@ function Form() {
           </Label>
         </FormControl>
       </div>
-      <div className='pt-8 flex justify-end'>
+
+      <div className='pt-10'>
         <Button
           className='w-full @xl:w-auto'
           type='submit'
@@ -154,7 +155,7 @@ function Form() {
           isLoading={isPending}
         >
           <span>{t('button.label')}</span>
-          <IconSend />
+          <IconSend2 />
         </Button>
       </div>
     </form>
