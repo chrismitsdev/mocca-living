@@ -140,6 +140,7 @@ const ContactFormSchema = object({
   message: pipe(
     string(),
     trim(),
+    nonEmpty(),
     check(
       (input) =>
         !bannedKeywordPatterns.some((pattern) => pattern.test(input)) &&

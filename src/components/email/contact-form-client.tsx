@@ -1,3 +1,4 @@
+import {getTranslations} from 'next-intl/server'
 import {
   Body,
   Column,
@@ -12,8 +13,7 @@ import {
   Section,
   Tailwind,
   Text
-} from '@react-email/components'
-import {getTranslations} from 'next-intl/server'
+} from 'react-email'
 import type {ContactFormActionState} from '@/src/lib/actions'
 
 async function ContactFormClient({

@@ -127,7 +127,7 @@ function Form() {
         </FormControl>
         <FormControl
           id='consent'
-          className='col-span-full flex-row gap-2'
+          className='flex-row col-span-full gap-2'
         >
           <Checkbox
             id='consent'
