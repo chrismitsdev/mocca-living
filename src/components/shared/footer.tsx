@@ -34,7 +34,7 @@ function Footer() {
             alt='Mocca Living footer logo'
           />
           <FooterColumn title={t('Footer.row-1.info-column.title')}>
-            <Typography
+            {/*<Typography
               variant='link'
               asChild
             >
@@ -45,7 +45,7 @@ function Footer() {
                 <PhoneIcon className='w-3.5 h-lh shrink-0' />
                 <span>{t('Footer.row-1.info-column.tel-1')}</span>
               </a>
-            </Typography>
+            </Typography>*/}
             <Typography
               variant='link'
               asChild

@@ -20,7 +20,7 @@ import {
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 
-const PHONE = '+306973560007'
+const PHONE = '+306973433980'
 
 function ContactDrawer() {
   const t = useTranslations('Components.ContactDrawer')
