@@ -15,7 +15,7 @@ function ContactSocial() {
             <MapPin size={64} />
             <Typography variant='h4'>{t('location')}</Typography>
           </SocialLink>
-          <SocialLink href='tel:+306973560007'>
+          <SocialLink href='tel:+306973433980'>
             <PhoneIcon size={64} />
             <Typography variant='h4'>{t('phone')}</Typography>
           </SocialLink>

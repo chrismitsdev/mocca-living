@@ -34,18 +34,6 @@ function Footer() {
             alt='Mocca Living footer logo'
           />
           <FooterColumn title={t('Footer.row-1.info-column.title')}>
-            {/*<Typography
-              variant='link'
-              asChild
-            >
-              <a
-                className='flex gap-1.5'
-                href='tel:+306973560007'
-              >
-                <PhoneIcon className='w-3.5 h-lh shrink-0' />
-                <span>{t('Footer.row-1.info-column.tel-1')}</span>
-              </a>
-            </Typography>*/}
             <Typography
               variant='link'
               asChild
