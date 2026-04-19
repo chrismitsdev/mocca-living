@@ -43,7 +43,7 @@ function Footer() {
                 href='tel:+306973433980'
               >
                 <PhoneIcon className='w-3.5 h-lh shrink-0' />
-                <span>{t('Footer.row-1.info-column.tel-2')}</span>
+                <span>{t('Footer.row-1.info-column.tel')}</span>
               </a>
             </Typography>
             <Typography
