@@ -1,5 +1,10 @@
 const songs = [
   {
+    artist: 'DJ Golden Feta',
+    title: 'Greek artists 2025 Mix',
+    src: '/music/welcome-to-greece-mix.mp3'
+  },
+  {
     artist: 'Chill Story Cafe',
     title: 'Morning coffee',
     src: '/music/morning-coffee.mp3'

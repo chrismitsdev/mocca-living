@@ -1,7 +1,6 @@
 'use client'
 
 import {
-  IconList,
   IconMusic,
   IconPlayerPause,
   IconPlayerPlay,
@@ -143,10 +142,6 @@ function CurrentTrack({
           <div className='flex gap-2'>
             <IconUser className='mt-1 w-4 h-4' />
             <Typography variant='tiny'>{isPlaying ? artist : '---'}</Typography>
-          </div>
-          <div className='flex gap-2'>
-            <IconList className='mt-1 w-4 h-4' />
-            <Typography variant='tiny'>Mocca Living playlist</Typography>
           </div>
         </div>
       </div>
