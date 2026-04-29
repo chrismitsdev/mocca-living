@@ -24,11 +24,6 @@ import {
 } from '@/src/components/ui/collapsible'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {IconButton} from '@/src/components/ui/icon-button'
-import {
-  Scrollarea,
-  ScrollareaBar,
-  ScrollareaViewport
-} from '@/src/components/ui/scrollarea'
 import {Separator} from '@/src/components/ui/separator'
 import {Spinner} from '@/src/components/ui/spinner'
 import {Typography} from '@/src/components/ui/typography'
@@ -42,9 +37,7 @@ const initialState: State = {
   isPlaying: false
 }
 
-function AudioPlayer(
-  props: React.ComponentPropsWithRef<typeof ReactAudioPlayer>
-) {
+function AudioPlayer() {
   const [state, dispatch] = useReducer(reducer, initialState)
   const currentTrack = state.playlist[state.currentTrackIndex]
 
@@ -53,7 +46,7 @@ function AudioPlayer(
       open={state.showPlaylist}
       onOpenChange={() => dispatch({type: 'TOGGLE_PLAYLIST_VISIBLE'})}
     >
-      <div className='p-4 space-y-4 sm:space-y-0'>
+      <div className='p-4 space-y-4'>
         <CurrentTrack
           isPlaying={state.isPlaying}
           {...currentTrack}
@@ -85,6 +78,7 @@ function AudioPlayer(
               <IconButton
                 aria-label='List music tracks'
                 variant={state.showPlaylist ? 'primary' : 'ghost'}
+                size='small'
               >
                 <IconPlaylist />
               </IconButton>
@@ -95,7 +89,7 @@ function AudioPlayer(
             RHAP_UI.CURRENT_TIME,
             <IconSlash
               key={9999}
-              className='mx-1 w-3 h-3'
+              className='mx-1 size-4'
             />,
             RHAP_UI.DURATION
           ]}
@@ -107,28 +101,22 @@ function AudioPlayer(
             volume: <IconVolume />,
             volumeMute: <IconVolumeOff />
           }}
-          {...props}
         />
       </div>
       <Separator className={cn('hidden', state.showPlaylist && 'block')} />
       <CollapsibleContent>
-        <Scrollarea type='always'>
-          <ScrollareaViewport className='max-h-[calc(100svh-208px-128px-32px)] sm:max-h-[calc(100svh-280px-32px-300px)]'>
-            <Playlist>
-              {state.playlist.map((song) => (
-                <PlaylistTrack
-                  key={song.trackId}
-                  isActive={currentTrack.trackId === song.trackId}
-                  onClick={() =>
-                    dispatch({type: 'GO_TO_SONG', payload: song.trackId})
-                  }
-                  {...song}
-                />
-              ))}
-            </Playlist>
-          </ScrollareaViewport>
-          <ScrollareaBar className='w-2 sm:w-2.5' />
-        </Scrollarea>
+        <Playlist>
+          {state.playlist.map((song) => (
+            <PlaylistTrack
+              key={song.trackId}
+              isActive={currentTrack.trackId === song.trackId}
+              onClick={() =>
+                dispatch({type: 'GO_TO_SONG', payload: song.trackId})
+              }
+              {...song}
+            />
+          ))}
+        </Playlist>
       </CollapsibleContent>
     </Collapsible>
   )
@@ -143,7 +131,7 @@ function CurrentTrack({
     <div className='sm:mb-0 sm:p-4'>
       <div className='flex items-start gap-2 sm:gap-4'>
         <CustomImage
-          className='size-18 sm:size-24'
+          className='inline-18 block-18 sm:inline-24 sm:block-24'
           src={image}
           alt='Tall palm trees against a clear blue sky, viewed from below'
         />
@@ -154,13 +142,11 @@ function CurrentTrack({
           </div>
           <div className='flex gap-2'>
             <IconUser className='mt-1 w-4 h-4' />
-            <Typography variant='small'>
-              {isPlaying ? artist : '---'}
-            </Typography>
+            <Typography variant='tiny'>{isPlaying ? artist : '---'}</Typography>
           </div>
           <div className='flex gap-2'>
             <IconList className='mt-1 w-4 h-4' />
-            <Typography variant='small'>Mocca Living playlist</Typography>
+            <Typography variant='tiny'>Mocca Living playlist</Typography>
           </div>
         </div>
       </div>
@@ -171,7 +157,7 @@ function CurrentTrack({
 function Playlist({className, ...props}: React.ComponentPropsWithRef<'ul'>) {
   return (
     <ul
-      className={cn('px-4 sm:py-4', className)}
+      className={cn('sm:p-4', className)}
       {...props}
     />
   )
@@ -207,7 +193,7 @@ function PlaylistTrack({
   return (
     <li
       className={cn(
-        'py-4 grid grid-cols-2 items-center gap-2 cursor-pointer duration-375 hover:bg-surface-3 sm:grid-cols-[24px_repeat(3,1fr)] sm:p-4',
+        'p-4 grid grid-cols-2 items-center gap-2 cursor-pointer duration-375 hover:bg-surface-3 sm:grid-cols-[24px_repeat(3,1fr)]',
         isActive && 'font-bold',
         className
       )}
@@ -241,13 +227,6 @@ function PlaylistTrack({
   )
 }
 
-AudioPlayer.displayName = 'AudioPlayer'
-CurrentTrack.displayName = 'CurrentTrack'
-Playlist.displayName = 'Playlist'
-PlaylistTrack.displayName = 'PlaylistTrack'
-
-export {AudioPlayer}
-
 function formatDuration(durationInSeconds: number | null) {
   if (durationInSeconds === null) return null
 
@@ -258,3 +237,10 @@ function formatDuration(durationInSeconds: number | null) {
 
   return `${minutes}:${seconds}`
 }
+
+AudioPlayer.displayName = 'AudioPlayer'
+CurrentTrack.displayName = 'CurrentTrack'
+Playlist.displayName = 'Playlist'
+PlaylistTrack.displayName = 'PlaylistTrack'
+
+export {AudioPlayer}

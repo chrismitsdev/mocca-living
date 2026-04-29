@@ -5,6 +5,7 @@ import {getTranslations, setRequestLocale} from 'next-intl/server'
 import {isValidLocation} from '@/src/lib/utils'
 import {SlugCarousel} from './(components)/slug-carousel'
 import {SlugDetails} from './(components)/slug-details'
+import {SlugDistances} from './(components)/slug-distances'
 import {SlugHeader} from './(components)/slug-header'
 
 type Params = {
@@ -49,6 +50,7 @@ export default async function AccomodationSlugPage({
       <SlugHeader slug={slug} />
       <SlugCarousel slug={slug} />
       <SlugDetails slug={slug} />
+      <SlugDistances location={location} />
     </>
   )
 }

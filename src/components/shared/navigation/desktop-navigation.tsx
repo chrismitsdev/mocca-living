@@ -5,6 +5,7 @@ import {
   seaDimitraCover,
   seaGeorgiaCover
 } from '@/public/images/covers'
+import {Button} from '@/src/components/ui/button'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {IconButton} from '@/src/components/ui/icon-button'
 import {Popup, PopupContent, PopupTrigger} from '@/src/components/ui/popup'
@@ -24,7 +25,7 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
     <nav className='hidden sm:block'>
       <ul
         aria-label='Desktop navigation menu'
-        className='flex gap-x-6'
+        className='flex items-center gap-x-6'
       >
         <NavigationListItemLink
           href='/'
@@ -117,6 +118,22 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
           href='/contact'
           label={t('contact')}
         />
+
+        <li>
+          <Button
+            size='small'
+            asChild
+          >
+            <a
+              className='uppercase'
+              href='https://www.hotelo.gr/en/properties/mocca-living-41'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              {t('book_button')}
+            </a>
+          </Button>
+        </li>
       </ul>
     </nav>
   )

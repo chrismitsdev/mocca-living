@@ -43,6 +43,7 @@ function HomeCarousel() {
   return (
     <Carousel
       className='sm:block-[calc(100svh-80px)]'
+      options={{loop: true}}
       plugins={[Autoplay()]}
     >
       <CarouselViewport>

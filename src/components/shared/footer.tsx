@@ -10,7 +10,7 @@ import {IconButton} from '@/src/components/ui/icon-button'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 import {Link} from '@/src/i18n/navigation'
-import {cn} from '@/src/lib/utils'
+import {cn, PHONE} from '@/src/lib/utils'
 
 function Footer() {
   const t = useTranslations('Components.footer')
@@ -25,7 +25,7 @@ function Footer() {
             alt='Mocca Living footer logo'
           />
           <FooterColumn title={t('row-1.info-column.title')}>
-            <FooterLink href='tel:+306973433980'>
+            <FooterLink href={`tel:${PHONE}`}>
               <Typography variant='small'>
                 {t('row-1.info-column.phone')}
               </Typography>

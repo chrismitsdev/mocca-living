@@ -3,7 +3,6 @@ import {
   IconBadgeWcFilled,
   IconBedFilled,
   IconChevronLeft,
-  // IconChevronRight,
   IconMoodKidFilled,
   IconPointFilled,
   IconUserFilled
@@ -24,11 +23,10 @@ import {Typography} from '@/src/components/ui/typography'
 import {Link} from '@/src/i18n/navigation'
 
 function SlugDetails({slug}: {slug: PropertySlug}) {
-  const t = useTranslations('Pages.accommodation.slug')
-  // const oppositeSlug = slug === 'sea-dimitra' ? 'georgia' : 'dimitra'
+  const t = useTranslations('Pages.accommodation.slug.details')
 
   return (
-    <Section>
+    <Section className='pb-16'>
       <Container>
         <Card className='sm:p-20'>
           <CardHeader className='space-y-6'>
@@ -38,15 +36,6 @@ function SlugDetails({slug}: {slug: PropertySlug}) {
                   <IconChevronLeft />
                   <span>{t('static.back_button')}</span>
                 </Link>
-              </Button>
-              <Button asChild>
-                {/*<Link
-                  href={`/accommodation/${oppositeSlug}`}
-                  scroll={false}
-                >
-                  <span className='capitalize'>{t('links.next', {slug})}</span>
-                  <IconChevronRight />
-                </Link>*/}
               </Button>
             </div>
             <CardTitle>{t(`${slug}.title`)}</CardTitle>

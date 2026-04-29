@@ -30,7 +30,8 @@
     "privacy": "Privacy policy",
     "cookies": "Cookies policy",
     "rules": "Accommodation policy",
-    "not_found": "Page not found"
+    "not_found": "Page not found",
+    "book_button": "Book now"
   },
   "Pages": {
     "home": {
@@ -159,58 +160,115 @@
         }
       },
       "slug": {
-        "sea-dimitra": {
-          "title": "Dimitra",
-          "guests": "2 - 4 Adults",
-          "child": "2 Children",
-          "bedrooms": "2 Bedrooms",
-          "bathrooms": "2 Bathrooms",
-          "area": "85m² Area",
-          "layout": "One main entrance|Big living room area|Dining room area|One master bedroom with king-sized bed (COCOMAT mattress and bed cover) and en-suite bathroom|One bedroom with queen-sized bed (COCOMAT mattress and bed cover) and en-suite bathroom|Direct access to big private outdoor area",
-          "amenities": {
-            "indoor": "Free Wi-Fi|Three 55\" Smart TVs|Three ceiling fans|Kitchen|Kitchen extractor hood|Air fryer|Fridge|Clothes washer|Clothes iron & ironing board|Nespresso machine|Sound system (Marshall Acton III)|Safe box",
-            "outdoor": "Private area with two pergolas and two sitting areas|Sunbeds with umbrella|Mini pool with hydromassage & color-therapy|Private garden with tropical plants and flowers|Shower area"
+        "details": {
+          "sea-dimitra": {
+            "title": "Dimitra",
+            "guests": "2 - 4 Adults",
+            "child": "2 Children",
+            "bedrooms": "2 Bedrooms",
+            "bathrooms": "2 Bathrooms",
+            "area": "85m² Area",
+            "layout": "One main entrance|Big living room area|Dining room area|One master bedroom with king-sized bed (COCOMAT mattress and bed cover) and en-suite bathroom|One bedroom with queen-sized bed (COCOMAT mattress and bed cover) and en-suite bathroom|Direct access to big private outdoor area",
+            "amenities": {
+              "indoor": "Free Wi-Fi|Three 55\" Smart TVs|Three ceiling fans|Kitchen|Kitchen extractor hood|Air fryer|Fridge|Clothes washer|Clothes iron & ironing board|Nespresso machine|Sound system (Marshall Acton III)|Safe box",
+              "outdoor": "Private area with two pergolas and two sitting areas|Sunbeds with umbrella|Mini pool with hydromassage & color-therapy|Private garden with tropical plants and flowers|Shower area"
+            },
+            "complementary": "Welcome assistance procedure|Check-in/out assistance",
+            "request": "Two SUP boards for rental|One electric-bike for rental"
           },
-          "complementary": "Welcome assistance procedure|Check-in/out assistance",
-          "request": "Two SUP boards for rental|One electric-bike for rental"
-        },
-        "sea-georgia": {
-          "title": "Georgia",
-          "guests": "2 - 4 Adults",
-          "child": "1 Child",
-          "bedrooms": "2 Bedrooms",
-          "bathrooms": "1 Bathroom",
-          "area": "45m² Area",
-          "layout": "One main entrance|Big living room area|Dining room area|Two master bedrooms with double-sized beds|One shared bathroom|Direct access to big private outdoor area",
-          "amenities": {
-            "indoor": "Free Wi-Fi|One 55\" Smart TV|One ceiling fan|Fully equipped kitchen|Electric oven|Kitchen extractor hood|Fridge|Clothes washer|Clothes iron & ironing board|Nespresso machine|Sound system Marshall|Safe box",
-            "outdoor": "Private area with pergola|Sunbeds with umbrella|Sitting area|Mini pool with hydromassage & color-therapy|Private garden with tropical plants and flowers|Shower area"
+          "sea-georgia": {
+            "title": "Georgia",
+            "guests": "2 - 4 Adults",
+            "child": "1 Child",
+            "bedrooms": "2 Bedrooms",
+            "bathrooms": "1 Bathroom",
+            "area": "45m² Area",
+            "layout": "One main entrance|Big living room area|Dining room area|Two master bedrooms with double-sized beds|One shared bathroom|Direct access to big private outdoor area",
+            "amenities": {
+              "indoor": "Free Wi-Fi|One 55\" Smart TV|One ceiling fan|Fully equipped kitchen|Electric oven|Kitchen extractor hood|Fridge|Clothes washer|Clothes iron & ironing board|Nespresso machine|Sound system Marshall|Safe box",
+              "outdoor": "Private area with pergola|Sunbeds with umbrella|Sitting area|Mini pool with hydromassage & color-therapy|Private garden with tropical plants and flowers|Shower area"
+            },
+            "complementary": "Welcome assistance procedure|Check-in/out assistance",
+            "request": "Two SUP boards for rental|One electric-bike for rental"
           },
-          "complementary": "Welcome assistance procedure|Check-in/out assistance",
-          "request": "Two SUP boards for rental|One electric-bike for rental"
-        },
-        "city-dimitra": {
-          "title": "Dimitra",
-          "guests": "2 Adults",
-          "child": "2 Children",
-          "bedrooms": "1 Bedroom",
-          "bathrooms": "1 Bathroom",
-          "area": "50m² Area",
-          "layout": "Balcony views over the city's main avenue|Living room with sofa bed|Fully equipped kitchen with dining area|Bedroom with double bed|Bathroom with shower",
-          "amenities": {
-            "indoor": "Free Wi-Fi|55\" Smart TV|Fully equipped kitchen|Multiple storage spaces and wardrobes|Desk with stool|New energy-efficient double-glazed windows|Secure external security door",
-            "outdoor": ""
+          "city-dimitra": {
+            "title": "Dimitra",
+            "guests": "2 Adults",
+            "child": "2 Children",
+            "bedrooms": "1 Bedroom",
+            "bathrooms": "1 Bathroom",
+            "area": "50m² Area",
+            "layout": "Balcony views over the city's main avenue|Living room with sofa bed|Fully equipped kitchen with dining area|Bedroom with double bed|Bathroom with shower",
+            "amenities": {
+              "indoor": "Free Wi-Fi|55\" Smart TV|Fully equipped kitchen|Multiple storage spaces and wardrobes|Desk with stool|New energy-efficient double-glazed windows|Secure external security door",
+              "outdoor": ""
+            },
+            "complementary": "Welcome assistance procedure|Check-in/out assistance",
+            "request": ""
           },
-          "complementary": "Welcome assistance procedure|Check-in/out assistance",
-          "request": ""
+          "static": {
+            "layout_title": "Property Layout",
+            "amenities_indoor_title": "Indoor amenities",
+            "amenities_outdoor_title": "Outdoor amenities",
+            "complementary_title": "Complementary services",
+            "request_title": "Rental services",
+            "back_button": "Back"
+          }
         },
-        "static": {
-          "layout_title": "Property Layout",
-          "amenities_indoor_title": "Indoor amenities",
-          "amenities_outdoor_title": "Outdoor amenities",
-          "complementary_title": "Complementary services",
-          "request_title": "Rental services",
-          "back_button": "Back"
+        "distances": {
+          "title": "Distances to key locations",
+          "mocca-sea": {
+            "title": "Mocca by the Sea",
+            "description": "Ideal for a relaxing seaside stay, just steps from the beach with easy access to nearby amenities.",
+            "items": {
+              "item_1": {
+                "title": "Car charging station ~80 m",
+                "description": "At 80 meters, a charging station serves electric vehicles, providing a practical and reliable solution for convenient daily transportation without hassle."
+              },
+              "item_2": {
+                "title": "Agia Paraskevi beach ~100 m",
+                "description": "Just 100 meters away, Agia Paraskevi Beach offers clear waters and ideal conditions for relaxation, swimming, and sunbathing by the sea."
+              },
+              "item_3": {
+                "title": "Closest restaurant ~100 m",
+                "description": "Within 100 meters, the nearest restaurant offers a pleasant dining experience with a selection of local and international dishes in a comfortable setting."
+              },
+              "item_4": {
+                "title": "Alexandroupoli ~14 km",
+                "description": "At a distance of 14 km, Alexandroupoli combines modern amenities with local character, featuring a lively seafront, restaurants, and shops for visitors to explore."
+              },
+              "item_5": {
+                "title": "Airport ~20 km",
+                "description": "Dimokritos Airport, located 20 km from the properties, offers convenient access for domestic and international travelers, ensuring smooth and comfortable arrivals and departures."
+              }
+            }
+          },
+          "mocca-city": {
+            "title": "Mocca City",
+            "description": "Perfect for staying in the heart of Alexandroupoli, with everything within walking distance.",
+            "items": {
+              "item_1": {
+                "title": "City center",
+                "description": "Located directly on Dimokratias Avenue, the apartment sits in the very center of Alexandroupoli, surrounded by shops, cafes, and everyday amenities, allowing guests to fully experience the city's vibrant atmosphere without the need for transportation."
+              },
+              "item_2": {
+                "title": "Bus station ~300 m",
+                "description": "The central bus station is just a short walk away, offering easy and reliable connections to nearby areas and regional destinations, making day trips simple and accessible."
+              },
+              "item_3": {
+                "title": "Seafront promenade ~500 m",
+                "description": "Within a short and pleasant walk, guests can reach the city’s seafront promenade, ideal for relaxing strolls, seaside dining, and enjoying the coastal atmosphere that defines Alexandroupoli."
+              },
+              "item_4": {
+                "title": "Port of Alexandroupoli ~1 km",
+                "description": "Approximately 1 km away, the port area offers a lively setting with restaurants, cafes, and connections to nearby destinations, making it a great spot for both leisure and exploration."
+              },
+              "item_5": {
+                "title": "Airport ~7 km",
+                "description": "Located around 7 km from the apartment, Dimokritos Airport provides convenient access for both arrivals and departures, ensuring a smooth and comfortable travel experience."
+              }
+            }
+          }
         }
       }
     },
@@ -369,7 +427,7 @@
       "row-1": {
         "info-column": {
           "title": "Information",
-          "phone": "+30 6973433980",
+          "phone": "+306973433980",
           "email": "info@moccaliving.com",
           "location": "Alexandroupolis, Greece"
         },
@@ -381,7 +439,7 @@
           "playlist": "Audio playlist"
         },
         "more-column": {
-          "title": "More",
+          "title": "Our brands",
           "yuppii": "Yuppii Luna Park",
           "christmas-lighthouse": "The Christmas Lighthouse",
           "start-pilates": "Start Pilates"

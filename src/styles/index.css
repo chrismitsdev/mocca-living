@@ -44,40 +44,28 @@
 
 /* Audio player styles */
 .rhap_container {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  font-family: inherit;
+  @apply box-border inline-full flex flex-col font-[inherit] sm:p-4;
 }
-
 .rhap_container:focus:not(:focus-visible) {
   outline: 0;
 }
-
 .rhap_container svg {
   vertical-align: initial;
 }
-
 .rhap_header {
   margin-bottom: 10px;
 }
-
 .rhap_footer {
   margin-top: 5px;
 }
-
 .rhap_main {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
 }
-
 .rhap_controls-section {
   margin-top: 8px;
 }
-
 .rhap_horizontal {
   flex-direction: row;
 
@@ -85,27 +73,23 @@
     margin-left: 8px;
   }
 }
-
 .rhap_horizontal-reverse {
   flex-direction: row-reverse;
 }
 .rhap_horizontal-reverse .rhap_controls-section {
   margin-right: 8px;
 }
-
 .rhap_stacked-reverse {
   flex-direction: column-reverse;
 }
 .rhap_stacked-reverse .rhap_controls-section {
   margin-bottom: 8px;
 }
-
 .rhap_progress-section {
   display: flex;
   flex: 3 1 auto;
   align-items: center;
 }
-
 /* Progress bar container */
 .rhap_progress-container {
   margin-inline-end: 24px;
@@ -121,13 +105,11 @@
 .rhap_progress-container:focus:not(:focus-visible) {
   outline: 0;
 }
-
 .rhap_time {
   font-size: 14px;
   user-select: none;
   -webkit-user-select: none;
 }
-
 .rhap_progress-bar {
   box-sizing: border-box;
   position: relative;
@@ -137,7 +119,6 @@
   background-color: var(--color-surface-3);
   border-radius: 2px;
 }
-
 .rhap_progress-filled {
   height: 100%;
   position: absolute;
@@ -145,7 +126,6 @@
   background: var(--primary);
   border-radius: 2px;
 }
-
 .rhap_download-progress {
   height: 100%;
   position: absolute;
@@ -170,19 +150,16 @@
 .rhap_progress-indicator:active {
   scale: 0.85;
 }
-
 .rhap_controls-section {
   display: flex;
   flex: 1 1 auto;
   align-items: center;
 }
-
 .rhap_additional-controls {
   display: flex;
   flex: 1 0 auto;
   align-items: center;
 }
-
 .rhap_repeat-button {
   font-size: 26px;
   width: 26px;
@@ -190,14 +167,12 @@
   color: #868686;
   margin-right: 6px;
 }
-
 .rhap_main-controls {
   flex: 0 1 auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .rhap_main-controls-button {
   padding: 8px;
   color: var(--color-foreground);
@@ -205,31 +180,21 @@
 .rhap_main-controls-button:active {
   scale: 0.85;
 }
-
 .rhap_play-pause-button {
   font-size: 40px;
 }
-
 .rhap_volume-controls {
   display: flex;
   flex: 1 0 auto;
   justify-content: flex-end;
   align-items: center;
 }
-
 .rhap_volume-button {
   margin-inline-end: 4px;
 }
-
 .rhap_volume-container {
-  display: none;
-  margin-inline-start: auto;
-  align-items: center;
-  flex: 0 1 100px;
-  user-select: none;
-  -webkit-user-select: none;
+  @apply hidden ms-auto items-center flex-[0_1_100px] select-none sm:flex;
 }
-
 .rhap_volume-bar-area {
   display: flex;
   align-items: center;
@@ -240,7 +205,6 @@
 .rhap_volume-bar-area:focus:not(:focus-visible) {
   outline: 0;
 }
-
 .rhap_volume-bar {
   box-sizing: border-box;
   position: relative;
@@ -249,7 +213,6 @@
   background-color: var(--color-surface-4);
   border-radius: 2px;
 }
-
 .rhap_volume-indicator {
   box-sizing: border-box;
   position: absolute;
@@ -266,7 +229,6 @@
 .rhap_volume-indicator:hover {
   opacity: 0.9;
 }
-
 .rhap_volume-filled {
   height: 100%;
   position: absolute;
@@ -274,7 +236,6 @@
   background-color: #868686;
   border-radius: 2px;
 }
-
 /* Utils */
 .rhap_button-clear {
   background-color: transparent;
@@ -290,14 +251,4 @@
 }
 .rhap_button-clear:focus:not(:focus-visible) {
   outline: 0;
-}
-
-@media (min-width: 640px) {
-  .rhap_container {
-    padding: 16px;
-  }
-
-  .rhap_volume-container {
-    display: flex;
-  }
 }

@@ -42,9 +42,14 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
         size='small'
         asChild
       >
-        <Link href='/accommodation/mocca-city/city-dimitra'>
-          {t('accommodation.location.mocca-city.title')}
-        </Link>
+        <a
+          className='uppercase'
+          href='https://www.hotelo.gr/en/properties/mocca-living-41'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          {t('book_button')}
+        </a>
       </Button>
       <Drawer
         open={open}

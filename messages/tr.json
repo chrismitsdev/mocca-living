@@ -30,7 +30,8 @@
     "privacy": "Gizlilik politikası",
     "cookies": "Çerez politikası",
     "rules": "Konaklama politikası",
-    "not_found": "Sayfa bulunamadı"
+    "not_found": "Sayfa bulunamadı",
+    "book_button": "Rezervasyon"
   },
   "Pages": {
     "home": {
@@ -159,58 +160,115 @@
         }
       },
       "slug": {
-        "sea-dimitra": {
-          "title": "Dimitra",
-          "guests": "2 - 4 Yetişkin",
-          "child": "2 Çocuk",
-          "bedrooms": "2 Yatak Odası",
-          "bathrooms": "2 Banyo",
-          "area": "85m² Alan",
-          "layout": "Bir ana giriş|Geniş oturma odası alanı|Yemek odası alanı|COCOMAT yatak ve yatak örtüsü ile king-size yataklı ve özel banyolu bir ana yatak odası|COCOMAT yatak ve yatak örtüsü ile queen-size yataklı ve özel banyolu bir yatak odası|Geniş özel dış alana doğrudan erişim",
-          "amenities": {
-            "indoor": "Ücretsiz Wi-Fi|Üç adet 55\" Akıllı TV|Üç tavan vantilatörü|Mutfak|Mutfak davlumbazı|Fritöz (hava akışlı)|Buzdolabı|Çamaşır makinesi|Ütü ve ütü masası|Nespresso makinesi|Ses sistemi (Marshall Acton III)|Kasa",
-            "outdoor": "İki pergola ve iki oturma alanına sahip özel alan|Şemsiyeli şezlonglar|Hidromasaj ve renk terapili mini havuz|Tropikal bitkiler ve çiçeklerle özel bahçe|Duş alanı"
+        "details": {
+          "sea-dimitra": {
+            "title": "Dimitra",
+            "guests": "2 - 4 Yetişkin",
+            "child": "2 Çocuk",
+            "bedrooms": "2 Yatak Odası",
+            "bathrooms": "2 Banyo",
+            "area": "85m² Alan",
+            "layout": "Bir ana giriş|Geniş oturma odası alanı|Yemek odası alanı|COCOMAT yatak ve yatak örtüsü ile king-size yataklı ve özel banyolu bir ana yatak odası|COCOMAT yatak ve yatak örtüsü ile queen-size yataklı ve özel banyolu bir yatak odası|Geniş özel dış alana doğrudan erişim",
+            "amenities": {
+              "indoor": "Ücretsiz Wi-Fi|Üç adet 55\" Akıllı TV|Üç tavan vantilatörü|Mutfak|Mutfak davlumbazı|Fritöz (hava akışlı)|Buzdolabı|Çamaşır makinesi|Ütü ve ütü masası|Nespresso makinesi|Ses sistemi (Marshall Acton III)|Kasa",
+              "outdoor": "İki pergola ve iki oturma alanına sahip özel alan|Şemsiyeli şezlonglar|Hidromasaj ve renk terapili mini havuz|Tropikal bitkiler ve çiçeklerle özel bahçe|Duş alanı"
+            },
+            "complementary": "Karşılama yardım prosedürü|Check-in/out yardımı",
+            "request": "Kiralık iki SUP tahtası|Kiralık bir elektrikli bisiklet"
           },
-          "complementary": "Karşılama yardım prosedürü|Check-in/out yardımı",
-          "request": "Kiralık iki SUP tahtası|Kiralık bir elektrikli bisiklet"
-        },
-        "sea-georgia": {
-          "title": "Georgia",
-          "guests": "2 - 4 Yetişkin",
-          "child": "1 Çocuk",
-          "bedrooms": "2 Yatak Odası",
-          "bathrooms": "1 Banyo",
-          "area": "45m² Alan",
-          "layout": "Bir ana giriş|Geniş oturma odası alanı|Yemek odası alanı|Çift kişilik yataklı iki ana yatak odası|Ortak bir banyo|Geniş özel dış alana doğrudan erişim",
-          "amenities": {
-            "indoor": "Ücretsiz Wi-Fi|Bir adet 55\" Akıllı TV|Bir tavan vantilatörü|Tam donanımlı akıllı mutfak|Elektrikli fırın|Mutfak davlumbazı|Buzdolabı|Çamaşır makinesi|Ütü ve ütü masası|Nespresso makinesi|Marshall ses sistemi|Kasa",
-            "outdoor": "Pergolalı özel alan|Şemsiyeli şezlonglar|Oturma alanı|Hidromasaj ve renk terapili mini havuz|Tropikal bitkiler ve çiçeklerle özel bahçe|Duş alanı"
+          "sea-georgia": {
+            "title": "Georgia",
+            "guests": "2 - 4 Yetişkin",
+            "child": "1 Çocuk",
+            "bedrooms": "2 Yatak Odası",
+            "bathrooms": "1 Banyo",
+            "area": "45m² Alan",
+            "layout": "Bir ana giriş|Geniş oturma odası alanı|Yemek odası alanı|Çift kişilik yataklı iki ana yatak odası|Ortak bir banyo|Geniş özel dış alana doğrudan erişim",
+            "amenities": {
+              "indoor": "Ücretsiz Wi-Fi|Bir adet 55\" Akıllı TV|Bir tavan vantilatörü|Tam donanımlı akıllı mutfak|Elektrikli fırın|Mutfak davlumbazı|Buzdolabı|Çamaşır makinesi|Ütü ve ütü masası|Nespresso makinesi|Marshall ses sistemi|Kasa",
+              "outdoor": "Pergolalı özel alan|Şemsiyeli şezlonglar|Oturma alanı|Hidromasaj ve renk terapili mini havuz|Tropikal bitkiler ve çiçeklerle özel bahçe|Duş alanı"
+            },
+            "complementary": "Karşılama yardım prosedürü|Check-in/out yardımı",
+            "request": "Kiralık iki SUP tahtası|Kiralık bir elektrikli bisiklet"
           },
-          "complementary": "Karşılama yardım prosedürü|Check-in/out yardımı",
-          "request": "Kiralık iki SUP tahtası|Kiralık bir elektrikli bisiklet"
-        },
-        "city-dimitra": {
-          "title": "Dimitra",
-          "guests": "2 Yetişkin",
-          "child": "2 Çocuk",
-          "bedrooms": "1 Yatak Odası",
-          "bathrooms": "1 Banyo",
-          "area": "50m² Alan",
-          "layout": "Balkondan şehrin ana caddesine manzara|Kanepe yataklı oturma odası|Yemek alanı ile tam donanımlı mutfak|Çift kişilik yataklı yatak odası|Duşlu banyo",
-          "amenities": {
-            "indoor": "Ücretsiz Wi-Fi|55\" Akıllı TV|Tam donanımlı mutfak|Çok sayıda depolama alanı ve dolap|Tabure ile çalışma masası|Yeni enerji tasarruflu çift camlı pencereler|Dış güvenlik kapısı",
-            "outdoor": ""
+          "city-dimitra": {
+            "title": "Dimitra",
+            "guests": "2 Yetişkin",
+            "child": "2 Çocuk",
+            "bedrooms": "1 Yatak Odası",
+            "bathrooms": "1 Banyo",
+            "area": "50m² Alan",
+            "layout": "Balkondan şehrin ana caddesine manzara|Kanepe yataklı oturma odası|Yemek alanı ile tam donanımlı mutfak|Çift kişilik yataklı yatak odası|Duşlu banyo",
+            "amenities": {
+              "indoor": "Ücretsiz Wi-Fi|55\" Akıllı TV|Tam donanımlı mutfak|Çok sayıda depolama alanı ve dolap|Tabure ile çalışma masası|Yeni enerji tasarruflu çift camlı pencereler|Dış güvenlik kapısı",
+              "outdoor": ""
+            },
+            "complementary": "Karşılama prosedürü|Check-in/out yardımı",
+            "request": ""
           },
-          "complementary": "Karşılama prosedürü|Check-in/out yardımı",
-          "request": ""
+          "static": {
+            "layout_title": "Mülk Düzeni",
+            "amenities_indoor_title": "İç mekân olanakları",
+            "amenities_outdoor_title": "Dış mekân olanakları",
+            "complementary_title": "Tamamlayıcı hizmetler",
+            "request_title": "Kiralık hizmetler",
+            "back_button": "Geri"
+          }
         },
-        "static": {
-          "layout_title": "Mülk Düzeni",
-          "amenities_indoor_title": "İç mekân olanakları",
-          "amenities_outdoor_title": "Dış mekân olanakları",
-          "complementary_title": "Tamamlayıcı hizmetler",
-          "request_title": "Kiralık hizmetler",
-          "back_button": "Geri"
+        "distances": {
+          "title": "Önemli noktalara uzaklıklar",
+          "mocca-sea": {
+            "title": "Mocca by the Sea",
+            "description": "Plaja sadece birkaç adım mesafede, olanaklara kolay erişimle huzurlu bir sahil konaklaması için ideal.",
+            "items": {
+              "item_1": {
+                "title": "Araç şarj istasyonu ~80 m",
+                "description": "80 metre uzaklıktaki şarj istasyonu, elektrikli araçlar için pratik ve güvenilir bir çözüm sunarak günlük ulaşımı kolaylaştırır."
+              },
+              "item_2": {
+                "title": "Agia Paraskevi Plajı ~100 m",
+                "description": "Sadece 100 metre uzaklıktaki Agia Paraskevi Plajı, berrak suları ile dinlenme, yüzme ve güneşlenme için ideal bir sahil deneyimi sunar."
+              },
+              "item_3": {
+                "title": "En yakın restoran ~100 m",
+                "description": "100 metre mesafedeki en yakın restoran, yerel ve uluslararası lezzetler sunarak konforlu bir ortamda keyifli bir yemek deneyimi sağlar."
+              },
+              "item_4": {
+                "title": "Dedeağaç ~14 km",
+                "description": "14 km uzaklıktaki Dedeağaç, modern olanaklar ile yerel atmosferi bir araya getirir; sahil, restoranlar ve mağazalar ziyaretçiler için keyifli bir ortam sunar."
+              },
+              "item_5": {
+                "title": "Havalimanı ~20 km",
+                "description": "Mülklere 20 km uzaklıktaki Demokritos Havalimanı, yurt içi ve uluslararası yolculara sorunsuz ve konforlu varış ve kalkışlar sağlayarak kolay erişim sunmaktadır."
+              }
+            }
+          },
+          "mocca-city": {
+            "title": "Mocca City",
+            "description": "Her şeyin yürüme mesafesinde olduğu Alexandroupoli merkezinde konaklamak için ideal.",
+            "items": {
+              "item_1": {
+                "title": "Şehir merkezi",
+                "description": "Dimokratias Caddesi üzerinde, Dedeağaç’ın tam merkezinde yer almaktadır."
+              },
+              "item_2": {
+                "title": "Otobüs terminali ~300 m",
+                "description": "Otobüs terminali yürüme mesafesindedir ve kolay ulaşım imkanı sunar."
+              },
+              "item_3": {
+                "title": "Sahil yolu ~500 m",
+                "description": "Kısa bir yürüyüşle sahil yoluna ulaşabilir, yürüyüş ve dinlenmenin keyfini çıkarabilirsiniz."
+              },
+              "item_4": {
+                "title": "Dedeağaç Limanı ~1 km",
+                "description": "Yaklaşık 1 km uzaklıktaki liman, restoranlar ve kafeler ile canlı bir ortam sunar."
+              },
+              "item_5": {
+                "title": "Havalimanı ~7 km",
+                "description": "Havalimanına kısa sürede ulaşım sağlanabilir."
+              }
+            }
+          }
         }
       }
     },
@@ -369,7 +427,7 @@
       "row-1": {
         "info-column": {
           "title": "Bilgi",
-          "phone": "+30 6973433980",
+          "phone": "+306973433980",
           "email": "info@moccaliving.com",
           "location": "Alexandroupolis, Yunanistan"
         },
@@ -381,7 +439,7 @@
           "playlist": "Ses listesi"
         },
         "more-column": {
-          "title": "Daha fazlası",
+          "title": "Şirketlerimiz",
           "yuppii": "Yuppii Luna Park",
           "christmas-lighthouse": "The Christmas Lighthouse",
           "start-pilates": "Start Pilates"

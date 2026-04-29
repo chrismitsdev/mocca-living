@@ -30,7 +30,7 @@ function ContactDrawer() {
       <DrawerTrigger asChild>
         <IconButton
           aria-label='Open contact options'
-          className='fixed inset-be-3 inset-e-3 sm:hidden'
+          className='fixed inset-be-3 inset-e-3 data-variant-outline:bg-success data-variant-outline:text-success-foreground data-variant-outline:border-success data-variant-outline:hover:bg-success-hover data-variant-outline:hover:border-success-hover sm:hidden'
           variant='outline'
         >
           <IconBubbleTextFilled />

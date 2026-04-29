@@ -8,11 +8,6 @@ import {homeReasonsImages} from '@/public/images/home/home-reasons'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {CustomImage} from '@/src/components/ui/custom-image'
-import {
-  Scrollarea,
-  ScrollareaBar,
-  ScrollareaViewport
-} from '@/src/components/ui/scrollarea'
 import {Typography} from '@/src/components/ui/typography'
 
 function HomeReasons() {
@@ -20,41 +15,33 @@ function HomeReasons() {
 
   return (
     <Section className='bg-surface-2 space-y-4'>
-      <Scrollarea className='sm:hidden'>
-        <ScrollareaViewport>
-          <div className='px-3 inline-max grid grid-flow-col gap-x-3'>
-            <CustomImage
-              className='aspect-3/4 inline-[calc(100vw-24px)]'
-              src={seaDimitraCover}
-              alt='Mocca Sea Dimitra cover'
-            />
-            <CustomImage
-              className='aspect-3/4 inline-[calc(100vw-24px)]'
-              src={homeReasonsImages[0]}
-              alt='Handmade ceramic cups and a bowl on a dark round table'
-            />
-            <CustomImage
-              className='aspect-3/4 inline-[calc(100vw-24px)]'
-              src={cityDimitraCover}
-              alt='Mocca City Georgia villa'
-            />
-            <CustomImage
-              className='aspect-3/4 inline-[calc(100vw-24px)]'
-              src={homeReasonsImages[1]}
-              alt='Handmade ceramic cups arranged on a wooden shelf'
-            />
-            <CustomImage
-              className='aspect-3/4 inline-[calc(100vw-24px)]'
-              src={seaGeorgiaCover}
-              alt='Mocca Sea Georgia cover'
-            />
-          </div>
-        </ScrollareaViewport>
-        <ScrollareaBar
-          className='invisible'
-          orientation='horizontal'
+      <div className='px-3 flex gap-x-3 overflow-x-auto snap-x snap-mandatory sm:hidden'>
+        <CustomImage
+          className='aspect-3/4 inline-[calc(100vw-24px)] snap-center'
+          src={seaDimitraCover}
+          alt='Mocca Sea Dimitra cover'
         />
-      </Scrollarea>
+        <CustomImage
+          className='aspect-3/4 inline-[calc(100vw-24px)] snap-center'
+          src={homeReasonsImages[0]}
+          alt='Handmade ceramic cups and a bowl on a dark round table'
+        />
+        <CustomImage
+          className='aspect-3/4 inline-[calc(100vw-24px)] snap-center'
+          src={cityDimitraCover}
+          alt='Mocca City Georgia villa'
+        />
+        <CustomImage
+          className='aspect-3/4 inline-[calc(100vw-24px)] snap-center'
+          src={homeReasonsImages[1]}
+          alt='Handmade ceramic cups arranged on a wooden shelf'
+        />
+        <CustomImage
+          className='aspect-3/4 inline-[calc(100vw-24px)] snap-center'
+          src={seaGeorgiaCover}
+          alt='Mocca Sea Georgia cover'
+        />
+      </div>
       <Container>
         <div className='space-y-12'>
           <Typography

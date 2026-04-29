@@ -4,7 +4,6 @@ import {HomeCarousel} from './(components)/home-carousel'
 import {HomeGallery} from './(components)/home-gallery'
 import {HomeHeader} from './(components)/home-header'
 import {HomeIntro} from './(components)/home-intro'
-import {HomeLocations} from './(components)/home-locations'
 import {HomeReasons} from './(components)/home-reasons'
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
@@ -27,7 +26,6 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
       <HomeCarousel />
       <HomeIntro />
       <HomeReasons />
-      <HomeLocations />
       <HomeGallery />
     </>
   )

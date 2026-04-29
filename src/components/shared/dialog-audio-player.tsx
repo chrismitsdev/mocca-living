@@ -27,11 +27,11 @@ function DialogAudioPlayer({children}: React.PropsWithChildren) {
       <DialogPortal forceMount>
         <DialogContent
           className={cn(
-            'p-0 w-[calc(100%-16px)] max-w-3xl',
+            'not-sm:block-auto sm:max-inline-xl',
             !open && 'invisible'
           )}
         >
-          <DialogClose className='absolute top-3 right-3 group' />
+          <DialogClose />
           <DialogTitle className='sr-only'>
             Mocca Living audio playlist 2024
           </DialogTitle>
