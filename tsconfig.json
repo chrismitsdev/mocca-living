@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
+    "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
@@ -17,12 +18,11 @@
         "name": "next"
       }
     ],
-    "module": "esnext",
-    "moduleResolution": "bundler",
     "paths": {
       "@/*": ["./*"]
     },
-    "target": "ES2017"
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
   },
   "include": [
     "next-env.d.ts",
@@ -31,5 +31,5 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "unused"]
+  "exclude": ["node_modules"]
 }
