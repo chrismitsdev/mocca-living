@@ -8,7 +8,7 @@ pnpm next typegen
 
 echo ""
 echo "⏳ Type-checking..."
-pnpm type-check || { echo ""; echo "❌ Type errors. Push aborted."; exit 1; }
+pnpm typecheck || { echo ""; echo "❌ Type errors. Push aborted."; exit 1; }
 
 echo ""
 echo "⏳ Linting..."

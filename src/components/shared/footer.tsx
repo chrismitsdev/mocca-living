@@ -1,14 +1,4 @@
-import {
-  BedSingleIcon,
-  CookieIcon,
-  FacebookIcon,
-  FileTextIcon,
-  InstagramIcon,
-  MailIcon,
-  MapPinHouseIcon,
-  MusicIcon,
-  PhoneIcon
-} from 'lucide-react'
+import {IconBrandFacebook, IconBrandInstagram} from '@tabler/icons-react'
 import Image from 'next/image'
 import {useTranslations} from 'next-intl'
 import logoFull from '@/public/logos/mocca-logo-box.svg'
@@ -16,16 +6,17 @@ import {Container} from '@/src/components/shared/container'
 import {DialogAudioPlayer} from '@/src/components/shared/dialog-audio-player'
 import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
 import {LogosCarousel} from '@/src/components/shared/logos-carousel'
-import {Button} from '@/src/components/ui/button'
+import {IconButton} from '@/src/components/ui/icon-button'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 import {Link} from '@/src/i18n/navigation'
+import {cn, PHONE} from '@/src/lib/utils'
 
 function Footer() {
-  const t = useTranslations('Components')
+  const t = useTranslations('Components.footer')
 
   return (
-    <footer className='py-16 bg-surface-2'>
+    <footer className='py-16 bg-surface-3'>
       <Container className='space-y-12'>
         <div className='grid gap-12 sm:grid-flow-col sm:auto-cols-fr'>
           <Image
@@ -33,160 +24,105 @@ function Footer() {
             height={160}
             alt='Mocca Living footer logo'
           />
-          <FooterColumn title={t('Footer.row-1.info-column.title')}>
-            <Typography
-              variant='link'
-              asChild
+          <FooterColumn title={t('row-1.info-column.title')}>
+            <FooterLink href={`tel:${PHONE}`}>
+              <Typography variant='small'>
+                {t('row-1.info-column.phone')}
+              </Typography>
+            </FooterLink>
+            <FooterLink
+              href='mailto:info@moccaliving.com'
+              target='_blank'
+              rel='noopener noreferrer'
             >
-              <a
-                className='flex gap-1.5'
-                href='tel:+306973433980'
-              >
-                <PhoneIcon className='w-3.5 h-lh shrink-0' />
-                <span>{t('Footer.row-1.info-column.tel')}</span>
-              </a>
-            </Typography>
-            <Typography
-              variant='link'
-              asChild
-            >
-              <a
-                className='flex gap-1.5'
-                href='mailto:info@moccaliving.com'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <MailIcon className='w-3.5 h-lh shrink-0' />
-                <span>{t('Footer.row-1.info-column.email')}</span>
-              </a>
-            </Typography>
-            <Typography
-              variant='link'
-              asChild
-            >
-              <a
-                className='flex gap-1.5'
-                href='https://maps.app.goo.gl/L6JEySni2t8jnb5m9'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <MapPinHouseIcon className='w-3.5 h-lh shrink-0' />
-                <span>{t('Footer.row-1.info-column.location')}</span>
-              </a>
+              <Typography variant='small'>
+                {t('row-1.info-column.email')}
+              </Typography>
+            </FooterLink>
+            <Typography variant='small'>
+              {t('row-1.info-column.location')}
             </Typography>
           </FooterColumn>
-          <FooterColumn title={t('Footer.row-1.links-column.title')}>
-            <Typography
-              className='flex items-center gap-1.5'
-              variant='link'
-              asChild
-            >
-              <Link href='/privacy'>
-                <FileTextIcon className='w-3.5 h-lh shrink-0' />
-                <span>{t('Footer.row-1.links-column.privacy-policy')}</span>
-              </Link>
-            </Typography>
-            <Typography
-              className='flex items-center gap-1.5'
-              variant='link'
-              asChild
-            >
-              <Link href='/cookies'>
-                <CookieIcon className='w-3.5 h-lh shrink-0' />
-                <span>{t('Footer.row-1.links-column.cookies-policy')}</span>
-              </Link>
-            </Typography>
-            <Typography
-              className='flex items-center gap-1.5'
-              variant='link'
-              asChild
-            >
-              <Link href='/rules'>
-                <BedSingleIcon className='w-3.5 h-lh shrink-0' />
-                <span>
-                  {t('Footer.row-1.links-column.accomodation-policy')}
-                </span>
-              </Link>
-            </Typography>
+          <FooterColumn title={t('row-1.links-column.title')}>
+            <FooterLink href='/privacy'>
+              <Typography variant='small'>
+                {t('row-1.links-column.privacy-policy')}
+              </Typography>
+            </FooterLink>
+            <FooterLink href='/cookies'>
+              <Typography variant='small'>
+                {t('row-1.links-column.cookies-policy')}
+              </Typography>
+            </FooterLink>
+            <FooterLink href='/rules'>
+              <Typography variant='small'>
+                {t('row-1.links-column.accomodation-policy')}
+              </Typography>
+            </FooterLink>
             <DialogAudioPlayer>
-              <Typography
-                className='flex items-center gap-1.5'
-                variant='link'
-              >
-                <MusicIcon className='w-3.5 h-lh shrink-0' />
-                <span>{t('Footer.row-1.links-column.playlist')}</span>
+              <Typography variant='small'>
+                {t('row-1.links-column.playlist')}
               </Typography>
             </DialogAudioPlayer>
           </FooterColumn>
-          <FooterColumn title={t('Footer.row-1.more-column.title')}>
-            <Typography
-              variant='link'
-              asChild
+          <FooterColumn title={t('row-1.more-column.title')}>
+            <FooterLink
+              href='https://www.yuppii.gr/'
+              target='_blank'
+              rel='noopener noreferrer'
             >
-              <a
-                href='https://www.yuppii.gr/'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                {t('Footer.row-1.more-column.yuppii')}
-              </a>
-            </Typography>
-            <Typography
-              variant='link'
-              asChild
+              <Typography variant='small'>
+                {t('row-1.more-column.yuppii')}
+              </Typography>
+            </FooterLink>
+            <FooterLink
+              href='https://www.thechristmaslighthouse.gr/'
+              target='_blank'
+              rel='noopener noreferrer'
             >
-              <a
-                href='https://www.thechristmaslighthouse.gr/'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                {t('Footer.row-1.more-column.christmas-lighthouse')}
-              </a>
-            </Typography>
-            <Typography
-              variant='link'
-              asChild
+              <Typography variant='small'>
+                {t('row-1.more-column.christmas-lighthouse')}
+              </Typography>
+            </FooterLink>
+            <FooterLink
+              href='https://startpilates.gr/'
+              target='_blank'
+              rel='noopener noreferrer'
             >
-              <a
-                href='https://startpilates.gr/'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                {t('Footer.row-1.more-column.start-pilates')}
-              </a>
-            </Typography>
+              <Typography variant='small'>
+                {t('row-1.more-column.start-pilates')}
+              </Typography>
+            </FooterLink>
           </FooterColumn>
           <FooterColumn>
             <div className='flex gap-2 sm:flex-col'>
               <div className='space-x-2'>
-                <Button
-                  variant='bordered-alt'
-                  size='icon-normal'
+                <IconButton
+                  aria-label='Visit our Facebook page (Opens in new tab)'
+                  variant='outline'
                   asChild
                 >
                   <a
-                    aria-label='Visit our facebook page (Opens in new tab)'
                     href='https://www.facebook.com/profile.php?id=61566665200042'
                     target='_blank'
                     rel='noopener noreferrer'
                   >
-                    <FacebookIcon />
+                    <IconBrandFacebook />
                   </a>
-                </Button>
-                <Button
-                  variant='bordered-alt'
-                  size='icon-normal'
+                </IconButton>
+                <IconButton
+                  aria-label='Visit our Instagram page (Opens in new tab)'
+                  variant='outline'
                   asChild
                 >
                   <a
-                    aria-label='Visit our instagram page (Opens in new tab)'
                     href='https://www.instagram.com/moccaliving.premiumstay'
                     target='_blank'
                     rel='noopener noreferrer'
                   >
-                    <InstagramIcon />
+                    <IconBrandInstagram />
                   </a>
-                </Button>
+                </IconButton>
               </div>
               <LocaleSwitcher scrollTop />
             </div>
@@ -198,44 +134,22 @@ function Footer() {
         <div className='flex flex-col justify-between gap-3 sm:items-center sm:flex-row'>
           <Typography
             className='order-2 sm:order-1'
-            variant='mini'
+            variant='tiny'
           >
-            {t('Footer.row-2.copyright', {created: new Date()})}
+            {t('row-2.copyright', {created: new Date()})}
           </Typography>
           <LogosCarousel />
           <Typography
             className='order-3 sm:hidden'
-            variant='mini'
+            variant='tiny'
           >
-            {t.rich('Footer.row-2.constructor', {
-              a: (chunks) => (
-                <a
-                  className='underline'
-                  href='https://kyrcom.com/el/'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  {chunks}
-                </a>
-              )
-            })}
+            {t('row-2.constructor')}
           </Typography>
           <Typography
             className='order-4 sm:order-3'
-            variant='mini'
+            variant='tiny'
           >
-            {t.rich('Footer.row-2.developer', {
-              a: (chunks) => (
-                <a
-                  className='underline'
-                  href='https://www.facebook.com/Christos.Mitsiaris/'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  {chunks}
-                </a>
-              )
-            })}
+            {t('row-2.developer')}
           </Typography>
         </div>
       </Container>
@@ -247,20 +161,33 @@ function FooterColumn({
   title,
   children
 }: React.PropsWithChildren & {title?: string}) {
-  let renderedJsx: React.JSX.Element
-
   if (title) {
-    renderedJsx = (
+    return (
       <div className='w-fit space-y-2 sm:space-y-4'>
-        <Typography className='font-semibold uppercase'>{title}</Typography>
+        <Typography
+          variant='large'
+          className='uppercase'
+        >
+          {title}
+        </Typography>
         <div className='space-y-2'>{children}</div>
       </div>
     )
-  } else {
-    renderedJsx = <div className='w-fit space-y-2 sm:space-y-4'>{children}</div>
   }
 
-  return renderedJsx
+  return <div className='w-fit space-y-2 sm:space-y-4'>{children}</div>
+}
+
+function FooterLink({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof Link>) {
+  return (
+    <Link
+      className={cn('hover:underline', className)}
+      {...props}
+    />
+  )
 }
 
 Footer.displayName = 'Footer'

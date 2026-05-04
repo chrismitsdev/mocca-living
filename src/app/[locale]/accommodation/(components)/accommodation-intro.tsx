@@ -4,7 +4,7 @@ import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
 function AccommodationIntro() {
-  const t = useTranslations('Pages.Accommodation.Index.Intro')
+  const t = useTranslations('Pages.accommodation.index.intro')
 
   return (
     <Container
@@ -18,7 +18,7 @@ function AccommodationIntro() {
         >
           <h2>{t('title')}</h2>
         </Typography>
-        <Typography className='leading-8'>{t('message')}</Typography>
+        <Typography>{t('message')}</Typography>
       </Section>
     </Container>
   )

@@ -1,3 +1,4 @@
+import {getTranslations} from 'next-intl/server'
 import {
   Body,
   Column,
@@ -12,18 +13,16 @@ import {
   Section,
   Tailwind,
   Text
-} from '@react-email/components'
-import {getTranslations} from 'next-intl/server'
+} from 'react-email'
 import type {ContactFormActionState} from '@/src/lib/actions'
 
 async function ContactFormClient({
-  firstName,
-  lastName,
+  fullname,
   email,
   phone,
   message
 }: ContactFormActionState['data']) {
-  const t = await getTranslations('Components.ContactFormClient')
+  const t = await getTranslations('Components.contact_form_client')
 
   return (
     <Html>
@@ -66,8 +65,8 @@ async function ContactFormClient({
             </Section>
 
             <Section
-              className='overflow-hidden rounded'
-              style={{border: '1px solid #c7b492'}}
+              className='overflow-hidden'
+              style={{backgroundColor: '#ddc8a2', border: '1px solid #c7b492'}}
             >
               <Row>
                 <Img
@@ -79,13 +78,13 @@ async function ContactFormClient({
               <Row className='main-content'>
                 <Column>
                   <Heading className='text-lg'>
-                    {t('header')} {firstName} {lastName},
+                    {t('header')} {fullname},
                   </Heading>
                   <Text>{t('thanks')}</Text>
-
                   <Text>{t('summary')}</Text>
+
                   <Text className='my-0'>
-                    {t('name')}: {firstName} {lastName}
+                    {t('fullname')}: {fullname}
                   </Text>
                   <Text className='my-0'>
                     {t('email')}: {email}
@@ -124,7 +123,7 @@ async function ContactFormClient({
                   className='pr-2'
                 >
                   <Link
-                    className='p-1 bg-surface-3 inline-block rounded'
+                    className='p-1 bg-surface-3 inline-block'
                     href='https://www.facebook.com/profile.php?id=61566665200042'
                     target='_blank'
                     rel='noopener noreferrer'
@@ -141,7 +140,7 @@ async function ContactFormClient({
                   className='pl-2'
                 >
                   <Link
-                    className='p-1 bg-surface-3 inline-block rounded'
+                    className='p-1 bg-surface-3 inline-block'
                     href='https://www.instagram.com/moccaliving.premiumstay/'
                     target='_blank'
                     rel='noopener noreferrer'

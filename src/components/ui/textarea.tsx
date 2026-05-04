@@ -1,32 +1,25 @@
-import type {LucideProps} from 'lucide-react'
+import type {IconProps} from '@tabler/icons-react'
 import {cn} from '@/src/lib/utils'
 
 interface TextareaProps extends React.ComponentPropsWithRef<'textarea'> {
-  wrapperProps?: React.ComponentPropsWithRef<'div'>
-  icon?: React.ComponentType<LucideProps>
+  icon?: React.ComponentType<IconProps>
   error?: boolean
 }
 
 function Textarea({
   className,
-  wrapperProps = {},
   error,
   icon: Icon,
   rows = 4,
   ...props
 }: TextareaProps) {
-  const {className: wrapperClassName, ...restWrapperProps} = wrapperProps
-
   return (
-    <div
-      className={cn('relative group', wrapperClassName)}
-      {...restWrapperProps}
-    >
+    <div className='relative group'>
       <textarea
         className={cn(
-          'py-1.75 w-full block bg-surface-1 border border-border rounded font-semibold outline-0 transition placeholder:text-sm placeholder:font-normal placeholder:text-foreground-muted placeholder:opacity-100 focus-within:border-border-hover focus-within:shadow disabled:pointer-events-none disabled:opacity-35',
-          error && 'border-error',
-          Icon ? 'pl-9 pr-3' : 'px-3',
+          'py-3.75 inline-full min-block-14 block bg-surface-1 border border-border font-bold outline-0 transition placeholder:text-sm placeholder:leading-6 focus:border-border-hover focus:shadow-sm disabled:pointer-events-none disabled:opacity-35',
+          error && 'border-danger focus:border-danger',
+          Icon ? 'pl-8 pr-4' : 'px-4',
           className
         )}
         rows={rows}
@@ -35,11 +28,11 @@ function Textarea({
       {Icon && (
         <span
           className={cn(
-            'absolute left-3 top-3',
+            'absolute inset-bs-4 inset-s-2.5',
             props.disabled && 'opacity-35'
           )}
         >
-          <Icon className='size-4' />
+          <Icon className='inline-4 block-lh' />
         </span>
       )}
     </div>

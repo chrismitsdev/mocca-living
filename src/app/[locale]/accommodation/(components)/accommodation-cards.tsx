@@ -1,15 +1,19 @@
 import {
-  BabyIcon,
-  BedDoubleIcon,
-  ChevronRight,
-  ToiletIcon,
-  UsersIcon
-} from 'lucide-react'
+  IconBadgeWcFilled,
+  IconBedFilled,
+  IconMoodKidFilled,
+  IconUserFilled
+} from '@tabler/icons-react'
 import type {StaticImageData} from 'next/image'
-import {type Messages, useTranslations} from 'next-intl'
-import {dimitraCover, georgiaCover} from '@/public/images/covers'
+import {useTranslations} from 'next-intl'
+import {
+  cityDimitraCover,
+  seaDimitraCover,
+  seaGeorgiaCover
+} from '@/public/images/covers'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
+import {Badge} from '@/src/components/ui/badge'
 import {Button} from '@/src/components/ui/button'
 import {
   Card,
@@ -22,125 +26,118 @@ import {
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {Typography} from '@/src/components/ui/typography'
 import {Link} from '@/src/i18n/navigation'
+import {CITY_GEORGIA_GMAP, SEA_GMAP} from '@/src/lib/utils'
 
-type Villas = Messages['Pages']['Accommodation']['Index']['Villas']
+type PropertyCard = {key: PropertySlug; cover: StaticImageData}
 
-type VillaInfo = {
-  key: keyof Villas
-  title: Villas[keyof Villas]['title']
-  description: Villas[keyof Villas]['description']
-  guests: Villas[keyof Villas]['guests']
-  children: Villas[keyof Villas]['children']
-  bedrooms: Villas[keyof Villas]['bedrooms']
-  bathrooms: Villas[keyof Villas]['bathrooms']
-  button: Villas[keyof Villas]['button']
-  image: StaticImageData
-}
-
-const villaInfo: Pick<VillaInfo, 'key' | 'image'>[] = [
-  {key: 'dimitra', image: dimitraCover},
-  {key: 'georgia', image: georgiaCover}
+const data: {location: PropertyLocation; slugs: PropertyCard[]}[] = [
+  {
+    location: 'mocca-sea',
+    slugs: [
+      {key: 'sea-dimitra', cover: seaDimitraCover},
+      {key: 'sea-georgia', cover: seaGeorgiaCover}
+    ]
+  },
+  {
+    location: 'mocca-city',
+    slugs: [{key: 'city-dimitra', cover: cityDimitraCover}]
+  }
 ]
 
-const getVillas = (
-  t: ReturnType<typeof useTranslations<'Pages.Accommodation.Index.Villas'>>
-): VillaInfo[] =>
-  villaInfo.map(({key, image}) => ({
-    key,
-    image,
-    title: t(`${key}.title`),
-    description: t(`${key}.description`),
-    guests: t(`${key}.guests`),
-    children: t(`${key}.children`),
-    bedrooms: t(`${key}.bedrooms`),
-    bathrooms: t(`${key}.bathrooms`),
-    button: t(`${key}.button`)
-  }))
-
 function AccommodationCards() {
-  const villas = getVillas(useTranslations('Pages.Accommodation.Index.Villas'))
+  const t = useTranslations()
 
-  return (
-    <Container asChild>
-      <Section className='pt-16'>
-        <div className='grid gap-12 sm:grid-cols-2'>
-          {villas.map((villa) => (
-            <Card
-              key={villa.key}
-              className='p-0 space-y-0 overflow-hidden'
-            >
-              <CustomImage
-                className='min-h-80 w-full object-cover'
-                src={villa.image}
-                alt={`${villa.key} indoor image`}
-                sizes='(min-width: 640px) 730px, 343px'
-              />
-              <CardHeader className='p-4 space-y-4 sm:p-6'>
-                <CardTitle>{villa.title}</CardTitle>
-                <CardDescription className='grid grid-cols-2 gap-3 sm:flex'>
-                  <VillaDetail>
-                    <UsersIcon
-                      size={14}
-                      strokeWidth={2.5}
-                    />
-                    <span>{villa.guests}</span>
-                  </VillaDetail>
-                  <VillaDetail>
-                    <BabyIcon
-                      size={14}
-                      strokeWidth={2.5}
-                    />
-                    <span>{villa.children}</span>
-                  </VillaDetail>
-                  <VillaDetail>
-                    <BedDoubleIcon
-                      size={14}
-                      strokeWidth={2.5}
-                    />
-                    <span>{villa.bedrooms}</span>
-                  </VillaDetail>
-                  <VillaDetail>
-                    <ToiletIcon
-                      size={14}
-                      strokeWidth={2.5}
-                    />
-                    <span>{villa.bathrooms}</span>
-                  </VillaDetail>
-                </CardDescription>
-              </CardHeader>
-              <CardContent className='px-4 sm:px-6'>
-                <Typography className='text-lg leading-7!'>
-                  {villa.description}
-                </Typography>
-              </CardContent>
-              <CardFooter className='pt-8 px-4 pb-6 justify-end sm:px-6'>
-                <Button asChild>
-                  <Link href={`/accommodation/${villa.key}`}>
-                    <span>{villa.button}</span>
-                    <ChevronRight
-                      className='mt-1'
-                      size={16}
-                    />
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
+  const renderedCards = data.map(({location, slugs}) => {
+    return (
+      <div
+        key={location}
+        className='space-y-4'
+      >
+        <Typography variant='h4'>
+          {t(`Metadata.accommodation.location.${location}.title`)}
+        </Typography>
+
+        <div className='grid gap-10 md:grid-cols-2'>
+          {slugs.map(({key, cover}) => {
+            return (
+              <Card key={key}>
+                <CustomImage
+                  className='block-auto min-block-80'
+                  src={cover}
+                  alt={`${key} indoor image`}
+                  sizes='(min-width: 640px) 730px, 343px'
+                />
+                <CardHeader>
+                  <CardTitle>
+                    {t(`Pages.accommodation.index.cards.${key}.title`)}
+                  </CardTitle>
+                  <CardDescription className='grid grid-cols-2 gap-2'>
+                    <Badge>
+                      <IconUserFilled />
+                      <span>
+                        {t(`Pages.accommodation.index.cards.${key}.guests`)}
+                      </span>
+                    </Badge>
+                    <Badge>
+                      <IconMoodKidFilled />
+                      <span>
+                        {t(`Pages.accommodation.index.cards.${key}.children`)}
+                      </span>
+                    </Badge>
+                    <Badge>
+                      <IconBedFilled />
+                      <span>
+                        {t(`Pages.accommodation.index.cards.${key}.bedrooms`)}
+                      </span>
+                    </Badge>
+                    <Badge>
+                      <IconBadgeWcFilled />
+                      <span>
+                        {t(`Pages.accommodation.index.cards.${key}.bathrooms`)}
+                      </span>
+                    </Badge>
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Typography>
+                    {t(`Pages.accommodation.index.cards.${key}.description`)}
+                  </Typography>
+                </CardContent>
+                <CardFooter className='flex flex-wrap justify-between'>
+                  <Button asChild>
+                    <Link
+                      href={key.includes('sea') ? SEA_GMAP : CITY_GEORGIA_GMAP}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      {t(
+                        `Pages.accommodation.index.cards.static.location_button`
+                      )}
+                    </Link>
+                  </Button>
+                  <Button asChild>
+                    <Link href={`/accommodation/${location}/${key}`}>
+                      {t(`Pages.accommodation.index.cards.static.more_button`)}
+                    </Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            )
+          })}
         </div>
-      </Section>
-    </Container>
-  )
-}
+      </div>
+    )
+  })
 
-function VillaDetail({children}: React.PropsWithChildren) {
   return (
-    <span className='px-2 shrink-0 inline-flex items-center justify-center gap-1.5 bg-surface-3 font-semibold border border-surface-4 rounded'>
-      {children}
-    </span>
+    <Section>
+      <Container>
+        <div className='space-y-20'>{renderedCards}</div>
+      </Container>
+    </Section>
   )
 }
 
 AccommodationCards.displayName = 'AccommodationCards'
-VillaDetail.displayName = 'VillaDetail'
 
 export {AccommodationCards}

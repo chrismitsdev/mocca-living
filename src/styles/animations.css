@@ -1,18 +1,19 @@
 @theme {
   --ease-mocca: cubic-bezier(0.32, 0.72, 0, 1);
   --animate-page-appear: page-appear 2250ms var(--ease-mocca);
+
   /* Overlay */
   --animate-overlay-open: overlay-open 750ms var(--ease-mocca);
   --animate-overlay-close: overlay-close 375ms var(--ease-mocca);
+
   /* Dialog */
   --animate-dialog-open: dialog-open 750ms var(--ease-mocca);
   --animate-dialog-close: dialog-close 375ms var(--ease-mocca);
-  /* Accordion */
-  --animate-accordion-open: accordion-open 750ms var(--ease-mocca);
-  --animate-accordion-close: accordion-close 375ms var(--ease-mocca);
+
   /* Collapsible */
   --animate-collapsible-open: collapsible-open 750ms var(--ease-mocca);
   --animate-collapsible-close: collapsible-close 375ms var(--ease-mocca);
+
   /* Popover, Hover Card, Select */
   --animate-slide-top-show: slide-top-show 375ms var(--ease-mocca);
   --animate-slide-right-show: slide-right-show 375ms var(--ease-mocca);
@@ -22,6 +23,7 @@
   --animate-slide-right-hide: slide-right-hide 375ms var(--ease-mocca);
   --animate-slide-bottom-hide: slide-bottom-hide 375ms var(--ease-mocca);
   --animate-slide-left-hide: slide-left-hide 375ms var(--ease-mocca);
+
   /* Drawer */
   --animate-drawer-top-open: drawer-top-open 750ms var(--ease-mocca);
   --animate-drawer-right-open: drawer-right-open 750ms var(--ease-mocca);
@@ -86,25 +88,6 @@
     to {
       opacity: 0;
       transform: translate(0, 24px);
-    }
-  }
-
-  /* Accordion */
-  @keyframes accordion-open {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
-  }
-
-  @keyframes accordion-close {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
     }
   }
 

@@ -1,68 +1,107 @@
 import {type ClassValue, clsx} from 'clsx'
-import type {StaticImageData} from 'next/image'
 import {twMerge} from 'tailwind-merge'
-
-export async function sleep(sleepTime: number = 1000) {
-  await new Promise((resolve) => setTimeout(resolve, sleepTime))
-}
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function shimmer(w: number, h: number) {
-  return `
-    <svg
-      width='${w}'
-      height='${h}'
-      version='1.1'
-      xmlns='http://www.w3.org/2000/svg'
-      xmlns:xlink='http://www.w3.org/1999/xlink'
-    >
-      <defs>
-        <linearGradient id='g'>
-          <stop stop-color='#b1a082' offset='20%' />
-          <stop stop-color='#9b8c71' offset='50%' />
-          <stop stop-color='#b1a082' offset='70%' />
-        </linearGradient>
-      </defs>
-      <rect width='${w}' height='${h}' fill='#b1a082' />
-      <rect id="r" width='${w}' height='${h}' fill='url(#g)' />
-      <animate
-        xlink:href='#r'
-        attributeName='x'
-        from='-${w}'
-        to='${w}'
-        dur='1s'
-        repeatCount='indefinite'
-      />
-    </svg>
-  `
+export async function sleep(sleepTime: number = 1000) {
+  await new Promise((resolve) => setTimeout(resolve, sleepTime))
 }
 
-export function toBase64(str: string) {
-  return typeof window === 'undefined'
-    ? Buffer.from(str).toString('base64')
-    : window.btoa(str)
+export function isValidLocation(
+  location: string
+): location is PropertyLocation {
+  return location === 'mocca-sea' || location === 'mocca-city'
 }
 
-export function formatDuration(durationInSeconds: number | null) {
-  if (durationInSeconds === null) return null
+export const SEA_GMAP = 'https://maps.app.goo.gl/L6JEySni2t8jnb5m9'
+export const CITY_GEORGIA_GMAP = 'https://maps.app.goo.gl/pLsA8svYzYq5Z9GK9'
+export const PHONE = '+306973433980'
 
-  const minutes = Math.floor(durationInSeconds / 60)
-  const seconds = Math.floor(durationInSeconds % 60)
-    .toString()
-    .padStart(2, '0')
+export const bannedKeywordPatterns = [
+  // Traffic‑boosting offers
+  /\btraffic\b/i,
+  /\bvisitors\b/i,
+  /\breach\b/i,
+  /\bexposure\b/i,
+  /\bmaximize reach\b/i,
+  /\bturn visitors into opportunities\b/i,
+  /\btargeted visitors\b/i,
 
-  return `${minutes}:${seconds}`
-}
+  // Boost / AI / Growth
+  /\bboost\b/i,
+  /\bboost your traffic\b/i,
+  /\bai\b/i,
+  /\bartificial intelligence\b/i,
+  /\bgrowth\b/i,
+  /\bgenerate leads\b/i,
+  /\bamplify\b/i,
+  /\bengagement\b/i,
 
-export function sortImportedImagesByName(
-  importedImages: Record<string, StaticImageData>
-) {
-  return Object.values(importedImages).sort((a, b) => {
-    const numA = parseInt(a.src.match(/\d+/)?.[0] || '0', 10)
-    const numB = parseInt(b.src.match(/\d+/)?.[0] || '0', 10)
-    return numA - numB
-  })
-}
+  // Trial / Subscription / Packages
+  /\bfree trial\b/i,
+  /\btrial\b/i,
+  /\bone-week\b/i,
+  /\bno-cost trial\b/i,
+  /\bmonth-by-month\b/i,
+  /\bsubscription\b/i,
+  /\bscale up\b/i,
+  /\b(350,000|400,000|4,000|thousands)\b/i,
+
+  // Lead‑generation pitches
+  /\bleads\b/i,
+  /\blow website leads\b/i,
+  /\blead generation\b/i,
+  /\blead gen\b/i,
+  /\bget increased leads\b/i,
+
+  // Social / Video platforms
+  /\binstagram\b/i,
+  /\byoutube\b/i,
+  /\bshorts\b/i,
+  /\bsocial channels\b/i,
+  /\bautomating\b/i,
+  /\bhashtags\b/i,
+
+  // SEO / Content writing
+  /\bseo\b/i,
+  /\bsearch ranking\b/i,
+  /\bblog posts\b/i,
+  /\bcontent\b/i,
+  /\bauthor blog posts\b/i,
+  /\bfeature them\b/i,
+
+  // Hiring / Services
+  /\bhire me\b/i,
+  /\bauthor\b/i,
+  /\bwriter\b/i,
+  /\baffordable\b/i,
+  /\bservice\b/i,
+  /\bpackages\b/i,
+  /\boffer\b/i,
+
+  // URLs / Shorteners
+  /http[s]?:\/\//i,
+  /\bow\.ly\b/i,
+  /\bcutt\.ly\b/i,
+  /\bt\.ly\b/i,
+  /\bbit\.ly\b/i,
+  /\btinyurl\b/i,
+
+  // CTAs & spammy verbs
+  /\bclick here\b/i,
+  /\bwatch this\b/i,
+  /\bsee the results\b/i,
+  /\bget more info\b/i,
+  /\blet’s boost\b/i,
+  /\bact now\b/i,
+  /\blimited time\b/i,
+  /\bguarantee\b/i,
+  /\brisk-free\b/i,
+
+  // Misc
+  /\bweight loss\b/i,
+  /\bdiet\b/i,
+  /\bsupplements\b/i
+]

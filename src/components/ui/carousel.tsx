@@ -1,119 +1,48 @@
 'use client'
 
-import {Slot} from '@radix-ui/react-slot'
-import useEmblaCarousel from 'embla-carousel-react'
 import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ImagesIcon,
-  XIcon
-} from 'lucide-react'
-import {useCallback, useEffect, useState} from 'react'
-import {Button} from '@/src/components/ui/button'
+  IconChevronLeft,
+  IconChevronRight,
+  IconChevronUp
+} from '@tabler/icons-react'
+import type useEmblaCarousel from 'embla-carousel-react'
+import {useState} from 'react'
 import {
   Drawer,
   DrawerContent,
   DrawerTitle,
   DrawerTrigger
 } from '@/src/components/ui/drawer'
+import {IconButton} from '@/src/components/ui/icon-button'
 import {
   Scrollarea,
   ScrollareaBar,
   ScrollareaViewport
 } from '@/src/components/ui/scrollarea'
-import {VisuallyHidden} from '@/src/components/ui/visually-hidden'
-import {
-  CarouselContext,
-  useCarouselContext
-} from '@/src/context/carousel-context'
+import {CarouselProvider, useCarousel} from '@/src/context/carousel-context'
 import {cn} from '@/src/lib/utils'
 
-type EmblaApiType = ReturnType<typeof useEmblaCarousel>[1]
-
-interface CarouselProps extends React.ComponentPropsWithRef<'div'> {
+interface CarouselProps extends React.ComponentPropsWithRef<'section'> {
   options?: Parameters<typeof useEmblaCarousel>[0]
   plugins?: Parameters<typeof useEmblaCarousel>[1]
-  asChild?: boolean
 }
 
-function Carousel({
-  className,
-  options,
-  plugins,
-  asChild = false,
-  ...props
-}: CarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins)
-  const [selectedIndex, setSelectedIndex] = useState<number>(
-    options?.startIndex ?? 0
-  )
-  const Comp = asChild ? Slot : 'div'
-
-  const onPrevButtonClick = useCallback(() => {
-    if (!emblaApi) return
-
-    if (emblaApi.plugins()?.autoplay) {
-      emblaApi.plugins().autoplay.stop()
-    }
-
-    emblaApi.scrollPrev()
-  }, [emblaApi])
-
-  const onNextButtonClick = useCallback(() => {
-    if (!emblaApi) return
-
-    if (emblaApi.plugins()?.autoplay) {
-      emblaApi.plugins().autoplay.stop()
-    }
-
-    emblaApi.scrollNext()
-  }, [emblaApi])
-
-  const onThumbButtonClick = useCallback(
-    (index: number) => {
-      if (!emblaApi) return
-
-      if (emblaApi.plugins()?.autoplay) {
-        emblaApi.plugins().autoplay.stop()
-      }
-
-      emblaApi.scrollTo(index)
-    },
-    [emblaApi]
-  )
-
-  const onSelect = useCallback((emblaApi: EmblaApiType) => {
-    if (!emblaApi) return
-    setSelectedIndex(emblaApi.selectedScrollSnap())
-  }, [])
-
-  useEffect(() => {
-    if (!emblaApi) return
-
-    onSelect(emblaApi)
-    emblaApi.on('reInit', onSelect).on('select', onSelect)
-
-    return () => {
-      emblaApi.off('reInit', onSelect).off('select', onSelect)
-    }
-  }, [emblaApi, onSelect])
-
+function Carousel({className, options, plugins, ...props}: CarouselProps) {
   return (
-    <CarouselContext.Provider
-      value={{
-        emblaRef,
-        emblaApi,
-        selectedIndex,
-        onPrevButtonClick,
-        onNextButtonClick,
-        onThumbButtonClick
-      }}
+    <CarouselProvider
+      options={options}
+      plugins={plugins}
     >
-      <Comp
-        className={cn('relative overflow-hidden', className)}
+      <section
+        className={cn(
+          '[--slides-gap:--spacing(4)] relative overflow-hidden',
+          className
+        )}
+        role='region'
+        aria-roledescription='carousel'
         {...props}
       />
-    </CarouselContext.Provider>
+    </CarouselProvider>
   )
 }
 
@@ -121,11 +50,11 @@ function CarouselViewport({
   className,
   ...props
 }: React.ComponentPropsWithRef<'div'>) {
-  const {emblaRef} = useCarouselContext()
+  const {emblaRef} = useCarousel()
 
   return (
     <div
-      className={cn('overflow-hidden h-full', className)}
+      className={cn('h-full overflow-hidden', className)}
       ref={emblaRef}
       {...props}
     />
@@ -138,7 +67,7 @@ function SlidesContainer({
 }: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      className={cn('h-full flex', className)}
+      className={cn('-ml-(--slides-gap) h-full flex', className)}
       {...props}
     />
   )
@@ -146,11 +75,14 @@ function SlidesContainer({
 
 function Slide({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   return (
+    // biome-ignore lint/a11y/useSemanticElements: <fieldset> not applicable
     <div
       className={cn(
-        'min-w-0 grow-0 shrink-0 basis-full select-none',
+        'pl-(--slides-gap) min-w-0 grow-0 shrink-0 basis-full select-none',
         className
       )}
+      role='group'
+      aria-roledescription='slide'
       {...props}
     />
   )
@@ -158,6 +90,7 @@ function Slide({className, ...props}: React.ComponentPropsWithRef<'div'>) {
 
 function ThumbsContainer({
   className,
+  children,
   ...props
 }: React.ComponentPropsWithRef<'div'>) {
   const [open, setOpen] = useState<boolean>(false)
@@ -166,32 +99,34 @@ function ThumbsContainer({
     <Drawer
       open={open}
       onOpenChange={setOpen}
-      modal={false}
     >
       <DrawerTrigger asChild>
-        <Button
-          className='absolute left-1/2 bottom-1.5 -translate-x-1/2 transition ease-mocca data-open:-translate-y-15 data-open:duration-750 data-closed:duration-375 sm:bottom-4 sm:data-open:-translate-y-25'
-          variant={!open ? 'primary-alt' : 'error'}
-          size='icon-small'
-          aria-label={`${open ? 'Hide' : 'Show'} thumbnail images`}
+        <IconButton
+          aria-label='Show thumbnails images container'
+          className='absolute inset-s-1/2 inset-be-1.5 -translate-x-1/2 ease-mocca data-open:-translate-y-15 data-open:duration-750 data-closed:duration-375 sm:inset-be-4 sm:data-open:-translate-y-25 group'
+          variant='outline'
+          size='small'
         >
-          {open ? <XIcon /> : <ImagesIcon />}
-        </Button>
+          <IconChevronUp className='transition ease-mocca data-open:duration-750 data-closed:duration-375 group-data-open:rotate-180' />
+        </IconButton>
       </DrawerTrigger>
       <DrawerContent
-        className='absolute bg-transparent shadow-none! sm:w-fit sm:left-1/2 sm:-translate-x-1/2'
+        className='absolute bg-transparent shadow-none sm:data-bottom:w-fit sm:data-bottom:inset-s-1/2 sm:data-bottom:-translate-x-1/2'
         side='bottom'
       >
-        <VisuallyHidden>
-          <DrawerTitle>Carousel thumbnails drawer</DrawerTitle>
-        </VisuallyHidden>
-        <div className='p-2 m-1 bg-surface-2 rounded sm:p-3'>
+        <DrawerTitle className='sr-only'>
+          Carousel thumbnails drawer
+        </DrawerTitle>
+
+        <div className='m-1 bg-surface-2 border border-border'>
           <Scrollarea>
             <ScrollareaViewport>
               <div
-                className={cn('flex gap-2 sm:gap-4', className)}
+                className={cn('m-2 flex gap-2 sm:m-3', className)}
                 {...props}
-              />
+              >
+                {children}
+              </div>
             </ScrollareaViewport>
             <ScrollareaBar
               className='invisible'
@@ -207,68 +142,71 @@ function ThumbsContainer({
 function Thumb({
   className,
   thumbIndex,
+  children,
   ...props
-}: React.ComponentPropsWithRef<'button'> & {thumbIndex: number}) {
-  const {selectedIndex, onThumbButtonClick} = useCarouselContext()
+}: React.ComponentPropsWithRef<'button'> & {
+  thumbIndex: number
+}) {
+  const {selectedSnap, handleScrollTo} = useCarousel()
 
   return (
     <button
       className={cn(
-        'size-10 rounded-xs overflow-hidden grayscale-75 opacity-75 contrast-75 transition sm:size-20',
-        thumbIndex === selectedIndex && 'grayscale-0 opacity-100 contrast-125',
+        'size-10 focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2 sm:size-20',
         className
       )}
-      onClick={() => onThumbButtonClick(thumbIndex)}
+      onClick={() => handleScrollTo(thumbIndex)}
       {...props}
-    />
+    >
+      <span
+        className={cn(
+          'block size-full grayscale-50 opacity-50 contrast-50 transition',
+          thumbIndex === selectedSnap && 'grayscale-0 opacity-100 contrast-100'
+        )}
+      >
+        {children}
+      </span>
+    </button>
   )
 }
 
-function ButtonPrev({
-  className,
-  'aria-label': ariaLabel = 'Go to previous slide',
-  ...props
-}: Omit<React.ComponentPropsWithRef<typeof Button>, 'children'>) {
-  const {onPrevButtonClick} = useCarouselContext()
+function ButtonPrev({className}: {className?: string}) {
+  const {handleScrollPrev, prevButtonDisabled} = useCarousel()
 
   return (
-    <Button
+    <IconButton
+      aria-label='Go to previous slide'
       className={cn(
-        'absolute top-1/2 -translate-y-1/2 left-1.5 sm:left-4',
+        'absolute inset-bs-1/2 -translate-y-1/2 inset-s-2 sm:inset-s-4',
         className
       )}
-      aria-label={ariaLabel}
-      variant='primary-alt'
-      size='icon-small'
-      onClick={onPrevButtonClick}
-      {...props}
+      variant='outline'
+      size='small'
+      onClick={handleScrollPrev}
+      disabled={prevButtonDisabled}
     >
-      <ChevronLeftIcon />
-    </Button>
+      <IconChevronLeft />
+    </IconButton>
   )
 }
 
-function ButtonNext({
-  className,
-  'aria-label': ariaLabel = 'Go to next slide',
-  ...props
-}: Omit<React.ComponentPropsWithRef<typeof Button>, 'children'>) {
-  const {onNextButtonClick} = useCarouselContext()
+function ButtonNext({className}: {className?: string}) {
+  const {handleScrollNext, nextButtonDisabled} = useCarousel()
 
   return (
-    <Button
+    <IconButton
+      aria-label='Go to next slide'
       className={cn(
-        'absolute top-1/2 -translate-y-1/2 right-1.5 sm:right-4',
+        'absolute inset-bs-1/2 -translate-y-1/2 inset-e-2 sm:inset-e-4',
         className
       )}
-      aria-label={ariaLabel}
-      variant='primary-alt'
-      size='icon-small'
-      onClick={onNextButtonClick}
-      {...props}
+      variant='outline'
+      size='small'
+      onClick={handleScrollNext}
+      disabled={nextButtonDisabled}
     >
-      <ChevronRightIcon />
-    </Button>
+      <IconChevronRight />
+    </IconButton>
   )
 }
 

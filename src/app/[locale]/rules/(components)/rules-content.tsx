@@ -4,7 +4,7 @@ import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
 function RulesContent() {
-  const t = useTranslations('Pages.Rules')
+  const t = useTranslations('Pages.rules')
 
   return (
     <Section>

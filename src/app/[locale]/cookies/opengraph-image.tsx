@@ -4,7 +4,7 @@ import {getOpengraphData} from '@/src/lib/get-opengraph-data'
 
 export default async function Image({params}: Params) {
   const {locale} = await params
-  const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
+  const t = await getTranslations({locale, namespace: 'Metadata'})
   const {src, font} = await getOpengraphData()
 
   return new ImageResponse(

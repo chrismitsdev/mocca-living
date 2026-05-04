@@ -4,7 +4,7 @@ import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
 function HomeIntro() {
-  const t = useTranslations('Pages.Home.Introdution')
+  const t = useTranslations('Pages.home.home-intro')
 
   return (
     <Container
@@ -13,12 +13,17 @@ function HomeIntro() {
     >
       <Section>
         <Typography
-          variant='h3'
+          variant='h2'
           asChild
         >
           <h2>{t('title')}</h2>
         </Typography>
-        <Typography className='leading-8'>{t('message')}</Typography>
+        <Typography>
+          {t.rich('message', {
+            br: () => <br />,
+            strong: (text) => <span className='font-bold'>{text}</span>
+          })}
+        </Typography>
       </Section>
     </Container>
   )

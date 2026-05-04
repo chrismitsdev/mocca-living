@@ -13,7 +13,7 @@ export async function sendContactForm(
 ) {
   const t = await getTranslations({
     locale,
-    namespace: 'Components.ContactFormClient'
+    namespace: 'Components.contact_form_client'
   })
 
   try {

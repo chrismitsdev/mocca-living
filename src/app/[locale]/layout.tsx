@@ -5,11 +5,10 @@ import {Inter} from 'next/font/google'
 import {notFound} from 'next/navigation'
 import {hasLocale, NextIntlClientProvider} from 'next-intl'
 import {setRequestLocale} from 'next-intl/server'
-import {use} from 'react'
 import {Toaster} from 'sonner'
 import {ColumnsTransition} from '@/src/components/shared/columns-transition'
 import {ContactDrawer} from '@/src/components/shared/contact-drawer'
-import {CookieConsent} from '@/src/components/shared/cookie-consent'
+import {CookieBanner} from '@/src/components/shared/cookie-banner'
 import {Footer} from '@/src/components/shared/footer'
 import {Header} from '@/src/components/shared/header'
 import {routing} from '@/src/i18n/routing'
@@ -30,7 +29,10 @@ export const metadata: Metadata = {
       'bg-BG': '/bg'
     }
   },
-  title: 'Mocca Living | Premium • Stay • Philosophy',
+  title: {
+    template: '%s | Mocca Living',
+    default: 'Mocca Living'
+  },
   description:
     'Luxury villas Georgia & Dimitra for seaside escapes at Mocca Living.',
   formatDetection: {
@@ -39,15 +41,11 @@ export const metadata: Metadata = {
   }
 }
 
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({locale}))
-}
-
-export default function LocaleLayout({
+export default async function LocaleLayout({
   params,
   children
 }: LayoutProps<'/[locale]'>) {
-  const {locale} = use(params as Params['params'])
+  const {locale} = await params
 
   if (!hasLocale(routing.locales, locale)) {
     notFound()
@@ -60,7 +58,7 @@ export default function LocaleLayout({
       lang={locale}
       className={`${inter.className}`}
     >
-      <body className='min-h-screen grid grid-rows-[auto_1fr] relative bg-surface-1 text-foreground'>
+      <body className='bg-surface-1 text-foreground'>
         <NextIntlClientProvider>
           <Header />
           <main>
@@ -68,14 +66,22 @@ export default function LocaleLayout({
           </main>
           <Footer />
           <ContactDrawer />
-          <CookieConsent />
+          <CookieBanner />
           <Toaster
             position='top-center'
             mobileOffset={12}
           />
         </NextIntlClientProvider>
-        <Analytics />
+        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => {
+    return {
+      locale
+    }
+  })
 }

@@ -1,6 +1,6 @@
 import {useTranslations} from 'next-intl'
 import {Container} from '@/src/components/shared/container'
-import {Form} from '@/src/components/shared/form'
+import {Form} from '@/src/components/shared/form/form'
 import {Section} from '@/src/components/shared/section'
 import {
   Card,
@@ -9,17 +9,20 @@ import {
   CardHeader,
   CardTitle
 } from '@/src/components/ui/card'
+import {Typography} from '@/src/components/ui/typography'
 
 function ContactForm() {
-  const t = useTranslations('Pages.Contact.Form')
+  const t = useTranslations('Pages.contact.contact-form')
 
   return (
     <Section>
       <Container>
-        <Card className='px-4 py-8 space-y-8 sm:p-16 w-full'>
+        <Card className='sm:p-20'>
           <CardHeader>
             <CardTitle>{t('title')}</CardTitle>
-            <CardDescription>{t('description')}</CardDescription>
+            <CardDescription>
+              <Typography>{t('description')}</Typography>
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <Form />

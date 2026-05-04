@@ -1,4 +1,4 @@
-import {TriangleAlertIcon} from 'lucide-react'
+import {IconAlertCircle} from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
@@ -7,13 +7,13 @@ import {Typography} from '@/src/components/ui/typography'
 import {Link} from '@/src/i18n/navigation'
 
 export default function NotFound() {
-  const t = useTranslations('Pages.NotFound')
+  const t = useTranslations('Pages.not_found')
 
   return (
     <Section>
       <Container>
         <div className='flex flex-col items-center space-y-6'>
-          <TriangleAlertIcon size={128} />
+          <IconAlertCircle className='size-32' />
           <Typography
             variant='h3'
             asChild

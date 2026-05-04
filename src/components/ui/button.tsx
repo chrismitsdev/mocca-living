@@ -1,112 +1,32 @@
 import {Slot, Slottable} from '@radix-ui/react-slot'
-import {cva, type VariantProps} from 'class-variance-authority'
 import {Spinner} from '@/src/components/ui/spinner'
 import {cn} from '@/src/lib/utils'
 
-const buttonVariants = cva(
-  [
-    'relative',
-    'inline-flex',
-    'justify-center',
-    'items-center',
-    'gap-2',
-    'whitespace-nowrap',
-    'font-semibold',
-    '*:shrink-0',
-    'rounded',
-    'transition',
-    'focus-visible:outline-ring',
-    'focus-visible:outline-2',
-    'focus-visible:outline-offset-2',
-    'disabled:pointer-events-none',
-    'disabled:opacity-35'
-  ],
-  {
-    variants: {
-      variant: {
-        primary: [
-          'bg-primary',
-          'text-primary-foreground',
-          'hover:bg-primary-hover'
-        ],
-        'primary-alt': ['bg-surface-1', 'text-primary', 'hover:bg-surface-2'],
-        bordered: ['border', 'border-border', 'hover:border-border-hover'],
-        'bordered-alt': [
-          'bg-surface-1',
-          'border',
-          'border-border',
-          'hover:border-border-hover'
-        ],
-        ghost: ['hover:bg-primary', 'hover:text-primary-foreground'],
-        'ghost-alt': ['hover:bg-surface-2', 'hover:text-foreground'],
-        success: [
-          'bg-success',
-          'text-success-foreground',
-          'hover:bg-success-hover'
-        ],
-        error: ['bg-error', 'text-error-foreground', 'hover:bg-error-hover'],
-        info: ['bg-info', 'text-info-foreground', 'hover:bg-info-hover'],
-        warning: [
-          'bg-warning',
-          'text-warning-foreground',
-          'hover:bg-warning-hover'
-        ],
-        'ghost-success': [
-          'hover:bg-success-hover',
-          'hover:text-success-foreground'
-        ],
-        'ghost-error': ['hover:bg-error-hover', 'hover:text-error-foreground'],
-        'ghost-info': ['hover:bg-info-hover', 'hover:text-info-foreground'],
-        'ghost-warning': [
-          'hover:bg-warning-hover',
-          'hover:text-warning-foreground'
-        ],
-        link: ['underline-offset-4', 'hover:underline']
-      },
-      size: {
-        large: ['px-6', 'py-3', 'text-lg'],
-        normal: ['px-4', 'py-2'],
-        small: ['px-2', 'py-1.5', 'text-sm', 'gap-1'],
-        mini: ['px-2', 'py-0', 'text-sm', 'gap-1'],
-        'icon-normal': ['h-10', 'w-10'],
-        'icon-small': ['h-8', 'w-8'],
-        'icon-mini': ['h-6', 'w-6']
+type ButtonProps = Omit<
+  React.ComponentPropsWithRef<'button'>,
+  'aria-busy' | 'aria-disabled'
+> & {
+  variant?: 'primary' | 'outline' | 'ghost'
+  size?: 'large' | 'normal' | 'small'
+} & (
+    | {
+        asChild?: false
+        isLoading?: boolean
       }
-    },
-    compoundVariants: [
-      {
-        variant: ['bordered', 'bordered-alt'],
-        size: 'normal',
-        className: 'py-1.75'
-      },
-      {
-        variant: ['bordered', 'bordered-alt'],
-        size: 'small',
-        className: 'py-1.25'
+    | {
+        asChild?: true
+        isLoading?: never
       }
-    ],
-    defaultVariants: {
-      variant: 'primary',
-      size: 'normal'
-    }
-  }
-)
-
-interface ButtonProps
-  extends React.ComponentPropsWithRef<'button'>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean
-  isLoading?: boolean
-}
+  )
 
 function Button({
-  variant,
-  size,
   className,
-  asChild = false,
-  isLoading = false,
+  disabled,
+  variant = 'primary',
+  size = 'normal',
   type = 'button',
-  draggable = false,
+  isLoading = false,
+  asChild = false,
   children,
   ...props
 }: ButtonProps) {
@@ -115,23 +35,41 @@ function Button({
   return (
     <Comp
       className={cn(
-        buttonVariants({
-          variant,
-          size,
-          className: cn(
-            isLoading && '[&>*:not(span:last-child)]:invisible',
-            className
-          )
-        })
+        'relative inline-flex justify-center items-center whitespace-nowrap font-bold transition focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 aria-disabled:opacity-30 aria-disabled:pointer-events-none',
+        // primary
+        'data-variant-primary:bg-primary data-variant-primary:text-primary-foreground data-variant-primary:hover:bg-primary-hover data-variant-primary:data-open:bg-primary-hover',
+        // outline
+        'data-variant-outline:bg-surface-1 data-variant-outline:text-foreground data-variant-outline:border data-variant-outline:border-border data-variant-outline:hover:bg-surface-3 data-variant-outline:hover:border-border-hover data-variant-outline:data-open:bg-surface-3 data-variant-outline:data-open:border-border-hover',
+        // ghost
+        'data-variant-ghost:text-foreground data-variant-ghost:hover:bg-primary data-variant-ghost:hover:text-primary-foreground data-variant-ghost:data-open:bg-primary data-variant-ghost:data-open:text-primary-foreground',
+        // large
+        'data-size-large:px-6 data-size-large:h-14 data-size-large:text-lg data-size-large:gap-x-1.5 data-size-large:[&_svg]:size-6',
+        // normal
+        'data-size-normal:px-4 data-size-normal:h-10 data-size-normal:text-base data-size-normal:gap-x-1 data-size-normal:[&_svg]:size-5',
+        // small
+        'data-size-small:px-2 data-size-small:h-6 data-size-small:text-sm data-size-small:gap-x-0.5 data-size-small:[&_svg]:size-4',
+        className
       )}
-      type={type}
-      draggable={draggable}
+      aria-busy={isLoading || undefined}
+      aria-disabled={isLoading || disabled || undefined}
+      type={asChild ? undefined : type}
+      disabled={asChild ? undefined : disabled || isLoading}
+      data-variant={variant}
+      data-size={size}
       {...props}
     >
-      <Slottable>{children}</Slottable>
+      <Slottable>
+        {isLoading ? (
+          <span className='invisible inline-flex justify-center items-center gap-x-[inherit]'>
+            {children}
+          </span>
+        ) : (
+          children
+        )}
+      </Slottable>
       {isLoading && (
         <span className='absolute inset-0 flex items-center justify-center'>
-          <Spinner size={size === 'large' ? 24 : 16} />
+          <Spinner />
         </span>
       )}
     </Comp>
@@ -140,4 +78,4 @@ function Button({
 
 Button.displayName = 'Button'
 
-export {Button, buttonVariants}
+export {Button}

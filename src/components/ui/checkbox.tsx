@@ -1,7 +1,9 @@
 'use client'
+
 import {cn} from '@/src/lib/utils'
 
-interface CheckboxProps extends React.ComponentPropsWithRef<'input'> {
+interface CheckboxProps
+  extends Omit<React.ComponentPropsWithRef<'input'>, 'type'> {
   error?: boolean
 }
 
@@ -10,8 +12,8 @@ function Checkbox({className, error, ...props}: CheckboxProps) {
     <input
       className={cn(
         'appearance-none font-[inherit] text-current relative shrink-0',
-        'w-6 h-6 bg-surface-1 border border-border rounded before:absolute before:inset-0.5 before:bg-primary before:rounded-xs before:scale-0 checked:before:scale-100 before:transition disabled:pointer-events-none disabled:opacity-35',
-        error && 'border-error',
+        'size-6 bg-surface-1 border border-border before:absolute before:inset-0.5 before:bg-primary before:scale-0 before:transition checked:before:scale-100 hover:border-border-hover focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-35',
+        error && 'border-danger hover:border-danger',
         className
       )}
       {...props}

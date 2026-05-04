@@ -1,20 +1,21 @@
 import type {Metadata} from 'next'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
-import {use} from 'react'
-import {CookiesContent} from '@/src/app/[locale]/cookies/(components)/cookies-content'
-import {CookiesHeader} from '@/src/app/[locale]/cookies/(components)/cookies-header'
+import {CookiesContent} from './(components)/cookies-content'
+import {CookiesHeader} from './(components)/cookies-header'
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
   const {locale} = await params
-  const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
+  const t = await getTranslations({locale, namespace: 'Metadata'})
 
   return {
-    title: `${t('cookies')} | Mocca Living`
+    title: t('cookies')
   }
 }
 
-export default function CookiesPage({params}: PageProps<'/[locale]/cookies'>) {
-  const {locale} = use(params as Params['params'])
+export default async function CookiesPage({
+  params
+}: PageProps<'/[locale]/cookies'>) {
+  const {locale} = await (params as Params['params'])
 
   setRequestLocale(locale)
 

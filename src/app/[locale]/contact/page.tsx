@@ -1,22 +1,23 @@
 import type {Metadata} from 'next'
 import {getTranslations, setRequestLocale} from 'next-intl/server'
-import {use} from 'react'
-import {ContactForm} from '@/src/app/[locale]/contact/(components)/contact-form'
-import {ContactHeader} from '@/src/app/[locale]/contact/(components)/contact-header'
-import ContactMap from '@/src/app/[locale]/contact/(components)/contact-map'
-import {ContactSocial} from '@/src/app/[locale]/contact/(components)/contact-social'
+import {ContactForm} from './(components)/contact-form'
+import {ContactHeader} from './(components)/contact-header'
+import ContactMap from './(components)/contact-map'
+import {ContactSocial} from './(components)/contact-social'
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
   const {locale} = await params
-  const t = await getTranslations({locale, namespace: 'Metadata.Pages'})
+  const t = await getTranslations({locale, namespace: 'Metadata'})
 
   return {
-    title: `${t('contact')} | Mocca Living`
+    title: t('contact')
   }
 }
 
-export default function ContactPage({params}: PageProps<'/[locale]/contact'>) {
-  const {locale} = use(params as Params['params'])
+export default async function ContactPage({
+  params
+}: PageProps<'/[locale]/contact'>) {
+  const {locale} = await (params as Params['params'])
 
   setRequestLocale(locale)
 

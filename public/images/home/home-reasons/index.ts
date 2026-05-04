@@ -1,2 +1,4 @@
-export {default as reasonImage1} from './1.webp'
-export {default as reasonImage2} from './2.webp'
+import homeReasonsImage1 from './1.webp'
+import homeReasonsImage2 from './2.webp'
+
+export const homeReasonsImages = [homeReasonsImage1, homeReasonsImage2]
