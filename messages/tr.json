@@ -397,7 +397,7 @@
         },
         "message": {
           "label": "Mesaj",
-          "placeholder": "İsterseniz mesajınızı buraya bırakın..."
+          "placeholder": "Mesajınızı buraya bırakın..."
         },
         "consent": {
           "label": "Kişisel verilerimin yalnızca talebimi yerine getirmek amacıyla <link>Gizlilik Politikası beyanı</link> uyarınca kullanılmasını kabul ediyorum"
