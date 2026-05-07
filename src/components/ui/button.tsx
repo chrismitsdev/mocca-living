@@ -35,7 +35,7 @@ function Button({
   return (
     <Comp
       className={cn(
-        'relative inline-flex justify-center items-center whitespace-nowrap font-bold transition focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 aria-disabled:opacity-30 aria-disabled:pointer-events-none',
+        'shrink-0 relative inline-flex justify-center items-center whitespace-nowrap font-bold transition focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 aria-disabled:opacity-30 aria-disabled:pointer-events-none',
         // primary
         'data-variant-primary:bg-primary data-variant-primary:text-primary-foreground data-variant-primary:hover:bg-primary-hover data-variant-primary:data-open:bg-primary-hover',
         // outline

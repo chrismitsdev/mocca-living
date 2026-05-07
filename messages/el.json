@@ -381,6 +381,9 @@
         }
       }
     },
+    "ad_banner": {
+      "description": "Το <a>Mocca City</a> είναι εδώ"
+    },
     "form": {
       "fields": {
         "fullname": {

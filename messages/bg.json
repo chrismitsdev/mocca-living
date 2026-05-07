@@ -381,6 +381,9 @@
         }
       }
     },
+    "ad_banner": {
+      "description": "<a>Mocca City</a> вече е тук"
+    },
     "form": {
       "fields": {
         "fullname": {

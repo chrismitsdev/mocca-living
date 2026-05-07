@@ -49,6 +49,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
           rel='noopener noreferrer'
         >
           {t('book_button')}
+          <span>-15%</span>
         </a>
       </Button>
       <Drawer
@@ -68,7 +69,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
           </button>
         </DrawerTrigger>
         <DrawerContent
-          className='absolute border-t border-t-border shadow-none data-right:inset-bs-full data-right:h-[calc(100svh-100%)]'
+          className='absolute border-t border-t-border shadow-none data-right:inset-bs-full data-right:h-[calc(100svh-100%-var(--banner-height))]'
           side='right'
           onInteractOutside={(e) => e.preventDefault()}
         >
