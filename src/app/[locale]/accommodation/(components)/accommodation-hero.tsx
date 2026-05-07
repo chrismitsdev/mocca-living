@@ -8,7 +8,7 @@ function AccommodationHero() {
   const t = useTranslations('Pages.accommodation.index.hero')
 
   return (
-    <section className='relative h-[calc(100svh-80px)]'>
+    <section className='relative h-[calc(100svh-80px-var(--banner-height))]'>
       <div className='absolute inset-0 bg-black/25' />
       <CustomImage
         className='w-full h-full sm:hidden'
