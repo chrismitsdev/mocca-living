@@ -6,6 +6,7 @@ import {notFound} from 'next/navigation'
 import {hasLocale, NextIntlClientProvider} from 'next-intl'
 import {setRequestLocale} from 'next-intl/server'
 import {Toaster} from 'sonner'
+import {AdBanner} from '@/src/components/shared/ad-banner'
 import {ColumnsTransition} from '@/src/components/shared/columns-transition'
 import {ContactDrawer} from '@/src/components/shared/contact-drawer'
 import {CookieBanner} from '@/src/components/shared/cookie-banner'
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     default: 'Mocca Living'
   },
   description:
-    'Luxury villas Georgia & Dimitra for seaside escapes at Mocca Living.',
+    'Luxury accommodations in Makri and Alexandroupolis. Experience refined stays by the sea or in the heart of the city with Mocca Living.',
   formatDetection: {
     email: true,
     telephone: true
@@ -60,6 +61,7 @@ export default async function LocaleLayout({
     >
       <body className='bg-surface-1 text-foreground'>
         <NextIntlClientProvider>
+          <AdBanner />
           <Header />
           <main>
             <ColumnsTransition>{children}</ColumnsTransition>

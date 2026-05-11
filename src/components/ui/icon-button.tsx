@@ -26,7 +26,7 @@ function IconButton({
   return (
     <Comp
       className={cn(
-        'inline-flex items-center justify-center transition focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 aria-disabled:opacity-30',
+        'shrink-0 inline-flex items-center justify-center transition focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 aria-disabled:opacity-30',
         // primary
         'data-variant-primary:bg-primary data-variant-primary:text-primary-foreground data-variant-primary:hover:bg-primary-hover data-variant-primary:data-open:bg-primary-hover',
         // outline

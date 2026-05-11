@@ -9,6 +9,7 @@ import {Button} from '@/src/components/ui/button'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {IconButton} from '@/src/components/ui/icon-button'
 import {Popup, PopupContent, PopupTrigger} from '@/src/components/ui/popup'
+import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 import {Link} from '@/src/i18n/navigation'
 import {NavigationListItemLink} from './navigation-list-item-link'
@@ -119,7 +120,8 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
           label={t('contact')}
         />
 
-        <li>
+        <li className='flex gap-x-8'>
+          <Separator orientation='vertical' />
           <Button
             size='small'
             asChild
