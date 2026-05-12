@@ -12,13 +12,6 @@ function Navigation() {
   const pathname = usePathname()
   useScrollLock({autoLock: drawerOpen})
 
-  function handleDrawerOpen(isOpen: boolean) {
-    if (isOpen) {
-      document.documentElement.scrollTo({top: 0, behavior: 'instant'})
-    }
-    setDrawerOpen(isOpen)
-  }
-
   useEffect(() => {
     if (!pathname) return
 
@@ -34,7 +27,7 @@ function Navigation() {
       />
       <MobileNavigation
         open={drawerOpen}
-        onOpenChange={handleDrawerOpen}
+        onOpenChange={setDrawerOpen}
       />
     </>
   )
