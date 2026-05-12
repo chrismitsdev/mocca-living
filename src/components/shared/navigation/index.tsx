@@ -12,6 +12,12 @@ function Navigation() {
   const pathname = usePathname()
   useScrollLock({autoLock: drawerOpen})
 
+  function handleDrawerTriggerClick() {
+    requestAnimationFrame(() => {
+      document.documentElement.scrollTo({top: 0, behavior: 'smooth'})
+    })
+  }
+
   useEffect(() => {
     if (!pathname) return
 
@@ -28,6 +34,7 @@ function Navigation() {
       <MobileNavigation
         open={drawerOpen}
         onOpenChange={setDrawerOpen}
+        handleDrawerTriggerClick={handleDrawerTriggerClick}
       />
     </>
   )
