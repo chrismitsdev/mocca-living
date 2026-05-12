@@ -31,14 +31,9 @@ import {NavigationListItemLink} from './navigation-list-item-link'
 interface MobileNavigationProps {
   open: boolean
   onOpenChange: (open: boolean) => void
-  handleDrawerTriggerClick: () => void
 }
 
-function MobileNavigation({
-  open,
-  onOpenChange,
-  handleDrawerTriggerClick
-}: MobileNavigationProps) {
+function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
   const t = useTranslations('Metadata')
 
   return (
@@ -62,10 +57,7 @@ function MobileNavigation({
         onOpenChange={onOpenChange}
         modal={false}
       >
-        <DrawerTrigger
-          onClick={handleDrawerTriggerClick}
-          asChild
-        >
+        <DrawerTrigger asChild>
           <button
             aria-label='Show sidebar menu'
             className='size-8 flex flex-col justify-center items-center gap-y-2 focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 *:inline-3/4 *:block-0.5 *:bg-foreground *:ease-mocca data-open:*:rotate-z-180 data-open:*:scale-x-125 data-open:*:duration-750 data-closed:*:duration-375 group'
