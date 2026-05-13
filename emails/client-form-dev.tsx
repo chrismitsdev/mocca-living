@@ -1,0 +1,159 @@
+import {createTranslator, type Locale} from 'next-intl'
+import {
+  Body,
+  Column,
+  Container,
+  Font,
+  Head,
+  Heading,
+  Html,
+  Img,
+  Link,
+  Row,
+  Section,
+  Tailwind,
+  Text
+} from 'react-email'
+
+export default async function ClientFormDev({locale}: {locale: Locale}) {
+  const t = createTranslator({
+    messages: await import(`../messages/${locale}.json`),
+    namespace: 'Components.contact_form_client',
+    locale
+  })
+
+  return (
+    <Html>
+      <Head>
+        <Font
+          webFont={{
+            url: 'https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hiA.woff2',
+            format: 'woff2'
+          }}
+          fontFamily='Inter'
+          fontWeight={400}
+          fontStyle='normal'
+          fallbackFontFamily='Verdana'
+        />
+        <style>
+          {`
+            .main-content {
+              padding: 16px !important;
+            }
+
+            @media screen and (min-width: 640px) {
+              .main-content {
+                padding: 24px !important;
+              }
+            }
+          `}
+        </style>
+      </Head>
+      <Tailwind>
+        <Body className='p-2 m-0 bg-[#e7d9be] text-[#453227] opacity-100'>
+          <Container>
+            <Section className='px-4 py-8'>
+              <Img
+                src='https://4y4jwmfhzutn57mw.myfritz.net:47971/nas/filelink.lua?id=2facbccd5602da0d'
+                alt='Mocca Living logo'
+                className='mx-auto'
+                width={100}
+                height={100}
+              />
+            </Section>
+
+            <Section
+              className='overflow-hidden'
+              style={{backgroundColor: '#ddc8a2', border: '1px solid #c7b492'}}
+            >
+              <Row>
+                <Img
+                  src='https://4y4jwmfhzutn57mw.myfritz.net:47971/nas/filelink.lua?id=d3daaf0543d36f96'
+                  alt='Contact form received'
+                  className='max-w-150 w-full'
+                />
+              </Row>
+              <Row className='main-content'>
+                <Column>
+                  <Heading className='text-lg'>
+                    {t('header')} Chris Mitsiaris,
+                  </Heading>
+                  <Text>{t('thanks')}</Text>
+                  <Text>{t('summary')}</Text>
+
+                  <Text className='my-0'>{t('fullname')}: Chris Mitsiaris</Text>
+                  <Text className='my-0'>
+                    {t('email')}: chrismits88@gmail.com
+                  </Text>
+                  <Text className='my-0'>{t('phone')}: 6973993703</Text>
+                  <Text className='mt-0'>
+                    {t('message.title')}: Hello World
+                  </Text>
+
+                  <Text>{t('footer')}</Text>
+                </Column>
+              </Row>
+            </Section>
+
+            <Section className='px-4 py-8'>
+              <Row>
+                <Text className='my-0 text-[10px] text-center leading-6'>
+                  &copy; {new Date().getFullYear()} | Mocca Living |{' '}
+                  <Link
+                    className='text-inherit'
+                    // href='https://www.moccaliving.com'
+                    href={`https://www.moccaliving.com/${locale}`}
+                    rel='noopener noreferrer'
+                  >
+                    www.moccaliving.com
+                  </Link>
+                </Text>
+              </Row>
+
+              <Row className='mt-4'>
+                <Column
+                  align='right'
+                  className='pr-2'
+                >
+                  <Link
+                    className='p-1 bg-surface-3 inline-block'
+                    href='https://www.facebook.com/profile.php?id=61566665200042'
+                    rel='noopener noreferrer'
+                  >
+                    <Img
+                      src='https://4y4jwmfhzutn57mw.myfritz.net:47971/nas/filelink.lua?id=cfb144708085ce67'
+                      alt='Facebook logo'
+                      width={24}
+                    />
+                  </Link>
+                </Column>
+                <Column
+                  align='left'
+                  className='pl-2'
+                >
+                  <Link
+                    className='p-1 bg-surface-3 inline-block'
+                    href='https://www.instagram.com/moccaliving.premiumstay/'
+                    rel='noopener noreferrer'
+                  >
+                    <Img
+                      src='https://4y4jwmfhzutn57mw.myfritz.net:47971/nas/filelink.lua?id=e546d6a2349249cb'
+                      alt='Instagram logo'
+                      width={24}
+                    />
+                  </Link>
+                </Column>
+              </Row>
+            </Section>
+          </Container>
+        </Body>
+      </Tailwind>
+    </Html>
+  )
+}
+
+ClientFormDev.displayName = 'ClientFormDev'
+
+ClientFormDev.PreviewProps = {
+  locale: 'en'
+}
