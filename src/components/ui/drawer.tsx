@@ -45,9 +45,13 @@ function DrawerContent({
     <Content
       className={cn(
         'fixed z-50 bg-surface-3 shadow-sm',
+        // Top
         'data-top:inset-x-0 data-top:inset-bs-0 data-top:data-open:animate-drawer-top-open data-top:data-closed:animate-drawer-top-close',
+        // Right
         'data-right:inset-y-0 data-right:inset-e-0 data-right:h-full data-right:w-full data-right:sm:max-w-sm data-right:data-open:animate-drawer-right-open data-right:data-closed:animate-drawer-right-close',
+        // Bottom
         'data-bottom:inset-x-0 data-bottom:inset-be-0 data-bottom:data-open:animate-drawer-bottom-open data-bottom:data-closed:animate-drawer-bottom-close',
+        // Left
         'data-left:inset-y-0 data-left:inset-s-0 data-left:h-full data-left:w-full data-left:sm:max-w-sm data-left:data-open:animate-drawer-left-open data-left:data-closed:animate-drawer-left-close',
         className
       )}

@@ -1,241 +1,174 @@
 'use client'
 
+import {Audio, formatTime} from '@sina_byn/re-audio'
 import {
-  IconMusic,
-  IconPlayerPause,
-  IconPlayerPlay,
-  IconPlayerSkipBack,
-  IconPlayerSkipForward,
-  IconPlaylist,
-  IconSlash,
-  IconUser,
-  IconVolume,
-  IconVolumeOff
+  IconPlayerPauseFilled,
+  IconPlayerPlayFilled,
+  IconPlayerTrackNextFilled,
+  IconPlayerTrackPrevFilled,
+  IconPlaylistFilled
 } from '@tabler/icons-react'
-import {useEffect, useReducer, useState} from 'react'
-import ReactAudioPlayer, {RHAP_UI} from 'react-h5-audio-player'
-import image from '@/public/images/other/playlst-image.jpg'
-import {songs} from '@/public/music/playlist'
+import Image from 'next/image'
+import moccaLogo from '@/public/logos/mocca-logo-simple.svg'
+import {playlist} from '@/public/music/playlist'
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger
 } from '@/src/components/ui/collapsible'
-import {CustomImage} from '@/src/components/ui/custom-image'
 import {IconButton} from '@/src/components/ui/icon-button'
 import {Separator} from '@/src/components/ui/separator'
-import {Spinner} from '@/src/components/ui/spinner'
+import {Slider} from '@/src/components/ui/slider'
 import {Typography} from '@/src/components/ui/typography'
-import {cn} from '@/src/lib/utils'
-import {reducer, type State} from '@/src/reducers/audo-player-reducer'
-
-const initialState: State = {
-  playlist: songs,
-  currentTrackIndex: 0,
-  showPlaylist: true,
-  isPlaying: false
-}
 
 function AudioPlayer() {
-  const [state, dispatch] = useReducer(reducer, initialState)
-  const currentTrack = state.playlist[state.currentTrackIndex]
-
   return (
-    <Collapsible
-      open={state.showPlaylist}
-      onOpenChange={() => dispatch({type: 'TOGGLE_PLAYLIST_VISIBLE'})}
-    >
-      <div className='p-4 space-y-4'>
-        <CurrentTrack
-          isPlaying={state.isPlaying}
-          {...currentTrack}
-        />
-        <ReactAudioPlayer
-          layout='stacked-reverse'
-          showSkipControls
-          showJumpControls={false}
-          volume={0.5}
-          src={currentTrack.src}
-          onClickPrevious={() => dispatch({type: 'GO_PREV_SONG'})}
-          onClickNext={() => dispatch({type: 'GO_NEXT_SONG'})}
-          onEnded={() => dispatch({type: 'GO_NEXT_SONG'})}
-          onPlay={() => dispatch({type: 'IS_PLAYING', payload: true})}
-          onPause={() => dispatch({type: 'IS_PLAYING', payload: false})}
-          onError={() => dispatch({type: 'IS_PLAYING', payload: false})}
-          onPlayError={() => dispatch({type: 'IS_PLAYING', payload: false})}
-          customControlsSection={[
-            RHAP_UI.MAIN_CONTROLS,
-            RHAP_UI.VOLUME,
-            <CollapsibleTrigger
-              key={9998}
-              aria-label={
-                state.showPlaylist ? 'Close playlist' : 'Open playlist'
-              }
-              className='ml-auto sm:ml-4'
-              asChild
-            >
-              <IconButton
-                aria-label='List music tracks'
-                variant={state.showPlaylist ? 'primary' : 'ghost'}
-                size='small'
-              >
-                <IconPlaylist />
-              </IconButton>
-            </CollapsibleTrigger>
-          ]}
-          customProgressBarSection={[
-            RHAP_UI.PROGRESS_BAR,
-            RHAP_UI.CURRENT_TIME,
-            <IconSlash
-              key={9999}
-              className='mx-1 size-4'
-            />,
-            RHAP_UI.DURATION
-          ]}
-          customIcons={{
-            play: <IconPlayerPlay className='sm:w-10 sm:h-10' />,
-            pause: <IconPlayerPause className='sm:w-10 sm:h-10' />,
-            next: <IconPlayerSkipForward />,
-            previous: <IconPlayerSkipBack />,
-            volume: <IconVolume />,
-            volumeMute: <IconVolumeOff />
-          }}
-        />
-      </div>
-      <Separator className={cn('hidden', state.showPlaylist && 'block')} />
-      <CollapsibleContent>
-        <Playlist>
-          {state.playlist.map((song) => (
-            <PlaylistTrack
-              key={song.trackId}
-              isActive={currentTrack.trackId === song.trackId}
-              onClick={() =>
-                dispatch({type: 'GO_TO_SONG', payload: song.trackId})
-              }
-              {...song}
-            />
-          ))}
-        </Playlist>
-      </CollapsibleContent>
+    <Collapsible>
+      <Audio playlist={playlist}>
+        {({
+          trackIndex,
+          playing,
+          duration,
+          currentTime,
+          currentTrack,
+          togglePlay,
+          prevTrack,
+          nextTrack,
+          setCurrentTime,
+          playTrack
+        }) => (
+          <>
+            <div className='py-5 px-4'>
+              <div className='w-full space-y-6'>
+                {/* Track details */}
+                <div className='pe-8 flex items-start gap-x-4'>
+                  <Image
+                    src={moccaLogo}
+                    alt='Mocca logo'
+                    className='size-16'
+                  />
+
+                  <div className='grow'>
+                    <Typography variant='tiny'>
+                      {playlist[trackIndex].title ?? '---'}
+                    </Typography>
+                    <Typography variant='tiny'>
+                      {playlist[trackIndex].artist ?? '---'}
+                    </Typography>
+                  </div>
+                </div>
+                {/* Track controls & collapsible */}
+                <div className='flex justify-between gap-x-4'>
+                  <div className='flex w-full items-center gap-x-4'>
+                    <IconButton
+                      aria-label='Go to previous song'
+                      variant='ghost'
+                      size='small'
+                      onClick={prevTrack}
+                    >
+                      <IconPlayerTrackPrevFilled />
+                    </IconButton>
+                    <IconButton
+                      aria-label={playing ? 'Pause' : 'Play'}
+                      variant='ghost'
+                      size='small'
+                      onClick={togglePlay}
+                    >
+                      {playing ? (
+                        <IconPlayerPauseFilled />
+                      ) : (
+                        <IconPlayerPlayFilled />
+                      )}
+                    </IconButton>
+                    <IconButton
+                      aria-label='Go to next song'
+                      variant='ghost'
+                      size='small'
+                      onClick={nextTrack}
+                    >
+                      <IconPlayerTrackNextFilled />
+                    </IconButton>
+                  </div>
+                  <CollapsibleTrigger asChild>
+                    <IconButton
+                      aria-label='Show playlist'
+                      variant='ghost'
+                      size='small'
+                    >
+                      <IconPlaylistFilled />
+                    </IconButton>
+                  </CollapsibleTrigger>
+                </div>
+                {/* Song progress bar */}
+                <div className='flex items-center'>
+                  <Slider
+                    value={[currentTime]}
+                    onValueChange={(value) => setCurrentTime(value[0])}
+                    max={duration}
+                  />
+                  <Typography
+                    className='min-w-16 text-right'
+                    variant='small'
+                  >
+                    {formatTime(currentTime)}
+                  </Typography>
+                </div>
+              </div>
+            </div>
+            <CollapsibleContent>
+              <Separator />
+              <ul>
+                {playlist.map((track, i) => {
+                  return (
+                    <PlaylistTrack
+                      key={track.id}
+                      isActive={currentTrack?.src === track.src}
+                      duration={track.duration}
+                      onClick={() => playTrack(i)}
+                    >
+                      {track.title}
+                    </PlaylistTrack>
+                  )
+                })}
+              </ul>
+            </CollapsibleContent>
+          </>
+        )}
+      </Audio>
     </Collapsible>
   )
 }
 
-function CurrentTrack({
-  artist,
-  title,
-  isPlaying
-}: React.ComponentPropsWithRef<'div'> & Song & {isPlaying: boolean}) {
-  return (
-    <div className='sm:mb-0 sm:p-4'>
-      <div className='flex items-start gap-2 sm:gap-4'>
-        <CustomImage
-          className='inline-18 block-18 sm:inline-24 sm:block-24'
-          src={image}
-          alt='Tall palm trees against a clear blue sky, viewed from below'
-        />
-        <div className='sm:space-y-3'>
-          <div className='flex gap-2'>
-            <IconMusic className='mt-1 w-4 h-4' />
-            {isPlaying ? title : '---'}
-          </div>
-          <div className='flex gap-2'>
-            <IconUser className='mt-1 w-4 h-4' />
-            <Typography variant='tiny'>{isPlaying ? artist : '---'}</Typography>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function Playlist({className, ...props}: React.ComponentPropsWithRef<'ul'>) {
-  return (
-    <ul
-      className={cn('sm:p-4', className)}
-      {...props}
-    />
-  )
-}
-
 function PlaylistTrack({
-  trackId,
-  artist,
-  title,
-  src,
   duration,
   isActive,
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLLIElement> & Song & {isActive: boolean}) {
-  const [trackDuration, setTrackDuration] = useState<number | null>(null)
-
-  useEffect(() => {
-    if (typeof window === 'undefined' || duration) return
-
-    const audio = new Audio(src)
-
-    function onMetadataLoaded() {
-      setTrackDuration(audio.duration)
-    }
-
-    audio.addEventListener('loadedmetadata', onMetadataLoaded)
-    return () => {
-      audio.removeEventListener('loadedmetadata', onMetadataLoaded)
-    }
-  }, [src, duration])
-
+  onClick,
+  children
+}: React.PropsWithChildren<{
+  duration: number
+  isActive: boolean
+  onClick: () => void
+}>) {
   return (
-    <li
-      className={cn(
-        'p-4 grid grid-cols-2 items-center gap-2 cursor-pointer duration-375 hover:bg-surface-3 sm:grid-cols-[24px_repeat(3,1fr)]',
-        isActive && 'font-bold',
-        className
-      )}
-      {...props}
-    >
-      <Typography
-        variant='small'
-        className='hidden sm:block'
+    <li>
+      <button
+        className='p-4 flex justify-between gap-x-4 inline-full text-left cursor-pointer hover:bg-surface-3'
+        type='button'
+        onClick={onClick}
       >
-        {trackId}
-        {'.'}
-      </Typography>
-      <Typography
-        variant='small'
-        className='hidden sm:block'
-      >
-        {artist}
-      </Typography>
-      <Typography variant='small'>{title}</Typography>
-      {!trackDuration ? (
-        <Spinner className='ml-auto' />
-      ) : (
         <Typography
+          className={isActive ? 'font-bold' : ''}
           variant='small'
-          className='text-right'
         >
-          {formatDuration(trackDuration)}
+          {children}
         </Typography>
-      )}
+        <Typography variant='small'>{formatTime(duration)}</Typography>
+      </button>
     </li>
   )
 }
 
-function formatDuration(durationInSeconds: number | null) {
-  if (durationInSeconds === null) return null
-
-  const minutes = Math.floor(durationInSeconds / 60)
-  const seconds = Math.floor(durationInSeconds % 60)
-    .toString()
-    .padStart(2, '0')
-
-  return `${minutes}:${seconds}`
-}
-
 AudioPlayer.displayName = 'AudioPlayer'
-CurrentTrack.displayName = 'CurrentTrack'
-Playlist.displayName = 'Playlist'
 PlaylistTrack.displayName = 'PlaylistTrack'
 
 export {AudioPlayer}

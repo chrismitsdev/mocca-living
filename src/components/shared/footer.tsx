@@ -3,7 +3,6 @@ import Image from 'next/image'
 import {useTranslations} from 'next-intl'
 import logoFull from '@/public/logos/mocca-logo-box.svg'
 import {Container} from '@/src/components/shared/container'
-import {DialogAudioPlayer} from '@/src/components/shared/dialog-audio-player'
 import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
 import {LogosCarousel} from '@/src/components/shared/logos-carousel'
 import {IconButton} from '@/src/components/ui/icon-button'
@@ -59,11 +58,6 @@ function Footer() {
                 {t('row-1.links-column.accomodation-policy')}
               </Typography>
             </FooterLink>
-            <DialogAudioPlayer>
-              <Typography variant='small'>
-                {t('row-1.links-column.playlist')}
-              </Typography>
-            </DialogAudioPlayer>
           </FooterColumn>
           <FooterColumn title={t('row-1.more-column.title')}>
             <FooterLink

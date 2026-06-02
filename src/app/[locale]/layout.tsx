@@ -10,6 +10,7 @@ import {AdBanner} from '@/src/components/shared/ad-banner'
 import {ColumnsTransition} from '@/src/components/shared/columns-transition'
 import {ContactDrawer} from '@/src/components/shared/contact-drawer'
 import {CookieBanner} from '@/src/components/shared/cookie-banner'
+import {DialogAudioPlayer} from '@/src/components/shared/dialog-audio-player'
 import {Footer} from '@/src/components/shared/footer'
 import {Header} from '@/src/components/shared/header'
 import {routing} from '@/src/i18n/routing'
@@ -68,6 +69,7 @@ export default async function LocaleLayout({
           </main>
           <Footer />
           <ContactDrawer />
+          <DialogAudioPlayer />
           <CookieBanner />
           <Toaster
             position='top-center'

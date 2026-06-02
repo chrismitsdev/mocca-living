@@ -15,7 +15,7 @@ function ContactSocial() {
   return (
     <Section className='bg-surface-2'>
       <Container>
-        <div className='flex flex-wrap gap-8'>
+        <div className='flex flex-col gap-8 sm:flex-row'>
           <SocialLink href='https://www.facebook.com/profile.php?id=61566665200042'>
             <IconBrandFacebookFilled className='size-16' />
             <Typography variant='h4'>{t('facebook')}</Typography>
