@@ -23,7 +23,7 @@ import {Typography} from '@/src/components/ui/typography'
 
 function AudioPlayer() {
   return (
-    <Collapsible>
+    <Collapsible defaultOpen>
       <Audio playlist={playlist}>
         {({
           trackIndex,
