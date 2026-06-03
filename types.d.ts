@@ -22,19 +22,4 @@ declare global {
   type CustomIconProps = React.SVGProps<SVGSVGElement> & {
     size?: number
   }
-
-  type User = {
-    id: number
-    created_at: string
-    name: string
-    email: string
-  }
-
-  type Song = {
-    trackId: number
-    artist: string
-    title: string
-    src: string
-    duration?: number
-  }
 }
