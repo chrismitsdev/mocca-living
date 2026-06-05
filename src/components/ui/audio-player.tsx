@@ -57,11 +57,11 @@ function AudioPlayer() {
                     </Typography>
                   </div>
                 </div>
-                {/* Track controls & collapsible */}
+                {/* Track controls */}
                 <div className='flex justify-between gap-x-4'>
                   <div className='flex w-full items-center gap-x-4'>
                     <IconButton
-                      aria-label='Go to previous song'
+                      aria-label='Go to previous track'
                       variant='ghost'
                       size='small'
                       onClick={prevTrack}
@@ -81,7 +81,7 @@ function AudioPlayer() {
                       )}
                     </IconButton>
                     <IconButton
-                      aria-label='Go to next song'
+                      aria-label='Go to next track'
                       variant='ghost'
                       size='small'
                       onClick={nextTrack}
@@ -99,11 +99,12 @@ function AudioPlayer() {
                     </IconButton>
                   </CollapsibleTrigger>
                 </div>
-                {/* Song progress bar */}
+                {/* Track progress slider & time */}
                 <div className='flex items-center'>
                   <Slider
                     value={[currentTime]}
                     onValueChange={(value) => setCurrentTime(value[0])}
+                    min={0}
                     max={duration}
                   />
                   <Typography
@@ -152,7 +153,7 @@ function PlaylistTrack({
   return (
     <li>
       <button
-        className='p-4 flex justify-between gap-x-4 inline-full text-left cursor-pointer hover:bg-surface-3'
+        className='p-4 inline-full flex justify-between gap-x-4 cursor-pointer hover:bg-surface-3'
         type='button'
         onClick={onClick}
       >

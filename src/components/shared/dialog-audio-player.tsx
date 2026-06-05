@@ -1,5 +1,3 @@
-'use client'
-
 import {IconMusic} from '@tabler/icons-react'
 import {AudioPlayer} from '@/src/components/ui/audio-player'
 import {
@@ -20,7 +18,7 @@ function DialogAudioPlayer() {
         className='fixed inset-be-3 inset-e-3 sm:hidden'
         asChild
       >
-        <IconButton aria-label='Open music playlist'>
+        <IconButton aria-label='Open music player'>
           <IconMusic />
         </IconButton>
       </DialogTrigger>
@@ -29,7 +27,7 @@ function DialogAudioPlayer() {
         <DialogContent className='block-auto'>
           <DialogClose />
           <DialogTitle className='sr-only'>
-            Mocca Living audio playlist 2024
+            Mocca Living audio player
           </DialogTitle>
           <AudioPlayer />
         </DialogContent>

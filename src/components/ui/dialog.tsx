@@ -44,7 +44,7 @@ function DialogContent({
         'fixed inset-bs-1/2 inset-s-1/2 -translate-1/2 origin-center z-50 inline-full block-full max-inline-[calc(100%-24px)] max-block-[calc(100%-24px)] bg-surface-2 shadow-sm data-open:animate-dialog-open data-closed:animate-dialog-close sm:block-auto sm:max-inline-378',
         className
       )}
-      aria-describedby={ariaDescribedBy || undefined}
+      aria-describedby={ariaDescribedBy}
       {...props}
     />
   )

@@ -55,7 +55,7 @@ function DrawerContent({
         'data-left:inset-y-0 data-left:inset-s-0 data-left:h-full data-left:w-full data-left:sm:max-w-sm data-left:data-open:animate-drawer-left-open data-left:data-closed:animate-drawer-left-close',
         className
       )}
-      aria-describedby={ariaDescribedBy || undefined}
+      aria-describedby={ariaDescribedBy}
       data-side={side}
       {...props}
     />
