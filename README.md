@@ -16,3 +16,4 @@ You can take a look at the website [here](https://moccaliving.com).
 - [Tabler Icons](https://tabler.io/icons) a rich React icons library
 - [Valibot](https://valibot.dev/) schema & data validation library
 - [Resend](https://resend.com/home) API for sending transactional emails
+- [ReAudio](https://sina-byn.github.io/re-audio/) Headless React audio player library
