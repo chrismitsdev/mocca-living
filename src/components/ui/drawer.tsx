@@ -1,29 +1,20 @@
 'use client'
 
-import {
-  Close,
-  Content,
-  Description,
-  Overlay,
-  Portal,
-  Root,
-  Title,
-  Trigger
-} from '@radix-ui/react-dialog'
 import {IconX} from '@tabler/icons-react'
+import {Dialog} from 'radix-ui'
 import {IconButton} from '@/src/components/ui/icon-button'
 import {cn} from '@/src/lib/utils'
 
-const Drawer = Root
-const DrawerTrigger = Trigger
-const DrawerPortal = Portal
+const Drawer = Dialog.Root
+const DrawerTrigger = Dialog.Trigger
+const DrawerPortal = Dialog.Portal
 
 function DrawerOverlay({
   className,
   ...props
-}: React.ComponentPropsWithRef<typeof Overlay>) {
+}: React.ComponentPropsWithRef<typeof Dialog.Overlay>) {
   return (
-    <Overlay
+    <Dialog.Overlay
       className={cn(
         'fixed inset-0 z-50 bg-black/75 backdrop-blur-[1px] data-open:animate-overlay-open data-closed:animate-overlay-close',
         className
@@ -38,11 +29,11 @@ function DrawerContent({
   'aria-describedby': ariaDescribedBy,
   side = 'right',
   ...props
-}: React.ComponentPropsWithRef<typeof Content> & {
+}: React.ComponentPropsWithRef<typeof Dialog.Content> & {
   side?: 'top' | 'right' | 'bottom' | 'left'
 }) {
   return (
-    <Content
+    <Dialog.Content
       className={cn(
         'fixed z-50 bg-surface-3 shadow-sm',
         // Top
@@ -65,9 +56,9 @@ function DrawerContent({
 function DrawerTitle({
   className,
   ...props
-}: React.ComponentPropsWithRef<typeof Title>) {
+}: React.ComponentPropsWithRef<typeof Dialog.Title>) {
   return (
-    <Title
+    <Dialog.Title
       className={cn('text-lg font-bold text-foreground', className)}
       {...props}
     />
@@ -77,9 +68,9 @@ function DrawerTitle({
 function DrawerDescription({
   className,
   ...props
-}: React.ComponentPropsWithRef<typeof Description>) {
+}: React.ComponentPropsWithRef<typeof Dialog.Description>) {
   return (
-    <Description
+    <Dialog.Description
       className={cn('text-sm', className)}
       {...props}
     />
@@ -89,9 +80,12 @@ function DrawerDescription({
 function DrawerClose({
   'aria-label': ariaLabel,
   ...props
-}: Omit<React.ComponentPropsWithRef<typeof Close>, 'asChild' | 'children'>) {
+}: Omit<
+  React.ComponentPropsWithRef<typeof Dialog.Close>,
+  'asChild' | 'children'
+>) {
   return (
-    <Close
+    <Dialog.Close
       {...props}
       asChild
     >
@@ -102,7 +96,7 @@ function DrawerClose({
       >
         <IconX />
       </IconButton>
-    </Close>
+    </Dialog.Close>
   )
 }
 

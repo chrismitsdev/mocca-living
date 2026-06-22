@@ -1,12 +1,12 @@
-import {Root} from '@radix-ui/react-label'
+import {Label as RadixLabel} from 'radix-ui'
 import {cn} from '@/src/lib/utils'
 
 function Label({
   className,
   ...props
-}: React.ComponentPropsWithRef<typeof Root>) {
+}: React.ComponentPropsWithRef<typeof RadixLabel.Root>) {
   return (
-    <Root
+    <RadixLabel.Root
       className={cn('block text-sm font-bold leading-6', className)}
       {...props}
     />

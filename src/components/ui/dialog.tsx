@@ -1,29 +1,20 @@
 'use client'
 
-import {
-  Close,
-  Content,
-  Description,
-  Overlay,
-  Portal,
-  Root,
-  Title,
-  Trigger
-} from '@radix-ui/react-dialog'
 import {IconX} from '@tabler/icons-react'
+import {Dialog as RadixDialog} from 'radix-ui'
 import {IconButton} from '@/src/components/ui/icon-button'
 import {cn} from '@/src/lib/utils'
 
-const Dialog = Root
-const DialogTrigger = Trigger
-const DialogPortal = Portal
+const Dialog = RadixDialog.Root
+const DialogTrigger = RadixDialog.Trigger
+const DialogPortal = RadixDialog.Portal
 
 function DialogOverlay({
   className,
   ...props
-}: React.ComponentPropsWithRef<typeof Overlay>) {
+}: React.ComponentPropsWithRef<typeof RadixDialog.Overlay>) {
   return (
-    <Overlay
+    <RadixDialog.Overlay
       className={cn(
         'fixed inset-0 z-50 bg-black/75 backdrop-blur-[1px] data-open:animate-overlay-open data-closed:animate-overlay-close',
         className
@@ -37,9 +28,9 @@ function DialogContent({
   className,
   'aria-describedby': ariaDescribedBy,
   ...props
-}: React.ComponentPropsWithRef<typeof Content>) {
+}: React.ComponentPropsWithRef<typeof RadixDialog.Content>) {
   return (
-    <Content
+    <RadixDialog.Content
       className={cn(
         'fixed inset-bs-1/2 inset-s-1/2 -translate-1/2 origin-center z-50 inline-full block-full max-inline-[calc(100%-24px)] max-block-[calc(100%-24px)] bg-surface-2 shadow-sm data-open:animate-dialog-open data-closed:animate-dialog-close sm:block-auto sm:max-inline-378',
         className
@@ -65,9 +56,9 @@ function DialogHeader({
 function DialogTitle({
   className,
   ...props
-}: React.ComponentPropsWithRef<typeof Title>) {
+}: React.ComponentPropsWithRef<typeof RadixDialog.Title>) {
   return (
-    <Title
+    <RadixDialog.Title
       className={cn('text-lg font-bold', className)}
       {...props}
     />
@@ -77,9 +68,9 @@ function DialogTitle({
 function DialogDescription({
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Description>) {
+}: React.ComponentPropsWithoutRef<typeof RadixDialog.Description>) {
   return (
-    <Description
+    <RadixDialog.Description
       className={cn('text-sm', className)}
       {...props}
     />
@@ -112,11 +103,14 @@ function DialogClose({
   className,
   variant = 'ghost',
   ...props
-}: Omit<React.ComponentPropsWithRef<typeof Close>, 'asChild' | 'children'> & {
+}: Omit<
+  React.ComponentPropsWithRef<typeof RadixDialog.Close>,
+  'asChild' | 'children'
+> & {
   variant?: React.ComponentPropsWithRef<typeof IconButton>['variant']
 }) {
   return (
-    <Close
+    <RadixDialog.Close
       className={cn('absolute inset-bs-5 inset-e-4 z-50', className)}
       {...props}
       asChild
@@ -128,7 +122,7 @@ function DialogClose({
       >
         <IconX />
       </IconButton>
-    </Close>
+    </RadixDialog.Close>
   )
 }
 

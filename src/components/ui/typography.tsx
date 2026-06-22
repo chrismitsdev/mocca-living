@@ -1,4 +1,4 @@
-import {Slot} from '@radix-ui/react-slot'
+import {Slot} from 'radix-ui'
 import {cn} from '@/src/lib/utils'
 
 interface TypographyProps extends React.ComponentPropsWithRef<'span'> {
@@ -12,7 +12,7 @@ function Typography({
   asChild = false,
   ...props
 }: TypographyProps) {
-  const Comp = asChild ? Slot : 'span'
+  const Comp = asChild ? Slot.Root : 'span'
 
   return (
     <Comp

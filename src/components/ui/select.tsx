@@ -1,36 +1,23 @@
 'use client'
 
-import {
-  Content,
-  Group,
-  Icon,
-  Item,
-  ItemText,
-  Label,
-  Portal,
-  Root,
-  Separator,
-  Trigger,
-  Value,
-  Viewport
-} from '@radix-ui/react-select'
 import {IconSelector} from '@tabler/icons-react'
+import {Select as RadixSelect} from 'radix-ui'
 import {cn} from '@/src/lib/utils'
 
-const Select = Root
-const SelectPortal = Portal
-const SelectViewport = Viewport
-const SelectGroup = Group
-const SelectValue = Value
-const SelectItemText = ItemText
+const Select = RadixSelect.Root
+const SelectPortal = RadixSelect.Portal
+const SelectViewport = RadixSelect.Viewport
+const SelectGroup = RadixSelect.Group
+const SelectValue = RadixSelect.Value
+const SelectItemText = RadixSelect.ItemText
 
 function SelectTrigger({
   className,
   children,
   ...props
-}: React.ComponentPropsWithRef<typeof Trigger>) {
+}: React.ComponentPropsWithRef<typeof RadixSelect.Trigger>) {
   return (
-    <Trigger
+    <RadixSelect.Trigger
       className={cn(
         'px-3 py-1.75 flex items-center gap-1.5 bg-surface-1 border border-border font-bold transition hover:border-border-hover focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2  disabled:border-border disabled:pointer-events-none disabled:opacity-35 data-open:border-border-hover data-placeholder:[&>div>span]:text-sm data-placeholder:[&>div>span]:font-normal data-open:shadow-sm [&>div]:grow [&>div]:text-left group',
         className
@@ -38,13 +25,13 @@ function SelectTrigger({
       {...props}
     >
       {children}
-      <Icon
+      <RadixSelect.Icon
         className='shrink-0 transition'
         asChild
       >
         <IconSelector className='size-5' />
-      </Icon>
-    </Trigger>
+      </RadixSelect.Icon>
+    </RadixSelect.Trigger>
   )
 }
 
@@ -54,9 +41,9 @@ function SelectContent({
   position = 'popper',
   sideOffset = 6,
   ...props
-}: React.ComponentPropsWithRef<typeof Content>) {
+}: React.ComponentPropsWithRef<typeof RadixSelect.Content>) {
   return (
-    <Content
+    <RadixSelect.Content
       className={cn(
         'w-(--radix-select-trigger-width) max-h-(--radix-select-content-available-height) z-50 overflow-hidden bg-surface-1 border border-border-hover shadow-sm data-open:data-top:animate-slide-top-show data-open:data-right:animate-slide-right-show data-open:data-bottom:animate-slide-bottom-show data-open:data-left:animate-slide-left-show data-closed:data-top:animate-slide-top-hide data-closed:data-right:animate-slide-right-hide data-closed:data-bottom:animate-slide-bottom-hide data-closed:data-left:animate-slide-left-hide',
         className
@@ -66,16 +53,16 @@ function SelectContent({
       {...props}
     >
       {children}
-    </Content>
+    </RadixSelect.Content>
   )
 }
 
 function SelectLabel({
   className,
   ...props
-}: React.ComponentPropsWithRef<typeof Label>) {
+}: React.ComponentPropsWithRef<typeof RadixSelect.Label>) {
   return (
-    <Label
+    <RadixSelect.Label
       className={cn('py-1.5 pl-8 pr-2 text-sm font-bold', className)}
       {...props}
     />
@@ -86,9 +73,9 @@ function SelectItem({
   className,
   children,
   ...props
-}: React.ComponentPropsWithRef<typeof Item>) {
+}: React.ComponentPropsWithRef<typeof RadixSelect.Item>) {
   return (
-    <Item
+    <RadixSelect.Item
       className={cn(
         'px-3 py-2 flex items-center gap-1.5 cursor-pointer select-none outline-none data-highlighted:bg-surface-2 data-disabled:pointer-events-none data-disabled:opacity-50',
         className
@@ -96,16 +83,16 @@ function SelectItem({
       {...props}
     >
       {children}
-    </Item>
+    </RadixSelect.Item>
   )
 }
 
 function SelectSeparator({
   className,
   ...props
-}: React.ComponentPropsWithRef<typeof Separator>) {
+}: React.ComponentPropsWithRef<typeof RadixSelect.Separator>) {
   return (
-    <Separator
+    <RadixSelect.Separator
       className={cn('my-1 h-px bg-border', className)}
       {...props}
     />

@@ -1,16 +1,16 @@
 'use client'
 
-import {Content, Root, Trigger} from '@radix-ui/react-collapsible'
+import {Collapsible as RadixCollapsible} from 'radix-ui'
 import {cn} from '@/src/lib/utils'
 
-const CollapsibleTrigger = Trigger
+const CollapsibleTrigger = RadixCollapsible.Trigger
 
 function Collapsible({
   className,
   ...props
-}: React.ComponentPropsWithRef<typeof Root>) {
+}: React.ComponentPropsWithRef<typeof RadixCollapsible.Root>) {
   return (
-    <Root
+    <RadixCollapsible.Root
       className={cn('group', className)}
       {...props}
     />
@@ -20,9 +20,9 @@ function Collapsible({
 function CollapsibleContent({
   className,
   ...props
-}: React.ComponentPropsWithRef<typeof Content>) {
+}: React.ComponentPropsWithRef<typeof RadixCollapsible.Content>) {
   return (
-    <Content
+    <RadixCollapsible.Content
       className={cn(
         'overflow-hidden data-open:animate-collapsible-open data-closed:animate-collapsible-close',
         className

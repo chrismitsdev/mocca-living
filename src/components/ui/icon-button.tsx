@@ -1,4 +1,4 @@
-import {Slot} from '@radix-ui/react-slot'
+import {Slot} from 'radix-ui'
 import {cn} from '@/src/lib/utils'
 
 interface IconButtonProps
@@ -21,7 +21,7 @@ function IconButton({
   asChild = false,
   ...props
 }: IconButtonProps) {
-  const Comp = asChild ? Slot : 'button'
+  const Comp = asChild ? Slot.Root : 'button'
 
   return (
     <Comp

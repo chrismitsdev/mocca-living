@@ -1,4 +1,4 @@
-import {Slot, Slottable} from '@radix-ui/react-slot'
+import {Slot} from 'radix-ui'
 import {Spinner} from '@/src/components/ui/spinner'
 import {cn} from '@/src/lib/utils'
 
@@ -30,7 +30,7 @@ function Button({
   children,
   ...props
 }: ButtonProps) {
-  const Comp = asChild ? Slot : 'button'
+  const Comp = asChild ? Slot.Root : 'button'
 
   return (
     <Comp
@@ -58,7 +58,7 @@ function Button({
       data-size={size}
       {...props}
     >
-      <Slottable>
+      <Slot.Slottable>
         {isLoading ? (
           <span className='invisible inline-flex justify-center items-center gap-x-[inherit]'>
             {children}
@@ -66,7 +66,7 @@ function Button({
         ) : (
           children
         )}
-      </Slottable>
+      </Slot.Slottable>
       {isLoading && (
         <span className='absolute inset-0 flex items-center justify-center'>
           <Spinner />
