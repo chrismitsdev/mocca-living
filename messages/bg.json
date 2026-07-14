@@ -381,8 +381,9 @@
         }
       }
     },
-    "ad_banner": {
-      "description": "<a>Mocca City</a> вече е тук"
+    "notification_banner": {
+      "mocca-city": "<a>Mocca City</a> вече е тук",
+      "stay": "За месеците юли и август важи минимален престой от 3 нощувки"
     },
     "form": {
       "fields": {

@@ -6,13 +6,13 @@ import {notFound} from 'next/navigation'
 import {hasLocale, NextIntlClientProvider} from 'next-intl'
 import {setRequestLocale} from 'next-intl/server'
 import {Toaster} from 'sonner'
-import {AdBanner} from '@/src/components/shared/ad-banner'
 import {ColumnsTransition} from '@/src/components/shared/columns-transition'
 import {ContactDrawer} from '@/src/components/shared/contact-drawer'
 import {CookieBanner} from '@/src/components/shared/cookie-banner'
 import {DialogAudioPlayer} from '@/src/components/shared/dialog-audio-player'
 import {Footer} from '@/src/components/shared/footer'
 import {Header} from '@/src/components/shared/header'
+import {NotificationBanner} from '@/src/components/shared/notification-banner'
 import {routing} from '@/src/i18n/routing'
 
 const inter = Inter({
@@ -62,7 +62,7 @@ export default async function LocaleLayout({
     >
       <body className='bg-surface-1 text-foreground'>
         <NextIntlClientProvider>
-          <AdBanner />
+          <NotificationBanner />
           <Header />
           <main>
             <ColumnsTransition>{children}</ColumnsTransition>

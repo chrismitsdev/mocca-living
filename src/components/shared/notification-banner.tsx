@@ -6,11 +6,10 @@ import {useEffect, useRef, useState} from 'react'
 import {Container} from '@/src/components/shared/container'
 import {IconButton} from '@/src/components/ui/icon-button'
 import {Typography} from '@/src/components/ui/typography'
-import {Link} from '@/src/i18n/navigation'
 
-function AdBanner() {
+function NotificationBanner() {
   const [showBanner, setShowBanner] = useState(true)
-  const t = useTranslations('Components.ad_banner')
+  const t = useTranslations('Components.notification_banner')
   const bannerRef = useRef<HTMLDivElement>(null)
 
   function handleClick() {
@@ -34,9 +33,13 @@ function AdBanner() {
       ref={bannerRef}
     >
       <Container>
-        <div className='flex items-center gap-2'>
-          <Typography className='grow'>
-            {t.rich('description', {
+        <div className='flex gap-2 sm:items-center text-primary'>
+          <Typography
+            className='grow font-black'
+            variant='small'
+          >
+            {t('stay')}
+            {/*{t.rich('stay', {
               a: (chunks) => {
                 return (
                   <Link
@@ -47,7 +50,7 @@ function AdBanner() {
                   </Link>
                 )
               }
-            })}
+            })}*/}
           </Typography>
           <IconButton
             aria-label='Close banner'
@@ -63,6 +66,6 @@ function AdBanner() {
   )
 }
 
-AdBanner.displayName = 'AdBanner'
+NotificationBanner.displayName = 'NotificationBanner'
 
-export {AdBanner}
+export {NotificationBanner}
