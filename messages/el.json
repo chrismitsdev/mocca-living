@@ -381,8 +381,9 @@
         }
       }
     },
-    "ad_banner": {
-      "description": "Το <a>Mocca City</a> είναι εδώ"
+    "notification_banner": {
+      "mocca-city": "Το <a>Mocca City</a> είναι εδώ",
+      "stay": "Ελάχιστη διαμονή 3 διανυκτερεύσεων για Ιούλιο & Αύγουστο"
     },
     "form": {
       "fields": {

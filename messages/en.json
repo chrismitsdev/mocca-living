@@ -381,8 +381,9 @@
         }
       }
     },
-    "ad_banner": {
-      "description": "The <a>Mocca City</a> is here"
+    "notification_banner": {
+      "mocca-city": "The <a>Mocca City</a> is here",
+      "stay": "Minimum stay of 3 nights applies for July & August"
     },
     "form": {
       "fields": {
