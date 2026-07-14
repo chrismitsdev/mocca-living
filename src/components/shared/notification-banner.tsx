@@ -35,7 +35,7 @@ function NotificationBanner() {
       <Container>
         <div className='flex gap-2 sm:items-center text-primary'>
           <Typography
-            className='grow font-bold'
+            className='grow font-black'
             variant='small'
           >
             {t('stay')}
