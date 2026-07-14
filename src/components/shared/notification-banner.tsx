@@ -33,12 +33,14 @@ function NotificationBanner() {
       ref={bannerRef}
     >
       <Container>
-        <div className='flex gap-2'>
+        <div className='flex gap-2 sm:items-center'>
           <Typography
             variant='small'
             className='grow'
           >
-            {t('stay')}
+            {t.rich('stay', {
+              b: (chunks) => <strong>{chunks}</strong>
+            })}
             {/*{t.rich('stay', {
               a: (chunks) => {
                 return (
