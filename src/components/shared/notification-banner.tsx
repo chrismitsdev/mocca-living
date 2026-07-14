@@ -33,7 +33,7 @@ function NotificationBanner() {
       ref={bannerRef}
     >
       <Container>
-        <div className='flex gap-2 sm:items-center'>
+        <div className='flex gap-2 sm:items-center text-primary'>
           <Typography
             variant='small'
             className='grow'
