@@ -31,7 +31,7 @@ function Footer() {
           <FooterColumn title={t('row-1.info-column.title')}>
             <FooterLink href={`tel:${PHONE}`}>
               <Typography variant='small'>
-                {t('row-1.info-column.tel')}
+                {t('row-1.info-column.tel', {phone: PHONE})}
               </Typography>
             </FooterLink>
             <FooterLink href='mailto:info@moccaliving.com'>
