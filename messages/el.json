@@ -433,14 +433,13 @@
           "title": "Πληροφοριες",
           "phone": "+306973433980",
           "email": "info@moccaliving.com",
-          "location": "Αλεξανδρούπολη, Ελλάδα"
+          "map": "Βρείτε μας στον χάρτη"
         },
         "links-column": {
           "title": "Χρησιμοι συνδεσμοι",
           "privacy-policy": "Πολιτική απορρήτου",
           "cookies-policy": "Πολιτική cookies",
-          "accomodation-policy": "Πολιτική διαμονής",
-          "playlist": "Λίστα αναπαραγωγής ήχου"
+          "accommodation-policy": "Πολιτική διαμονής"
         },
         "more-column": {
           "title": "Οι εταιρείες μας",
@@ -450,9 +449,8 @@
         }
       },
       "row-2": {
-        "copyright": "Πνευματική ιδιοκτησία © {created, date, ::yyyy} Mocca Living",
-        "constructor": "Υλοποίηση έργου από KYRCOM",
-        "developer": "Αναπτύχθηκε & σχεδιάστηκε από τον CM"
+        "implementation": "Υλοποιήθηκε από KYRCOM",
+        "development": "Σχεδιάστηκε & αναπτύχθηκε από CM"
       }
     }
   }

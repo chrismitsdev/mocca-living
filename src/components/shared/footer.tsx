@@ -17,30 +17,37 @@ function Footer() {
   return (
     <footer className='py-16 bg-surface-3'>
       <Container className='space-y-12'>
-        <div className='grid gap-12 sm:grid-flow-col sm:auto-cols-fr'>
-          <Image
-            src={logoFull}
-            height={160}
-            alt='Mocca Living footer logo'
-          />
+        <div className='grid gap-12 sm:grid-cols-2 lg:grid-cols-5'>
+          <Link
+            className='inline-fit'
+            href='/'
+          >
+            <Image
+              src={logoFull}
+              height={160}
+              alt='Mocca Living'
+            />
+          </Link>
           <FooterColumn title={t('row-1.info-column.title')}>
             <FooterLink href={`tel:${PHONE}`}>
               <Typography variant='small'>
                 {t('row-1.info-column.phone')}
               </Typography>
             </FooterLink>
-            <FooterLink
-              href='mailto:info@moccaliving.com'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
+            <FooterLink href='mailto:info@moccaliving.com'>
               <Typography variant='small'>
                 {t('row-1.info-column.email')}
               </Typography>
             </FooterLink>
-            <Typography variant='small'>
-              {t('row-1.info-column.location')}
-            </Typography>
+            <FooterLink
+              href='https://maps.google.com/?q=Mocca+Living+Alexandroupoli'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <Typography variant='small'>
+                {t('row-1.info-column.map')}
+              </Typography>
+            </FooterLink>
           </FooterColumn>
           <FooterColumn title={t('row-1.links-column.title')}>
             <FooterLink href='/privacy'>
@@ -55,7 +62,7 @@ function Footer() {
             </FooterLink>
             <FooterLink href='/rules'>
               <Typography variant='small'>
-                {t('row-1.links-column.accomodation-policy')}
+                {t('row-1.links-column.accommodation-policy')}
               </Typography>
             </FooterLink>
           </FooterColumn>
@@ -130,20 +137,20 @@ function Footer() {
             className='order-2 sm:order-1'
             variant='tiny'
           >
-            {t('row-2.copyright', {created: new Date()})}
+            © {new Date().getFullYear()} Mocca Living
           </Typography>
           <LogosCarousel />
           <Typography
             className='order-3 sm:hidden'
             variant='tiny'
           >
-            {t('row-2.constructor')}
+            {t('row-2.implementation')}
           </Typography>
           <Typography
             className='order-4 sm:order-3'
             variant='tiny'
           >
-            {t('row-2.developer')}
+            {t('row-2.development')}
           </Typography>
         </div>
       </Container>
@@ -155,21 +162,19 @@ function FooterColumn({
   title,
   children
 }: React.PropsWithChildren & {title?: string}) {
-  if (title) {
-    return (
-      <div className='w-fit space-y-2 sm:space-y-4'>
+  return (
+    <div className='w-fit space-y-2 sm:space-y-4'>
+      {title && (
         <Typography
           variant='large'
           className='uppercase'
         >
           {title}
         </Typography>
-        <div className='space-y-2'>{children}</div>
-      </div>
-    )
-  }
-
-  return <div className='w-fit space-y-2 sm:space-y-4'>{children}</div>
+      )}
+      <div className='space-y-2'>{children}</div>
+    </div>
+  )
 }
 
 function FooterLink({

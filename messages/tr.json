@@ -433,14 +433,13 @@
           "title": "Bilgi",
           "phone": "+306973433980",
           "email": "info@moccaliving.com",
-          "location": "Alexandroupolis, Yunanistan"
+          "map": "Bizi haritada bulun"
         },
         "links-column": {
           "title": "Yararlı bağlantılar",
           "privacy-policy": "Gizlilik politikası",
           "cookies-policy": "Çerez politikası",
-          "accomodation-policy": "Konaklama politikası",
-          "playlist": "Ses listesi"
+          "accommodation-policy": "Konaklama politikası"
         },
         "more-column": {
           "title": "Şirketlerimiz",
@@ -450,9 +449,8 @@
         }
       },
       "row-2": {
-        "copyright": "Telif hakkı © {created, date, ::yyyy} Mocca Living",
-        "constructor": "Proje uygulaması KYRCOM tarafından",
-        "developer": "Geliştirme ve tasarım CM tarafından"
+        "implementation": "KYRCOM tarafından geliştirildi",
+        "development": "CM tarafından tasarlandı ve geliştirildi"
       }
     }
   }

@@ -433,14 +433,13 @@
           "title": "Информация",
           "phone": "+306973433980",
           "email": "info@moccaliving.com",
-          "location": "Александруполис, Гърция"
+          "map": "Намерете ни на картата"
         },
         "links-column": {
           "title": "Полезни връзки",
           "privacy-policy": "Политика за поверителност",
           "cookies-policy": "Политика за бисквитки",
-          "accomodation-policy": "Политика за настаняване",
-          "playlist": "Аудио плейлист"
+          "accommodation-policy": "Политика за настаняване"
         },
         "more-column": {
           "title": "Нашите компании",
@@ -450,9 +449,8 @@
         }
       },
       "row-2": {
-        "copyright": "Авторски права © {created, date, ::yyyy} Mocca Living",
-        "constructor": "Реализация на проекта от KYRCOM",
-        "developer": "Разработено и проектирано от CM"
+        "implementation": "Реализирано от KYRCOM",
+        "development": "Проектирано и разработено от CM"
       }
     }
   }
