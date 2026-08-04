@@ -431,8 +431,8 @@
       "row-1": {
         "info-column": {
           "title": "Πληροφοριες",
-          "phone": "+306973433980",
-          "email": "info@moccaliving.com",
+          "tel": "Καλέστε μας",
+          "email": "Στείλτε μας email",
           "map": "Βρείτε μας στον χάρτη"
         },
         "links-column": {
