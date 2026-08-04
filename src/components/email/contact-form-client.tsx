@@ -1,3 +1,4 @@
+import type {Locale} from 'next-intl'
 import {getTranslations} from 'next-intl/server'
 import {
   Body,
@@ -16,13 +17,16 @@ import {
 } from 'react-email'
 import type {ContactFormActionState} from '@/src/lib/actions'
 
-async function ContactFormClient({
-  fullname,
-  email,
-  phone,
-  message
-}: ContactFormActionState['data']) {
-  const t = await getTranslations('Components.contact_form_client')
+interface ContactFormClientProps {
+  locale: Locale
+  formData: ContactFormActionState['data']
+}
+
+async function ContactFormClient({locale, formData}: ContactFormClientProps) {
+  const t = await getTranslations({
+    locale,
+    namespace: 'Components.contact_form_client'
+  })
 
   return (
     <Html>
@@ -78,22 +82,23 @@ async function ContactFormClient({
               <Row className='main-content'>
                 <Column>
                   <Heading className='text-lg'>
-                    {t('header')} {fullname},
+                    {t('header')} {formData.fullname},
                   </Heading>
                   <Text>{t('thanks')}</Text>
                   <Text>{t('summary')}</Text>
 
                   <Text className='my-0'>
-                    {t('fullname')}: {fullname}
+                    {t('fullname')}: {formData.fullname}
                   </Text>
                   <Text className='my-0'>
-                    {t('email')}: {email}
+                    {t('email')}: {formData.email}
                   </Text>
                   <Text className='my-0'>
-                    {t('phone')}: {phone}
+                    {t('phone')}: {formData.phone}
                   </Text>
                   <Text className='mt-0'>
-                    {t('message.title')}: {message || t('message.empty')}
+                    {t('message.title')}:{' '}
+                    {formData.message || t('message.empty')}
                   </Text>
 
                   <Text>{t('footer')}</Text>

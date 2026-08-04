@@ -1,19 +1,17 @@
 import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
-import type {Locale} from 'next-intl'
-import {getTranslations, setRequestLocale} from 'next-intl/server'
+import {getTranslations} from 'next-intl/server'
 import {isValidLocation} from '@/src/lib/utils'
 
 type Params = {
   params: Promise<{
-    locale: Locale
     location: PropertyLocation
   }>
 }
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
-  const {locale, location} = await params
-  const t = await getTranslations({locale, namespace: 'Metadata'})
+  const {location} = await params
+  const t = await getTranslations('Metadata')
   const validLocation = isValidLocation(location)
 
   return {
@@ -23,11 +21,11 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
   }
 }
 
-export default async function AccomodationLocationPage({params}: Params) {
-  const {locale, location} = await (params as Params['params'])
+export default async function AccomodationLocationPage({
+  params
+}: PageProps<'/[locale]/accommodation/[location]'>) {
+  const {location} = await (params as Params['params'])
   const validLocation = isValidLocation(location)
-
-  setRequestLocale(locale)
 
   if (!validLocation) {
     notFound()

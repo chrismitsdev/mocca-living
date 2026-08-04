@@ -2,9 +2,8 @@ import '@/src/styles/index.css'
 import {Analytics} from '@vercel/analytics/next'
 import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
-import {notFound} from 'next/navigation'
-import {hasLocale, NextIntlClientProvider} from 'next-intl'
-import {setRequestLocale} from 'next-intl/server'
+import {NextIntlClientProvider} from 'next-intl'
+import {getLocale} from 'next-intl/server'
 import {Toaster} from 'sonner'
 import {ColumnsTransition} from '@/src/components/shared/columns-transition'
 import {ContactDrawer} from '@/src/components/shared/contact-drawer'
@@ -43,17 +42,8 @@ export const metadata: Metadata = {
   }
 }
 
-export default async function LocaleLayout({
-  params,
-  children
-}: LayoutProps<'/[locale]'>) {
-  const {locale} = await params
-
-  if (!hasLocale(routing.locales, locale)) {
-    notFound()
-  }
-
-  setRequestLocale(locale)
+export default async function RootLayout({children}: LayoutProps<'/[locale]'>) {
+  const locale = await getLocale()
 
   return (
     <html
@@ -83,9 +73,5 @@ export default async function LocaleLayout({
 }
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => {
-    return {
-      locale
-    }
-  })
+  return routing.locales.map((locale) => ({locale}))
 }

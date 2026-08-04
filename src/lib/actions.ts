@@ -168,7 +168,7 @@ export async function contactFormAction(
     ...Object.fromEntries(formData)
   } as ContactFormData
 
-  // Honeypot check
+  // Honeypot
   const honeypot = formData.get('company_website')?.toString().trim()
   if (honeypot) {
     return {
@@ -179,8 +179,8 @@ export async function contactFormAction(
     }
   }
 
+  // Valibot
   const result = safeParse(ContactFormSchema, data, {lang: locale})
-
   if (!result.success) {
     const issues = flatten<typeof ContactFormSchema>(result.issues)
 
@@ -198,8 +198,8 @@ export async function contactFormAction(
     }
   }
 
-  const error = await sendContactForm(result.output, locale)
-
+  // Resend
+  const error = await sendContactForm(locale, result.output)
   if (error) {
     return {
       data: result.output,

@@ -8,8 +8,8 @@ import type {ContactFormActionState} from '@/src/lib/actions'
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function sendContactForm(
-  formData: ContactFormActionState['data'],
-  locale: Locale
+  locale: Locale,
+  formData: ContactFormActionState['data']
 ) {
   const t = await getTranslations({
     locale,
@@ -37,7 +37,7 @@ export async function sendContactForm(
         subject: t('subject'),
         to: formData.email,
         replyTo: 'info@moccaliving.com',
-        react: ContactFormClient(formData)
+        react: ContactFormClient({locale, formData})
       }
     ])
 
