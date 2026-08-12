@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function AccommodationPage() {
+export default function AccommodationPage() {
   return (
     <>
       <AccommodationHeader />

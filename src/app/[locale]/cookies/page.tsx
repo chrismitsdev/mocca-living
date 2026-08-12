@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function CookiesPage() {
+export default function CookiesPage() {
   return (
     <>
       <CookiesHeader />

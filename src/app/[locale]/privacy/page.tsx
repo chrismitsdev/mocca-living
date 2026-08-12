@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function PrivacyPage() {
+export default function PrivacyPage() {
   return (
     <>
       <PrivacyHeader />

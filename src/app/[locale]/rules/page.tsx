@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function RulesPage() {
+export default function RulesPage() {
   return (
     <>
       <RulesHeader />

@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function ContactPage() {
+export default function ContactPage() {
   return (
     <>
       <ContactHeader />
