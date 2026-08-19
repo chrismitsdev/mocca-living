@@ -51,10 +51,7 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
                 <IconDotsVertical />
               </IconButton>
             </PopupTrigger>
-            <PopupContent
-              sideOffset={14}
-              collisionPadding={16}
-            >
+            <PopupContent collisionPadding={16}>
               <ul className='grid grid-cols-3 auto-rows-fr'>
                 <li>
                   <Link href='/accommodation/mocca-sea/sea-dimitra'>

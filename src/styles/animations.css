@@ -13,7 +13,7 @@
   --animate-collapsible-open: collapsible-open 1000ms var(--ease-mocca);
   --animate-collapsible-close: collapsible-close 750ms var(--ease-mocca);
 
-  /* Popover, Hover Card, Select */
+  /* Popover, Select */
   --animate-slide-top-show: slide-top-show 1000ms var(--ease-mocca);
   --animate-slide-right-show: slide-right-show 1000ms var(--ease-mocca);
   --animate-slide-bottom-show: slide-bottom-show 1000ms var(--ease-mocca);
@@ -113,16 +113,14 @@
     }
   }
 
-  /* Popover, Hover Card, Select */
+  /* Popover, Select */
   @keyframes slide-top-show {
     from {
       opacity: 0;
-      scale: 0.98;
       transform: translateY(16px);
     }
     to {
       opacity: 1;
-      scale: 1;
       transform: translateY(0);
     }
   }
@@ -130,25 +128,21 @@
   @keyframes slide-top-hide {
     from {
       opacity: 1;
-      scale: 1;
       transform: translateY(0);
     }
     to {
       opacity: 0;
-      scale: 0.98;
-      transform: translateY(16px);
+      transform: translateY(8px);
     }
   }
 
   @keyframes slide-right-show {
     from {
       opacity: 0;
-      scale: 0.98;
       transform: translateX(-16px);
     }
     to {
       opacity: 1;
-      scale: 1;
       transform: translateX(0);
     }
   }
@@ -156,25 +150,21 @@
   @keyframes slide-right-hide {
     from {
       opacity: 1;
-      scale: 1;
       transform: translateX(0);
     }
     to {
       opacity: 0;
-      scale: 0.98;
-      transform: translateX(-16px);
+      transform: translateX(-8px);
     }
   }
 
   @keyframes slide-bottom-show {
     from {
       opacity: 0;
-      scale: 0.98;
       transform: translateY(-16px);
     }
     to {
       opacity: 1;
-      scale: 1;
       transform: translateY(0);
     }
   }
@@ -182,25 +172,21 @@
   @keyframes slide-bottom-hide {
     from {
       opacity: 1;
-      scale: 1;
       transform: translateY(0);
     }
     to {
       opacity: 0;
-      scale: 0.98;
-      transform: translateY(-16px);
+      transform: translateY(-8px);
     }
   }
 
   @keyframes slide-left-show {
     from {
       opacity: 0;
-      scale: 0.98;
       transform: translateX(16px);
     }
     to {
       opacity: 1;
-      scale: 1;
       transform: translateX(0);
     }
   }
@@ -208,13 +194,11 @@
   @keyframes slide-left-hide {
     from {
       opacity: 1;
-      scale: 1;
       transform: translateX(0);
     }
     to {
       opacity: 0;
-      scale: 0.98;
-      transform: translateX(16px);
+      transform: translateX(8px);
     }
   }
 

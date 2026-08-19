@@ -11,6 +11,7 @@ const PopupClose = Popover.Close
 
 function PopupContent({
   className,
+  sideOffset = 8,
   children,
   ...props
 }: React.ComponentPropsWithRef<typeof Popover.Content>) {
@@ -20,6 +21,7 @@ function PopupContent({
         'p-6 relative z-50 min-inline-60 max-inline-3xl bg-surface-2 drop-shadow-sm outline-none data-open:data-top:animate-slide-top-show data-open:data-right:animate-slide-right-show data-open:data-bottom:animate-slide-bottom-show data-open:data-left:animate-slide-left-show data-closed:data-top:animate-slide-top-hide data-closed:data-right:animate-slide-right-hide data-closed:data-bottom:animate-slide-bottom-hide data-closed:data-left:animate-slide-left-hide',
         className
       )}
+      sideOffset={sideOffset}
       {...props}
     >
       {children}
