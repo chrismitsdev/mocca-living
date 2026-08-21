@@ -3,6 +3,10 @@
 @import "./data-attributes.css";
 @import "./animations.css";
 
+:root {
+  --header-height: 80px;
+}
+
 /* General styling */
 *::selection {
   @apply bg-primary text-primary-foreground;

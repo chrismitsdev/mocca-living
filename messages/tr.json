@@ -381,9 +381,8 @@
         }
       }
     },
-    "notification_banner": {
-      "mocca-city": "<a>Mocca City</a> burada",
-      "stay": "Temmuz & Ağustos ayları için minimum 3 gece konaklama geçerlidir"
+    "minimum_stay_banner": {
+      "title": "Temmuz & Ağustos ayları için minimum 3 gece konaklama geçerlidir"
     },
     "form": {
       "fields": {

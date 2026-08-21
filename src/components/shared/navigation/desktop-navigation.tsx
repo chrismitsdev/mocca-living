@@ -57,7 +57,6 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
                   <Link href='/accommodation/mocca-sea/sea-dimitra'>
                     <article className='p-2 space-y-2 hover:bg-surface-3'>
                       <CustomImage
-                        className='aspect-square'
                         src={seaDimitraCover}
                         alt='Mocca Sea Dimitra cover image'
                         sizes='200px'
@@ -75,7 +74,6 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
                   <Link href='/accommodation/mocca-sea/sea-georgia'>
                     <article className='p-2 space-y-2 hover:bg-surface-3'>
                       <CustomImage
-                        className='aspect-square'
                         src={seaGeorgiaCover}
                         alt='Mocca Sea Georgia cover image'
                         sizes='200px'
@@ -93,7 +91,6 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
                   <Link href='/accommodation/mocca-city/city-dimitra'>
                     <article className='p-2 space-y-2 hover:bg-surface-3'>
                       <CustomImage
-                        className='aspect-square'
                         src={cityDimitraCover}
                         alt='Mocca City Georgia cover image'
                         sizes='200px'

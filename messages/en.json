@@ -381,9 +381,8 @@
         }
       }
     },
-    "notification_banner": {
-      "mocca-city": "The <a>Mocca City</a> is here",
-      "stay": "Minimum stay of 3 nights applies for July & August"
+    "minimum_stay_banner": {
+      "title": "Minimum stay of 3 nights applies for July & August"
     },
     "form": {
       "fields": {

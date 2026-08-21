@@ -42,7 +42,7 @@ function HomeCarousel() {
 
   return (
     <Carousel
-      className='sm:h-[calc(100svh-80px-var(--banner-height))]'
+      className='sm:h-[calc(100svh-var(--header-height))]'
       options={{loop: true}}
       plugins={[Autoplay()]}
     >

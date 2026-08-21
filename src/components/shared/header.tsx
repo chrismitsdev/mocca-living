@@ -17,7 +17,6 @@ function Header() {
               loading='eager'
             />
           </Link>
-
           <Navigation />
         </div>
       </Container>

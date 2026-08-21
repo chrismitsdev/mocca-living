@@ -5,13 +5,13 @@ import {Inter} from 'next/font/google'
 import {NextIntlClientProvider} from 'next-intl'
 import {getLocale} from 'next-intl/server'
 import {Toaster} from 'sonner'
-import {ColumnsTransition} from '@/src/components/shared/columns-transition'
 import {ContactDrawer} from '@/src/components/shared/contact-drawer'
 import {CookieBanner} from '@/src/components/shared/cookie-banner'
 import {DialogAudioPlayer} from '@/src/components/shared/dialog-audio-player'
 import {Footer} from '@/src/components/shared/footer'
 import {Header} from '@/src/components/shared/header'
-import {NotificationBanner} from '@/src/components/shared/notification-banner'
+import {MinimumStayBanner} from '@/src/components/shared/minumum-stay-banner'
+import {PageTransition} from '@/src/components/shared/page-transition'
 import {routing} from '@/src/i18n/routing'
 
 const inter = Inter({
@@ -52,10 +52,10 @@ export default async function RootLayout({children}: LayoutProps<'/[locale]'>) {
     >
       <body className='bg-surface-1 text-foreground'>
         <NextIntlClientProvider>
-          <NotificationBanner />
+          <MinimumStayBanner />
           <Header />
           <main>
-            <ColumnsTransition>{children}</ColumnsTransition>
+            <PageTransition>{children}</PageTransition>
           </main>
           <Footer />
           <ContactDrawer />

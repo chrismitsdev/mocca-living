@@ -49,7 +49,7 @@ function SlugCarousel({slug}: {slug: PropertySlug}) {
   ))
 
   return (
-    <Carousel className='sm:h-[calc(100svh-80px-var(--banner-height))]'>
+    <Carousel className='sm:h-[calc(100svh-var(--header-height))]'>
       <CarouselViewport>
         <SlidesContainer>{renderedSlides}</SlidesContainer>
       </CarouselViewport>
