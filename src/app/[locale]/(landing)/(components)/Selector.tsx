@@ -55,7 +55,7 @@ function Destination({
       href={href}
     >
       <CustomImage
-        className='duration-1000 group-hover:scale-105'
+        className='object-[40%] duration-1000 group-hover:scale-105'
         src={src}
         alt={title}
       />
@@ -79,7 +79,7 @@ function Logo() {
   return (
     <div className='p-2 bg-primary-foreground absolute top-1/2 left-1/2 -translate-1/2'>
       <Image
-        className='size-6 md:size-10'
+        className='size-8 md:size-10'
         src={moccaLogo}
         alt='Mocca Living logo'
       />
