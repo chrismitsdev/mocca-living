@@ -88,6 +88,11 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                   label={t('home')}
                 />
 
+                <NavigationListItemLink
+                  href='/experience'
+                  label={t('experience')}
+                />
+
                 <Collapsible
                   className='grid grid-cols-[1fr_auto] gap-x-4'
                   asChild

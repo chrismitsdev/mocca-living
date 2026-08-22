@@ -4,14 +4,7 @@ import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
 import {NextIntlClientProvider} from 'next-intl'
 import {getLocale} from 'next-intl/server'
-import {Toaster} from 'sonner'
-import {ContactDrawer} from '@/src/components/shared/contact-drawer'
 import {CookieBanner} from '@/src/components/shared/cookie-banner'
-import {DialogAudioPlayer} from '@/src/components/shared/dialog-audio-player'
-import {Footer} from '@/src/components/shared/footer'
-import {Header} from '@/src/components/shared/header'
-import {MinimumStayBanner} from '@/src/components/shared/minumum-stay-banner'
-import {PageTransition} from '@/src/components/shared/page-transition'
 import {routing} from '@/src/i18n/routing'
 
 const inter = Inter({
@@ -21,15 +14,6 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://moccaliving.com'),
-  alternates: {
-    canonical: '/',
-    languages: {
-      'en-US': '/en',
-      'el-GR': '/el',
-      'tr-TR': '/tr',
-      'bg-BG': '/bg'
-    }
-  },
   title: {
     template: '%s | Mocca Living',
     default: 'Mocca Living'
@@ -48,23 +32,12 @@ export default async function RootLayout({children}: LayoutProps<'/[locale]'>) {
   return (
     <html
       lang={locale}
-      className={`${inter.className}`}
+      className={inter.className}
     >
       <body className='bg-surface-1 text-foreground'>
         <NextIntlClientProvider>
-          <MinimumStayBanner />
-          <Header />
-          <main>
-            <PageTransition>{children}</PageTransition>
-          </main>
-          <Footer />
-          <ContactDrawer />
-          <DialogAudioPlayer />
+          {children}
           <CookieBanner />
-          <Toaster
-            position='top-center'
-            mobileOffset={12}
-          />
         </NextIntlClientProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

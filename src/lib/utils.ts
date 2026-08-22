@@ -1,12 +1,25 @@
 import {type ClassValue, clsx} from 'clsx'
 import {twMerge} from 'tailwind-merge'
+import {getPathname} from '@/src/i18n/navigation'
+import {routing} from '@/src/i18n/routing'
+
+export function buildAlternates(
+  href: Parameters<typeof getPathname>[0]['href'],
+  locale: (typeof routing.locales)[number]
+) {
+  return {
+    canonical: getPathname({locale, href}),
+    languages: {
+      ...Object.fromEntries(
+        routing.locales.map((l) => [l, getPathname({locale: l, href})])
+      ),
+      'x-default': getPathname({locale: routing.defaultLocale, href})
+    }
+  }
+}
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
-}
-
-export async function sleep(sleepTime: number = 1000) {
-  await new Promise((resolve) => setTimeout(resolve, sleepTime))
 }
 
 export function isValidLocation(

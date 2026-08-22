@@ -11,6 +11,7 @@ const host =
     : 'https://moccaliving.com'
 
 const routes = [
+  'experience',
   'accommodation',
   'accommodation/mocca-sea/sea-dimitra',
   'accommodation/mocca-sea/sea-georgia',
@@ -27,13 +28,18 @@ function getUrl(href: Href, locale: Locale) {
 }
 
 function getEntry(href: Href): MetadataRoute.Sitemap[0] {
+  const {locales, defaultLocale} = routing
+
   return {
-    url: getUrl(href, routing.defaultLocale),
+    url: getUrl(href, defaultLocale),
     lastModified: new Date(),
     alternates: {
-      languages: Object.fromEntries(
-        routing.locales.map((locale) => [locale, getUrl(href, locale)])
-      )
+      languages: {
+        ...Object.fromEntries(
+          locales.map((locale) => [locale, getUrl(href, locale)])
+        ),
+        'x-default': getUrl(href, defaultLocale)
+      }
     }
   }
 }

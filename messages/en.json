@@ -1,6 +1,7 @@
 {
   "Metadata": {
     "home": "Home",
+    "experience": "Experience",
     "accommodation": {
       "title": "Accommodation",
       "location": {
@@ -35,11 +36,22 @@
   },
   "Pages": {
     "home": {
-      "home-intro": {
+      "mocca-sea": {
+        "heading": "Escape to nature",
+        "title": "Mocca by the Sea"
+      },
+      "mocca-city": {
+        "heading": "Live the city",
+        "title": "Mocca City"
+      },
+      "button": "Discover"
+    },
+    "experience": {
+      "intro": {
         "title": "Experience refined living across unique destinations",
         "message": "Mocca Living is a collection of carefully designed living spaces, offering refined stays that combine elegance, privacy, and modern amenities.<br></br><strong>Mocca by the Sea</strong>, in Agia Paraskevi Makri, offers two elegant villas with private gardens, a mini pool with hydromassage, and direct access to the beach — ideal for those seeking tranquility and an authentic seaside experience away from everyday life. <strong>Mocca City</strong>, on Leoforos Dimokratias in the heart of Alexandroupolis, features a fully renovated apartment with views over the city's main avenue and easy access to shops, restaurants, the seafront promenade, and the port."
       },
-      "home-reasons": {
+      "reasons": {
         "title": "Mocca Living is ideal for:",
         "reason1": {
           "title": "Families",
@@ -62,7 +74,7 @@
           "description": "Whether for short stays or extended retreats, Mocca Living provides a calm and comfortable environment ideal for rest, wellness, and slow-living."
         }
       },
-      "home-locations": {
+      "locations": {
         "title": "Distances to key locations",
         "description": "Explore distances to key locations for each Mocca Living property.",
         "mocca-sea": {

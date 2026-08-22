@@ -34,6 +34,11 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
         />
 
         <NavigationListItemLink
+          href='/experience'
+          label={t('experience')}
+        />
+
+        <NavigationListItemLink
           className='flex'
           href='/accommodation'
           label={t('accommodation.title')}

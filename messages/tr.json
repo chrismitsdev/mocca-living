@@ -1,6 +1,7 @@
 {
   "Metadata": {
     "home": "Ana Sayfa",
+    "experience": "Deneyim",
     "accommodation": {
       "title": "Konaklama",
       "location": {
@@ -35,11 +36,22 @@
   },
   "Pages": {
     "home": {
-      "home-intro": {
+      "mocca-sea": {
+        "heading": "Doğaya kaçış",
+        "title": "Mocca by the Sea"
+      },
+      "mocca-city": {
+        "heading": "Şehri yaşa",
+        "title": "Mocca City"
+      },
+      "button": "Keşfet"
+    },
+    "experience": {
+      "intro": {
         "title": "Lüks yaşamın zirvesini deneyimleyin",
         "message": "Mocca Living, zarafeti, mahremiyeti ve modern konforu bir arada sunan, özenle tasarlanmış yaşam alanlarından oluşan bir koleksiyondur.<br></br><strong>Mocca by the Sea</strong>, Makri'nin Agia Paraskevi bölgesinde, özel bahçeleri, hidromasajlı mini havuzu ve sahile doğrudan erişimiyle iki zarif villa sunar — gündelik hayattan uzaklaşarak huzur ve özgün bir deniz kenarı deneyimi arayanlar için idealdir. <strong>Mocca City</strong>, Alexandroupolis'in merkezinde Dimokratias Bulvarı üzerinde, şehrin ana caddesine manzaralı tam donanımlı yenilenmiş bir daire sunar; mağazalara, restoranlara, sahil yürüyüş yoluna ve limana kolay erişim imkânı sağlar."
       },
-      "home-reasons": {
+      "reasons": {
         "title": "Mocca Living için ideal:",
         "reason1": {
           "title": "Aileler",
@@ -62,7 +74,7 @@
           "description": "Kısa konaklamalar veya uzun süreli kaçamaklar için, Mocca Living dinlenme, wellness ve yavaş yaşam için ideal, sakin ve konforlu bir ortam sunar."
         }
       },
-      "home-locations": {
+      "locations": {
         "title": "Önemli noktalara mesafeler",
         "description": "Her Mocca Living konaklaması için önemli noktalara olan mesafeleri keşfedin.",
         "mocca-sea": {
