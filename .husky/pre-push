@@ -1,5 +1,4 @@
-#!/bin/bash
-
+echo ""
 echo "🚀 Checking before pushing..."
 
 echo ""
@@ -15,5 +14,5 @@ echo "⏳ Linting..."
 pnpm lint || { echo ""; echo "❌ Lint errors. Push aborted."; exit 1; }
 
 echo ""
-echo "✅ All checks passed. Ready to push."
+echo "✅ All checks passed. Pushing..."
 echo ""
