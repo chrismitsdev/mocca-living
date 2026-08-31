@@ -3,11 +3,17 @@
 import {IconX} from '@tabler/icons-react'
 import {Dialog as RadixDialog} from 'radix-ui'
 import {IconButton} from '@/src/components/ui/icon-button'
+import {
+  Scrollarea,
+  ScrollareaBar,
+  ScrollareaViewport
+} from '@/src/components/ui/scrollarea'
 import {cn} from '@/src/lib/utils'
 
 const Dialog = RadixDialog.Root
 const DialogTrigger = RadixDialog.Trigger
 const DialogPortal = RadixDialog.Portal
+const DialogTitle = RadixDialog.Title
 
 function DialogOverlay({
   className,
@@ -32,7 +38,7 @@ function DialogContent({
   return (
     <RadixDialog.Content
       className={cn(
-        'fixed inset-bs-1/2 inset-s-1/2 -translate-1/2 origin-center z-50 inline-full block-full max-inline-[calc(100%-24px)] max-block-[calc(100%-24px)] bg-surface-2 shadow-sm data-open:animate-dialog-open data-closed:animate-dialog-close sm:block-auto sm:max-inline-378',
+        'fixed inset-bs-1/2 inset-s-1/2 -translate-1/2 origin-center z-50 inline-[calc(100%-24px)] block-auto max-block-[calc(100%-24px)] flex flex-col bg-surface-2 shadow-sm sm:max-inline-2xl data-open:animate-dialog-open data-closed:animate-dialog-close',
         className
       )}
       aria-describedby={ariaDescribedBy}
@@ -43,82 +49,52 @@ function DialogContent({
 
 function DialogHeader({
   className,
+  children,
   ...props
 }: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      className={cn('px-6 pt-6 space-y-2', className)}
+      className={cn(
+        'shrink-0 p-4 flex justify-between items-center border-b border-b-surface-4 sm:p-6',
+        className
+      )}
       {...props}
-    />
-  )
-}
-
-function DialogTitle({
-  className,
-  ...props
-}: React.ComponentPropsWithRef<typeof RadixDialog.Title>) {
-  return (
-    <RadixDialog.Title
-      className={cn('text-lg font-bold', className)}
-      {...props}
-    />
-  )
-}
-
-function DialogDescription({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof RadixDialog.Description>) {
-  return (
-    <RadixDialog.Description
-      className={cn('text-sm', className)}
-      {...props}
-    />
+    >
+      <DialogTitle className='text-lg font-bold'>{children}</DialogTitle>
+      <DialogClose />
+    </div>
   )
 }
 
 function DialogBody({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   return (
-    <div
-      className={cn('p-6', className)}
-      {...props}
-    />
-  )
-}
-
-function DialogFooter({
-  className,
-  ...props
-}: React.ComponentPropsWithRef<'div'>) {
-  return (
-    <div
-      className={cn('px-6 pb-6', className)}
-      {...props}
-    />
+    <Scrollarea className='flex-1 min-block-0 flex flex-col'>
+      <ScrollareaViewport>
+        <div
+          className={cn('p-4 sm:p-6', className)}
+          {...props}
+        />
+      </ScrollareaViewport>
+      <ScrollareaBar />
+    </Scrollarea>
   )
 }
 
 function DialogClose({
-  'aria-label': ariaLabel,
-  className,
+  'aria-label': ariaLabel = 'Close dialog',
   variant = 'ghost',
+  size = 'small',
   ...props
-}: Omit<
-  React.ComponentPropsWithRef<typeof RadixDialog.Close>,
-  'asChild' | 'children'
-> & {
-  variant?: React.ComponentPropsWithRef<typeof IconButton>['variant']
+}: Omit<React.ComponentPropsWithRef<typeof IconButton>, 'aria-label'> & {
+  'aria-label'?: string
 }) {
   return (
-    <RadixDialog.Close
-      className={cn('absolute inset-bs-5 inset-e-4 z-50', className)}
-      {...props}
-      asChild
-    >
+    <RadixDialog.Close asChild>
       <IconButton
-        aria-label={ariaLabel || 'Close dialog'}
+        aria-label={ariaLabel}
         variant={variant}
-        size='small'
+        size={size}
+        {...props}
       >
         <IconX />
       </IconButton>
@@ -133,9 +109,7 @@ DialogOverlay.displayName = 'DialogOverlay'
 DialogContent.displayName = 'DialogContent'
 DialogHeader.displayName = 'DialogHeader'
 DialogTitle.displayName = 'DialogTitle'
-DialogDescription.displayName = 'DialogDescription'
 DialogBody.displayName = 'DialogBody'
-DialogFooter.displayName = 'DialogFooter'
 DialogClose.displayName = 'DialogClose'
 
 export {
@@ -143,8 +117,6 @@ export {
   DialogBody,
   DialogClose,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogOverlay,
   DialogPortal,

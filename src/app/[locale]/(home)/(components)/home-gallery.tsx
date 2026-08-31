@@ -98,12 +98,12 @@ function HomeGallery() {
           <DialogPortal>
             <DialogOverlay />
             <DialogContent
-              className='block-auto bg-transparent'
+              className='bg-transparent sm:max-inline-7xl'
               onCloseAutoFocus={(e) => e.preventDefault()}
             >
               <DialogClose
+                className='absolute inset-bs-2 inset-e-2 z-50 sm:inset-e-4'
                 variant='outline'
-                className='inset-bs-2 inset-e-2'
               />
               <DialogTitle className='sr-only'>
                 Home page gallery images

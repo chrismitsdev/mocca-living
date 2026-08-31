@@ -7,11 +7,13 @@ const ScrollareaCorner = RadixScrollArea.Corner
 
 function Scrollarea({
   className,
+  type = 'always',
   ...props
 }: React.ComponentPropsWithRef<typeof RadixScrollArea.Root>) {
   return (
     <RadixScrollArea.Root
       className={cn('overflow-hidden', className)}
+      type={type}
       {...props}
     />
   )
@@ -36,7 +38,12 @@ function ScrollareaBar({
   return (
     <RadixScrollArea.Scrollbar
       className={cn(
-        'p-0.5 flex touch-none select-none transition-colors data-vertical:h-full data-vertical:w-2.5 data-horizontal:flex-col data-horizontal:h-2.5',
+        [
+          'p-0.5 flex touch-none select-none transition-colors',
+          'data-vertical:h-full data-vertical:w-2.5',
+          'data-horizontal:flex-col data-horizontal:h-2.5'
+        ],
+
         className
       )}
       {...props}

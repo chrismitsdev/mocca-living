@@ -15,7 +15,7 @@ function DialogAudioPlayer() {
   return (
     <Dialog>
       <DialogTrigger
-        className='fixed inset-be-3 inset-e-3 sm:hidden'
+        className='fixed inset-be-3 inset-e-3'
         asChild
       >
         <IconButton aria-label='Open music player'>
@@ -24,8 +24,8 @@ function DialogAudioPlayer() {
       </DialogTrigger>
       <DialogPortal>
         <DialogOverlay />
-        <DialogContent className='block-auto'>
-          <DialogClose />
+        <DialogContent>
+          <DialogClose className='absolute inset-e-4 inset-bs-4' />
           <DialogTitle className='sr-only'>
             Mocca Living audio player
           </DialogTitle>

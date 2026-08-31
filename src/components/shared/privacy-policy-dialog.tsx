@@ -2,20 +2,12 @@ import {useTranslations} from 'next-intl'
 import {
   Dialog,
   DialogBody,
-  DialogClose,
   DialogContent,
   DialogHeader,
   DialogOverlay,
   DialogPortal,
-  DialogTitle,
   DialogTrigger
 } from '@/src/components/ui/dialog'
-import {
-  Scrollarea,
-  ScrollareaBar,
-  ScrollareaViewport
-} from '@/src/components/ui/scrollarea'
-import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 
 function PrivacyPolicyDialog({children}: React.PropsWithChildren) {
@@ -29,32 +21,17 @@ function PrivacyPolicyDialog({children}: React.PropsWithChildren) {
       <DialogPortal>
         <DialogOverlay />
         <DialogContent>
-          <DialogClose />
-          <DialogHeader className='pb-6'>
-            <DialogTitle>{t('Metadata.privacy')}</DialogTitle>
-          </DialogHeader>
-          <Separator />
-          <Scrollarea
-            className='block-[calc(100%-77px)]'
-            type='always'
-          >
-            <ScrollareaViewport>
-              <DialogBody className='space-y-4'>
-                <Typography variant='large'>
-                  {t('Pages.privacy.terms.title')}
-                </Typography>
-                <Typography>{t('Pages.privacy.terms.description')}</Typography>
-                <Separator />
-                <Typography variant='large'>
-                  {t('Pages.privacy.agreement.title')}
-                </Typography>
-                <Typography>
-                  {t('Pages.privacy.agreement.description')}
-                </Typography>
-              </DialogBody>
-            </ScrollareaViewport>
-            <ScrollareaBar />
-          </Scrollarea>
+          <DialogHeader>{t('Metadata.privacy')}</DialogHeader>
+          <DialogBody className='space-y-4'>
+            <Typography variant='large'>
+              {t('Pages.privacy.terms.title')}
+            </Typography>
+            <Typography>{t('Pages.privacy.terms.description')}</Typography>
+            <Typography variant='large'>
+              {t('Pages.privacy.agreement.title')}
+            </Typography>
+            <Typography>{t('Pages.privacy.agreement.description')}</Typography>
+          </DialogBody>
         </DialogContent>
       </DialogPortal>
     </Dialog>
