@@ -52,7 +52,6 @@ export default async function RootLayout({children}: LayoutProps<'/[locale]'>) {
     >
       <body className='bg-surface-1 text-foreground'>
         <NextIntlClientProvider>
-          <MinimumStayBanner />
           <Header />
           <main>
             <PageTransition>{children}</PageTransition>
