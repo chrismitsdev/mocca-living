@@ -18,17 +18,16 @@ function Typography({
     <Comp
       className={cn(
         'block text-balance',
-        'data-[variant="h1"]:text-4xl data-[variant="h1"]:font-bold',
-        'data-[variant="h2"]:text-3xl data-[variant="h2"]:font-bold',
-        'data-[variant="h3"]:text-2xl data-[variant="h3"]:font-bold',
-        'data-[variant="h4"]:text-xl data-[variant="h4"]:font-bold',
-        'data-[variant="large"]:text-base data-[variant="large"]:font-bold',
-        'data-[variant="p"]:text-base data-[variant="p"]:leading-8',
-        'data-[variant="small"]:text-sm data-[variant="small"]:leading-6',
-        'data-[variant="tiny"]:text-xs data-[variant="tiny"]:font-bold data-[variant="tiny"]:leading-6',
+        variant === 'h1' && ['text-4xl', 'font-bold'],
+        variant === 'h2' && ['text-3xl', 'font-bold'],
+        variant === 'h3' && ['text-2xl', 'font-bold'],
+        variant === 'h4' && ['text-xl', 'font-bold'],
+        variant === 'large' && ['text-base', 'font-bold'],
+        variant === 'p' && ['text-base', 'leading-8'],
+        variant === 'small' && ['text-sm', 'leading-6'],
+        variant === 'tiny' && ['text-xs', 'font-bold', 'leading-6'],
         className
       )}
-      data-variant={variant}
       {...props}
     />
   )

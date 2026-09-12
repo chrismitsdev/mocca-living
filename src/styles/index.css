@@ -3,6 +3,7 @@
 @import "./data-attributes.css";
 @import "./animations.css";
 @import "./utilities.css";
+@import "./view-transitions.css";
 
 :root {
   --header-height: 80px;

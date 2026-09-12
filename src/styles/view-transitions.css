@@ -1,0 +1,8 @@
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 2000ms;
+}
+
+::view-transition {
+  pointer-events: none;
+}

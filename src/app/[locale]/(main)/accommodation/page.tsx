@@ -1,5 +1,6 @@
 import type {Metadata} from 'next'
 import {getLocale, getTranslations} from 'next-intl/server'
+import {ViewTransition} from 'react'
 import {buildAlternates} from '@/src/lib/utils'
 import {Cards} from './(components)/cards'
 import {Header} from './(components)/header'
@@ -18,11 +19,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function AccommodationPage() {
   return (
-    <>
+    <ViewTransition default='auto'>
       <Header />
       <Hero />
       <Intro />
       <Cards />
-    </>
+    </ViewTransition>
   )
 }
