@@ -15,7 +15,10 @@ function Footer() {
   const t = useTranslations('Components.footer')
 
   return (
-    <footer className='py-16 bg-surface-3'>
+    <footer
+      className='py-16 bg-surface-3'
+      style={{viewTransitionName: 'site-footer'}}
+    >
       <Container className='space-y-12'>
         <div className='grid gap-12 sm:grid-cols-2 lg:grid-cols-5'>
           <Link

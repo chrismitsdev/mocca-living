@@ -1,8 +1,39 @@
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 2000ms;
+/* Page transitions */
+::view-transition-old(.page-transition) {
+  animation: 250ms ease-in both scale-out;
+}
+::view-transition-new(.page-transition) {
+  animation: 350ms ease-out both scale-in;
 }
 
+/* Exclude elements from page transitions */
+::view-transition-group(site-header),
+::view-transition-group(site-footer) {
+  animation: none;
+}
+::view-transition-old(site-header),
+::view-transition-old(site-footer) {
+  display: none;
+}
+::view-transition-new(site-header),
+::view-transition-new(site-footer) {
+  animation: none;
+}
+
+/* Prevent pointer events when transition is in progress */
 ::view-transition {
   pointer-events: none;
+}
+
+@keyframes scale-out {
+  to {
+    transform: scale(0.97);
+    opacity: 0;
+  }
+}
+@keyframes scale-in {
+  from {
+    transform: scale(1.03);
+    opacity: 0;
+  }
 }

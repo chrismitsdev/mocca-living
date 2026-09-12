@@ -20,7 +20,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function ExperiencePage() {
   return (
-    <ViewTransition default='auto'>
+    <ViewTransition
+      enter='page-transition'
+      exit='page-transition'
+      update='none'
+    >
       <Header />
       <HeroCarousel />
       <Intro />

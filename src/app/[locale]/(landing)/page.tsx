@@ -17,7 +17,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function LandingPage() {
   return (
-    <ViewTransition default='auto'>
+    <ViewTransition
+      enter='page-transition'
+      exit='page-transition'
+      update='none'
+    >
       <Header />
       <Selector />
     </ViewTransition>
