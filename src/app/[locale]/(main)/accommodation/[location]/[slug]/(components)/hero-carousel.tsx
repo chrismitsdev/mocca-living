@@ -60,6 +60,4 @@ function HeroCarousel({slug}: {slug: PropertySlug}) {
   )
 }
 
-HeroCarousel.displayName = 'HeroCarousel'
-
 export {HeroCarousel}

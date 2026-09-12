@@ -1,9 +1,9 @@
 import type {Metadata} from 'next'
 import {getLocale, getTranslations} from 'next-intl/server'
 import {buildAlternates} from '@/src/lib/utils'
-import ContactMap from './(components)/contact-map'
 import {Form} from './(components)/form'
 import {Header} from './(components)/header'
+import ContactMap from './(components)/map'
 import {Social} from './(components)/social'
 
 export async function generateMetadata(): Promise<Metadata> {

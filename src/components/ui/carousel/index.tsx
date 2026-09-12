@@ -19,8 +19,8 @@ import {
   ScrollareaBar,
   ScrollareaViewport
 } from '@/src/components/ui/scrollarea'
-import {CarouselProvider, useCarousel} from '@/src/context/carousel-context'
 import {cn} from '@/src/lib/utils'
+import {CarouselProvider, useCarousel} from './context'
 
 interface CarouselProps extends React.ComponentPropsWithRef<'section'> {
   options?: Parameters<typeof useEmblaCarousel>[0]
@@ -209,15 +209,6 @@ function ButtonNext({className}: {className?: string}) {
     </IconButton>
   )
 }
-
-Carousel.displayName = 'Carousel'
-CarouselViewport.displayName = 'CarouselViewport'
-SlidesContainer.displayName = 'SlidesContainer'
-Slide.displayName = 'Slide'
-ThumbsContainer.displayName = 'ThumbsContainer'
-Thumb.displayName = 'Thumb'
-ButtonPrev.displayName = 'ButtonPrev'
-ButtonNext.displayName = 'ButtonNext'
 
 export {
   ButtonNext,

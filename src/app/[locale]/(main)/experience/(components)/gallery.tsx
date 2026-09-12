@@ -156,7 +156,4 @@ function GalleryTrigger({
   )
 }
 
-Gallery.displayName = 'Gallery'
-GalleryTrigger.displayName = 'GalleryTrigger'
-
 export {Gallery}

@@ -5,6 +5,4 @@ function Header() {
   return <h1 className='sr-only'>{t('home')}</h1>
 }
 
-Header.displayName = 'Header'
-
 export {Header}

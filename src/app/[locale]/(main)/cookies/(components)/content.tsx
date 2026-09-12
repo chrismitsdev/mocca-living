@@ -90,6 +90,4 @@ function Content() {
   )
 }
 
-Content.displayName = 'Content'
-
 export {Content}

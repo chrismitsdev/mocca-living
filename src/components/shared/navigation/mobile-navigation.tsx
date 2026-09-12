@@ -232,6 +232,4 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
   )
 }
 
-MobileNavigation.displayName = 'MobileNavigation'
-
 export {MobileNavigation}

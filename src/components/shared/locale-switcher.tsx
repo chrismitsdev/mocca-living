@@ -99,6 +99,4 @@ function LocaleSwitcher({scrollTop = false}: LocaleSwitcherProps) {
   )
 }
 
-LocaleSwitcher.displayName = 'LocaleSwitcher'
-
 export {LocaleSwitcher}

@@ -6,6 +6,4 @@ function SlugHeader({slug}: {slug: PropertySlug}) {
   return <h1 className='sr-only'>{t(`${slug}.title`)}</h1>
 }
 
-SlugHeader.displayName = 'SlugHeader'
-
 export {SlugHeader}

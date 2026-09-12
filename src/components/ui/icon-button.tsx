@@ -51,6 +51,4 @@ function IconButton({
   )
 }
 
-IconButton.displayName = 'IconButton'
-
 export {IconButton}

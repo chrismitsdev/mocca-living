@@ -1,5 +1,4 @@
 import {useTranslations} from 'next-intl'
-import {AppForm} from '@/src/components/shared/app-form'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {
@@ -10,6 +9,7 @@ import {
   CardTitle
 } from '@/src/components/ui/card'
 import {Typography} from '@/src/components/ui/typography'
+import {Form as ContactForm} from './form'
 
 function Form() {
   const t = useTranslations('Pages.contact.contact-form')
@@ -25,14 +25,12 @@ function Form() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <AppForm />
+            <ContactForm />
           </CardContent>
         </Card>
       </Container>
     </Section>
   )
 }
-
-Form.displayName = 'Form'
 
 export {Form}

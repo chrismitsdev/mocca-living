@@ -24,6 +24,4 @@ function Header() {
   )
 }
 
-Header.displayName = 'Header'
-
 export {Header}

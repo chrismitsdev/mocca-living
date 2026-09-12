@@ -169,7 +169,4 @@ function PlaylistTrack({
   )
 }
 
-AudioPlayer.displayName = 'AudioPlayer'
-PlaylistTrack.displayName = 'PlaylistTrack'
-
 export {AudioPlayer}

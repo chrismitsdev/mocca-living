@@ -27,6 +27,4 @@ function BulgarianFlag({size = 20, ...props}: CustomIconProps) {
   )
 }
 
-BulgarianFlag.displayName = 'BulgarianFlag'
-
 export {BulgarianFlag}

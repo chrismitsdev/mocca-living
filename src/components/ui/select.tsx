@@ -99,18 +99,6 @@ function SelectSeparator({
   )
 }
 
-Select.displayName = 'Select'
-SelectTrigger.displayName = 'SelectTrigger'
-SelectPortal.displayName = 'SelectPortal'
-SelectContent.displayName = 'SelectContent'
-SelectViewport.displayName = 'SelectViewport'
-SelectGroup.displayName = 'SelectGroup'
-SelectValue.displayName = 'SelectValue'
-SelectLabel.displayName = 'SelectLabel'
-SelectItem.displayName = 'SelectItem'
-SelectItemText.displayName = 'SelectItemText'
-SelectSeparator.displayName = 'SelectSeparator'
-
 export {
   Select,
   SelectContent,

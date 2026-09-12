@@ -33,6 +33,4 @@ function Navigation() {
   )
 }
 
-Navigation.displayName = 'Navigation'
-
 export {Navigation}

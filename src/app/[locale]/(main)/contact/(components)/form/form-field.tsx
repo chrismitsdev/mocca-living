@@ -7,7 +7,7 @@ import {Textarea} from '@/src/components/ui/textarea'
 import {Typography} from '@/src/components/ui/typography'
 import {cn} from '@/src/lib/utils'
 
-function FormControl({
+function FormField({
   id,
   className,
   error,
@@ -18,7 +18,6 @@ function FormControl({
   error?: string
 }) {
   const errorId = error ? `${id}-error` : undefined
-
   const renderedChildren = Children.map(children, (child) => {
     if (!isValidElement(child)) return child
 
@@ -63,6 +62,4 @@ function FormControl({
   )
 }
 
-FormControl.displayName = 'FormControl'
-
-export {FormControl}
+export {FormField}

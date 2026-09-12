@@ -108,7 +108,4 @@ function SlugList({data, children}: React.PropsWithChildren<{data: string}>) {
   )
 }
 
-Details.displayName = 'Details'
-SlugList.displayName = 'SlugList'
-
 export {Details}

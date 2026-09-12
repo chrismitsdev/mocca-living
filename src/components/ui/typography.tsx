@@ -34,6 +34,4 @@ function Typography({
   )
 }
 
-Typography.displayName = 'Typography'
-
 export {Typography}

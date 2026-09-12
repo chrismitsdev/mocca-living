@@ -33,6 +33,4 @@ function NavigationListItemLink({
   )
 }
 
-NavigationListItemLink.displayName = 'NavigationListItemLink'
-
 export {NavigationListItemLink}

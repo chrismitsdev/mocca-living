@@ -30,6 +30,4 @@ function Spinner({className, size = 16, ...props}: CustomIconProps) {
   )
 }
 
-Spinner.displayName = 'Spinner'
-
 export {Spinner}

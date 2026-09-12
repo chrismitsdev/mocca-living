@@ -32,6 +32,4 @@ function Input({className, error, icon: Icon, ...props}: InputProps) {
   )
 }
 
-Input.displayName = 'Input'
-
 export {Input}

@@ -29,6 +29,4 @@ function Intro() {
   )
 }
 
-Intro.displayName = 'Intro'
-
 export {Intro}

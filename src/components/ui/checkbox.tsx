@@ -22,6 +22,4 @@ function Checkbox({className, error, ...props}: CheckboxProps) {
   )
 }
 
-Checkbox.displayName = 'Checkbox'
-
 export {Checkbox}

@@ -25,6 +25,4 @@ function TurkishFlag({size = 20, ...props}: CustomIconProps) {
   )
 }
 
-TurkishFlag.displayName = 'TurkishFlag'
-
 export {TurkishFlag}

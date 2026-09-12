@@ -86,7 +86,4 @@ function ContactMethodLink(props: React.ComponentPropsWithRef<'a'>) {
   )
 }
 
-ContactDrawer.displayName = 'ContactDrawer'
-ContactMethodLink.displayName = 'ContactMethodLink'
-
 export {ContactDrawer}

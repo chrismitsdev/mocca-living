@@ -78,6 +78,4 @@ function LogosCarousel() {
   )
 }
 
-LogosCarousel.displayName = 'LogosCarousel'
-
 export {LogosCarousel}

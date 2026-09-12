@@ -61,6 +61,4 @@ function PrivacyPolicyDialog({children}: React.PropsWithChildren) {
   )
 }
 
-PrivacyPolicyDialog.displayName = 'PrivacyPolicyDialog'
-
 export {PrivacyPolicyDialog}

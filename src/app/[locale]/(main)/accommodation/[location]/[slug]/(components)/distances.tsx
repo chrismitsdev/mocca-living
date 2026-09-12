@@ -96,7 +96,4 @@ function SlugDistanceItem({
   )
 }
 
-Distances.displayName = 'Distances'
-SlugDistanceItem.displayName = 'SlugDistanceItem'
-
 export {Distances}

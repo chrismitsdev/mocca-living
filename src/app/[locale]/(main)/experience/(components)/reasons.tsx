@@ -87,7 +87,4 @@ function Reason({title, description}: {title: string; description: string}) {
   )
 }
 
-Reasons.displayName = 'Reasons'
-Reason.displayName = 'Reason'
-
 export {Reasons}

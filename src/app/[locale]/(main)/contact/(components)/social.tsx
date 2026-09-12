@@ -47,7 +47,4 @@ function SocialLink({
   )
 }
 
-Social.displayName = 'Social'
-SocialLink.displayName = 'SocialLink'
-
 export {Social}

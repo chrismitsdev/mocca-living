@@ -12,6 +12,4 @@ function Section({
   )
 }
 
-Section.displayName = 'Section'
-
 export {Section}

@@ -2,7 +2,7 @@ import type {Metadata} from 'next'
 import {getLocale, getTranslations} from 'next-intl/server'
 import {buildAlternates} from '@/src/lib/utils'
 import {Header} from './(components)/header'
-import {Selector} from './(components)/Selector'
+import {Selector} from './(components)/selector'
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale()

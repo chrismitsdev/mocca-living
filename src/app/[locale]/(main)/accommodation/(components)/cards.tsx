@@ -138,6 +138,4 @@ function Cards() {
   )
 }
 
-Cards.displayName = 'Cards'
-
 export {Cards}

@@ -1,4 +1,4 @@
-function HoneyPot() {
+function FormHoneypot() {
   return (
     <div
       aria-hidden='true'
@@ -23,6 +23,4 @@ function HoneyPot() {
   )
 }
 
-HoneyPot.displayName = 'HoneyPot'
-
-export {HoneyPot}
+export {FormHoneypot}

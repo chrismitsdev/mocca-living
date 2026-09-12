@@ -45,6 +45,4 @@ function EnglishFlag({size = 20, ...props}: CustomIconProps) {
   )
 }
 
-EnglishFlag.displayName = 'EnglishFlag'
-
 export {EnglishFlag}

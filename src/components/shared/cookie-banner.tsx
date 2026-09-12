@@ -123,6 +123,4 @@ function CookieBanner() {
   )
 }
 
-CookieBanner.displayName = 'CookieBanner'
-
 export {CookieBanner}

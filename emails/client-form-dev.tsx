@@ -152,8 +152,6 @@ export default async function ClientFormDev({locale}: {locale: Locale}) {
   )
 }
 
-ClientFormDev.displayName = 'ClientFormDev'
-
 ClientFormDev.PreviewProps = {
   locale: 'en'
 }

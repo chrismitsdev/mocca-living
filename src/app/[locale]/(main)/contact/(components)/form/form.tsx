@@ -17,8 +17,8 @@ import {Label} from '@/src/components/ui/label'
 import {Textarea} from '@/src/components/ui/textarea'
 import {toast} from '@/src/components/ui/toast'
 import {type ContactFormActionState, contactFormAction} from '@/src/lib/actions'
-import {FormControl} from './form-control'
-import {HoneyPot} from './honeypot'
+import {FormField} from './form-field'
+import {FormHoneypot} from './form-honeypot'
 
 const initialState = {
   data: {} as ContactFormActionState['data'],
@@ -26,7 +26,7 @@ const initialState = {
   ok: null
 }
 
-function AppForm() {
+function Form() {
   const [state, action, isPending] = useActionState(
     contactFormAction.bind(null, useLocale()),
     initialState
@@ -53,9 +53,9 @@ function AppForm() {
       action={action}
       noValidate
     >
-      <HoneyPot />
+      <FormHoneypot />
       <div className='grid gap-x-10 gap-y-4 @xl:grid-cols-2'>
-        <FormControl
+        <FormField
           id='fullname'
           error={state.errors.fullname}
           className='col-span-full'
@@ -71,9 +71,9 @@ function AppForm() {
             error={Boolean(state.errors.fullname)}
             disabled={isPending}
           />
-        </FormControl>
+        </FormField>
 
-        <FormControl
+        <FormField
           id='email'
           error={state.errors.email}
         >
@@ -89,9 +89,9 @@ function AppForm() {
             disabled={isPending}
             type='email'
           />
-        </FormControl>
+        </FormField>
 
-        <FormControl
+        <FormField
           id='phone'
           error={state.errors.phone}
         >
@@ -107,9 +107,9 @@ function AppForm() {
             disabled={isPending}
             type='tel'
           />
-        </FormControl>
+        </FormField>
 
-        <FormControl
+        <FormField
           id='message'
           error={state.errors.message}
           className='col-span-full'
@@ -124,8 +124,8 @@ function AppForm() {
             error={Boolean(state.errors.message)}
             disabled={isPending}
           />
-        </FormControl>
-        <FormControl
+        </FormField>
+        <FormField
           id='consent'
           className='flex-row col-span-full gap-2'
         >
@@ -143,7 +143,7 @@ function AppForm() {
               )
             })}
           </Label>
-        </FormControl>
+        </FormField>
       </div>
 
       <div className='pt-10'>
@@ -162,6 +162,4 @@ function AppForm() {
   )
 }
 
-AppForm.displayName = 'AppForm'
-
-export {AppForm}
+export {Form}

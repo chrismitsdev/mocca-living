@@ -56,6 +56,4 @@ function HeroCarousel() {
   )
 }
 
-HeroCarousel.displayName = 'HeroCarousel'
-
 export {HeroCarousel}

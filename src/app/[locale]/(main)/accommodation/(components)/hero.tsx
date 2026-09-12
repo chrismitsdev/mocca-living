@@ -36,6 +36,4 @@ function Hero() {
   )
 }
 
-Hero.displayName = 'Hero'
-
 export {Hero}

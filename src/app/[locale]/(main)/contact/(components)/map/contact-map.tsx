@@ -87,6 +87,4 @@ function ContactMap() {
   )
 }
 
-ContactMap.displayName = 'ContactMap'
-
 export default ContactMap

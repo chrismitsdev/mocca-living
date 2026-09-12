@@ -87,8 +87,4 @@ function Logo() {
   )
 }
 
-Selector.displayName = 'Selector'
-Destination.displayName = 'Destination'
-Logo.displayName = 'Logo'
-
 export {Selector}
