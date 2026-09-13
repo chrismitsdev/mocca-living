@@ -15,34 +15,23 @@
 
   /* Popover, Select */
   --animate-slide-top-show: slide-top-show 1000ms var(--ease-mocca);
-  --animate-slide-right-show: slide-right-show 1000ms var(--ease-mocca);
-  --animate-slide-bottom-show: slide-bottom-show 1000ms var(--ease-mocca);
-  --animate-slide-left-show: slide-left-show 1000ms var(--ease-mocca);
   --animate-slide-top-hide: slide-top-hide 750ms var(--ease-mocca);
+  --animate-slide-right-show: slide-right-show 1000ms var(--ease-mocca);
   --animate-slide-right-hide: slide-right-hide 750ms var(--ease-mocca);
+  --animate-slide-bottom-show: slide-bottom-show 1000ms var(--ease-mocca);
   --animate-slide-bottom-hide: slide-bottom-hide 750ms var(--ease-mocca);
+  --animate-slide-left-show: slide-left-show 1000ms var(--ease-mocca);
   --animate-slide-left-hide: slide-left-hide 750ms var(--ease-mocca);
 
   /* Drawer */
   --animate-drawer-top-open: drawer-top-open 1000ms var(--ease-mocca);
-  --animate-drawer-right-open: drawer-right-open 1000ms var(--ease-mocca);
-  --animate-drawer-bottom-open: drawer-bottom-open 1000ms var(--ease-mocca);
-  --animate-drawer-left-open: drawer-left-open 1000ms var(--ease-mocca);
   --animate-drawer-top-close: drawer-top-close 750ms var(--ease-mocca);
+  --animate-drawer-right-open: drawer-right-open 1000ms var(--ease-mocca);
   --animate-drawer-right-close: drawer-right-close 750ms var(--ease-mocca);
+  --animate-drawer-bottom-open: drawer-bottom-open 1000ms var(--ease-mocca);
   --animate-drawer-bottom-close: drawer-bottom-close 750ms var(--ease-mocca);
+  --animate-drawer-left-open: drawer-left-open 1000ms var(--ease-mocca);
   --animate-drawer-left-close: drawer-left-close 750ms var(--ease-mocca);
-
-  @keyframes page-appear {
-    from {
-      opacity: 0;
-      transform: translateY(-24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 
   /* Overlay */
   @keyframes overlay-open {

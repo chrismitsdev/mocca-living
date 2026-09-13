@@ -4,6 +4,7 @@ import {
   IconChevronRight
 } from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
+import {useEffect, useState} from 'react'
 import {
   cityDimitraCover,
   seaDimitraCover,
@@ -26,15 +27,33 @@ import {
 import {IconButton} from '@/src/components/ui/icon-button'
 import {Typography} from '@/src/components/ui/typography'
 import {Link} from '@/src/i18n/navigation'
-import {NavigationListItemLink} from './navigation-list-item-link'
+import {ListItemLink} from './list-item-link'
 
 interface MobileNavigationProps {
   open: boolean
   onOpenChange: (open: boolean) => void
 }
 
+const HEADER_HEIGHT = 80
+
 function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
+  const [scrollTop, setScrollTop] = useState(0)
   const t = useTranslations('Metadata')
+
+  useEffect(() => {
+    if (!open) return
+
+    setScrollTop(document.documentElement.scrollTop)
+    function handleScroll() {
+      requestAnimationFrame(() =>
+        setScrollTop(document.documentElement.scrollTop)
+      )
+    }
+    document.addEventListener('scroll', handleScroll, {passive: true})
+    return () => {
+      document.removeEventListener('scroll', handleScroll)
+    }
+  }, [open])
 
   return (
     <div className='flex items-center gap-2 sm:hidden'>
@@ -69,35 +88,32 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
           </button>
         </DrawerTrigger>
         <DrawerContent
-          className='absolute border-t border-t-border shadow-none data-right:inset-bs-full data-right:h-[calc(100svh-var(--header-height))]'
+          className='border-t border-t-border shadow-none'
+          style={{
+            insetBlockStart: `${Math.max(0, HEADER_HEIGHT - scrollTop)}px`
+          }}
           side='right'
-          onInteractOutside={(e) => e.preventDefault()}
         >
           <DrawerTitle className='sr-only'>Navigation menu</DrawerTitle>
           <div className='px-6 py-16 h-full grid grid-rows-[1fr_auto]'>
-            <nav
-              aria-label='Mobile navigation bar'
-              className='flex'
-            >
+            <nav aria-label='Mobile navigation bar'>
               <ul
                 aria-label='Mobile navigation menu'
                 className='w-full space-y-10'
               >
-                <NavigationListItemLink
+                <ListItemLink
                   href='/'
                   label={t('home')}
                 />
-
-                <NavigationListItemLink
+                <ListItemLink
                   href='/experience'
                   label={t('experience')}
                 />
-
                 <Collapsible
                   className='grid grid-cols-[1fr_auto] gap-x-4'
                   asChild
                 >
-                  <NavigationListItemLink
+                  <ListItemLink
                     href='/accommodation'
                     label={t('accommodation.title')}
                   >
@@ -183,10 +199,9 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                         </li>
                       </ul>
                     </CollapsibleContent>
-                  </NavigationListItemLink>
+                  </ListItemLink>
                 </Collapsible>
-
-                <NavigationListItemLink
+                <ListItemLink
                   href='/contact'
                   label={t('contact')}
                 />

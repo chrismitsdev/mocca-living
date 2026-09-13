@@ -1,7 +1,7 @@
 import {IconBrandFacebook, IconBrandInstagram} from '@tabler/icons-react'
 import Image from 'next/image'
 import {useTranslations} from 'next-intl'
-import logoFull from '@/public/logos/mocca-logo-box.svg'
+import moccaLogo from '@/public/logos/mocca-logo-simple.svg'
 import {Container} from '@/src/components/shared/container'
 import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
 import {LogosCarousel} from '@/src/components/shared/logos-carousel'
@@ -26,7 +26,7 @@ function Footer() {
             href='/'
           >
             <Image
-              src={logoFull}
+              src={moccaLogo}
               height={160}
               alt='Mocca Living'
             />

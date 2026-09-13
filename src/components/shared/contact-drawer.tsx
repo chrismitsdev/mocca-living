@@ -13,7 +13,6 @@ import {
   DrawerContent,
   DrawerDescription,
   DrawerOverlay,
-  DrawerPortal,
   DrawerTitle,
   DrawerTrigger
 } from '@/src/components/ui/drawer'
@@ -36,43 +35,38 @@ function ContactDrawer() {
           <IconBubbleTextFilled />
         </IconButton>
       </DrawerTrigger>
-      <DrawerPortal>
-        <DrawerOverlay />
-        <DrawerContent
-          className='h-full max-h-3/4'
-          side='bottom'
-        >
-          <DrawerClose className='absolute top-5 right-4' />
-          <div className='p-6 space-y-4'>
-            <DrawerTitle>{t('title')}</DrawerTitle>
-            <DrawerDescription>{t('description')}</DrawerDescription>
-          </div>
-          <Separator />
-          <div className='p-6 space-y-4'>
-            <ContactMethodLink
-              aria-label='WhatsApp messaging'
-              href={`https://api.whatsapp.com/send/?phone=${PHONE.replace('+', '')}&text=${encodeURIComponent(t('message'))}&type=phone_number&app_absent=0`}
-            >
-              <IconBrandWhatsapp />
-              <Typography variant='large'>{t('whatsapp')}</Typography>
-            </ContactMethodLink>
-            <ContactMethodLink
-              aria-label='SMS message'
-              href={`sms:${PHONE}`}
-            >
-              <IconDeviceMobileMessage />
-              <Typography variant='large'>{t('sms')}</Typography>
-            </ContactMethodLink>
-            <ContactMethodLink
-              aria-label='Call us'
-              href={`tel:${PHONE}`}
-            >
-              <IconPhoneCall />
-              <Typography variant='large'>{t('call')}</Typography>
-            </ContactMethodLink>
-          </div>
-        </DrawerContent>
-      </DrawerPortal>
+      <DrawerOverlay />
+      <DrawerContent side='bottom'>
+        <DrawerClose className='absolute top-5 right-4' />
+        <div className='p-6 space-y-4'>
+          <DrawerTitle>{t('title')}</DrawerTitle>
+          <DrawerDescription>{t('description')}</DrawerDescription>
+        </div>
+        <Separator />
+        <div className='p-6 space-y-4'>
+          <ContactMethodLink
+            aria-label='WhatsApp messaging'
+            href={`https://api.whatsapp.com/send/?phone=${PHONE.replace('+', '')}&text=${encodeURIComponent(t('message'))}&type=phone_number&app_absent=0`}
+          >
+            <IconBrandWhatsapp />
+            <Typography variant='large'>{t('whatsapp')}</Typography>
+          </ContactMethodLink>
+          <ContactMethodLink
+            aria-label='SMS message'
+            href={`sms:${PHONE}`}
+          >
+            <IconDeviceMobileMessage />
+            <Typography variant='large'>{t('sms')}</Typography>
+          </ContactMethodLink>
+          <ContactMethodLink
+            aria-label='Call us'
+            href={`tel:${PHONE}`}
+          >
+            <IconPhoneCall />
+            <Typography variant='large'>{t('call')}</Typography>
+          </ContactMethodLink>
+        </div>
+      </DrawerContent>
     </Drawer>
   )
 }

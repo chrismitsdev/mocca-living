@@ -45,7 +45,23 @@ function SelectContent({
   return (
     <RadixSelect.Content
       className={cn(
-        'w-(--radix-select-trigger-width) max-h-(--radix-select-content-available-height) z-50 overflow-hidden bg-surface-1 border border-border-hover shadow-sm data-open:data-top:animate-slide-top-show data-open:data-right:animate-slide-right-show data-open:data-bottom:animate-slide-bottom-show data-open:data-left:animate-slide-left-show data-closed:data-top:animate-slide-top-hide data-closed:data-right:animate-slide-right-hide data-closed:data-bottom:animate-slide-bottom-hide data-closed:data-left:animate-slide-left-hide',
+        'inline-(--radix-select-trigger-width) max-block-(--radix-select-content-available-height) z-50 overflow-hidden bg-surface-1 border border-border-hover shadow-sm',
+        [
+          'data-top:data-open:animate-slide-top-show',
+          'data-top:data-closed:animate-slide-top-hide'
+        ],
+        [
+          'data-right:data-open:animate-slide-right-show',
+          'data-right:data-closed:animate-slide-right-hide'
+        ],
+        [
+          'data-bottom:data-open:animate-slide-bottom-show',
+          'data-bottom:data-closed:animate-slide-bottom-hide'
+        ],
+        [
+          'data-left:data-open:animate-slide-left-show',
+          'data-left:data-closed:animate-slide-left-hide'
+        ],
         className
       )}
       position={position}
