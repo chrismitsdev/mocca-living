@@ -95,11 +95,11 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
           side='right'
         >
           <DrawerTitle className='sr-only'>Navigation menu</DrawerTitle>
-          <div className='px-6 py-16 h-full grid grid-rows-[1fr_auto]'>
-            <nav aria-label='Mobile navigation bar'>
+          <div className='px-5 py-12 block-full flex flex-col'>
+            <nav className='flex-1'>
               <ul
                 aria-label='Mobile navigation menu'
-                className='w-full space-y-10'
+                className='space-y-10'
               >
                 <ListItemLink
                   href='/'

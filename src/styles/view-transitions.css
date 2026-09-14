@@ -1,11 +1,18 @@
-/* Page transitions */
+::view-transition {
+  pointer-events: none;
+}
 ::view-transition-old(.page-transition) {
-  animation: 250ms ease-in both scale-out;
+  animation-duration: 250ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: both;
+  animation-name: exit;
 }
 ::view-transition-new(.page-transition) {
-  animation: 350ms ease-out both scale-in;
+  animation-duration: 350ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+  animation-name: enter;
 }
-
 /* Exclude elements from page transitions */
 ::view-transition-group(site-header),
 ::view-transition-group(site-footer) {
@@ -20,20 +27,24 @@
   animation: none;
 }
 
-/* Prevent pointer events when transition is in progress */
-::view-transition {
-  pointer-events: none;
-}
-
-@keyframes scale-out {
+@keyframes exit {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
   to {
-    transform: scale(0.97);
+    transform: scale(0.95);
     opacity: 0;
   }
 }
-@keyframes scale-in {
+
+@keyframes enter {
   from {
-    transform: scale(1.03);
+    transform: scale(0.95);
     opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }

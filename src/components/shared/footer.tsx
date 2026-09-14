@@ -16,7 +16,7 @@ function Footer() {
 
   return (
     <footer
-      className='py-16 bg-surface-3'
+      className='py-20 bg-surface-3'
       style={{viewTransitionName: 'site-footer'}}
     >
       <Container className='space-y-12'>
