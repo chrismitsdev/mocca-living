@@ -53,9 +53,4 @@ function ScrollareaBar({
   )
 }
 
-Scrollarea.displayName = 'Scrollarea'
-ScrollareaViewport.displayName = 'ScrollareaViewport'
-ScrollareaBar.displayName = 'ScrollareaBar'
-ScrollareaCorner.displayName = 'ScrollareaCorner'
-
 export {Scrollarea, ScrollareaBar, ScrollareaCorner, ScrollareaViewport}

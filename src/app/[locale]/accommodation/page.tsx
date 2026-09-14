@@ -1,9 +1,9 @@
 import type {Metadata} from 'next'
 import {getTranslations} from 'next-intl/server'
-import {AccommodationCards} from './(components)/accommodation-cards'
-import {AccommodationHeader} from './(components)/accommodation-header'
-import {AccommodationHero} from './(components)/accommodation-hero'
-import {AccommodationIntro} from './(components)/accommodation-intro'
+import {Cards} from './(components)/cards'
+import {Heading} from './(components)/heading'
+import {Hero} from './(components)/hero'
+import {Intro} from './(components)/intro'
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('Metadata')
@@ -16,10 +16,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function AccommodationPage() {
   return (
     <>
-      <AccommodationHeader />
-      <AccommodationHero />
-      <AccommodationIntro />
-      <AccommodationCards />
+      <Heading />
+      <Hero />
+      <Intro />
+      <Cards />
     </>
   )
 }

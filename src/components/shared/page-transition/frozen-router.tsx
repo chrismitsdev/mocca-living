@@ -14,6 +14,4 @@ function FrozenRouter({children}: React.PropsWithChildren) {
   )
 }
 
-FrozenRouter.displayName = 'FrozenRouter'
-
 export {FrozenRouter}

@@ -2,10 +2,10 @@ import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
 import {getTranslations} from 'next-intl/server'
 import {isValidLocation} from '@/src/lib/utils'
-import {SlugCarousel} from './(components)/slug-carousel'
-import {SlugDetails} from './(components)/slug-details'
-import {SlugDistances} from './(components)/slug-distances'
-import {SlugHeader} from './(components)/slug-header'
+import {Details} from './(components)/details'
+import {Distances} from './(components)/distances'
+import {Heading} from './(components)/heading'
+import {HeroCarousel} from './(components)/hero-carousel'
 
 type Params = {
   params: Promise<{
@@ -43,10 +43,10 @@ export default async function AccomodationSlugPage({
 
   return (
     <>
-      <SlugHeader slug={slug} />
-      <SlugCarousel slug={slug} />
-      <SlugDetails slug={slug} />
-      <SlugDistances location={location} />
+      <Heading slug={slug} />
+      <HeroCarousel slug={slug} />
+      <Details slug={slug} />
+      <Distances location={location} />
     </>
   )
 }

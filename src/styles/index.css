@@ -2,6 +2,7 @@
 @import "./colors.css";
 @import "./data-attributes.css";
 @import "./animations.css";
+@import "./utilities.css";
 
 :root {
   --header-height: 80px;
@@ -10,10 +11,6 @@
 /* General styling */
 *::selection {
   @apply bg-primary text-primary-foreground;
-}
-
-@utility container {
-  @apply px-3 mx-auto;
 }
 
 /* Leaflet styling */

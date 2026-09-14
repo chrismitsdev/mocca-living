@@ -127,6 +127,4 @@ function PageTransition({children}: React.PropsWithChildren) {
   )
 }
 
-PageTransition.displayName = 'PageTransition'
-
 export {PageTransition}

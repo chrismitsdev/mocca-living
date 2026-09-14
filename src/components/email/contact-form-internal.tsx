@@ -131,6 +131,4 @@ function ContactFormInternal({
   )
 }
 
-ContactFormInternal.displayName = 'ContactFormInternal'
-
 export {ContactFormInternal}

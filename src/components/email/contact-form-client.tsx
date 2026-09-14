@@ -166,6 +166,4 @@ async function ContactFormClient({locale, formData}: ContactFormClientProps) {
   )
 }
 
-ContactFormClient.displayName = 'ContactFormClient'
-
 export {ContactFormClient}

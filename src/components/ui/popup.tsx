@@ -30,11 +30,4 @@ function PopupContent({
   )
 }
 
-Popup.displayName = 'Popup'
-PopupTrigger.displayName = 'PopupTrigger'
-PopupAnchor.displayName = 'PopupAnchor'
-PopupPortal.displayName = 'PopupPortal'
-PopupContent.displayName = 'PopupContent'
-PopupClose.displayName = 'PopupClose'
-
 export {Popup, PopupAnchor, PopupClose, PopupContent, PopupPortal, PopupTrigger}

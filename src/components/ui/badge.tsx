@@ -14,6 +14,4 @@ function Badge({className, ...props}: BadgeProps) {
   )
 }
 
-Badge.displayName = 'Badge'
-
 export {Badge}

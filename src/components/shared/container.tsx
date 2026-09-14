@@ -16,6 +16,4 @@ function Container({className, asChild = false, ...props}: ContainerProps) {
   )
 }
 
-Container.displayName = 'Container'
-
 export {Container}

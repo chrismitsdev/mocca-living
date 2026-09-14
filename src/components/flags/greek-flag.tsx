@@ -45,6 +45,4 @@ function GreekFlag({size = 20, ...props}: CustomIconProps) {
   )
 }
 
-GreekFlag.displayName = 'GreekFlag'
-
 export {GreekFlag}

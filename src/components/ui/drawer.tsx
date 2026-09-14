@@ -100,15 +100,6 @@ function DrawerClose({
   )
 }
 
-Drawer.displayName = 'Drawer'
-DrawerTrigger.displayName = 'DrawerTrigger'
-DrawerPortal.displayName = 'DrawerPortal'
-DrawerOverlay.displayName = 'DrawerOverlay'
-DrawerContent.displayName = 'DrawerContent'
-DrawerTitle.displayName = 'DrawerTitle'
-DrawerDescription.displayName = 'DrawerDescription'
-DrawerClose.displayName = 'DrawerClose'
-
 export {
   Drawer,
   DrawerClose,

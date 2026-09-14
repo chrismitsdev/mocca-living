@@ -36,6 +36,4 @@ function DialogAudioPlayer() {
   )
 }
 
-DialogAudioPlayer.displayName = 'DialogAudioPlayer'
-
 export {DialogAudioPlayer}

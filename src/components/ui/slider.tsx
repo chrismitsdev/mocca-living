@@ -22,6 +22,4 @@ function Slider({
   )
 }
 
-Slider.displayName = 'Slide'
-
 export {Slider}

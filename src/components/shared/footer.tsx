@@ -189,7 +189,4 @@ function FooterLink({
   )
 }
 
-Footer.displayName = 'Footer'
-FooterColumn.displayName = 'FooterColumn'
-
 export {Footer}

@@ -1,7 +1,7 @@
 import type {Metadata} from 'next'
 import {getTranslations} from 'next-intl/server'
-import {CookiesContent} from './(components)/cookies-content'
-import {CookiesHeader} from './(components)/cookies-header'
+import {Content} from './(components)/content'
+import {Heading} from './(components)/heading'
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('Metadata')
@@ -14,8 +14,8 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function CookiesPage() {
   return (
     <>
-      <CookiesHeader />
-      <CookiesContent />
+      <Heading />
+      <Content />
     </>
   )
 }

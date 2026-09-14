@@ -102,16 +102,6 @@ function DialogClose({
   )
 }
 
-Dialog.displayName = 'Dialog'
-DialogTrigger.displayName = 'DialogTrigger'
-DialogPortal.displayName = 'DialogPortal'
-DialogOverlay.displayName = 'DialogOverlay'
-DialogContent.displayName = 'DialogContent'
-DialogHeader.displayName = 'DialogHeader'
-DialogTitle.displayName = 'DialogTitle'
-DialogBody.displayName = 'DialogBody'
-DialogClose.displayName = 'DialogClose'
-
 export {
   Dialog,
   DialogBody,

@@ -135,6 +135,4 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
   )
 }
 
-DesktopNavigation.displayName = 'DesktopNavigation'
-
 export {DesktopNavigation}
