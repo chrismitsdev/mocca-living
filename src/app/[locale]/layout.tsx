@@ -10,7 +10,6 @@ import {CookieBanner} from '@/src/components/shared/cookie-banner'
 import {DialogAudioPlayer} from '@/src/components/shared/dialog-audio-player'
 import {Footer} from '@/src/components/shared/footer'
 import {Header} from '@/src/components/shared/header'
-import {MinimumStayBanner} from '@/src/components/shared/minumum-stay-banner'
 import {PageTransition} from '@/src/components/shared/page-transition'
 import {routing} from '@/src/i18n/routing'
 
