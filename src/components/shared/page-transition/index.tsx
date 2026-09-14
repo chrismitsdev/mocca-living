@@ -1,9 +1,11 @@
 'use client'
 
 import {AnimatePresence, motion, type Variants} from 'motion/react'
-import moccaLogoBox from '@/public/logos/mocca-logo-box.svg'
+import moccaLogo from '@/public/logos/mocca-logo.svg'
 import {FrozenRouter} from '@/src/components/shared/page-transition/frozen-router'
 import {usePathname} from '@/src/i18n/navigation'
+
+const COLUMN_COUNT = 5
 
 function PageTransition({children}: React.PropsWithChildren) {
   const pathname = usePathname()
@@ -85,35 +87,22 @@ function PageTransition({children}: React.PropsWithChildren) {
           id='columns-transition-container'
           className='fixed inset-0 pointer-events-none z-50 flex'
         >
-          <motion.div
-            id='columns-transition-column'
-            className='relative h-full w-full bg-surface-3'
-            {...anim(column, 5)}
-          />
-          <motion.div
-            id='columns-transition-column'
-            className='relative h-full w-full bg-surface-3'
-            {...anim(column, 4)}
-          />
-          <motion.div
-            id='columns-transition-column'
-            className='relative h-full w-full bg-surface-3'
-            {...anim(column, 3)}
-          />
-          <motion.div
-            id='columns-transition-column'
-            className='relative h-full w-full bg-surface-3'
-            {...anim(column, 2)}
-          />
-          <motion.div
-            id='columns-transition-column'
-            className='relative h-full w-full bg-surface-3'
-            {...anim(column, 1)}
-          />
+          {Array.from({length: COLUMN_COUNT}).map((_, i) => {
+            const count = COLUMN_COUNT - i
+            const columnKey = `column-${count}`
 
+            return (
+              <motion.div
+                key={columnKey}
+                id='columns-transition-column'
+                className='relative h-full w-full bg-surface-3'
+                {...anim(column, count)}
+              />
+            )
+          })}
           <picture>
             <motion.img
-              src={moccaLogoBox.src}
+              src={moccaLogo.src}
               alt='Brand Logo'
               className='absolute top-1/2 left-1/2 -translate-1/2 w-24 h-24'
               {...anim(logo)}

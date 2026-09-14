@@ -14,7 +14,7 @@ function Reasons() {
   const t = useTranslations('Pages.home.home-reasons')
 
   return (
-    <Section className='bg-surface-2 space-y-4'>
+    <Section className='space-y-4'>
       <div className='px-3 flex gap-x-3 overflow-x-auto snap-x snap-mandatory sm:hidden'>
         <CustomImage
           className='aspect-3/4 inline-[calc(100vw-24px)] snap-center'

@@ -12,7 +12,7 @@ import {Popup, PopupContent, PopupTrigger} from '@/src/components/ui/popup'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 import {Link} from '@/src/i18n/navigation'
-import {NavigationListItemLink} from './navigation-list-item-link'
+import {NavigationLink} from './navigation-link'
 
 type DesktopNavigationProps = {
   open: boolean
@@ -28,12 +28,11 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
         aria-label='Desktop navigation menu'
         className='flex items-center gap-x-6'
       >
-        <NavigationListItemLink
+        <NavigationLink
           href='/'
           label={t('home')}
         />
-
-        <NavigationListItemLink
+        <NavigationLink
           className='flex'
           href='/accommodation'
           label={t('accommodation.title')}
@@ -107,13 +106,11 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
               </ul>
             </PopupContent>
           </Popup>
-        </NavigationListItemLink>
-
-        <NavigationListItemLink
+        </NavigationLink>
+        <NavigationLink
           href='/contact'
           label={t('contact')}
         />
-
         <li className='flex gap-x-8'>
           <Separator orientation='vertical' />
           <Button

@@ -9,7 +9,7 @@ import {
   IconPlaylistFilled
 } from '@tabler/icons-react'
 import Image from 'next/image'
-import moccaLogo from '@/public/logos/mocca-logo-simple.svg'
+import moccaLogo from '@/public/logos/mocca-logo.svg'
 import {playlist} from '@/public/music/playlist'
 import {
   Collapsible,

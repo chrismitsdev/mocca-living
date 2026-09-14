@@ -26,7 +26,7 @@ import {
 import {IconButton} from '@/src/components/ui/icon-button'
 import {Typography} from '@/src/components/ui/typography'
 import {Link} from '@/src/i18n/navigation'
-import {NavigationListItemLink} from './navigation-list-item-link'
+import {NavigationLink} from './navigation-link'
 
 interface MobileNavigationProps {
   open: boolean
@@ -83,16 +83,15 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                 aria-label='Mobile navigation menu'
                 className='w-full space-y-10'
               >
-                <NavigationListItemLink
+                <NavigationLink
                   href='/'
                   label={t('home')}
                 />
-
                 <Collapsible
                   className='grid grid-cols-[1fr_auto] gap-x-4'
                   asChild
                 >
-                  <NavigationListItemLink
+                  <NavigationLink
                     href='/accommodation'
                     label={t('accommodation.title')}
                   >
@@ -178,10 +177,9 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                         </li>
                       </ul>
                     </CollapsibleContent>
-                  </NavigationListItemLink>
+                  </NavigationLink>
                 </Collapsible>
-
-                <NavigationListItemLink
+                <NavigationLink
                   href='/contact'
                   label={t('contact')}
                 />

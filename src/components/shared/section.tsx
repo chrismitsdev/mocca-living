@@ -6,7 +6,7 @@ function Section({
 }: React.ComponentPropsWithRef<'section'>) {
   return (
     <section
-      className={cn('py-32', className)}
+      className={cn('py-32 bg-surface-1', className)}
       {...props}
     />
   )

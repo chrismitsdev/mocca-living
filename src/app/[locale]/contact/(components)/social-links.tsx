@@ -13,7 +13,7 @@ function SocialLinks() {
   const t = useTranslations('Pages.contact.contact-social')
 
   return (
-    <Section className='bg-surface-2'>
+    <Section>
       <Container>
         <div className='flex flex-col gap-8 sm:flex-row'>
           <SocialLink href='https://www.facebook.com/profile.php?id=61566665200042'>

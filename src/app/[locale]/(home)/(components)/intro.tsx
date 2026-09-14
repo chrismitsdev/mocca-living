@@ -7,11 +7,8 @@ function Intro() {
   const t = useTranslations('Pages.home.home-intro')
 
   return (
-    <Container
-      className='space-y-6'
-      asChild
-    >
-      <Section>
+    <Section>
+      <Container className='space-y-6'>
         <Typography
           variant='h2'
           asChild
@@ -24,8 +21,8 @@ function Intro() {
             strong: (text) => <span className='font-bold'>{text}</span>
           })}
         </Typography>
-      </Section>
-    </Container>
+      </Container>
+    </Section>
   )
 }
 

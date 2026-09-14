@@ -7,7 +7,7 @@ import type {LatLngTuple} from 'leaflet'
 import Image from 'next/image'
 import {useTranslations} from 'next-intl'
 import {MapContainer, Popup, TileLayer} from 'react-leaflet'
-import moccaLogoBox from '@/public/logos/mocca-logo-box.svg'
+import moccaLogo from '@/public/logos/mocca-logo.svg'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
@@ -38,7 +38,7 @@ function ContactMap() {
         >
           <div className='flex items-start gap-4'>
             <Image
-              src={moccaLogoBox}
+              src={moccaLogo}
               alt='Mocca Living logo'
               width={48}
             />

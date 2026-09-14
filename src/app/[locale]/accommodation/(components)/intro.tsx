@@ -7,11 +7,8 @@ function Intro() {
   const t = useTranslations('Pages.accommodation.index.intro')
 
   return (
-    <Container
-      className='space-y-6'
-      asChild
-    >
-      <Section>
+    <Section>
+      <Container className='space-y-6'>
         <Typography
           variant='h3'
           asChild
@@ -19,8 +16,8 @@ function Intro() {
           <h2>{t('title')}</h2>
         </Typography>
         <Typography>{t('message')}</Typography>
-      </Section>
-    </Container>
+      </Container>
+    </Section>
   )
 }
 

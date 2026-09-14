@@ -1,18 +1,18 @@
 import {Link, usePathname} from '@/src/i18n/navigation'
 import {cn} from '@/src/lib/utils'
 
-type NavigationListItemLinkProps = React.ComponentPropsWithRef<'li'> & {
+type NavigationLinkProps = React.ComponentPropsWithRef<'li'> & {
   className?: string
   label: string
   href: string
 }
 
-function NavigationListItemLink({
+function NavigationLink({
   label,
   href,
   children,
   ...props
-}: NavigationListItemLinkProps) {
+}: NavigationLinkProps) {
   const pathname = usePathname()
 
   return (
@@ -33,4 +33,4 @@ function NavigationListItemLink({
   )
 }
 
-export {NavigationListItemLink}
+export {NavigationLink}

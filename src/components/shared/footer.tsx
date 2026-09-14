@@ -1,7 +1,7 @@
 import {IconBrandFacebook, IconBrandInstagram} from '@tabler/icons-react'
 import Image from 'next/image'
 import {useTranslations} from 'next-intl'
-import logoFull from '@/public/logos/mocca-logo-box.svg'
+import moccaLogo from '@/public/logos/mocca-logo.svg'
 import {Container} from '@/src/components/shared/container'
 import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
 import {LogosCarousel} from '@/src/components/shared/logos-carousel'
@@ -23,7 +23,7 @@ function Footer() {
             href='/'
           >
             <Image
-              src={logoFull}
+              src={moccaLogo}
               height={160}
               alt='Mocca Living'
             />
@@ -163,7 +163,7 @@ function FooterColumn({
   children
 }: React.PropsWithChildren & {title?: string}) {
   return (
-    <div className='w-fit space-y-2 sm:space-y-4'>
+    <div className='w-fit space-y-2 sm:space-y-5'>
       {title && (
         <Typography
           variant='large'
@@ -172,7 +172,7 @@ function FooterColumn({
           {title}
         </Typography>
       )}
-      <div className='space-y-2'>{children}</div>
+      <div className='space-y-2 sm:space-y-3'>{children}</div>
     </div>
   )
 }
