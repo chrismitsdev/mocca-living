@@ -15,29 +15,29 @@ function Reasons() {
 
   return (
     <Section className='space-y-4'>
-      <div className='px-3 flex gap-x-3 overflow-x-auto snap-x snap-mandatory sm:hidden'>
+      <div className='px-3 flex space-x-3 overflow-x-auto sm:hidden'>
         <CustomImage
-          className='aspect-3/4 inline-[calc(100vw-24px)] snap-center'
+          className='shrink-0 aspect-3/4 inline-screen'
           src={seaDimitraCover}
           alt='Mocca Sea Dimitra cover'
         />
         <CustomImage
-          className='aspect-3/4 inline-[calc(100vw-24px)] snap-center'
+          className='shrink-0 aspect-3/4 inline-screen'
           src={homeReasonsImages[0]}
           alt='Handmade ceramic cups and a bowl on a dark round table'
         />
         <CustomImage
-          className='aspect-3/4 inline-[calc(100vw-24px)] snap-center'
+          className='shrink-0 aspect-3/4 inline-screen'
           src={cityDimitraCover}
           alt='Mocca City Georgia villa'
         />
         <CustomImage
-          className='aspect-3/4 inline-[calc(100vw-24px)] snap-center'
+          className='shrink-0 aspect-3/4 inline-screen'
           src={homeReasonsImages[1]}
           alt='Handmade ceramic cups arranged on a wooden shelf'
         />
         <CustomImage
-          className='aspect-3/4 inline-[calc(100vw-24px)] snap-center'
+          className='shrink-0 aspect-3/4 inline-screen'
           src={seaGeorgiaCover}
           alt='Mocca Sea Georgia cover'
         />

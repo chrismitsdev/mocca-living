@@ -12,7 +12,6 @@ import {cn} from '@/src/lib/utils'
 
 const Dialog = RadixDialog.Root
 const DialogTrigger = RadixDialog.Trigger
-const DialogPortal = RadixDialog.Portal
 const DialogTitle = RadixDialog.Title
 
 function DialogOverlay({
@@ -36,14 +35,17 @@ function DialogContent({
   ...props
 }: React.ComponentPropsWithRef<typeof RadixDialog.Content>) {
   return (
-    <RadixDialog.Content
-      className={cn(
-        'fixed inset-bs-1/2 inset-s-1/2 -translate-1/2 origin-center z-50 inline-[calc(100%-24px)] block-auto max-block-[calc(100%-24px)] flex flex-col bg-surface-2 shadow-sm sm:max-inline-2xl data-open:animate-dialog-open data-closed:animate-dialog-close',
-        className
-      )}
-      aria-describedby={ariaDescribedBy}
-      {...props}
-    />
+    <RadixDialog.Portal>
+      <DialogOverlay />
+      <RadixDialog.Content
+        className={cn(
+          'fixed inset-bs-1/2 inset-s-1/2 -translate-1/2 origin-center z-50 inline-[calc(100%-24px)] block-auto max-block-[calc(100%-24px)] flex flex-col bg-surface-2 shadow-sm sm:max-inline-2xl data-open:animate-dialog-open data-closed:animate-dialog-close',
+          className
+        )}
+        aria-describedby={ariaDescribedBy}
+        {...props}
+      />
+    </RadixDialog.Portal>
   )
 }
 
@@ -108,8 +110,6 @@ export {
   DialogClose,
   DialogContent,
   DialogHeader,
-  DialogOverlay,
-  DialogPortal,
   DialogTitle,
   DialogTrigger
 }

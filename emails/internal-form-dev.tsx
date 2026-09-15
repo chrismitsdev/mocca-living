@@ -133,5 +133,3 @@ export default function InternalFormDev() {
     </Html>
   )
 }
-
-InternalFormDev.displayName = 'InternalFormDev'

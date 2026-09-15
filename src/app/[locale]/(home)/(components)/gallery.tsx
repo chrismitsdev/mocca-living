@@ -19,8 +19,6 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogOverlay,
-  DialogPortal,
   DialogTitle,
   DialogTrigger
 } from '@/src/components/ui/dialog'
@@ -95,28 +93,25 @@ function Gallery() {
           <div className='grid grid-cols-2 gap-2 sm:grid-cols-8 sm:grid-rows-8'>
             {renderedTriggers}
           </div>
-          <DialogPortal>
-            <DialogOverlay />
-            <DialogContent
-              className='bg-transparent sm:max-inline-7xl'
-              onCloseAutoFocus={(e) => e.preventDefault()}
-            >
-              <DialogClose
-                className='absolute inset-bs-2 inset-e-2 z-50 sm:inset-e-4'
-                variant='outline'
-              />
-              <DialogTitle className='sr-only'>
-                Home page gallery images
-              </DialogTitle>
-              <Carousel options={{startIndex: index, loop: true}}>
-                <CarouselViewport>
-                  <SlidesContainer>{renderedSlides}</SlidesContainer>
-                </CarouselViewport>
-                <ButtonPrev />
-                <ButtonNext />
-              </Carousel>
-            </DialogContent>
-          </DialogPortal>
+          <DialogContent
+            className='bg-transparent sm:max-inline-7xl'
+            onCloseAutoFocus={(e) => e.preventDefault()}
+          >
+            <DialogClose
+              className='absolute inset-bs-2 inset-e-2 z-50 sm:inset-e-4'
+              variant='outline'
+            />
+            <DialogTitle className='sr-only'>
+              Home page gallery images
+            </DialogTitle>
+            <Carousel options={{startIndex: index, loop: true}}>
+              <CarouselViewport>
+                <SlidesContainer>{renderedSlides}</SlidesContainer>
+              </CarouselViewport>
+              <ButtonPrev />
+              <ButtonNext />
+            </Carousel>
+          </DialogContent>
         </Dialog>
       </Container>
     </Section>

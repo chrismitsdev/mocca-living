@@ -27,6 +27,7 @@ function IconButton({
     <Comp
       className={cn(
         'shrink-0 inline-flex items-center justify-center transition focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 aria-disabled:opacity-30',
+        // VARIANT STYLING
         variant === 'primary' && [
           'bg-primary',
           'text-primary-foreground',
@@ -50,6 +51,7 @@ function IconButton({
           'data-open:bg-primary',
           'data-open:text-primary-foreground'
         ],
+        // SIZE STYLING
         size === 'large' && ['size-12', '[&>svg]:size-7'],
         size === 'normal' && ['size-10', '[&>svg]:size-6'],
         size === 'small' && ['size-8', '[&>svg]:size-5'],

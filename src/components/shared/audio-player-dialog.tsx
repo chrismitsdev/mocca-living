@@ -4,14 +4,12 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogOverlay,
-  DialogPortal,
   DialogTitle,
   DialogTrigger
 } from '@/src/components/ui/dialog'
 import {IconButton} from '@/src/components/ui/icon-button'
 
-function DialogAudioPlayer() {
+function AudioPlayerDialog() {
   return (
     <Dialog>
       <DialogTrigger
@@ -22,18 +20,13 @@ function DialogAudioPlayer() {
           <IconMusic />
         </IconButton>
       </DialogTrigger>
-      <DialogPortal>
-        <DialogOverlay />
-        <DialogContent>
-          <DialogClose className='absolute inset-e-4 inset-bs-4' />
-          <DialogTitle className='sr-only'>
-            Mocca Living audio player
-          </DialogTitle>
-          <AudioPlayer />
-        </DialogContent>
-      </DialogPortal>
+      <DialogContent>
+        <DialogClose className='absolute inset-e-4 inset-bs-4' />
+        <DialogTitle className='sr-only'>Mocca Living audio player</DialogTitle>
+        <AudioPlayer />
+      </DialogContent>
     </Dialog>
   )
 }
 
-export {DialogAudioPlayer}
+export {AudioPlayerDialog}

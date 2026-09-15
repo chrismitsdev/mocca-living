@@ -6,17 +6,7 @@ import {
   IconChevronUp
 } from '@tabler/icons-react'
 import type useEmblaCarousel from 'embla-carousel-react'
-import {useState} from 'react'
-import {
-  CarouselProvider,
-  useCarousel
-} from '@/src/components/ui/carousel/context'
-import {
-  Drawer,
-  DrawerContent,
-  DrawerTitle,
-  DrawerTrigger
-} from '@/src/components/ui/drawer'
+import {Dialog} from 'radix-ui'
 import {IconButton} from '@/src/components/ui/icon-button'
 import {
   Scrollarea,
@@ -24,6 +14,7 @@ import {
   ScrollareaViewport
 } from '@/src/components/ui/scrollarea'
 import {cn} from '@/src/lib/utils'
+import {CarouselProvider, useCarousel} from './context'
 
 interface CarouselProps extends React.ComponentPropsWithRef<'section'> {
   options?: Parameters<typeof useEmblaCarousel>[0]
@@ -91,45 +82,49 @@ function Slide({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   )
 }
 
-function ThumbsContainer({
-  className,
-  children,
-  ...props
-}: React.ComponentPropsWithRef<'div'>) {
-  const [open, setOpen] = useState<boolean>(false)
+function ThumbsContainer({children}: React.PropsWithChildren) {
+  const positionStyles = 'absolute inset-x-1/2 -translate-x-1/2 inset-be-0'
 
   return (
-    <Drawer
-      open={open}
-      onOpenChange={setOpen}
-    >
-      <DrawerTrigger asChild>
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
         <IconButton
-          aria-label='Show thumbnails images container'
-          className='absolute inset-s-1/2 inset-be-1.5 -translate-x-1/2 ease-mocca data-open:-translate-y-15 data-open:duration-750 data-closed:duration-375 sm:inset-be-4 sm:data-open:-translate-y-25 group'
+          aria-label='Show thumbnails container'
+          className={cn(
+            positionStyles,
+            'ease-mocca group',
+            [
+              'data-closed:duration-750',
+              'data-closed:-translate-y-1',
+              'sm:data-closed:-translate-y-2'
+            ],
+            [
+              'data-open:duration-1000',
+              'data-open:-translate-y-17',
+              'sm:data-open:-translate-y-28'
+            ]
+          )}
           variant='outline'
           size='small'
         >
-          <IconChevronUp className='transition ease-mocca data-open:duration-750 data-closed:duration-375 group-data-open:rotate-180' />
+          <IconChevronUp className='ease-mocca group-data-open:duration-1000 group-data-closed:duration-750 group-data-open:rotate-180' />
         </IconButton>
-      </DrawerTrigger>
-      <DrawerContent
-        className='absolute bg-transparent shadow-none sm:data-bottom:w-fit sm:data-bottom:inset-s-1/2 sm:data-bottom:-translate-x-1/2'
-        side='bottom'
+      </Dialog.Trigger>
+      <Dialog.Content
+        className={cn(
+          positionStyles,
+          'inline-max max-inline-full',
+          ['data-closed:animate-drawer-bottom-close'],
+          ['data-open:animate-drawer-bottom-open']
+        )}
       >
-        <DrawerTitle className='sr-only'>
-          Carousel thumbnails drawer
-        </DrawerTitle>
-
-        <div className='m-1 bg-surface-2 border border-border'>
-          <Scrollarea>
+        <Dialog.Title className='sr-only'>
+          Click image thumbnail to view image in carousel
+        </Dialog.Title>
+        <div className='m-1 bg-surface-2 border border-border sm:m-2'>
+          <Scrollarea type='always'>
             <ScrollareaViewport>
-              <div
-                className={cn('m-2 flex gap-2 sm:m-3', className)}
-                {...props}
-              >
-                {children}
-              </div>
+              <div className='m-2 flex gap-2'>{children}</div>
             </ScrollareaViewport>
             <ScrollareaBar
               className='invisible'
@@ -137,8 +132,8 @@ function ThumbsContainer({
             />
           </Scrollarea>
         </div>
-      </DrawerContent>
-    </Drawer>
+      </Dialog.Content>
+    </Dialog.Root>
   )
 }
 
@@ -180,7 +175,7 @@ function ButtonPrev({className}: {className?: string}) {
     <IconButton
       aria-label='Go to previous slide'
       className={cn(
-        'absolute inset-bs-1/2 -translate-y-1/2 inset-s-2 sm:inset-s-4',
+        'absolute inset-bs-1/2 -translate-y-1/2 inset-s-1 sm:inset-s-2',
         className
       )}
       variant='outline'
@@ -200,7 +195,7 @@ function ButtonNext({className}: {className?: string}) {
     <IconButton
       aria-label='Go to next slide'
       className={cn(
-        'absolute inset-bs-1/2 -translate-y-1/2 inset-e-2 sm:inset-e-4',
+        'absolute inset-bs-1/2 -translate-y-1/2 inset-e-1 sm:inset-e-2',
         className
       )}
       variant='outline'

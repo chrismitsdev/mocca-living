@@ -5,9 +5,9 @@ import {Inter} from 'next/font/google'
 import {NextIntlClientProvider} from 'next-intl'
 import {getLocale} from 'next-intl/server'
 import {Toaster} from 'sonner'
+import {AudioPlayerDialog} from '@/src/components/shared/audio-player-dialog'
 import {ContactDrawer} from '@/src/components/shared/contact-drawer'
 import {CookieBanner} from '@/src/components/shared/cookie-banner'
-import {DialogAudioPlayer} from '@/src/components/shared/dialog-audio-player'
 import {Footer} from '@/src/components/shared/footer'
 import {Header} from '@/src/components/shared/header'
 import {PageTransition} from '@/src/components/shared/page-transition'
@@ -57,7 +57,7 @@ export default async function RootLayout({children}: LayoutProps<'/[locale]'>) {
           </main>
           <Footer />
           <ContactDrawer />
-          <DialogAudioPlayer />
+          <AudioPlayerDialog />
           <CookieBanner />
           <Toaster
             position='top-center'

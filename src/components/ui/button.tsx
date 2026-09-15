@@ -36,6 +36,7 @@ function Button({
     <Comp
       className={cn(
         'shrink-0 relative inline-flex justify-center items-center whitespace-nowrap font-bold transition focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 aria-disabled:opacity-30 aria-disabled:pointer-events-none',
+        // VARIANT STYLES
         variant === 'primary' && [
           'bg-primary',
           'text-primary-foreground',
@@ -59,6 +60,7 @@ function Button({
           'data-open:bg-primary',
           'data-open:text-primary-foreground'
         ],
+        // SIZE STYLES
         size === 'large' && [
           'px-6',
           'h-14',
