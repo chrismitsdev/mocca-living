@@ -79,7 +79,7 @@ function Logo() {
   return (
     <div className='p-2 bg-primary-foreground absolute top-1/2 left-1/2 -translate-1/2'>
       <Image
-        className='size-8 md:size-10'
+        className='inline-8 md:inline-10'
         src={moccaLogo}
         alt='Mocca Living logo'
       />
