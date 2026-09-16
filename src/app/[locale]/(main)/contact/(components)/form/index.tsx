@@ -1,5 +1,5 @@
 import {useTranslations} from 'next-intl'
-import {Form as ClientForm} from '@/src/app/[locale]/contact/(components)/form/form'
+import {Form as ClientForm} from '@/src/app/[locale]/(main)/contact/(components)/form/form'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {

@@ -108,6 +108,10 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                   href='/'
                   label={t('home')}
                 />
+                <ListItemLink
+                  href='/about'
+                  label={t('about')}
+                />
                 <Collapsible
                   className='grid grid-cols-[1fr_auto] gap-x-4'
                   asChild

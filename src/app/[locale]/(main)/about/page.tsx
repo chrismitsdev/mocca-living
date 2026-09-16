@@ -10,11 +10,11 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('Metadata')
 
   return {
-    title: t('home')
+    title: t('about')
   }
 }
 
-export default function HomePage() {
+export default function AboutPage() {
   return (
     <>
       <Heading />

@@ -33,6 +33,10 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
           label={t('home')}
         />
         <ListItemLink
+          href='/about'
+          label={t('about')}
+        />
+        <ListItemLink
           className='flex'
           href='/accommodation'
           label={t('accommodation.title')}

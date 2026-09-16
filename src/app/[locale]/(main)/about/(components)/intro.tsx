@@ -4,7 +4,7 @@ import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
 function Intro() {
-  const t = useTranslations('Pages.home.home-intro')
+  const t = useTranslations('Pages.about.intro')
 
   return (
     <Section>

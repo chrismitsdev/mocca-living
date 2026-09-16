@@ -11,7 +11,7 @@ import {CustomImage} from '@/src/components/ui/custom-image'
 import {Typography} from '@/src/components/ui/typography'
 
 function Reasons() {
-  const t = useTranslations('Pages.home.home-reasons')
+  const t = useTranslations('Pages.about.reasons')
 
   return (
     <Section className='space-y-4'>
