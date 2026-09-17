@@ -12,7 +12,6 @@ import {
   DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerOverlay,
   DrawerTitle,
   DrawerTrigger
 } from '@/src/components/ui/drawer'
@@ -35,7 +34,6 @@ function ContactDrawer() {
           <IconBubbleTextFilled />
         </IconButton>
       </DrawerTrigger>
-      <DrawerOverlay />
       <DrawerContent
         className='h-full max-h-3/4'
         side='bottom'

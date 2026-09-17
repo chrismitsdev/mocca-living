@@ -9,7 +9,7 @@ import {
 } from '@/src/components/ui/dialog'
 import {IconButton} from '@/src/components/ui/icon-button'
 
-function AudioPlayerDialog() {
+function AudioDialog() {
   return (
     <Dialog>
       <DialogTrigger
@@ -29,4 +29,4 @@ function AudioPlayerDialog() {
   )
 }
 
-export {AudioPlayerDialog}
+export {AudioDialog}

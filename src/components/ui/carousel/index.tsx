@@ -8,11 +8,7 @@ import {
 import type useEmblaCarousel from 'embla-carousel-react'
 import {Dialog} from 'radix-ui'
 import {IconButton} from '@/src/components/ui/icon-button'
-import {
-  Scrollarea,
-  ScrollareaBar,
-  ScrollareaViewport
-} from '@/src/components/ui/scrollarea'
+import {ScrollArea} from '@/src/components/ui/scrollarea'
 import {cn} from '@/src/lib/utils'
 import {CarouselProvider, useCarousel} from './context'
 
@@ -69,14 +65,11 @@ function SlidesContainer({
 
 function Slide({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   return (
-    // biome-ignore lint/a11y/useSemanticElements: <fieldset> not applicable
     <div
       className={cn(
         'pl-(--slides-gap) min-w-0 grow-0 shrink-0 basis-full select-none',
         className
       )}
-      role='group'
-      aria-roledescription='slide'
       {...props}
     />
   )
@@ -122,15 +115,13 @@ function ThumbsContainer({children}: React.PropsWithChildren) {
           Click image thumbnail to view image in carousel
         </Dialog.Title>
         <div className='m-1 bg-surface-2 border border-border sm:m-2'>
-          <Scrollarea type='always'>
-            <ScrollareaViewport>
-              <div className='m-2 flex gap-2'>{children}</div>
-            </ScrollareaViewport>
-            <ScrollareaBar
-              className='invisible'
-              orientation='horizontal'
-            />
-          </Scrollarea>
+          <ScrollArea
+            type='always'
+            orientation='horizontal'
+            showScrollbar={false}
+          >
+            <div className='m-2 flex gap-2'>{children}</div>
+          </ScrollArea>
         </div>
       </Dialog.Content>
     </Dialog.Root>

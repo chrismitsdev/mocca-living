@@ -8,7 +8,7 @@ import {
 } from '@/src/components/ui/dialog'
 import {Typography} from '@/src/components/ui/typography'
 
-function PrivacyPolicyDialog({children}: React.PropsWithChildren) {
+function FormDialog({children}: React.PropsWithChildren) {
   const t = useTranslations()
 
   return (
@@ -33,4 +33,4 @@ function PrivacyPolicyDialog({children}: React.PropsWithChildren) {
   )
 }
 
-export {PrivacyPolicyDialog}
+export {FormDialog}

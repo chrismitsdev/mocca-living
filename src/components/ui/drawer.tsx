@@ -33,6 +33,7 @@ function DrawerContent({
 }) {
   return (
     <Dialog.DialogPortal>
+      <DrawerOverlay />
       <Dialog.Content
         className={cn(
           'fixed z-50 bg-surface-3 shadow-sm',
@@ -125,7 +126,6 @@ export {
   DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerOverlay,
   DrawerTitle,
   DrawerTrigger
 }

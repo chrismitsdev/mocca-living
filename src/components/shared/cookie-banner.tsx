@@ -3,18 +3,14 @@
 import {IconChevronDown, IconCookie} from '@tabler/icons-react'
 import cookies from 'js-cookie'
 import {useTranslations} from 'next-intl'
-import {useEffect, useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import {Button} from '@/src/components/ui/button'
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger
 } from '@/src/components/ui/collapsible'
-import {
-  Scrollarea,
-  ScrollareaBar,
-  ScrollareaViewport
-} from '@/src/components/ui/scrollarea'
+import {ScrollArea} from '@/src/components/ui/scrollarea'
 import {Typography} from '@/src/components/ui/typography'
 import {useScrollLock} from '@/src/hooks/useScrollLock'
 
@@ -23,66 +19,73 @@ const COOKIE_VALUE = 'true'
 const EXPIRES_DAYS = 365
 
 function CookieBanner() {
-  const [show, setShow] = useState(false)
+  const [showBanner, setShowBanner] = useState(false)
+  const bannerRef = useRef<HTMLDivElement | null>(null)
   const t = useTranslations('Components.cookie_consent_banner')
-  useScrollLock({autoLock: show})
+  useScrollLock({autoLock: showBanner})
 
   function handleClick() {
-    if (!cookies.get(COOKIE_NAME)) {
-      cookies.set(COOKIE_NAME, COOKIE_VALUE, {expires: EXPIRES_DAYS})
-    }
-
-    setShow(false)
+    cookies.set(COOKIE_NAME, COOKIE_VALUE, {expires: EXPIRES_DAYS})
+    setShowBanner(false)
   }
 
   useEffect(() => {
     if (!cookies.get(COOKIE_NAME)) {
-      setShow(true)
+      setShowBanner(true)
     }
   }, [])
 
-  if (!show) {
+  useEffect(() => {
+    if (!showBanner) return
+    bannerRef.current?.focus()
+  }, [showBanner])
+
+  if (!showBanner) {
     return null
   }
 
   return (
-    <div
-      id='consent-cookie-overlay'
-      className='fixed inset-0 bg-black/75 z-50'
-    >
+    <div className='fixed inset-0 bg-black/75 z-50'>
       <div
-        id='consent-cookie-banner'
-        className='absolute bottom-2 left-2 w-[calc(100%-16px)] bg-surface-2 shadow-sm sm:bottom-1/2 sm:left-1/2 sm:translate-y-1/2 sm:-translate-x-1/2 sm:w-lg'
-        role='dialog'
-        aria-live='polite'
+        className='absolute inset-x-3 bottom-3 flex flex-col block-max max-block-[calc(100svh-24px)] bg-surface-2 shadow-sm sm:top-1/2 sm:left-1/2 sm:-translate-1/2 sm:inline-lg'
+        role='alertdialog'
+        aria-labelledby='cookie-consent-title'
+        aria-describedby='cookie-consent-message'
+        tabIndex={-1}
+        ref={bannerRef}
       >
-        <Scrollarea type='always'>
-          <ScrollareaViewport className='max-h-[calc(100svh-16px)]'>
-            <div className='p-8 space-y-4'>
-              <div className='flex items-center gap-3'>
-                <IconCookie />
-                <Typography
-                  variant='h3'
-                  asChild
-                >
-                  <h3>{t('title')}</h3>
-                </Typography>
-              </div>
+        <ScrollArea className='flex-1 min-block-0 flex flex-col'>
+          <div className='p-8 space-y-5'>
+            {/* Header */}
+            <div className='flex items-center gap-2'>
+              <IconCookie aria-hidden />
               <Typography
-                className='text-sm sm:text-base'
-                asChild
+                id='cookie-consent-title'
+                variant='h3'
               >
-                <p>{t('message')}</p>
+                {t('title')}
               </Typography>
-              <Collapsible className='leading-none'>
-                <CollapsibleTrigger className='w-full flex items-center gap-1.5'>
+            </div>
+            {/* Body */}
+            <div className='space-y-4'>
+              <Typography
+                id='cookie-consent-message'
+                className='text-sm leading-6 sm:text-base sm:leading-7'
+              >
+                {t('message')}
+              </Typography>
+              <Collapsible className='group'>
+                <CollapsibleTrigger className='flex items-center gap-1.5'>
                   <Typography
                     className='font-bold'
                     variant='small'
                   >
                     {t('collapsible.trigger')}
                   </Typography>
-                  <IconChevronDown className='size-4 transition-transform group-data-open:rotate-180' />
+                  <IconChevronDown
+                    className='size-4 group-data-open:rotate-180'
+                    aria-hidden
+                  />
                 </CollapsibleTrigger>
                 <CollapsibleContent>
                   <div className='pt-2 space-y-4'>
@@ -105,19 +108,16 @@ function CookieBanner() {
                   </div>
                 </CollapsibleContent>
               </Collapsible>
-              <div className='pt-2'>
-                <Button
-                  className='w-full'
-                  type='submit'
-                  onClick={handleClick}
-                >
-                  {t('button-label')}
-                </Button>
-              </div>
             </div>
-          </ScrollareaViewport>
-          <ScrollareaBar />
-        </Scrollarea>
+            {/* Footer */}
+            <Button
+              className='inline-full'
+              onClick={handleClick}
+            >
+              {t('button-label')}
+            </Button>
+          </div>
+        </ScrollArea>
       </div>
     </div>
   )
