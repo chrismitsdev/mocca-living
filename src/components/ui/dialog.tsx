@@ -8,7 +8,6 @@ import {cn} from '@/src/lib/utils'
 
 const Dialog = RadixDialog.Root
 const DialogTrigger = RadixDialog.Trigger
-const DialogTitle = RadixDialog.Title
 
 function DialogOverlay({
   className,
@@ -47,20 +46,28 @@ function DialogContent({
 
 function DialogHeader({
   className,
-  children,
   ...props
 }: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
       className={cn(
-        'shrink-0 p-4 flex justify-between items-center border-b border-b-surface-4 sm:p-6',
+        'shrink-0 p-4 flex justify-between items-center gap-2 bg-surface-3 sm:p-6',
         className
       )}
       {...props}
-    >
-      <DialogTitle className='text-lg font-bold'>{children}</DialogTitle>
-      <DialogClose />
-    </div>
+    />
+  )
+}
+
+function DialogTitle({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof RadixDialog.Title>) {
+  return (
+    <RadixDialog.Title
+      className={cn('grow text-lg font-bold', className)}
+      {...props}
+    />
   )
 }
 

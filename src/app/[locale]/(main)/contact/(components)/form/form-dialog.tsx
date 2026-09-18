@@ -2,8 +2,10 @@ import {useTranslations} from 'next-intl'
 import {
   Dialog,
   DialogBody,
+  DialogClose,
   DialogContent,
   DialogHeader,
+  DialogTitle,
   DialogTrigger
 } from '@/src/components/ui/dialog'
 import {Typography} from '@/src/components/ui/typography'
@@ -17,7 +19,10 @@ function FormDialog({children}: React.PropsWithChildren) {
         {children}
       </DialogTrigger>
       <DialogContent>
-        <DialogHeader>{t('Metadata.privacy')}</DialogHeader>
+        <DialogHeader>
+          <DialogTitle>{t('Metadata.privacy')}</DialogTitle>
+          <DialogClose />
+        </DialogHeader>
         <DialogBody className='space-y-4'>
           <Typography variant='large'>
             {t('Pages.privacy.terms.title')}

@@ -337,9 +337,6 @@
         }
       }
     },
-    "minimum_stay_banner": {
-      "title": "Temmuz & Ağustos ayları için minimum 3 gece konaklama geçerlidir"
-    },
     "form": {
       "fields": {
         "fullname": {

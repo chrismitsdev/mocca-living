@@ -47,7 +47,7 @@ function CookieBanner() {
   return (
     <div className='fixed inset-0 bg-black/75 z-50'>
       <div
-        className='absolute inset-x-3 bottom-3 flex flex-col block-max max-block-[calc(100svh-24px)] bg-surface-2 shadow-sm sm:top-1/2 sm:left-1/2 sm:-translate-1/2 sm:inline-lg'
+        className='absolute inset-x-3 bottom-3 flex flex-col block-max max-block-[calc(100%-24px)] bg-surface-2 shadow-sm sm:top-1/2 sm:left-1/2 sm:-translate-1/2 sm:inline-lg'
         role='alertdialog'
         aria-labelledby='cookie-consent-title'
         aria-describedby='cookie-consent-message'
@@ -56,7 +56,6 @@ function CookieBanner() {
       >
         <ScrollArea className='flex-1 min-block-0 flex flex-col'>
           <div className='p-8 space-y-5'>
-            {/* Header */}
             <div className='flex items-center gap-2'>
               <IconCookie aria-hidden />
               <Typography
@@ -66,7 +65,6 @@ function CookieBanner() {
                 {t('title')}
               </Typography>
             </div>
-            {/* Body */}
             <div className='space-y-4'>
               <Typography
                 id='cookie-consent-message'
@@ -75,7 +73,7 @@ function CookieBanner() {
                 {t('message')}
               </Typography>
               <Collapsible className='group'>
-                <CollapsibleTrigger className='flex items-center gap-1.5'>
+                <CollapsibleTrigger className='py-2 flex items-center gap-1.5'>
                   <Typography
                     className='font-bold'
                     variant='small'
@@ -109,7 +107,6 @@ function CookieBanner() {
                 </CollapsibleContent>
               </Collapsible>
             </div>
-            {/* Footer */}
             <Button
               className='inline-full'
               onClick={handleClick}
