@@ -131,10 +131,7 @@ function DrawerFooter({
 }: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      className={cn(
-        'shrink-0 border-bs border-bs-border p-4 sm:p-6',
-        className
-      )}
+      className={cn('shrink-0 bg-surface-3 p-4 sm:p-6', className)}
       {...props}
     />
   )
