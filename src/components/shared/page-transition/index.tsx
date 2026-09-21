@@ -26,7 +26,7 @@ function PageTransition({children}: React.PropsWithChildren) {
     }
   }
 
-  const opacity: AnimationVariants = {
+  const fade: AnimationVariants = {
     initial: {
       opacity: 0
     },
@@ -113,7 +113,7 @@ function PageTransition({children}: React.PropsWithChildren) {
             className='origin-top'
             {...anim(perspective)}
           >
-            <motion.div {...anim(opacity)}>
+            <motion.div {...anim(fade)}>
               <Header />
               <FrozenRouter>{children}</FrozenRouter>
             </motion.div>
