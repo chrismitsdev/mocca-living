@@ -10,8 +10,6 @@ import homeCarouselImage9 from './9.webp'
 import homeCarouselImage10 from './10.webp'
 import homeCarouselImage11 from './11.webp'
 import homeCarouselImage12 from './12.webp'
-import homeCarouselImage13 from './13.webp'
-import homeCarouselImage14 from './14.webp'
 
 export const homeCarouselImages = [
   homeCarouselImage1,
@@ -25,7 +23,5 @@ export const homeCarouselImages = [
   homeCarouselImage9,
   homeCarouselImage10,
   homeCarouselImage11,
-  homeCarouselImage12,
-  homeCarouselImage13,
-  homeCarouselImage14
+  homeCarouselImage12
 ]

@@ -11,6 +11,13 @@ import image10 from './10.webp'
 import image11 from './11.webp'
 import image12 from './12.webp'
 import image13 from './13.webp'
+import image14 from './14.webp'
+import image15 from './15.webp'
+import image16 from './16.webp'
+import image17 from './17.webp'
+import image18 from './18.webp'
+import image19 from './19.webp'
+import image20 from './20.webp'
 
 export const dimitraCityImages = [
   image1,
@@ -25,5 +32,12 @@ export const dimitraCityImages = [
   image10,
   image11,
   image12,
-  image13
+  image13,
+  image14,
+  image15,
+  image16,
+  image17,
+  image18,
+  image19,
+  image20
 ]
