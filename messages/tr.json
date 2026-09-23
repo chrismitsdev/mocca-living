@@ -170,7 +170,7 @@
             "area": "85m² Alan",
             "layout": "Bir ana giriş|Geniş oturma odası alanı|Yemek odası alanı|COCOMAT yatak ve yatak örtüsü ile king-size yataklı ve özel banyolu bir ana yatak odası|COCOMAT yatak ve yatak örtüsü ile queen-size yataklı ve özel banyolu bir yatak odası|Geniş özel dış alana doğrudan erişim",
             "amenities": {
-              "indoor": "Ücretsiz Wi-Fi|Üç adet 55\" Akıllı TV|Üç tavan vantilatörü|Mutfak|Mutfak davlumbazı|Fritöz (hava akışlı)|Buzdolabı|Çamaşır makinesi|Ütü ve ütü masası|Nespresso makinesi|Ses sistemi (Marshall Acton III)|Kasa",
+              "indoor": "Ücretsiz Wi-Fi|3 adet 55\" Akıllı TV|3 tavan vantilatörü|Mutfak|Mutfak davlumbazı|Air fryer|Buzdolabı|Çamaşır makinesi|Ütü ve ütü masası|Nespresso makinesi|Ses sistemi (Marshall Acton III)|Kasa|1 bebek park yatağı|1 mama sandalyesi",
               "outdoor": "İki pergola ve iki oturma alanına sahip özel alan|Şemsiyeli şezlonglar|Hidromasaj ve renk terapili mini havuz|Tropikal bitkiler ve çiçeklerle özel bahçe|Duş alanı"
             },
             "complementary": "Karşılama yardım prosedürü|Check-in/out yardımı",
@@ -185,7 +185,7 @@
             "area": "45m² Alan",
             "layout": "Bir ana giriş|Geniş oturma odası alanı|Yemek odası alanı|Çift kişilik yataklı iki ana yatak odası|Ortak bir banyo|Geniş özel dış alana doğrudan erişim",
             "amenities": {
-              "indoor": "Ücretsiz Wi-Fi|Bir adet 55\" Akıllı TV|Bir tavan vantilatörü|Tam donanımlı akıllı mutfak|Elektrikli fırın|Mutfak davlumbazı|Buzdolabı|Çamaşır makinesi|Ütü ve ütü masası|Nespresso makinesi|Marshall ses sistemi|Kasa",
+              "indoor": "Ücretsiz Wi-Fi|1 adet 55\" Akıllı TV|1 tavan vantilatörü|Tam donanımlı akıllı mutfak|Elektrikli fırın|Mutfak davlumbazı|Buzdolabı|Çamaşır makinesi|Ütü ve ütü masası|Nespresso makinesi|Marshall ses sistemi|Kasa|1 bebek park yatağı|1 mama sandalyesi",
               "outdoor": "Pergolalı özel alan|Şemsiyeli şezlonglar|Oturma alanı|Hidromasaj ve renk terapili mini havuz|Tropikal bitkiler ve çiçeklerle özel bahçe|Duş alanı"
             },
             "complementary": "Karşılama yardım prosedürü|Check-in/out yardımı",
@@ -200,7 +200,7 @@
             "area": "50m² Alan",
             "layout": "Balkondan şehrin ana caddesine manzara|Kanepe yataklı oturma odası|Yemek alanı ile tam donanımlı mutfak|Çift kişilik yataklı yatak odası|Duşlu banyo",
             "amenities": {
-              "indoor": "Ücretsiz Wi-Fi|55\" Akıllı TV|Tam donanımlı mutfak|Çok sayıda depolama alanı ve dolap|Tabure ile çalışma masası|Yeni enerji tasarruflu çift camlı pencereler|Dış güvenlik kapısı",
+              "indoor": "Ücretsiz Wi-Fi|65\" Akıllı TV|Tam donanımlı mutfak|Çok sayıda depolama alanı ve gardırop|Tabureli çalışma masası|Çift camlı yeni enerji verimli pencereler|Güvenlik kapısı|1 bebek park yatağı|1 mama sandalyesi",
               "outdoor": ""
             },
             "complementary": "Karşılama prosedürü|Check-in/out yardımı",
