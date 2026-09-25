@@ -2,14 +2,13 @@ import {Toaster} from 'sonner'
 import {AudioDialog} from '@/src/components/shared/audio-player-dialog'
 import {ContactDrawer} from '@/src/components/shared/contact-drawer'
 import {Footer} from '@/src/components/shared/footer'
-import {PageTransition} from '@/src/components/shared/page-transition'
+import {Header} from '@/src/components/shared/header'
 
 export default function MainLayout({children}: LayoutProps<'/[locale]'>) {
   return (
     <>
-      <main>
-        <PageTransition>{children}</PageTransition>
-      </main>
+      <Header />
+      <main>{children}</main>
       <Footer />
       <ContactDrawer />
       <AudioDialog />

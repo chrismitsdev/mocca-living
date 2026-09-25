@@ -86,7 +86,7 @@
         },
         "cards": {
           "sea-dimitra": {
-            "title": "Dimitra",
+            "title": "Mocca by the Sea - Dimitra",
             "description": "Embrace the luxury of villa Dimitra in Makri, an 85m² sanctuary for 2-4 adults and 2 children. With 2 bedrooms and 2 bathrooms, it's ideal for a relaxed, elegant stay.",
             "guests": "2 - 4 Adults",
             "children": "2 Children",
@@ -94,15 +94,15 @@
             "bathrooms": "2 Bathrooms"
           },
           "sea-georgia": {
-            "title": "Georgia",
+            "title": "Mocca by the Sea - Georgia",
             "description": "Discover villa Georgia in Makri, a charming 45m² haven for 2-4 adults and 1 child. With 2 bedrooms and a modern bathroom, perfect for a cozy escape near the sea.",
             "guests": "2 - 4 Adults",
             "children": "1 Child",
             "bedrooms": "2 Bedrooms",
             "bathrooms": "1 Bathroom"
           },
-          "city-dimitra": {
-            "title": "Dimitra",
+          "mocca-city": {
+            "title": "Mocca City",
             "description": "Discover Dimitra in Alexandroupolis, a fully renovated 50m² apartment for 2 adults and 2 children. With 1 bedroom, a sofa bed, and views over Leoforos Dimokratias.",
             "guests": "2 Adults",
             "children": "2 Children",
@@ -229,18 +229,56 @@
       }
     },
     "contact": {
-      "contact-form": {
+      "form": {
         "title": "Contact us",
-        "description": "Fill out the form below to make a booking, and we will contact you shortly."
+        "description": "Fill out the form below to make a booking, and we will contact you shortly.",
+        "fields": {
+          "fullname": {
+            "label": "Full name",
+            "placeholder": "Enter your full name"
+          },
+          "email": {
+            "label": "Email",
+            "placeholder": "Fill in your email"
+          },
+          "phone": {
+            "label": "Phone",
+            "placeholder": "Fill in your phone number"
+          },
+          "message": {
+            "label": "Message",
+            "placeholder": "Leave your message here..."
+          },
+          "consent": {
+            "label": "I agree that my personal data will be used only to fulfill my request according to <link>Privacy Policy statement</link>"
+          }
+        },
+        "button": {
+          "label": "Submit"
+        },
+        "toast": {
+          "success": {
+            "title": "Successful submission",
+            "description": "Form submission was successful. We will contact you shortly."
+          },
+          "error": {
+            "validation": {
+              "title": "Failed submission",
+              "description": "Please check the highlighted fields and correct any errors before resubmitting."
+            },
+            "api": {
+              "title": "Failed submission",
+              "description": "An error occurred while contacting the email service. Please try again later."
+            }
+          }
+        }
       },
-      "contact-social": {
-        "location": "Location",
+      "social-links": {
         "instagram": "Instagram",
         "facebook": "Facebook",
         "phone": "Call us"
       },
-      "contact-map": {
-        "title": "Mocca Living",
+      "map": {
         "directions": "How to get here"
       }
     },
@@ -271,7 +309,6 @@
       }
     },
     "rules": {
-      "title": "Accommodation Policy & stay rules",
       "item-1": {
         "title": "Smoking prohibited indoors",
         "description": "To ensure a fresh and comfortable environment for all guests, smoking is strictly prohibited inside the property. Guests who wish to smoke may do so in outdoor areas."
@@ -301,7 +338,6 @@
       "description": "Choose your preferred contact method.",
       "message": "Hello, I am interested in booking a stay at Mocca Living. Could you please share more details?",
       "whatsapp": "WhatsApp",
-      "viber": "Viber",
       "sms": "SMS message",
       "call": "Direct call"
     },
@@ -333,48 +369,6 @@
           "locale": {
             "title": "NEXT_LOCALE",
             "description": "This cookie is used for internalization purposes, ensuring the website displays the correct language based on user preferences."
-          }
-        }
-      }
-    },
-    "form": {
-      "fields": {
-        "fullname": {
-          "label": "Full name",
-          "placeholder": "Enter your full name"
-        },
-        "email": {
-          "label": "Email",
-          "placeholder": "Fill in your email"
-        },
-        "phone": {
-          "label": "Phone",
-          "placeholder": "Fill in your phone number"
-        },
-        "message": {
-          "label": "Message",
-          "placeholder": "Leave your message here..."
-        },
-        "consent": {
-          "label": "I agree that my personal data will be used only to fulfill my request according to <link>Privacy Policy statement</link>"
-        }
-      },
-      "button": {
-        "label": "Submit"
-      },
-      "toast": {
-        "success": {
-          "title": "Successful submission",
-          "description": "Form submission was successful. We will contact you shortly."
-        },
-        "error": {
-          "validation": {
-            "title": "Failed submission",
-            "description": "Please check the highlighted fields and correct any errors before resubmitting."
-          },
-          "api": {
-            "title": "Failed submission",
-            "description": "An error occurred while contacting the email service. Please try again later."
           }
         }
       }

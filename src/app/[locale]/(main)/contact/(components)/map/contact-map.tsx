@@ -34,7 +34,7 @@ function ContactMap() {
       >
         <Popup
           offset={[0, -8]}
-          className='w-48'
+          className='w-56'
         >
           <div className='flex items-start gap-4'>
             <Image
@@ -60,7 +60,7 @@ function ContactMap() {
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  {t('Pages.contact.contact-map.directions')}
+                  {t('Pages.contact.map.directions')}
                 </a>
               </Typography>
             </div>

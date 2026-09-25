@@ -12,7 +12,7 @@ import {
 import {Typography} from '@/src/components/ui/typography'
 
 function Form() {
-  const t = useTranslations('Pages.contact.contact-form')
+  const t = useTranslations('Pages.contact.form')
 
   return (
     <Section>

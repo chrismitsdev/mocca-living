@@ -5,6 +5,7 @@ import {Inter} from 'next/font/google'
 import {NextIntlClientProvider} from 'next-intl'
 import {getLocale} from 'next-intl/server'
 import {CookieBanner} from '@/src/components/shared/cookie-banner'
+import {PageTransition} from '@/src/components/shared/page-transition'
 import {routing} from '@/src/i18n/routing'
 
 const inter = Inter({
@@ -45,7 +46,7 @@ export default async function RootLayout({children}: LayoutProps<'/[locale]'>) {
     >
       <body className='bg-surface-3 text-foreground'>
         <NextIntlClientProvider>
-          {children}
+          <PageTransition>{children}</PageTransition>
           <CookieBanner />
         </NextIntlClientProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}

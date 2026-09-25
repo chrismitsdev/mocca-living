@@ -10,7 +10,7 @@ import {Typography} from '@/src/components/ui/typography'
 import {PHONE} from '@/src/lib/utils'
 
 function SocialLinks() {
-  const t = useTranslations('Pages.contact.contact-social')
+  const t = useTranslations('Pages.contact.social-links')
 
   return (
     <Section>

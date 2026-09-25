@@ -31,7 +31,7 @@ function Form() {
     contactFormAction.bind(null, useLocale()),
     initialState
   )
-  const t = useTranslations('Components.form')
+  const t = useTranslations('Pages.contact.form')
 
   useEffect(() => {
     if (state.ok === null) return

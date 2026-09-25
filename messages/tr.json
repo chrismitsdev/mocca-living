@@ -86,7 +86,7 @@
         },
         "cards": {
           "sea-dimitra": {
-            "title": "Dimitra",
+            "title": "Mocca by the Sea - Dimitra",
             "description": "Makri'deki Villa Dimitra'nın lüksünü kucaklayın, 2-4 yetişkin ve 2 çocuk için 85m²'lik bir cennet. 2 yatak odası ve 2 banyosuyla rahat ve zarif bir konaklama için idealdir.",
             "guests": "2 - 4 Yetişkin",
             "children": "2 Çocuk",
@@ -94,15 +94,15 @@
             "bathrooms": "2 Banyo"
           },
           "sea-georgia": {
-            "title": "Georgia",
+            "title": "Mocca by the Sea - Georgia",
             "description": "Makri'deki Villa Georgia'yı keşfedin, 2-4 yetişkin ve 1 çocuk için şirin bir 45m² sığınak. 2 yatak odası ve modern bir banyoyla denize yakın mükemmel bir kaçış noktası.",
             "guests": "2 - 4 Yetişkin",
             "children": "1 Çocuk",
             "bedrooms": "2 Yatak Odası",
             "bathrooms": "1 Banyo"
           },
-          "city-dimitra": {
-            "title": "Dimitra",
+          "mocca-city": {
+            "title": "Mocca City",
             "description": "Aleksandrupolis'teki Dimitra'yı keşfedin, 2 yetişkin ve 2 çocuk için tam yenilenmiş 50m²'lik bir daire. 1 yatak odası, kanepe yatağı ve Leoforos Dimokratias manzarasıyla.",
             "guests": "2 Yetişkin",
             "children": "2 Çocuk",
@@ -229,18 +229,56 @@
       }
     },
     "contact": {
-      "contact-form": {
+      "form": {
         "title": "Bize ulaşın",
-        "description": "Rezervasyon yapmak için aşağıdaki formu doldurun, en kısa sürede sizinle iletişime geçeceğiz."
+        "description": "Rezervasyon yapmak için aşağıdaki formu doldurun, en kısa sürede sizinle iletişime geçeceğiz.",
+        "fields": {
+          "fullname": {
+            "label": "Ad Soyad",
+            "placeholder": "Adınızı ve soyadınızı girin"
+          },
+          "email": {
+            "label": "E-posta",
+            "placeholder": "E-posta adresinizi girin"
+          },
+          "phone": {
+            "label": "Telefon",
+            "placeholder": "Telefon numaranızı girin"
+          },
+          "message": {
+            "label": "Mesaj",
+            "placeholder": "Mesajınızı buraya bırakın..."
+          },
+          "consent": {
+            "label": "Kişisel verilerimin yalnızca talebimi yerine getirmek amacıyla <link>Gizlilik Politikası beyanı</link> uyarınca kullanılmasını kabul ediyorum"
+          }
+        },
+        "button": {
+          "label": "Gönder"
+        },
+        "toast": {
+          "success": {
+            "title": "Başarıyla gönderildi",
+            "description": "Form başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğiz."
+          },
+          "error": {
+            "validation": {
+              "title": "Gönderme başarısız",
+              "description": "Lütfen işaretlenmiş alanları kontrol edin ve yeniden göndermeden önce hataları düzeltin."
+            },
+            "api": {
+              "title": "Gönderme başarısız",
+              "description": "E-posta hizmetiyle iletişim kurulurken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+            }
+          }
+        }
       },
-      "contact-social": {
-        "location": "Konum",
+      "social-links": {
         "instagram": "Instagram",
         "facebook": "Facebook",
         "phone": "Bizi arayın"
       },
-      "contact-map": {
-        "title": "Mocca Living",
+      "map": {
         "directions": "Nasıl gelinir"
       }
     },
@@ -271,7 +309,6 @@
       }
     },
     "rules": {
-      "title": "Konaklama Politikası ve Konaklama Kuralları",
       "item-1": {
         "title": "İç mekânda sigara içmek yasaktır",
         "description": "Tüm misafirlerimiz için taze ve konforlu bir ortam sağlamak amacıyla, mülk içinde sigara içmek kesinlikle yasaktır. Sigara içmek isteyen misafirler bunu açık alanlarda yapabilir."
@@ -301,7 +338,6 @@
       "description": "Tercih ettiğiniz iletişim yöntemini seçin.",
       "message": "Merhaba, Mocca Living'de konaklama rezervasyonu yapmak istiyorum. Daha fazla bilgi paylaşabilir misiniz?",
       "whatsapp": "WhatsApp",
-      "viber": "Viber",
       "sms": "SMS mesajı",
       "call": "Doğrudan arama"
     },
@@ -333,48 +369,6 @@
           "locale": {
             "title": "NEXT_LOCALE",
             "description": "Web sitesinin kullanıcı tercihlerine göre doğru dili görüntülemesini sağlamak amacıyla yerelleştirme için kullanılan bir çerezdir."
-          }
-        }
-      }
-    },
-    "form": {
-      "fields": {
-        "fullname": {
-          "label": "Ad Soyad",
-          "placeholder": "Adınızı ve soyadınızı girin"
-        },
-        "email": {
-          "label": "E-posta",
-          "placeholder": "E-posta adresinizi girin"
-        },
-        "phone": {
-          "label": "Telefon",
-          "placeholder": "Telefon numaranızı girin"
-        },
-        "message": {
-          "label": "Mesaj",
-          "placeholder": "Mesajınızı buraya bırakın..."
-        },
-        "consent": {
-          "label": "Kişisel verilerimin yalnızca talebimi yerine getirmek amacıyla <link>Gizlilik Politikası beyanı</link> uyarınca kullanılmasını kabul ediyorum"
-        }
-      },
-      "button": {
-        "label": "Gönder"
-      },
-      "toast": {
-        "success": {
-          "title": "Başarıyla gönderildi",
-          "description": "Form başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğiz."
-        },
-        "error": {
-          "validation": {
-            "title": "Gönderme başarısız",
-            "description": "Lütfen işaretlenmiş alanları kontrol edin ve yeniden göndermeden önce hataları düzeltin."
-          },
-          "api": {
-            "title": "Gönderme başarısız",
-            "description": "E-posta hizmetiyle iletişim kurulurken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
           }
         }
       }

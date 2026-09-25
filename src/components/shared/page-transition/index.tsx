@@ -8,7 +8,6 @@ import {
 } from 'motion/react'
 import Image from 'next/image'
 import moccaLogo from '@/public/logos/mocca-logo.svg'
-import {Header} from '@/src/components/shared/header'
 import {usePathname} from '@/src/i18n/navigation'
 import {FrozenRouter} from './frozen-router'
 
@@ -114,7 +113,6 @@ function PageTransition({children}: React.PropsWithChildren) {
             {...anim(perspective)}
           >
             <motion.div {...anim(fade)}>
-              <Header />
               <FrozenRouter>{children}</FrozenRouter>
             </motion.div>
           </motion.div>
