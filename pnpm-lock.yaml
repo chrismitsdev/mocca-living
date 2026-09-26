@@ -67,7 +67,7 @@ importers:
         version: 1.9.4
       motion:
         specifier: ^13.4.1
-        version: 13.4.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        version: 13.4.2(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       next:
         specifier: ^16.3.6
         version: 16.3.6(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -157,8 +157,8 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
-  '@babel/parser@7.29.8':
-    resolution: {integrity: sha512-E8lTAYNB1KW+FH+VGJuZM1ioAx2E6oVlvQFRrf5P8ZZmsiJXYAD9vTFV7yyEURNzgh1dFqMZuO6tUwcARbqFCA==}
+  '@babel/parser@7.29.9':
+    resolution: {integrity: sha512-CjXrNHTnvqBVqHgdBysY3vk2T8tpJHb5/RMeHJBTyVa9xgugCB0CJTx/3oO8RV2QRQP391RWpB7D6hLjm8V9uA==}
     engines: {node: '>=6.0.0'}
     hasBin: true
 
@@ -576,8 +576,8 @@ packages:
   '@formatjs/icu-messageformat-parser@3.5.18':
     resolution: {integrity: sha512-wX1efcL8d7K5QapOTRsP/OLTA/kpwe4LwqWyNxDNg5iRs8i9jJbCyxB5P8jc4KOW5oiLzz2DJr+BRY5xMV9+bA==}
 
-  '@formatjs/icu-messageformat-parser@3.5.19':
-    resolution: {integrity: sha512-a5PAqgd3QPUge635SxrjPLIlTErcGwm3AMyTdmZXl0IqWXTdCx9AnuioEmvEZAV2HpeFdynLPXMvHv7dXGEWWw==}
+  '@formatjs/icu-messageformat-parser@3.5.20':
+    resolution: {integrity: sha512-DUzCb2iskGDKvLU7P+nz/rjpmN59luoTRbWHFFNYNnZTxWCKvwPI94rNll99TGZaI6XoTbDF0QGegk21GFrQZQ==}
 
   '@formatjs/icu-skeleton-parser@2.1.11':
     resolution: {integrity: sha512-j8cUmOJzVgkHuS0QiQ6ga76UIoLOFSAMWhs7aZJztH3aAdCOAE6vpC8KVvFB4cU10ON0y2/5oOVmPJ43s2lTwA==}
@@ -2244,8 +2244,8 @@ packages:
   fast-uri@3.1.8:
     resolution: {integrity: sha512-GZMtZUTNRpOVIECoXwLNZS5xUGE+mVNbTB8h/7Rwh2TFWcBQiPzTgyZi05BF9UMZKkLJv8XBRJTlU7zg8+ZfMg==}
 
-  framer-motion@13.4.1:
-    resolution: {integrity: sha512-6DsbU4hsNsokXkwSp3ezdMWMiv5yWzCcdjFgakkeUC6FVIK01Py8ToSzsXvBw8cYA5hff/oXFvZFU7ltbVyUYA==}
+  framer-motion@13.4.2:
+    resolution: {integrity: sha512-yrC5GJqlGbuZEz2DFaH+VUCrBwlA6mM5v/Sfazd83/IRpWdOdVqgZmsAZWoS30YTuA3PCbGNL2JIWyGVmeimsA==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
@@ -2417,8 +2417,8 @@ packages:
     resolution: {integrity: sha512-ja1E3yCr9i/0hmBVaM0bfwDjnGy8I/s6PP4DFp+yP+a+mrHO4Rm7DtmnqROTUkHIkqffC84YY7AeqX6oFk0WFg==}
     engines: {node: '>=18'}
 
-  lru-cache@11.5.2:
-    resolution: {integrity: sha512-4pfM1Ff0x50o0tQwb5ucw/RzNyD0/YJME6IVcStalZuMWxdt3sR3huStTtxz4PUmvZfRguvDejasvQ2kifR11g==}
+  lru-cache@11.5.3:
+    resolution: {integrity: sha512-U4N8FgzmWxc8k1VH8Kr6lQg18U7Fjvby6wXHVRX/ZZ7IwWbRMgrRbP0Wrb5q5NVinryp4SQampHKdvtecItxUg==}
     engines: {node: 20 || >=22}
 
   magic-string@0.30.21:
@@ -2463,14 +2463,14 @@ packages:
     resolution: {integrity: sha512-tEBHqDnIoM/1rXME1zgka9g6Q2lcoCkxHLuc7ODJ5BxbP5d4c2Z5cGgtXAku59200Cx7diuHTOYfSBD8n6mm8A==}
     engines: {node: '>=16 || 14 >=14.17'}
 
-  motion-dom@13.4.1:
-    resolution: {integrity: sha512-qw6ILBFHrIPQd3k9Dd1fNlCLHTNzvMXW2zpeTlxn4wZXX02m0Dnsf8ycyvcjtAZtBiBnL4SfbyDIXWg+b1x/Ig==}
+  motion-dom@13.4.2:
+    resolution: {integrity: sha512-mY293Iyj4rOQo5sDxUwPYLOKiveLQrJoK1tKfG8V1H3MMGMfan3s2i7NBW18WnD39DD79ogyiL/1fmy22GLG5w==}
 
   motion-utils@13.3.0:
     resolution: {integrity: sha512-sgSschQp7EseHInIlR7hBbMuvet3RA0bs28KPZAXJcGKGdxHGvh1ogpYDilY3bOMtl73EqPNmp75sAKHYPU5sg==}
 
-  motion@13.4.1:
-    resolution: {integrity: sha512-9YjJ918QN6/4VSigEoqJysNPh33uTruTLbrBdGDI7pM6WTWU4kTPKzmEqJ4bXzLGYyDyZ5ubWX2tv2uTuFQugg==}
+  motion@13.4.2:
+    resolution: {integrity: sha512-PlwVlwO7Ibhv2gZMX9ZqE7eGfSmbeU9Yf+mqkvJFdDSyTK7inlKRCry7IpofrcIU8JY7++83614eG7TJ7ORC2w==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
@@ -2604,8 +2604,8 @@ packages:
     resolution: {integrity: sha512-RRuzqDtt5Y9h3quz5hWhK+TPnsmVs6WwSU6LkJMeY4HstUEDuYTG8UJSdawMRzmzAtV+KEoG8N3Qg2qLy5vM/A==}
     engines: {node: ^10 || ^12 || >=14}
 
-  prettier@3.9.8:
-    resolution: {integrity: sha512-WRFq3Wn3WId7LLROfMLdH7xaFr2jR62wU8nLO6rQUOLOxNZUviyJQs1M0iIhLexSFy+L+w0ch66wtoO2jRjG0A==}
+  prettier@3.9.9:
+    resolution: {integrity: sha512-Z/CJHIkdujO/OtN7nXUii0Rf3VT5SRuhjBA82Xvu2XhBUgX3nhP67T0LHceBdQLex7OOFGTox+Q5Yg8Jk2Qivg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2913,7 +2913,7 @@ snapshots:
 
   '@babel/generator@7.29.8':
     dependencies:
-      '@babel/parser': 7.29.8
+      '@babel/parser': 7.29.9
       '@babel/types': 7.29.8
       '@jridgewell/gen-mapping': 0.3.13
       '@jridgewell/trace-mapping': 0.3.31
@@ -2929,14 +2929,14 @@ snapshots:
     dependencies:
       '@babel/types': 7.29.8
 
-  '@babel/parser@7.29.8':
+  '@babel/parser@7.29.9':
     dependencies:
       '@babel/types': 7.29.8
 
   '@babel/template@7.29.7':
     dependencies:
       '@babel/code-frame': 7.29.7
-      '@babel/parser': 7.29.8
+      '@babel/parser': 7.29.9
       '@babel/types': 7.29.8
 
   '@babel/traverse@7.29.0':
@@ -3186,7 +3186,7 @@ snapshots:
     dependencies:
       '@formatjs/icu-skeleton-parser': 2.1.11
 
-  '@formatjs/icu-messageformat-parser@3.5.19':
+  '@formatjs/icu-messageformat-parser@3.5.20':
     dependencies:
       '@formatjs/icu-skeleton-parser': 2.1.12
 
@@ -4183,7 +4183,7 @@ snapshots:
       entities: 4.5.0
       html-to-text: 9.0.5
       html5parser: 3.0.0
-      prettier: 3.9.8
+      prettier: 3.9.9
       react: 19.3.0
       react-dom: 19.3.0(react@19.3.0)
 
@@ -4684,9 +4684,9 @@ snapshots:
 
   fast-uri@3.1.8: {}
 
-  framer-motion@13.4.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
+  framer-motion@13.4.2(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
     dependencies:
-      motion-dom: 13.4.1
+      motion-dom: 13.4.2
       motion-utils: 13.3.0
       tslib: 2.8.1
     optionalDependencies:
@@ -4724,7 +4724,7 @@ snapshots:
 
   icu-minify@4.14.6:
     dependencies:
-      '@formatjs/icu-messageformat-parser': 3.5.19
+      '@formatjs/icu-messageformat-parser': 3.5.20
 
   intl-messageformat@11.2.15:
     dependencies:
@@ -4815,7 +4815,7 @@ snapshots:
       is-unicode-supported: 2.1.0
       yoctocolors: 2.2.0
 
-  lru-cache@11.5.2: {}
+  lru-cache@11.5.3: {}
 
   magic-string@0.30.21:
     dependencies:
@@ -4847,15 +4847,15 @@ snapshots:
 
   minipass@7.1.3: {}
 
-  motion-dom@13.4.1:
+  motion-dom@13.4.2:
     dependencies:
       motion-utils: 13.3.0
 
   motion-utils@13.3.0: {}
 
-  motion@13.4.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
+  motion@13.4.2(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
     dependencies:
-      framer-motion: 13.4.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      framer-motion: 13.4.2(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       tslib: 2.8.1
     optionalDependencies:
       react: 19.3.0
@@ -4961,7 +4961,7 @@ snapshots:
 
   path-scurry@2.0.2:
     dependencies:
-      lru-cache: 11.5.2
+      lru-cache: 11.5.3
       minipass: 7.1.3
 
   pathe@2.0.3: {}
@@ -4990,7 +4990,7 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  prettier@3.9.8: {}
+  prettier@3.9.9: {}
 
   prismjs@1.30.0: {}
 
