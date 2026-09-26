@@ -379,7 +379,7 @@
           "title": "Bilgi",
           "tel": "{phone} numarasını arayın",
           "email": "Bize e-posta gönderin",
-          "map": "Bizi haritada bulun"
+          "location": "Haritada {location}"
         },
         "links-column": {
           "title": "Yararlı bağlantılar",

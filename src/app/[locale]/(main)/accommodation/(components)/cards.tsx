@@ -33,7 +33,7 @@ function Cards() {
   return (
     <Section>
       <Container>
-        <div className='grid gap-10 md:grid-cols-3'>
+        <div className='space-y-8'>
           <AccommodationCard
             imageSrc={seaDimitraCover}
             imageAlt='Mocca by the sea Dimitra indoor image'
@@ -102,51 +102,52 @@ function AccommodationCard({
   const t = useTranslations('Pages.accommodation.index.cards.static')
 
   return (
-    <Card>
+    <Card className='md:flex'>
       <CustomImage
-        className='block-auto min-block-80'
+        className='block-auto min-block-80 md:min-block-auto md:inline-110'
         src={imageSrc}
         alt={imageAlt}
-        sizes='(min-width: 640px) 730px, 343px'
       />
-      <CardHeader>
-        <CardTitle>{title}</CardTitle>
-        <div className='grid grid-cols-2 gap-2'>
-          <Badge>
-            <IconUserFilled />
-            <span>{numberGuests}</span>
-          </Badge>
-          <Badge>
-            <IconMoodKidFilled />
-            <span>{numberChildren}</span>
-          </Badge>
-          <Badge>
-            <IconBedFilled />
-            <span>{numberBedrooms}</span>
-          </Badge>
-          <Badge>
-            <IconBadgeWcFilled />
-            <span>{numberBathrooms}</span>
-          </Badge>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <CardDescription>{description}</CardDescription>
-      </CardContent>
-      <CardFooter className='flex flex-wrap justify-between'>
-        <Button asChild>
-          <Link
-            href={location}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            {t(`location_button`)}
-          </Link>
-        </Button>
-        <Button asChild>
-          <Link href={href}>{t(`more_button`)}</Link>
-        </Button>
-      </CardFooter>
+      <div>
+        <CardHeader>
+          <CardTitle>{title}</CardTitle>
+          <div className='grid grid-cols-2 gap-4 md:flex'>
+            <Badge>
+              <IconUserFilled />
+              <span>{numberGuests}</span>
+            </Badge>
+            <Badge>
+              <IconMoodKidFilled />
+              <span>{numberChildren}</span>
+            </Badge>
+            <Badge>
+              <IconBedFilled />
+              <span>{numberBedrooms}</span>
+            </Badge>
+            <Badge>
+              <IconBadgeWcFilled />
+              <span>{numberBathrooms}</span>
+            </Badge>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <CardDescription>{description}</CardDescription>
+        </CardContent>
+        <CardFooter className='flex justify-between gap-4 md:justify-start'>
+          <Button asChild>
+            <Link
+              href={location}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              {t(`location_button`)}
+            </Link>
+          </Button>
+          <Button asChild>
+            <Link href={href}>{t(`more_button`)}</Link>
+          </Button>
+        </CardFooter>
+      </div>
     </Card>
   )
 }

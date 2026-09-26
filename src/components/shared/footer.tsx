@@ -9,7 +9,7 @@ import {IconButton} from '@/src/components/ui/icon-button'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 import {Link} from '@/src/i18n/navigation'
-import {cn, PHONE} from '@/src/lib/utils'
+import {cn, MOCCA_CITY_GMAP, MOCCA_SEA_GMAP, PHONE} from '@/src/lib/utils'
 
 function Footer() {
   const t = useTranslations('Components.footer')
@@ -24,7 +24,7 @@ function Footer() {
           >
             <Image
               src={moccaLogo}
-              height={160}
+              height={140}
               alt='Mocca Living'
             />
           </Link>
@@ -40,12 +40,25 @@ function Footer() {
               </Typography>
             </FooterLink>
             <FooterLink
-              href='https://maps.google.com/?q=Mocca+Living+Alexandroupoli'
+              href={MOCCA_SEA_GMAP}
               target='_blank'
               rel='noopener noreferrer'
             >
               <Typography variant='small'>
-                {t('row-1.info-column.map')}
+                {t('row-1.info-column.location', {
+                  location: 'Mocca by the Sea'
+                })}
+              </Typography>
+            </FooterLink>
+            <FooterLink
+              href={MOCCA_CITY_GMAP}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <Typography variant='small'>
+                {t('row-1.info-column.location', {
+                  location: 'Mocca City'
+                })}
               </Typography>
             </FooterLink>
           </FooterColumn>
@@ -163,7 +176,7 @@ function FooterColumn({
   children
 }: React.PropsWithChildren & {title?: string}) {
   return (
-    <div className='w-fit space-y-2 sm:space-y-5'>
+    <div className='space-y-2 sm:space-y-5'>
       {title && (
         <Typography
           variant='large'
