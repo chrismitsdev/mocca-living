@@ -2,13 +2,11 @@ import type {MetadataRoute} from 'next'
 import type {Locale} from 'next-intl'
 import {getPathname} from '@/src/i18n/navigation'
 import {routing} from '@/src/i18n/routing'
+import {IS_PRODUCTION} from '@/src/lib/utils'
 
 type Href = Parameters<typeof getPathname>[0]['href']
 
-const host =
-  process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3000'
-    : 'https://moccaliving.com'
+const host = IS_PRODUCTION ? 'https://moccaliving.com' : 'http://localhost:3000'
 
 const routes = [
   'accommodation',

@@ -4,6 +4,7 @@ import {Resend} from 'resend'
 import {ContactFormClient} from '@/src/components/email/contact-form-client'
 import {ContactFormInternal} from '@/src/components/email/contact-form-internal'
 import type {ContactFormActionState} from '@/src/lib/actions'
+import {IS_PRODUCTION} from '@/src/lib/utils'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -21,7 +22,7 @@ export async function sendContactForm(
       {
         from: 'Mocca Living <info@moccaliving.com>',
         react: ContactFormInternal(formData),
-        ...(process.env.NODE_ENV === 'production'
+        ...(IS_PRODUCTION
           ? {
               subject: 'Φόρμα επικοινωνίας - Mocca Living',
               to: 'mokalis@gmail.com',

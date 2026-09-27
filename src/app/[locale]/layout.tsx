@@ -7,6 +7,7 @@ import {getLocale} from 'next-intl/server'
 import {CookieBanner} from '@/src/components/shared/cookie-banner'
 import {PageTransition} from '@/src/components/shared/page-transition'
 import {routing} from '@/src/i18n/routing'
+import {IS_PRODUCTION} from '@/src/lib/utils'
 
 const inter = Inter({
   subsets: ['latin', 'latin-ext', 'greek', 'cyrillic'],
@@ -49,7 +50,7 @@ export default async function RootLayout({children}: LayoutProps<'/[locale]'>) {
           <PageTransition>{children}</PageTransition>
           <CookieBanner />
         </NextIntlClientProvider>
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        {IS_PRODUCTION && <Analytics />}
       </body>
     </html>
   )
