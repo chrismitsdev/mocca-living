@@ -21,7 +21,7 @@ import {
 } from 'valibot'
 import {sendContactForm} from '@/src/lib/send-contact-form'
 
-export const bannedKeywordPatterns = [
+const bannedKeywordPatterns = [
   // Traffic‑boosting offers
   /\btraffic\b/i,
   /\bvisitors\b/i,
