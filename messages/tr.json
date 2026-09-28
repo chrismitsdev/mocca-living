@@ -5,7 +5,7 @@
     "accommodation": {
       "title": "Konaklama",
       "location": {
-        "mocca-sea": {
+        "mocca-by-the-sea": {
           "title": "Mocca by the Sea"
         },
         "mocca-city": {
@@ -13,17 +13,17 @@
         }
       },
       "slug": {
-        "sea-dimitra": {
-          "title": "Dimitra",
-          "description": "Makri'de 2-4 yetişkin ve 2 çocuk için 85m²'lik bir kaçış noktası olan Villa Dimitra'nın lüksünü yaşayın."
+        "mocca-by-the-sea-dimitra": {
+          "title": "Mocca by the Sea · Dimitra",
+          "description": "Villa Dimitra'da lüksü yaşayın; Makri'de 2-4 yetişkin ve 2 çocuk için özel, 85 m²'lik bir konut."
         },
-        "sea-georgia": {
-          "title": "Georgia",
-          "description": "Makri'de 2-4 yetişkin ve 1 çocuk için şirin bir 45m² sığınak olan Villa Georgia'yı keşfedin."
+        "mocca-by-the-sea-georgia": {
+          "title": "Mocca by the Sea · Georgia",
+          "description": "Villa Georgia'yı keşfedin; Makri'de 2-4 yetişkin ve 1 çocuk için büyüleyici, 45 m²'lik bir konut."
         },
-        "city-dimitra": {
-          "title": "Dimitra",
-          "description": "Dimitra’yı keşfedin; Aleksandrupoli’de 2 yetişkin ve 2 çocuk için uygun, yenilenmiş 50 m²’lik bir daire."
+        "mocca-city": {
+          "title": "Mocca City",
+          "description": "Mocca City'yi keşfedin; Alexandroupoli'de 2 yetişkin ve 2 çocuk için yenilenmiş, 50 m²'lik bir daire."
         }
       }
     },
@@ -36,7 +36,7 @@
   },
   "Pages": {
     "home": {
-      "mocca-sea": {
+      "mocca-by-the-sea": {
         "heading": "Doğaya kaçış",
         "title": "Mocca by the Sea"
       },
@@ -85,16 +85,16 @@
           "message": "Mocca Living'de modern konforu zamansız zarafetle mükemmel biçimde harmanlayan özel konaklamalarımızla eşsiz bir lüks deneyimi yaşayın. Her mülk, ister aile tatili, ister arkadaşlarla kaçamak, ister romantik bir retreat için olsun, unutulmaz bir konaklama sunmak üzere özenle tasarlanmıştır. Kendinizi lükse bırakın ve her anı eşsiz kılmayı vadeden bir mekânda dinlenme ile rafine estetik arasındaki mükemmel dengeyi keşfedin."
         },
         "cards": {
-          "sea-dimitra": {
-            "title": "Mocca by the Sea - Dimitra",
+          "mocca-by-the-sea-dimitra": {
+            "title": "Mocca by the Sea · Dimitra",
             "description": "Makri'deki Villa Dimitra'nın lüksünü kucaklayın, 2-4 yetişkin ve 2 çocuk için 85m²'lik bir cennet. 2 yatak odası ve 2 banyosuyla rahat ve zarif bir konaklama için idealdir.",
             "guests": "2 - 4 Yetişkin",
             "children": "2 Çocuk",
             "bedrooms": "2 Yatak Odası",
             "bathrooms": "2 Banyo"
           },
-          "sea-georgia": {
-            "title": "Mocca by the Sea - Georgia",
+          "mocca-by-the-sea-georgia": {
+            "title": "Mocca by the Sea · Georgia",
             "description": "Makri'deki Villa Georgia'yı keşfedin, 2-4 yetişkin ve 1 çocuk için şirin bir 45m² sığınak. 2 yatak odası ve modern bir banyoyla denize yakın mükemmel bir kaçış noktası.",
             "guests": "2 - 4 Yetişkin",
             "children": "1 Çocuk",
@@ -103,7 +103,7 @@
           },
           "mocca-city": {
             "title": "Mocca City",
-            "description": "Aleksandrupolis'teki Dimitra'yı keşfedin, 2 yetişkin ve 2 çocuk için tam yenilenmiş 50m²'lik bir daire. 1 yatak odası, kanepe yatağı ve Leoforos Dimokratias manzarasıyla.",
+            "description": "Alexandroupoli'de bulunan Mocca City'yi keşfedin; 2 yetişkin ve 2 çocuk için uygun, tamamen yenilenmiş 50 m²'lik bir daire. 1 yatak odası, çekyat ve Dimokratias Bulvarı manzarası sunmaktadır.",
             "guests": "2 Yetişkin",
             "children": "2 Çocuk",
             "bedrooms": "1 Yatak Odası",
@@ -117,8 +117,8 @@
       },
       "slug": {
         "details": {
-          "sea-dimitra": {
-            "title": "Dimitra",
+          "mocca-by-the-sea-dimitra": {
+            "title": "Mocca by the Sea · Dimitra",
             "guests": "2 - 4 Yetişkin",
             "child": "2 Çocuk",
             "bedrooms": "2 Yatak Odası",
@@ -132,8 +132,8 @@
             "complementary": "Karşılama yardım prosedürü|Check-in/out yardımı",
             "request": "Kiralık iki SUP tahtası|Kiralık bir elektrikli bisiklet"
           },
-          "sea-georgia": {
-            "title": "Georgia",
+          "mocca-by-the-sea-georgia": {
+            "title": "Mocca by the Sea · Georgia",
             "guests": "2 - 4 Yetişkin",
             "child": "1 Çocuk",
             "bedrooms": "2 Yatak Odası",
@@ -147,8 +147,8 @@
             "complementary": "Karşılama yardım prosedürü|Check-in/out yardımı",
             "request": "Kiralık iki SUP tahtası|Kiralık bir elektrikli bisiklet"
           },
-          "city-dimitra": {
-            "title": "Dimitra",
+          "mocca-city": {
+            "title": "Mocca City",
             "guests": "2 Yetişkin",
             "child": "2 Çocuk",
             "bedrooms": "1 Yatak Odası",
@@ -173,7 +173,7 @@
         },
         "distances": {
           "title": "Önemli noktalara uzaklıklar",
-          "mocca-sea": {
+          "mocca-by-the-sea": {
             "title": "Mocca by the Sea",
             "description": "Plaja sadece birkaç adım mesafede, olanaklara kolay erişimle huzurlu bir sahil konaklaması için ideal.",
             "items": {

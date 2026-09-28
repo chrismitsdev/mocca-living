@@ -16,9 +16,11 @@ declare global {
     }>
   }
 
-  type PropertyLocation = 'mocca-sea' | 'mocca-city'
-  type PropertySlug = 'sea-dimitra' | 'sea-georgia' | 'city-dimitra'
-
+  type PropertyLocation = 'mocca-by-the-sea' | 'mocca-city'
+  type PropertySlug =
+    | 'mocca-by-the-sea-dimitra'
+    | 'mocca-by-the-sea-georgia'
+    | 'mocca-city'
   type CustomIconProps = React.SVGProps<SVGSVGElement> & {
     size?: number
   }

@@ -99,6 +99,7 @@ function PageTransition({children}: React.PropsWithChildren) {
           <Image
             src={moccaLogo}
             alt='Mocca Living logo'
+            loading='eager'
           />
         </motion.div>
       </AnimatePresence>

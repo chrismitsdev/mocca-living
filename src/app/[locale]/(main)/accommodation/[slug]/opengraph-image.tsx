@@ -1,9 +1,17 @@
 import {ImageResponse} from 'next/og'
+import type {Locale} from 'next-intl'
 import {getTranslations} from 'next-intl/server'
 import {getOpengraphData} from '@/src/lib/get-opengraph-data'
 
-export default async function Image({params}: Params) {
-  const {locale} = await params
+type ParamsWithSlug = {
+  params: Promise<{
+    locale: Locale
+    slug: PropertySlug
+  }>
+}
+
+export default async function Image({params}: ParamsWithSlug) {
+  const {locale, slug} = await params
   const t = await getTranslations({locale, namespace: 'Metadata'})
   const {src, font} = await getOpengraphData()
 
@@ -26,7 +34,7 @@ export default async function Image({params}: Params) {
         <img
           src={src}
           width={250}
-          alt='Accomodation page'
+          alt={`${slug} page`}
         />
       </picture>
       <p
@@ -56,7 +64,7 @@ export default async function Image({params}: Params) {
           <path d='M12 4v6' />
           <path d='M2 18h20' />
         </svg>
-        <span>{`${t('accommodation.title')} | Mocca Living`}</span>
+        <span>{`${t(`accommodation.slug.${slug}.title`)} | Mocca Living`}</span>
       </p>
     </div>,
     {

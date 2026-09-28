@@ -17,7 +17,7 @@ const MOCCA_CITY_COORDS = [40.8473066, 25.8808873] satisfies LatLngTuple
 const MAP_CENTER = [40.8481723, 25.8022197] satisfies LatLngTuple
 
 const coords: Record<PropertyLocation, LatLngTuple> = {
-  'mocca-sea': MOCCA_SEA_COORDS,
+  'mocca-by-the-sea': MOCCA_SEA_COORDS,
   'mocca-city': MOCCA_CITY_COORDS
 }
 

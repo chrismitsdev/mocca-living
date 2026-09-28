@@ -14,14 +14,14 @@ function Selector() {
     <div className='flex flex-col block-dvh relative overflow-hidden md:flex-row'>
       <Destination
         className='not-md:border-be md:border-e'
-        href='/accommodation/mocca-sea/sea-dimitra'
+        href='/accommodation/mocca-by-the-sea-dimitra'
         src={seaDimitraCover}
-        heading={t('mocca-sea.heading')}
-        title={t('mocca-sea.title')}
+        heading={t('mocca-by-the-sea.heading')}
+        title={t('mocca-by-the-sea.title')}
       />
       <Destination
         className='not-md:border-bs md:border-s'
-        href='/accommodation/mocca-city/city-dimitra'
+        href='/accommodation/mocca-city'
         src={cityDimitraCover}
         heading={t('mocca-city.heading')}
         title={t('mocca-city.title')}

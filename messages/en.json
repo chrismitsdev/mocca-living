@@ -5,7 +5,7 @@
     "accommodation": {
       "title": "Accommodation",
       "location": {
-        "mocca-sea": {
+        "mocca-by-the-sea": {
           "title": "Mocca by the Sea"
         },
         "mocca-city": {
@@ -13,17 +13,17 @@
         }
       },
       "slug": {
-        "sea-dimitra": {
-          "title": "Dimitra",
-          "description": "Experience the luxury of villa Dimitra, an 85m² retreat in Makri for 2-4 adults and 2 children."
+        "mocca-by-the-sea-dimitra": {
+          "title": "Mocca by the Sea · Dimitra",
+          "description": "Experience luxury at Villa Dimitra, a unique 85m² residence in Makri for 2-4 adults and 2 children."
         },
-        "sea-georgia": {
-          "title": "Georgia",
-          "description": "Discover villa Georgia, a charming 45m² retreat in Makri for 2-4 adults and 1 child."
+        "mocca-by-the-sea-georgia": {
+          "title": "Mocca by the Sea · Georgia",
+          "description": "Discover Villa Georgia, a charming 45m² residence in Makri for 2-4 adults and 1 child."
         },
-        "city-dimitra": {
-          "title": "Dimitra",
-          "description": "Discover Dimitra, a renovated 50m² apartment in Alexandroupoli for 2 adults and 2 children."
+        "mocca-city": {
+          "title": "Mocca City",
+          "description": "Discover Mocca City, a renovated 50m² apartment in Alexandroupoli for 2 adults and 2 children."
         }
       }
     },
@@ -36,7 +36,7 @@
   },
   "Pages": {
     "home": {
-      "mocca-sea": {
+      "mocca-by-the-sea": {
         "heading": "Escape to nature",
         "title": "Mocca by the Sea"
       },
@@ -85,16 +85,16 @@
           "message": "Experience ultimate luxury at Mocca Living, where our exclusive accommodations perfectly blend modern comfort with timeless elegance. Each property is carefully designed to offer an unforgettable stay, whether you're here for a family vacation, a getaway with friends, or a romantic retreat. Indulge in luxury and discover the perfect balance between relaxation and refined aesthetics in a space that promises to make every moment unique."
         },
         "cards": {
-          "sea-dimitra": {
-            "title": "Mocca by the Sea - Dimitra",
+          "mocca-by-the-sea-dimitra": {
+            "title": "Mocca by the Sea · Dimitra",
             "description": "Embrace the luxury of villa Dimitra in Makri, an 85m² sanctuary for 2-4 adults and 2 children. With 2 bedrooms and 2 bathrooms, it's ideal for a relaxed, elegant stay.",
             "guests": "2 - 4 Adults",
             "children": "2 Children",
             "bedrooms": "2 Bedrooms",
             "bathrooms": "2 Bathrooms"
           },
-          "sea-georgia": {
-            "title": "Mocca by the Sea - Georgia",
+          "mocca-by-the-sea-georgia": {
+            "title": "Mocca by the Sea · Georgia",
             "description": "Discover villa Georgia in Makri, a charming 45m² haven for 2-4 adults and 1 child. With 2 bedrooms and a modern bathroom, perfect for a cozy escape near the sea.",
             "guests": "2 - 4 Adults",
             "children": "1 Child",
@@ -103,7 +103,7 @@
           },
           "mocca-city": {
             "title": "Mocca City",
-            "description": "Discover Dimitra in Alexandroupolis, a fully renovated 50m² apartment for 2 adults and 2 children. With 1 bedroom, a sofa bed, and views over Leoforos Dimokratias.",
+            "description": "Discover Mocca City in Alexandroupoli, a fully renovated 50m² apartment for 2 adults and 2 children. With 1 bedroom, a sofa bed, and views of Dimokratias Avenue.",
             "guests": "2 Adults",
             "children": "2 Children",
             "bedrooms": "1 Bedroom",
@@ -117,8 +117,8 @@
       },
       "slug": {
         "details": {
-          "sea-dimitra": {
-            "title": "Dimitra",
+          "mocca-by-the-sea-dimitra": {
+            "title": "Mocca by the Sea · Dimitra",
             "guests": "2 - 4 Adults",
             "child": "2 Children",
             "bedrooms": "2 Bedrooms",
@@ -132,8 +132,8 @@
             "complementary": "Welcome assistance procedure|Check-in/out assistance",
             "request": "Two SUP boards for rental|One electric-bike for rental"
           },
-          "sea-georgia": {
-            "title": "Georgia",
+          "mocca-by-the-sea-georgia": {
+            "title": "Mocca by the Sea · Georgia",
             "guests": "2 - 4 Adults",
             "child": "1 Child",
             "bedrooms": "2 Bedrooms",
@@ -147,8 +147,8 @@
             "complementary": "Welcome assistance procedure|Check-in/out assistance",
             "request": "Two SUP boards for rental|One electric-bike for rental"
           },
-          "city-dimitra": {
-            "title": "Dimitra",
+          "mocca-city": {
+            "title": "Mocca City",
             "guests": "2 Adults",
             "child": "2 Children",
             "bedrooms": "1 Bedroom",
@@ -173,7 +173,7 @@
         },
         "distances": {
           "title": "Distances to key locations",
-          "mocca-sea": {
+          "mocca-by-the-sea": {
             "title": "Mocca by the Sea",
             "description": "Ideal for a relaxing seaside stay, just steps from the beach with easy access to nearby amenities.",
             "items": {

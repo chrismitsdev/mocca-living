@@ -28,7 +28,7 @@ const itemsByLocation: Record<
     icon: React.ComponentType<IconProps>
   }[]
 > = {
-  'mocca-sea': [
+  'mocca-by-the-sea': [
     {key: 'item_1', icon: IconChargingPile},
     {key: 'item_2', icon: IconBeach},
     {key: 'item_3', icon: IconToolsKitchen3},
@@ -44,8 +44,11 @@ const itemsByLocation: Record<
   ]
 }
 
-function Distances({location}: {location: PropertyLocation}) {
+function Distances({slug}: {slug: PropertySlug}) {
   const t = useTranslations('Pages.accommodation.slug.distances')
+  const location: PropertyLocation = slug.includes('mocca-by-the-sea')
+    ? 'mocca-by-the-sea'
+    : 'mocca-city'
   const items = itemsByLocation[location]
 
   const renderedItems = items.map(({key, icon}) => {

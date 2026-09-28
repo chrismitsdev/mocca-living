@@ -37,26 +37,26 @@ function Cards() {
           <AccommodationCard
             imageSrc={seaDimitraCover}
             imageAlt='Mocca by the sea Dimitra indoor image'
-            title={t('sea-dimitra.title')}
-            description={t('sea-dimitra.description')}
-            numberGuests={t('sea-dimitra.guests')}
-            numberBedrooms={t('sea-dimitra.bedrooms')}
-            numberBathrooms={t('sea-dimitra.bathrooms')}
-            numberChildren={t('sea-dimitra.children')}
+            title={t('mocca-by-the-sea-dimitra.title')}
+            description={t('mocca-by-the-sea-dimitra.description')}
+            numberGuests={t('mocca-by-the-sea-dimitra.guests')}
+            numberBedrooms={t('mocca-by-the-sea-dimitra.bedrooms')}
+            numberBathrooms={t('mocca-by-the-sea-dimitra.bathrooms')}
+            numberChildren={t('mocca-by-the-sea-dimitra.children')}
             location={MOCCA_SEA_GMAP}
-            href='/accommodation/mocca-sea/sea-dimitra'
+            href='/accommodation/mocca-by-the-sea-dimitra'
           />
           <AccommodationCard
             imageSrc={seaGeorgiaCover}
             imageAlt='Mocca by the sea Georgia indoor image'
-            title={t('sea-georgia.title')}
-            description={t('sea-georgia.description')}
-            numberGuests={t('sea-georgia.guests')}
-            numberBedrooms={t('sea-georgia.bedrooms')}
-            numberBathrooms={t('sea-georgia.bathrooms')}
-            numberChildren={t('sea-georgia.children')}
+            title={t('mocca-by-the-sea-georgia.title')}
+            description={t('mocca-by-the-sea-georgia.description')}
+            numberGuests={t('mocca-by-the-sea-georgia.guests')}
+            numberBedrooms={t('mocca-by-the-sea-georgia.bedrooms')}
+            numberBathrooms={t('mocca-by-the-sea-georgia.bathrooms')}
+            numberChildren={t('mocca-by-the-sea-georgia.children')}
             location={MOCCA_SEA_GMAP}
-            href='/accommodation/mocca-sea/sea-georgia'
+            href='/accommodation/mocca-by-the-sea-georgia'
           />
           <AccommodationCard
             imageSrc={cityDimitraCover}
@@ -68,7 +68,7 @@ function Cards() {
             numberBathrooms={t('mocca-city.bathrooms')}
             numberChildren={t('mocca-city.children')}
             location={MOCCA_CITY_GMAP}
-            href='/accommodation/mocca-city/city-dimitra'
+            href='/accommodation/mocca-city'
           />
         </div>
       </Container>

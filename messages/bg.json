@@ -5,7 +5,7 @@
     "accommodation": {
       "title": "Настаняване",
       "location": {
-        "mocca-sea": {
+        "mocca-by-the-sea": {
           "title": "Mocca by the Sea"
         },
         "mocca-city": {
@@ -13,17 +13,17 @@
         }
       },
       "slug": {
-        "sea-dimitra": {
-          "title": "Dimitra",
-          "description": "Изживейте лукса на Вила Dimitra, убежище от 85m² в Макри за 2-4 възрастни и 2 деца."
+        "mocca-by-the-sea-dimitra": {
+          "title": "Mocca by the Sea · Димитра",
+          "description": "Изживейте лукса във вила Димитра, уникална резиденция от 85 кв. м в Макри за 2-4 възрастни и 2 деца."
         },
-        "sea-georgia": {
-          "title": "Georgia",
-          "description": "Открийте Вила Georgia, очарователно убежище от 45m² в Макри за 2-4 възрастни и 1 дете."
+        "mocca-by-the-sea-georgia": {
+          "title": "Mocca by the Sea · Георгия",
+          "description": "Открийте вила Георгия, очарователна резиденция от 45 кв. м в Макри за 2-4 възрастни и 1 дете."
         },
-        "city-dimitra": {
-          "title": "Dimitra",
-          "description": "Открийте Димитра – реновиран апартамент от 50 м² в Александруполис за 2 възрастни и 2 деца."
+        "mocca-city": {
+          "title": "Mocca City",
+          "description": "Открийте Mocca City, реновиран апартамент от 50 кв. м в Александруполис за 2 възрастни и 2 деца."
         }
       }
     },
@@ -36,7 +36,7 @@
   },
   "Pages": {
     "home": {
-      "mocca-sea": {
+      "mocca-by-the-sea": {
         "heading": "Бягство сред природата",
         "title": "Mocca by the Sea"
       },
@@ -85,16 +85,16 @@
           "message": "Изживейте върховен лукс в Mocca Living, където нашите ексклузивни настанявания съчетават перфектно модерния комфорт с безвременната елегантност. Всеки имот е внимателно проектиран да предложи незабравим престой, независимо дали сте тук за семейна почивка, излет с приятели или романтично убежище. Отдайте се на лукса и открийте перфектния баланс между релаксация и изтънчена естетика в пространство, което обещава да направи всеки момент уникален."
         },
         "cards": {
-          "sea-dimitra": {
-            "title": "Mocca by the Sea - Dimitra",
+          "mocca-by-the-sea-dimitra": {
+            "title": "Mocca by the Sea · Dimitra",
             "description": "Насладете се на лукса на Вила Dimitra в Макри, светилище от 85m² за 2-4 възрастни и 2 деца. С 2 спални и 2 бани, идеална за отпуснат и елегантен престой.",
             "guests": "2 - 4 Възрастни",
             "children": "2 Деца",
             "bedrooms": "2 Спални",
             "bathrooms": "2 Бани"
           },
-          "sea-georgia": {
-            "title": "Mocca by the Sea - Georgia",
+          "mocca-by-the-sea-georgia": {
+            "title": "Mocca by the Sea · Georgia",
             "description": "Открийте Вила Georgia в Макри, очарователно убежище от 45m² за 2-4 възрастни и 1 дете. С 2 спални и модерна баня, перфектно бягство в близост до морето.",
             "guests": "2 - 4 Възрастни",
             "children": "1 Дете",
@@ -103,7 +103,7 @@
           },
           "mocca-city": {
             "title": "Mocca City",
-            "description": "Открийте Dimitra в Александруполис, напълно обновен апартамент от 50m² за 2 възрастни и 2 деца. С 1 спалня, разтегателен диван и изглед към Лeофорос Димократиас.",
+            "description": "Открийте Mocca City в Александруполис — напълно реновиран апартамент от 50 кв. м за 2 възрастни и 2 деца. Разполага с 1 спалня, разтегателен диван и гледка към булевард „Димокрития“.",
             "guests": "2 Възрастни",
             "children": "2 Деца",
             "bedrooms": "1 Спалня",
@@ -117,8 +117,8 @@
       },
       "slug": {
         "details": {
-          "sea-dimitra": {
-            "title": "Dimitra",
+          "mocca-by-the-sea-dimitra": {
+            "title": "Mocca by the Sea · Dimitra",
             "guests": "2 - 4 Възрастни",
             "child": "2 Деца",
             "bedrooms": "2 Спални",
@@ -132,8 +132,8 @@
             "complementary": "Процедура за посрещане|Съдействие при настаняване/напускане",
             "request": "Две SUP дъски под наем|Един електрически велосипед под наем"
           },
-          "sea-georgia": {
-            "title": "Georgia",
+          "mocca-by-the-sea-georgia": {
+            "title": "Mocca by the Sea · Georgia",
             "guests": "2 - 4 Възрастни",
             "child": "1 Дете",
             "bedrooms": "2 Спални",
@@ -147,8 +147,8 @@
             "complementary": "Процедура за посрещане|Съдействие при настаняване/напускане",
             "request": "Две SUP дъски под наем|Един електрически велосипед под наем"
           },
-          "city-dimitra": {
-            "title": "Dimitra",
+          "mocca-city": {
+            "title": "Mocca City",
             "guests": "2 Възрастни",
             "child": "2 Деца",
             "bedrooms": "1 Спалня",
@@ -173,7 +173,7 @@
         },
         "distances": {
           "title": "Разстояния до ключови места",
-          "mocca-sea": {
+          "mocca-by-the-sea": {
             "title": "Mocca by the Sea",
             "description": "Идеално за спокойна морска почивка, само на крачки от плажа с лесен достъп до удобства.",
             "items": {

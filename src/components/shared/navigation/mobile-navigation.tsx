@@ -109,7 +109,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                         <li>
                           <Link
                             className='p-1 flex gap-4'
-                            href='/accommodation/mocca-sea/sea-dimitra'
+                            href='/accommodation/mocca-by-the-sea-dimitra'
                           >
                             <CustomImage
                               className='shrink-0 block-auto inline-16'
@@ -119,11 +119,13 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                             />
                             <div>
                               <Typography variant='large'>
-                                {t('accommodation.slug.sea-dimitra.title')}
+                                {t(
+                                  'accommodation.slug.mocca-by-the-sea-dimitra.title'
+                                )}
                               </Typography>
                               <Typography variant='small'>
                                 {t(
-                                  'accommodation.slug.sea-dimitra.description'
+                                  'accommodation.slug.mocca-by-the-sea-dimitra.description'
                                 )}
                               </Typography>
                             </div>
@@ -132,7 +134,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                         <li>
                           <Link
                             className='p-1 flex gap-4'
-                            href='/accommodation/mocca-sea/sea-georgia'
+                            href='/accommodation/mocca-by-the-sea-georgia'
                           >
                             <CustomImage
                               className='shrink-0 block-auto inline-16'
@@ -142,11 +144,13 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                             />
                             <div>
                               <Typography variant='large'>
-                                {t('accommodation.slug.sea-georgia.title')}
+                                {t(
+                                  'accommodation.slug.mocca-by-the-sea-georgia.title'
+                                )}
                               </Typography>
                               <Typography variant='small'>
                                 {t(
-                                  'accommodation.slug.sea-georgia.description'
+                                  'accommodation.slug.mocca-by-the-sea-georgia.description'
                                 )}
                               </Typography>
                             </div>
@@ -155,7 +159,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                         <li>
                           <Link
                             className='p-1 flex gap-4'
-                            href='/accommodation/mocca-city/city-dimitra'
+                            href='/accommodation/mocca-city'
                           >
                             <CustomImage
                               className='shrink-0 block-auto inline-16'
@@ -165,12 +169,10 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                             />
                             <div>
                               <Typography variant='large'>
-                                {t('accommodation.slug.city-dimitra.title')}
+                                {t('accommodation.slug.mocca-city.title')}
                               </Typography>
                               <Typography variant='small'>
-                                {t(
-                                  'accommodation.slug.city-dimitra.description'
-                                )}
+                                {t('accommodation.slug.mocca-city.description')}
                               </Typography>
                             </div>
                           </Link>

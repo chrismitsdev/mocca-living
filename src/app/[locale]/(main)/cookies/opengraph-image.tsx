@@ -25,7 +25,7 @@ export default async function Image({params}: Params) {
       <picture>
         <img
           src={src}
-          width='250'
+          width={250}
           alt='Cookies page'
         />
       </picture>
@@ -58,7 +58,7 @@ export default async function Image({params}: Params) {
           <path d='M11 17v.01' />
           <path d='M7 14v.01' />
         </svg>
-        <span>{`${t('cookies')} • Mocca Living`}</span>
+        <span>{`${t('cookies')} | Mocca Living`}</span>
       </p>
     </div>,
     {

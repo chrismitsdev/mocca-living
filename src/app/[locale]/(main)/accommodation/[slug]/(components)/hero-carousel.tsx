@@ -15,9 +15,9 @@ import {
 import {CustomImage} from '@/src/components/ui/custom-image'
 
 const slugImages: Record<PropertySlug, StaticImageData[]> = {
-  'sea-dimitra': dimitraSeaImages,
-  'sea-georgia': georgiaSeaImages,
-  'city-dimitra': dimitraCityImages
+  'mocca-by-the-sea-dimitra': dimitraSeaImages,
+  'mocca-by-the-sea-georgia': georgiaSeaImages,
+  'mocca-city': dimitraCityImages
 }
 
 function HeroCarousel({slug}: {slug: PropertySlug}) {

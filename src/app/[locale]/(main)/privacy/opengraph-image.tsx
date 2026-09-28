@@ -25,7 +25,7 @@ export default async function Image({params}: Params) {
       <picture>
         <img
           src={src}
-          width='250'
+          width={250}
           alt='Privacy page'
         />
       </picture>
@@ -57,7 +57,7 @@ export default async function Image({params}: Params) {
           <path d='M16 13H8' />
           <path d='M16 17H8' />
         </svg>
-        <span>{`${t('privacy')} • Mocca Living`}</span>
+        <span>{`${t('privacy')} | Mocca Living`}</span>
       </p>
     </div>,
     {

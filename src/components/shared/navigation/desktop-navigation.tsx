@@ -57,7 +57,7 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
             <PopupContent collisionPadding={16}>
               <ul className='grid grid-cols-3 auto-rows-fr'>
                 <li>
-                  <Link href='/accommodation/mocca-sea/sea-dimitra'>
+                  <Link href='/accommodation/mocca-by-the-sea-dimitra'>
                     <article className='p-2 space-y-2 hover:bg-surface-3'>
                       <CustomImage
                         src={seaDimitraCover}
@@ -65,16 +65,18 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
                         sizes='200px'
                       />
                       <Typography variant='large'>
-                        {t('accommodation.slug.sea-dimitra.title')}
+                        {t('accommodation.slug.mocca-by-the-sea-dimitra.title')}
                       </Typography>
                       <Typography variant='small'>
-                        {t('accommodation.slug.sea-dimitra.description')}
+                        {t(
+                          'accommodation.slug.mocca-by-the-sea-dimitra.description'
+                        )}
                       </Typography>
                     </article>
                   </Link>
                 </li>
                 <li>
-                  <Link href='/accommodation/mocca-sea/sea-georgia'>
+                  <Link href='/accommodation/mocca-by-the-sea-georgia'>
                     <article className='p-2 space-y-2 hover:bg-surface-3'>
                       <CustomImage
                         src={seaGeorgiaCover}
@@ -82,16 +84,18 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
                         sizes='200px'
                       />
                       <Typography variant='large'>
-                        {t('accommodation.slug.sea-georgia.title')}
+                        {t('accommodation.slug.mocca-by-the-sea-georgia.title')}
                       </Typography>
                       <Typography variant='small'>
-                        {t('accommodation.slug.sea-georgia.description')}
+                        {t(
+                          'accommodation.slug.mocca-by-the-sea-georgia.description'
+                        )}
                       </Typography>
                     </article>
                   </Link>
                 </li>
                 <li>
-                  <Link href='/accommodation/mocca-city/city-dimitra'>
+                  <Link href='/accommodation/mocca-city'>
                     <article className='p-2 space-y-2 hover:bg-surface-3'>
                       <CustomImage
                         src={cityDimitraCover}
@@ -99,10 +103,10 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
                         sizes='200px'
                       />
                       <Typography variant='large'>
-                        {t('accommodation.slug.city-dimitra.title')}
+                        {t('accommodation.slug.mocca-city.title')}
                       </Typography>
                       <Typography variant='small'>
-                        {t('accommodation.slug.city-dimitra.description')}
+                        {t('accommodation.slug.mocca-city.description')}
                       </Typography>
                     </article>
                   </Link>

@@ -1,20 +1,12 @@
+import {readFile} from 'node:fs/promises'
+import {join} from 'node:path'
 import {ImageResponse} from 'next/og'
-import type {Locale} from 'next-intl'
-import {getTranslations} from 'next-intl/server'
-import {getOpengraphData} from '@/src/lib/get-opengraph-data'
 
-type ParamsWithSlug = {
-  params: Promise<{
-    locale: Locale
-    slug: PropertySlug
-  }>
-}
+const logo = await readFile(join(process.cwd(), 'public/images/opengraph.png'))
+const src = `data:image/png;base64,${logo.toString('base64')}`
+const font = await readFile(join(process.cwd(), 'assets/Inter-SemiBold.ttf'))
 
-export default async function Image({params}: ParamsWithSlug) {
-  const {locale, slug} = await params
-  const t = await getTranslations({locale, namespace: 'Metadata'})
-  const {src, font} = await getOpengraphData()
-
+function getOpengraphImage({title, alt}: {title: string; alt: string}) {
   return new ImageResponse(
     <div
       style={{
@@ -33,8 +25,8 @@ export default async function Image({params}: ParamsWithSlug) {
       <picture>
         <img
           src={src}
-          width='250'
-          alt={`${slug} page`}
+          width={250}
+          alt={alt}
         />
       </picture>
       <p
@@ -53,28 +45,30 @@ export default async function Image({params}: ParamsWithSlug) {
           viewBox='0 0 24 24'
           fill='none'
           stroke='currentColor'
-          stroke-width='2'
-          stroke-linecap='round'
-          stroke-linejoin='round'
+          strokeWidth='2'
+          strokeLinecap='round'
+          strokeLinejoin='round'
           role='img'
           aria-hidden='true'
         >
-          <path d='M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8' />
-          <path d='M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4' />
-          <path d='M12 4v6' />
-          <path d='M2 18h20' />
+          <path d='M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8' />
+          <path d='M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z' />
         </svg>
-        <span>{`${t(`accommodation.slug.${slug}.title`)} • Mocca Living`}</span>
+        <span>{`${title} | Mocca Living`}</span>
       </p>
     </div>,
     {
+      width: 1200,
+      height: 630,
       fonts: [
         {
           name: 'Inter',
-          data: font,
-          style: 'normal'
+          style: 'normal',
+          data: font
         }
       ]
     }
   )
 }
+
+export {getOpengraphImage}
