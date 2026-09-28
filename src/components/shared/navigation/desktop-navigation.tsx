@@ -39,7 +39,7 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
         <ListItemLink
           className='flex'
           href='/accommodation'
-          label={t('accommodation.title')}
+          label={t('accommodation.index')}
         >
           <Popup
             open={open}

@@ -3,15 +3,7 @@
     "home": "Αρχική",
     "about": "Σχετικά με εμάς",
     "accommodation": {
-      "title": "Διαμονή",
-      "location": {
-        "mocca-by-the-sea": {
-          "title": "Mocca by the Sea"
-        },
-        "mocca-city": {
-          "title": "Mocca City"
-        }
-      },
+      "index": "Διαμονή",
       "slug": {
         "mocca-by-the-sea-dimitra": {
           "title": "Mocca by the Sea · Δήμητρα",

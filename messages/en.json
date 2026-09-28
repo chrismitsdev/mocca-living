@@ -3,15 +3,7 @@
     "home": "Home",
     "about": "About Us",
     "accommodation": {
-      "title": "Accommodation",
-      "location": {
-        "mocca-by-the-sea": {
-          "title": "Mocca by the Sea"
-        },
-        "mocca-city": {
-          "title": "Mocca City"
-        }
-      },
+      "index": "Accommodation",
       "slug": {
         "mocca-by-the-sea-dimitra": {
           "title": "Mocca by the Sea · Dimitra",

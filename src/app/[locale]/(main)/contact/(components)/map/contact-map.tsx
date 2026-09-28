@@ -12,24 +12,33 @@ import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
-const MOCCA_SEA_COORDS = [40.849038, 25.723552] satisfies LatLngTuple
-const MOCCA_CITY_COORDS = [40.8473066, 25.8808873] satisfies LatLngTuple
 const MAP_CENTER = [40.8481723, 25.8022197] satisfies LatLngTuple
 
-const coords: Record<PropertyLocation, LatLngTuple> = {
-  'mocca-by-the-sea': MOCCA_SEA_COORDS,
-  'mocca-city': MOCCA_CITY_COORDS
+type LocationInfo = {
+  coords: LatLngTuple
+  label: string
+}
+
+const location: Record<PropertyLocation, LocationInfo> = {
+  'mocca-by-the-sea': {
+    coords: [40.849038, 25.723552],
+    label: 'Mocca by the Sea'
+  },
+  'mocca-city': {
+    coords: [40.8473066, 25.8808873],
+    label: 'Mocca City'
+  }
 }
 
 function ContactMap() {
   const t = useTranslations()
-  const dataCoords = Object.entries(coords) as [PropertyLocation, LatLngTuple][]
+  const data = Object.entries(location)
 
-  const renderedMarkers = dataCoords.map(([key, position]) => {
+  const renderedMarkers = data.map(([key, {coords, label}]) => {
     return (
       <Marker
         key={key}
-        position={position}
+        position={coords}
         icon={<IconMapPinFilled className='text-primary' />}
       >
         <Popup
@@ -47,7 +56,7 @@ function ContactMap() {
                 className='font-bold text-primary'
                 variant='small'
               >
-                {t(`Metadata.accommodation.location.${key}.title`)}
+                {label}
               </Typography>
               <Typography
                 className='underline text-primary'
@@ -56,7 +65,7 @@ function ContactMap() {
               >
                 <a
                   className='text-inherit!'
-                  href={`https://www.google.com/maps?saddr=My+Location&daddr=${position[0]},${position[1]}`}
+                  href={`https://www.google.com/maps?saddr=My+Location&daddr=${coords[0]},${coords[1]}`}
                   target='_blank'
                   rel='noopener noreferrer'
                 >

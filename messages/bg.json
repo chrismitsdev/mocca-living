@@ -3,15 +3,7 @@
     "home": "Начало",
     "about": "За нас",
     "accommodation": {
-      "title": "Настаняване",
-      "location": {
-        "mocca-by-the-sea": {
-          "title": "Mocca by the Sea"
-        },
-        "mocca-city": {
-          "title": "Mocca City"
-        }
-      },
+      "index": "Настаняване",
       "slug": {
         "mocca-by-the-sea-dimitra": {
           "title": "Mocca by the Sea · Димитра",

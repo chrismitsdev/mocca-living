@@ -82,6 +82,7 @@ function Logo() {
         className='inline-8 md:inline-10'
         src={moccaLogo}
         alt='Mocca Living logo'
+        loading='eager'
       />
     </div>
   )
