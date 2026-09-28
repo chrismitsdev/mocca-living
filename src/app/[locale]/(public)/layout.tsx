@@ -4,7 +4,7 @@ import {ContactDrawer} from '@/src/components/shared/contact-drawer'
 import {Footer} from '@/src/components/shared/footer'
 import {Header} from '@/src/components/shared/header'
 
-export default function MainLayout({children}: LayoutProps<'/[locale]'>) {
+export default function PublicLayout({children}: LayoutProps<'/[locale]'>) {
   return (
     <>
       <Header />
