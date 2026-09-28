@@ -22,7 +22,7 @@ import {Typography} from '@/src/components/ui/typography'
 import {PHONE} from '@/src/lib/utils'
 
 function ContactDrawer() {
-  const t = useTranslations('Components.contact_drawer')
+  const t = useTranslations('Components.contact-drawer')
 
   return (
     <Drawer>

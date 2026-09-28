@@ -67,7 +67,7 @@ function Destination({
           {title}
         </span>
         <span className='px-10 block-12 hidden items-center gap-x-1 border md:inline-flex'>
-          <span>{t('button')}</span>
+          <span>{t('button-label')}</span>
           <IconArrowRight className='mt-px size-5 duration-1000 group-hover:translate-x-0.5' />
         </span>
       </div>

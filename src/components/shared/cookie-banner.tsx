@@ -21,7 +21,7 @@ const EXPIRES_DAYS = 365
 function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false)
   const bannerRef = useRef<HTMLDivElement | null>(null)
-  const t = useTranslations('Components.cookie_consent_banner')
+  const t = useTranslations('Components.cookie-banner')
   useScrollLock({autoLock: showBanner})
 
   function handleClick() {

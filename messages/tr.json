@@ -23,8 +23,9 @@
     "privacy": "Gizlilik politikası",
     "cookies": "Çerez politikası",
     "rules": "Konaklama politikası",
-    "not_found": "Sayfa bulunamadı",
-    "book_button": "Rezervasyon"
+    "guest-app": "Misafir Uygulaması",
+    "not-found": "Sayfa bulunamadı",
+    "book-button": "Rezervasyon"
   },
   "Pages": {
     "home": {
@@ -36,7 +37,7 @@
         "heading": "Şehri yaşa",
         "title": "Mocca City"
       },
-      "button": "Keşfet"
+      "button-label": "Keşfet"
     },
     "about": {
       "intro": {
@@ -102,8 +103,8 @@
             "bathrooms": "1 Banyo"
           },
           "static": {
-            "location_button": "Konum",
-            "more_button": "Bilgi"
+            "location-button": "Konum",
+            "more-button": "Bilgi"
           }
         }
       },
@@ -155,12 +156,12 @@
             "request": ""
           },
           "static": {
-            "layout_title": "Mülk Düzeni",
-            "amenities_indoor_title": "İç mekân olanakları",
-            "amenities_outdoor_title": "Dış mekân olanakları",
-            "complementary_title": "Tamamlayıcı hizmetler",
-            "request_title": "Kiralık hizmetler",
-            "back_button": "Geri"
+            "layout-title": "Mülk Düzeni",
+            "indoor-amenities-title": "İç mekân olanakları",
+            "outdoor-amenities-title": "Dış mekân olanakları",
+            "complementary-title": "Tamamlayıcı hizmetler",
+            "request-title": "Kiralık hizmetler",
+            "back-button": "Geri"
           }
         },
         "distances": {
@@ -169,23 +170,23 @@
             "title": "Mocca by the Sea",
             "description": "Plaja sadece birkaç adım mesafede, olanaklara kolay erişimle huzurlu bir sahil konaklaması için ideal.",
             "items": {
-              "item_1": {
+              "item-1": {
                 "title": "Araç şarj istasyonu ~80 m",
                 "description": "80 metre uzaklıktaki şarj istasyonu, elektrikli araçlar için pratik ve güvenilir bir çözüm sunarak günlük ulaşımı kolaylaştırır."
               },
-              "item_2": {
+              "item-2": {
                 "title": "Agia Paraskevi Plajı ~100 m",
                 "description": "Sadece 100 metre uzaklıktaki Agia Paraskevi Plajı, berrak suları ile dinlenme, yüzme ve güneşlenme için ideal bir sahil deneyimi sunar."
               },
-              "item_3": {
+              "item-3": {
                 "title": "En yakın restoran ~100 m",
                 "description": "100 metre mesafedeki en yakın restoran, yerel ve uluslararası lezzetler sunarak konforlu bir ortamda keyifli bir yemek deneyimi sağlar."
               },
-              "item_4": {
+              "item-4": {
                 "title": "Dedeağaç ~14 km",
                 "description": "14 km uzaklıktaki Dedeağaç, modern olanaklar ile yerel atmosferi bir araya getirir; sahil, restoranlar ve mağazalar ziyaretçiler için keyifli bir ortam sunar."
               },
-              "item_5": {
+              "item-5": {
                 "title": "Havalimanı ~20 km",
                 "description": "Mülklere 20 km uzaklıktaki Demokritos Havalimanı, yurt içi ve uluslararası yolculara sorunsuz ve konforlu varış ve kalkışlar sağlayarak kolay erişim sunmaktadır."
               }
@@ -195,23 +196,23 @@
             "title": "Mocca City",
             "description": "Her şeyin yürüme mesafesinde olduğu Alexandroupoli merkezinde konaklamak için ideal.",
             "items": {
-              "item_1": {
+              "item-1": {
                 "title": "Şehir merkezi",
                 "description": "Dimokratias Caddesi üzerinde, Dedeağaç’ın tam merkezinde yer almaktadır."
               },
-              "item_2": {
+              "item-2": {
                 "title": "Otobüs terminali ~300 m",
                 "description": "Otobüs terminali yürüme mesafesindedir ve kolay ulaşım imkanı sunar."
               },
-              "item_3": {
+              "item-3": {
                 "title": "Sahil yolu ~500 m",
                 "description": "Kısa bir yürüyüşle sahil yoluna ulaşabilir, yürüyüş ve dinlenmenin keyfini çıkarabilirsiniz."
               },
-              "item_4": {
+              "item-4": {
                 "title": "Dedeağaç Limanı ~1 km",
                 "description": "Yaklaşık 1 km uzaklıktaki liman, restoranlar ve kafeler ile canlı bir ortam sunar."
               },
-              "item_5": {
+              "item-5": {
                 "title": "Havalimanı ~7 km",
                 "description": "Havalimanına kısa sürede ulaşım sağlanabilir."
               }
@@ -314,18 +315,18 @@
         "description": "Tüm misafirlerimiz için yüksek temizlik ve konfor standartlarını korumaya çalışıyoruz. Bu nedenle, konaklama alanı içinde veya çevresinde evcil hayvanlara izin verilmemektedir. Anlayışınız için teşekkür ederiz; bu politika, alerjisiz bir ortam sağlamamıza ve konaklamanın huzurlu atmosferini korumamıza yardımcı olmaktadır."
       }
     },
-    "not_found": {
+    "not-found": {
       "title": "Bulunamadı",
       "subtitle": "İstediğiniz sayfa bulunamadı",
       "linkToHome": "Ana sayfaya dön"
     }
   },
   "Components": {
-    "locale_select": {
+    "locale-switcher": {
       "label": "{country, select, en {İngilizce} el {Yunanca} tr {Türkçe} bg {Bulgarca} other {Unknown}}",
       "loading": "Yükleniyor"
     },
-    "contact_drawer": {
+    "contact-drawer": {
       "title": "Bize ulaşın",
       "description": "Tercih ettiğiniz iletişim yöntemini seçin.",
       "message": "Merhaba, Mocca Living'de konaklama rezervasyonu yapmak istiyorum. Daha fazla bilgi paylaşabilir misiniz?",
@@ -333,7 +334,7 @@
       "sms": "SMS mesajı",
       "call": "Doğrudan arama"
     },
-    "contact_form_client": {
+    "contact-form-client": {
       "subject": "Sorunuz için teşekkür ederiz",
       "header": "Sayın",
       "thanks": "Bizimle iletişime geçtiğiniz için teşekkür ederiz! Talebinizi aldık ve en kısa sürede size geri döneceğiz.",
@@ -347,7 +348,7 @@
       },
       "footer": "Ek sorularınız veya özel talepleriniz varsa bu e-postayı yanıtlamaktan çekinmeyin. Sizi ağırlamak ve unutulmaz bir konaklama planlamanıza yardımcı olmaktan memnuniyet duyacağız."
     },
-    "cookie_consent_banner": {
+    "cookie-banner": {
       "title": "Çerezler",
       "message": "Bu site, daha iyi bir kullanıcı deneyimi sunmak ve trafiği analiz etmek için çerezler kullanan hizmetler içermektedir. Kullandığımız hizmetler hakkında daha fazla bilgiyi gizlilik politikası sayfamızda bulabilirsiniz.",
       "button-label": "Anladım",

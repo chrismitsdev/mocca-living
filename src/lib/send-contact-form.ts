@@ -14,7 +14,7 @@ export async function sendContactForm(
 ) {
   const t = await getTranslations({
     locale,
-    namespace: 'Components.contact_form_client'
+    namespace: 'Components.contact-form-client'
   })
 
   try {

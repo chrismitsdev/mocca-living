@@ -131,7 +131,7 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
               target='_blank'
               rel='noopener noreferrer'
             >
-              {t('book_button')}
+              {t('book-button')}
             </a>
           </Button>
         </li>

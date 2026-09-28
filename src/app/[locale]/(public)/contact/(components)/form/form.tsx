@@ -9,7 +9,6 @@ import {
 } from '@tabler/icons-react'
 import {useLocale, useTranslations} from 'next-intl'
 import {useActionState, useEffect} from 'react'
-import {FormDialog} from '@/src/app/[locale]/(main)/contact/(components)/form/form-dialog'
 import {Button} from '@/src/components/ui/button'
 import {Checkbox} from '@/src/components/ui/checkbox'
 import {Input} from '@/src/components/ui/input'
@@ -18,6 +17,7 @@ import {Textarea} from '@/src/components/ui/textarea'
 import {toast} from '@/src/components/ui/toast'
 import {type ContactFormActionState, contactFormAction} from '@/src/lib/actions'
 import {FormControl} from './form-control'
+import {FormDialog} from './form-dialog'
 import {FormHoneypot} from './form-honeypot'
 
 const initialState = {

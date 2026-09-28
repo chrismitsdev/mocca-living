@@ -24,23 +24,23 @@ import {Typography} from '@/src/components/ui/typography'
 const itemsByLocation: Record<
   PropertyLocation,
   {
-    key: 'item_1' | 'item_2' | 'item_3' | 'item_4' | 'item_5'
+    key: 'item-1' | 'item-2' | 'item-3' | 'item-4' | 'item-5'
     icon: React.ComponentType<IconProps>
   }[]
 > = {
   'mocca-by-the-sea': [
-    {key: 'item_1', icon: IconChargingPile},
-    {key: 'item_2', icon: IconBeach},
-    {key: 'item_3', icon: IconToolsKitchen3},
-    {key: 'item_4', icon: IconBuildingBank},
-    {key: 'item_5', icon: IconPlane}
+    {key: 'item-1', icon: IconChargingPile},
+    {key: 'item-2', icon: IconBeach},
+    {key: 'item-3', icon: IconToolsKitchen3},
+    {key: 'item-4', icon: IconBuildingBank},
+    {key: 'item-5', icon: IconPlane}
   ],
   'mocca-city': [
-    {key: 'item_1', icon: IconBuildingBank},
-    {key: 'item_2', icon: IconBus},
-    {key: 'item_3', icon: IconWalk},
-    {key: 'item_4', icon: IconFerry},
-    {key: 'item_5', icon: IconPlane}
+    {key: 'item-1', icon: IconBuildingBank},
+    {key: 'item-2', icon: IconBus},
+    {key: 'item-3', icon: IconWalk},
+    {key: 'item-4', icon: IconFerry},
+    {key: 'item-5', icon: IconPlane}
   ]
 }
 

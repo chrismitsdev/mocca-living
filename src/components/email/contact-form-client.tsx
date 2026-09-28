@@ -25,7 +25,7 @@ interface ContactFormClientProps {
 async function ContactFormClient({locale, formData}: ContactFormClientProps) {
   const t = await getTranslations({
     locale,
-    namespace: 'Components.contact_form_client'
+    namespace: 'Components.contact-form-client'
   })
 
   return (

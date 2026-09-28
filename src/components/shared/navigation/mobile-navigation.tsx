@@ -52,7 +52,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
           target='_blank'
           rel='noopener noreferrer'
         >
-          {t('book_button')}
+          {t('book-button')}
           <span>-15%</span>
         </a>
       </Button>

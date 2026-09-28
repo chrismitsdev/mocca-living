@@ -34,7 +34,7 @@ function Details({slug}: {slug: PropertySlug}) {
               <Button asChild>
                 <Link href='/accommodation'>
                   <IconChevronLeft />
-                  <span>{t('static.back_button')}</span>
+                  <span>{t('static.back-button')}</span>
                 </Link>
               </Button>
             </div>
@@ -64,19 +64,19 @@ function Details({slug}: {slug: PropertySlug}) {
           </CardHeader>
           <CardContent className='space-y-8'>
             <SlugList data={t(`${slug}.layout`)}>
-              {t('static.layout_title')}
+              {t('static.layout-title')}
             </SlugList>
             <SlugList data={t(`${slug}.amenities.indoor`)}>
-              {t('static.amenities_indoor_title')}
+              {t('static.indoor-amenities-title')}
             </SlugList>
             <SlugList data={t(`${slug}.amenities.outdoor`)}>
-              {t('static.amenities_outdoor_title')}
+              {t('static.outdoor-amenities-title')}
             </SlugList>
             <SlugList data={t(`${slug}.complementary`)}>
-              {t('static.complementary_title')}
+              {t('static.complementary-title')}
             </SlugList>
             <SlugList data={t(`${slug}.request`)}>
-              {t('static.request_title')}
+              {t('static.request-title')}
             </SlugList>
           </CardContent>
         </Card>

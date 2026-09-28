@@ -140,11 +140,11 @@ function AccommodationCard({
               target='_blank'
               rel='noopener noreferrer'
             >
-              {t(`location_button`)}
+              {t('location-button')}
             </Link>
           </Button>
           <Button asChild>
-            <Link href={href}>{t(`more_button`)}</Link>
+            <Link href={href}>{t('more-button')}</Link>
           </Button>
         </CardFooter>
       </div>

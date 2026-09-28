@@ -26,6 +26,7 @@ function Footer() {
               src={moccaLogo}
               height={140}
               alt='Mocca Living'
+              loading='eager'
             />
           </Link>
           <FooterColumn title={t('row-1.info-column.title')}>
