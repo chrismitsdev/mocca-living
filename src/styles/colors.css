@@ -1,31 +1,16 @@
-/* LEGEND
-   1: Backgrounds
-   2: Backgrounds
-   3: Interactive components
-   4: Interactive components
-   5: Interactive components
-   6: Borders and separator
-   7: Borders and separator
-   8: Borders and separator
-   9: Solid colors
-   10: Solid colors
-   11: Accessible text
-   12: Accessible text
-*/
-
 @theme {
-  --color-brand-1: #c6c4c3; /* rgba(198, 196, 195, 1) */
-  --color-brand-2: #c4bbb6; /* rgba(196, 187, 182, 1) */
-  --color-brand-3: #c2ab9f; /* rgba(194, 171, 159, 1) */
-  --color-brand-4: #bf9c88; /* rgba(191, 156, 136, 1) */
-  --color-brand-5: #ba8c71; /* rgba(186, 140, 113, 1) */
-  --color-brand-6: #af7c5f; /* rgba(175, 124, 95, 1) */
-  --color-brand-7: #a26844; /* rgba(162, 104, 68, 1) */
-  --color-brand-8: #934a16; /* rgba(147, 74, 22, 1) */
-  --color-brand-9: #944f21; /* rgba(148, 79, 33, 1) */
-  --color-brand-10: #873f03; /* rgba(135, 63, 3, 1) */
-  --color-brand-11: #491400; /* rgba(73, 20, 0, 1) */
-  --color-brand-12: #3e2d23; /* rgba(62, 45, 35, 1) */
+  --color-brand-1: #c6c4c3;
+  --color-brand-2: #c4bbb6;
+  --color-brand-3: #c2ab9f;
+  --color-brand-4: #bf9c88;
+  --color-brand-5: #ba8c71;
+  --color-brand-6: #af7c5f;
+  --color-brand-7: #a26844;
+  --color-brand-8: #934a16;
+  --color-brand-9: #3e2d23;
+  --color-brand-10: #33241b;
+  --color-brand-11: #281b14;
+  --color-brand-12: #1d130d;
 
   --color-green-1: #fbfefc;
   --color-green-2: #f4fbf6;
@@ -80,11 +65,11 @@
   --color-red-12: #641723;
 
   /* Surface colors */
-  --color-surface-1: #e7d9be; /* rgba(231, 217, 190, 1) */
-  --color-surface-2: #ddc8a2; /* rgba(221, 200, 162, 1) */
-  --color-surface-3: #c7b492; /* rgba(199, 180, 146, 1) */
-  --color-surface-4: #b1a082; /* rgba(177, 160, 130, 1) */
-  --color-surface-5: #9b8c71; /* rgba(155, 140, 113, 1) */
+  --color-surface-1: #e7d9be;
+  --color-surface-2: #ddc8a2;
+  --color-surface-3: #c7b492;
+  --color-surface-4: #b1a082;
+  --color-surface-5: #9b8c71;
 
   /* Semantic colors */
   --color-foreground: var(--color-brand-12);
@@ -124,5 +109,5 @@
   --color-border-warning: var(--color-yellow-6);
   --color-border-warning-hover: var(--color-yellow-8);
 
-  --color-ring: var(--color-brand-8);
+  --color-ring: var(--color-brand-12);
 }

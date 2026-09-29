@@ -5,7 +5,8 @@
 @import "./utilities.css";
 
 :root {
-  --header-height: 80px;
+  --main-header-height: 80px;
+  --guest-header-height: 144px;
 }
 
 /* General styling */

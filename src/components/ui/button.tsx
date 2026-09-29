@@ -85,7 +85,7 @@ function Button({
         className
       )}
       aria-busy={isLoading || undefined}
-      aria-disabled={isLoading || disabled || undefined}
+      aria-disabled={disabled || isLoading || undefined}
       type={asChild ? undefined : type}
       disabled={asChild ? undefined : disabled || isLoading}
       {...props}
