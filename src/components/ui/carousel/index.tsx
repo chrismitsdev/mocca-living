@@ -7,6 +7,7 @@ import {
 } from '@tabler/icons-react'
 import type useEmblaCarousel from 'embla-carousel-react'
 import {Dialog} from 'radix-ui'
+import {type AnimationEvent, useState} from 'react'
 import {IconButton} from '@/src/components/ui/icon-button'
 import {ScrollArea} from '@/src/components/ui/scrollarea'
 import {cn} from '@/src/lib/utils'
@@ -76,13 +77,21 @@ function Slide({className, ...props}: React.ComponentPropsWithRef<'div'>) {
 }
 
 function ThumbsContainer({children}: React.PropsWithChildren) {
+  const [animating, setAnimating] = useState(false)
   const positionStyles = 'absolute inset-x-1/2 -translate-x-1/2 inset-be-0'
+
+  function handleAnimate(e: AnimationEvent, animates: boolean) {
+    if (e.target === e.currentTarget) {
+      setAnimating(animates)
+    }
+  }
 
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
         <IconButton
           aria-label='Show thumbnails container'
+          aria-disabled={animating}
           className={cn(
             positionStyles,
             'ease-mocca group',
@@ -99,11 +108,14 @@ function ThumbsContainer({children}: React.PropsWithChildren) {
           )}
           variant='outline'
           size='small'
+          onClick={(e) => animating && e.preventDefault()}
         >
           <IconChevronUp className='ease-mocca group-data-open:duration-1000 group-data-closed:duration-750 group-data-open:rotate-180' />
         </IconButton>
       </Dialog.Trigger>
       <Dialog.Content
+        onAnimationStart={(e) => handleAnimate(e, true)}
+        onAnimationEnd={(e) => handleAnimate(e, false)}
         className={cn(
           positionStyles,
           'inline-max max-inline-full',

@@ -7,7 +7,6 @@ import {Link} from '@/src/i18n/navigation'
 function Hero() {
   return (
     <section className='relative block-[calc(100svh-var(--guest-header-height))]'>
-      {/*<div className='absolute inset-0 bg-radial from-transparent from-20% to-surface-1' />*/}
       <CustomImage
         className='hidden sm:block'
         src={heroLandscape}

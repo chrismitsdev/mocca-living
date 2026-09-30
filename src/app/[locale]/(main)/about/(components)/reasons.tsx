@@ -48,7 +48,7 @@ function Reasons() {
             variant='h2'
             asChild
           >
-            <h2>{t('title')}</h2>
+            <h3>{t('title')}</h3>
           </Typography>
           <ul className='space-y-10'>
             <Reason

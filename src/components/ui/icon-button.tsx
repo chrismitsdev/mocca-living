@@ -2,22 +2,20 @@ import {Slot} from 'radix-ui'
 import {cn} from '@/src/lib/utils'
 
 interface IconButtonProps
-  extends Omit<
-    React.ComponentPropsWithRef<'button'>,
-    'aria-label' | 'aria-disabled'
-  > {
+  extends Omit<React.ComponentPropsWithRef<'button'>, 'aria-label'> {
+  'aria-label': string
   variant?: 'primary' | 'outline' | 'ghost'
   size?: 'large' | 'normal' | 'small'
-  'aria-label': string
   asChild?: boolean
 }
 
 function IconButton({
   className,
-  disabled,
+  'aria-disabled': ariaDisabled,
   variant = 'primary',
   size = 'normal',
   type = 'button',
+  disabled,
   asChild = false,
   ...props
 }: IconButtonProps) {
@@ -26,7 +24,7 @@ function IconButton({
   return (
     <Comp
       className={cn(
-        'shrink-0 inline-flex items-center justify-center transition focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 aria-disabled:opacity-30',
+        'shrink-0 inline-flex items-center justify-center transition focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 disabled:opacity-30',
         // VARIANT STYLING
         variant === 'primary' && [
           'bg-primary',
@@ -57,7 +55,7 @@ function IconButton({
         size === 'small' && ['size-8', '[&>svg]:size-5'],
         className
       )}
-      aria-disabled={disabled}
+      aria-disabled={ariaDisabled || disabled}
       type={asChild ? undefined : type}
       disabled={asChild ? undefined : disabled}
       {...props}
