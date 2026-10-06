@@ -23,7 +23,12 @@
     "privacy": "Gizlilik politikası",
     "cookies": "Çerez politikası",
     "rules": "Konaklama politikası",
-    "guest-app": "Misafir Uygulaması",
+    "guest-app": {
+      "index": "Misafir Uygulaması",
+      "mocca-by-the-sea-dimitra": "Mocca by the Sea · Dimitra",
+      "mocca-by-the-sea-georgia": "Mocca by the Sea · Georgia",
+      "mocca-city": "Mocca City"
+    },
     "not-found": "Sayfa bulunamadı",
     "book-button": "Rezervasyon"
   },
@@ -315,6 +320,7 @@
         "description": "Tüm misafirlerimiz için yüksek temizlik ve konfor standartlarını korumaya çalışıyoruz. Bu nedenle, konaklama alanı içinde veya çevresinde evcil hayvanlara izin verilmemektedir. Anlayışınız için teşekkür ederiz; bu politika, alerjisiz bir ortam sağlamamıza ve konaklamanın huzurlu atmosferini korumamıza yardımcı olmaktadır."
       }
     },
+    "guest-app": {},
     "not-found": {
       "title": "Bulunamadı",
       "subtitle": "İstediğiniz sayfa bulunamadı",

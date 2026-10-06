@@ -75,7 +75,7 @@
   --color-foreground: var(--color-brand-12);
 
   --color-primary: var(--color-brand-9);
-  --color-primary-foreground: var(--color-surface-1);
+  --color-primary-foreground: var(--color-brand-3);
   --color-primary-hover: var(--color-brand-10);
 
   --color-success: var(--color-green-9);
@@ -87,7 +87,7 @@
   --color-info-hover: var(--color-blue-10);
 
   --color-warning: var(--color-yellow-9);
-  --color-warning-foreground: var(--color-brand-12);
+  --color-warning-foreground: var(--color-yellow-3);
   --color-warning-hover: var(--color-yellow-10);
 
   --color-danger: var(--color-red-9);

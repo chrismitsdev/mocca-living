@@ -17,11 +17,10 @@ function Hero() {
         src={heroPortrait}
         alt='Guest app page hero image'
       />
-      <div className='py-20 px-8 absolute inset-0 bg-radial from-transparent from-20% to-surface-1 flex flex-col justify-between gap-8 sm:justify-center'>
-        <div className='space-y-4 text-center'>
-          <span className='block text-5xl font-serif font-semibold'>
-            Welcome
-          </span>
+      {/* <div className='py-15 px-8 absolute inset-0 flex flex-col gap-30 bg-radial from-transparent to-surface-2 sm:py-30 sm:justify-between'> */}
+      <div className='py-15 px-8 absolute inset-0 flex flex-col gap-30 bg-linear-to-b from-surface-2 via-transparent to-surface-2 sm:py-30 sm:gap-50'>
+        <div className='space-y-8 text-center'>
+          <span className='block text-5xl font-serif font-bold'>Welcome</span>
           <span className='block text-lg'>
             We are here to make sure your stay will be comfortable and
             unforgettable
@@ -33,7 +32,9 @@ function Hero() {
             size='large'
             asChild
           >
-            <Link href='/guest-app/mocca-by-the-sea'>Mocca by the Sea</Link>
+            <Link href='/guest-app/mocca-by-the-sea-dimitra'>
+              Mocca by the Sea
+            </Link>
           </Button>
           <Button
             className='sm:min-inline-56'

@@ -23,7 +23,12 @@
     "privacy": "Πολιτική απορρήτου",
     "cookies": "Πολιτική cookies",
     "rules": "Πολιτική διαμονής",
-    "guest-app": "Εφαρμογή πελατών",
+    "guest-app": {
+      "index": "Εφαρμογή πελατών",
+      "mocca-by-the-sea-dimitra": "Mocca by the Sea · Dimitra",
+      "mocca-by-the-sea-georgia": "Mocca by the Sea · Georgia",
+      "mocca-city": "Mocca City"
+    },
     "not-found": "Η σελίδα δεν βρέθηκε",
     "book-button": "Κάντε Κράτηση"
   },

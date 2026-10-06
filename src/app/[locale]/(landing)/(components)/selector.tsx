@@ -11,16 +11,16 @@ function Selector() {
   const t = useTranslations('Pages.home')
 
   return (
-    <div className='flex flex-col block-dvh relative overflow-hidden md:flex-row'>
+    <div className='flex flex-col block-dvh relative overflow-hidden sm:flex-row'>
       <Destination
-        className='not-md:border-be md:border-e-2'
+        className='not-sm:border-be sm:border-e-2'
         href='/accommodation/mocca-by-the-sea-dimitra'
         src={seaDimitraCover}
         heading={t('mocca-by-the-sea.heading')}
         title={t('mocca-by-the-sea.title')}
       />
       <Destination
-        className='not-md:border-bs md:border-s-2'
+        className='not-sm:border-bs sm:border-s-2'
         href='/accommodation/mocca-city'
         src={cityDimitraCover}
         heading={t('mocca-city.heading')}
@@ -49,7 +49,7 @@ function Destination({
   return (
     <Link
       className={cn(
-        'flex-1 size-full relative overflow-hidden border-primary-foreground focus-visible:outline-primary-foreground focus-visible:-outline-offset-8 group',
+        'flex-1 size-full relative overflow-hidden border-surface-2 focus-visible:outline-surface-2 focus-visible:-outline-offset-8 group',
         className
       )}
       href={href}
@@ -59,14 +59,14 @@ function Destination({
         src={src}
         alt={title}
       />
-      <div className='px-4 py-10 absolute inset-x-0 inset-be-0 text-primary-foreground text-left bg-linear-to-b from-transparent to-black md:py-30 md:text-center'>
-        <span className='block uppercase text-xs tracking-widest md:text-sm'>
+      <div className='px-4 py-10 absolute inset-x-0 inset-be-0 text-surface-2 text-left bg-linear-to-b from-transparent to-black sm:py-30 sm:text-center'>
+        <span className='block uppercase text-xs tracking-widest sm:text-sm'>
           {heading}
         </span>
-        <span className='block text-4xl font-serif md:mt-2 md:mb-10 md:text-7xl'>
+        <span className='block text-4xl font-serif sm:mt-2 sm:mb-10 sm:text-7xl'>
           {title}
         </span>
-        <span className='px-10 block-12 hidden items-center gap-x-1 border md:inline-flex'>
+        <span className='px-10 block-12 hidden items-center gap-x-1 border sm:inline-flex'>
           <span>{t('button-label')}</span>
           <IconArrowRight className='mt-px size-5 duration-1000 group-hover:translate-x-0.5' />
         </span>
@@ -78,11 +78,11 @@ function Destination({
 function Logo() {
   return (
     <Link
-      className='p-2 bg-primary-foreground absolute top-1/2 left-1/2 -translate-1/2 md:p-3'
+      className='p-2 absolute top-1/2 left-1/2 -translate-1/2 bg-surface-2 hover:bg-surface-3 focus-visible:outline-surface-2 sm:p-3'
       href='/about'
     >
       <Image
-        className='inline-8 md:inline-14'
+        className='inline-8 sm:inline-14'
         src={moccaLogo}
         alt='Mocca Living logo'
         loading='eager'

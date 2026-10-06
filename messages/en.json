@@ -23,7 +23,12 @@
     "privacy": "Privacy policy",
     "cookies": "Cookies policy",
     "rules": "Accommodation policy",
-    "guest-app": "Guest App",
+    "guest-app": {
+      "index": "Guest App",
+      "mocca-by-the-sea-dimitra": "Mocca by the Sea · Dimitra",
+      "mocca-by-the-sea-georgia": "Mocca by the Sea · Georgia",
+      "mocca-city": "Mocca City"
+    },
     "not-found": "Page not found",
     "book-button": "Book now"
   },
@@ -315,6 +320,7 @@
         "description": "We strive to maintain a high standard of cleanliness and comfort for all guests. For this reason, pets are not permitted within the accommodation or on the surrounding property. We kindly ask for your understanding, as this policy helps us ensure an allergy-free environment and preserve the serene atmosphere of the accommodation."
       }
     },
+    "guest-app": {},
     "not-found": {
       "title": "Not found",
       "subtitle": "The page you requested was not found",

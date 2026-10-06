@@ -6,7 +6,7 @@ import {Link} from '@/src/i18n/navigation'
 
 function Header() {
   return (
-    <header className='py-2 bg-surface-3'>
+    <header className='py-2 bg-surface-2'>
       <Container>
         <div className='flex items-center justify-between'>
           <Link href='/'>
