@@ -1,11 +1,11 @@
 function FormHoneypot() {
   return (
     <div
+      inert
       aria-hidden='true'
       style={{
         position: 'absolute',
         left: '-9999px',
-        top: 'auto',
         width: '1px',
         height: '1px',
         overflow: 'hidden'
@@ -18,6 +18,8 @@ function FormHoneypot() {
         type='text'
         tabIndex={-1}
         autoComplete='off'
+        data-1p-ignore
+        data-lpignore='true'
       />
     </div>
   )

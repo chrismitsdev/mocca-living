@@ -19,7 +19,7 @@ import image18 from './18.webp'
 import image19 from './19.webp'
 import image20 from './20.webp'
 
-export const georgiaSeaImages = [
+export const moccaCityImages = [
   image1,
   image2,
   image3,

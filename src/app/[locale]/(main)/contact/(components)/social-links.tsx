@@ -16,15 +16,24 @@ function SocialLinks() {
     <Section>
       <Container>
         <div className='flex flex-col gap-8 sm:flex-row'>
-          <SocialLink href='https://www.facebook.com/profile.php?id=61566665200042'>
+          <SocialLink
+            href='https://www.facebook.com/profile.php?id=61566665200042'
+            aria-label='Visit our Facebook page (Opens in new tab)'
+          >
             <IconBrandFacebookFilled className='size-16' />
             <Typography variant='h4'>{t('facebook')}</Typography>
           </SocialLink>
-          <SocialLink href='https://www.instagram.com/moccaliving.premiumstay'>
+          <SocialLink
+            href='https://www.instagram.com/moccaliving.premiumstay'
+            aria-label='Visit our Instagram page (Opens in new tab)'
+          >
             <IconBrandInstagramFilled className='size-16' />
             <Typography variant='h4'>{t('instagram')}</Typography>
           </SocialLink>
-          <SocialLink href={`tel:${PHONE}`}>
+          <SocialLink
+            href={`tel:${PHONE}`}
+            aria-label='Contact us via phone'
+          >
             <IconPhoneFilled className='size-16' />
             <Typography variant='h4'>{t('phone')}</Typography>
           </SocialLink>

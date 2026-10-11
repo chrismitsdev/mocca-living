@@ -13,16 +13,18 @@ function Hero() {
       <CustomImage
         className='w-full h-full sm:hidden'
         src={mobile}
-        alt='Accomdation page mobile hero image'
+        alt='Accommodation page mobile hero image'
         sizes='100vw'
         quality={60}
+        priority
       />
       <CustomImage
         className='w-full h-full hidden sm:block'
         src={desktop}
-        alt='Accomdation page desktop hero image'
+        alt='Accommodation page desktop hero image'
         sizes='100vw'
         quality={60}
+        priority
       />
       <Button
         className='absolute bottom-10 left-1/2 -translate-x-1/2'

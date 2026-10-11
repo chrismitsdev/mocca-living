@@ -1,10 +1,10 @@
 import {useTranslations} from 'next-intl'
+import {reasonImages} from '@/public/images/about/reasons'
 import {
-  cityDimitraCover,
-  seaDimitraCover,
-  seaGeorgiaCover
+  moccaCityCover,
+  moccaSeaDimitraCover,
+  moccaSeaGeorgiaCover
 } from '@/public/images/covers'
-import {homeReasonsImages} from '@/public/images/home/home-reasons'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {CustomImage} from '@/src/components/ui/custom-image'
@@ -18,27 +18,27 @@ function Reasons() {
       <div className='px-3 flex space-x-3 overflow-x-auto sm:hidden'>
         <CustomImage
           className='shrink-0 aspect-3/4 inline-screen'
-          src={seaDimitraCover}
+          src={moccaSeaDimitraCover}
           alt='Mocca Sea Dimitra cover'
         />
         <CustomImage
           className='shrink-0 aspect-3/4 inline-screen'
-          src={homeReasonsImages[0]}
+          src={reasonImages[0]}
           alt='Handmade ceramic cups and a bowl on a dark round table'
         />
         <CustomImage
           className='shrink-0 aspect-3/4 inline-screen'
-          src={cityDimitraCover}
+          src={moccaCityCover}
           alt='Mocca City Georgia villa'
         />
         <CustomImage
           className='shrink-0 aspect-3/4 inline-screen'
-          src={homeReasonsImages[1]}
+          src={reasonImages[1]}
           alt='Handmade ceramic cups arranged on a wooden shelf'
         />
         <CustomImage
           className='shrink-0 aspect-3/4 inline-screen'
-          src={seaGeorgiaCover}
+          src={moccaSeaGeorgiaCover}
           alt='Mocca Sea Georgia cover'
         />
       </div>
@@ -48,7 +48,7 @@ function Reasons() {
             variant='h2'
             asChild
           >
-            <h3>{t('title')}</h3>
+            <h2>{t('title')}</h2>
           </Typography>
           <ul className='space-y-10'>
             <Reason

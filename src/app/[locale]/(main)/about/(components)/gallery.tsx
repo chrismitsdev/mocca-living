@@ -3,7 +3,7 @@
 import {IconMaximize} from '@tabler/icons-react'
 import type {StaticImageData} from 'next/image'
 import {useState} from 'react'
-import {homeGalleryImages} from '@/public/images/home/home-gallery'
+import {galleryImages} from '@/public/images/about/gallery'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {
@@ -65,7 +65,7 @@ const triggers: {
 function Gallery() {
   const [index, setIndex] = useState(0)
 
-  const renderedTriggers = homeGalleryImages.map((image, i) => (
+  const renderedTriggers = galleryImages.map((image, i) => (
     <GalleryTrigger
       key={image.src}
       className={triggers[i].className}
@@ -76,7 +76,7 @@ function Gallery() {
     />
   ))
 
-  const renderedSlides = homeGalleryImages.map((image, i) => (
+  const renderedSlides = galleryImages.map((image, i) => (
     <Slide key={image.src}>
       <CustomImage
         src={image}
@@ -102,7 +102,7 @@ function Gallery() {
               variant='secondary'
             />
             <DialogTitle className='sr-only'>
-              Home page gallery images
+              About page gallery images
             </DialogTitle>
             <Carousel options={{startIndex: index, loop: true}}>
               <CarouselViewport>

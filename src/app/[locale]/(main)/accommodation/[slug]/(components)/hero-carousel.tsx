@@ -1,7 +1,7 @@
 import type {StaticImageData} from 'next/image'
-import {dimitraCityImages} from '@/public/images/accommodation/city-dimitra'
-import {dimitraSeaImages} from '@/public/images/accommodation/sea-dimitra'
-import {georgiaSeaImages} from '@/public/images/accommodation/sea-georgia'
+import {moccaCityImages} from '@/public/images/accommodation/mocca-city'
+import {moccaSeaDimitraImages} from '@/public/images/accommodation/mocca-sea-dimitra'
+import {moccaSeaGeorgiaImages} from '@/public/images/accommodation/mocca-sea-georgia'
 import {
   ButtonNext,
   ButtonPrev,
@@ -14,16 +14,16 @@ import {
 } from '@/src/components/ui/carousel'
 import {CustomImage} from '@/src/components/ui/custom-image'
 
-const slugImages: Record<PropertySlug, StaticImageData[]> = {
-  'mocca-by-the-sea-dimitra': dimitraSeaImages,
-  'mocca-by-the-sea-georgia': georgiaSeaImages,
-  'mocca-city': dimitraCityImages
+const images: Record<PropertySlug, StaticImageData[]> = {
+  'mocca-by-the-sea-dimitra': moccaSeaDimitraImages,
+  'mocca-by-the-sea-georgia': moccaSeaGeorgiaImages,
+  'mocca-city': moccaCityImages
 }
 
 function HeroCarousel({slug}: {slug: PropertySlug}) {
-  const images = slugImages[slug]
+  const slugImages = images[slug]
 
-  const renderedSlides = images.map((image, i) => (
+  const renderedSlides = slugImages.map((image, i) => (
     <Slide key={image.src}>
       <CustomImage
         className='min-block-96'
@@ -31,11 +31,12 @@ function HeroCarousel({slug}: {slug: PropertySlug}) {
         alt={`${slug} page carousel image ${i + 1}`}
         sizes='100vw'
         quality={60}
+        priority={i === 0}
       />
     </Slide>
   ))
 
-  const renderedThumbnails = images.map((image, i) => (
+  const renderedThumbnails = slugImages.map((image, i) => (
     <Thumb
       key={image.src}
       thumbIndex={i}

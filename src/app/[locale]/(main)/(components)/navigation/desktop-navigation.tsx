@@ -1,9 +1,9 @@
 import {IconDotsVertical} from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
 import {
-  cityDimitraCover,
-  seaDimitraCover,
-  seaGeorgiaCover
+  moccaCityCover,
+  moccaSeaDimitraCover,
+  moccaSeaGeorgiaCover
 } from '@/public/images/covers'
 import {Button} from '@/src/components/ui/button'
 import {CustomImage} from '@/src/components/ui/custom-image'
@@ -59,7 +59,7 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
                   <Link href='/accommodation/mocca-by-the-sea-dimitra'>
                     <article className='p-2 space-y-2 hover:bg-surface-3'>
                       <CustomImage
-                        src={seaDimitraCover}
+                        src={moccaSeaDimitraCover}
                         alt='Mocca Sea Dimitra cover image'
                         sizes='200px'
                       />
@@ -78,7 +78,7 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
                   <Link href='/accommodation/mocca-by-the-sea-georgia'>
                     <article className='p-2 space-y-2 hover:bg-surface-3'>
                       <CustomImage
-                        src={seaGeorgiaCover}
+                        src={moccaSeaGeorgiaCover}
                         alt='Mocca Sea Georgia cover image'
                         sizes='200px'
                       />
@@ -97,7 +97,7 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
                   <Link href='/accommodation/mocca-city'>
                     <article className='p-2 space-y-2 hover:bg-surface-3'>
                       <CustomImage
-                        src={cityDimitraCover}
+                        src={moccaCityCover}
                         alt='Mocca City Georgia cover image'
                         sizes='200px'
                       />

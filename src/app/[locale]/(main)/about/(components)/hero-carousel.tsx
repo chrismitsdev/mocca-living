@@ -1,7 +1,7 @@
 'use client'
 
 import Autoplay from 'embla-carousel-autoplay'
-import {homeCarouselImages} from '@/public/images/home/home-carousel'
+import {carouselImages} from '@/public/images/about/carousel'
 import {
   ButtonNext,
   ButtonPrev,
@@ -15,26 +15,27 @@ import {
 import {CustomImage} from '@/src/components/ui/custom-image'
 
 function HeroCarousel() {
-  const slides = homeCarouselImages.map((image, i) => (
+  const slides = carouselImages.map((image, i) => (
     <Slide key={image.src}>
       <CustomImage
         className='min-block-96'
         src={image}
-        alt={`Home page carousel image slide ${i + 1}`}
+        alt={`About page carousel image slide ${i + 1}`}
         sizes='100vw'
         quality={60}
+        priority={i === 0}
       />
     </Slide>
   ))
 
-  const thumbnails = homeCarouselImages.map((image, i) => (
+  const thumbnails = carouselImages.map((image, i) => (
     <Thumb
       key={image.src}
       thumbIndex={i}
     >
       <CustomImage
         src={image}
-        alt={`Home page carousel image thumb ${i + 1}`}
+        alt={`About page carousel image thumb ${i + 1}`}
         sizes='(min-width: 640px) 80px, 40px'
       />
     </Thumb>

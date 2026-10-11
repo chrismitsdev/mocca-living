@@ -1,7 +1,7 @@
 import {IconArrowRight} from '@tabler/icons-react'
 import Image, {type StaticImageData} from 'next/image'
 import {useTranslations} from 'next-intl'
-import {cityDimitraCover, seaDimitraCover} from '@/public/images/covers'
+import {moccaCityCover, moccaSeaDimitraCover} from '@/public/images/covers'
 import moccaLogo from '@/public/logos/mocca-logo.svg'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {Link} from '@/src/i18n/navigation'
@@ -15,14 +15,14 @@ function HeroSelector() {
       <Destination
         className='not-sm:border-be sm:border-e-2'
         href='/accommodation/mocca-by-the-sea-dimitra'
-        src={seaDimitraCover}
+        src={moccaSeaDimitraCover}
         heading={t('mocca-by-the-sea.heading')}
         title={t('mocca-by-the-sea.title')}
       />
       <Destination
         className='not-sm:border-bs sm:border-s-2'
         href='/accommodation/mocca-city'
-        src={cityDimitraCover}
+        src={moccaCityCover}
         heading={t('mocca-city.heading')}
         title={t('mocca-city.title')}
       />
@@ -58,6 +58,7 @@ function Destination({
         className='object-[40%] duration-1000 group-hover:scale-105'
         src={src}
         alt={title}
+        priority
       />
       <div className='px-4 py-10 absolute inset-x-0 inset-be-0 text-surface-2 text-left bg-linear-to-b from-transparent to-black sm:py-30 sm:text-center'>
         <span className='block uppercase text-xs tracking-widest sm:text-sm'>

@@ -7,9 +7,9 @@ import {
 import type {StaticImageData} from 'next/image'
 import {useTranslations} from 'next-intl'
 import {
-  cityDimitraCover,
-  seaDimitraCover,
-  seaGeorgiaCover
+  moccaCityCover,
+  moccaSeaDimitraCover,
+  moccaSeaGeorgiaCover
 } from '@/public/images/covers'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
@@ -35,7 +35,7 @@ function Cards() {
       <Container>
         <div className='space-y-10'>
           <AccommodationCard
-            imageSrc={seaDimitraCover}
+            imageSrc={moccaSeaDimitraCover}
             imageAlt='Mocca by the sea Dimitra indoor image'
             title={t('mocca-by-the-sea-dimitra.title')}
             description={t('mocca-by-the-sea-dimitra.description')}
@@ -47,7 +47,7 @@ function Cards() {
             href='/accommodation/mocca-by-the-sea-dimitra'
           />
           <AccommodationCard
-            imageSrc={seaGeorgiaCover}
+            imageSrc={moccaSeaGeorgiaCover}
             imageAlt='Mocca by the sea Georgia indoor image'
             title={t('mocca-by-the-sea-georgia.title')}
             description={t('mocca-by-the-sea-georgia.description')}
@@ -59,7 +59,7 @@ function Cards() {
             href='/accommodation/mocca-by-the-sea-georgia'
           />
           <AccommodationCard
-            imageSrc={cityDimitraCover}
+            imageSrc={moccaCityCover}
             imageAlt='Mocca City Dimitra indoor image'
             title={t('mocca-city.title')}
             description={t('mocca-city.description')}

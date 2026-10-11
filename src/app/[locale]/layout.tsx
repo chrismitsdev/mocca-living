@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     default: 'Mocca Living'
   },
   description:
-    'Luxury accommodations in Makri and Alexandroupolis. Experience refined stays by the sea or in the heart of the city with Mocca Living.',
+    'Luxury accommodations in Makri and Alexandroupoli. Experience refined stays by the sea or in the heart of the city with Mocca Living.',
   formatDetection: {
     email: true,
     telephone: true

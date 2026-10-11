@@ -5,9 +5,9 @@ import {
 } from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
 import {
-  cityDimitraCover,
-  seaDimitraCover,
-  seaGeorgiaCover
+  moccaCityCover,
+  moccaSeaDimitraCover,
+  moccaSeaGeorgiaCover
 } from '@/public/images/covers'
 import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
 import {Button} from '@/src/components/ui/button'
@@ -113,7 +113,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                           >
                             <CustomImage
                               className='shrink-0 block-auto inline-16'
-                              src={seaDimitraCover}
+                              src={moccaSeaDimitraCover}
                               alt='Mocca Sea Dimitra cover image'
                               sizes='96px'
                             />
@@ -138,7 +138,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                           >
                             <CustomImage
                               className='shrink-0 block-auto inline-16'
-                              src={seaGeorgiaCover}
+                              src={moccaSeaGeorgiaCover}
                               alt='Mocca Sea Georgia cover image'
                               sizes='96px'
                             />
@@ -163,7 +163,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                           >
                             <CustomImage
                               className='shrink-0 block-auto inline-16'
-                              src={cityDimitraCover}
+                              src={moccaCityCover}
                               alt='Mocca City Georgia cover image'
                               sizes='96px'
                             />
