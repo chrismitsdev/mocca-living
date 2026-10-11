@@ -15,7 +15,7 @@ import {
   Text
 } from 'react-email'
 
-export default function InternalFormDev() {
+export default function ContactFormInternalDev() {
   return (
     <Html>
       <Head>
@@ -31,7 +31,10 @@ export default function InternalFormDev() {
         />
       </Head>
       <Tailwind>
-        <Body className='m-0 bg-[#e7d9be] text-[#453227]'>
+        <Body
+          className='m-0'
+          style={{backgroundColor: '#e7d9be', color: '#1d130d', opacity: 1}}
+        >
           <Container className='max-w-xl'>
             <Section className='px-4 pt-8 pb-6'>
               <Row className='mb-6'>
@@ -41,7 +44,7 @@ export default function InternalFormDev() {
                   rel='noopener noreferrer'
                 >
                   <Img
-                    src='https://4y4jwmfhzutn57mw.myfritz.net:47971/nas/filelink.lua?id=2facbccd5602da0d'
+                    src='https://4y4jwmfhzutn57mw.myfritz.net:47971/nas/filelink.lua?id=16baeee91497638c'
                     alt='Mocca Living logo'
                     width={100}
                     height={100}
@@ -57,7 +60,10 @@ export default function InternalFormDev() {
                 </Heading>
               </Row>
             </Section>
-            <Hr className='my-0  border-t-surface-4' />
+            <Hr
+              className='my-0'
+              style={{borderTopColor: '#b1a082'}}
+            />
             <Section className='px-4 pt-6 pb-8'>
               <Row className='mb-6'>
                 <Column>

@@ -15,10 +15,10 @@ import {
   Text
 } from 'react-email'
 
-export default async function ClientFormDev({locale}: {locale: Locale}) {
+export default async function ContactFormClientDev({locale}: {locale: Locale}) {
   const t = createTranslator({
     messages: await import(`../messages/${locale}.json`),
-    namespace: 'Components.contact_form_client',
+    namespace: 'Components.contact-form-client',
     locale
   })
 
@@ -50,11 +50,14 @@ export default async function ClientFormDev({locale}: {locale: Locale}) {
         </style>
       </Head>
       <Tailwind>
-        <Body className='p-2 m-0 bg-[#e7d9be] text-[#453227] opacity-100'>
+        <Body
+          className='p-2 m-0'
+          style={{backgroundColor: '#e7d9be', color: '#1d130d', opacity: 1}}
+        >
           <Container>
             <Section className='px-4 py-8'>
               <Img
-                src='https://4y4jwmfhzutn57mw.myfritz.net:47971/nas/filelink.lua?id=2facbccd5602da0d'
+                src='https://4y4jwmfhzutn57mw.myfritz.net:47971/nas/filelink.lua?id=16baeee91497638c'
                 alt='Mocca Living logo'
                 className='mx-auto'
                 width={100}
@@ -151,6 +154,6 @@ export default async function ClientFormDev({locale}: {locale: Locale}) {
   )
 }
 
-ClientFormDev.PreviewProps = {
+ContactFormClientDev.PreviewProps = {
   locale: 'en'
 }
