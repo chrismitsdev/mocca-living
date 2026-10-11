@@ -20,10 +20,10 @@ function HeroCarousel() {
       <CustomImage
         className='min-block-96'
         src={image}
-        alt={`About page carousel image slide ${i + 1}`}
+        alt=''
         sizes='100vw'
         quality={60}
-        priority={i === 0}
+        preload={i === 0}
       />
     </Slide>
   ))
@@ -35,7 +35,7 @@ function HeroCarousel() {
     >
       <CustomImage
         src={image}
-        alt={`About page carousel image thumb ${i + 1}`}
+        alt=''
         sizes='(min-width: 640px) 80px, 40px'
       />
     </Thumb>

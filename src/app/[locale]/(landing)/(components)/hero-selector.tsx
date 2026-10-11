@@ -58,7 +58,7 @@ function Destination({
         className='object-[40%] duration-1000 group-hover:scale-105'
         src={src}
         alt={title}
-        priority
+        preload
       />
       <div className='px-4 py-10 absolute inset-x-0 inset-be-0 text-surface-2 text-left bg-linear-to-b from-transparent to-black sm:py-30 sm:text-center'>
         <span className='block uppercase text-xs tracking-widest sm:text-sm'>

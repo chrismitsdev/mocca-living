@@ -16,7 +16,7 @@ function Hero() {
         alt='Accommodation page mobile hero image'
         sizes='100vw'
         quality={60}
-        priority
+        preload
       />
       <CustomImage
         className='w-full h-full hidden sm:block'
@@ -24,7 +24,7 @@ function Hero() {
         alt='Accommodation page desktop hero image'
         sizes='100vw'
         quality={60}
-        priority
+        preload
       />
       <Button
         className='absolute bottom-10 left-1/2 -translate-x-1/2'

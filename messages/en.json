@@ -229,7 +229,7 @@
     "contact": {
       "form": {
         "title": "Contact us",
-        "description": "Fill out the form below to make a booking, and we will contact you shortly.",
+        "description": "Fill out the form below, and we will contact you shortly.",
         "fields": {
           "fullname": {
             "label": "Full name",

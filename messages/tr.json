@@ -229,7 +229,7 @@
     "contact": {
       "form": {
         "title": "Bize ulaşın",
-        "description": "Rezervasyon yapmak için aşağıdaki formu doldurun, en kısa sürede sizinle iletişime geçeceğiz.",
+        "description": "Aşağıdaki formu doldurun, en kısa sürede sizinle iletişime geçeceğiz.",
         "fields": {
           "fullname": {
             "label": "Ad Soyad",

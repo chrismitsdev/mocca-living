@@ -29,7 +29,7 @@ function Reasons() {
         <CustomImage
           className='shrink-0 aspect-3/4 inline-screen'
           src={moccaCityCover}
-          alt='Mocca City Georgia villa'
+          alt='Mocca City apartment'
         />
         <CustomImage
           className='shrink-0 aspect-3/4 inline-screen'
