@@ -36,7 +36,7 @@ function Cards() {
         <div className='space-y-10'>
           <AccommodationCard
             imageSrc={moccaSeaDimitraCover}
-            imageAlt='Mocca by the sea Dimitra indoor image'
+            imageAlt='Mocca by the sea Dimitra image'
             title={t('mocca-by-the-sea-dimitra.title')}
             description={t('mocca-by-the-sea-dimitra.description')}
             numberGuests={t('mocca-by-the-sea-dimitra.guests')}
@@ -48,7 +48,7 @@ function Cards() {
           />
           <AccommodationCard
             imageSrc={moccaSeaGeorgiaCover}
-            imageAlt='Mocca by the sea Georgia indoor image'
+            imageAlt='Mocca by the sea Georgia image'
             title={t('mocca-by-the-sea-georgia.title')}
             description={t('mocca-by-the-sea-georgia.description')}
             numberGuests={t('mocca-by-the-sea-georgia.guests')}
@@ -60,7 +60,7 @@ function Cards() {
           />
           <AccommodationCard
             imageSrc={moccaCityCover}
-            imageAlt='Mocca City Dimitra indoor image'
+            imageAlt='Mocca City image'
             title={t('mocca-city.title')}
             description={t('mocca-city.description')}
             numberGuests={t('mocca-city.guests')}

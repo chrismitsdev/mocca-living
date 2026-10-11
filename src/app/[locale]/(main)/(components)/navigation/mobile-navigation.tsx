@@ -164,7 +164,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                             <CustomImage
                               className='shrink-0 block-auto inline-16'
                               src={moccaCityCover}
-                              alt='Mocca City Georgia cover image'
+                              alt='Mocca City cover image'
                               sizes='96px'
                             />
                             <div>

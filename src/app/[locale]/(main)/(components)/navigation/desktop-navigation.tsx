@@ -98,7 +98,7 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
                     <article className='p-2 space-y-2 hover:bg-surface-3'>
                       <CustomImage
                         src={moccaCityCover}
-                        alt='Mocca City Georgia cover image'
+                        alt='Mocca City cover image'
                         sizes='200px'
                       />
                       <Typography variant='large'>
