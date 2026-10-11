@@ -79,7 +79,7 @@ function Logo() {
   return (
     <Link
       className='p-2 absolute top-1/2 left-1/2 -translate-1/2 bg-surface-2 hover:bg-surface-3 focus-ring sm:p-3'
-      href='/guest-app'
+      href='/about'
     >
       <Image
         className='inline-8 sm:inline-14'
