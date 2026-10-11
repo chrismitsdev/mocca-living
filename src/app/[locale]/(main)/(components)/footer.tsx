@@ -122,7 +122,7 @@ function Footer() {
                     target='_blank'
                     rel='noopener noreferrer'
                   >
-                    <IconBrandFacebook />
+                    <IconBrandFacebook aria-hidden />
                   </a>
                 </IconButton>
                 <IconButton
@@ -135,7 +135,7 @@ function Footer() {
                     target='_blank'
                     rel='noopener noreferrer'
                   >
-                    <IconBrandInstagram />
+                    <IconBrandInstagram aria-hidden />
                   </a>
                 </IconButton>
               </div>

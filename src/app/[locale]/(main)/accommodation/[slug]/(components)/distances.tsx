@@ -91,7 +91,10 @@ function Item({
   return (
     <li className='space-y-2'>
       <h3 className='flex gap-1.5'>
-        <Icon className='shrink-0 w-5 h-lh' />
+        <Icon
+          className='shrink-0 w-5 h-lh'
+          aria-hidden
+        />
         <Typography variant='large'>{title}</Typography>
       </h3>
       <Typography className='sm:ps-6.5'>{description}</Typography>

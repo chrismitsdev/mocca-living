@@ -29,7 +29,10 @@ function SelectTrigger({
         className='shrink-0 transition'
         asChild
       >
-        <IconSelector className='size-5' />
+        <IconSelector
+          className='size-5'
+          aria-hidden
+        />
       </RadixSelect.Icon>
     </RadixSelect.Trigger>
   )

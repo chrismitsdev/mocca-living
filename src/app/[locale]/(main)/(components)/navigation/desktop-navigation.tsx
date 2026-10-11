@@ -50,7 +50,7 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
                 variant='ghost'
                 size='small'
               >
-                <IconDotsVertical />
+                <IconDotsVertical aria-hidden />
               </IconButton>
             </PopupTrigger>
             <PopupContent collisionPadding={16}>

@@ -109,7 +109,7 @@ function DialogClose({
         size={size}
         {...props}
       >
-        <IconX />
+        <IconX aria-hidden />
       </IconButton>
     </RadixDialog.Close>
   )

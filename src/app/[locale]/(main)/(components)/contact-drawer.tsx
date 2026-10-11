@@ -32,7 +32,7 @@ function ContactDrawer() {
           className='fixed inset-be-16 inset-e-3 bg-success text-success-foreground border-success hover:bg-success-hover hover:border-success-hover sm:hidden'
           variant='secondary'
         >
-          <IconBubbleTextFilled />
+          <IconBubbleTextFilled aria-hidden />
         </IconButton>
       </DrawerTrigger>
       <DrawerContent
@@ -49,21 +49,21 @@ function ContactDrawer() {
             aria-label='WhatsApp messaging'
             href={`https://api.whatsapp.com/send/?phone=${PHONE.replace('+', '')}&text=${encodeURIComponent(t('message'))}&type=phone_number&app_absent=0`}
           >
-            <IconBrandWhatsapp />
+            <IconBrandWhatsapp aria-hidden />
             <Typography variant='large'>{t('whatsapp')}</Typography>
           </ContactMethodLink>
           <ContactMethodLink
             aria-label='SMS message'
             href={`sms:${PHONE}`}
           >
-            <IconDeviceMobileMessage />
+            <IconDeviceMobileMessage aria-hidden />
             <Typography variant='large'>{t('sms')}</Typography>
           </ContactMethodLink>
           <ContactMethodLink
             aria-label='Call us'
             href={`tel:${PHONE}`}
           >
-            <IconPhoneCall />
+            <IconPhoneCall aria-hidden />
             <Typography variant='large'>{t('call')}</Typography>
           </ContactMethodLink>
         </DrawerBody>

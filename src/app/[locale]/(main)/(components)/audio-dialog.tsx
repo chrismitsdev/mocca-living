@@ -17,7 +17,7 @@ function AudioDialog() {
         asChild
       >
         <IconButton aria-label='Open music player'>
-          <IconMusic />
+          <IconMusic aria-hidden />
         </IconButton>
       </DialogTrigger>
       <DialogContent>

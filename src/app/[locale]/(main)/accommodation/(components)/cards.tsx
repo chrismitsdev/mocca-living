@@ -113,19 +113,19 @@ function AccommodationCard({
           <CardTitle>{title}</CardTitle>
           <div className='grid grid-cols-2 gap-4 md:flex'>
             <Badge>
-              <IconUserFilled />
+              <IconUserFilled aria-hidden />
               <span>{numberGuests}</span>
             </Badge>
             <Badge>
-              <IconMoodKidFilled />
+              <IconMoodKidFilled aria-hidden />
               <span>{numberChildren}</span>
             </Badge>
             <Badge>
-              <IconBedFilled />
+              <IconBedFilled aria-hidden />
               <span>{numberBedrooms}</span>
             </Badge>
             <Badge>
-              <IconBadgeWcFilled />
+              <IconBadgeWcFilled aria-hidden />
               <span>{numberBathrooms}</span>
             </Badge>
           </div>

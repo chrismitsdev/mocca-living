@@ -110,7 +110,10 @@ function ThumbsContainer({children}: React.PropsWithChildren) {
           size='small'
           onClick={(e) => animating && e.preventDefault()}
         >
-          <IconChevronUp className='ease-mocca group-data-open:duration-1000 group-data-closed:duration-750 group-data-open:rotate-180' />
+          <IconChevronUp
+            className='ease-mocca group-data-open:duration-1000 group-data-closed:duration-750 group-data-open:rotate-180'
+            aria-hidden
+          />
         </IconButton>
       </Dialog.Trigger>
       <Dialog.Content
@@ -183,7 +186,7 @@ function ButtonPrev({className}: {className?: string}) {
       onClick={handleScrollPrev}
       disabled={prevButtonDisabled}
     >
-      <IconChevronLeft />
+      <IconChevronLeft aria-hidden />
     </IconButton>
   )
 }
@@ -203,7 +206,7 @@ function ButtonNext({className}: {className?: string}) {
       onClick={handleScrollNext}
       disabled={nextButtonDisabled}
     >
-      <IconChevronRight />
+      <IconChevronRight aria-hidden />
     </IconButton>
   )
 }

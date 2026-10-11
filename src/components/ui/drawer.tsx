@@ -165,7 +165,7 @@ function DrawerClose({
         variant='ghost'
         size='small'
       >
-        <IconX />
+        <IconX aria-hidden />
       </IconButton>
     </RadixDrawer.Close>
   )

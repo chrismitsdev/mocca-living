@@ -101,7 +101,10 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                         variant='ghost'
                         size='small'
                       >
-                        <IconChevronRight className='transition group-data-open:rotate-90' />
+                        <IconChevronRight
+                          className='transition group-data-open:rotate-90'
+                          aria-hidden
+                        />
                       </IconButton>
                     </CollapsibleTrigger>
                     <CollapsibleContent className='col-span-full'>
@@ -201,7 +204,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                     target='_blank'
                     rel='noopener noreferrer'
                   >
-                    <IconBrandFacebook />
+                    <IconBrandFacebook aria-hidden />
                   </a>
                 </IconButton>
                 <IconButton
@@ -214,7 +217,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                     target='_blank'
                     rel='noopener noreferrer'
                   >
-                    <IconBrandInstagram />
+                    <IconBrandInstagram aria-hidden />
                   </a>
                 </IconButton>
               </div>

@@ -33,7 +33,10 @@ function Textarea({
             props.disabled && 'opacity-35'
           )}
         >
-          <Icon className='inline-5 block-lh' />
+          <Icon
+            className='inline-5 block-lh'
+            aria-hidden
+          />
         </span>
       )}
     </div>

@@ -66,7 +66,7 @@ function AudioPlayer() {
                       size='small'
                       onClick={prevTrack}
                     >
-                      <IconPlayerTrackPrevFilled />
+                      <IconPlayerTrackPrevFilled aria-hidden />
                     </IconButton>
                     <IconButton
                       aria-label={playing ? 'Pause' : 'Play'}
@@ -75,9 +75,9 @@ function AudioPlayer() {
                       onClick={togglePlay}
                     >
                       {playing ? (
-                        <IconPlayerPauseFilled />
+                        <IconPlayerPauseFilled aria-hidden />
                       ) : (
-                        <IconPlayerPlayFilled />
+                        <IconPlayerPlayFilled aria-hidden />
                       )}
                     </IconButton>
                     <IconButton
@@ -86,7 +86,7 @@ function AudioPlayer() {
                       size='small'
                       onClick={nextTrack}
                     >
-                      <IconPlayerTrackNextFilled />
+                      <IconPlayerTrackNextFilled aria-hidden />
                     </IconButton>
                   </div>
                   <CollapsibleTrigger asChild>
@@ -95,7 +95,7 @@ function AudioPlayer() {
                       variant='ghost'
                       size='small'
                     >
-                      <IconPlaylistFilled />
+                      <IconPlaylistFilled aria-hidden />
                     </IconButton>
                   </CollapsibleTrigger>
                 </div>

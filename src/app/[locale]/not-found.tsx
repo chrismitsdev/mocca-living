@@ -13,7 +13,10 @@ export default function NotFound() {
     <Section>
       <Container>
         <div className='flex flex-col items-center space-y-6'>
-          <IconAlertCircle className='size-32' />
+          <IconAlertCircle
+            className='size-32'
+            aria-hidden
+          />
           <Typography
             variant='h3'
             asChild

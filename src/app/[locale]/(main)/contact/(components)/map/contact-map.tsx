@@ -39,7 +39,12 @@ function ContactMap() {
       <Marker
         key={key}
         position={coords}
-        icon={<IconMapPinFilled className='text-primary' />}
+        icon={
+          <IconMapPinFilled
+            className='text-primary'
+            aria-hidden
+          />
+        }
       >
         <Popup
           offset={[0, -8]}

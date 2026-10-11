@@ -33,7 +33,7 @@ function Details({slug}: {slug: PropertySlug}) {
             <div className='flex gap-4 not-sm:justify-between'>
               <Button asChild>
                 <Link href='/accommodation'>
-                  <IconChevronLeft />
+                  <IconChevronLeft aria-hidden />
                   <span>{t('static.back-button')}</span>
                 </Link>
               </Button>
@@ -41,23 +41,23 @@ function Details({slug}: {slug: PropertySlug}) {
             <CardTitle>{t(`${slug}.title`)}</CardTitle>
             <CardDescription className='flex flex-wrap gap-2'>
               <Badge>
-                <IconUserFilled />
+                <IconUserFilled aria-hidden />
                 <span>{t(`${slug}.guests`)}</span>
               </Badge>
               <Badge>
-                <IconMoodKidFilled />
+                <IconMoodKidFilled aria-hidden />
                 <span>{t(`${slug}.child`)}</span>
               </Badge>
               <Badge>
-                <IconBedFilled />
+                <IconBedFilled aria-hidden />
                 <span>{t(`${slug}.bedrooms`)}</span>
               </Badge>
               <Badge>
-                <IconBadgeWcFilled />
+                <IconBadgeWcFilled aria-hidden />
                 <span>{t(`${slug}.bathrooms`)}</span>
               </Badge>
               <Badge>
-                <IconArrowAutofitContentFilled />
+                <IconArrowAutofitContentFilled aria-hidden />
                 <span>{t(`${slug}.area`)}</span>
               </Badge>
             </CardDescription>
@@ -94,7 +94,10 @@ function SlugList({data, children}: React.PropsWithChildren<{data: string}>) {
         key={entry}
         className='flex gap-1'
       >
-        <IconPointFilled className='shrink-0 w-4 h-8' />
+        <IconPointFilled
+          className='shrink-0 w-4 h-8'
+          aria-hidden
+        />
         <Typography>{entry}</Typography>
       </li>
     )
