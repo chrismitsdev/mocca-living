@@ -47,7 +47,7 @@ function CookieBanner() {
   return (
     <div className='fixed inset-0 bg-black/75 z-50'>
       <div
-        className='absolute inset-x-3 bottom-3 flex flex-col block-max max-block-[calc(100%-24px)] bg-surface-2 shadow-sm sm:top-1/2 sm:left-1/2 sm:-translate-1/2 sm:inline-lg'
+        className='absolute z-100 inset-x-3 bottom-3 flex flex-col block-max max-block-[calc(100%-24px)] bg-surface-2 shadow-sm sm:top-1/2 sm:left-1/2 sm:-translate-1/2 sm:inline-lg'
         role='alertdialog'
         aria-labelledby='cookie-consent-title'
         aria-describedby='cookie-consent-message'
