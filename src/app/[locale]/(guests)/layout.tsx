@@ -4,7 +4,7 @@ export default function GuestsLayout({children}: LayoutProps<'/[locale]'>) {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main className='bg-surface-1'>{children}</main>
     </>
   )
 }

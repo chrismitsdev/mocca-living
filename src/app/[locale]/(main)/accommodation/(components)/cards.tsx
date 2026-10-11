@@ -33,7 +33,7 @@ function Cards() {
   return (
     <Section>
       <Container>
-        <div className='space-y-8'>
+        <div className='space-y-10'>
           <AccommodationCard
             imageSrc={seaDimitraCover}
             imageAlt='Mocca by the sea Dimitra indoor image'

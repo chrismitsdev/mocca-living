@@ -25,32 +25,6 @@
   --color-green-11: #218358;
   --color-green-12: #193b2d;
 
-  --color-blue-1: #fbfdff;
-  --color-blue-2: #f4faff;
-  --color-blue-3: #e6f4fe;
-  --color-blue-4: #d5efff;
-  --color-blue-5: #c2e5ff;
-  --color-blue-6: #acd8fc;
-  --color-blue-7: #8ec8f6;
-  --color-blue-8: #5eb1ef;
-  --color-blue-9: #0090ff;
-  --color-blue-10: #0588f0;
-  --color-blue-11: #0d74ce;
-  --color-blue-12: #113264;
-
-  --color-yellow-1: #fdfdf9;
-  --color-yellow-2: #fefce9;
-  --color-yellow-3: #fffab8;
-  --color-yellow-4: #fff394;
-  --color-yellow-5: #ffe770;
-  --color-yellow-6: #f3d768;
-  --color-yellow-7: #e4c767;
-  --color-yellow-8: #d5ae39;
-  --color-yellow-9: #ffe629;
-  --color-yellow-10: #ffdc00;
-  --color-yellow-11: #9e6c00;
-  --color-yellow-12: #473b1f;
-
   --color-red-1: #fffcfc;
   --color-red-2: #fff7f7;
   --color-red-3: #feebec;
@@ -75,39 +49,19 @@
   --color-foreground: var(--color-brand-12);
 
   --color-primary: var(--color-brand-9);
-  --color-primary-foreground: var(--color-brand-3);
-  --color-primary-hover: var(--color-brand-10);
+  --color-primary-foreground: var(--color-brand-2);
+  --color-primary-hover: var(--color-brand-11);
 
   --color-success: var(--color-green-9);
-  --color-success-foreground: var(--color-green-3);
-  --color-success-hover: var(--color-green-10);
-
-  --color-info: var(--color-blue-9);
-  --color-info-foreground: var(--color-blue-3);
-  --color-info-hover: var(--color-blue-10);
-
-  --color-warning: var(--color-yellow-9);
-  --color-warning-foreground: var(--color-yellow-3);
-  --color-warning-hover: var(--color-yellow-10);
+  --color-success-foreground: var(--color-green-2);
+  --color-success-hover: var(--color-green-11);
 
   --color-danger: var(--color-red-9);
-  --color-danger-foreground: var(--color-red-3);
-  --color-danger-hover: var(--color-red-10);
+  --color-danger-foreground: var(--color-red-2);
+  --color-danger-hover: var(--color-red-11);
 
-  --color-border: var(--color-brand-6);
-  --color-border-hover: var(--color-brand-8);
-
-  --color-border-success: var(--color-green-6);
-  --color-border-success-hover: var(--color-green-8);
-
-  --color-border-danger: var(--color-red-6);
-  --color-border-danger-hover: var(--color-red-8);
-
-  --color-border-info: var(--color-blue-6);
-  --color-border-info-hover: var(--color-blue-8);
-
-  --color-border-warning: var(--color-yellow-6);
-  --color-border-warning-hover: var(--color-yellow-8);
+  --color-border: var(--color-brand-8);
+  --color-border-hover: var(--color-brand-11);
 
   --color-ring: var(--color-brand-12);
 }

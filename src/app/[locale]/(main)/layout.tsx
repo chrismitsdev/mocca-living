@@ -8,7 +8,7 @@ export default function MainLayout({children}: LayoutProps<'/[locale]'>) {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main className='bg-surface-1'>{children}</main>
       <Footer />
       <ContactDrawer />
       <AudioDialog />

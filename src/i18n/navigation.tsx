@@ -16,10 +16,7 @@ function Link({
 }: React.ComponentPropsWithRef<typeof NextIntlLink>) {
   return (
     <NextIntlLink
-      className={cn(
-        'block focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2',
-        className
-      )}
+      className={cn('block focus-ring', className)}
       {...props}
     />
   )

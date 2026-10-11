@@ -54,11 +54,10 @@ function Form() {
       noValidate
     >
       <FormHoneypot />
-      <div className='grid gap-x-10 gap-y-4 @xl:grid-cols-2'>
+      <div className='grid gap-6 @xl:grid-cols-3'>
         <FormControl
           id='fullname'
           error={state.errors.fullname}
-          className='col-span-full'
         >
           <Label htmlFor='fullname'>{t('fields.fullname.label')}</Label>
           <Input
@@ -112,7 +111,7 @@ function Form() {
         <FormControl
           id='message'
           error={state.errors.message}
-          className='col-span-full'
+          className='@xl:col-span-full'
         >
           <Label htmlFor='message'>{t('fields.message.label')}</Label>
           <Textarea

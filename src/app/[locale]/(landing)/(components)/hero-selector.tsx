@@ -7,11 +7,11 @@ import {CustomImage} from '@/src/components/ui/custom-image'
 import {Link} from '@/src/i18n/navigation'
 import {cn} from '@/src/lib/utils'
 
-function Selector() {
+function HeroSelector() {
   const t = useTranslations('Pages.home')
 
   return (
-    <div className='flex flex-col block-dvh relative overflow-hidden sm:flex-row'>
+    <nav className='flex flex-col block-dvh relative overflow-hidden sm:flex-row'>
       <Destination
         className='not-sm:border-be sm:border-e-2'
         href='/accommodation/mocca-by-the-sea-dimitra'
@@ -27,7 +27,7 @@ function Selector() {
         title={t('mocca-city.title')}
       />
       <Logo />
-    </div>
+    </nav>
   )
 }
 
@@ -49,7 +49,7 @@ function Destination({
   return (
     <Link
       className={cn(
-        'flex-1 size-full relative overflow-hidden border-surface-2 focus-visible:outline-surface-2 focus-visible:-outline-offset-8 group',
+        'flex-1 size-full relative overflow-hidden border-surface-2 focus-ring group',
         className
       )}
       href={href}
@@ -78,8 +78,8 @@ function Destination({
 function Logo() {
   return (
     <Link
-      className='p-2 absolute top-1/2 left-1/2 -translate-1/2 bg-surface-2 hover:bg-surface-3 focus-visible:outline-surface-2 sm:p-3'
-      href='/about'
+      className='p-2 absolute top-1/2 left-1/2 -translate-1/2 bg-surface-2 hover:bg-surface-3 focus-ring sm:p-3'
+      href='/guest-app'
     >
       <Image
         className='inline-8 sm:inline-14'
@@ -91,4 +91,4 @@ function Logo() {
   )
 }
 
-export {Selector}
+export {HeroSelector}

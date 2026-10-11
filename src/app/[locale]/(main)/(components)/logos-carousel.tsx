@@ -15,7 +15,7 @@ import {
 
 function LogosCarousel() {
   return (
-    <div className='order-1 relative before:absolute before:z-1 before:left-0 before:inset-y-0 before:w-10 before:bg-linear-to-l before:from-transparent before:to-surface-2 after:absolute after:z-auto after:right-0 after:inset-y-0 after:w-10 after:bg-linear-to-r after:from-transparent after:to-surface-2 sm:max-w-sm sm:order-2'>
+    <div className='order-1 relative before:absolute before:z-1 before:left-0 before:inset-y-0 before:w-10 before:bg-linear-to-l before:from-transparent before:to-surface-3 after:absolute after:z-auto after:right-0 after:inset-y-0 after:w-10 after:bg-linear-to-r after:from-transparent after:to-surface-3 sm:max-w-sm sm:order-2'>
       <Carousel
         options={{loop: true}}
         plugins={[Autoscroll({stopOnInteraction: false})]}

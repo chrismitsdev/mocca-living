@@ -7,7 +7,18 @@ import {cn} from '@/src/lib/utils'
 import {ScrollArea} from './scrollarea'
 
 const Drawer = RadixDrawer.Root
-const DrawerTrigger = RadixDrawer.Trigger
+
+function DrawerTrigger({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof RadixDrawer.Trigger>) {
+  return (
+    <RadixDrawer.Trigger
+      className={cn('focus-ring', className)}
+      {...props}
+    />
+  )
+}
 
 function DrawerOverlay({
   className,

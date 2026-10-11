@@ -15,9 +15,9 @@ function Footer() {
   const t = useTranslations('Components.footer')
 
   return (
-    <footer className='py-16 bg-surface-2'>
+    <footer className='py-16 bg-surface-3'>
       <Container className='space-y-12'>
-        <div className='grid gap-12 sm:grid-cols-2 lg:grid-cols-5'>
+        <div className='grid gap-12 items-start sm:grid-cols-2 lg:grid-cols-5'>
           <Link
             className='inline-fit'
             href='/'
@@ -114,7 +114,7 @@ function Footer() {
               <div className='space-x-2'>
                 <IconButton
                   aria-label='Visit our Facebook page (Opens in new tab)'
-                  variant='outline'
+                  variant='secondary'
                   asChild
                 >
                   <a
@@ -127,7 +127,7 @@ function Footer() {
                 </IconButton>
                 <IconButton
                   aria-label='Visit our Instagram page (Opens in new tab)'
-                  variant='outline'
+                  variant='secondary'
                   asChild
                 >
                   <a

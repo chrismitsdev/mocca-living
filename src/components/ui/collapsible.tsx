@@ -11,10 +11,7 @@ function CollapsibleTrigger({
 }: React.ComponentPropsWithRef<typeof RadixCollapsible.Trigger>) {
   return (
     <RadixCollapsible.Trigger
-      className={cn(
-        'cursor-pointer focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2',
-        className
-      )}
+      className={cn('cursor-pointer focus-ring', className)}
       {...props}
     />
   )

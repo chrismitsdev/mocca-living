@@ -7,7 +7,18 @@ import {ScrollArea} from '@/src/components/ui/scrollarea'
 import {cn} from '@/src/lib/utils'
 
 const Dialog = RadixDialog.Root
-const DialogTrigger = RadixDialog.Trigger
+
+function DialogTrigger({
+  className,
+  ...props
+}: React.CustomComponentPropsWithRef<typeof RadixDialog.Trigger>) {
+  return (
+    <RadixDialog.Trigger
+      className={cn('focus-ring', className)}
+      {...props}
+    />
+  )
+}
 
 function DialogOverlay({
   className,

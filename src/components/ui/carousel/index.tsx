@@ -106,7 +106,7 @@ function ThumbsContainer({children}: React.PropsWithChildren) {
               'sm:data-open:-translate-y-28'
             ]
           )}
-          variant='outline'
+          variant='secondary'
           size='small'
           onClick={(e) => animating && e.preventDefault()}
         >
@@ -126,7 +126,7 @@ function ThumbsContainer({children}: React.PropsWithChildren) {
         <Dialog.Title className='sr-only'>
           Click image thumbnail to view image in carousel
         </Dialog.Title>
-        <div className='m-1 bg-surface-2 border border-border sm:m-2'>
+        <div className='m-1 bg-surface-2 border sm:m-2'>
           <ScrollArea
             type='always'
             orientation='horizontal'
@@ -152,10 +152,7 @@ function Thumb({
 
   return (
     <button
-      className={cn(
-        'size-10 focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2 sm:size-20',
-        className
-      )}
+      className={cn('size-10 focus-ring sm:size-20', className)}
       onClick={() => handleScrollTo(thumbIndex)}
       {...props}
     >
@@ -181,7 +178,7 @@ function ButtonPrev({className}: {className?: string}) {
         'absolute inset-bs-1/2 -translate-y-1/2 inset-s-1 sm:inset-s-2',
         className
       )}
-      variant='outline'
+      variant='secondary'
       size='small'
       onClick={handleScrollPrev}
       disabled={prevButtonDisabled}
@@ -201,7 +198,7 @@ function ButtonNext({className}: {className?: string}) {
         'absolute inset-bs-1/2 -translate-y-1/2 inset-e-1 sm:inset-e-2',
         className
       )}
-      variant='outline'
+      variant='secondary'
       size='small'
       onClick={handleScrollNext}
       disabled={nextButtonDisabled}

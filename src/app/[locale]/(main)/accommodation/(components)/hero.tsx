@@ -27,7 +27,7 @@ function Hero() {
       <Button
         className='absolute bottom-10 left-1/2 -translate-x-1/2'
         size='large'
-        variant='outline'
+        variant='secondary'
         asChild
       >
         <Link href='/contact'>{t('button-label')}</Link>

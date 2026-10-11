@@ -3,6 +3,7 @@
 import {Children, cloneElement, isValidElement} from 'react'
 import {Checkbox} from '@/src/components/ui/checkbox'
 import {Input} from '@/src/components/ui/input'
+import {Label} from '@/src/components/ui/label'
 import {Textarea} from '@/src/components/ui/textarea'
 import {Typography} from '@/src/components/ui/typography'
 import {cn} from '@/src/lib/utils'
@@ -22,18 +23,30 @@ function FormControl({
   const renderedChildren = Children.map(children, (child) => {
     if (!isValidElement(child)) return child
 
-    const isFormElement =
-      child.type === Input || child.type === Textarea || child.type === Checkbox
+    if (child.type === Label) {
+      return cloneElement(
+        child as React.ReactElement<React.ComponentProps<typeof Label>>,
+        {
+          className: 'mb-1'
+        }
+      )
+    }
 
-    if (!isFormElement) return child
+    if (
+      child.type === Input ||
+      child.type === Textarea ||
+      child.type === Checkbox
+    ) {
+      return cloneElement(
+        child as React.ReactElement<React.HTMLAttributes<HTMLElement>>,
+        {
+          'aria-invalid': !!error || undefined,
+          'aria-describedby': errorId
+        }
+      )
+    }
 
-    return cloneElement(
-      child as React.ReactElement<React.HTMLAttributes<HTMLElement>>,
-      {
-        'aria-invalid': !!error || undefined,
-        'aria-describedby': errorId
-      }
-    )
+    return child
   })
 
   return (

@@ -101,8 +101,7 @@ export default async function ClientFormDev({locale}: {locale: Locale}) {
                   &copy; {new Date().getFullYear()} | Mocca Living |{' '}
                   <Link
                     className='text-inherit'
-                    // href='https://www.moccaliving.com'
-                    href={`https://www.moccaliving.com/${locale}`}
+                    href='https://www.moccaliving.com'
                     rel='noopener noreferrer'
                   >
                     www.moccaliving.com

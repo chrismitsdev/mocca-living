@@ -63,7 +63,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
         <DrawerTrigger asChild>
           <button
             aria-label='Show sidebar menu'
-            className='size-8 flex flex-col justify-center items-center gap-y-2 focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 *:inline-3/4 *:block-0.5 *:bg-foreground *:ease-mocca data-open:*:rotate-z-180 data-open:*:scale-x-125 data-open:*:duration-750 data-closed:*:duration-375 group'
+            className='size-8 flex flex-col justify-center items-center gap-y-2 focus-ring *:inline-3/4 *:block-0.5 *:bg-foreground *:ease-mocca data-open:*:rotate-z-180 data-open:*:scale-x-125 data-open:*:duration-750 data-closed:*:duration-375 group'
             type='button'
           >
             <span className='group-data-open:translate-y-2.5 group-data-open:rotate-45' />
@@ -193,7 +193,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
               <div className='flex gap-2'>
                 <IconButton
                   aria-label='Visit our Facebook page (Opens in new tab)'
-                  variant='outline'
+                  variant='secondary'
                   asChild
                 >
                   <a
@@ -206,7 +206,7 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
                 </IconButton>
                 <IconButton
                   aria-label='Visit our instagram page (Opens in new tab)'
-                  variant='outline'
+                  variant='secondary'
                   asChild
                 >
                   <a

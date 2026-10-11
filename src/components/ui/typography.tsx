@@ -22,7 +22,7 @@ function Typography({
         variant === 'h2' && ['text-3xl', 'font-bold'],
         variant === 'h3' && ['text-2xl', 'font-bold'],
         variant === 'h4' && ['text-xl', 'font-bold'],
-        variant === 'large' && ['text-bas', 'font-bold'],
+        variant === 'large' && ['text-base', 'font-bold'],
         variant === 'p' && ['text-base', 'leading-8'],
         variant === 'small' && ['text-sm', 'leading-6'],
         variant === 'tiny' && ['text-xs', 'font-bold', 'leading-6'],

@@ -15,9 +15,7 @@ function FormDialog({children}: React.PropsWithChildren) {
 
   return (
     <Dialog>
-      <DialogTrigger className='underline focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2'>
-        {children}
-      </DialogTrigger>
+      <DialogTrigger className='underline'>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{t('Metadata.privacy')}</DialogTitle>

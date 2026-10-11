@@ -99,7 +99,7 @@ function Gallery() {
           >
             <DialogClose
               className='absolute inset-bs-2 inset-e-2 z-50 sm:inset-e-4'
-              variant='outline'
+              variant='secondary'
             />
             <DialogTitle className='sr-only'>
               Home page gallery images
@@ -134,7 +134,7 @@ function GalleryTrigger({
   return (
     <DialogTrigger
       className={cn(
-        'relative overflow-hidden shadow-sm before:absolute before:inset-0 before:duration-700 before:ease-mocca hover:before:bg-black/75 focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2 group',
+        'relative overflow-hidden shadow-sm before:absolute before:inset-0 before:duration-700 before:ease-mocca hover:before:bg-black/75 focus-ring group',
         className
       )}
       onClick={onClick}
