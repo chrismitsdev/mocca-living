@@ -94,7 +94,7 @@ function ThumbsContainer({children}: React.PropsWithChildren) {
           aria-disabled={animating}
           className={cn(
             positionStyles,
-            'ease-mocca group',
+            'transition-transform ease-mocca group',
             [
               'data-closed:duration-750',
               'data-closed:-translate-y-1',
@@ -102,8 +102,8 @@ function ThumbsContainer({children}: React.PropsWithChildren) {
             ],
             [
               'data-open:duration-1000',
-              'data-open:-translate-y-17',
-              'sm:data-open:-translate-y-28'
+              'data-open:-translate-y-15',
+              'sm:data-open:-translate-y-31'
             ]
           )}
           variant='secondary'
@@ -129,13 +129,13 @@ function ThumbsContainer({children}: React.PropsWithChildren) {
         <Dialog.Title className='sr-only'>
           Click image thumbnail to view image in carousel
         </Dialog.Title>
-        <div className='m-1 bg-surface-2 border sm:m-2'>
+        <div className='bg-surface-4 sm:border sm:m-2'>
           <ScrollArea
             type='always'
             orientation='horizontal'
             showScrollbar={false}
           >
-            <div className='m-2 flex gap-2'>{children}</div>
+            <div className='p-2 flex gap-2 sm:p-3 sm:gap-3'>{children}</div>
           </ScrollArea>
         </div>
       </Dialog.Content>
@@ -161,8 +161,8 @@ function Thumb({
     >
       <span
         className={cn(
-          'block size-full grayscale-50 opacity-50 contrast-50 transition',
-          thumbIndex === selectedSnap && 'grayscale-0 opacity-100 contrast-100'
+          'block size-full opacity-50 contrast-50 transition',
+          thumbIndex === selectedSnap && 'opacity-100 contrast-100'
         )}
       >
         {children}
