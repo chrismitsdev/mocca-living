@@ -2,7 +2,7 @@ import type {MetadataRoute} from 'next'
 import type {Locale} from 'next-intl'
 import {getPathname} from '@/src/i18n/navigation'
 import {routing} from '@/src/i18n/routing'
-import {IS_PRODUCTION} from '@/src/lib/utils'
+import {IS_PRODUCTION} from '@/src/lib/constants'
 
 type Href = Parameters<typeof getPathname>[0]['href']
 

@@ -19,7 +19,7 @@ import {
 } from '@/src/components/ui/drawer'
 import {IconButton} from '@/src/components/ui/icon-button'
 import {Typography} from '@/src/components/ui/typography'
-import {PHONE} from '@/src/lib/utils'
+import {OWNER_PHONE} from '@/src/lib/constants'
 
 function ContactDrawer() {
   const t = useTranslations('Components.contact-drawer')
@@ -47,21 +47,21 @@ function ContactDrawer() {
         <DrawerBody className='space-y-4'>
           <ContactMethodLink
             aria-label='WhatsApp messaging'
-            href={`https://api.whatsapp.com/send/?phone=${PHONE.replace('+', '')}&text=${encodeURIComponent(t('message'))}&type=phone_number&app_absent=0`}
+            href={`https://api.whatsapp.com/send/?phone=${OWNER_PHONE.replace('+', '')}&text=${encodeURIComponent(t('message'))}&type=phone_number&app_absent=0`}
           >
             <IconBrandWhatsapp aria-hidden />
             <Typography variant='large'>{t('whatsapp')}</Typography>
           </ContactMethodLink>
           <ContactMethodLink
             aria-label='SMS message'
-            href={`sms:${PHONE}`}
+            href={`sms:${OWNER_PHONE}`}
           >
             <IconDeviceMobileMessage aria-hidden />
             <Typography variant='large'>{t('sms')}</Typography>
           </ContactMethodLink>
           <ContactMethodLink
             aria-label='Call us'
-            href={`tel:${PHONE}`}
+            href={`tel:${OWNER_PHONE}`}
           >
             <IconPhoneCall aria-hidden />
             <Typography variant='large'>{t('call')}</Typography>

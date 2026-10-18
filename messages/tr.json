@@ -29,8 +29,7 @@
       "mocca-by-the-sea-georgia": "Mocca by the Sea · Georgia",
       "mocca-city": "Mocca City"
     },
-    "not-found": "Sayfa bulunamadı",
-    "book-button": "Rezervasyon"
+    "not-found": "Sayfa bulunamadı"
   },
   "Pages": {
     "home": {
@@ -162,12 +161,13 @@
             "request": ""
           },
           "static": {
+            "back-button": "Geri",
+            "book-button": "Rezervasyon",
             "layout-title": "Mülk Düzeni",
             "indoor-amenities-title": "İç mekân olanakları",
             "outdoor-amenities-title": "Dış mekân olanakları",
             "complementary-title": "Tamamlayıcı hizmetler",
-            "request-title": "Kiralık hizmetler",
-            "back-button": "Geri"
+            "request-title": "Kiralık hizmetler"
           }
         },
         "distances": {

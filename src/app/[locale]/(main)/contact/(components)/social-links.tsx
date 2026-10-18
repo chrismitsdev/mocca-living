@@ -7,7 +7,7 @@ import {useTranslations} from 'next-intl'
 import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
-import {PHONE} from '@/src/lib/utils'
+import {OWNER_PHONE} from '@/src/lib/constants'
 
 function SocialLinks() {
   const t = useTranslations('Pages.contact.social-links')
@@ -31,7 +31,7 @@ function SocialLinks() {
             <Typography variant='h4'>{t('instagram')}</Typography>
           </SocialLink>
           <SocialLink
-            href={`tel:${PHONE}`}
+            href={`tel:${OWNER_PHONE}`}
             aria-label='Contact us via phone'
           >
             <IconPhoneFilled className='size-16' />

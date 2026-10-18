@@ -25,7 +25,7 @@ import {
 } from '@/src/components/ui/card'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {Link} from '@/src/i18n/navigation'
-import {MOCCA_CITY_GMAP, MOCCA_SEA_GMAP} from '@/src/lib/utils'
+import {MOCCA_CITY_GMAP, MOCCA_SEA_GMAP} from '@/src/lib/constants'
 
 function Cards() {
   const t = useTranslations('Pages.accommodation.index.cards')

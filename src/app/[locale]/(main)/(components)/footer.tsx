@@ -9,7 +9,8 @@ import {IconButton} from '@/src/components/ui/icon-button'
 import {Separator} from '@/src/components/ui/separator'
 import {Typography} from '@/src/components/ui/typography'
 import {Link} from '@/src/i18n/navigation'
-import {cn, MOCCA_CITY_GMAP, MOCCA_SEA_GMAP, PHONE} from '@/src/lib/utils'
+import {MOCCA_CITY_GMAP, MOCCA_SEA_GMAP, OWNER_PHONE} from '@/src/lib/constants'
+import {cn} from '@/src/lib/utils'
 
 function Footer() {
   const t = useTranslations('Components.footer')
@@ -30,9 +31,9 @@ function Footer() {
             />
           </Link>
           <FooterColumn title={t('row-1.info-column.title')}>
-            <FooterLink href={`tel:${PHONE}`}>
+            <FooterLink href={`tel:${OWNER_PHONE}`}>
               <Typography variant='small'>
-                {t('row-1.info-column.tel', {phone: PHONE})}
+                {t('row-1.info-column.tel', {phone: OWNER_PHONE})}
               </Typography>
             </FooterLink>
             <FooterLink href='mailto:info@moccaliving.com'>

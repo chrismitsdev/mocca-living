@@ -10,7 +10,6 @@ import {
   moccaSeaGeorgiaCover
 } from '@/public/images/covers'
 import {LocaleSwitcher} from '@/src/components/shared/locale-switcher'
-import {Button} from '@/src/components/ui/button'
 import {
   Collapsible,
   CollapsibleContent,
@@ -42,20 +41,6 @@ function MobileNavigation({open, onOpenChange}: MobileNavigationProps) {
 
   return (
     <div className='flex items-center gap-2 sm:hidden'>
-      <Button
-        size='small'
-        asChild
-      >
-        <a
-          className='uppercase'
-          href='https://www.hotelo.gr/en/properties/mocca-living-41'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          {t('book-button')}
-          <span>-15%</span>
-        </a>
-      </Button>
       <Drawer
         open={open}
         onOpenChange={onOpenChange}

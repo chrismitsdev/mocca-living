@@ -1,4 +1,5 @@
 import type {Metadata} from 'next'
+import type {Locale} from 'next-intl'
 import {getTranslations} from 'next-intl/server'
 import {Metadata as TranslationsMetadata} from '@/messages/en.json'
 import {Details} from './(components)/details'
@@ -8,6 +9,7 @@ import {HeroCarousel} from './(components)/hero-carousel'
 
 type Params = {
   params: Promise<{
+    locale: Locale
     slug: PropertySlug
   }>
 }
@@ -24,13 +26,16 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
 export default async function AccomodationSlugPage({
   params
 }: PageProps<'/[locale]/accommodation/[slug]'>) {
-  const {slug} = await (params as Params['params'])
+  const {slug, locale} = await (params as Params['params'])
 
   return (
     <>
       <Heading slug={slug} />
       <HeroCarousel slug={slug} />
-      <Details slug={slug} />
+      <Details
+        slug={slug}
+        locale={locale}
+      />
       <Distances slug={slug} />
     </>
   )

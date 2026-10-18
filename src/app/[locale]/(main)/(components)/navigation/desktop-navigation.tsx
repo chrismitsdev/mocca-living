@@ -5,7 +5,6 @@ import {
   moccaSeaDimitraCover,
   moccaSeaGeorgiaCover
 } from '@/public/images/covers'
-import {Button} from '@/src/components/ui/button'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {IconButton} from '@/src/components/ui/icon-button'
 import {Popup, PopupContent, PopupTrigger} from '@/src/components/ui/popup'
@@ -118,21 +117,6 @@ function DesktopNavigation({open, onOpenChange}: DesktopNavigationProps) {
           href='/contact'
           label={t('contact')}
         />
-        <li>
-          <Button
-            size='small'
-            asChild
-          >
-            <a
-              className='uppercase'
-              href='https://www.hotelo.gr/en/properties/mocca-living-41'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              {t('book-button')}
-            </a>
-          </Button>
-        </li>
       </ul>
     </nav>
   )

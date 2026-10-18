@@ -29,8 +29,7 @@
       "mocca-by-the-sea-georgia": "Mocca by the Sea · Georgia",
       "mocca-city": "Mocca City"
     },
-    "not-found": "Page not found",
-    "book-button": "Book now"
+    "not-found": "Page not found"
   },
   "Pages": {
     "home": {
@@ -162,12 +161,13 @@
             "request": ""
           },
           "static": {
+            "back-button": "Back",
+            "book-button": "Book now",
             "layout-title": "Property Layout",
             "indoor-amenities-title": "Indoor amenities",
             "outdoor-amenities-title": "Outdoor amenities",
             "complementary-title": "Complementary services",
-            "request-title": "Rental services",
-            "back-button": "Back"
+            "request-title": "Rental services"
           }
         },
         "distances": {

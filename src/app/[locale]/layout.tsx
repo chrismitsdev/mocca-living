@@ -7,7 +7,7 @@ import {getLocale} from 'next-intl/server'
 import {CookieBanner} from '@/src/components/shared/cookie-banner'
 import {PageTransition} from '@/src/components/shared/page-transition'
 import {routing} from '@/src/i18n/routing'
-import {IS_PRODUCTION} from '@/src/lib/utils'
+import {IS_PRODUCTION} from '@/src/lib/constants'
 
 const inter = Inter({
   subsets: ['latin', 'latin-ext', 'greek', 'cyrillic'],

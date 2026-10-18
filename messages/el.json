@@ -29,8 +29,7 @@
       "mocca-by-the-sea-georgia": "Mocca by the Sea · Georgia",
       "mocca-city": "Mocca City"
     },
-    "not-found": "Η σελίδα δεν βρέθηκε",
-    "book-button": "Κάντε Κράτηση"
+    "not-found": "Η σελίδα δεν βρέθηκε"
   },
   "Pages": {
     "home": {
@@ -162,12 +161,13 @@
             "request": ""
           },
           "static": {
+            "back-button": "Πίσω",
+            "book-button": "Κάντε Κράτηση",
             "layout-title": "Διάταξη Ακινήτου",
             "indoor-amenities-title": "Εσωτερικές ανέσεις",
             "outdoor-amenities-title": "Εξωτερικές ανέσεις",
             "complementary-title": "Συμπληρωματικές υπηρεσίες",
-            "request-title": "Υπηρεσίες ενοικίασης",
-            "back-button": "Πίσω"
+            "request-title": "Υπηρεσίες ενοικίασης"
           }
         },
         "distances": {
