@@ -79,6 +79,15 @@ function Footer() {
                 {t('row-1.links-column.accommodation-policy')}
               </Typography>
             </FooterLink>
+            <FooterLink
+              href='https://g.page/r/CdIRCmoyRexmEAE/review'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <Typography variant='small'>
+                {t('row-1.more-column.google-review')}
+              </Typography>
+            </FooterLink>
           </FooterColumn>
           <FooterColumn title={t('row-1.more-column.title')}>
             <FooterLink
