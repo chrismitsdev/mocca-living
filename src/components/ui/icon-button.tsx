@@ -34,12 +34,13 @@ function IconButton({
           'data-open:bg-primary-hover'
         ],
         variant === 'secondary' && [
-          'bg-surface-2',
+          'bg-surface-4',
           'text-primary',
           'border',
-          'hover:bg-surface-4',
-          'focus-visible:bg-surface-4',
-          'data-open:bg-surface-4'
+          'border-surface-5',
+          'hover:bg-surface-5',
+          'focus-visible:bg-surface-5',
+          'data-open:bg-surface-5'
         ],
         variant === 'ghost' && [
           'bg-transparent',

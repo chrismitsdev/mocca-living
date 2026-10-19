@@ -16,8 +16,8 @@ function Footer() {
   const t = useTranslations('Components.footer')
 
   return (
-    <footer className='py-16 bg-surface-3'>
-      <Container className='space-y-12'>
+    <footer className='py-16 bg-surface-3 sm:py-32'>
+      <Container className='space-y-16'>
         <div className='grid gap-12 items-start sm:grid-cols-2 lg:grid-cols-5'>
           <Link
             className='inline-fit'

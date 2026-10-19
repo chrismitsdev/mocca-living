@@ -45,7 +45,7 @@ export default async function RootLayout({children}: LayoutProps<'/[locale]'>) {
       lang={locale}
       className={inter.className}
     >
-      <body className='bg-surface-1 text-foreground border-border'>
+      <body className='bg-surface-1 text-foreground'>
         <NextIntlClientProvider>
           <PageTransition>{children}</PageTransition>
           <CookieBanner />

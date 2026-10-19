@@ -17,7 +17,7 @@ function Textarea({
     <div className='relative group'>
       <textarea
         className={cn(
-          'py-3.75 px-4 inline-full min-block-14 block bg-surface-3 border border-transparent font-bold outline-0 transition placeholder:text-sm placeholder:leading-6 not-placeholder-shown:border-border focus:border-border disabled:pointer-events-none disabled:opacity-35',
+          'py-3.75 px-4 inline-full min-block-14 block bg-surface-3 border border-transparent font-bold outline-0 transition placeholder:text-sm placeholder:leading-6 not-placeholder-shown:border-surface-4 focus:border-surface-4 disabled:pointer-events-none disabled:opacity-35',
           error &&
             'border-danger not-placeholder-shown:border-danger focus:border-danger',
           Icon && 'pl-9',

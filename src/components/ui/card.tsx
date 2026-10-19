@@ -3,7 +3,7 @@ import {cn} from '@/src/lib/utils'
 function Card({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      className={cn('bg-surface-2 border', className)}
+      className={cn('bg-surface-2 border border-surface-3', className)}
       {...props}
     />
   )
