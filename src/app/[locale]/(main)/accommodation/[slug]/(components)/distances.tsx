@@ -10,7 +10,6 @@ import {
   IconWalk
 } from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
-import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {
   Card,
@@ -64,17 +63,15 @@ function Distances({slug}: {slug: PropertySlug}) {
 
   return (
     <Section className='pt-16'>
-      <Container>
-        <Card className='sm:p-20'>
-          <CardHeader>
-            <CardTitle>{t('title')}</CardTitle>
-            <CardDescription>{t(`${location}.description`)}</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ul className='space-y-10'>{renderedItems}</ul>
-          </CardContent>
-        </Card>
-      </Container>
+      <Card className='sm:p-20'>
+        <CardHeader>
+          <CardTitle>{t('title')}</CardTitle>
+          <CardDescription>{t(`${location}.description`)}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ul className='space-y-10'>{renderedItems}</ul>
+        </CardContent>
+      </Card>
     </Section>
   )
 }

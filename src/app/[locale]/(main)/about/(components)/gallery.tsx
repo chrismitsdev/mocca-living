@@ -4,7 +4,6 @@ import {IconMaximize} from '@tabler/icons-react'
 import type {StaticImageData} from 'next/image'
 import {useState} from 'react'
 import {galleryImages} from '@/public/images/about/gallery'
-import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {
   ButtonNext,
@@ -88,32 +87,30 @@ function Gallery() {
 
   return (
     <Section>
-      <Container>
-        <Dialog>
-          <div className='grid grid-cols-2 gap-2 sm:grid-cols-8 sm:grid-rows-8'>
-            {renderedTriggers}
-          </div>
-          <DialogContent
-            className='bg-transparent sm:max-inline-7xl'
-            onCloseAutoFocus={(e) => e.preventDefault()}
-          >
-            <DialogClose
-              className='absolute inset-bs-2 inset-e-2 z-50 sm:inset-e-4'
-              variant='secondary'
-            />
-            <DialogTitle className='sr-only'>
-              About page gallery images
-            </DialogTitle>
-            <Carousel options={{startIndex: index, loop: true}}>
-              <CarouselViewport>
-                <SlidesContainer>{renderedSlides}</SlidesContainer>
-              </CarouselViewport>
-              <ButtonPrev />
-              <ButtonNext />
-            </Carousel>
-          </DialogContent>
-        </Dialog>
-      </Container>
+      <Dialog>
+        <div className='grid grid-cols-2 gap-2 sm:grid-cols-8 sm:grid-rows-8'>
+          {renderedTriggers}
+        </div>
+        <DialogContent
+          className='bg-transparent sm:max-inline-7xl'
+          onCloseAutoFocus={(e) => e.preventDefault()}
+        >
+          <DialogClose
+            className='absolute inset-bs-2 inset-e-2 z-50 sm:inset-e-4'
+            variant='secondary'
+          />
+          <DialogTitle className='sr-only'>
+            About page gallery images
+          </DialogTitle>
+          <Carousel options={{startIndex: index, loop: true}}>
+            <CarouselViewport>
+              <SlidesContainer>{renderedSlides}</SlidesContainer>
+            </CarouselViewport>
+            <ButtonPrev />
+            <ButtonNext />
+          </Carousel>
+        </DialogContent>
+      </Dialog>
     </Section>
   )
 }

@@ -4,7 +4,6 @@ import {
   IconPhoneFilled
 } from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
-import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 import {OWNER_PHONE} from '@/src/lib/constants'
@@ -14,31 +13,29 @@ function SocialLinks() {
 
   return (
     <Section>
-      <Container>
-        <div className='flex flex-col gap-8 sm:flex-row'>
-          <SocialLink
-            href='https://www.facebook.com/profile.php?id=61566665200042'
-            aria-label='Visit our Facebook page (Opens in new tab)'
-          >
-            <IconBrandFacebookFilled className='size-16' />
-            <Typography variant='h4'>{t('facebook')}</Typography>
-          </SocialLink>
-          <SocialLink
-            href='https://www.instagram.com/moccaliving.premiumstay'
-            aria-label='Visit our Instagram page (Opens in new tab)'
-          >
-            <IconBrandInstagramFilled className='size-16' />
-            <Typography variant='h4'>{t('instagram')}</Typography>
-          </SocialLink>
-          <SocialLink
-            href={`tel:${OWNER_PHONE}`}
-            aria-label='Contact us via phone'
-          >
-            <IconPhoneFilled className='size-16' />
-            <Typography variant='h4'>{t('phone')}</Typography>
-          </SocialLink>
-        </div>
-      </Container>
+      <div className='flex flex-col gap-8 sm:flex-row'>
+        <SocialLink
+          href='https://www.facebook.com/profile.php?id=61566665200042'
+          aria-label='Visit our Facebook page (Opens in new tab)'
+        >
+          <IconBrandFacebookFilled className='size-16' />
+          <Typography variant='h4'>{t('facebook')}</Typography>
+        </SocialLink>
+        <SocialLink
+          href='https://www.instagram.com/moccaliving.premiumstay'
+          aria-label='Visit our Instagram page (Opens in new tab)'
+        >
+          <IconBrandInstagramFilled className='size-16' />
+          <Typography variant='h4'>{t('instagram')}</Typography>
+        </SocialLink>
+        <SocialLink
+          href={`tel:${OWNER_PHONE}`}
+          aria-label='Contact us via phone'
+        >
+          <IconPhoneFilled className='size-16' />
+          <Typography variant='h4'>{t('phone')}</Typography>
+        </SocialLink>
+      </div>
     </Section>
   )
 }

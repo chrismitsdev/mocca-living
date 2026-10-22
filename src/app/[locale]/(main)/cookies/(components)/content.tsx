@@ -1,5 +1,4 @@
 import {useTranslations} from 'next-intl'
-import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
@@ -8,7 +7,7 @@ function Content() {
 
   return (
     <Section>
-      <Container className='space-y-12'>
+      <div className='space-y-16'>
         <article className='space-y-4'>
           <Typography
             variant='h4'
@@ -85,7 +84,7 @@ function Content() {
             </Typography>
           </ul>
         </article>
-      </Container>
+      </div>
     </Section>
   )
 }

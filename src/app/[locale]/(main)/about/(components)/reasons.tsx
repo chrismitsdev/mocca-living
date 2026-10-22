@@ -5,7 +5,6 @@ import {
   moccaSeaDimitraCover,
   moccaSeaGeorgiaCover
 } from '@/public/images/covers'
-import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {CustomImage} from '@/src/components/ui/custom-image'
 import {Typography} from '@/src/components/ui/typography'
@@ -42,38 +41,36 @@ function Reasons() {
           alt='Mocca Sea Georgia cover'
         />
       </div>
-      <Container>
-        <div className='space-y-12'>
-          <Typography
-            variant='h2'
-            asChild
-          >
-            <h2>{t('title')}</h2>
-          </Typography>
-          <ul className='space-y-10'>
-            <Reason
-              title={t('reason1.title')}
-              description={t('reason1.description')}
-            />
-            <Reason
-              title={t('reason2.title')}
-              description={t('reason2.description')}
-            />
-            <Reason
-              title={t('reason3.title')}
-              description={t('reason3.description')}
-            />
-            <Reason
-              title={t('reason4.title')}
-              description={t('reason4.description')}
-            />
-            <Reason
-              title={t('reason5.title')}
-              description={t('reason5.description')}
-            />
-          </ul>
-        </div>
-      </Container>
+      <div className='space-y-12'>
+        <Typography
+          variant='h2'
+          asChild
+        >
+          <h2>{t('title')}</h2>
+        </Typography>
+        <ul className='space-y-10'>
+          <Reason
+            title={t('reason1.title')}
+            description={t('reason1.description')}
+          />
+          <Reason
+            title={t('reason2.title')}
+            description={t('reason2.description')}
+          />
+          <Reason
+            title={t('reason3.title')}
+            description={t('reason3.description')}
+          />
+          <Reason
+            title={t('reason4.title')}
+            description={t('reason4.description')}
+          />
+          <Reason
+            title={t('reason5.title')}
+            description={t('reason5.description')}
+          />
+        </ul>
+      </div>
     </Section>
   )
 }

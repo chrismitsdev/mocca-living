@@ -1,5 +1,4 @@
 import {useTranslations} from 'next-intl'
-import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {
   Card,
@@ -16,19 +15,17 @@ function Form() {
 
   return (
     <Section>
-      <Container>
-        <Card className='sm:p-20'>
-          <CardHeader>
-            <CardTitle>{t('title')}</CardTitle>
-            <CardDescription>
-              <Typography>{t('description')}</Typography>
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ClientForm />
-          </CardContent>
-        </Card>
-      </Container>
+      <Card className='sm:p-20'>
+        <CardHeader>
+          <CardTitle>{t('title')}</CardTitle>
+          <CardDescription>
+            <Typography>{t('description')}</Typography>
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ClientForm />
+        </CardContent>
+      </Card>
     </Section>
   )
 }

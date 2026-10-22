@@ -11,7 +11,6 @@ import {
   moccaSeaDimitraCover,
   moccaSeaGeorgiaCover
 } from '@/public/images/covers'
-import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Badge} from '@/src/components/ui/badge'
 import {Button} from '@/src/components/ui/button'
@@ -32,46 +31,44 @@ function Cards() {
 
   return (
     <Section>
-      <Container>
-        <div className='space-y-10'>
-          <AccommodationCard
-            imageSrc={moccaSeaDimitraCover}
-            imageAlt='Mocca by the sea Dimitra image'
-            title={t('mocca-by-the-sea-dimitra.title')}
-            description={t('mocca-by-the-sea-dimitra.description')}
-            numberGuests={t('mocca-by-the-sea-dimitra.guests')}
-            numberBedrooms={t('mocca-by-the-sea-dimitra.bedrooms')}
-            numberBathrooms={t('mocca-by-the-sea-dimitra.bathrooms')}
-            numberChildren={t('mocca-by-the-sea-dimitra.children')}
-            location={MOCCA_SEA_GMAP}
-            href='/accommodation/mocca-by-the-sea-dimitra'
-          />
-          <AccommodationCard
-            imageSrc={moccaSeaGeorgiaCover}
-            imageAlt='Mocca by the sea Georgia image'
-            title={t('mocca-by-the-sea-georgia.title')}
-            description={t('mocca-by-the-sea-georgia.description')}
-            numberGuests={t('mocca-by-the-sea-georgia.guests')}
-            numberBedrooms={t('mocca-by-the-sea-georgia.bedrooms')}
-            numberBathrooms={t('mocca-by-the-sea-georgia.bathrooms')}
-            numberChildren={t('mocca-by-the-sea-georgia.children')}
-            location={MOCCA_SEA_GMAP}
-            href='/accommodation/mocca-by-the-sea-georgia'
-          />
-          <AccommodationCard
-            imageSrc={moccaCityCover}
-            imageAlt='Mocca City image'
-            title={t('mocca-city.title')}
-            description={t('mocca-city.description')}
-            numberGuests={t('mocca-city.guests')}
-            numberBedrooms={t('mocca-city.bedrooms')}
-            numberBathrooms={t('mocca-city.bathrooms')}
-            numberChildren={t('mocca-city.children')}
-            location={MOCCA_CITY_GMAP}
-            href='/accommodation/mocca-city'
-          />
-        </div>
-      </Container>
+      <div className='space-y-10'>
+        <AccommodationCard
+          imageSrc={moccaSeaDimitraCover}
+          imageAlt='Mocca by the sea Dimitra image'
+          title={t('mocca-by-the-sea-dimitra.title')}
+          description={t('mocca-by-the-sea-dimitra.description')}
+          numberGuests={t('mocca-by-the-sea-dimitra.guests')}
+          numberBedrooms={t('mocca-by-the-sea-dimitra.bedrooms')}
+          numberBathrooms={t('mocca-by-the-sea-dimitra.bathrooms')}
+          numberChildren={t('mocca-by-the-sea-dimitra.children')}
+          location={MOCCA_SEA_GMAP}
+          href='/accommodation/mocca-by-the-sea-dimitra'
+        />
+        <AccommodationCard
+          imageSrc={moccaSeaGeorgiaCover}
+          imageAlt='Mocca by the sea Georgia image'
+          title={t('mocca-by-the-sea-georgia.title')}
+          description={t('mocca-by-the-sea-georgia.description')}
+          numberGuests={t('mocca-by-the-sea-georgia.guests')}
+          numberBedrooms={t('mocca-by-the-sea-georgia.bedrooms')}
+          numberBathrooms={t('mocca-by-the-sea-georgia.bathrooms')}
+          numberChildren={t('mocca-by-the-sea-georgia.children')}
+          location={MOCCA_SEA_GMAP}
+          href='/accommodation/mocca-by-the-sea-georgia'
+        />
+        <AccommodationCard
+          imageSrc={moccaCityCover}
+          imageAlt='Mocca City image'
+          title={t('mocca-city.title')}
+          description={t('mocca-city.description')}
+          numberGuests={t('mocca-city.guests')}
+          numberBedrooms={t('mocca-city.bedrooms')}
+          numberBathrooms={t('mocca-city.bathrooms')}
+          numberChildren={t('mocca-city.children')}
+          location={MOCCA_CITY_GMAP}
+          href='/accommodation/mocca-city'
+        />
+      </div>
     </Section>
   )
 }

@@ -8,7 +8,6 @@ import Image from 'next/image'
 import {useTranslations} from 'next-intl'
 import {MapContainer, Popup, TileLayer} from 'react-leaflet'
 import moccaLogo from '@/public/logos/mocca-logo.svg'
-import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 
@@ -86,7 +85,7 @@ function ContactMap() {
 
   return (
     <Section>
-      <Container className='h-125 sm:h-174'>
+      <div className='h-125 sm:h-174'>
         <MapContainer
           className='h-full shadow-sm'
           center={MAP_CENTER}
@@ -96,7 +95,7 @@ function ContactMap() {
           <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
           {renderedMarkers}
         </MapContainer>
-      </Container>
+      </div>
     </Section>
   )
 }

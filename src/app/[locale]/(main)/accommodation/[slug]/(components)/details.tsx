@@ -8,7 +8,6 @@ import {
   IconUserFilled
 } from '@tabler/icons-react'
 import {type Locale, useTranslations} from 'next-intl'
-import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Badge} from '@/src/components/ui/badge'
 import {Button} from '@/src/components/ui/button'
@@ -39,69 +38,67 @@ function Details({slug, locale}: DetailsProps) {
 
   return (
     <Section className='pb-16'>
-      <Container>
-        <Card className='sm:p-20'>
-          <CardHeader className='space-y-6'>
-            <div className='flex gap-4 justify-between'>
-              <Button asChild>
-                <Link href='/accommodation'>
-                  <IconChevronLeft aria-hidden />
-                  <span>{t('static.back-button')}</span>
-                </Link>
-              </Button>
-              <Button asChild>
-                <Link
-                  href={hrefLookup[slug](locale)}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  {`${t('static.book-button')} -15%`}
-                </Link>
-              </Button>
-            </div>
-            <CardTitle>{t(`${slug}.title`)}</CardTitle>
-            <CardDescription className='flex flex-wrap gap-2'>
-              <Badge>
-                <IconUserFilled aria-hidden />
-                <span>{t(`${slug}.guests`)}</span>
-              </Badge>
-              <Badge>
-                <IconMoodKidFilled aria-hidden />
-                <span>{t(`${slug}.child`)}</span>
-              </Badge>
-              <Badge>
-                <IconBedFilled aria-hidden />
-                <span>{t(`${slug}.bedrooms`)}</span>
-              </Badge>
-              <Badge>
-                <IconBadgeWcFilled aria-hidden />
-                <span>{t(`${slug}.bathrooms`)}</span>
-              </Badge>
-              <Badge>
-                <IconArrowAutofitContentFilled aria-hidden />
-                <span>{t(`${slug}.area`)}</span>
-              </Badge>
-            </CardDescription>
-          </CardHeader>
-          <CardContent className='space-y-8'>
-            <SlugList data={t(`${slug}.layout`)}>
-              {t('static.layout-title')}
-            </SlugList>
-            <SlugList data={t(`${slug}.amenities.indoor`)}>
-              {t('static.indoor-amenities-title')}
-            </SlugList>
-            <SlugList data={t(`${slug}.amenities.outdoor`)}>
-              {t('static.outdoor-amenities-title')}
-            </SlugList>
-            <SlugList data={t(`${slug}.complementary`)}>
-              {t('static.complementary-title')}
-            </SlugList>
-            <SlugList data={t(`${slug}.request`)}>
-              {t('static.request-title')}
-            </SlugList>
-          </CardContent>
-        </Card>
-      </Container>
+      <Card className='sm:p-20'>
+        <CardHeader className='space-y-6'>
+          <div className='flex gap-4 justify-between'>
+            <Button asChild>
+              <Link href='/accommodation'>
+                <IconChevronLeft aria-hidden />
+                <span>{t('static.back-button')}</span>
+              </Link>
+            </Button>
+            <Button asChild>
+              <Link
+                href={hrefLookup[slug](locale)}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                {`${t('static.book-button')} -15%`}
+              </Link>
+            </Button>
+          </div>
+          <CardTitle>{t(`${slug}.title`)}</CardTitle>
+          <CardDescription className='flex flex-wrap gap-2'>
+            <Badge>
+              <IconUserFilled aria-hidden />
+              <span>{t(`${slug}.guests`)}</span>
+            </Badge>
+            <Badge>
+              <IconMoodKidFilled aria-hidden />
+              <span>{t(`${slug}.child`)}</span>
+            </Badge>
+            <Badge>
+              <IconBedFilled aria-hidden />
+              <span>{t(`${slug}.bedrooms`)}</span>
+            </Badge>
+            <Badge>
+              <IconBadgeWcFilled aria-hidden />
+              <span>{t(`${slug}.bathrooms`)}</span>
+            </Badge>
+            <Badge>
+              <IconArrowAutofitContentFilled aria-hidden />
+              <span>{t(`${slug}.area`)}</span>
+            </Badge>
+          </CardDescription>
+        </CardHeader>
+        <CardContent className='space-y-8'>
+          <SlugList data={t(`${slug}.layout`)}>
+            {t('static.layout-title')}
+          </SlugList>
+          <SlugList data={t(`${slug}.amenities.indoor`)}>
+            {t('static.indoor-amenities-title')}
+          </SlugList>
+          <SlugList data={t(`${slug}.amenities.outdoor`)}>
+            {t('static.outdoor-amenities-title')}
+          </SlugList>
+          <SlugList data={t(`${slug}.complementary`)}>
+            {t('static.complementary-title')}
+          </SlugList>
+          <SlugList data={t(`${slug}.request`)}>
+            {t('static.request-title')}
+          </SlugList>
+        </CardContent>
+      </Card>
     </Section>
   )
 }

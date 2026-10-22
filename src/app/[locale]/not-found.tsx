@@ -1,6 +1,5 @@
 import {IconAlertCircle} from '@tabler/icons-react'
 import {useTranslations} from 'next-intl'
-import {Container} from '@/src/components/shared/container'
 import {Section} from '@/src/components/shared/section'
 import {Button} from '@/src/components/ui/button'
 import {Typography} from '@/src/components/ui/typography'
@@ -11,33 +10,31 @@ export default function NotFound() {
 
   return (
     <Section>
-      <Container>
-        <div className='flex flex-col items-center space-y-6'>
-          <IconAlertCircle
-            className='size-32'
-            aria-hidden
-          />
-          <Typography
-            variant='h3'
-            asChild
+      <div className='flex flex-col items-center space-y-6'>
+        <IconAlertCircle
+          className='size-32'
+          aria-hidden
+        />
+        <Typography
+          variant='h3'
+          asChild
+        >
+          <h2>{t('title')}</h2>
+        </Typography>
+        <Typography>{t('subtitle')}</Typography>
+        <Button
+          variant='primary'
+          size='large'
+          asChild
+        >
+          <Link
+            href='/'
+            replace
           >
-            <h2>{t('title')}</h2>
-          </Typography>
-          <Typography>{t('subtitle')}</Typography>
-          <Button
-            variant='primary'
-            size='large'
-            asChild
-          >
-            <Link
-              href='/'
-              replace
-            >
-              <span>{t('linkToHome')}</span>
-            </Link>
-          </Button>
-        </div>
-      </Container>
+            <span>{t('linkToHome')}</span>
+          </Link>
+        </Button>
+      </div>
     </Section>
   )
 }

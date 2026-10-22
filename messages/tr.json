@@ -46,8 +46,18 @@
     },
     "about": {
       "intro": {
-        "title": "Lüks yaşamın zirvesini deneyimleyin",
-        "message": "Mocca Living, zarafeti, mahremiyeti ve modern konforu bir arada sunan, özenle tasarlanmış yaşam alanlarından oluşan bir koleksiyondur.<br></br><strong>Mocca by the Sea</strong>, Makri'nin Agia Paraskevi bölgesinde, özel bahçeleri, hidromasajlı mini havuzu ve sahile doğrudan erişimiyle iki zarif villa sunar — gündelik hayattan uzaklaşarak huzur ve özgün bir deniz kenarı deneyimi arayanlar için idealdir. <strong>Mocca City</strong>, Alexandroupoli'in merkezinde Dimokratias Bulvarı üzerinde, şehrin ana caddesine manzaralı tam donanımlı yenilenmiş bir daire sunar; mağazalara, restoranlara, sahil yürüyüş yoluna ve limana kolay erişim imkânı sağlar."
+        "section-title": "Mocca Living Hakkında",
+        "title": "İki yer. Tek bir ev hissi.",
+        "description": "Mocca Living, konforu, mahremiyeti ve incelikli estetiği bir araya getiren, özenle tasarlanmış konaklama seçeneklerinden oluşan bir koleksiyondur. Makri'de deniz kenarında ve Aleksandrupoli'nin kalbinde yer alan iki farklı tesisiyle, özgün deneyimlere, kaliteli zamana ve daha yavaş, daha anlamlı bir seyahat anlayışına değer verenlere modern konaklama deneyimleri sunar.",
+        "subtitle": "Konaklamadan daha fazlası",
+        "mocca-by-the-sea": {
+          "heading": "Doğayla baş başa kalın",
+          "location": "Makri, Aleksandrupoli"
+        },
+        "mocca-city": {
+          "heading": "Şehri yaşayın",
+          "location": "Aleksandrupoli şehir merkezi"
+        }
       },
       "reasons": {
         "title": "Mocca Living için ideal:",
