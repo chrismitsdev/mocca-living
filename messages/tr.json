@@ -50,14 +50,8 @@
         "title": "İki yer. Tek bir ev hissi.",
         "description": "Mocca Living, konforu, mahremiyeti ve incelikli estetiği bir araya getiren, özenle tasarlanmış konaklama seçeneklerinden oluşan bir koleksiyondur. Makri'de deniz kenarında ve Aleksandrupoli'nin kalbinde yer alan iki farklı tesisiyle, özgün deneyimlere, kaliteli zamana ve daha yavaş, daha anlamlı bir seyahat anlayışına değer verenlere modern konaklama deneyimleri sunar.",
         "subtitle": "Konaklamadan daha fazlası",
-        "mocca-by-the-sea": {
-          "heading": "Doğayla baş başa kalın",
-          "location": "Makri, Aleksandrupoli"
-        },
-        "mocca-city": {
-          "heading": "Şehri yaşayın",
-          "location": "Aleksandrupoli şehir merkezi"
-        }
+        "mocca-by-the-sea-location": "Makri, Aleksandrupoli",
+        "mocca-city-location": "Aleksandrupoli şehir merkezi"
       },
       "reasons": {
         "title": "Mocca Living için ideal:",

@@ -46,7 +46,7 @@ function SocialLink({
 }: React.ComponentPropsWithoutRef<'a'>) {
   return (
     <a
-      className='flex-1 p-6 inline-flex flex-col items-center gap-4 transition hover:bg-surface-3 hover:-translate-y-0.5 focus-ring'
+      className='flex-1 p-6 inline-flex flex-col items-center gap-4 transition hover:bg-surface-3 hover:-translate-y-0.5 focus-visible:bg-surface-3 focus-ring'
       target={target}
       {...props}
     />

@@ -96,8 +96,8 @@ function Gallery() {
           onCloseAutoFocus={(e) => e.preventDefault()}
         >
           <DialogClose
-            className='absolute inset-bs-2 inset-e-2 z-50 sm:inset-e-4'
-            variant='secondary'
+            className='absolute inset-bs-2 inset-e-1 z-50 sm:inset-e-2'
+            variant='primary'
           />
           <DialogTitle className='sr-only'>
             About page gallery images

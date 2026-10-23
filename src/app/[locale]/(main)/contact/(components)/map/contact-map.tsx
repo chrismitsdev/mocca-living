@@ -40,7 +40,7 @@ function ContactMap() {
         position={coords}
         icon={
           <IconMapPinFilled
-            className='text-primary'
+            className='text-primary size-8'
             aria-hidden
           />
         }

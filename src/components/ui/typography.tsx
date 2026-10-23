@@ -38,7 +38,12 @@ function Typography({
         variant === 'large' && ['text-base', 'font-bold'],
         variant === 'p' && ['text-base', 'leading-8'],
         variant === 'small' && ['text-sm', 'leading-6'],
-        variant === 'tiny' && ['text-xs', 'font-bold', 'leading-6'],
+        variant === 'tiny' && [
+          'text-[10px]',
+          'font-bold',
+          'sm:leading-6',
+          'sm:text-xs'
+        ],
         className
       )}
       {...props}

@@ -50,14 +50,8 @@
         "title": "Two places. One feeling of home.",
         "description": "Mocca Living is a collection of carefully designed accommodations that combine comfort, privacy and refined aesthetics. With two distinct properties by the sea in Makri and in the heart of Alexandroupoli - it offers contemporary stays for those who value authentic experiences, quality time and a slower, more meaningful way of travelling.",
         "subtitle": "More than a stay",
-        "mocca-by-the-sea": {
-          "heading": "Escape to nature",
-          "location": "Makri, Alexandroupoli"
-        },
-        "mocca-city": {
-          "heading": "Live the city",
-          "location": "Alexandroupoli city center"
-        }
+        "mocca-by-the-sea-location": "Makri, Alexandroupoli",
+        "mocca-city-location": "Alexandroupoli city center"
       },
       "reasons": {
         "title": "Mocca Living is ideal for:",

@@ -9,7 +9,6 @@ function Hero() {
 
   return (
     <section className='relative h-[calc(100svh-var(--main-header-height))]'>
-      <div className='absolute inset-0 bg-black/25' />
       <CustomImage
         className='w-full h-full sm:hidden'
         src={mobile}
@@ -29,7 +28,7 @@ function Hero() {
       <Button
         className='absolute bottom-10 left-1/2 -translate-x-1/2'
         size='large'
-        variant='secondary'
+        variant='primary'
         asChild
       >
         <Link href='/contact'>{t('button-label')}</Link>

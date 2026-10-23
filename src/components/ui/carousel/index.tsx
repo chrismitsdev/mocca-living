@@ -106,7 +106,7 @@ function ThumbsContainer({children}: React.PropsWithChildren) {
               'sm:data-open:-translate-y-31'
             ]
           )}
-          variant='secondary'
+          variant='primary'
           size='small'
           onClick={(e) => animating && e.preventDefault()}
         >
@@ -181,7 +181,7 @@ function ButtonPrev({className}: {className?: string}) {
         'absolute inset-bs-1/2 -translate-y-1/2 inset-s-1 sm:inset-s-2',
         className
       )}
-      variant='secondary'
+      variant='primary'
       size='small'
       onClick={handleScrollPrev}
       disabled={prevButtonDisabled}
@@ -201,7 +201,7 @@ function ButtonNext({className}: {className?: string}) {
         'absolute inset-bs-1/2 -translate-y-1/2 inset-e-1 sm:inset-e-2',
         className
       )}
-      variant='secondary'
+      variant='primary'
       size='small'
       onClick={handleScrollNext}
       disabled={nextButtonDisabled}
