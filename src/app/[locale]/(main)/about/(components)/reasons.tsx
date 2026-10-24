@@ -24,7 +24,7 @@ function Reasons() {
 
   return (
     <Section title={t('section-title')}>
-      <div className='space-y-8 sm:space-y-6'>
+      <div className='space-y-6 sm:space-y-10'>
         <Typography
           variant='display'
           serif
