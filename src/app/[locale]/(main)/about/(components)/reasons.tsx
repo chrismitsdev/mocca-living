@@ -6,62 +6,40 @@ import {
   type IconProps,
   IconUsersGroup
 } from '@tabler/icons-react'
+import {useTranslations} from 'next-intl'
 import {Section} from '@/src/components/shared/section'
 import {Typography} from '@/src/components/ui/typography'
 import {cn} from '@/src/lib/utils'
 
 const reasons = [
-  {
-    Icon: IconUsersGroup,
-    title: 'Families',
-    description:
-      'Spacious and fully equipped accommodations, ideal for families who want to enjoy quality time together in a comfortable and safe environment.'
-  },
-  {
-    Icon: IconGlassChampagne,
-    title: 'Friends',
-    description:
-      'The perfect base for friends to share unforgettable moments, with stylish spaces and easy access to beaches, restaurants and the vibrant local life.'
-  },
-  {
-    Icon: IconCrown,
-    title: 'VIP Guests',
-    description:
-      'Privacy, refined design and personalized attention for guests who expect a more exclusive and elevated experience.'
-  },
-  {
-    Icon: IconHeart,
-    title: 'Couples',
-    description:
-      'A romantic and serene setting for couples looking to escape, relax and create lasting memories by the sea or in the city.'
-  },
-  {
-    Icon: IconPlant2,
-    title: 'Wellness & Relaxation',
-    description:
-      "Whether it's a short break or a longer stay, Mocca Living offers a peaceful atmosphere and comfortable spaces for rest, rejuvenation and slow living."
-  }
-]
+  {key: 'reason1', Icon: IconUsersGroup},
+  {key: 'reason2', Icon: IconGlassChampagne},
+  {key: 'reason3', Icon: IconCrown},
+  {key: 'reason4', Icon: IconHeart},
+  {key: 'reason5', Icon: IconPlant2}
+] as const
 
 function Reasons() {
+  const t = useTranslations('Pages.about.reasons')
+
   return (
-    <Section title='For every kind of getaway'>
+    <Section title={t('section-title')}>
       <div className='space-y-8 sm:space-y-6'>
         <Typography
           variant='display'
           serif
           asChild
         >
-          <h2>Mocca Living is ideal for:</h2>
+          <h2>{t('title')}</h2>
         </Typography>
         <ul className='grid gap-4 sm:grid-cols-6'>
-          {reasons.map(({title, description, Icon}, index) => (
+          {reasons.map(({key, Icon}, index) => (
             <ReasonCard
-              key={title}
+              key={key}
               className={index < 3 ? 'sm:col-span-2' : 'sm:col-span-3'}
               icon={Icon}
-              title={title}
-              description={description}
+              title={t(`${key}.title`)}
+              description={t(`${key}.description`)}
             />
           ))}
         </ul>

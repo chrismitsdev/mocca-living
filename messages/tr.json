@@ -54,26 +54,27 @@
         "mocca-city-location": "Aleksandrupoli şehir merkezi"
       },
       "reasons": {
+        "section-title": "Her tür kaçamak için",
         "title": "Mocca Living için ideal:",
         "reason1": {
           "title": "Aileler",
-          "description": "Mocca Living, rahat ve tam donanımlı konaklama imkânları sunar; birlikte kaliteli zaman geçirmek isteyen aileler için huzurlu ve uygun bir ortam sağlar."
+          "description": "Konforlu ve güvenli bir ortamda birlikte kaliteli zaman geçirmek isteyen aileler için ideal, geniş ve tam donanımlı konaklama imkânları."
         },
         "reason2": {
           "title": "Arkadaşlar",
-          "description": "Arkadaşlarınızla unutulmaz bir konaklama için Mocca Living’de buluşun; paylaşılan deneyimler ve rahatlama anları kalıcı hatıralar oluşturur."
+          "description": "Şık mekânlar ile plajlara, restoranlara ve hareketli yerel yaşama kolay erişimiyle, arkadaşların unutulmaz anlar paylaşması için mükemmel bir üs."
         },
         "reason3": {
           "title": "VIP Misafirler",
-          "description": "Mocca Living’de gizlilik, konfor ve özenli hizmet deneyimleyin; seçkin ve özel bir ortamı takdir eden misafirler için tasarlanmıştır."
+          "description": "Daha seçkin ve üst düzey bir deneyim bekleyen misafirler için mahremiyet, incelikli tasarım ve kişiye özel ilgi."
         },
         "reason4": {
           "title": "Çiftler",
-          "description": "Mocca Living, huzurlu bir kaçamak arayan çiftler için samimi ve sakin bir alan sunar, paylaşılan anlar için rahatlatıcı bir atmosfer sağlar."
+          "description": "Kaçmak, dinlenmek ve deniz kenarında ya da şehirde kalıcı anılar biriktirmek isteyen çiftler için romantik ve huzurlu bir ortam."
         },
         "reason5": {
           "title": "Wellness & Rahatlama",
-          "description": "Kısa konaklamalar veya uzun süreli kaçamaklar için, Mocca Living dinlenme, wellness ve yavaş yaşam için ideal, sakin ve konforlu bir ortam sunar."
+          "description": "İster kısa bir mola, ister daha uzun bir konaklama olsun, Mocca Living dinlenme, yenilenme ve yavaş yaşam için huzurlu bir atmosfer ve konforlu mekânlar sunar."
         }
       }
     },

@@ -54,26 +54,27 @@
         "mocca-city-location": "Alexandroupoli city center"
       },
       "reasons": {
+        "section-title": "For every kind of getaway",
         "title": "Mocca Living is ideal for:",
         "reason1": {
           "title": "Families",
-          "description": "Mocca Living offers comfortable and well-equipped accommodations, perfect for families looking to enjoy quality time together in a relaxing and convenient setting."
+          "description": "Spacious and fully equipped accommodations, ideal for families who want to enjoy quality time together in a comfortable and safe environment."
         },
         "reason2": {
           "title": "Friends",
-          "description": "Gather with friends for a memorable stay at Mocca Living, where shared experiences and moments of relaxation create lasting memories."
+          "description": "The perfect base for friends to share unforgettable moments, with stylish spaces and easy access to beaches, restaurants and the vibrant local life."
         },
         "reason3": {
           "title": "VIP Guests",
-          "description": "Experience privacy, comfort, and attentive service at Mocca Living, designed for guests who appreciate a refined and exclusive environment."
+          "description": "Privacy, refined design and personalized attention for guests who expect a more exclusive and elevated experience."
         },
         "reason4": {
           "title": "Couples",
-          "description": "Mocca Living is a welcoming and serene space for couples seeking a peaceful getaway, offering a relaxing atmosphere for shared moments."
+          "description": "A romantic and serene setting for couples looking to escape, relax and create lasting memories by the sea or in the city."
         },
         "reason5": {
           "title": "Wellness & Relaxation",
-          "description": "Whether for short stays or extended retreats, Mocca Living provides a calm and comfortable environment ideal for rest, wellness, and slow-living."
+          "description": "Whether it's a short break or a longer stay, Mocca Living offers a peaceful atmosphere and comfortable spaces for rest, rejuvenation and slow living."
         }
       }
     },
