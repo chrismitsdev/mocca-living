@@ -1,85 +1,109 @@
-import {useTranslations} from 'next-intl'
-import {reasonImages} from '@/public/images/about/reasons'
 import {
-  moccaCityCover,
-  moccaSeaDimitraCover,
-  moccaSeaGeorgiaCover
-} from '@/public/images/covers'
+  IconCrown,
+  IconGlassChampagne,
+  IconHeart,
+  IconPlant2,
+  type IconProps,
+  IconUsersGroup
+} from '@tabler/icons-react'
 import {Section} from '@/src/components/shared/section'
-import {CustomImage} from '@/src/components/ui/custom-image'
 import {Typography} from '@/src/components/ui/typography'
+import {cn} from '@/src/lib/utils'
+
+const reasons = [
+  {
+    Icon: IconUsersGroup,
+    title: 'Families',
+    description:
+      'Spacious and fully equipped accommodations, ideal for families who want to enjoy quality time together in a comfortable and safe environment.'
+  },
+  {
+    Icon: IconGlassChampagne,
+    title: 'Friends',
+    description:
+      'The perfect base for friends to share unforgettable moments, with stylish spaces and easy access to beaches, restaurants and the vibrant local life.'
+  },
+  {
+    Icon: IconCrown,
+    title: 'VIP Guests',
+    description:
+      'Privacy, refined design and personalized attention for guests who expect a more exclusive and elevated experience.'
+  },
+  {
+    Icon: IconHeart,
+    title: 'Couples',
+    description:
+      'A romantic and serene setting for couples looking to escape, relax and create lasting memories by the sea or in the city.'
+  },
+  {
+    Icon: IconPlant2,
+    title: 'Wellness & Relaxation',
+    description:
+      "Whether it's a short break or a longer stay, Mocca Living offers a peaceful atmosphere and comfortable spaces for rest, rejuvenation and slow living."
+  }
+]
 
 function Reasons() {
-  const t = useTranslations('Pages.about.reasons')
-
   return (
-    <Section className='space-y-4'>
-      <div className='px-3 flex space-x-3 overflow-x-auto sm:hidden'>
-        <CustomImage
-          className='shrink-0 aspect-3/4 inline-screen'
-          src={moccaSeaDimitraCover}
-          alt='Mocca Sea Dimitra cover'
-        />
-        <CustomImage
-          className='shrink-0 aspect-3/4 inline-screen'
-          src={reasonImages[0]}
-          alt='Handmade ceramic cups and a bowl on a dark round table'
-        />
-        <CustomImage
-          className='shrink-0 aspect-3/4 inline-screen'
-          src={moccaCityCover}
-          alt='Mocca City cover image'
-        />
-        <CustomImage
-          className='shrink-0 aspect-3/4 inline-screen'
-          src={reasonImages[1]}
-          alt='Handmade ceramic cups arranged on a wooden shelf'
-        />
-        <CustomImage
-          className='shrink-0 aspect-3/4 inline-screen'
-          src={moccaSeaGeorgiaCover}
-          alt='Mocca Sea Georgia cover'
-        />
-      </div>
-      <div className='space-y-12'>
+    <Section title='For every kind of getaway'>
+      <div className='space-y-8 sm:space-y-6'>
         <Typography
-          variant='h2'
+          variant='display'
+          serif
           asChild
         >
-          <h2>{t('title')}</h2>
+          <h2>Mocca Living is ideal for:</h2>
         </Typography>
-        <ul className='space-y-10'>
-          <Reason
-            title={t('reason1.title')}
-            description={t('reason1.description')}
-          />
-          <Reason
-            title={t('reason2.title')}
-            description={t('reason2.description')}
-          />
-          <Reason
-            title={t('reason3.title')}
-            description={t('reason3.description')}
-          />
-          <Reason
-            title={t('reason4.title')}
-            description={t('reason4.description')}
-          />
-          <Reason
-            title={t('reason5.title')}
-            description={t('reason5.description')}
-          />
+        <ul className='grid gap-4 sm:grid-cols-6'>
+          {reasons.map(({title, description, Icon}, index) => (
+            <ReasonCard
+              key={title}
+              className={index < 3 ? 'sm:col-span-2' : 'sm:col-span-3'}
+              icon={Icon}
+              title={title}
+              description={description}
+            />
+          ))}
         </ul>
       </div>
     </Section>
   )
 }
 
-function Reason({title, description}: {title: string; description: string}) {
+function ReasonCard({
+  className,
+  icon: Icon,
+  title,
+  description
+}: {
+  className?: string
+  icon: React.ComponentType<IconProps>
+  title: string
+  description: string
+}) {
   return (
-    <li className='space-y-1'>
-      <Typography variant='large'>{title}</Typography>
-      <Typography>{description}</Typography>
+    <li
+      className={cn(
+        'p-6 flex gap-4 bg-surface-2 border border-surface-3 sm:p-8 sm:gap-6',
+        className
+      )}
+    >
+      <span className='p-4 rounded-full self-start bg-surface-3'>
+        <Icon
+          className='size-8'
+          aria-hidden
+        />
+      </span>
+      <div className='space-y-2'>
+        <Typography
+          variant='h4'
+          serif
+          asChild
+        >
+          <h3>{title}</h3>
+        </Typography>
+        <Typography>{description}</Typography>
+      </div>
     </li>
   )
 }
