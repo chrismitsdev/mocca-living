@@ -1,5 +1,6 @@
 import type {MetadataRoute} from 'next'
 import type {Locale} from 'next-intl'
+import {Metadata as TranslationsMetadata} from '@/messages/en.json'
 import {getPathname} from '@/src/i18n/navigation'
 import {routing} from '@/src/i18n/routing'
 import {IS_PRODUCTION} from '@/src/lib/constants'
@@ -8,11 +9,15 @@ type Href = Parameters<typeof getPathname>[0]['href']
 
 const host = IS_PRODUCTION ? 'https://moccaliving.com' : 'http://localhost:3000'
 
+// Same source as generateStaticParams in accommodation/[slug]
+const accommodationRoutes = Object.keys(
+  TranslationsMetadata.accommodation.slug
+).map((slug) => `accommodation/${slug}`)
+
 const routes = [
+  'about',
   'accommodation',
-  'accommodation/mocca-sea/sea-dimitra',
-  'accommodation/mocca-sea/sea-georgia',
-  'accommodation/mocca-city/city-dimitra',
+  ...accommodationRoutes,
   'contact',
   'privacy',
   'cookies',
