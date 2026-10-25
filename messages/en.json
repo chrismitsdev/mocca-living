@@ -307,9 +307,8 @@
       },
       "title-2": "Cookies used on this website",
       "content-2": {
-        "description": "This website uses two cookies:",
-        "bullet-1": "<strong>CONSENT_COOKIE</strong> - This cookie is stored to deliver a better user experience and analyze website traffic.",
-        "bullet-2": "<strong>NEXT_LOCALE</strong> - This cookie is used for internalization purposes, ensuring the website displays the correct language based on user preferences."
+        "description": "This website uses a single cookie:",
+        "bullet-1": "<strong>NEXT_LOCALE</strong> - This cookie is used for internationalization purposes, ensuring the website displays the correct language based on user preferences."
       }
     },
     "rules": {
@@ -359,24 +358,6 @@
         "empty": "No message provided"
       },
       "footer": "If you have any additional questions or specific requests, feel free to reply to this email. We look forward to assisting you and helping you plan a memorable stay."
-    },
-    "cookie-banner": {
-      "title": "Cookies",
-      "message": "This site uses services that use cookies to deliver a better user experience and analyze traffic. You can learn more about the services we use at our privacy policy page.",
-      "button-label": "Understood",
-      "collapsible": {
-        "trigger": "Cookies used on this website",
-        "content": {
-          "consent": {
-            "title": "CONSENT_COOKIE",
-            "description": "This cookie is stored to deliver a better user experience and analyze website traffic."
-          },
-          "locale": {
-            "title": "NEXT_LOCALE",
-            "description": "This cookie is used for internalization purposes, ensuring the website displays the correct language based on user preferences."
-          }
-        }
-      }
     },
     "footer": {
       "row-1": {

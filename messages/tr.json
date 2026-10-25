@@ -307,9 +307,8 @@
       },
       "title-2": "Bu web sitesinde kullanılan çerezler",
       "content-2": {
-        "description": "Bu web sitesi iki çerez kullanmaktadır:",
-        "bullet-1": "<strong>CONSENT_COOKIE</strong> - Daha iyi bir kullanıcı deneyimi sunmak ve web sitesi trafiğini analiz etmek amacıyla depolanan bir çerezdir.",
-        "bullet-2": "<strong>NEXT_LOCALE</strong> - Web sitesinin kullanıcı tercihlerine göre doğru dili görüntülemesini sağlamak amacıyla yerelleştirme için kullanılan bir çerezdir."
+        "description": "Bu web sitesi yalnızca bir çerez kullanmaktadır:",
+        "bullet-1": "<strong>NEXT_LOCALE</strong> - Web sitesinin kullanıcı tercihlerine göre doğru dili görüntülemesini sağlamak amacıyla yerelleştirme için kullanılan bir çerezdir."
       }
     },
     "rules": {
@@ -359,24 +358,6 @@
         "empty": "Mesaj girilmedi"
       },
       "footer": "Ek sorularınız veya özel talepleriniz varsa bu e-postayı yanıtlamaktan çekinmeyin. Sizi ağırlamak ve unutulmaz bir konaklama planlamanıza yardımcı olmaktan memnuniyet duyacağız."
-    },
-    "cookie-banner": {
-      "title": "Çerezler",
-      "message": "Bu site, daha iyi bir kullanıcı deneyimi sunmak ve trafiği analiz etmek için çerezler kullanan hizmetler içermektedir. Kullandığımız hizmetler hakkında daha fazla bilgiyi gizlilik politikası sayfamızda bulabilirsiniz.",
-      "button-label": "Anladım",
-      "collapsible": {
-        "trigger": "Bu web sitesinde kullanılan çerezler",
-        "content": {
-          "consent": {
-            "title": "CONSENT_COOKIE",
-            "description": "Daha iyi bir kullanıcı deneyimi sunmak ve web sitesi trafiğini analiz etmek amacıyla depolanan bir çerezdir."
-          },
-          "locale": {
-            "title": "NEXT_LOCALE",
-            "description": "Web sitesinin kullanıcı tercihlerine göre doğru dili görüntülemesini sağlamak amacıyla yerelleştirme için kullanılan bir çerezdir."
-          }
-        }
-      }
     },
     "footer": {
       "row-1": {

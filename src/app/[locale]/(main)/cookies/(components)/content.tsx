@@ -73,15 +73,6 @@ function Content() {
                 })}
               </li>
             </Typography>
-            <Typography asChild>
-              <li>
-                {t.rich('content-2.bullet-2', {
-                  strong: (chunks) => (
-                    <span className='font-medium'>{chunks}</span>
-                  )
-                })}
-              </li>
-            </Typography>
           </ul>
         </article>
       </div>

@@ -4,7 +4,6 @@ import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
 import {NextIntlClientProvider} from 'next-intl'
 import {getLocale} from 'next-intl/server'
-import {CookieBanner} from '@/src/components/shared/cookie-banner'
 import {PageTransition} from '@/src/components/shared/page-transition'
 import {routing} from '@/src/i18n/routing'
 import {IS_PRODUCTION} from '@/src/lib/constants'
@@ -48,7 +47,6 @@ export default async function RootLayout({children}: LayoutProps<'/[locale]'>) {
       <body className='bg-surface-1 text-foreground'>
         <NextIntlClientProvider>
           <PageTransition>{children}</PageTransition>
-          <CookieBanner />
         </NextIntlClientProvider>
         {IS_PRODUCTION && <Analytics />}
       </body>
