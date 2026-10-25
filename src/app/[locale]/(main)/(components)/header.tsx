@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import moccaLogo from '@/public/logos/mocca-logo.svg'
+import {BookButton} from '@/src/app/[locale]/(main)/(components)/book-button'
 import {Navigation} from '@/src/app/[locale]/(main)/(components)/navigation'
 import {Container} from '@/src/components/shared/container'
 import {Link} from '@/src/i18n/navigation'
@@ -17,7 +18,10 @@ function Header() {
               loading='eager'
             />
           </Link>
-          <Navigation />
+          <div className='flex gap-x-2 items-center sm:gap-x-4'>
+            <BookButton />
+            <Navigation />
+          </div>
         </div>
       </Container>
     </header>

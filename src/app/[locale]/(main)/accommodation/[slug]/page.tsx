@@ -26,16 +26,13 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
 export default async function AccomodationSlugPage({
   params
 }: PageProps<'/[locale]/accommodation/[slug]'>) {
-  const {slug, locale} = await (params as Params['params'])
+  const {slug} = await (params as Params['params'])
 
   return (
     <>
       <Heading slug={slug} />
       <HeroCarousel slug={slug} />
-      <Details
-        slug={slug}
-        locale={locale}
-      />
+      <Details slug={slug} />
       <Distances slug={slug} />
     </>
   )

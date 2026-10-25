@@ -11,7 +11,7 @@ function Separator({
   return (
     <RadixSeparator.Root
       className={cn(
-        'shrink-0 bg-surface-4 data-horizontal:h-px data-horizontal:w-full data-vertical:h-auto data-vertical:w-px',
+        'shrink-0 bg-surface-5 data-horizontal:h-px data-horizontal:w-full data-vertical:h-auto data-vertical:w-px',
         className
       )}
       decorative={decorative}
