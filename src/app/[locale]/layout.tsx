@@ -6,7 +6,7 @@ import {NextIntlClientProvider} from 'next-intl'
 import {getLocale} from 'next-intl/server'
 import {PageTransition} from '@/src/components/shared/page-transition'
 import {routing} from '@/src/i18n/routing'
-import {IS_PRODUCTION} from '@/src/lib/constants'
+import {IS_PRODUCTION, SITE_URL} from '@/src/lib/constants'
 
 const inter = Inter({
   subsets: ['latin', 'latin-ext', 'greek', 'cyrillic'],
@@ -14,7 +14,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://moccaliving.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
     template: '%s | Mocca Living',
     default: 'Mocca Living'

@@ -3,11 +3,11 @@ import type {Locale} from 'next-intl'
 import {Metadata as TranslationsMetadata} from '@/messages/en.json'
 import {getPathname} from '@/src/i18n/navigation'
 import {routing} from '@/src/i18n/routing'
-import {IS_PRODUCTION} from '@/src/lib/constants'
+import {IS_PRODUCTION, SITE_URL} from '@/src/lib/constants'
 
 type Href = Parameters<typeof getPathname>[0]['href']
 
-const host = IS_PRODUCTION ? 'https://moccaliving.com' : 'http://localhost:3000'
+const host = IS_PRODUCTION ? SITE_URL : 'http://localhost:3000'
 
 // Same source as generateStaticParams in accommodation/[slug]
 const accommodationRoutes = Object.keys(
