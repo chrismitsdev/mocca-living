@@ -157,9 +157,9 @@
             "bedrooms": "1 Yatak Odası",
             "bathrooms": "1 Banyo",
             "area": "50m² Alan",
-            "layout": "Balkondan şehrin ana caddesine manzara|Kanepe yataklı oturma odası|Yemek alanı ile tam donanımlı mutfak|Çift kişilik yataklı yatak odası|Duşlu banyo",
+            "layout": "Güvenlik kapılı ana giriş|Tam donanımlı mutfak|Masa ve sandalyeler|Kanepe yataklı oturma odası|COCOMAT yatak ve yatak örtüsü ile queen-size yataklı bir yatak odası|Duşlu banyo|Balkondan şehrin ana caddesine manzara",
             "amenities": {
-              "indoor": "Ücretsiz Wi-Fi|65\" Akıllı TV|Tam donanımlı mutfak|Çok sayıda depolama alanı ve gardırop|Tabureli çalışma masası|Çift camlı yeni enerji verimli pencereler|Güvenlik kapısı|1 bebek park yatağı|1 mama sandalyesi",
+              "indoor": "Ücretsiz Wi-Fi|65\" Akıllı TV|Tam donanımlı mutfak|Büyük buzdolabı|Bulaşık makinesi|Kurutmalı çamaşır makinesi|Fırın|Mikrodalga fırın|Masa ve sandalyeler|Espresso makinesi|Meyve sıkacağı|Su ısıtıcısı|Tavan vantilatörü|Çok sayıda depolama alanı ve gardırop|Tabureli çalışma masası|Çift camlı yeni enerji verimli pencereler|1 bebek park yatağı|1 mama sandalyesi",
               "outdoor": ""
             },
             "complementary": "Karşılama prosedürü|Check-in/out yardımı",
