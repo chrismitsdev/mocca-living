@@ -41,6 +41,7 @@ function Toast({id, title, description, status}: ToastProps) {
             status === 'success' && 'text-success',
             status === 'error' && 'text-danger'
           )}
+          aria-hidden
         />
         <div className='space-y-1'>
           <Typography variant='large'>{title}</Typography>

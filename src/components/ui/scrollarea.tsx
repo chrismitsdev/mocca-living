@@ -1,49 +1,81 @@
 'use client'
 
 import {ScrollArea as RadixScrollArea} from 'radix-ui'
+import {Fragment} from 'react'
 import {cn} from '@/src/lib/utils'
 
-const ScrollareaCorner = RadixScrollArea.Corner
+type ScrollAreaProps = React.ComponentPropsWithRef<
+  typeof RadixScrollArea.Root
+> & {
+  orientation?: 'vertical' | 'horizontal' | 'both'
+  showScrollbar?: boolean
+}
 
-function Scrollarea({
+function ScrollArea({
   className,
+  orientation = 'vertical',
+  showScrollbar = true,
+  type = 'always',
+  children,
   ...props
-}: React.ComponentPropsWithRef<typeof RadixScrollArea.Root>) {
+}: ScrollAreaProps) {
   return (
     <RadixScrollArea.Root
       className={cn('overflow-hidden', className)}
+      type={type}
       {...props}
-    />
+    >
+      <RadixScrollArea.Viewport className='size-full'>
+        {children}
+      </RadixScrollArea.Viewport>
+      {orientation !== 'both' ? (
+        <Scrollbar
+          orientation={orientation}
+          showScrollbar={showScrollbar}
+        />
+      ) : (
+        <Fragment>
+          <Scrollbar
+            orientation='vertical'
+            showScrollbar={showScrollbar}
+          />
+          <Scrollbar
+            orientation='horizontal'
+            showScrollbar={showScrollbar}
+          />
+          <RadixScrollArea.Corner />
+        </Fragment>
+      )}
+    </RadixScrollArea.Root>
   )
 }
 
-function ScrollareaViewport({
+function Scrollbar({
   className,
+  orientation,
+  showScrollbar,
   ...props
-}: React.ComponentPropsWithRef<typeof RadixScrollArea.Viewport>) {
-  return (
-    <RadixScrollArea.Viewport
-      className={cn('size-full', className)}
-      {...props}
-    />
-  )
-}
-
-function ScrollareaBar({
-  className,
-  ...props
-}: React.ComponentPropsWithRef<typeof RadixScrollArea.Scrollbar>) {
+}: Omit<
+  React.ComponentPropsWithRef<typeof RadixScrollArea.Scrollbar>,
+  'children'
+> & {
+  showScrollbar?: boolean
+}) {
   return (
     <RadixScrollArea.Scrollbar
       className={cn(
-        'p-0.5 flex touch-none select-none transition-colors data-vertical:h-full data-vertical:w-2.5 data-horizontal:flex-col data-horizontal:h-2.5',
+        'p-0.5 flex touch-none select-none transition-colors',
+        showScrollbar ? 'visible' : 'invisible',
+        orientation === 'vertical' && 'block-full inline-2.5',
+        orientation === 'horizontal' && 'flex-col block-2.5',
         className
       )}
+      orientation={orientation}
       {...props}
     >
-      <RadixScrollArea.Thumb className='flex-1 relative rounded-full bg-surface-4 transition-colors hover:bg-surface-5' />
+      <RadixScrollArea.Thumb className='flex-1 bg-surface-4 rounded-full hover:bg-surface-5' />
     </RadixScrollArea.Scrollbar>
   )
 }
 
-export {Scrollarea, ScrollareaBar, ScrollareaCorner, ScrollareaViewport}
+export {ScrollArea}

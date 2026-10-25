@@ -6,7 +6,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('Metadata')
 
   return {
-    title: t('not_found')
+    title: t('not-found')
   }
 }
 

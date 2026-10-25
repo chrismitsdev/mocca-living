@@ -11,9 +11,10 @@ function Input({className, error, icon: Icon, ...props}: InputProps) {
     <div className='relative'>
       <input
         className={cn(
-          'py-3.75 inline-full block bg-surface-1 border border-border font-bold outline-0 transition placeholder:text-sm focus:border-border-hover focus:shadow-sm disabled:pointer-events-none disabled:opacity-35 autofill:bg-surface-1',
-          error && 'border-danger focus:border-danger',
-          Icon ? 'pl-8 pr-4' : 'px-4',
+          'py-3.75 px-4 inline-full block bg-surface-3 border border-transparent font-bold outline-0 transition placeholder:text-sm placeholder:leading-6 not-placeholder-shown:border-surface-4 focus:border-surface-4 disabled:pointer-events-none disabled:opacity-35',
+          error &&
+            'border-danger not-placeholder-shown:border-danger focus:border-danger',
+          Icon && 'pl-9',
           className
         )}
         {...props}
@@ -25,7 +26,10 @@ function Input({className, error, icon: Icon, ...props}: InputProps) {
             props.disabled && 'opacity-35'
           )}
         >
-          <Icon className='inline-4 block-lh' />
+          <Icon
+            className='inline-5 block-lh'
+            aria-hidden
+          />
         </span>
       )}
     </div>

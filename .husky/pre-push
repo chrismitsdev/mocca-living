@@ -3,15 +3,35 @@ echo "✋ Checking before pushing..."
 
 echo ""
 echo "⏳ Generating project types..."
-pnpm next typegen
+pnpm next typegen || {
+  echo ""
+  echo "❌ Type generation failed. Push aborted."
+  exit 1
+}
 
 echo ""
-echo "⏳ Type-checking..."
-pnpm typecheck || { echo ""; echo "❌ Type errors. Push aborted."; exit 1; }
+echo "🔷 Type-checking TypeScript..."
+pnpm typecheck || {
+  echo ""
+  echo "❌ TypeScript type errors. Push aborted."
+  exit 1
+}
 
 echo ""
-echo "⏳ Linting..."
-pnpm lint || { echo ""; echo "❌ Lint errors. Push aborted."; exit 1; }
+echo "🔍 Linting source code with Biome..."
+pnpm lint || {
+  echo ""
+  echo "❌ Biome lint errors. Push aborted."
+  exit 1
+}
+
+echo ""
+echo "🌐 Linting translations with Eloqnt..."
+pnpm lint-intl || {
+  echo ""
+  echo "❌ Translation lint errors. Push aborted."
+  exit 1
+}
 
 echo ""
 echo "✅ All checks passed. Pushing..."

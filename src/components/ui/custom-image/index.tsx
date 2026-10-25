@@ -17,13 +17,14 @@ function CustomImage({
 }: CustomImageProps) {
   return (
     <Image
-      className={cn('block-full inline-full object-cover', className)}
-      placeholder={`data:image/svg+xml;base64,${toBase64(
-        loader(src.width, src.height)
-      )}`}
+      // className={cn('block-full inline-full object-cover', className)}
+      className={cn('block-full inline-full object-cover bg-auto!', className)}
       src={src}
       alt={alt}
       draggable={draggable}
+      placeholder={`data:image/svg+xml;base64,${toBase64(
+        loader(src.width, src.height)
+      )}`}
       {...props}
     />
   )

@@ -5,7 +5,8 @@
 @import "./utilities.css";
 
 :root {
-  --header-height: 80px;
+  --main-header-height: 80px;
+  --guest-header-height: 144px;
 }
 
 /* General styling */
@@ -66,6 +67,9 @@
 }
 .rhap_controls-section {
   margin-top: 8px;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
 }
 .rhap_horizontal {
   flex-direction: row;
@@ -150,11 +154,6 @@
 }
 .rhap_progress-indicator:active {
   scale: 0.85;
-}
-.rhap_controls-section {
-  display: flex;
-  flex: 1 1 auto;
-  align-items: center;
 }
 .rhap_additional-controls {
   display: flex;

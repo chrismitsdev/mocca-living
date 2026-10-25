@@ -7,12 +7,9 @@ import {
 } from '@tabler/icons-react'
 import type useEmblaCarousel from 'embla-carousel-react'
 import {Dialog} from 'radix-ui'
+import {type AnimationEvent, useState} from 'react'
 import {IconButton} from '@/src/components/ui/icon-button'
-import {
-  Scrollarea,
-  ScrollareaBar,
-  ScrollareaViewport
-} from '@/src/components/ui/scrollarea'
+import {ScrollArea} from '@/src/components/ui/scrollarea'
 import {cn} from '@/src/lib/utils'
 import {CarouselProvider, useCarousel} from './context'
 
@@ -69,30 +66,35 @@ function SlidesContainer({
 
 function Slide({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   return (
-    // biome-ignore lint/a11y/useSemanticElements: <fieldset> not applicable
     <div
       className={cn(
         'pl-(--slides-gap) min-w-0 grow-0 shrink-0 basis-full select-none',
         className
       )}
-      role='group'
-      aria-roledescription='slide'
       {...props}
     />
   )
 }
 
 function ThumbsContainer({children}: React.PropsWithChildren) {
+  const [animating, setAnimating] = useState(false)
   const positionStyles = 'absolute inset-x-1/2 -translate-x-1/2 inset-be-0'
+
+  function handleAnimate(e: AnimationEvent, animates: boolean) {
+    if (e.target === e.currentTarget) {
+      setAnimating(animates)
+    }
+  }
 
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
         <IconButton
           aria-label='Show thumbnails container'
+          aria-disabled={animating}
           className={cn(
             positionStyles,
-            'ease-mocca group',
+            'transition-transform ease-mocca group',
             [
               'data-closed:duration-750',
               'data-closed:-translate-y-1',
@@ -100,17 +102,23 @@ function ThumbsContainer({children}: React.PropsWithChildren) {
             ],
             [
               'data-open:duration-1000',
-              'data-open:-translate-y-17',
-              'sm:data-open:-translate-y-28'
+              'data-open:-translate-y-15',
+              'sm:data-open:-translate-y-31'
             ]
           )}
-          variant='outline'
+          variant='primary'
           size='small'
+          onClick={(e) => animating && e.preventDefault()}
         >
-          <IconChevronUp className='ease-mocca group-data-open:duration-1000 group-data-closed:duration-750 group-data-open:rotate-180' />
+          <IconChevronUp
+            className='ease-mocca group-data-open:duration-1000 group-data-closed:duration-750 group-data-open:rotate-180'
+            aria-hidden
+          />
         </IconButton>
       </Dialog.Trigger>
       <Dialog.Content
+        onAnimationStart={(e) => handleAnimate(e, true)}
+        onAnimationEnd={(e) => handleAnimate(e, false)}
         className={cn(
           positionStyles,
           'inline-max max-inline-full',
@@ -121,16 +129,14 @@ function ThumbsContainer({children}: React.PropsWithChildren) {
         <Dialog.Title className='sr-only'>
           Click image thumbnail to view image in carousel
         </Dialog.Title>
-        <div className='m-1 bg-surface-2 border border-border sm:m-2'>
-          <Scrollarea type='always'>
-            <ScrollareaViewport>
-              <div className='m-2 flex gap-2'>{children}</div>
-            </ScrollareaViewport>
-            <ScrollareaBar
-              className='invisible'
-              orientation='horizontal'
-            />
-          </Scrollarea>
+        <div className='bg-surface-4 sm:border sm:m-2'>
+          <ScrollArea
+            type='always'
+            orientation='horizontal'
+            showScrollbar={false}
+          >
+            <div className='p-2 flex gap-2 sm:p-3 sm:gap-3'>{children}</div>
+          </ScrollArea>
         </div>
       </Dialog.Content>
     </Dialog.Root>
@@ -149,17 +155,14 @@ function Thumb({
 
   return (
     <button
-      className={cn(
-        'size-10 focus-visible:outline-ring focus-visible:outline-2 focus-visible:outline-offset-2 sm:size-20',
-        className
-      )}
+      className={cn('size-10 focus-ring sm:size-20', className)}
       onClick={() => handleScrollTo(thumbIndex)}
       {...props}
     >
       <span
         className={cn(
-          'block size-full grayscale-50 opacity-50 contrast-50 transition',
-          thumbIndex === selectedSnap && 'grayscale-0 opacity-100 contrast-100'
+          'block size-full opacity-50 contrast-50 transition',
+          thumbIndex === selectedSnap && 'opacity-100 contrast-100'
         )}
       >
         {children}
@@ -178,12 +181,12 @@ function ButtonPrev({className}: {className?: string}) {
         'absolute inset-bs-1/2 -translate-y-1/2 inset-s-1 sm:inset-s-2',
         className
       )}
-      variant='outline'
+      variant='primary'
       size='small'
       onClick={handleScrollPrev}
       disabled={prevButtonDisabled}
     >
-      <IconChevronLeft />
+      <IconChevronLeft aria-hidden />
     </IconButton>
   )
 }
@@ -198,12 +201,12 @@ function ButtonNext({className}: {className?: string}) {
         'absolute inset-bs-1/2 -translate-y-1/2 inset-e-1 sm:inset-e-2',
         className
       )}
-      variant='outline'
+      variant='primary'
       size='small'
       onClick={handleScrollNext}
       disabled={nextButtonDisabled}
     >
-      <IconChevronRight />
+      <IconChevronRight aria-hidden />
     </IconButton>
   )
 }

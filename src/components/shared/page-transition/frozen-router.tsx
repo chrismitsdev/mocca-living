@@ -1,11 +1,15 @@
 'use client'
 
+import {useIsPresent} from 'motion/react'
 import {LayoutRouterContext} from 'next/dist/shared/lib/app-router-context.shared-runtime'
-import {use, useState} from 'react'
+import {useContext, useState} from 'react'
 
 function FrozenRouter({children}: React.PropsWithChildren) {
-  const context = use(LayoutRouterContext)
-  const [frozen] = useState(() => context)
+  const context = useContext(LayoutRouterContext)
+  const isPresent = useIsPresent()
+  const [frozen, setFrozen] = useState(context)
+
+  if (isPresent && frozen !== context) setFrozen(context)
 
   return (
     <LayoutRouterContext.Provider value={frozen}>

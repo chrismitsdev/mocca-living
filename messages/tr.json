@@ -1,28 +1,21 @@
 {
   "Metadata": {
     "home": "Ana Sayfa",
+    "about": "Hakkımızda",
     "accommodation": {
-      "title": "Konaklama",
-      "location": {
-        "mocca-sea": {
-          "title": "Mocca by the Sea"
+      "index": "Konaklama",
+      "slug": {
+        "mocca-by-the-sea-dimitra": {
+          "title": "Mocca by the Sea · Dimitra",
+          "description": "Villa Dimitra'da lüksü yaşayın; Makri'de 2-4 yetişkin ve 2 çocuk için özel, 85 m²'lik bir konut."
+        },
+        "mocca-by-the-sea-georgia": {
+          "title": "Mocca by the Sea · Georgia",
+          "description": "Villa Georgia'yı keşfedin; Makri'de 2-4 yetişkin ve 1 çocuk için büyüleyici, 45 m²'lik bir konut."
         },
         "mocca-city": {
-          "title": "Mocca City"
-        }
-      },
-      "slug": {
-        "sea-dimitra": {
-          "title": "Dimitra",
-          "description": "Makri'de 2-4 yetişkin ve 2 çocuk için 85m²'lik bir kaçış noktası olan Villa Dimitra'nın lüksünü yaşayın."
-        },
-        "sea-georgia": {
-          "title": "Georgia",
-          "description": "Makri'de 2-4 yetişkin ve 1 çocuk için şirin bir 45m² sığınak olan Villa Georgia'yı keşfedin."
-        },
-        "city-dimitra": {
-          "title": "Dimitra",
-          "description": "Dimitra’yı keşfedin; Aleksandrupoli’de 2 yetişkin ve 2 çocuk için uygun, yenilenmiş 50 m²’lik bir daire."
+          "title": "Mocca City",
+          "description": "Mocca City'yi keşfedin; Alexandroupoli'de 2 yetişkin ve 2 çocuk için yenilenmiş, 50 m²'lik bir daire."
         }
       }
     },
@@ -30,92 +23,58 @@
     "privacy": "Gizlilik politikası",
     "cookies": "Çerez politikası",
     "rules": "Konaklama politikası",
-    "not_found": "Sayfa bulunamadı",
-    "book_button": "Rezervasyon"
+    "guest-app": {
+      "index": "Misafir Uygulaması",
+      "mocca-by-the-sea-dimitra": "Mocca by the Sea · Dimitra",
+      "mocca-by-the-sea-georgia": "Mocca by the Sea · Georgia",
+      "mocca-city": "Mocca City"
+    },
+    "not-found": "Sayfa bulunamadı"
   },
   "Pages": {
     "home": {
-      "home-intro": {
-        "title": "Lüks yaşamın zirvesini deneyimleyin",
-        "message": "Mocca Living, zarafeti, mahremiyeti ve modern konforu bir arada sunan, özenle tasarlanmış yaşam alanlarından oluşan bir koleksiyondur.<br></br><strong>Mocca by the Sea</strong>, Makri'nin Agia Paraskevi bölgesinde, özel bahçeleri, hidromasajlı mini havuzu ve sahile doğrudan erişimiyle iki zarif villa sunar — gündelik hayattan uzaklaşarak huzur ve özgün bir deniz kenarı deneyimi arayanlar için idealdir. <strong>Mocca City</strong>, Alexandroupolis'in merkezinde Dimokratias Bulvarı üzerinde, şehrin ana caddesine manzaralı tam donanımlı yenilenmiş bir daire sunar; mağazalara, restoranlara, sahil yürüyüş yoluna ve limana kolay erişim imkânı sağlar."
+      "mocca-by-the-sea": {
+        "heading": "Doğaya kaçış",
+        "title": "Mocca by the Sea"
       },
-      "home-reasons": {
+      "mocca-city": {
+        "heading": "Şehri yaşa",
+        "title": "Mocca City"
+      },
+      "button-label": "Keşfet",
+      "about-link": "Mocca Living Hakkında"
+    },
+    "about": {
+      "intro": {
+        "section-title": "Mocca Living Hakkında",
+        "title": "İki yer. Tek bir ev hissi.",
+        "description": "Mocca Living, konforu, mahremiyeti ve incelikli estetiği bir araya getiren, özenle tasarlanmış konaklama seçeneklerinden oluşan bir koleksiyondur. Makri'de deniz kenarında ve Aleksandrupoli'nin kalbinde yer alan iki farklı tesisiyle, özgün deneyimlere, kaliteli zamana ve daha yavaş, daha anlamlı bir seyahat anlayışına değer verenlere modern konaklama deneyimleri sunar.",
+        "subtitle": "Konaklamadan daha fazlası",
+        "mocca-by-the-sea-location": "Makri, Aleksandrupoli",
+        "mocca-city-location": "Aleksandrupoli şehir merkezi"
+      },
+      "reasons": {
+        "section-title": "Her tür kaçamak için",
         "title": "Mocca Living için ideal:",
         "reason1": {
           "title": "Aileler",
-          "description": "Mocca Living, rahat ve tam donanımlı konaklama imkânları sunar; birlikte kaliteli zaman geçirmek isteyen aileler için huzurlu ve uygun bir ortam sağlar."
+          "description": "Konforlu ve güvenli bir ortamda birlikte kaliteli zaman geçirmek isteyen aileler için ideal, geniş ve tam donanımlı konaklama imkânları."
         },
         "reason2": {
           "title": "Arkadaşlar",
-          "description": "Arkadaşlarınızla unutulmaz bir konaklama için Mocca Living’de buluşun; paylaşılan deneyimler ve rahatlama anları kalıcı hatıralar oluşturur."
+          "description": "Şık mekânlar ile plajlara, restoranlara ve hareketli yerel yaşama kolay erişimiyle, arkadaşların unutulmaz anlar paylaşması için mükemmel bir üs."
         },
         "reason3": {
           "title": "VIP Misafirler",
-          "description": "Mocca Living’de gizlilik, konfor ve özenli hizmet deneyimleyin; seçkin ve özel bir ortamı takdir eden misafirler için tasarlanmıştır."
+          "description": "Daha seçkin ve üst düzey bir deneyim bekleyen misafirler için mahremiyet, incelikli tasarım ve kişiye özel ilgi."
         },
         "reason4": {
           "title": "Çiftler",
-          "description": "Mocca Living, huzurlu bir kaçamak arayan çiftler için samimi ve sakin bir alan sunar, paylaşılan anlar için rahatlatıcı bir atmosfer sağlar."
+          "description": "Kaçmak, dinlenmek ve deniz kenarında ya da şehirde kalıcı anılar biriktirmek isteyen çiftler için romantik ve huzurlu bir ortam."
         },
         "reason5": {
           "title": "Wellness & Rahatlama",
-          "description": "Kısa konaklamalar veya uzun süreli kaçamaklar için, Mocca Living dinlenme, wellness ve yavaş yaşam için ideal, sakin ve konforlu bir ortam sunar."
-        }
-      },
-      "home-locations": {
-        "title": "Önemli noktalara mesafeler",
-        "description": "Her Mocca Living konaklaması için önemli noktalara olan mesafeleri keşfedin.",
-        "mocca-sea": {
-          "title": "Mocca by the Sea",
-          "description": "Plaja sadece birkaç adım mesafede, olanaklara kolay erişimle huzurlu bir sahil konaklaması için ideal.",
-          "items": {
-            "charging_station": {
-              "title": "Araç şarj istasyonu ~80 m",
-              "description": "80 metre uzaklıktaki şarj istasyonu, elektrikli araçlar için pratik ve güvenilir bir çözüm sunarak günlük ulaşımı kolaylaştırır."
-            },
-            "beach": {
-              "title": "Agia Paraskevi Plajı ~100 m",
-              "description": "Sadece 100 metre uzaklıktaki Agia Paraskevi Plajı, berrak suları ile dinlenme, yüzme ve güneşlenme için ideal bir sahil deneyimi sunar."
-            },
-            "restaurant": {
-              "title": "En yakın restoran ~100 m",
-              "description": "100 metre mesafedeki en yakın restoran, yerel ve uluslararası lezzetler sunarak konforlu bir ortamda keyifli bir yemek deneyimi sağlar."
-            },
-            "city": {
-              "title": "Dedeağaç ~14 km",
-              "description": "14 km uzaklıktaki Dedeağaç, modern olanaklar ile yerel atmosferi bir araya getirir; sahil, restoranlar ve mağazalar ziyaretçiler için keyifli bir ortam sunar."
-            },
-            "airport": {
-              "title": "Havalimanı ~20 km",
-              "description": "Mülklere 20 km uzaklıktaki Demokritos Havalimanı, yurt içi ve uluslararası yolculara sorunsuz ve konforlu varış ve kalkışlar sağlayarak kolay erişim sunmaktadır."
-            }
-          }
-        },
-        "mocca-city": {
-          "title": "Mocca City",
-          "description": "Her şeyin yürüme mesafesinde olduğu Alexandroupoli merkezinde konaklamak için ideal.",
-          "items": {
-            "city_center": {
-              "title": "Şehir merkezi",
-              "description": "Dimokratias Caddesi üzerinde, Dedeağaç’ın tam merkezinde yer almaktadır."
-            },
-            "bus_station": {
-              "title": "Otobüs terminali ~300 m",
-              "description": "Otobüs terminali yürüme mesafesindedir ve kolay ulaşım imkanı sunar."
-            },
-            "seafront": {
-              "title": "Sahil yolu ~500 m",
-              "description": "Kısa bir yürüyüşle sahil yoluna ulaşabilir, yürüyüş ve dinlenmenin keyfini çıkarabilirsiniz."
-            },
-            "port": {
-              "title": "Dedeağaç Limanı ~1 km",
-              "description": "Yaklaşık 1 km uzaklıktaki liman, restoranlar ve kafeler ile canlı bir ortam sunar."
-            },
-            "airport": {
-              "title": "Havalimanı ~7 km",
-              "description": "Havalimanına kısa sürede ulaşım sağlanabilir."
-            }
-          }
+          "description": "İster kısa bir mola, ister daha uzun bir konaklama olsun, Mocca Living dinlenme, yenilenme ve yavaş yaşam için huzurlu bir atmosfer ve konforlu mekânlar sunar."
         }
       }
     },
@@ -129,40 +88,40 @@
           "message": "Mocca Living'de modern konforu zamansız zarafetle mükemmel biçimde harmanlayan özel konaklamalarımızla eşsiz bir lüks deneyimi yaşayın. Her mülk, ister aile tatili, ister arkadaşlarla kaçamak, ister romantik bir retreat için olsun, unutulmaz bir konaklama sunmak üzere özenle tasarlanmıştır. Kendinizi lükse bırakın ve her anı eşsiz kılmayı vadeden bir mekânda dinlenme ile rafine estetik arasındaki mükemmel dengeyi keşfedin."
         },
         "cards": {
-          "sea-dimitra": {
-            "title": "Dimitra",
+          "mocca-by-the-sea-dimitra": {
+            "title": "Mocca by the Sea · Dimitra",
             "description": "Makri'deki Villa Dimitra'nın lüksünü kucaklayın, 2-4 yetişkin ve 2 çocuk için 85m²'lik bir cennet. 2 yatak odası ve 2 banyosuyla rahat ve zarif bir konaklama için idealdir.",
             "guests": "2 - 4 Yetişkin",
             "children": "2 Çocuk",
             "bedrooms": "2 Yatak Odası",
             "bathrooms": "2 Banyo"
           },
-          "sea-georgia": {
-            "title": "Georgia",
+          "mocca-by-the-sea-georgia": {
+            "title": "Mocca by the Sea · Georgia",
             "description": "Makri'deki Villa Georgia'yı keşfedin, 2-4 yetişkin ve 1 çocuk için şirin bir 45m² sığınak. 2 yatak odası ve modern bir banyoyla denize yakın mükemmel bir kaçış noktası.",
             "guests": "2 - 4 Yetişkin",
             "children": "1 Çocuk",
             "bedrooms": "2 Yatak Odası",
             "bathrooms": "1 Banyo"
           },
-          "city-dimitra": {
-            "title": "Dimitra",
-            "description": "Aleksandrupolis'teki Dimitra'yı keşfedin, 2 yetişkin ve 2 çocuk için tam yenilenmiş 50m²'lik bir daire. 1 yatak odası, kanepe yatağı ve Leoforos Dimokratias manzarasıyla.",
+          "mocca-city": {
+            "title": "Mocca City",
+            "description": "Alexandroupoli'de bulunan Mocca City'yi keşfedin; 2 yetişkin ve 2 çocuk için uygun, tamamen yenilenmiş 50 m²'lik bir daire. 1 yatak odası, çekyat ve Dimokratias Bulvarı manzarası sunmaktadır.",
             "guests": "2 Yetişkin",
             "children": "2 Çocuk",
             "bedrooms": "1 Yatak Odası",
             "bathrooms": "1 Banyo"
           },
           "static": {
-            "location_button": "Konum",
-            "more_button": "Bilgi"
+            "location-button": "Konum",
+            "more-button": "Bilgi"
           }
         }
       },
       "slug": {
         "details": {
-          "sea-dimitra": {
-            "title": "Dimitra",
+          "mocca-by-the-sea-dimitra": {
+            "title": "Mocca by the Sea · Dimitra",
             "guests": "2 - 4 Yetişkin",
             "child": "2 Çocuk",
             "bedrooms": "2 Yatak Odası",
@@ -176,8 +135,8 @@
             "complementary": "Karşılama yardım prosedürü|Check-in/out yardımı",
             "request": "Kiralık iki SUP tahtası|Kiralık bir elektrikli bisiklet"
           },
-          "sea-georgia": {
-            "title": "Georgia",
+          "mocca-by-the-sea-georgia": {
+            "title": "Mocca by the Sea · Georgia",
             "guests": "2 - 4 Yetişkin",
             "child": "1 Çocuk",
             "bedrooms": "2 Yatak Odası",
@@ -191,53 +150,54 @@
             "complementary": "Karşılama yardım prosedürü|Check-in/out yardımı",
             "request": "Kiralık iki SUP tahtası|Kiralık bir elektrikli bisiklet"
           },
-          "city-dimitra": {
-            "title": "Dimitra",
+          "mocca-city": {
+            "title": "Mocca City",
             "guests": "2 Yetişkin",
             "child": "2 Çocuk",
             "bedrooms": "1 Yatak Odası",
             "bathrooms": "1 Banyo",
             "area": "50m² Alan",
-            "layout": "Balkondan şehrin ana caddesine manzara|Kanepe yataklı oturma odası|Yemek alanı ile tam donanımlı mutfak|Çift kişilik yataklı yatak odası|Duşlu banyo",
+            "layout": "Güvenlik kapılı ana giriş|Tam donanımlı mutfak|Masa ve sandalyeler|Kanepe yataklı oturma odası|COCOMAT yatak ve yatak örtüsü ile queen-size yataklı bir yatak odası|Duşlu banyo|Balkondan şehrin ana caddesine manzara",
             "amenities": {
-              "indoor": "Ücretsiz Wi-Fi|65\" Akıllı TV|Tam donanımlı mutfak|Çok sayıda depolama alanı ve gardırop|Tabureli çalışma masası|Çift camlı yeni enerji verimli pencereler|Güvenlik kapısı|1 bebek park yatağı|1 mama sandalyesi",
+              "indoor": "Ücretsiz Wi-Fi|65\" Akıllı TV|Tam donanımlı mutfak|Büyük buzdolabı|Bulaşık makinesi|Kurutmalı çamaşır makinesi|Fırın|Mikrodalga fırın|Masa ve sandalyeler|Espresso makinesi|Meyve sıkacağı|Su ısıtıcısı|Tavan vantilatörü|Çok sayıda depolama alanı ve gardırop|Tabureli çalışma masası|Çift camlı yeni enerji verimli pencereler|1 bebek park yatağı|1 mama sandalyesi",
               "outdoor": ""
             },
             "complementary": "Karşılama prosedürü|Check-in/out yardımı",
             "request": ""
           },
           "static": {
-            "layout_title": "Mülk Düzeni",
-            "amenities_indoor_title": "İç mekân olanakları",
-            "amenities_outdoor_title": "Dış mekân olanakları",
-            "complementary_title": "Tamamlayıcı hizmetler",
-            "request_title": "Kiralık hizmetler",
-            "back_button": "Geri"
+            "back-button": "Geri",
+            "book-button": "Rezervasyon",
+            "layout-title": "Mülk Düzeni",
+            "indoor-amenities-title": "İç mekân olanakları",
+            "outdoor-amenities-title": "Dış mekân olanakları",
+            "complementary-title": "Tamamlayıcı hizmetler",
+            "request-title": "Kiralık hizmetler"
           }
         },
         "distances": {
           "title": "Önemli noktalara uzaklıklar",
-          "mocca-sea": {
+          "mocca-by-the-sea": {
             "title": "Mocca by the Sea",
             "description": "Plaja sadece birkaç adım mesafede, olanaklara kolay erişimle huzurlu bir sahil konaklaması için ideal.",
             "items": {
-              "item_1": {
+              "item-1": {
                 "title": "Araç şarj istasyonu ~80 m",
                 "description": "80 metre uzaklıktaki şarj istasyonu, elektrikli araçlar için pratik ve güvenilir bir çözüm sunarak günlük ulaşımı kolaylaştırır."
               },
-              "item_2": {
+              "item-2": {
                 "title": "Agia Paraskevi Plajı ~100 m",
                 "description": "Sadece 100 metre uzaklıktaki Agia Paraskevi Plajı, berrak suları ile dinlenme, yüzme ve güneşlenme için ideal bir sahil deneyimi sunar."
               },
-              "item_3": {
+              "item-3": {
                 "title": "En yakın restoran ~100 m",
                 "description": "100 metre mesafedeki en yakın restoran, yerel ve uluslararası lezzetler sunarak konforlu bir ortamda keyifli bir yemek deneyimi sağlar."
               },
-              "item_4": {
+              "item-4": {
                 "title": "Dedeağaç ~14 km",
                 "description": "14 km uzaklıktaki Dedeağaç, modern olanaklar ile yerel atmosferi bir araya getirir; sahil, restoranlar ve mağazalar ziyaretçiler için keyifli bir ortam sunar."
               },
-              "item_5": {
+              "item-5": {
                 "title": "Havalimanı ~20 km",
                 "description": "Mülklere 20 km uzaklıktaki Demokritos Havalimanı, yurt içi ve uluslararası yolculara sorunsuz ve konforlu varış ve kalkışlar sağlayarak kolay erişim sunmaktadır."
               }
@@ -247,23 +207,23 @@
             "title": "Mocca City",
             "description": "Her şeyin yürüme mesafesinde olduğu Alexandroupoli merkezinde konaklamak için ideal.",
             "items": {
-              "item_1": {
+              "item-1": {
                 "title": "Şehir merkezi",
                 "description": "Dimokratias Caddesi üzerinde, Dedeağaç’ın tam merkezinde yer almaktadır."
               },
-              "item_2": {
+              "item-2": {
                 "title": "Otobüs terminali ~300 m",
                 "description": "Otobüs terminali yürüme mesafesindedir ve kolay ulaşım imkanı sunar."
               },
-              "item_3": {
+              "item-3": {
                 "title": "Sahil yolu ~500 m",
                 "description": "Kısa bir yürüyüşle sahil yoluna ulaşabilir, yürüyüş ve dinlenmenin keyfini çıkarabilirsiniz."
               },
-              "item_4": {
+              "item-4": {
                 "title": "Dedeağaç Limanı ~1 km",
                 "description": "Yaklaşık 1 km uzaklıktaki liman, restoranlar ve kafeler ile canlı bir ortam sunar."
               },
-              "item_5": {
+              "item-5": {
                 "title": "Havalimanı ~7 km",
                 "description": "Havalimanına kısa sürede ulaşım sağlanabilir."
               }
@@ -273,18 +233,56 @@
       }
     },
     "contact": {
-      "contact-form": {
+      "form": {
         "title": "Bize ulaşın",
-        "description": "Rezervasyon yapmak için aşağıdaki formu doldurun, en kısa sürede sizinle iletişime geçeceğiz."
+        "description": "Aşağıdaki formu doldurun, en kısa sürede sizinle iletişime geçeceğiz.",
+        "fields": {
+          "fullname": {
+            "label": "Ad Soyad",
+            "placeholder": "Adınızı ve soyadınızı girin"
+          },
+          "email": {
+            "label": "E-posta",
+            "placeholder": "E-posta adresinizi girin"
+          },
+          "phone": {
+            "label": "Telefon",
+            "placeholder": "Telefon numaranızı girin"
+          },
+          "message": {
+            "label": "Mesaj",
+            "placeholder": "Mesajınızı buraya bırakın..."
+          },
+          "consent": {
+            "label": "Kişisel verilerimin yalnızca talebimi yerine getirmek amacıyla <link>Gizlilik Politikası beyanı</link> uyarınca kullanılmasını kabul ediyorum"
+          }
+        },
+        "button": {
+          "label": "Gönder"
+        },
+        "toast": {
+          "success": {
+            "title": "Başarıyla gönderildi",
+            "description": "Form başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğiz."
+          },
+          "error": {
+            "validation": {
+              "title": "Gönderme başarısız",
+              "description": "Lütfen işaretlenmiş alanları kontrol edin ve yeniden göndermeden önce hataları düzeltin."
+            },
+            "api": {
+              "title": "Gönderme başarısız",
+              "description": "E-posta hizmetiyle iletişim kurulurken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+            }
+          }
+        }
       },
-      "contact-social": {
-        "location": "Konum",
+      "social-links": {
         "instagram": "Instagram",
         "facebook": "Facebook",
         "phone": "Bizi arayın"
       },
-      "contact-map": {
-        "title": "Mocca Living",
+      "map": {
         "directions": "Nasıl gelinir"
       }
     },
@@ -309,13 +307,11 @@
       },
       "title-2": "Bu web sitesinde kullanılan çerezler",
       "content-2": {
-        "description": "Bu web sitesi iki çerez kullanmaktadır:",
-        "bullet-1": "<strong>CONSENT_COOKIE</strong> - Daha iyi bir kullanıcı deneyimi sunmak ve web sitesi trafiğini analiz etmek amacıyla depolanan bir çerezdir.",
-        "bullet-2": "<strong>NEXT_LOCALE</strong> - Web sitesinin kullanıcı tercihlerine göre doğru dili görüntülemesini sağlamak amacıyla yerelleştirme için kullanılan bir çerezdir."
+        "description": "Bu web sitesi yalnızca bir çerez kullanmaktadır:",
+        "bullet-1": "<strong>NEXT_LOCALE</strong> - Web sitesinin kullanıcı tercihlerine göre doğru dili görüntülemesini sağlamak amacıyla yerelleştirme için kullanılan bir çerezdir."
       }
     },
     "rules": {
-      "title": "Konaklama Politikası ve Konaklama Kuralları",
       "item-1": {
         "title": "İç mekânda sigara içmek yasaktır",
         "description": "Tüm misafirlerimiz için taze ve konforlu bir ortam sağlamak amacıyla, mülk içinde sigara içmek kesinlikle yasaktır. Sigara içmek isteyen misafirler bunu açık alanlarda yapabilir."
@@ -329,27 +325,27 @@
         "description": "Tüm misafirlerimiz için yüksek temizlik ve konfor standartlarını korumaya çalışıyoruz. Bu nedenle, konaklama alanı içinde veya çevresinde evcil hayvanlara izin verilmemektedir. Anlayışınız için teşekkür ederiz; bu politika, alerjisiz bir ortam sağlamamıza ve konaklamanın huzurlu atmosferini korumamıza yardımcı olmaktadır."
       }
     },
-    "not_found": {
+    "guest-app": {},
+    "not-found": {
       "title": "Bulunamadı",
       "subtitle": "İstediğiniz sayfa bulunamadı",
       "linkToHome": "Ana sayfaya dön"
     }
   },
   "Components": {
-    "locale_select": {
+    "locale-switcher": {
       "label": "{country, select, en {İngilizce} el {Yunanca} tr {Türkçe} bg {Bulgarca} other {Unknown}}",
       "loading": "Yükleniyor"
     },
-    "contact_drawer": {
+    "contact-drawer": {
       "title": "Bize ulaşın",
       "description": "Tercih ettiğiniz iletişim yöntemini seçin.",
       "message": "Merhaba, Mocca Living'de konaklama rezervasyonu yapmak istiyorum. Daha fazla bilgi paylaşabilir misiniz?",
       "whatsapp": "WhatsApp",
-      "viber": "Viber",
       "sms": "SMS mesajı",
       "call": "Doğrudan arama"
     },
-    "contact_form_client": {
+    "contact-form-client": {
       "subject": "Sorunuz için teşekkür ederiz",
       "header": "Sayın",
       "thanks": "Bizimle iletişime geçtiğiniz için teşekkür ederiz! Talebinizi aldık ve en kısa sürede size geri döneceğiz.",
@@ -363,76 +359,13 @@
       },
       "footer": "Ek sorularınız veya özel talepleriniz varsa bu e-postayı yanıtlamaktan çekinmeyin. Sizi ağırlamak ve unutulmaz bir konaklama planlamanıza yardımcı olmaktan memnuniyet duyacağız."
     },
-    "cookie_consent_banner": {
-      "title": "Çerezler",
-      "message": "Bu site, daha iyi bir kullanıcı deneyimi sunmak ve trafiği analiz etmek için çerezler kullanan hizmetler içermektedir. Kullandığımız hizmetler hakkında daha fazla bilgiyi gizlilik politikası sayfamızda bulabilirsiniz.",
-      "button-label": "Anladım",
-      "collapsible": {
-        "trigger": "Bu web sitesinde kullanılan çerezler",
-        "content": {
-          "consent": {
-            "title": "CONSENT_COOKIE",
-            "description": "Daha iyi bir kullanıcı deneyimi sunmak ve web sitesi trafiğini analiz etmek amacıyla depolanan bir çerezdir."
-          },
-          "locale": {
-            "title": "NEXT_LOCALE",
-            "description": "Web sitesinin kullanıcı tercihlerine göre doğru dili görüntülemesini sağlamak amacıyla yerelleştirme için kullanılan bir çerezdir."
-          }
-        }
-      }
-    },
-    "minimum_stay_banner": {
-      "title": "Temmuz & Ağustos ayları için minimum 3 gece konaklama geçerlidir"
-    },
-    "form": {
-      "fields": {
-        "fullname": {
-          "label": "Ad Soyad",
-          "placeholder": "Adınızı ve soyadınızı girin"
-        },
-        "email": {
-          "label": "E-posta",
-          "placeholder": "E-posta adresinizi girin"
-        },
-        "phone": {
-          "label": "Telefon",
-          "placeholder": "Telefon numaranızı girin"
-        },
-        "message": {
-          "label": "Mesaj",
-          "placeholder": "Mesajınızı buraya bırakın..."
-        },
-        "consent": {
-          "label": "Kişisel verilerimin yalnızca talebimi yerine getirmek amacıyla <link>Gizlilik Politikası beyanı</link> uyarınca kullanılmasını kabul ediyorum"
-        }
-      },
-      "button": {
-        "label": "Gönder"
-      },
-      "toast": {
-        "success": {
-          "title": "Başarıyla gönderildi",
-          "description": "Form başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğiz."
-        },
-        "error": {
-          "validation": {
-            "title": "Gönderme başarısız",
-            "description": "Lütfen işaretlenmiş alanları kontrol edin ve yeniden göndermeden önce hataları düzeltin."
-          },
-          "api": {
-            "title": "Gönderme başarısız",
-            "description": "E-posta hizmetiyle iletişim kurulurken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
-          }
-        }
-      }
-    },
     "footer": {
       "row-1": {
         "info-column": {
           "title": "Bilgi",
           "tel": "{phone} numarasını arayın",
           "email": "Bize e-posta gönderin",
-          "map": "Bizi haritada bulun"
+          "location": "Haritada {location}"
         },
         "links-column": {
           "title": "Yararlı bağlantılar",
@@ -444,6 +377,7 @@
           "title": "Şirketlerimiz",
           "yuppii": "Yuppii Luna Park",
           "christmas-lighthouse": "The Christmas Lighthouse",
+          "google-review": "Google'da değerlendirme bırakın",
           "start-pilates": "Start Pilates"
         }
       },

@@ -1,19 +1,31 @@
 'use client'
 
 import {IconX} from '@tabler/icons-react'
-import {Dialog} from 'radix-ui'
+import {Dialog as RadixDrawer} from 'radix-ui'
 import {IconButton} from '@/src/components/ui/icon-button'
 import {cn} from '@/src/lib/utils'
+import {ScrollArea} from './scrollarea'
 
-const Drawer = Dialog.Root
-const DrawerTrigger = Dialog.Trigger
+const Drawer = RadixDrawer.Root
+
+function DrawerTrigger({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof RadixDrawer.Trigger>) {
+  return (
+    <RadixDrawer.Trigger
+      className={cn('focus-ring', className)}
+      {...props}
+    />
+  )
+}
 
 function DrawerOverlay({
   className,
   ...props
-}: React.ComponentPropsWithRef<typeof Dialog.Overlay>) {
+}: React.ComponentPropsWithRef<typeof RadixDrawer.Overlay>) {
   return (
-    <Dialog.Overlay
+    <RadixDrawer.Overlay
       className={cn(
         'fixed z-50 inset-0 bg-black/75 backdrop-blur-[1px] data-open:animate-overlay-open data-closed:animate-overlay-close',
         className
@@ -28,14 +40,15 @@ function DrawerContent({
   'aria-describedby': ariaDescribedBy,
   side = 'right',
   ...props
-}: React.ComponentPropsWithRef<typeof Dialog.Content> & {
+}: React.ComponentPropsWithRef<typeof RadixDrawer.Content> & {
   side?: 'top' | 'right' | 'bottom' | 'left'
 }) {
   return (
-    <Dialog.DialogPortal>
-      <Dialog.Content
+    <RadixDrawer.Portal>
+      <DrawerOverlay />
+      <RadixDrawer.Content
         className={cn(
-          'fixed z-50 bg-surface-3 shadow-sm',
+          'fixed z-50 flex flex-col bg-surface-2 shadow-sm',
           side === 'top' && [
             'inset-x-0',
             'inset-bs-0',
@@ -45,8 +58,8 @@ function DrawerContent({
           side === 'right' && [
             'inset-y-0',
             'inset-e-0',
-            'w-full',
-            'sm:max-w-sm',
+            'inline-full',
+            'sm:max-inline-sm',
             'data-open:animate-drawer-right-open',
             'data-closed:animate-drawer-right-close'
           ],
@@ -59,8 +72,8 @@ function DrawerContent({
           side === 'left' && [
             'inset-y-0',
             'inset-s-0',
-            'w-full',
-            'sm:max-w-sm',
+            'inline-full',
+            'sm:max-inline-sm',
             'data-open:animate-drawer-left-open',
             'data-closed:animate-drawer-left-close'
           ],
@@ -69,17 +82,32 @@ function DrawerContent({
         aria-describedby={ariaDescribedBy}
         {...props}
       />
-    </Dialog.DialogPortal>
+    </RadixDrawer.Portal>
+  )
+}
+
+function DrawerHeader({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<'div'>) {
+  return (
+    <div
+      className={cn(
+        'shrink-0 p-4 flex flex-wrap justify-between items-center gap-2 bg-surface-3 sm:p-6',
+        className
+      )}
+      {...props}
+    />
   )
 }
 
 function DrawerTitle({
   className,
   ...props
-}: React.ComponentPropsWithRef<typeof Dialog.Title>) {
+}: React.ComponentPropsWithRef<typeof RadixDrawer.Title>) {
   return (
-    <Dialog.Title
-      className={cn('text-lg font-bold text-foreground', className)}
+    <RadixDrawer.Title
+      className={cn('grow text-lg font-bold', className)}
       {...props}
     />
   )
@@ -88,10 +116,33 @@ function DrawerTitle({
 function DrawerDescription({
   className,
   ...props
-}: React.ComponentPropsWithRef<typeof Dialog.Description>) {
+}: React.ComponentPropsWithRef<typeof RadixDrawer.Description>) {
   return (
-    <Dialog.Description
-      className={cn('text-sm', className)}
+    <RadixDrawer.Description
+      className={cn('grow text-sm', className)}
+      {...props}
+    />
+  )
+}
+
+function DrawerBody({className, ...props}: React.ComponentPropsWithRef<'div'>) {
+  return (
+    <ScrollArea className='flex-1 min-block-0 flex flex-col'>
+      <div
+        className={cn('p-4 sm:p-6', className)}
+        {...props}
+      />
+    </ScrollArea>
+  )
+}
+
+function DrawerFooter({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<'div'>) {
+  return (
+    <div
+      className={cn('shrink-0 bg-surface-3 p-4 sm:p-6', className)}
       {...props}
     />
   )
@@ -101,11 +152,11 @@ function DrawerClose({
   'aria-label': ariaLabel,
   ...props
 }: Omit<
-  React.ComponentPropsWithRef<typeof Dialog.Close>,
+  React.ComponentPropsWithRef<typeof RadixDrawer.Close>,
   'asChild' | 'children'
 >) {
   return (
-    <Dialog.Close
+    <RadixDrawer.Close
       {...props}
       asChild
     >
@@ -114,18 +165,20 @@ function DrawerClose({
         variant='ghost'
         size='small'
       >
-        <IconX />
+        <IconX aria-hidden />
       </IconButton>
-    </Dialog.Close>
+    </RadixDrawer.Close>
   )
 }
 
 export {
   Drawer,
+  DrawerBody,
   DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerOverlay,
+  DrawerFooter,
+  DrawerHeader,
   DrawerTitle,
   DrawerTrigger
 }

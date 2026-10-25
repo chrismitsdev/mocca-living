@@ -1,118 +1,89 @@
 'use client'
 
-import {AnimatePresence, motion, type Variants} from 'motion/react'
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  type Variants
+} from 'motion/react'
+import Image from 'next/image'
 import moccaLogo from '@/public/logos/mocca-logo.svg'
-import {FrozenRouter} from '@/src/components/shared/page-transition/frozen-router'
 import {usePathname} from '@/src/i18n/navigation'
+import {FrozenRouter} from './frozen-router'
 
-const COLUMN_COUNT = 5
+const EASE = [0.76, 0, 0.24, 1] as const
+
+const slide: Variants = {
+  initial: {y: '100%'},
+  enter: {y: '100%'},
+  exit: {
+    y: 0,
+    opacity: 0,
+    transition: {
+      y: {duration: 1, ease: EASE},
+      opacity: {duration: 0.6, delay: 1.3, ease: 'easeInOut'}
+    }
+  }
+}
+
+const perspective: Variants = {
+  initial: {y: 0, scale: 1, opacity: 1},
+  enter: {y: 0, scale: 1, opacity: 1},
+  exit: {
+    y: -100,
+    scale: 0.9,
+    opacity: 0.5,
+    transition: {duration: 1.2, ease: EASE}
+  }
+}
+
+const anim = (variants: Variants) => ({
+  initial: 'initial',
+  animate: 'enter',
+  exit: 'exit',
+  variants
+})
 
 function PageTransition({children}: React.PropsWithChildren) {
   const pathname = usePathname()
+  const reduceMotion = useReducedMotion()
 
-  function anim(variants: Variants, custom?: number) {
-    return {
-      initial: 'initial',
-      animate: 'enter',
-      exit: 'exit',
-      variants,
-      custom
-    }
-  }
-
-  const column = {
-    initial: {
-      top: 0
-    },
-    enter: (i: number) => {
-      return {
-        top: '100%',
-        transition: {
-          duration: 0.4,
-          delay: 0.05 * i
-        },
-        transitionEnd: {
-          top: 0,
-          height: 0
-        }
-      }
-    },
-    exit: (i: number) => {
-      return {
-        height: '100%',
-        transition: {
-          duration: 0.4,
-          delay: 0.05 * i
-        }
-      }
-    }
-  }
-
-  const overlay = {
-    initial: {
-      opacity: 0.75
-    },
-    enter: {
-      opacity: 0,
-      transition: {
-        duration: 0.4
-      }
-    },
-    exit: {
-      opacity: 0.75
-    }
-  }
-
-  const logo = {
-    initial: {
-      opacity: 1
-    },
-    enter: {
-      opacity: 0
-    },
-    exit: {
-      opacity: 1
-    }
-  }
+  if (reduceMotion) return children
 
   return (
-    <AnimatePresence mode='wait'>
-      <div key={pathname}>
+    <>
+      <AnimatePresence initial={false}>
         <motion.div
-          id='columns-transition-overlay'
-          className='fixed inset-0 pointer-events-none z-50 bg-black'
-          {...anim(overlay)}
-        />
-        <div
-          id='columns-transition-container'
-          className='fixed inset-0 pointer-events-none z-50 flex'
+          key={pathname}
+          aria-hidden
+          className='fixed inset-0 bg-surface-3 z-100 flex justify-center items-center'
+          {...anim(slide)}
         >
-          {Array.from({length: COLUMN_COUNT}).map((_, i) => {
-            const count = COLUMN_COUNT - i
-            const columnKey = `column-${count}`
+          <Image
+            src={moccaLogo}
+            alt=''
+            loading='eager'
+          />
+        </motion.div>
+      </AnimatePresence>
 
-            return (
-              <motion.div
-                key={columnKey}
-                id='columns-transition-column'
-                className='relative h-full w-full bg-surface-3'
-                {...anim(column, count)}
-              />
-            )
-          })}
-          <picture>
-            <motion.img
-              src={moccaLogo.src}
-              alt='Brand Logo'
-              className='absolute top-1/2 left-1/2 -translate-1/2 w-24 h-24'
-              {...anim(logo)}
-            />
-          </picture>
+      <AnimatePresence
+        mode='wait'
+        initial={false}
+      >
+        <div
+          key={pathname}
+          className='bg-black'
+        >
+          <motion.div
+            className='origin-top'
+            {...anim(perspective)}
+          >
+            <FrozenRouter>{children}</FrozenRouter>
+          </motion.div>
         </div>
-
-        <FrozenRouter>{children}</FrozenRouter>
-      </div>
-    </AnimatePresence>
+      </AnimatePresence>
+    </>
   )
 }
 

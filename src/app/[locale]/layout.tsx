@@ -4,14 +4,9 @@ import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
 import {NextIntlClientProvider} from 'next-intl'
 import {getLocale} from 'next-intl/server'
-import {Toaster} from 'sonner'
-import {AudioPlayerDialog} from '@/src/components/shared/audio-player-dialog'
-import {ContactDrawer} from '@/src/components/shared/contact-drawer'
-import {CookieBanner} from '@/src/components/shared/cookie-banner'
-import {Footer} from '@/src/components/shared/footer'
-import {Header} from '@/src/components/shared/header'
 import {PageTransition} from '@/src/components/shared/page-transition'
 import {routing} from '@/src/i18n/routing'
+import {IS_PRODUCTION} from '@/src/lib/constants'
 
 const inter = Inter({
   subsets: ['latin', 'latin-ext', 'greek', 'cyrillic'],
@@ -20,21 +15,12 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://moccaliving.com'),
-  alternates: {
-    canonical: '/',
-    languages: {
-      'en-US': '/en',
-      'el-GR': '/el',
-      'tr-TR': '/tr',
-      'bg-BG': '/bg'
-    }
-  },
   title: {
     template: '%s | Mocca Living',
     default: 'Mocca Living'
   },
   description:
-    'Luxury accommodations in Makri and Alexandroupolis. Experience refined stays by the sea or in the heart of the city with Mocca Living.',
+    'Luxury accommodations in Makri and Alexandroupoli. Experience refined stays by the sea or in the heart of the city with Mocca Living.',
   formatDetection: {
     email: true,
     telephone: true
@@ -47,24 +33,13 @@ export default async function RootLayout({children}: LayoutProps<'/[locale]'>) {
   return (
     <html
       lang={locale}
-      className={`${inter.className}`}
+      className={inter.className}
     >
-      <body className='bg-surface-3 text-foreground'>
+      <body className='bg-surface-1 text-foreground'>
         <NextIntlClientProvider>
-          <Header />
-          <main>
-            <PageTransition>{children}</PageTransition>
-          </main>
-          <Footer />
-          <ContactDrawer />
-          <AudioPlayerDialog />
-          <CookieBanner />
-          <Toaster
-            position='top-center'
-            mobileOffset={12}
-          />
+          <PageTransition>{children}</PageTransition>
         </NextIntlClientProvider>
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        {IS_PRODUCTION && <Analytics />}
       </body>
     </html>
   )

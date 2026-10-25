@@ -32,7 +32,7 @@ const flags = {
 
 function LocaleSwitcher({scrollTop = false}: LocaleSwitcherProps) {
   const [isPending, startTransition] = useTransition()
-  const t = useTranslations('Components.locale_select')
+  const t = useTranslations('Components.locale-switcher')
   const pathname = usePathname()
   const router = useRouter()
   const locale = useLocale()
@@ -69,7 +69,7 @@ function LocaleSwitcher({scrollTop = false}: LocaleSwitcherProps) {
       disabled={isPending}
     >
       <SelectTrigger className='min-w-44'>
-        <span className='flex items-center gap-1.5 grow'>
+        <span className='flex items-center gap-x-2 grow'>
           {renderedTrigger}
         </span>
       </SelectTrigger>

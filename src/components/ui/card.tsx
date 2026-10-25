@@ -3,7 +3,7 @@ import {cn} from '@/src/lib/utils'
 function Card({className, ...props}: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      className={cn('bg-surface-2 border border-border', className)}
+      className={cn('bg-surface-2 border border-surface-3', className)}
       {...props}
     />
   )
@@ -21,7 +21,7 @@ function CardHeader({className, ...props}: React.ComponentPropsWithRef<'div'>) {
 function CardTitle({className, ...props}: React.ComponentPropsWithRef<'h3'>) {
   return (
     <h3
-      className={cn('text-2xl text-balance font-bold', className)}
+      className={cn('text-xl text-balance font-bold', className)}
       {...props}
     />
   )
@@ -33,7 +33,7 @@ function CardDescription({
 }: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      className={cn('text-balance', className)}
+      className={cn('text-balance leading-8', className)}
       {...props}
     />
   )

@@ -3,15 +3,15 @@
 import {Collapsible as RadixCollapsible} from 'radix-ui'
 import {cn} from '@/src/lib/utils'
 
-const CollapsibleTrigger = RadixCollapsible.Trigger
+const Collapsible = RadixCollapsible.Root
 
-function Collapsible({
+function CollapsibleTrigger({
   className,
   ...props
-}: React.ComponentPropsWithRef<typeof RadixCollapsible.Root>) {
+}: React.ComponentPropsWithRef<typeof RadixCollapsible.Trigger>) {
   return (
-    <RadixCollapsible.Root
-      className={cn('group', className)}
+    <RadixCollapsible.Trigger
+      className={cn('cursor-pointer focus-ring', className)}
       {...props}
     />
   )

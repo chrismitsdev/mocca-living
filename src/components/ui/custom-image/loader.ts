@@ -1,29 +1,36 @@
 export function loader(w: number, h: number) {
+  const cx = w / 2
+  const cy = h / 2
+
   return `
     <svg
-      width='${w}'
-      height='${h}'
-      version='1.1'
-      xmlns='http://www.w3.org/2000/svg'
-      xmlns:xlink='http://www.w3.org/1999/xlink'
+      xmlns="http://www.w3.org/2000/svg"
+      width="${w}"
+      height="${h}"
+      fill="none"
     >
-      <defs>
-        <linearGradient id='g'>
-          <stop stop-color='#b1a082' offset='20%' />
-          <stop stop-color='#9b8c71' offset='50%' />
-          <stop stop-color='#b1a082' offset='70%' />
-        </linearGradient>
-      </defs>
-      <rect width='${w}' height='${h}' fill='#b1a082' />
-      <rect id="r" width='${w}' height='${h}' fill='url(#g)' />
-      <animate
-        xlink:href='#r'
-        attributeName='x'
-        from='-${w}'
-        to='${w}'
-        dur='1s'
-        repeatCount='indefinite'
-      />
+      <!-- Canvas background -->
+      <rect width="${w}" height="${h}" fill="#c7b492" />
+
+      <!-- Centered spinner path -->
+      <g transform="translate(${cx - 12}, ${cy - 12})">
+        <path
+          d="M21 12a9 9 0 1 1-6.219-8.56"
+          stroke="#1d130d"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            from="0 12 12"
+            to="360 12 12"
+            dur="1s"
+            repeatCount="indefinite"
+          />
+        </path>
+      </g>
     </svg>
   `
 }
