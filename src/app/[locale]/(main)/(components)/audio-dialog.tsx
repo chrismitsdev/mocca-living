@@ -16,7 +16,10 @@ function AudioDialog() {
         className='fixed inset-be-3 inset-e-3'
         asChild
       >
-        <IconButton aria-label='Open music player'>
+        <IconButton
+          className='bg-brand-8'
+          aria-label='Open music player'
+        >
           <IconMusic aria-hidden />
         </IconButton>
       </DialogTrigger>
