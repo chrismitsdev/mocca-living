@@ -1,5 +1,7 @@
 import type {Metadata} from 'next'
+import {notFound} from 'next/navigation'
 import {getTranslations} from 'next-intl/server'
+import {IS_PRODUCTION} from '@/src/lib/constants'
 import {Heading} from './(components)/heading'
 
 type SlugParams = Promise<{
@@ -22,6 +24,9 @@ export async function generateMetadata({
 export default async function GuestAppSlugPage({
   params
 }: PageProps<'/[locale]/guest-app/[slug]'>) {
+  // Guest app is a work in progress, keep it unreachable in production
+  if (IS_PRODUCTION) notFound()
+
   const {slug} = await (params as SlugParams)
 
   return (
