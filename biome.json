@@ -40,7 +40,8 @@
       "react": "recommended",
       "types": "recommended",
       "project": "recommended",
-      "next": "recommended"
+      "next": "recommended",
+      "tailwind": "recommended"
     }
   },
   "assist": {

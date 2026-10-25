@@ -207,7 +207,7 @@ function FooterLink({
 }: React.ComponentPropsWithRef<typeof Link>) {
   return (
     <Link
-      className={cn('hover:underline', className)}
+      className={cn('inline-max hover:underline', className)}
       {...props}
     />
   )
