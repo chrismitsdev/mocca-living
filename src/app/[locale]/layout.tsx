@@ -15,15 +15,6 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://moccaliving.com'),
-  alternates: {
-    canonical: '/',
-    languages: {
-      'en-US': '/en',
-      'el-GR': '/el',
-      'tr-TR': '/tr',
-      'bg-BG': '/bg'
-    }
-  },
   title: {
     template: '%s | Mocca Living',
     default: 'Mocca Living'

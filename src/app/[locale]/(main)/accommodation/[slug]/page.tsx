@@ -2,6 +2,7 @@ import type {Metadata} from 'next'
 import type {Locale} from 'next-intl'
 import {getTranslations} from 'next-intl/server'
 import {Metadata as TranslationsMetadata} from '@/messages/en.json'
+import {getAlternates} from '@/src/lib/get-alternates'
 import {Details} from './(components)/details'
 import {Distances} from './(components)/distances'
 import {Heading} from './(components)/heading'
@@ -19,7 +20,8 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
   const t = await getTranslations('Metadata')
 
   return {
-    title: t(`accommodation.slug.${slug}.title`)
+    title: t(`accommodation.slug.${slug}.title`),
+    alternates: await getAlternates(`/accommodation/${slug}`)
   }
 }
 
