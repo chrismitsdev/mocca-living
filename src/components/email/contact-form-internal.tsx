@@ -45,7 +45,7 @@ function ContactFormInternal({
             <Section className='px-4 pt-8 pb-6'>
               <Row className='mb-6'>
                 <Link
-                  href='https://moccaliving.com'
+                  href='https://www.moccaliving.com'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
