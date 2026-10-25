@@ -2,6 +2,7 @@
 
 import {useParams} from 'next/navigation'
 import {type Locale, useLocale, useTranslations} from 'next-intl'
+import {useState} from 'react'
 import {Button} from '@/src/components/ui/button'
 import {Separator} from '@/src/components/ui/separator'
 import {Link} from '@/src/i18n/navigation'
@@ -18,7 +19,9 @@ function isPropertySlug(slug: unknown): slug is PropertySlug {
 }
 
 function BookButton() {
-  const {slug} = useParams()
+  const params = useParams()
+  // Snapshot on mount: the exiting page keeps its slug during the page transition
+  const [slug] = useState(params.slug)
   const locale = useLocale()
   const t = useTranslations('Pages.accommodation.slug.details.static')
 
