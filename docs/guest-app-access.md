@@ -334,8 +334,12 @@ in v1, but `pax` is stored so it can be added later.
 
 - Purpose: providing the stay-related guest app (performance of the contract).
 - Data is minimised (§4) and deleted automatically 3 days after checkout.
-- Processors: Resend (email intake and sending), Upstash (EU region), Vercel
-  (hosting).
+- Processors: Resend (email intake and sending; domain in `eu-west-1`),
+  Upstash (`fra1`), Vercel (hosting; functions in `fra1`).
+- **Resend keeps a copy of each received email** for its own retention
+  period. The Resend SDK (v6.34) has no API to delete received emails, so
+  they can't be removed after processing. Our store keeps only the fields in
+  §4.
 - Add a privacy-policy paragraph in all four locales.
 
 ## 9. Alerts
@@ -402,3 +406,5 @@ filter) are made manually from step-by-step instructions.
   emails forwarded through the filter.
 - After 22 Nov 2026: do revplus reservation emails keep the same sender and layout?
 - When Georgia gets a listing: add its exact property name(s) to the mapping.
+- Check Resend's retention period for received emails (for the privacy
+  paragraph), and whether a delete API becomes available.
