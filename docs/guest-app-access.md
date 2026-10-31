@@ -58,6 +58,11 @@ They have no guest name and are **ignored**.
   - Pax appears as `Rooms, Pax: 1 Rooms, 3 Persons` (Booking.com) or
     `Units, Pax: 1 Unit, 3 Adults + 1 Children` (Airbnb).
   - Cancellations add `**Canceled**` markers.
+  - Booking.com's `Client Comments` starts with the names of **all guests**,
+    one per line. They're added to the matching names so every group member
+    can use their own surname.
+  - `Res ID` / `Last Update` timestamps have no zone. They match the UTC send
+    time, so they're treated as UTC.
 - The two channel layouts differ slightly. Parse only the shared fields.
 - Modification emails haven't been seen yet. Treat any email with a newer
   `Last Update` for the same ID as replacing the previous state.
@@ -188,6 +193,11 @@ Hostinger key. Replaying a genuine email is harmless (idempotent upsert).
 
 Still to confirm with real emails: Primal Res (`c=relaxed/simple` body) and
 Hotelo (`c=relaxed/relaxed`) forwarded through the filter.
+
+Unforwarded samples saved from the mailbox pass direct DKIM for Primal Res.
+Hotelo's Google Workspace signatures carry a **7-day expiry** (`x=`), so an
+old Hotelo email can't be re-verified directly later. Live processing happens
+within seconds, and the ARC attestation records the result at arrival.
 
 ## 4. Data model (Upstash Redis, EU region)
 
