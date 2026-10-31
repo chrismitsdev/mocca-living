@@ -34,6 +34,7 @@
     "entities": "^8.1.0",
     "husky": "^9.1.7",
     "leaflet": "^1.9.4",
+    "mailauth": "^8.0.4",
     "motion": "^14.6.0",
     "next": "^16.4.3",
     "next-intl": "^4.14.9",
