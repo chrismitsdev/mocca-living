@@ -1,5 +1,6 @@
 import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
+import {Toaster} from 'sonner'
 import {GUEST_APP_HIDDEN} from '@/src/lib/constants'
 import {Header} from './(components)/header'
 
@@ -24,6 +25,10 @@ export default function GuestsLayout({children}: LayoutProps<'/[locale]'>) {
     <>
       <Header />
       <main className='bg-surface-1'>{children}</main>
+      <Toaster
+        position='top-center'
+        mobileOffset={12}
+      />
     </>
   )
 }

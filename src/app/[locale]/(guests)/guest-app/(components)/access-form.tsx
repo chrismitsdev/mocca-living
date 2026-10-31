@@ -7,11 +7,12 @@ import {
   IconUserCircle
 } from '@tabler/icons-react'
 import {useFormatter, useLocale, useTranslations} from 'next-intl'
-import {useActionState} from 'react'
+import {useActionState, useEffect} from 'react'
 import {FormControl} from '@/src/components/shared/form-control'
 import {Button} from '@/src/components/ui/button'
 import {Input} from '@/src/components/ui/input'
 import {Label} from '@/src/components/ui/label'
+import {toast} from '@/src/components/ui/toast'
 import {OWNER_PHONE} from '@/src/lib/constants'
 import {
   type VerifyGuestState,
@@ -55,6 +56,24 @@ function AccessForm() {
   const nameError = required(state.name) ?? bookingError
   const showContact =
     state.error === 'not-found' || state.error === 'unavailable'
+
+  // Hints for the fields that may be wrong: both for a booking that wasn't
+  // found, only the empty ones for missing input
+  useEffect(() => {
+    const fields = (['confirmation', 'name'] as const).filter((field) =>
+      state.error === 'not-found'
+        ? true
+        : state.error === 'required' && !state[field].trim()
+    )
+
+    for (const field of fields) {
+      toast({
+        title: t(`fields.${field}.label`),
+        description: t(`fields.${field}.hint`),
+        status: 'error'
+      })
+    }
+  }, [state, t])
 
   return (
     <form
