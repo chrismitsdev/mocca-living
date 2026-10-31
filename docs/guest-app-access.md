@@ -180,12 +180,17 @@ An email is accepted if **either** check passes:
    - The highest-instance **ARC-Seal** is valid, with `d=moccaliving.com` and
      `cv=pass` (or `cv=none` at i=1). Verify the seal on its own; the
      ARC-Message-Signature is expected to fail because of the `Date` rewrite.
-   - The sealed **ARC-Authentication-Results** reports `dkim=pass` with an
-     allowed `header.d=` and gives a `header.b=` prefix.
-   - A **DKIM-Signature** in the message has that `d=` and a `b=` value
-     starting with that prefix.
+   - The sealed **ARC-Authentication-Results** reports `dkim=pass` and gives
+     a `header.b=` prefix.
+   - A **DKIM-Signature** in the message has a `b=` value starting with that
+     prefix and an **allowed `d=`**. The result's `header.d=` or `header.i=`
+     (RFC 8601 allows either; Hostinger uses `header.d`) must agree with it.
    - Recomputing that signature's **body hash** (with its `c=` body
-     canonicalisation) matches its `bh=`.
+     canonicalisation) matches its `bh=`, and it has no `l=` length limit.
+
+   Implemented in `src/lib/guest-app/email/origin.ts` with mailauth
+   (`dkimVerify`, `verifyASChain`). It was checked against the real Hostinger
+   forward from the spike.
 
 Together these prove the body was signed by the allowed sender and hasn't
 changed since. A forged email can't carry a valid seal from our domain's
