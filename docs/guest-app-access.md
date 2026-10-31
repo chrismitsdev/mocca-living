@@ -336,10 +336,11 @@ in v1, but `pax` is stored so it can be added later.
 - Data is minimised (§4) and deleted automatically 3 days after checkout.
 - Processors: Resend (email intake and sending; domain in `eu-west-1`),
   Upstash (`fra1`), Vercel (hosting; functions in `fra1`).
-- **Resend keeps a copy of each received email** for its own retention
-  period. The Resend SDK (v6.34) has no API to delete received emails, so
-  they can't be removed after processing. Our store keeps only the fields in
-  §4.
+- **Resend keeps a copy of each received email for 30 days** (its data
+  retention on every plan). The Resend SDK (v6.34) has no API to delete
+  received emails, so they can't be removed automatically after processing;
+  manual deletion in the dashboard may be possible. Our store keeps only the
+  fields in §4.
 - Add a privacy-policy paragraph in all four locales.
 
 ## 9. Alerts
@@ -383,19 +384,37 @@ filter) are made manually from step-by-step instructions.
 
 ## 12. Build order
 
-1. **Intake spike.**
-   - Add `reservations.moccaliving.com` to Resend (receiving), with MX in Vercel DNS.
-   - Set up the webhook.
-   - Create the Hostinger filter.
-   - Confirm that the raw MIME is available and that DKIM survives forwarding.
-2. **Parsers + storage.** Vitest setup, fixtures, the inbound route, the
-   Redis model, alerts.
+1. **Intake spike** ✅ (31 Oct 2026).
+   - `reservations.moccaliving.com` added to Resend (receiving, `eu-west-1`),
+     with MX in Vercel DNS.
+   - Hostinger filter created (with a temporary test condition for the
+     developer's Gmail).
+   - Raw MIME available; DKIM breaks on forwarding, so origin is verified via
+     ARC (§3.3).
+2. **Parsers + storage + webhook** ✅ (31 Oct 2026).
+   - Vitest, fixtures, parsers, origin verification, the Redis store, the
+     inbound route and alerts.
+   - Upstash `mocca-guest-app` (`fra1`) is connected.
+   - The Resend webhook (`email.received`) points at the branch preview.
+     Verified end to end with a forwarded test email: the ARC seal checked
+     out, and the sender was ignored as not allowed.
+   - Still to see: the first real reservation stored.
 3. **Guest access.** Verify form, rate limiting, session, property/window
    checks, translations.
 4. **Owner page.** Magic-link login, list, revoke, add, extend, audit.
 5. **Privacy policy** update.
 6. **Content** (separate design, once the owner finalises it), then remove
    the production 404 guards.
+7. **Go-live.**
+   - Change the existing Resend webhook's URL to
+     `https://www.moccaliving.com/api/guest-app/inbound`. The free plan
+     allows only one endpoint, so don't add a second one.
+   - Add `RESEND_INBOUND_WEBHOOK_SECRET` for Production.
+   - Remove the temporary Gmail condition from the Hostinger filter.
+
+Resend free plan limits to keep in mind: received emails count towards the
+100/day and 3,000/month email quota (shared with the contact form and
+alerts); 3 inboxes; 1 webhook endpoint.
 
 ## 13. Open items
 
@@ -406,5 +425,4 @@ filter) are made manually from step-by-step instructions.
   emails forwarded through the filter.
 - After 22 Nov 2026: do revplus reservation emails keep the same sender and layout?
 - When Georgia gets a listing: add its exact property name(s) to the mapping.
-- Check Resend's retention period for received emails (for the privacy
-  paragraph), and whether a delete API becomes available.
+- Watch for a Resend API to delete received emails (they're kept 30 days).
