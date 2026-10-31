@@ -58,9 +58,9 @@ They have no guest name and are **ignored**.
   - Pax appears as `Rooms, Pax: 1 Rooms, 3 Persons` (Booking.com) or
     `Units, Pax: 1 Unit, 3 Adults + 1 Children` (Airbnb).
   - Cancellations add `**Canceled**` markers.
-  - Booking.com's `Client Comments` starts with the names of **all guests**,
-    one per line. They're added to the matching names so every group member
-    can use their own surname.
+  - `Booked By` is always the **booker** and is the only name stored and
+    matched. `Guest Info` can name someone else (a booking made for another
+    person), and the `Client Comments` guest list isn't used.
   - `Res ID` / `Last Update` timestamps have no zone. They match the UTC send
     time, so they're treated as UTC.
 - The two channel layouts differ slightly. Parse only the shared fields.
@@ -117,7 +117,7 @@ Hotelo website ───────┘                ├─► info@moccalivin
                            ├─ parse (Primal Res | Hotelo)
                            └─ upsert reservation ──► Upstash Redis (EU)
                                                     ▲
-Guest ─► /[locale]/guest-app (confirmation no. + surname) ─┘
+Guest ─► /[locale]/guest-app (confirmation no. + full name) ─┘
 Admin ─► /[locale]/admin/guest-app (magic-link login)
 ```
 
@@ -214,8 +214,7 @@ type Reservation = {
   channel: 'booking' | 'airbnb' | 'expedia' | 'hotelo' | 'other' | 'manual'
   property: PropertySlug // Georgia only through a manual add
   status: 'confirmed' | 'cancelled' | 'revoked'
-  guestName: string // full name as in the email (shown on the owner page)
-  bookedNames: string[] // every name on the booking; normalised at match time
+  bookerName: string // booker's full name exactly as the platform saved it
   checkIn: string // YYYY-MM-DD (property-local date)
   checkOut: string // YYYY-MM-DD
   pax: number | null // stored for a future device limit
@@ -252,12 +251,21 @@ The guest enters:
 - **Booking confirmation number**: Booking.com (10 digits), Airbnb (`HM…`)
   or Hotelo (8 digits). Normalise it by trimming, uppercasing and stripping
   `#`, spaces and dashes.
-- **Surname, as on the booking.** Matching is lenient:
-  - lowercase, with diacritics removed (`Gündoğdu` → `gundogdu`);
-  - Greek and Cyrillic transliterated to Latin (`Костадинов` → `kostadinov`);
-  - a match against **any token** of `Booked By` / `Guest Info` / billing
-    name succeeds;
-  - the booker's surname works for the whole group.
+- **Full name of the booker, exactly as the platform saved it** (decided
+  1 Nov 2026). The stored name is Primal Res `Booked By` or Hotelo billing
+  `Name`, unmodified; if the platform reformatted or stripped accents, that's
+  what counts.
+  - Same words, letter for letter, **accents included**.
+  - Ignored: **word order** (Booking.com shows "Surname Given"), **letter
+    case** and extra spaces. Hyphens are part of the word.
+  - Case folding covers the Turkish dotted/dotless i (`ŞAHİN` = `Şahin`,
+    `IŞIK` = `Işık`).
+  - No partial names, no other guests' names, no transliteration, no fuzzy
+    matching.
+  - Hint shown to the guest: _"Enter your full name exactly as it appears on
+    your booking confirmation email."_
+  - A guest who can't match contacts the owner (WhatsApp button). The owner
+    page shows the stored name; a "correct name" action may come later.
 
 Email and phone aren't used: Booking.com provides relay addresses, and
 Airbnb's email field is empty.
@@ -274,14 +282,14 @@ Airbnb's email field is empty.
 
 ### 5.3 Outcomes
 
-| Situation                                             | Response                                                                                |
-| ----------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| Booking confirmed, surname matches, inside the window | Issue a session and redirect to `/guest-app/<property>`                                 |
-| Before `checkIn`                                      | "Your guest app opens on <date>"                                                        |
-| After the window closes                               | "Your stay has ended, thank you for staying with us"                                    |
-| Cancelled or revoked                                  | Generic "We couldn't find an active booking"                                            |
-| Number exists but surname doesn't match               | Generic not-found message plus a WhatsApp contact button. The owner can verify manually |
-| Unknown number                                        | Generic "We couldn't find this booking" (don't reveal which field was wrong)            |
+| Situation                                          | Response                                                                                |
+| -------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Booking confirmed, name matches, inside the window | Issue a session and redirect to `/guest-app/<property>`                                 |
+| Before `checkIn`                                   | "Your guest app opens on <date>"                                                        |
+| After the window closes                            | "Your stay has ended, thank you for staying with us"                                    |
+| Cancelled or revoked                               | Generic "We couldn't find an active booking"                                            |
+| Number exists but name doesn't match               | Generic not-found message plus a WhatsApp contact button. The owner can verify manually |
+| Unknown number                                     | Generic "We couldn't find this booking" (don't reveal which field was wrong)            |
 
 All copy is translated (en/el/tr/bg) and can be edited later.
 
@@ -314,8 +322,12 @@ in v1, but `pax` is stored so it can be added later.
   - The response is the same whether or not the email is allowlisted.
   - The link token is random and single-use, stored in Redis with a
     15-minute TTL.
-- The session is a signed `httpOnly` cookie holding the admin email, valid
-  for 7 days, with logout.
+- **Sessions last 1 day per login and aren't extended by activity** (decided
+  1 Nov 2026). A new login starts a new 1-day session.
+- Sessions are **stored in Redis** (random session id → admin email, 24 h
+  TTL). The `httpOnly` cookie only carries the id, so logout really ends the
+  session, and all admin sessions can be cleared without touching guest
+  sessions.
 - Login requests are rate-limited.
 - The admins' Gmail accounts become the keys to the owner page, so both
   should have 2-Step Verification enabled.
