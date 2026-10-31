@@ -8,10 +8,10 @@ import {
 } from '@tabler/icons-react'
 import {useFormatter, useLocale, useTranslations} from 'next-intl'
 import {useActionState} from 'react'
+import {FormControl} from '@/src/components/shared/form-control'
 import {Button} from '@/src/components/ui/button'
 import {Input} from '@/src/components/ui/input'
 import {Label} from '@/src/components/ui/label'
-import {Typography} from '@/src/components/ui/typography'
 import {OWNER_PHONE} from '@/src/lib/constants'
 import {
   type VerifyGuestState,
@@ -33,7 +33,13 @@ function AccessForm() {
   const t = useTranslations('Pages.guest-app.access')
   const format = useFormatter()
 
-  const error =
+  const required = (value: string) =>
+    state.error === 'required' && !value.trim()
+      ? t('errors.required')
+      : undefined
+
+  // Errors about the booking as a whole show under the last field
+  const bookingError =
     state.error === 'not-yet' && state.opensAt
       ? t('errors.not-yet', {
           date: format.dateTime(new Date(state.opensAt), {
@@ -41,25 +47,26 @@ function AccessForm() {
             timeZone: PROPERTY_TIMEZONE
           })
         })
-      : state.error && state.error !== 'not-yet'
+      : state.error && state.error !== 'not-yet' && state.error !== 'required'
         ? t(`errors.${state.error}`)
-        : null
+        : undefined
+
+  const confirmationError = required(state.confirmation)
+  const nameError = required(state.name) ?? bookingError
   const showContact =
     state.error === 'not-found' || state.error === 'unavailable'
 
   return (
     <form
-      className='space-y-4'
+      className='space-y-6'
       action={action}
       noValidate
     >
-      <div>
-        <Label
-          htmlFor='confirmation'
-          className='mb-1'
-        >
-          {t('fields.confirmation.label')}
-        </Label>
+      <FormControl
+        id='confirmation'
+        error={confirmationError}
+      >
+        <Label htmlFor='confirmation'>{t('fields.confirmation.label')}</Label>
         <Input
           id='confirmation'
           name='confirmation'
@@ -69,27 +76,17 @@ function AccessForm() {
           placeholder={t('fields.confirmation.placeholder')}
           defaultValue={state.confirmation}
           icon={IconTicket}
-          error={state.error === 'invalid' && !state.confirmation.trim()}
+          error={Boolean(confirmationError)}
           disabled={isPending}
-          aria-describedby='confirmation-hint'
           required
         />
-        <Typography
-          id='confirmation-hint'
-          variant='tiny'
-          className='mt-1 px-2'
-        >
-          {t('fields.confirmation.hint')}
-        </Typography>
-      </div>
+      </FormControl>
 
-      <div>
-        <Label
-          htmlFor='name'
-          className='mb-1'
-        >
-          {t('fields.name.label')}
-        </Label>
+      <FormControl
+        id='name'
+        error={nameError}
+      >
+        <Label htmlFor='name'>{t('fields.name.label')}</Label>
         <Input
           id='name'
           name='name'
@@ -98,28 +95,11 @@ function AccessForm() {
           placeholder={t('fields.name.placeholder')}
           defaultValue={state.name}
           icon={IconUserCircle}
-          error={state.error === 'invalid' && !state.name.trim()}
+          error={Boolean(nameError)}
           disabled={isPending}
-          aria-describedby='name-hint'
           required
         />
-        <Typography
-          id='name-hint'
-          variant='tiny'
-          className='mt-1 px-2'
-        >
-          {t('fields.name.hint')}
-        </Typography>
-      </div>
-
-      {error && (
-        <div
-          role='alert'
-          className='py-2 px-3 bg-danger text-danger-foreground'
-        >
-          <Typography variant='small'>{error}</Typography>
-        </div>
-      )}
+      </FormControl>
 
       <Button
         className='inline-full'

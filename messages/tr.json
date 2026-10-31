@@ -343,7 +343,7 @@
         },
         "submit": "Uygulamayı aç",
         "errors": {
-          "invalid": "Lütfen her iki alanı da doldurun.",
+          "required": "Zorunlu alan",
           "rate-limited": "Çok fazla deneme yapıldı. Lütfen 15 dakika sonra tekrar deneyin.",
           "not-found": "Bu bilgilerle aktif bir rezervasyon bulunamadı.",
           "not-yet": "Misafir uygulamanız {date} tarihinde açılacak.",

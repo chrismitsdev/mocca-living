@@ -343,7 +343,7 @@
         },
         "submit": "Open guest app",
         "errors": {
-          "invalid": "Please fill in both fields.",
+          "required": "Mandatory field",
           "rate-limited": "Too many attempts. Please try again in 15 minutes.",
           "not-found": "We couldn't find an active booking with these details.",
           "not-yet": "Your guest app opens on {date}.",

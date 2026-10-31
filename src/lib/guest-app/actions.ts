@@ -17,7 +17,7 @@ export type VerifyGuestState = {
   name: string
   error:
     | null
-    | 'invalid'
+    | 'required'
     | 'rate-limited'
     | 'not-found'
     | 'not-yet'
@@ -55,7 +55,7 @@ export async function verifyGuestAction(
   const state = {confirmation: confirmationInput, name}
   const confirmation = normalizeConfirmation(confirmationInput)
 
-  if (!confirmation || !name) return {...state, error: 'invalid'}
+  if (!confirmation || !name) return {...state, error: 'required'}
 
   const store = createUpstashStore()
   let property: PropertySlug
