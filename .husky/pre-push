@@ -34,5 +34,13 @@ pnpm lint-intl || {
 }
 
 echo ""
+echo "🧪 Running tests..."
+pnpm test || {
+  echo ""
+  echo "❌ Tests failed. Push aborted."
+  exit 1
+}
+
+echo ""
 echo "✅ All checks passed. Pushing..."
 echo ""
