@@ -41,6 +41,21 @@ Every reservation does, however, produce an email to `info@moccaliving.com`
 | Airbnb           | `bookings@primal-res.com` | `HM` + 8 alphanumerics     | `primal-res.com`                                              |
 | Website (Hotelo) | `booking@hotelo.gr`       | 8 digits                   | `hotelo-gr.<digits>.gappssmtp.com` (Google Workspace default) |
 
+The Primal Res `Res ID` **is the platform's own reservation number**, the
+one the guest gets in their confirmation, not an internal Primal Res ID:
+
+- **Airbnb**: confirmed on 31 Oct 2026. For the same booking, Airbnb's own
+  email to the owner showed confirmation code `HM` + 8 characters, identical
+  to the Primal Res `Res ID`, with no separators.
+- **Booking.com**: a real Primal Res email shows a 10-digit `Res ID` with no
+  separators, and a guest's own Booking.com email (a receipt) shows the
+  booking number ("Αριθμός κράτησης") the same way: 10 digits, no dots or
+  spaces. The two weren't compared for the same booking; assumed identical
+  (decided 31 Oct 2026).
+
+So the reservation-number normalisation (§5.1) only needs to handle how
+guests type: letter case, spaces, dashes and a leading `#`.
+
 WebHotelier also sends "Availability Alert" emails (`noreply+alert@webhotelier.net`).
 They have no guest name and are **ignored**.
 
