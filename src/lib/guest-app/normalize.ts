@@ -33,7 +33,7 @@ export function nameMatches(input: string, bookerName: string): boolean {
 }
 
 /** Uppercase, strip a leading '#', spaces and dashes */
-export function normalizeConfirmation(value: string): string {
+export function normalizeReservationNumber(value: string): string {
   return value
     .trim()
     .toUpperCase()

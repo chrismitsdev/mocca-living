@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest'
-import {nameMatches, normalizeConfirmation} from './normalize'
+import {nameMatches, normalizeReservationNumber} from './normalize'
 
 describe('nameMatches', () => {
   it('matches the booker name in any word order and letter case', () => {
@@ -55,11 +55,11 @@ describe('nameMatches', () => {
   })
 })
 
-describe('normalizeConfirmation', () => {
+describe('normalizeReservationNumber', () => {
   it('normalises the three channel formats', () => {
-    expect(normalizeConfirmation(' 1234 567 890 ')).toBe('1234567890')
-    expect(normalizeConfirmation('hm9abc12de')).toBe('HM9ABC12DE')
-    expect(normalizeConfirmation('#12345678')).toBe('12345678')
-    expect(normalizeConfirmation('1234-5678')).toBe('12345678')
+    expect(normalizeReservationNumber(' 1234 567 890 ')).toBe('1234567890')
+    expect(normalizeReservationNumber('hm9abc12de')).toBe('HM9ABC12DE')
+    expect(normalizeReservationNumber('#12345678')).toBe('12345678')
+    expect(normalizeReservationNumber('1234-5678')).toBe('12345678')
   })
 })

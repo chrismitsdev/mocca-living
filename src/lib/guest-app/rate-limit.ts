@@ -2,11 +2,13 @@ import type {KeyValueStore} from './store/kv'
 
 // Fixed-window attempt counters against guessing booking numbers/names
 
+const RATE_LIMIT_KEY_PREFIX = 'guestAppRateLimit:'
+
 export const LIMITS = {
   /** Verification attempts per IP address */
   ip: {limit: 10, windowSeconds: 15 * 60},
   /** Failed attempts per booking number */
-  confirmation: {limit: 5, windowSeconds: 15 * 60}
+  reservationNumber: {limit: 5, windowSeconds: 15 * 60}
 }
 
 /** Count one hit; true while the count is within the limit */
@@ -15,7 +17,10 @@ export async function hit(
   key: string,
   {limit, windowSeconds}: {limit: number; windowSeconds: number}
 ): Promise<boolean> {
-  const count = await store.incr(`gaRate:${key}`, windowSeconds)
+  const count = await store.incr(
+    `${RATE_LIMIT_KEY_PREFIX}${key}`,
+    windowSeconds
+  )
   return count <= limit
 }
 
@@ -24,5 +29,5 @@ export async function count(
   store: KeyValueStore,
   key: string
 ): Promise<number> {
-  return (await store.get<number>(`gaRate:${key}`)) ?? 0
+  return (await store.get<number>(`${RATE_LIMIT_KEY_PREFIX}${key}`)) ?? 0
 }

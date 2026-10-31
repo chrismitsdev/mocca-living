@@ -8,9 +8,9 @@ import {
 const secret = 'test-secret-that-is-long-enough-for-hmac-use'
 const now = Date.parse('2026-10-03T12:00:00Z')
 const session: GuestSession = {
-  c: '1234567890',
-  p: 'mocca-city',
-  exp: Date.parse('2026-10-04T08:00:00Z') / 1000
+  reservationNumber: '1234567890',
+  property: 'mocca-city',
+  expiresAt: Date.parse('2026-10-04T08:00:00Z') / 1000
 }
 
 describe('session tokens', () => {
@@ -28,7 +28,7 @@ describe('session tokens', () => {
     const token = createSessionToken(session, secret)
     const [version, , signature] = token.split('.')
     const forged = Buffer.from(
-      JSON.stringify({...session, p: 'mocca-by-the-sea-dimitra'})
+      JSON.stringify({...session, property: 'mocca-by-the-sea-dimitra'})
     ).toString('base64url')
     expect(
       verifySessionToken(`${version}.${forged}.${signature}`, secret, now)
@@ -43,7 +43,7 @@ describe('session tokens', () => {
   })
 
   it('rejects malformed input', () => {
-    for (const token of [undefined, '', 'v1', 'v1.a', 'v2.a.b', 'v1.a.b.c']) {
+    for (const token of [undefined, '', 'v2', 'v2.a', 'v1.a.b', 'v2.a.b.c']) {
       expect(verifySessionToken(token, secret, now)).toBeNull()
     }
   })

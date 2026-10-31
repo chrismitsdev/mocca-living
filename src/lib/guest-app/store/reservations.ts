@@ -1,17 +1,17 @@
 import type {Channel, ParsedReservation} from '../email/types'
-import {normalizeConfirmation} from '../normalize'
+import {normalizeReservationNumber} from '../normalize'
 import {PROPERTY_TIMES, PROPERTY_TIMEZONE} from '../properties'
 import {addDays, zonedDate, zonedTimeToEpochMs} from '../time'
 import type {KeyValueStore} from './kv'
 
-// Reservations kept for guest-app access, one record per confirmation number.
+// Reservations kept for guest-app access, one record per reservation number.
 // Records delete themselves a few days after the stay; an index sorted by
 // expiry lets the owner page list current and upcoming stays
 
 export type AuditEntry = {at: string; by: string; action: string}
 
 export type Reservation = {
-  confirmation: string
+  reservationNumber: string
   channel: Channel | 'manual'
   property: PropertySlug
   status: 'confirmed' | 'cancelled' | 'revoked'
@@ -30,10 +30,11 @@ export type Reservation = {
 }
 
 export const RETENTION_DAYS = 3
-const KEY_PREFIX = 'gaRes:'
-const INDEX_KEY = 'gaRes:index'
+const RESERVATION_KEY_PREFIX = 'guestAppReservation:'
+const RESERVATION_INDEX_KEY = 'guestAppReservationIndex'
 
-const keyOf = (confirmation: string) => `${KEY_PREFIX}${confirmation}`
+const reservationKey = (reservationNumber: string) =>
+  `${RESERVATION_KEY_PREFIX}${reservationNumber}`
 
 /** End of access: check-out time on the departure date, or the override */
 export function accessEndsAt(reservation: Reservation): number {
@@ -61,15 +62,23 @@ function expiresAt(reservation: Reservation): number {
 
 async function save(store: KeyValueStore, reservation: Reservation) {
   const expireAt = expiresAt(reservation)
-  await store.set(keyOf(reservation.confirmation), reservation, {expireAt})
-  await store.zadd(INDEX_KEY, expireAt, reservation.confirmation)
+  await store.set(reservationKey(reservation.reservationNumber), reservation, {
+    expireAt
+  })
+  await store.zadd(
+    RESERVATION_INDEX_KEY,
+    expireAt,
+    reservation.reservationNumber
+  )
 }
 
 export async function getReservation(
   store: KeyValueStore,
-  confirmation: string
+  reservationNumber: string
 ): Promise<Reservation | null> {
-  return store.get<Reservation>(keyOf(normalizeConfirmation(confirmation)))
+  return store.get<Reservation>(
+    reservationKey(normalizeReservationNumber(reservationNumber))
+  )
 }
 
 export type ApplyOutcome =
@@ -88,7 +97,7 @@ export async function applyReservationEmail(
   parsed: ParsedReservation,
   receivedAt: Date
 ): Promise<ApplyOutcome> {
-  const existing = await getReservation(store, parsed.confirmation)
+  const existing = await getReservation(store, parsed.reservationNumber)
   const sourceUpdatedAt = parsed.sourceUpdatedAt ?? receivedAt.toISOString()
 
   if (existing?.status === 'revoked') return 'revoked'
@@ -108,7 +117,7 @@ export async function applyReservationEmail(
       : 'updated'
 
   const reservation: Reservation = {
-    confirmation: parsed.confirmation,
+    reservationNumber: parsed.reservationNumber,
     channel: parsed.channel,
     property: parsed.property,
     status: parsed.status,
@@ -137,16 +146,16 @@ export async function listReservations(
   now: Date
 ): Promise<Reservation[]> {
   const nowSeconds = Math.floor(now.getTime() / 1000)
-  await store.zremRangeByScore(INDEX_KEY, 0, nowSeconds)
+  await store.zremRangeByScore(RESERVATION_INDEX_KEY, 0, nowSeconds)
 
-  const confirmations = await store.zrangeByScore(
-    INDEX_KEY,
+  const reservationNumbers = await store.zrangeByScore(
+    RESERVATION_INDEX_KEY,
     nowSeconds,
     Number.POSITIVE_INFINITY
   )
   const reservations = await Promise.all(
-    confirmations.map((confirmation) =>
-      store.get<Reservation>(keyOf(confirmation))
+    reservationNumbers.map((reservationNumber) =>
+      store.get<Reservation>(reservationKey(reservationNumber))
     )
   )
   return reservations
@@ -158,13 +167,13 @@ export class ReservationError extends Error {}
 
 async function update(
   store: KeyValueStore,
-  confirmation: string,
+  reservationNumber: string,
   by: string,
   action: string,
   change: (reservation: Reservation) => Partial<Reservation>,
   now: Date
 ): Promise<Reservation> {
-  const existing = await getReservation(store, confirmation)
+  const existing = await getReservation(store, reservationNumber)
   if (!existing) throw new ReservationError('Reservation not found')
 
   const updated: Reservation = {
@@ -179,13 +188,13 @@ async function update(
 /** Owner action: block access for this booking */
 export function revokeReservation(
   store: KeyValueStore,
-  confirmation: string,
+  reservationNumber: string,
   by: string,
   now = new Date()
 ) {
   return update(
     store,
-    confirmation,
+    reservationNumber,
     by,
     'revoked',
     () => ({status: 'revoked'}),
@@ -196,14 +205,14 @@ export function revokeReservation(
 /** Owner action: allow access until a later moment (late checkout) */
 export function extendReservation(
   store: KeyValueStore,
-  confirmation: string,
+  reservationNumber: string,
   until: Date,
   by: string,
   now = new Date()
 ) {
   return update(
     store,
-    confirmation,
+    reservationNumber,
     by,
     `extended until ${until.toISOString()}`,
     () => ({accessUntilOverride: until.toISOString()}),
@@ -212,7 +221,7 @@ export function extendReservation(
 }
 
 export type ManualReservationInput = {
-  confirmation: string
+  reservationNumber: string
   property: PropertySlug
   bookerName: string
   checkIn: string
@@ -227,17 +236,18 @@ export async function addManualReservation(
   by: string,
   now = new Date()
 ): Promise<Reservation> {
-  const confirmation = normalizeConfirmation(input.confirmation)
-  if (!confirmation) throw new ReservationError('Confirmation is required')
+  const reservationNumber = normalizeReservationNumber(input.reservationNumber)
+  if (!reservationNumber)
+    throw new ReservationError('Reservation number is required')
   if (input.checkOut <= input.checkIn) {
     throw new ReservationError('Check-out must be after check-in')
   }
-  if (await getReservation(store, confirmation)) {
+  if (await getReservation(store, reservationNumber)) {
     throw new ReservationError('A reservation with this number already exists')
   }
 
   const reservation: Reservation = {
-    confirmation,
+    reservationNumber,
     channel: 'manual',
     property: input.property,
     status: 'confirmed',

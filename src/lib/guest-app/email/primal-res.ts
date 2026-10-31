@@ -1,4 +1,4 @@
-import {normalizeConfirmation} from '../normalize'
+import {normalizeReservationNumber} from '../normalize'
 import {mapPropertyName} from '../properties'
 import {parsePax, parseSlashDate, valueAfter} from './text'
 import type {Channel, ParseResult} from './types'
@@ -27,8 +27,8 @@ export function parsePrimalRes(lines: string[]): ParseResult {
   const resLine = lines.find((line) => /^Res ID:/i.test(line))
   if (!resLine) return {type: 'ignored', reason: 'no Res ID'}
 
-  const confirmation = resLine.match(/^Res ID:\s*([A-Z0-9-]+)/i)?.[1]
-  if (!confirmation) return {type: 'failed', reason: 'unreadable Res ID'}
+  const reservationNumber = resLine.match(/^Res ID:\s*([A-Z0-9-]+)/i)?.[1]
+  if (!reservationNumber) return {type: 'failed', reason: 'unreadable Res ID'}
 
   // "<Property>" / "<Channel> - (" / "Booking Confirmation )"
   const channelIndex = lines.findIndex((line) => /\s-\s*\($/.test(line))
@@ -62,7 +62,7 @@ export function parsePrimalRes(lines: string[]): ParseResult {
   return {
     type: 'reservation',
     reservation: {
-      confirmation: normalizeConfirmation(confirmation),
+      reservationNumber: normalizeReservationNumber(reservationNumber),
       channel: toChannel(lines[channelIndex]),
       property,
       status,

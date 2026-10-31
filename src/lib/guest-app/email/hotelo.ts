@@ -1,16 +1,17 @@
-import {normalizeConfirmation} from '../normalize'
+import {normalizeReservationNumber} from '../normalize'
 import {mapPropertyName} from '../properties'
 import {parseLongDate, parsePax, valueAfter} from './text'
 import type {ParseResult} from './types'
 
-// Direct-booking confirmations sent by Hotelo to the guest (owner in copy)
+// Direct-booking confirmation emails sent by Hotelo to the guest (owner in copy)
 
 export function parseHotelo(lines: string[]): ParseResult {
   const reference = valueAfter(lines, /booking reference:/i)
   if (!reference) return {type: 'ignored', reason: 'no booking reference'}
 
-  const confirmation = reference.match(/#?\s*(\d{6,})/)?.[1]
-  if (!confirmation) return {type: 'failed', reason: 'unreadable reference'}
+  const reservationNumber = reference.match(/#?\s*(\d{6,})/)?.[1]
+  if (!reservationNumber)
+    return {type: 'failed', reason: 'unreadable reference'}
 
   const heading = lines.slice(0, 3).join(' ')
   const status = /cancel/i.test(heading)
@@ -44,7 +45,7 @@ export function parseHotelo(lines: string[]): ParseResult {
   return {
     type: 'reservation',
     reservation: {
-      confirmation: normalizeConfirmation(confirmation),
+      reservationNumber: normalizeReservationNumber(reservationNumber),
       channel: 'hotelo',
       property,
       status,

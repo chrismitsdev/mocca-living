@@ -25,7 +25,7 @@ describe('Primal Res emails', () => {
     )
 
     expect(reservation).toEqual({
-      confirmation: '1234567890',
+      reservationNumber: '1234567890',
       channel: 'booking',
       property: 'mocca-city',
       status: 'confirmed',
@@ -46,7 +46,7 @@ describe('Primal Res emails', () => {
     )
 
     expect(reservation).toMatchObject({
-      confirmation: '1234567890',
+      reservationNumber: '1234567890',
       status: 'cancelled',
       property: 'mocca-city',
       checkIn: '2026-10-02',
@@ -64,7 +64,7 @@ describe('Primal Res emails', () => {
     )
 
     expect(reservation).toEqual({
-      confirmation: 'HMTEST1234',
+      reservationNumber: 'HMTEST1234',
       channel: 'airbnb',
       property: 'mocca-by-the-sea-dimitra',
       status: 'confirmed',
@@ -105,7 +105,7 @@ describe('Hotelo emails', () => {
     )
 
     expect(reservation).toEqual({
-      confirmation: '12345678',
+      reservationNumber: '12345678',
       channel: 'hotelo',
       property: 'mocca-by-the-sea-dimitra',
       status: 'confirmed',

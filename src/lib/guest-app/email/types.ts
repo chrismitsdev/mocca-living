@@ -5,7 +5,7 @@ export type ReservationSource = 'primal-res' | 'hotelo'
 export type Channel = 'booking' | 'airbnb' | 'expedia' | 'hotelo' | 'other'
 
 export type ParsedReservation = {
-  confirmation: string
+  reservationNumber: string
   channel: Channel
   property: GuestAppProperty
   status: 'confirmed' | 'cancelled'

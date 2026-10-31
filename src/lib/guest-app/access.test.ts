@@ -3,7 +3,7 @@ import {checkAccess, windowDecision} from './access'
 import type {Reservation} from './store/reservations'
 
 const reservation = (overrides: Partial<Reservation> = {}): Reservation => ({
-  confirmation: '1234567890',
+  reservationNumber: '1234567890',
   channel: 'booking',
   property: 'mocca-city',
   status: 'confirmed',

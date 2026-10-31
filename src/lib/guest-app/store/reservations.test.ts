@@ -17,7 +17,7 @@ let store = createMemoryStore(() => clock)
 
 const booking = (overrides: Partial<ParsedReservation> = {}) =>
   ({
-    confirmation: '1234567890',
+    reservationNumber: '1234567890',
     channel: 'booking',
     property: 'mocca-city',
     status: 'confirmed',
@@ -109,7 +109,7 @@ describe('applyReservationEmail', () => {
 
   it('orders Hotelo emails, which have no Last Update, by arrival', async () => {
     const hotelo = booking({
-      confirmation: '12345678',
+      reservationNumber: '12345678',
       channel: 'hotelo',
       sourceUpdatedAt: null
     })
@@ -157,7 +157,7 @@ describe('expired stays', () => {
       addManualReservation(
         store,
         {
-          confirmation: 'X2',
+          reservationNumber: 'X2',
           property: 'mocca-city',
           bookerName: 'John Roe',
           checkIn: '2026-09-28',
@@ -231,7 +231,7 @@ describe('listReservations', () => {
     await applyReservationEmail(
       store,
       booking({
-        confirmation: 'HMTEST1234',
+        reservationNumber: 'HMTEST1234',
         channel: 'airbnb',
         property: 'mocca-by-the-sea-dimitra',
         checkIn: '2026-09-26',
@@ -242,7 +242,7 @@ describe('listReservations', () => {
     await addManualReservation(
       store,
       {
-        confirmation: 'call-001',
+        reservationNumber: 'call-001',
         property: 'mocca-by-the-sea-georgia',
         bookerName: 'John Roe',
         checkIn: '2026-10-10',
@@ -254,7 +254,7 @@ describe('listReservations', () => {
 
     // HMTEST1234 left on 2026-09-28, past retention: never stored
     const list = await listReservations(store, new Date(clock))
-    expect(list.map((reservation) => reservation.confirmation)).toEqual([
+    expect(list.map((reservation) => reservation.reservationNumber)).toEqual([
       '1234567890',
       'CALL001'
     ])
@@ -268,7 +268,7 @@ describe('addManualReservation', () => {
       addManualReservation(
         store,
         {
-          confirmation: '1234567890',
+          reservationNumber: '1234567890',
           property: 'mocca-city',
           bookerName: 'John Roe',
           checkIn: '2026-10-10',
@@ -285,7 +285,7 @@ describe('addManualReservation', () => {
       addManualReservation(
         store,
         {
-          confirmation: 'X1',
+          reservationNumber: 'X1',
           property: 'mocca-city',
           bookerName: 'John Roe',
           checkIn: '2026-10-12',

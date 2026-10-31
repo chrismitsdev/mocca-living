@@ -330,7 +330,7 @@
         "title": "Hoş geldiniz",
         "subtitle": "Misafir uygulamanızı açmak için rezervasyon bilgilerinizi girin",
         "fields": {
-          "confirmation": {
+          "reservationNumber": {
             "label": "Rezervasyon numarası",
             "placeholder": "ör. 1234567890 veya HMABC12345",
             "hint": "Booking.com veya Airbnb onayınızda ya da Hotelo e-postanızda (#…) bulabilirsiniz."
@@ -342,28 +342,34 @@
           }
         },
         "submit": "Uygulamayı aç",
-        "errors": {
-          "required": "Zorunlu alan",
-          "rate-limited": "Çok fazla deneme yapıldı. Lütfen 15 dakika sonra tekrar deneyin.",
-          "not-found": "Bu bilgilerle aktif bir rezervasyon bulunamadı.",
-          "not-yet": "Misafir uygulamanız {date} tarihinde açılacak.",
-          "ended": "Konaklamanız sona erdi. Bizi tercih ettiğiniz için teşekkür ederiz!",
-          "unavailable": "Bir sorun oluştu. Lütfen biraz sonra tekrar deneyin."
-        },
         "toast": {
           "error": {
             "validation": {
               "title": "Doğrulama başarısız",
               "description": "Lütfen işaretlenmiş alanları kontrol edip tekrar deneyin."
             },
-            "api": {
+            "rate-limited": {
+              "title": "Çok fazla deneme",
+              "description": "Lütfen 15 dakika sonra tekrar deneyin."
+            },
+            "not-found": {
+              "title": "Rezervasyon bulunamadı",
+              "description": "Bu bilgilerle aktif bir rezervasyon bulunamadı."
+            },
+            "not-yet": {
+              "title": "Henüz açılmadı",
+              "description": "Misafir uygulamanız {date} tarihinde açılacak."
+            },
+            "ended": {
+              "title": "Konaklama sona erdi",
+              "description": "Bizi tercih ettiğiniz için teşekkür ederiz!"
+            },
+            "unavailable": {
               "title": "Doğrulama başarısız",
               "description": "Rezervasyonunuz kontrol edilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
             }
           }
-        },
-        "contact": "Yardıma mı ihtiyacınız var? WhatsApp üzerinden bize ulaşın",
-        "image-alt": "Mocca Living konaklama"
+        }
       }
     },
     "not-found": {

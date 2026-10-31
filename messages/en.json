@@ -330,7 +330,7 @@
         "title": "Welcome",
         "subtitle": "Enter your booking details to open your guest app",
         "fields": {
-          "confirmation": {
+          "reservationNumber": {
             "label": "Booking number",
             "placeholder": "e.g. 1234567890 or HMABC12345",
             "hint": "You can find it in your Booking.com or Airbnb confirmation, or in your Hotelo email (#…)."
@@ -342,28 +342,34 @@
           }
         },
         "submit": "Open guest app",
-        "errors": {
-          "required": "Mandatory field",
-          "rate-limited": "Too many attempts. Please try again in 15 minutes.",
-          "not-found": "We couldn't find an active booking with these details.",
-          "not-yet": "Your guest app opens on {date}.",
-          "ended": "Your stay has ended. Thank you for staying with us!",
-          "unavailable": "Something went wrong. Please try again in a moment."
-        },
         "toast": {
           "error": {
             "validation": {
               "title": "Verification failed",
               "description": "Please check the highlighted fields and try again."
             },
-            "api": {
+            "rate-limited": {
+              "title": "Too many attempts",
+              "description": "Please try again in 15 minutes."
+            },
+            "not-found": {
+              "title": "Booking not found",
+              "description": "We couldn't find an active booking with these details."
+            },
+            "not-yet": {
+              "title": "Not open yet",
+              "description": "Your guest app opens on {date}."
+            },
+            "ended": {
+              "title": "Stay ended",
+              "description": "Thank you for staying with us!"
+            },
+            "unavailable": {
               "title": "Verification failed",
               "description": "Something went wrong while checking your booking. Please try again later."
             }
           }
-        },
-        "contact": "Need help? Contact us on WhatsApp",
-        "image-alt": "Mocca Living accommodation"
+        }
       }
     },
     "not-found": {

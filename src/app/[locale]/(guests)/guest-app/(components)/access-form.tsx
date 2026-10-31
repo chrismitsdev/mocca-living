@@ -1,11 +1,6 @@
 'use client'
 
-import {
-  IconBrandWhatsapp,
-  IconLock,
-  IconTicket,
-  IconUserCircle
-} from '@tabler/icons-react'
+import {IconLock, IconTicket, IconUserCircle} from '@tabler/icons-react'
 import {useFormatter, useLocale, useTranslations} from 'next-intl'
 import {useActionState, useEffect} from 'react'
 import {FormControl} from '@/src/components/shared/form-control'
@@ -13,7 +8,6 @@ import {Button} from '@/src/components/ui/button'
 import {Input} from '@/src/components/ui/input'
 import {Label} from '@/src/components/ui/label'
 import {toast} from '@/src/components/ui/toast'
-import {OWNER_PHONE} from '@/src/lib/constants'
 import {
   type VerifyGuestState,
   verifyGuestAction
@@ -21,9 +15,9 @@ import {
 import {PROPERTY_TIMEZONE} from '@/src/lib/guest-app/properties'
 
 const initialState: VerifyGuestState = {
-  confirmation: '',
-  name: '',
-  error: null
+  data: {reservationNumber: '', name: ''},
+  errors: {},
+  ok: null
 }
 
 function AccessForm() {
@@ -34,61 +28,46 @@ function AccessForm() {
   const t = useTranslations('Pages.guest-app.access')
   const format = useFormatter()
 
-  const required = (value: string) =>
-    state.error === 'required' && !value.trim()
-      ? t('errors.required')
-      : undefined
-
-  // Errors about the booking as a whole show under the last field
-  const bookingError =
-    state.error === 'not-yet' && state.opensAt
-      ? t('errors.not-yet', {
-          date: format.dateTime(new Date(state.opensAt), {
-            dateStyle: 'full',
-            timeZone: PROPERTY_TIMEZONE
-          })
-        })
-      : state.error && state.error !== 'not-yet' && state.error !== 'required'
-        ? t(`errors.${state.error}`)
-        : undefined
-
-  const confirmationError = required(state.confirmation)
-  const nameError = required(state.name) ?? bookingError
-  const showContact =
-    state.error === 'not-found' || state.error === 'unavailable'
-
   useEffect(() => {
-    if (!state.error) return
+    if (state.ok !== false) return
 
-    const type = state.error === 'unavailable' ? 'api' : 'validation'
     toast({
-      title: t(`toast.error.${type}.title`),
-      description: t(`toast.error.${type}.description`),
+      title: t(`toast.error.${state.type}.title`),
+      description: t(`toast.error.${state.type}.description`, {
+        date: state.opensAt
+          ? format.dateTime(new Date(state.opensAt), {
+              dateStyle: 'full',
+              timeZone: PROPERTY_TIMEZONE
+            })
+          : ''
+      }),
       status: 'error'
     })
-  }, [state, t])
+  }, [state, t, format])
 
   return (
     <form
-      className='space-y-6'
+      className='space-y-4'
       action={action}
       noValidate
     >
       <FormControl
-        id='confirmation'
-        error={confirmationError}
+        id='reservationNumber'
+        error={state.errors.reservationNumber}
       >
-        <Label htmlFor='confirmation'>{t('fields.confirmation.label')}</Label>
+        <Label htmlFor='reservationNumber'>
+          {t('fields.reservationNumber.label')}
+        </Label>
         <Input
-          id='confirmation'
-          name='confirmation'
+          id='reservationNumber'
+          name='reservationNumber'
           autoComplete='off'
           autoCapitalize='characters'
           spellCheck={false}
-          placeholder={t('fields.confirmation.placeholder')}
-          defaultValue={state.confirmation}
+          placeholder={t('fields.reservationNumber.placeholder')}
+          defaultValue={state.data.reservationNumber}
           icon={IconTicket}
-          error={Boolean(confirmationError)}
+          error={Boolean(state.errors.reservationNumber)}
           disabled={isPending}
           required
         />
@@ -96,7 +75,7 @@ function AccessForm() {
 
       <FormControl
         id='name'
-        error={nameError}
+        error={state.errors.name}
       >
         <Label htmlFor='name'>{t('fields.name.label')}</Label>
         <Input
@@ -105,40 +84,25 @@ function AccessForm() {
           autoComplete='name'
           spellCheck={false}
           placeholder={t('fields.name.placeholder')}
-          defaultValue={state.name}
+          defaultValue={state.data.name}
           icon={IconUserCircle}
-          error={Boolean(nameError)}
+          error={Boolean(state.errors.name)}
           disabled={isPending}
           required
         />
       </FormControl>
 
-      <Button
-        className='inline-full'
-        type='submit'
-        size='large'
-        isLoading={isPending}
-      >
-        <IconLock aria-hidden />
-        {t('submit')}
-      </Button>
-
-      {showContact && (
+      <div className='pt-10'>
         <Button
           className='inline-full'
-          variant='secondary'
-          asChild
+          type='submit'
+          size='large'
+          isLoading={isPending}
         >
-          <a
-            href={`https://api.whatsapp.com/send/?phone=${OWNER_PHONE.replace('+', '')}&type=phone_number&app_absent=0`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <IconBrandWhatsapp aria-hidden />
-            {t('contact')}
-          </a>
+          <IconLock aria-hidden />
+          {t('submit')}
         </Button>
-      )}
+      </div>
     </form>
   )
 }

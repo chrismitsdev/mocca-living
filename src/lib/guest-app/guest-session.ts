@@ -8,15 +8,19 @@ import {createUpstashStore} from './store/upstash'
 // The guest's session cookie, and the check every guest page runs: a valid
 // signature, plus the stored booking still confirmed and inside its window
 
-const COOKIE_NAME = 'ga_session'
+const COOKIE_NAME = 'guest_app_session'
 
 export async function startGuestSession(
-  confirmation: string,
+  reservationNumber: string,
   property: PropertySlug,
   endsAt: number
 ) {
   const token = createSessionToken(
-    {c: confirmation, p: property, exp: Math.floor(endsAt / 1000)},
+    {
+      reservationNumber,
+      property,
+      expiresAt: Math.floor(endsAt / 1000)
+    },
     guestAppEnv.sessionSecret()
   )
   const cookieStore = await cookies()
@@ -43,9 +47,12 @@ export async function getActiveGuest(): Promise<ActiveGuest | null> {
   )
   if (!session) return null
 
-  const reservation = await getReservation(createUpstashStore(), session.c)
+  const reservation = await getReservation(
+    createUpstashStore(),
+    session.reservationNumber
+  )
   const decision = windowDecision(reservation, Date.now())
-  if (!reservation || !decision.ok || decision.property !== session.p) {
+  if (!reservation || !decision.ok || decision.property !== session.property) {
     return null
   }
   return {property: decision.property, reservation}

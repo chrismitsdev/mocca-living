@@ -22,7 +22,7 @@ export type InboundDeps = {
 }
 
 export type InboundOutcome =
-  | {status: 'stored'; outcome: ApplyOutcome; confirmation: string}
+  | {status: 'stored'; outcome: ApplyOutcome; reservationNumber: string}
   | {status: 'ignored'; reason: string}
   | {status: 'rejected'; reason: string}
   | {status: 'failed'; reason: string}
@@ -79,6 +79,6 @@ export async function processReceivedEmail(
   return {
     status: 'stored',
     outcome,
-    confirmation: result.reservation.confirmation
+    reservationNumber: result.reservation.reservationNumber
   }
 }

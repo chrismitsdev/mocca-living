@@ -66,7 +66,7 @@ describe('processReceivedEmail', () => {
     expect(outcome).toEqual({
       status: 'stored',
       outcome: 'created',
-      confirmation: '1234567890'
+      reservationNumber: '1234567890'
     })
     expect((await getReservation(store, '1234567890'))?.bookerName).toBe(
       'Doe Jane'
