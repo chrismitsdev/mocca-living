@@ -331,12 +331,12 @@
         "subtitle": "Misafir uygulamanızı açmak için rezervasyon bilgilerinizi girin",
         "fields": {
           "confirmation": {
-            "label": "Rezervasyon onay numarası",
+            "label": "Rezervasyon numarası",
             "placeholder": "ör. 1234567890 veya HMABC12345",
             "hint": "Booking.com veya Airbnb onayınızda ya da Hotelo e-postanızda (#…) bulabilirsiniz."
           },
           "name": {
-            "label": "Ad soyad (rezervasyondaki gibi)",
+            "label": "İsim",
             "placeholder": "ör. Ayşe Yılmaz",
             "hint": "Adınızı ve soyadınızı, rezervasyon onay e-postanızda göründüğü şekliyle tam olarak girin."
           }
