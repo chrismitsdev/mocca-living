@@ -78,7 +78,9 @@ They have no guest name and are **ignored**.
   - `PROPERTY`, `Room 1: <room name>`, and the Billing `Name`.
   - Pax: `2 adults, 2 children`.
 - Unknown: whether Hotelo sends a cancellation email for direct bookings. The
-  owner page can revoke instead (§7).
+  parser already treats a heading containing "cancel" as a cancellation (and
+  "confirm" as a confirmation; anything else is a parse failure). Until one
+  is seen, the owner page can revoke instead (§7).
 
 ### 2.3 Property mapping (exact match only)
 
@@ -98,7 +100,11 @@ emails move to `@revplus.com`, but the **reservation emails stay as they
 are**. A new revplus booking engine and channel manager launches on
 **22 Nov 2026**, which may change the email layouts.
 
-- Accept `revplus.com` as a sender and DKIM domain in advance.
+- Accept `revplus.com` as a sender and DKIM domain in advance (done in
+  `origin.ts` and `inbound.ts`).
+- The Hostinger filter (§3.1) only matches `primal-res.com` and
+  `booking@hotelo.gr`. If the reservation emails move to `revplus.com`, add a
+  `From` contains `revplus.com` rule, or they won't be forwarded.
 - Follow-up: check the first reservation processed after 22 Nov 2026.
 
 ## 3. Architecture
@@ -141,24 +147,33 @@ Admin ─► /[locale]/admin/guest-app (magic-link login)
 
 ### 3.2 Inbound processing (`/api/guest-app/inbound`)
 
-1. Verify the Resend webhook signature (Svix) against the raw request body.
+1. Verify the Resend webhook signature (Svix) against the raw request body
+   (401 if invalid). Ignore events other than `email.received`, and emails
+   not addressed to `GUEST_APP_INBOUND_ADDRESS`.
 2. Fetch the full message via the Resend Receiving API
    (`GET /emails/receiving/{id}`). The response includes `raw.download_url`,
    a short-lived signed URL to the original `.eml`.
 3. Verify the origin on the raw MIME (§3.3). Allowed origin domains:
    - `primal-res.com` or `revplus.com`, for Primal Res emails;
    - `hotelo.gr` or `hotelo-gr.<digits>.gappssmtp.com`, for Hotelo emails.
-4. Pick the parser by sender. Ignore non-reservation emails (availability
-   alerts, invoices, marketing). **Parsers read the body only**, because
-   headers other than the ARC set aren't verifiable after forwarding (§3.3).
-5. Parse, normalise, and map the property (§2.3).
-6. Upsert by reservation number. Apply the update only if its `Last Update`
-   (or received time, for Hotelo) is newer than the stored one.
-7. On parse failure, an unknown property, or a failed origin check (§3.3)
-   for a reservation-looking email: send an **alert** to the developer (§9).
-   Don't store anything.
+4. Pick the parser by the **verified origin domain**, never by the `From`
+   header. Ignore non-reservation emails (availability alerts, invoices,
+   marketing). **Parsers read the body only**, because headers other than the
+   ARC set aren't verifiable after forwarding (§3.3).
+5. Parse, normalise, and map the property (§2.3). An unknown property is a
+   parse failure.
+6. Upsert by reservation number (rules in §4). Apply the update only if its
+   `Last Update` (or received time, for Hotelo) is newer than the stored one.
+7. Send an **alert** to the developer (§9) and store nothing when:
+   - the email fails to parse (including an unknown property), or
+   - it fails the origin check **and** its `From` looks like a reservation
+     sender (`primal-res.com`, `revplus.com`, `hotelo.gr`). Other unverified
+     emails are ignored silently.
+8. If processing throws (e.g. Redis, the Resend API or the alert email is
+   unavailable), respond 500 so Resend retries the delivery later.
 
-The webhook is idempotent: the same message received twice gives the same result.
+The webhook is idempotent: the same message received twice gives the same
+result. A retry after a failed alert can send the alert again.
 
 ### 3.3 Origin verification after forwarding
 
@@ -255,9 +270,10 @@ Implemented in `src/lib/guest-app/store/` behind a small key-value interface
 
 The guest enters:
 
-- **Booking confirmation number**: Booking.com (10 digits), Airbnb (`HM…`)
-  or Hotelo (8 digits). Normalise it by trimming, uppercasing and stripping
-  `#`, spaces and dashes.
+- **Reservation number** (form label "Booking number"; the platforms call it
+  the confirmation number or reference): Booking.com (10 digits), Airbnb
+  (`HM…`) or Hotelo (8 digits). Normalise it by trimming, uppercasing, and
+  stripping a leading `#`, spaces and dashes.
 - **Full name of the booker, exactly as the platform saved it** (decided
   31 Oct 2026). The stored name is Primal Res `Booked By` or Hotelo billing
   `Name`, unmodified; if the platform reformatted or stripped accents, that's
@@ -291,12 +307,14 @@ Airbnb's email field is empty.
 
 ### 5.3 Outcomes
 
-| Situation                                          | Response                                                     |
-| -------------------------------------------------- | ------------------------------------------------------------ |
-| Booking confirmed, name matches, inside the window | Issue a session and redirect to `/guest-app/<property>`      |
-| Before `checkIn`                                   | "Your guest app opens on <date>"                             |
-| After the window closes                            | "Your stay has ended, thank you for staying with us"         |
-| Unknown number, cancelled, revoked, or wrong name  | One generic not-found message. The owner can verify manually |
+| Situation                                          | Response (`type`)                                                      |
+| -------------------------------------------------- | ---------------------------------------------------------------------- |
+| Booking confirmed, name matches, inside the window | Issue a session and redirect to `/guest-app/<property>`                |
+| Before `checkIn`                                   | "Not open yet" toast: "Your guest app opens on <date>" (`not-yet`)     |
+| After the window closes                            | "Stay ended" toast: "Thank you for staying with us!" (`ended`)         |
+| Unknown number, cancelled, revoked, or wrong name  | "Booking not found" toast (`not-found`). The owner can verify manually |
+| Too many attempts (§5.5)                           | "Too many attempts" toast (`rate-limited`)                             |
+| Redis or another dependency fails                  | "Verification failed" toast, "try again later" (`unavailable`)         |
 
 The name is checked before the window, so "not yet open" and "ended" are only
 shown with a matching name. The not-found case never reveals which field was
@@ -335,7 +353,12 @@ toast copy under `Pages.guest-app.access`, schema errors in the action.
   (`src/lib/guest-app/session.ts`, `guest-session.ts`).
 - **Every request** re-checks the Redis record, so a cancellation, revoke or
   extend takes effect immediately.
-- A session only unlocks its own property (`/guest-app/<slug>`).
+- A session only unlocks its own property (`/guest-app/<slug>`). Redirects,
+  each in a single step:
+  - `/guest-app/<slug>` without a valid session → `/guest-app` (the form);
+  - `/guest-app/<other slug>` with a session for another property → that
+    guest's own `/guest-app/<property>`;
+  - `/guest-app` with a valid session → `/guest-app/<property>`.
 - The guest-app routes stay `noindex`.
 - **Visibility while in development:** `GUEST_APP_HIDDEN =
   process.env.VERCEL_ENV === 'production'` (`src/lib/constants.ts`). The guest
@@ -349,8 +372,9 @@ toast copy under `Pages.guest-app.access`, schema errors in the action.
 - Fixed-window counters in Redis (`kv.incr` with an expiry set on first use,
   keys `guestAppRateLimit:ip:*` and `guestAppRateLimit:reservationNumber:*`),
   in `src/lib/guest-app/rate-limit.ts`:
-  - **10 attempts per 15 minutes per IP**. The IP is HMAC-hashed with the
-    session secret, so raw addresses are never stored.
+  - **10 attempts per 15 minutes per IP**, counting every attempt that
+    passes schema validation (empty fields aren't counted). The IP is
+    HMAC-hashed with the session secret, so raw addresses are never stored.
   - **5 failed attempts per 15 minutes per booking number**. When it's
     exceeded, that number is refused for the rest of that 15-minute window,
     even with the right name.
@@ -411,9 +435,11 @@ in v1, but `pax` is stored so it can be added later.
 
 ## 9. Alerts
 
-- Sent to the developer only (env var `GUEST_APP_ALERT_EMAIL`), via Resend.
-- Triggers: a reservation-looking email that fails to parse, an unknown
-  property name, or a failed origin check (§3.3).
+- Sent to the developer only (env var `GUEST_APP_ALERT_EMAIL`), via Resend,
+  from `info@moccaliving.com` (`src/lib/guest-app/alerts.ts`).
+- Triggers (§3.2 step 7): a verified email that fails to parse (including an
+  unknown property name), or a reservation-sender email that fails the
+  origin check (§3.3).
 - No daily summaries for now.
 
 ## 10. Configuration
@@ -453,13 +479,20 @@ filter) are made manually from step-by-step instructions.
 - Fixtures are synthetic emails modelled on the real templates, with
   **invented** names, numbers and contacts. No real guest data goes in the
   repository.
-- Covered:
-  - both parsers, including cancellations;
+- Covered (84 tests):
+  - both parsers, including cancellations, and the HTML-to-text step;
   - localised Hotelo dates;
+  - origin verification (direct DKIM and the Hostinger ARC attestation);
+  - the inbound pipeline (store, ignore, reject and alert paths);
   - exact property mapping (including a Georgia-like name);
-  - full-name matching (accents, word order, case, Turkish i);
+  - reservation-number normalisation and full-name matching (accents, word
+    order, case, Turkish i);
   - the access window across DST changes and at the 11:00 checkout boundary;
-  - the `Last Update` ordering rule.
+  - the store: the `Last Update` ordering rule, revoke, retention and the
+    index;
+  - session tokens (signature, tampering, expiry) and rate limits.
+- Not covered by unit tests: the server action, pages and form UI. They're
+  checked manually on the preview (checklist below).
 - Known gap: Renovate dependency updates don't run the hook. Add a
   (non-blocking) workflow later.
 
@@ -468,13 +501,37 @@ inserted from the Upstash console CLI in the stored format. Set `EXAT` to
 00:00 Athens, 3 days after checkout, and add it to the index:
 
 ```
-SET guestAppReservation:TEST2026 '{"reservationNumber":"TEST2026","channel":"manual","property":"mocca-city","status":"confirmed","bookerName":"Tester Test","checkIn":"<YYYY-MM-DD>","checkOut":"<YYYY-MM-DD>","pax":2,"sourceUpdatedAt":"<ISO>","audit":[{"at":"<ISO>","by":"<admin email>","action":"added manually (test)"}]}' EXAT <epoch seconds>
+SET guestAppReservation:TEST2026 '{"reservationNumber":"TEST2026","channel":"manual","property":"mocca-city","status":"confirmed","bookerName":"Test Tester","checkIn":"<YYYY-MM-DD>","checkOut":"<YYYY-MM-DD>","pax":2,"sourceUpdatedAt":"<ISO>","audit":[{"at":"<ISO>","by":"<admin email>","action":"added manually (test)"}]}' EXAT <epoch seconds>
 ZADD guestAppReservationIndex <same epoch seconds> TEST2026
 ```
 
-Remove it with `DEL guestAppReservation:TEST2026` and
-`ZREM guestAppReservationIndex TEST2026`. Records written in an older format
-(e.g. before `bookerName` or `reservationNumber`) must be re-inserted.
+Run the `SET` and the `ZADD` as **separate commands**; pasted together on
+one line, the CLI returns `ERR syntax error`. Remove the record with
+`DEL guestAppReservation:TEST2026` and `ZREM guestAppReservationIndex
+TEST2026`. Records written in an older format (e.g. before `bookerName` or
+`reservationNumber`) must be re-inserted.
+
+For the "not yet" and "ended" outcomes, add two more records the same way
+with other dates (e.g. `TESTSOON` starting in a few days, `TESTPAST` that
+checked out yesterday).
+
+**Preview checklist** (all passed on 31 Oct 2026, with `TEST2026` /
+`Test Tester` at `mocca-city`; the other-property row then went through
+`/guest-app` in two redirects, now one):
+
+| Input                                                 | Expected                                                |
+| ----------------------------------------------------- | ------------------------------------------------------- |
+| Both fields empty                                     | "Mandatory field" under each, plus the validation toast |
+| `#` / correct name                                    | "Mandatory field" under the reservation number          |
+| Correct number, partial name                          | "Booking not found" toast                               |
+| `TESTSOON` / correct name                             | "Not open yet" toast with the opening date              |
+| `TESTPAST` / correct name                             | "Stay ended" toast                                      |
+| `test 2026` / `tester test`                           | Redirect to `/guest-app/mocca-city`                     |
+| Signed in, open `/guest-app/mocca-by-the-sea-dimitra` | Redirect to `/guest-app/mocca-city`                     |
+| 5 wrong names, then the correct one                   | "Too many attempts" toast (run last; 15-minute lockout) |
+
+To lift a lockout early, delete
+`guestAppRateLimit:reservationNumber:<number>`.
 
 ## 12. Build order
 
@@ -496,10 +553,12 @@ Remove it with `DEL guestAppReservation:TEST2026` and
 3. **Guest access** ✅ (31 Oct 2026).
    - Verify page, server action, rate limiting, session cookie, property and
      window checks, translations.
-   - Full-name matching; `FormControl` errors and a single toast.
+   - Full-name matching; valibot schema errors under the fields, booking
+     outcomes in a single toast.
+   - Explicit names: `reservationNumber`, `guestApp*` Redis keys,
+     `guest_app_session` cookie, `v2` session token.
    - The guest app is visible on previews (`VERCEL_ENV`).
-   - Verified on the preview with a manual test booking (correct and wrong
-     name, other property, number formatting).
+   - Verified on the preview with the §11 checklist (31 Oct 2026).
 4. **Owner page.** Magic-link login, list, revoke, add, extend, audit.
 5. **Privacy policy** update.
 6. **Content** (separate design, once the owner finalises it), then remove
@@ -527,4 +586,6 @@ alerts); 3 inboxes; 1 webhook endpoint.
   emails forwarded through the filter.
 - After 22 Nov 2026: do revplus reservation emails keep the same sender and layout?
 - When Georgia gets a listing: add its exact property name(s) to the mapping.
+- If reservation emails start coming from `revplus.com`: add it to the
+  Hostinger filter (§2.4).
 - Watch for a Resend API to delete received emails (they're kept 30 days).
