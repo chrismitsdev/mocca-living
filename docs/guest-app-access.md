@@ -211,24 +211,37 @@ within seconds, and the ARC attestation records the result at arrival.
 ```ts
 type Reservation = {
   confirmation: string // normalised: uppercase, no '#', spaces or dashes
-  channel: 'booking' | 'airbnb' | 'hotelo' | 'manual'
-  property: PropertySlug
+  channel: 'booking' | 'airbnb' | 'expedia' | 'hotelo' | 'other' | 'manual'
+  property: PropertySlug // Georgia only through a manual add
+  status: 'confirmed' | 'cancelled' | 'revoked'
   guestName: string // full name as in the email (shown on the owner page)
-  surnameTokens: string[] // normalised tokens of all names, used for matching
+  bookedNames: string[] // every name on the booking; normalised at match time
   checkIn: string // YYYY-MM-DD (property-local date)
   checkOut: string // YYYY-MM-DD
   pax: number | null // stored for a future device limit
-  status: 'confirmed' | 'cancelled' | 'revoked'
-  sourceUpdatedAt: string // ISO; Last Update from the email or the admin action
+  sourceUpdatedAt: string // ISO; Last Update from the email, or arrival time
   accessUntilOverride?: string // ISO; admin "extend" (late checkout)
   audit: {at: string; by: 'inbound' | string; action: string}[]
 }
 ```
 
-- **TTL**: the record expires 3 days after `checkOut` (or after
-  `accessUntilOverride`), so it's deleted automatically.
+Implemented in `src/lib/guest-app/store/` behind a small key-value interface
+(an in-memory version for tests, Upstash in production).
+
+- **Updates**:
+  - an email applies only if its `sourceUpdatedAt` is newer than the stored
+    one, so duplicates and late older emails are no-ops;
+  - a booking **revoked** by the owner stays revoked whatever emails arrive;
+  - an email for a stay already past retention isn't stored.
+- **TTL**: the record is deleted at 00:00 Athens, 3 days after access ends
+  (11:00 on `checkOut`, or a later `accessUntilOverride`).
+- **Index**: the sorted set `gaRes:index` (score = deletion time) lists current
+  and upcoming stays for the owner page. Expired entries are pruned on read.
 - **Stored**: the full guest name, because the owner page needs it.
 - **Never stored**: guest email, phone, address, prices, or the raw email.
+- Concurrent emails for the same booking are rare. The read-then-write isn't
+  atomic, and the `sourceUpdatedAt` rule lets the next email converge the
+  state.
 
 ## 5. Guest access
 
