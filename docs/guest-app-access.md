@@ -105,7 +105,7 @@ Hotelo website ───────┘                ├─► info@moccalivin
                        Hotelo mail ────┘            │
                                    webmail filter: "Send message copy to"
                                                     ▼
-                         r-<random>@in.moccaliving.com (Resend Inbound)
+                         r-<random>@reservations.moccaliving.com (Resend Inbound)
                                                     │ webhook (Svix-signed)
                                                     ▼
                          /api/guest-app/inbound (Next.js on Vercel)
@@ -123,10 +123,10 @@ Admin ─► /[locale]/admin/guest-app (magic-link login)
   - Name: e.g. `Guest app reservations`
   - Scope: `Match any rule`
   - When: `From` contains `primal-res.com`, **or** `From` contains `booking@hotelo.gr`
-  - Then: **`Send message copy to`** `r-<random>@in.moccaliving.com`
+  - Then: **`Send message copy to`** `r-<random>@reservations.moccaliving.com`
   - Never use "Redirect message to" (the owner would lose the email) or the
     hPanel Forwarders (they forward the whole mailbox).
-- **Resend Inbound** runs on the subdomain `in.moccaliving.com` only.
+- **Resend Inbound** runs on the subdomain `reservations.moccaliving.com` only.
   - Its MX record lives in Vercel DNS.
   - The root `moccaliving.com` MX stays on Hostinger. Never enable receiving
     on the root domain.
@@ -137,17 +137,15 @@ Admin ─► /[locale]/admin/guest-app (magic-link login)
 ### 3.2 Inbound processing (`/api/guest-app/inbound`)
 
 1. Verify the Resend webhook signature (Svix) against the raw request body.
-2. Fetch the full message via the Resend Receiving API.
-   - First build step: confirm the API returns the raw MIME.
-   - Fallback provider: SendGrid Inbound Parse in raw mode.
-3. Verify DKIM on the raw MIME. Accept only a valid signature whose `d=` is:
+2. Fetch the full message via the Resend Receiving API
+   (`GET /emails/receiving/{id}`). The response includes `raw.download_url`,
+   a short-lived signed URL to the original `.eml`.
+3. Verify the origin on the raw MIME (§3.3). Allowed origin domains:
    - `primal-res.com` or `revplus.com`, for Primal Res emails;
    - `hotelo.gr` or `hotelo-gr.<digits>.gappssmtp.com`, for Hotelo emails.
-
-   Primal Res signs with `c=relaxed/simple`, so the body must arrive
-   unmodified. Verify this with a real forwarded email in step 1.
-4. Pick the parser by sender and subject. Ignore non-reservation emails
-   (availability alerts, invoices, marketing).
+4. Pick the parser by sender. Ignore non-reservation emails (availability
+   alerts, invoices, marketing). **Parsers read the body only**, because
+   headers other than the ARC set aren't verifiable after forwarding (§3.3).
 5. Parse, normalise, and map the property (§2.3).
 6. Upsert by confirmation number. Apply the update only if its `Last Update`
    (or received time, for Hotelo) is newer than the stored one.
@@ -156,6 +154,41 @@ Admin ─► /[locale]/admin/guest-app (magic-link login)
    store anything.
 
 The webhook is idempotent: the same message received twice gives the same result.
+
+### 3.3 Origin verification after forwarding
+
+Spike result (31 Oct 2026, a Gmail test message sent through the Hostinger
+filter):
+
+- Hostinger forwards via MailChannels, which **replaces the `Date` header**
+  with the forwarding time. That breaks both the original DKIM signature and
+  Hostinger's own ARC-Message-Signature.
+- The body arrives unchanged.
+- Hostinger adds an ARC set signed as `d=moccaliving.com`, `s=hostingermail1`.
+  The key is published in our Vercel DNS.
+
+An email is accepted if **either** check passes:
+
+1. **Direct DKIM**: a valid DKIM signature with an allowed `d=`. This covers
+   mail that arrives without forwarding, e.g. if Hotelo adds the inbound
+   address as a recipient.
+2. **Hostinger ARC attestation**. All of the following must hold:
+   - The highest-instance **ARC-Seal** is valid, with `d=moccaliving.com` and
+     `cv=pass` (or `cv=none` at i=1). Verify the seal on its own; the
+     ARC-Message-Signature is expected to fail because of the `Date` rewrite.
+   - The sealed **ARC-Authentication-Results** reports `dkim=pass` with an
+     allowed `header.d=` and gives a `header.b=` prefix.
+   - A **DKIM-Signature** in the message has that `d=` and a `b=` value
+     starting with that prefix.
+   - Recomputing that signature's **body hash** (with its `c=` body
+     canonicalisation) matches its `bh=`.
+
+Together these prove the body was signed by the allowed sender and hasn't
+changed since. A forged email can't carry a valid seal from our domain's
+Hostinger key. Replaying a genuine email is harmless (idempotent upsert).
+
+Still to confirm with real emails: Primal Res (`c=relaxed/simple` body) and
+Hotelo (`c=relaxed/relaxed`) forwarded through the filter.
 
 ## 4. Data model (Upstash Redis, EU region)
 
@@ -320,7 +353,7 @@ filter) are made manually from step-by-step instructions.
 ## 12. Build order
 
 1. **Intake spike.**
-   - Add `in.moccaliving.com` to Resend (receiving), with MX in Vercel DNS.
+   - Add `reservations.moccaliving.com` to Resend (receiving), with MX in Vercel DNS.
    - Set up the webhook.
    - Create the Hostinger filter.
    - Confirm that the raw MIME is available and that DKIM survives forwarding.
@@ -338,6 +371,7 @@ filter) are made manually from step-by-step instructions.
 - Does Hotelo send cancellation or modification emails for direct bookings?
 - What does a Primal Res modification email look like?
 - Are Hotelo emails ever localised (en/el/tr/bg)?
-- Does the Resend Receiving API expose the raw MIME?
+- Confirm the §3.3 ARC attestation with the first real Primal Res and Hotelo
+  emails forwarded through the filter.
 - After 22 Nov 2026: do revplus reservation emails keep the same sender and layout?
 - When Georgia gets a listing: add its exact property name(s) to the mapping.
