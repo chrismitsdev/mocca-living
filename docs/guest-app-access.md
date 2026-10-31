@@ -4,7 +4,8 @@ Design for restricting the guest app (`/[locale]/guest-app`) to guests with an
 active reservation. The guest-app **content** is out of scope here and will be
 designed once the owner finalises it.
 
-Status: design agreed, not yet implemented.
+Status (1 Nov 2026): steps 1–3 implemented on branch `feat/guest-app-access`
+and verified on its Vercel preview. Step 4 (owner page) is next. See §12.
 
 ## 1. Requirements
 
@@ -236,7 +237,8 @@ Implemented in `src/lib/guest-app/store/` behind a small key-value interface
   (11:00 on `checkOut`, or a later `accessUntilOverride`).
 - **Index**: the sorted set `gaRes:index` (score = deletion time) lists current
   and upcoming stays for the owner page. Expired entries are pruned on read.
-- **Stored**: the full guest name, because the owner page needs it.
+- **Stored**: the booker's full name, used for matching and shown on the
+  owner page.
 - **Never stored**: guest email, phone, address, prices, or the raw email.
 - Concurrent emails for the same booking are rare. The read-then-write isn't
   atomic, and the `sourceUpdatedAt` rule lets the next email converge the
@@ -291,21 +293,56 @@ Airbnb's email field is empty.
 | Number exists but name doesn't match               | Generic not-found message plus a WhatsApp contact button. The owner can verify manually |
 | Unknown number                                     | Generic "We couldn't find this booking" (don't reveal which field was wrong)            |
 
-All copy is translated (en/el/tr/bg) and can be edited later.
+All copy is translated (en/el/tr/bg) under `Pages.guest-app.access` and can
+be edited later.
+
+**Form UI** (`src/app/[locale]/(guests)/guest-app/(components)/access-form.tsx`):
+
+- Fields: **Booking number** and **Name** (Greek: _Αριθμός κράτησης_,
+  _Όνομα_).
+- Each field is wrapped in the shared `FormControl`
+  (`src/components/shared/form-control.tsx`), whose `error` prop shows the
+  message. An empty field shows _"Mandatory field"_ under it. Booking-level
+  errors (not found, not yet open, ended, rate-limited, unavailable) show
+  under the last field.
+- **One general toast per failed attempt**, like the contact form:
+  `toast.error.validation` for everything except `unavailable`, which uses
+  `toast.error.api`. Never several toasts at once. Success redirects without
+  a toast.
+- The WhatsApp contact button appears for `not-found` and `unavailable`.
+- The field hints (`fields.*.hint`) stay in the messages but aren't shown.
+  The plan is an info icon next to each label that opens a tooltip or popup.
+- UI polish is deferred to a full end-to-end browser review.
 
 ### 5.4 Session
 
-- A signed (HS256), `httpOnly`, `Secure`, `SameSite=Lax` cookie holding
-  `{confirmation, property}` that expires when the window closes.
+- The cookie `ga_session` is `httpOnly`, `Secure` (in production builds),
+  `SameSite=Lax`, with path `/`. It holds a token `v1.<payload>.<HMAC-SHA256>`
+  (signed with `GUEST_APP_SESSION_SECRET`) carrying `{c: confirmation,
+  p: property, exp}`, and expires when the access window closes
+  (`src/lib/guest-app/session.ts`, `guest-session.ts`).
 - **Every request** re-checks the Redis record, so a cancellation, revoke or
   extend takes effect immediately.
 - A session only unlocks its own property (`/guest-app/<slug>`).
-- The guest-app routes stay `noindex`. The production 404 guards are
-  replaced by this access check when the guest app launches.
+- The guest-app routes stay `noindex`.
+- **Visibility while in development:** `GUEST_APP_HIDDEN =
+  process.env.VERCEL_ENV === 'production'` (`src/lib/constants.ts`). The guest
+  app returns 404 on the live site only, and works on Vercel previews and
+  locally. Previews aren't password-protected (accepted: behind the verify
+  page they still need a valid current booking, and they're `noindex`). The
+  guards are removed at go-live.
 
 ### 5.5 Abuse protection
 
-- Rate limiting with `@upstash/ratelimit`, per IP and per confirmation number.
+- Fixed-window counters in Redis (`kv.incr` with an expiry set on first use,
+  keys `gaRate:*`), in `src/lib/guest-app/rate-limit.ts`:
+  - **10 attempts per 15 minutes per IP**. The IP is HMAC-hashed with the
+    session secret, so raw addresses are never stored.
+  - **5 failed attempts per 15 minutes per booking number**. When it's
+    exceeded, that number is refused for the rest of the window even with
+    the right name.
+- `not-found` and `name-mismatch` return the same response, so a booking
+  number can't be probed.
 - With rate limiting, guessing is infeasible: only 1–2 bookings are valid at
   any moment, out of 10⁸–10¹⁰ possible numbers.
 
@@ -334,8 +371,9 @@ in v1, but `pax` is stored so it can be added later.
 
 ## 7. Owner page (`/[locale]/admin/guest-app`)
 
-- **List** current and upcoming stays: channel, property, guest name, dates,
-  status.
+- **List** current and upcoming stays: channel, property, the **stored booker
+  name** (so the owner can tell a stuck guest exactly what to type), dates,
+  status. A "correct name" action may come later.
 - **Revoke**: e.g. a cancelled direct booking with no cancellation email.
 - **Add manually**: call-center bookings, missed or failed emails, Georgia.
 - **Extend**: late checkout (`accessUntilOverride`).
@@ -364,15 +402,29 @@ in v1, but `pax` is stored so it can be added later.
 
 ## 10. Configuration
 
-| Env var                                                        | Purpose                                                    |
-| -------------------------------------------------------------- | ---------------------------------------------------------- |
-| `RESEND_API_KEY`                                               | Existing. Sending email and the Receiving API              |
-| `RESEND_INBOUND_WEBHOOK_SECRET`                                | Svix signing secret for the inbound webhook                |
-| `GUEST_APP_INBOUND_ADDRESS`                                    | The random inbound address (sanity check on the recipient) |
-| `GUEST_APP_SESSION_SECRET`                                     | Signs the guest and admin cookies                          |
-| `GUEST_APP_ADMIN_EMAILS`                                       | Comma-separated allowlist (2 addresses)                    |
-| `GUEST_APP_ALERT_EMAIL`                                        | Alert recipient                                            |
-| `KV_REST_API_URL` / `KV_REST_API_TOKEN` (names as provisioned) | Upstash Redis via the Vercel Marketplace                   |
+| Env var                                      | Purpose                                                                        |
+| -------------------------------------------- | ------------------------------------------------------------------------------ |
+| `RESEND_API_KEY`                             | Existing. Sending email and the Receiving API                                  |
+| `RESEND_INBOUND_WEBHOOK_SECRET`              | Svix signing secret for the inbound webhook                                    |
+| `GUEST_APP_INBOUND_ADDRESS`                  | The random inbound address (sanity check on the recipient)                     |
+| `GUEST_APP_SESSION_SECRET`                   | Signs the guest and admin cookies                                              |
+| `GUEST_APP_ADMIN_EMAILS`                     | Comma-separated allowlist (2 addresses)                                        |
+| `GUEST_APP_ALERT_EMAIL`                      | Alert recipient                                                                |
+| `GUEST_APP_REDIS_KV_REST_API_URL` / `_TOKEN` | Upstash Redis (`mocca-guest-app`, Vercel Marketplace prefix `GUEST_APP_REDIS`) |
+
+Environments (1 Nov 2026):
+
+- `GUEST_APP_SESSION_SECRET` has **different values for Production and for
+  Preview + Development**.
+- `RESEND_INBOUND_WEBHOOK_SECRET` is Preview + Development only until
+  go-live.
+- The Redis variables are Production + Preview, marked sensitive.
+- `GUEST_APP_ADMIN_EMAILS` is added in step 4.
+- The local `.env` (git-ignored) mirrors the Preview values.
+- The function region is **Frankfurt (`fra1`)** only.
+
+**There is one Upstash database**, shared by production, previews and local
+runs.
 
 Dashboard and DNS changes (Resend, Vercel DNS, Upstash, env vars, Hostinger
 filter) are made manually from step-by-step instructions.
@@ -388,11 +440,23 @@ filter) are made manually from step-by-step instructions.
   - both parsers, including cancellations;
   - localised Hotelo dates;
   - exact property mapping (including a Georgia-like name);
-  - normalisation and transliteration;
+  - full-name matching (accents, word order, case, Turkish i);
   - the access window across DST changes and at the 11:00 checkout boundary;
   - the `Last Update` ordering rule.
 - Known gap: Renovate dependency updates don't run the hook. Add a
   (non-blocking) workflow later.
+
+**Manual test booking.** Until real reservations arrive, a test record can be
+inserted from the Upstash console CLI in the stored format. Set `EXAT` to
+00:00 Athens, 3 days after checkout, and add it to the index:
+
+```
+SET gaRes:TEST2026 '{"confirmation":"TEST2026","channel":"manual","property":"mocca-city","status":"confirmed","bookerName":"Tester Test","checkIn":"<YYYY-MM-DD>","checkOut":"<YYYY-MM-DD>","pax":2,"sourceUpdatedAt":"<ISO>","audit":[{"at":"<ISO>","by":"<admin email>","action":"added manually (test)"}]}' EXAT <epoch seconds>
+ZADD gaRes:index <same epoch seconds> TEST2026
+```
+
+Remove it with `DEL gaRes:TEST2026` and `ZREM gaRes:index TEST2026`. Records
+written in an older format (e.g. before `bookerName`) must be re-inserted.
 
 ## 12. Build order
 
@@ -411,8 +475,13 @@ filter) are made manually from step-by-step instructions.
      Verified end to end with a forwarded test email: the ARC seal checked
      out, and the sender was ignored as not allowed.
    - Still to see: the first real reservation stored.
-3. **Guest access.** Verify form, rate limiting, session, property/window
-   checks, translations.
+3. **Guest access** ✅ (31 Oct – 1 Nov 2026).
+   - Verify page, server action, rate limiting, session cookie, property and
+     window checks, translations.
+   - Full-name matching; `FormControl` errors and a single toast.
+   - The guest app is visible on previews (`VERCEL_ENV`).
+   - Verified on the preview with a manual test booking (correct and wrong
+     name, other property, number formatting).
 4. **Owner page.** Magic-link login, list, revoke, add, extend, audit.
 5. **Privacy policy** update.
 6. **Content** (separate design, once the owner finalises it), then remove
