@@ -1,10 +1,14 @@
 import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
+import type {Locale} from 'next-intl'
 import {getTranslations} from 'next-intl/server'
-import {IS_PRODUCTION} from '@/src/lib/constants'
+import {redirect} from '@/src/i18n/navigation'
+import {GUEST_APP_HIDDEN} from '@/src/lib/constants'
+import {getActiveGuest} from '@/src/lib/guest-app/guest-session'
 import {Heading} from './(components)/heading'
 
 type SlugParams = Promise<{
+  locale: Locale
   slug: PropertySlug
 }>
 
@@ -24,10 +28,13 @@ export async function generateMetadata({
 export default async function GuestAppSlugPage({
   params
 }: PageProps<'/[locale]/guest-app/[slug]'>) {
-  // Guest app is a work in progress, keep it unreachable in production
-  if (IS_PRODUCTION) notFound()
+  if (GUEST_APP_HIDDEN) notFound()
 
-  const {slug} = await (params as SlugParams)
+  const {locale, slug} = await (params as SlugParams)
+
+  // Only a guest with an active stay at this property gets past here
+  const guest = await getActiveGuest()
+  if (guest?.property !== slug) redirect({href: '/guest-app', locale})
 
   return (
     <>

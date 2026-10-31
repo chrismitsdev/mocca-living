@@ -325,7 +325,34 @@
         "description": "We strive to maintain a high standard of cleanliness and comfort for all guests. For this reason, pets are not permitted within the accommodation or on the surrounding property. We kindly ask for your understanding, as this policy helps us ensure an allergy-free environment and preserve the serene atmosphere of the accommodation."
       }
     },
-    "guest-app": {},
+    "guest-app": {
+      "access": {
+        "title": "Welcome",
+        "subtitle": "Enter your booking details to open your guest app",
+        "fields": {
+          "confirmation": {
+            "label": "Booking confirmation number",
+            "placeholder": "e.g. 1234567890 or HMABC12345",
+            "hint": "You can find it in your Booking.com or Airbnb confirmation, or in your Hotelo email (#…)."
+          },
+          "surname": {
+            "label": "Surname (as on the booking)",
+            "placeholder": "e.g. Papadopoulos"
+          }
+        },
+        "submit": "Open guest app",
+        "errors": {
+          "invalid": "Please fill in both fields.",
+          "rate-limited": "Too many attempts. Please try again in 15 minutes.",
+          "not-found": "We couldn't find an active booking with these details.",
+          "not-yet": "Your guest app opens on {date}.",
+          "ended": "Your stay has ended. Thank you for staying with us!",
+          "unavailable": "Something went wrong. Please try again in a moment."
+        },
+        "contact": "Need help? Contact us on WhatsApp",
+        "image-alt": "Mocca Living accommodation"
+      }
+    },
     "not-found": {
       "title": "Not found",
       "subtitle": "The page you requested was not found",

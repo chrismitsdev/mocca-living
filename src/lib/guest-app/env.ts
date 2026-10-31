@@ -13,5 +13,6 @@ export const guestAppEnv = {
   resendApiKey: () => required('RESEND_API_KEY'),
   inboundWebhookSecret: () => required('RESEND_INBOUND_WEBHOOK_SECRET'),
   inboundAddress: () => required('GUEST_APP_INBOUND_ADDRESS').toLowerCase(),
-  alertEmail: () => required('GUEST_APP_ALERT_EMAIL')
+  alertEmail: () => required('GUEST_APP_ALERT_EMAIL'),
+  sessionSecret: () => required('GUEST_APP_SESSION_SECRET')
 }

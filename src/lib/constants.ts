@@ -1,6 +1,9 @@
 import type {Locale} from 'next-intl'
 
 export const IS_PRODUCTION = process.env.NODE_ENV === 'production'
+// Guest app is a work in progress: hidden on the live site only, so it can be
+// tested on Vercel preview deployments and locally
+export const GUEST_APP_HIDDEN = process.env.VERCEL_ENV === 'production'
 export const SITE_URL = 'https://www.moccaliving.com'
 export const MOCCA_SEA_GMAP = 'https://maps.app.goo.gl/UtXAvFmNtEwMjK3x9'
 export const MOCCA_CITY_GMAP = 'https://maps.app.goo.gl/pLsA8svYzYq5Z9GK9'

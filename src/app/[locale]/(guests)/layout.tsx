@@ -1,6 +1,6 @@
 import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
-import {IS_PRODUCTION} from '@/src/lib/constants'
+import {GUEST_APP_HIDDEN} from '@/src/lib/constants'
 import {Header} from './(components)/header'
 
 export const metadata: Metadata = {
@@ -17,9 +17,8 @@ export const metadata: Metadata = {
 }
 
 export default function GuestsLayout({children}: LayoutProps<'/[locale]'>) {
-  // Guest app is a work in progress, keep it unreachable in production.
-  // Pages repeat this check since layouts and pages render in parallel.
-  if (IS_PRODUCTION) notFound()
+  // Pages repeat this check since layouts and pages render in parallel
+  if (GUEST_APP_HIDDEN) notFound()
 
   return (
     <>
