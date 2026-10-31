@@ -1,77 +1,57 @@
 import {describe, expect, it} from 'vitest'
-import {
-  nameTokens,
-  normalizeConfirmation,
-  surnameMatches,
-  toLatin
-} from './normalize'
+import {nameMatches, normalizeConfirmation} from './normalize'
 
-describe('toLatin', () => {
-  it('strips diacritics', () => {
-    expect(toLatin('Gündoğdu Çağla Şimşek')).toBe('gundogdu cagla simsek')
+describe('nameMatches', () => {
+  it('matches the booker name in any word order and letter case', () => {
+    expect(nameMatches('Jane Doe', 'Doe Jane')).toBe(true)
+    expect(nameMatches('doe JANE', 'Doe Jane')).toBe(true)
+    expect(nameMatches('  Jane    Doe ', 'Doe Jane')).toBe(true)
   })
 
-  it('handles Latin letters that do not decompose', () => {
-    expect(toLatin('Işık Straße')).toBe('isik strasse')
+  it('requires accents exactly as saved', () => {
+    expect(nameMatches('Ayşe Şahin', 'Şahin Ayşe')).toBe(true)
+    expect(nameMatches('AYŞE ŞAHİN', 'Şahin Ayşe')).toBe(true)
+    expect(nameMatches('Ayse Sahin', 'Şahin Ayşe')).toBe(false)
+    // Saved without accents: the guest must type it without accents too
+    expect(nameMatches('Ayşe Şahin', 'Sahin Ayse')).toBe(false)
   })
 
-  it('transliterates Greek', () => {
-    expect(toLatin('Παπαδόπουλος')).toBe('papadopoulos')
-    expect(toLatin('Χατζηαντώνης')).toBe('chatziantonis')
-    expect(toLatin('Ευαγγελία Μπαλτά')).toBe('evangelia mpalta')
+  it('treats differently encoded accents as the same letter', () => {
+    const decomposed = 'Şahin Ayşe'.normalize('NFD')
+    expect(nameMatches('Ayşe Şahin', decomposed)).toBe(true)
   })
 
-  it('transliterates Bulgarian Cyrillic', () => {
-    expect(toLatin('Костадинов')).toBe('kostadinov')
-    expect(toLatin('Щерев Жеков')).toBe('shterev zhekov')
-  })
-})
-
-describe('nameTokens', () => {
-  it('splits on spaces, hyphens and punctuation', () => {
-    expect(nameTokens('Ayşe Oruç-Coşkun')).toEqual(['ayse', 'oruc', 'coskun'])
-  })
-})
-
-describe('surnameMatches', () => {
-  const booked = ['Doe Jane', 'Jane Doe (for 3 persons, 3 Adults)']
-
-  it('matches regardless of name order and case', () => {
-    expect(surnameMatches('doe', booked)).toBe(true)
-    expect(surnameMatches('JANE', booked)).toBe(true)
+  it('handles Turkish and English capital i correctly', () => {
+    expect(nameMatches('IŞIK', 'Işık')).toBe(true)
+    expect(nameMatches('İLKAY', 'İlkay')).toBe(true)
+    expect(nameMatches('IVAN', 'Ivan')).toBe(true)
+    expect(nameMatches('Isik', 'Işık')).toBe(false)
   })
 
-  it('ignores diacritics on either side', () => {
-    expect(surnameMatches('Gundogdu', ['Gündoğdu Ayla'])).toBe(true)
-    expect(surnameMatches('Gündoğdu', ['Gundogdu Ayla'])).toBe(true)
+  it('needs each booked word once', () => {
+    expect(nameMatches('Anna Anna', 'Anna Maria')).toBe(false)
+    expect(nameMatches('Anna Maria Anna', 'Anna Maria Anna')).toBe(true)
   })
 
-  it('matches a surname typed in Cyrillic against a Latin booking', () => {
-    expect(surnameMatches('Костадинов', ['Ivan Kostadinov'])).toBe(true)
+  it('requires every word: no partial or extra names', () => {
+    expect(nameMatches('Jane', 'Doe Jane')).toBe(false)
+    expect(nameMatches('Doe', 'Doe Jane')).toBe(false)
+    expect(nameMatches('Jane Mary Doe', 'Doe Jane')).toBe(false)
+    expect(nameMatches('Maria Petrova', 'Maria Elena Petrova')).toBe(false)
   })
 
-  it('matches a surname typed in Greek against a Latin booking', () => {
-    expect(surnameMatches('Παπαδόπουλος', ['Nikos Papadopoulos'])).toBe(true)
+  it('keeps hyphenated names as saved', () => {
+    expect(nameMatches('Ayşe Oruç-Coşkun', 'Oruç-Coşkun Ayşe')).toBe(true)
+    expect(nameMatches('Ayşe Oruç Coşkun', 'Oruç-Coşkun Ayşe')).toBe(false)
   })
 
-  it('absorbs common transliteration variants', () => {
-    expect(surnameMatches('Hristov', ['Petar Christov'])).toBe(true)
-    expect(surnameMatches('Хаджиев', ['Georgi Hadzhiev'])).toBe(true)
+  it('does not transliterate other scripts', () => {
+    expect(nameMatches('Иван Костадинов', 'Ivan Kostadinov')).toBe(false)
   })
 
-  it('accepts a multi-word surname when every word matches', () => {
-    expect(surnameMatches('Oruc Coskun', ['Ayse Oruc-Coskun'])).toBe(true)
-    expect(surnameMatches('Oruc Smith', ['Ayse Oruc-Coskun'])).toBe(false)
-  })
-
-  it('rejects a different surname', () => {
-    expect(surnameMatches('Smith', booked)).toBe(false)
-  })
-
-  it('rejects empty or too-short input', () => {
-    expect(surnameMatches('', booked)).toBe(false)
-    expect(surnameMatches('  ', booked)).toBe(false)
-    expect(surnameMatches('Do', ['Do Van'])).toBe(false)
+  it('rejects empty input', () => {
+    expect(nameMatches('', 'Doe Jane')).toBe(false)
+    expect(nameMatches('   ', 'Doe Jane')).toBe(false)
   })
 })
 

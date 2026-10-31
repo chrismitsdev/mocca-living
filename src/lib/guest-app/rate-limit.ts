@@ -1,6 +1,6 @@
 import type {KeyValueStore} from './store/kv'
 
-// Fixed-window attempt counters against guessing booking numbers/surnames
+// Fixed-window attempt counters against guessing booking numbers/names
 
 export const LIMITS = {
   /** Verification attempts per IP address */

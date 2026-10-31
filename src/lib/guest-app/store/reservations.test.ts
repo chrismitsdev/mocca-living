@@ -21,8 +21,7 @@ const booking = (overrides: Partial<ParsedReservation> = {}) =>
     channel: 'booking',
     property: 'mocca-city',
     status: 'confirmed',
-    guestName: 'Jane Doe',
-    bookedNames: ['Doe Jane', 'Jane Doe'],
+    bookerName: 'Doe Jane',
     checkIn: '2026-10-02',
     checkOut: '2026-10-04',
     pax: 3,
@@ -160,7 +159,7 @@ describe('expired stays', () => {
         {
           confirmation: 'X2',
           property: 'mocca-city',
-          guestName: 'John Roe',
+          bookerName: 'John Roe',
           checkIn: '2026-09-28',
           checkOut: '2026-09-30'
         },
@@ -245,7 +244,7 @@ describe('listReservations', () => {
       {
         confirmation: 'call-001',
         property: 'mocca-by-the-sea-georgia',
-        guestName: 'John Roe',
+        bookerName: 'John Roe',
         checkIn: '2026-10-10',
         checkOut: '2026-10-12'
       },
@@ -271,7 +270,7 @@ describe('addManualReservation', () => {
         {
           confirmation: '1234567890',
           property: 'mocca-city',
-          guestName: 'John Roe',
+          bookerName: 'John Roe',
           checkIn: '2026-10-10',
           checkOut: '2026-10-12'
         },
@@ -288,7 +287,7 @@ describe('addManualReservation', () => {
         {
           confirmation: 'X1',
           property: 'mocca-city',
-          guestName: 'John Roe',
+          bookerName: 'John Roe',
           checkIn: '2026-10-12',
           checkOut: '2026-10-12'
         },

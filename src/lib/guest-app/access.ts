@@ -1,10 +1,10 @@
-import {surnameMatches} from './normalize'
+import {nameMatches} from './normalize'
 import {PROPERTY_TIMEZONE} from './properties'
 import {accessEndsAt, type Reservation} from './store/reservations'
 import {zonedTimeToEpochMs} from './time'
 
-// Whether a guest may use the guest app right now: an active booking, a
-// matching surname and the stay window (00:00 on arrival day until check-out
+// Whether a guest may use the guest app right now: an active booking, the
+// booker's name and the stay window (00:00 on arrival day until check-out
 // time on departure day, or a later owner override)
 
 export type AccessWindow = {opensAt: number; endsAt: number}
@@ -44,13 +44,13 @@ export function windowDecision(
 /** Full check for a guest entering their booking details */
 export function checkAccess(
   reservation: Reservation | null,
-  surname: string,
+  name: string,
   now: number
 ): AccessDecision {
   if (reservation?.status !== 'confirmed') {
     return {ok: false, reason: 'not-found'}
   }
-  if (!surnameMatches(surname, reservation.bookedNames)) {
+  if (!nameMatches(name, reservation.bookerName)) {
     return {ok: false, reason: 'name-mismatch'}
   }
   return windowDecision(reservation, now)

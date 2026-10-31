@@ -8,7 +8,6 @@ import type {Channel, ParseResult} from './types'
 
 const STAY_LINE = /^(\d{2}\/\d{2}\/\d{4})\s*-\s*(\d{2}\/\d{2}\/\d{4})$/
 const TIMESTAMP = /(\d{2})\/(\d{2})\/(\d{4}) (\d{2}):(\d{2}):(\d{2})/
-const NAME_LINE = /^\p{L}[\p{L}' .-]*$/u
 
 function toChannel(label: string): Channel {
   if (/booking\.com/i.test(label)) return 'booking'
@@ -22,24 +21,6 @@ function parseTimestamp(value: string | undefined): string | null {
   if (!match) return null
   const [, day, month, year, hours, minutes, seconds] = match
   return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.000Z`
-}
-
-/** Strip the "(for 3 persons, 3 Adults)" suffix of the Guest Info field */
-function stripGuestCount(value: string | undefined): string | undefined {
-  return value?.replace(/\s*\(for\b.*$/i, '').trim() || undefined
-}
-
-/** Names listed one per line at the start of the Client Comments field */
-function commentNames(lines: string[]): string[] {
-  const start = lines.findIndex((line) => /^Client Comments:/i.test(line))
-  if (start === -1) return []
-
-  const names: string[] = []
-  for (const line of lines.slice(start + 1)) {
-    if (!NAME_LINE.test(line) || line.split(' ').length > 5) break
-    names.push(line)
-  }
-  return names
 }
 
 export function parsePrimalRes(lines: string[]): ParseResult {
@@ -70,17 +51,9 @@ export function parsePrimalRes(lines: string[]): ParseResult {
   })
   if (!stays.length) return {type: 'failed', reason: 'no stay dates'}
 
-  const bookedBy = valueAfter(lines, /^Booked By:/i)
-  const guestInfo = stripGuestCount(valueAfter(lines, /^Guest Info:/i))
-  const bookedNames = [
-    ...new Set(
-      [bookedBy, guestInfo, ...commentNames(lines)].filter(
-        (name): name is string => Boolean(name)
-      )
-    )
-  ]
-  const guestName = guestInfo ?? bookedBy
-  if (!guestName) return {type: 'failed', reason: 'no guest name'}
+  // "Booked By" is always the booker; "Guest Info" may name someone else
+  const bookerName = valueAfter(lines, /^Booked By:/i)
+  if (!bookerName) return {type: 'failed', reason: 'no booker name'}
 
   // A booking with several rooms spans from the earliest to the latest date
   const checkIns = stays.map((stay) => stay.checkIn).sort()
@@ -93,8 +66,7 @@ export function parsePrimalRes(lines: string[]): ParseResult {
       channel: toChannel(lines[channelIndex]),
       property,
       status,
-      guestName,
-      bookedNames,
+      bookerName,
       checkIn: checkIns[0],
       checkOut: checkOuts[checkOuts.length - 1],
       pax: parsePax(valueAfter(lines, /^(Rooms|Units), Pax:/i)),

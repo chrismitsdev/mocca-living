@@ -335,9 +335,10 @@
             "placeholder": "e.g. 1234567890 or HMABC12345",
             "hint": "You can find it in your Booking.com or Airbnb confirmation, or in your Hotelo email (#…)."
           },
-          "surname": {
-            "label": "Surname (as on the booking)",
-            "placeholder": "e.g. Papadopoulos"
+          "name": {
+            "label": "Full name (as on the booking)",
+            "placeholder": "e.g. Maria Papadopoulou",
+            "hint": "Enter your full name exactly as it appears on your booking confirmation email."
           }
         },
         "submit": "Open guest app",

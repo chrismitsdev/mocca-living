@@ -21,7 +21,7 @@ import {PROPERTY_TIMEZONE} from '@/src/lib/guest-app/properties'
 
 const initialState: VerifyGuestState = {
   confirmation: '',
-  surname: '',
+  name: '',
   error: null
 }
 
@@ -85,22 +85,31 @@ function AccessForm() {
 
       <div>
         <Label
-          htmlFor='surname'
+          htmlFor='name'
           className='mb-1'
         >
-          {t('fields.surname.label')}
+          {t('fields.name.label')}
         </Label>
         <Input
-          id='surname'
-          name='surname'
-          autoComplete='family-name'
-          placeholder={t('fields.surname.placeholder')}
-          defaultValue={state.surname}
+          id='name'
+          name='name'
+          autoComplete='name'
+          spellCheck={false}
+          placeholder={t('fields.name.placeholder')}
+          defaultValue={state.name}
           icon={IconUserCircle}
-          error={state.error === 'invalid' && !state.surname.trim()}
+          error={state.error === 'invalid' && !state.name.trim()}
           disabled={isPending}
+          aria-describedby='name-hint'
           required
         />
+        <Typography
+          id='name-hint'
+          variant='tiny'
+          className='mt-1 px-2'
+        >
+          {t('fields.name.hint')}
+        </Typography>
       </div>
 
       {error && (

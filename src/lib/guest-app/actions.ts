@@ -14,7 +14,7 @@ import {createUpstashStore} from './store/upstash'
 
 export type VerifyGuestState = {
   confirmation: string
-  surname: string
+  name: string
   error:
     | null
     | 'invalid'
@@ -49,13 +49,13 @@ export async function verifyGuestAction(
     0,
     40
   )
-  const surname = String(formData.get('surname') ?? '')
+  const name = String(formData.get('name') ?? '')
     .trim()
-    .slice(0, 80)
-  const state = {confirmation: confirmationInput, surname}
+    .slice(0, 120)
+  const state = {confirmation: confirmationInput, name}
   const confirmation = normalizeConfirmation(confirmationInput)
 
-  if (!confirmation || !surname) return {...state, error: 'invalid'}
+  if (!confirmation || !name) return {...state, error: 'invalid'}
 
   const store = createUpstashStore()
   let property: PropertySlug
@@ -68,7 +68,7 @@ export async function verifyGuestAction(
     }
 
     const reservation = await getReservation(store, confirmation)
-    const decision = checkAccess(reservation, surname, Date.now())
+    const decision = checkAccess(reservation, name, Date.now())
 
     if (!decision.ok) {
       if (

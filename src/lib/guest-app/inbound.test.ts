@@ -68,8 +68,8 @@ describe('processReceivedEmail', () => {
       outcome: 'created',
       confirmation: '1234567890'
     })
-    expect((await getReservation(store, '1234567890'))?.guestName).toBe(
-      'Jane Doe'
+    expect((await getReservation(store, '1234567890'))?.bookerName).toBe(
+      'Doe Jane'
     )
     expect(alert).not.toHaveBeenCalled()
   })

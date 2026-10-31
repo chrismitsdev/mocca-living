@@ -1,5 +1,4 @@
 import {decodeHTML} from 'entities'
-import {toLatin} from '../normalize'
 
 /** Render an HTML email body as trimmed, non-empty text lines */
 export function htmlToLines(html: string): string[] {
@@ -61,27 +60,37 @@ export function parseSlashDate(value: string): string | null {
   return match ? isoDate(+match[3], +match[2], +match[1]) : null
 }
 
+// Month names compared lowercase without accents ("Μαΐου" → "μαιου",
+// "Mayıs" → "mayis"); Bulgarian "й" loses its breve too ("май" → "маи")
 const MONTHS: Record<string, number> = Object.fromEntries(
   [
     // English
     'january february march april may june july august september october november december',
     'jan feb mar apr may jun jul aug sep oct nov dec',
-    // Greek, genitive and nominative (transliterated by toLatin)
-    'ianouariou fevrouariou martiou apriliou maiou iouniou iouliou avgoustou septemvriou oktovriou noemvriou dekemvriou',
-    'ianouarios fevrouarios martios aprilios maios iounios ioulios avgoustos septemvrios oktovrios noemvrios dekemvrios',
+    // Greek, genitive and nominative
+    'ιανουαριου φεβρουαριου μαρτιου απριλιου μαιου ιουνιου ιουλιου αυγουστου σεπτεμβριου οκτωβριου νοεμβριου δεκεμβριου',
+    'ιανουαριοσ φεβρουαριοσ μαρτιοσ απριλιοσ μαιοσ ιουνιοσ ιουλιοσ αυγουστοσ σεπτεμβριοσ οκτωβριοσ νοεμβριοσ δεκεμβριοσ',
     // Turkish
     'ocak subat mart nisan mayis haziran temmuz agustos eylul ekim kasim aralik',
-    // Bulgarian (transliterated by toLatin)
-    'yanuari fevruari mart april may yuni yuli avgust septemvri oktomvri noemvri dekemvri'
+    // Bulgarian
+    'януари февруари март април маи юни юли август септември октомври ноември декември'
   ].flatMap((list) =>
     list.split(' ').map((name, index) => [name, index + 1] as const)
   )
 )
 
+const monthKey = (name: string) =>
+  name
+    .toLocaleLowerCase('en')
+    .normalize('NFD')
+    .replace(/\p{M}/gu, '')
+    .replace(/ı/g, 'i')
+    .replace(/ς/g, 'σ')
+
 /** "Monday, 14 September 2026" (en/el/tr/bg month names) → "2026-09-14" */
 export function parseLongDate(value: string): string | null {
-  const match = toLatin(value).match(/(\d{1,2})\s+([a-z]+)\.?\s+(\d{4})/)
-  const month = match && MONTHS[match[2]]
+  const match = value.match(/(\d{1,2})\s+(\p{L}+)\.?\s+(\d{4})/u)
+  const month = match && MONTHS[monthKey(match[2])]
   return match && month ? isoDate(+match[3], month, +match[1]) : null
 }
 

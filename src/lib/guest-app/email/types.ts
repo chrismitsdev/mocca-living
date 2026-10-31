@@ -9,10 +9,8 @@ export type ParsedReservation = {
   channel: Channel
   property: GuestAppProperty
   status: 'confirmed' | 'cancelled'
-  /** Primary display name */
-  guestName: string
-  /** Every name found on the booking, used for surname matching */
-  bookedNames: string[]
+  /** The booker's full name exactly as the platform saved it */
+  bookerName: string
   /** YYYY-MM-DD, property-local */
   checkIn: string
   /** YYYY-MM-DD, property-local */

@@ -335,9 +335,10 @@
             "placeholder": "ör. 1234567890 veya HMABC12345",
             "hint": "Booking.com veya Airbnb onayınızda ya da Hotelo e-postanızda (#…) bulabilirsiniz."
           },
-          "surname": {
-            "label": "Soyadı (rezervasyondaki gibi)",
-            "placeholder": "ör. Yılmaz"
+          "name": {
+            "label": "Ad soyad (rezervasyondaki gibi)",
+            "placeholder": "ör. Ayşe Yılmaz",
+            "hint": "Adınızı ve soyadınızı, rezervasyon onay e-postanızda göründüğü şekliyle tam olarak girin."
           }
         },
         "submit": "Uygulamayı aç",

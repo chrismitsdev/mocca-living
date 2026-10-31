@@ -15,8 +15,8 @@ export type Reservation = {
   channel: Channel | 'manual'
   property: PropertySlug
   status: 'confirmed' | 'cancelled' | 'revoked'
-  guestName: string
-  bookedNames: string[]
+  /** The booker's full name exactly as the platform saved it */
+  bookerName: string
   /** YYYY-MM-DD, property-local */
   checkIn: string
   /** YYYY-MM-DD, property-local */
@@ -112,8 +112,7 @@ export async function applyReservationEmail(
     channel: parsed.channel,
     property: parsed.property,
     status: parsed.status,
-    guestName: parsed.guestName,
-    bookedNames: parsed.bookedNames,
+    bookerName: parsed.bookerName,
     checkIn: parsed.checkIn,
     checkOut: parsed.checkOut,
     pax: parsed.pax,
@@ -215,7 +214,7 @@ export function extendReservation(
 export type ManualReservationInput = {
   confirmation: string
   property: PropertySlug
-  guestName: string
+  bookerName: string
   checkIn: string
   checkOut: string
   pax?: number | null
@@ -242,8 +241,7 @@ export async function addManualReservation(
     channel: 'manual',
     property: input.property,
     status: 'confirmed',
-    guestName: input.guestName.trim(),
-    bookedNames: [input.guestName.trim()],
+    bookerName: input.bookerName.trim().replace(/\s+/g, ' '),
     checkIn: input.checkIn,
     checkOut: input.checkOut,
     pax: input.pax ?? null,

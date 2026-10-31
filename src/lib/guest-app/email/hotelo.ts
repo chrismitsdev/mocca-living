@@ -37,9 +37,9 @@ export function parseHotelo(lines: string[]): ParseResult {
   }
 
   const billing = lines.findIndex((line) => /^Billing Information$/i.test(line))
-  const guestName =
+  const bookerName =
     billing === -1 ? undefined : valueAfter(lines, /^Name$/i, billing)
-  if (!guestName) return {type: 'failed', reason: 'no guest name'}
+  if (!bookerName) return {type: 'failed', reason: 'no booker name'}
 
   return {
     type: 'reservation',
@@ -48,8 +48,7 @@ export function parseHotelo(lines: string[]): ParseResult {
       channel: 'hotelo',
       property,
       status,
-      guestName,
-      bookedNames: [guestName],
+      bookerName,
       checkIn,
       checkOut,
       pax: parsePax(lines.find((line) => /\d+\s*adults?/i.test(line))),
