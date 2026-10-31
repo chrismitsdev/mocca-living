@@ -32,9 +32,13 @@ export default async function GuestAppSlugPage({
 
   const {locale, slug} = await (params as SlugParams)
 
-  // Only a guest with an active stay at this property gets past here
+  // Only a guest with an active stay at this property gets past here; a
+  // guest of another property goes straight to their own
   const guest = await getActiveGuest()
-  if (guest?.property !== slug) redirect({href: '/guest-app', locale})
+  if (!guest) return redirect({href: '/guest-app', locale})
+  if (guest.property !== slug) {
+    return redirect({href: `/guest-app/${guest.property}`, locale})
+  }
 
   return (
     <>
