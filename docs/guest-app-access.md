@@ -34,11 +34,11 @@ There is no API we can use:
 Every reservation does, however, produce an email to `info@moccaliving.com`
 (a Hostinger mailbox):
 
-| Channel | Sender | Guest's confirmation number | DKIM `d=` |
-| --- | --- | --- | --- |
-| Booking.com | `bookings@primal-res.com` | 10 digits | `primal-res.com` (aligned, DMARC `p=reject`) |
-| Airbnb | `bookings@primal-res.com` | `HM` + 8 alphanumerics | `primal-res.com` |
-| Website (Hotelo) | `booking@hotelo.gr` | 8 digits | `hotelo-gr.<digits>.gappssmtp.com` (Google Workspace default) |
+| Channel          | Sender                    | Guest's confirmation number | DKIM `d=`                                                     |
+| ---------------- | ------------------------- | --------------------------- | ------------------------------------------------------------- |
+| Booking.com      | `bookings@primal-res.com` | 10 digits                   | `primal-res.com` (aligned, DMARC `p=reject`)                  |
+| Airbnb           | `bookings@primal-res.com` | `HM` + 8 alphanumerics      | `primal-res.com`                                              |
+| Website (Hotelo) | `booking@hotelo.gr`       | 8 digits                    | `hotelo-gr.<digits>.gappssmtp.com` (Google Workspace default) |
 
 WebHotelier also sends "Availability Alert" emails (`noreply+alert@webhotelier.net`).
 They have no guest name and are **ignored**.
@@ -76,11 +76,10 @@ They have no guest name and are **ignored**.
 
 ### 2.3 Property mapping (exact match only)
 
-| Email value | Slug |
-| --- | --- |
+| Email value                                                                                         | Slug                       |
+| --------------------------------------------------------------------------------------------------- | -------------------------- |
 | `Mocca Living` (Primal Res), `MOCCA Living Premium Stay` / `Villa Dimitra by Mocca Living` (Hotelo) | `mocca-by-the-sea-dimitra` |
-| `Mocca City` | `mocca-city` |
-
+| `Mocca City`                                                                                        | `mocca-city`               |
 - Georgia isn't listed on any platform yet, so it isn't mapped. Its future
   name is probably `Villa Georgia by Mocca Living`, which **contains "Mocca
   Living"**. Matching must therefore be exact, never by substring.
@@ -196,16 +195,16 @@ Hotelo (`c=relaxed/relaxed`) forwarded through the filter.
 
 ```ts
 type Reservation = {
-  confirmation: string        // normalised: uppercase, no '#', spaces or dashes
+  confirmation: string // normalised: uppercase, no '#', spaces or dashes
   channel: 'booking' | 'airbnb' | 'hotelo' | 'manual'
   property: PropertySlug
-  guestName: string           // full name as in the email (shown on the owner page)
-  surnameTokens: string[]     // normalised tokens of all names, used for matching
-  checkIn: string             // YYYY-MM-DD (property-local date)
-  checkOut: string            // YYYY-MM-DD
-  pax: number | null          // stored for a future device limit
+  guestName: string // full name as in the email (shown on the owner page)
+  surnameTokens: string[] // normalised tokens of all names, used for matching
+  checkIn: string // YYYY-MM-DD (property-local date)
+  checkOut: string // YYYY-MM-DD
+  pax: number | null // stored for a future device limit
   status: 'confirmed' | 'cancelled' | 'revoked'
-  sourceUpdatedAt: string     // ISO; Last Update from the email or the admin action
+  sourceUpdatedAt: string // ISO; Last Update from the email or the admin action
   accessUntilOverride?: string // ISO; admin "extend" (late checkout)
   audit: {at: string; by: 'inbound' | string; action: string}[]
 }
@@ -247,14 +246,14 @@ Airbnb's email field is empty.
 
 ### 5.3 Outcomes
 
-| Situation | Response |
-| --- | --- |
-| Booking confirmed, surname matches, inside the window | Issue a session and redirect to `/guest-app/<property>` |
-| Before `checkIn` | "Your guest app opens on <date>" |
-| After the window closes | "Your stay has ended, thank you for staying with us" |
-| Cancelled or revoked | Generic "We couldn't find an active booking" |
-| Number exists but surname doesn't match | Generic not-found message plus a WhatsApp contact button. The owner can verify manually |
-| Unknown number | Generic "We couldn't find this booking" (don't reveal which field was wrong) |
+| Situation                                             | Response                                                                                |
+| ----------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Booking confirmed, surname matches, inside the window | Issue a session and redirect to `/guest-app/<property>`                                 |
+| Before `checkIn`                                      | "Your guest app opens on <date>"                                                        |
+| After the window closes                               | "Your stay has ended, thank you for staying with us"                                    |
+| Cancelled or revoked                                  | Generic "We couldn't find an active booking"                                            |
+| Number exists but surname doesn't match               | Generic not-found message plus a WhatsApp contact button. The owner can verify manually |
+| Unknown number                                        | Generic "We couldn't find this booking" (don't reveal which field was wrong)            |
 
 All copy is translated (en/el/tr/bg) and can be edited later.
 
@@ -320,15 +319,15 @@ in v1, but `pax` is stored so it can be added later.
 
 ## 10. Configuration
 
-| Env var | Purpose |
-| --- | --- |
-| `RESEND_API_KEY` | Existing. Sending email and the Receiving API |
-| `RESEND_INBOUND_WEBHOOK_SECRET` | Svix signing secret for the inbound webhook |
-| `GUEST_APP_INBOUND_ADDRESS` | The random inbound address (sanity check on the recipient) |
-| `GUEST_APP_SESSION_SECRET` | Signs the guest and admin cookies |
-| `GUEST_APP_ADMIN_EMAILS` | Comma-separated allowlist (2 addresses) |
-| `GUEST_APP_ALERT_EMAIL` | Alert recipient |
-| `KV_REST_API_URL` / `KV_REST_API_TOKEN` (names as provisioned) | Upstash Redis via the Vercel Marketplace |
+| Env var                                                        | Purpose                                                    |
+| -------------------------------------------------------------- | ---------------------------------------------------------- |
+| `RESEND_API_KEY`                                               | Existing. Sending email and the Receiving API              |
+| `RESEND_INBOUND_WEBHOOK_SECRET`                                | Svix signing secret for the inbound webhook                |
+| `GUEST_APP_INBOUND_ADDRESS`                                    | The random inbound address (sanity check on the recipient) |
+| `GUEST_APP_SESSION_SECRET`                                     | Signs the guest and admin cookies                          |
+| `GUEST_APP_ADMIN_EMAILS`                                       | Comma-separated allowlist (2 addresses)                    |
+| `GUEST_APP_ALERT_EMAIL`                                        | Alert recipient                                            |
+| `KV_REST_API_URL` / `KV_REST_API_TOKEN` (names as provisioned) | Upstash Redis via the Vercel Marketplace                   |
 
 Dashboard and DNS changes (Resend, Vercel DNS, Upstash, env vars, Hostinger
 filter) are made manually from step-by-step instructions.
