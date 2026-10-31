@@ -21,7 +21,7 @@ function CardHeader({className, ...props}: React.ComponentPropsWithRef<'div'>) {
 function CardTitle({className, ...props}: React.ComponentPropsWithRef<'h3'>) {
   return (
     <h3
-      className={cn('text-xl text-balance font-bold', className)}
+      className={cn('text-xl font-bold sm:text-balance', className)}
       {...props}
     />
   )
@@ -33,7 +33,7 @@ function CardDescription({
 }: React.ComponentPropsWithRef<'div'>) {
   return (
     <div
-      className={cn('text-balance leading-8', className)}
+      className={cn('leading-8 sm:text-balance', className)}
       {...props}
     />
   )

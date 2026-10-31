@@ -4,6 +4,7 @@ import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
 import {NextIntlClientProvider} from 'next-intl'
 import {getLocale} from 'next-intl/server'
+import {Toaster} from 'sonner'
 import {PageTransition} from '@/src/components/shared/page-transition'
 import {routing} from '@/src/i18n/routing'
 import {IS_PRODUCTION, SITE_URL} from '@/src/lib/constants'
@@ -40,6 +41,10 @@ export default async function RootLayout({children}: LayoutProps<'/[locale]'>) {
           <PageTransition>{children}</PageTransition>
         </NextIntlClientProvider>
         {IS_PRODUCTION && <Analytics />}
+        <Toaster
+          position='top-center'
+          mobileOffset={12}
+        />
       </body>
     </html>
   )

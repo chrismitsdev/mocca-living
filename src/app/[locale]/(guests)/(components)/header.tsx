@@ -6,7 +6,7 @@ import {Link} from '@/src/i18n/navigation'
 
 function Header() {
   return (
-    <header className='py-6 bg-surface-3'>
+    <header className='py-2 bg-surface-3'>
       <Container>
         <div className='flex flex-col items-center gap-2'>
           <Link href='/'>
@@ -17,7 +17,12 @@ function Header() {
               loading='eager'
             />
           </Link>
-          <Typography variant='tiny'>PREMIUM · STAY · PHILOSOPHY</Typography>
+          <Typography
+            className='sm:leading-4'
+            variant='tiny'
+          >
+            PREMIUM · STAY · PHILOSOPHY
+          </Typography>
         </div>
       </Container>
     </header>

@@ -40,8 +40,8 @@ function Typography({
         variant === 'small' && ['text-sm', 'leading-6'],
         variant === 'tiny' && [
           'text-[10px]',
+          'leading-4',
           'font-bold',
-          'sm:leading-6',
           'sm:text-xs'
         ],
         className

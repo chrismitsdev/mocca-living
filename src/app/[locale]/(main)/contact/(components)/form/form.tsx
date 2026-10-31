@@ -54,7 +54,7 @@ function Form() {
       noValidate
     >
       <FormHoneypot />
-      <div className='grid gap-6 @xl:grid-cols-3'>
+      <div className='grid gap-y-4 gap-x-6 @xl:grid-cols-3'>
         <FormControl
           id='fullname'
           error={state.errors.fullname}

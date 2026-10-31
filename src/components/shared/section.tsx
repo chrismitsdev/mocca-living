@@ -22,7 +22,7 @@ function Section({
 
   return (
     <section
-      className={cn('py-32', className)}
+      className={cn('py-20 sm:py-32', className)}
       {...props}
     >
       {container ? <Container>{content}</Container> : content}

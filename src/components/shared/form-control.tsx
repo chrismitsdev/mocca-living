@@ -58,7 +58,7 @@ function FormControl({
       <div
         aria-hidden={!error}
         className={cn(
-          'px-2 min-block-6',
+          'px-2 py-1 min-block-6',
           error && 'bg-danger text-danger-foreground'
         )}
       >
