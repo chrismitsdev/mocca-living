@@ -6,6 +6,11 @@ export interface KeyValueStore {
   /** expireAt: epoch seconds after which the key disappears */
   set(key: string, value: unknown, options?: {expireAt?: number}): Promise<void>
   del(key: string): Promise<void>
+  /**
+   * Increment a counter and return its new value. A new counter expires after
+   * ttlSeconds (fixed window); later increments keep that expiry
+   */
+  incr(key: string, ttlSeconds: number): Promise<number>
   /** Sorted set */
   zadd(key: string, score: number, member: string): Promise<void>
   zrangeByScore(key: string, min: number, max: number): Promise<string[]>
@@ -40,6 +45,15 @@ export function createMemoryStore(now: () => number = Date.now) {
     },
     async del(key) {
       values.delete(key)
+    },
+    async incr(key, ttlSeconds) {
+      const entry = live(key)
+      const count = (entry ? Number(JSON.parse(entry.value)) : 0) + 1
+      values.set(key, {
+        value: JSON.stringify(count),
+        expireAt: entry?.expireAt ?? Math.floor(now() / 1000) + ttlSeconds
+      })
+      return count
     },
     async zadd(key, score, member) {
       const set = sorted.get(key) ?? new Map<string, number>()

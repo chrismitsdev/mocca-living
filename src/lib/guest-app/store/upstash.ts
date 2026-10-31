@@ -41,6 +41,14 @@ export function createUpstashStore(): KeyValueStore {
     async del(key) {
       await client().del(key)
     },
+    async incr(key, ttlSeconds) {
+      const [count] = await client()
+        .pipeline()
+        .incr(key)
+        .expire(key, ttlSeconds, 'NX')
+        .exec<[number, number]>()
+      return Number(count)
+    },
     async zadd(key, score, member) {
       await client().zadd(key, {score, member})
     },
