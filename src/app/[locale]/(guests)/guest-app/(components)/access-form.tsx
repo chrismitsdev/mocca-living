@@ -57,22 +57,15 @@ function AccessForm() {
   const showContact =
     state.error === 'not-found' || state.error === 'unavailable'
 
-  // Hints for the fields that may be wrong: both for a booking that wasn't
-  // found, only the empty ones for missing input
   useEffect(() => {
-    const fields = (['confirmation', 'name'] as const).filter((field) =>
-      state.error === 'not-found'
-        ? true
-        : state.error === 'required' && !state[field].trim()
-    )
+    if (!state.error) return
 
-    for (const field of fields) {
-      toast({
-        title: t(`fields.${field}.label`),
-        description: t(`fields.${field}.hint`),
-        status: 'error'
-      })
-    }
+    const type = state.error === 'unavailable' ? 'api' : 'validation'
+    toast({
+      title: t(`toast.error.${type}.title`),
+      description: t(`toast.error.${type}.description`),
+      status: 'error'
+    })
   }, [state, t])
 
   return (

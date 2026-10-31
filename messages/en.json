@@ -350,6 +350,18 @@
           "ended": "Your stay has ended. Thank you for staying with us!",
           "unavailable": "Something went wrong. Please try again in a moment."
         },
+        "toast": {
+          "error": {
+            "validation": {
+              "title": "Verification failed",
+              "description": "Please check the highlighted fields and try again."
+            },
+            "api": {
+              "title": "Verification failed",
+              "description": "Something went wrong while checking your booking. Please try again later."
+            }
+          }
+        },
         "contact": "Need help? Contact us on WhatsApp",
         "image-alt": "Mocca Living accommodation"
       }

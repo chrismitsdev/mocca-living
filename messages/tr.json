@@ -350,6 +350,18 @@
           "ended": "Konaklamanız sona erdi. Bizi tercih ettiğiniz için teşekkür ederiz!",
           "unavailable": "Bir sorun oluştu. Lütfen biraz sonra tekrar deneyin."
         },
+        "toast": {
+          "error": {
+            "validation": {
+              "title": "Doğrulama başarısız",
+              "description": "Lütfen işaretlenmiş alanları kontrol edip tekrar deneyin."
+            },
+            "api": {
+              "title": "Doğrulama başarısız",
+              "description": "Rezervasyonunuz kontrol edilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+            }
+          }
+        },
         "contact": "Yardıma mı ihtiyacınız var? WhatsApp üzerinden bize ulaşın",
         "image-alt": "Mocca Living konaklama"
       }
