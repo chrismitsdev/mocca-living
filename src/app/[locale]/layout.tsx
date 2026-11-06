@@ -1,18 +1,11 @@
-import '@/src/styles/index.css'
 import {Analytics} from '@vercel/analytics/next'
 import type {Metadata} from 'next'
-import {Inter} from 'next/font/google'
 import {NextIntlClientProvider} from 'next-intl'
 import {getLocale} from 'next-intl/server'
-import {Toaster} from 'sonner'
 import {PageTransition} from '@/src/components/shared/page-transition'
+import {Shell} from '@/src/components/shared/shell'
 import {routing} from '@/src/i18n/routing'
 import {IS_PRODUCTION, SITE_URL} from '@/src/lib/constants'
-
-const inter = Inter({
-  subsets: ['latin', 'latin-ext', 'greek', 'cyrillic'],
-  display: 'swap'
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -28,25 +21,18 @@ export const metadata: Metadata = {
   }
 }
 
-export default async function RootLayout({children}: LayoutProps<'/[locale]'>) {
+export default async function LocaleLayout({
+  children
+}: LayoutProps<'/[locale]'>) {
   const locale = await getLocale()
 
   return (
-    <html
-      lang={locale}
-      className={inter.className}
-    >
-      <body className='bg-surface-1 text-foreground'>
-        <NextIntlClientProvider>
-          <PageTransition>{children}</PageTransition>
-        </NextIntlClientProvider>
-        {IS_PRODUCTION && <Analytics />}
-        <Toaster
-          position='top-center'
-          mobileOffset={12}
-        />
-      </body>
-    </html>
+    <Shell lang={locale}>
+      <NextIntlClientProvider>
+        <PageTransition>{children}</PageTransition>
+      </NextIntlClientProvider>
+      {IS_PRODUCTION && <Analytics />}
+    </Shell>
   )
 }
 

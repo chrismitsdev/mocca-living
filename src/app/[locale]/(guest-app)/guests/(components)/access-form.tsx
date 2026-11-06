@@ -1,6 +1,6 @@
 'use client'
 
-import {IconLock, IconTicket, IconUserCircle} from '@tabler/icons-react'
+import {IconLockOpen, IconTicket, IconUserCircle} from '@tabler/icons-react'
 import {useFormatter, useLocale, useTranslations} from 'next-intl'
 import {useActionState, useEffect} from 'react'
 import {FormControl} from '@/src/components/shared/form-control'
@@ -52,6 +52,24 @@ function AccessForm() {
       noValidate
     >
       <FormControl
+        id='name'
+        error={state.errors.name}
+      >
+        <Label htmlFor='name'>{t('fields.name.label')}</Label>
+        <Input
+          id='name'
+          name='name'
+          autoComplete='name'
+          spellCheck={false}
+          placeholder={t('fields.name.placeholder')}
+          defaultValue={state.data.name}
+          icon={IconUserCircle}
+          error={Boolean(state.errors.name)}
+          disabled={isPending}
+          required
+        />
+      </FormControl>
+      <FormControl
         id='reservationNumber'
         error={state.errors.reservationNumber}
       >
@@ -72,26 +90,6 @@ function AccessForm() {
           required
         />
       </FormControl>
-
-      <FormControl
-        id='name'
-        error={state.errors.name}
-      >
-        <Label htmlFor='name'>{t('fields.name.label')}</Label>
-        <Input
-          id='name'
-          name='name'
-          autoComplete='name'
-          spellCheck={false}
-          placeholder={t('fields.name.placeholder')}
-          defaultValue={state.data.name}
-          icon={IconUserCircle}
-          error={Boolean(state.errors.name)}
-          disabled={isPending}
-          required
-        />
-      </FormControl>
-
       <div className='pt-10'>
         <Button
           className='inline-full'
@@ -99,8 +97,8 @@ function AccessForm() {
           size='large'
           isLoading={isPending}
         >
-          <IconLock aria-hidden />
           {t('submit')}
+          <IconLockOpen aria-hidden />
         </Button>
       </div>
     </form>

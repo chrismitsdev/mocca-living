@@ -24,7 +24,7 @@ function IconButton({
   return (
     <Comp
       className={cn(
-        'shrink-0 inline-flex items-center justify-center focus-ring disabled:opacity-30',
+        'shrink-0 inline-flex items-center justify-center focus-ring disabled:opacity-30 disabled:pointer-events-none',
         // VARIANT STYLES
         variant === 'primary' && [
           'bg-primary',

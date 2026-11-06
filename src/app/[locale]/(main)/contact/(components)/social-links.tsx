@@ -18,21 +18,30 @@ function SocialLinks() {
           href='https://www.facebook.com/profile.php?id=61566665200042'
           aria-label='Visit our Facebook page (Opens in new tab)'
         >
-          <IconBrandFacebookFilled className='size-16' />
+          <IconBrandFacebookFilled
+            className='size-16'
+            aria-hidden
+          />
           <Typography variant='h4'>{t('facebook')}</Typography>
         </SocialLink>
         <SocialLink
           href='https://www.instagram.com/moccaliving.premiumstay'
           aria-label='Visit our Instagram page (Opens in new tab)'
         >
-          <IconBrandInstagramFilled className='size-16' />
+          <IconBrandInstagramFilled
+            className='size-16'
+            aria-hidden
+          />
           <Typography variant='h4'>{t('instagram')}</Typography>
         </SocialLink>
         <SocialLink
           href={`tel:${OWNER_PHONE}`}
           aria-label='Contact us via phone'
         >
-          <IconPhoneFilled className='size-16' />
+          <IconPhoneFilled
+            className='size-16'
+            aria-hidden
+          />
           <Typography variant='h4'>{t('phone')}</Typography>
         </SocialLink>
       </div>

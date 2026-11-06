@@ -7,6 +7,7 @@ import {
   applyReservationEmail,
   extendReservation,
   getReservation,
+  isChangeable,
   listReservations,
   ReservationError,
   revokeReservation
@@ -225,6 +226,60 @@ describe('accessEndsAt', () => {
   })
 })
 
+describe('isChangeable', () => {
+  // The default booking: access ends 2026-10-04 11:00 Athens (08:00Z)
+  const ends = Date.parse('2026-10-04T08:00:00Z')
+
+  async function stored() {
+    await applyReservationEmail(store, booking(), at('2026-10-01T06:06:20Z'))
+    const reservation = await getReservation(store, '1234567890')
+    if (!reservation) throw new Error('missing reservation')
+    return reservation
+  }
+
+  it('allows an upcoming or current confirmed stay', async () => {
+    const reservation = await stored()
+    expect(isChangeable(reservation, Date.parse('2026-10-01T00:00:00Z'))).toBe(
+      true
+    )
+    expect(isChangeable(reservation, ends - 1)).toBe(true)
+  })
+
+  it('refuses once access has ended', async () => {
+    const reservation = await stored()
+    expect(isChangeable(reservation, ends)).toBe(false)
+  })
+
+  it('follows an extension', async () => {
+    await stored()
+    const extended = await extendReservation(
+      store,
+      '1234567890',
+      at('2026-10-04T12:00:00Z'),
+      'owner@example.com'
+    )
+    expect(isChangeable(extended, ends + 1)).toBe(true)
+  })
+
+  it('refuses cancelled and revoked bookings', async () => {
+    await applyReservationEmail(
+      store,
+      booking({status: 'cancelled'}),
+      at('2026-10-01T06:06:20Z')
+    )
+    const cancelled = await getReservation(store, '1234567890')
+    if (!cancelled) throw new Error('missing reservation')
+    expect(isChangeable(cancelled, ends - 1)).toBe(false)
+
+    const revoked = await revokeReservation(
+      store,
+      '1234567890',
+      'owner@example.com'
+    )
+    expect(isChangeable(revoked, ends - 1)).toBe(false)
+  })
+})
+
 describe('listReservations', () => {
   it('lists current and upcoming stays by arrival and drops expired ones', async () => {
     await applyReservationEmail(store, booking(), at('2026-10-01T06:06:20Z'))
@@ -296,9 +351,51 @@ describe('addManualReservation', () => {
       )
     ).rejects.toThrow('Check-out must be after check-in')
   })
+
+  // The clock is 2026-10-01 09:10 Athens
+  const manual = (checkIn: string, checkOut: string) => ({
+    reservationNumber: 'M1',
+    property: 'mocca-city' as const,
+    bookerName: 'John Roe',
+    checkIn,
+    checkOut
+  })
+
+  it('accepts a stay that has already started', async () => {
+    const added = await addManualReservation(
+      store,
+      manual('2026-09-29', '2026-10-02'),
+      'owner@example.com',
+      new Date(clock)
+    )
+    expect(added).toMatchObject({channel: 'manual', status: 'confirmed'})
+  })
+
+  it('accepts a stay ending today before check-out time', async () => {
+    await expect(
+      addManualReservation(
+        store,
+        manual('2026-09-29', '2026-10-01'),
+        'owner@example.com',
+        new Date(clock)
+      )
+    ).resolves.toBeDefined()
+  })
+
+  it('rejects a stay whose access has already ended', async () => {
+    clock = Date.parse('2026-10-01T09:00:00Z') // 12:00 Athens, past 11:00
+    await expect(
+      addManualReservation(
+        store,
+        manual('2026-09-29', '2026-10-01'),
+        'owner@example.com',
+        new Date(clock)
+      )
+    ).rejects.toThrow('This stay has already ended')
+  })
 })
 
-describe('owner actions', () => {
+describe('admin actions', () => {
   it('throw for an unknown reservation', async () => {
     await expect(
       revokeReservation(store, 'NOPE', 'owner@example.com')

@@ -5,6 +5,7 @@ import {routing} from '@/src/i18n/routing'
 export default createMiddleware(routing)
 
 export const config: MiddlewareConfig = {
-  // Match only internationalized pathnames
-  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
+  // Match only internationalized pathnames; /admin (the guest-app admin)
+  // is Greek only and lives outside [locale]
+  matcher: '/((?!api|admin|trpc|_next|_vercel|.*\\..*).*)'
 }

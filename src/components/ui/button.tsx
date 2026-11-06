@@ -69,21 +69,21 @@ function Button({
           'block-12',
           'text-lg',
           'gap-x-1.5',
-          '[&_svg]:size-6'
+          '[&_svg]:size-5'
         ],
         size === 'normal' && [
           'px-4',
           'block-10',
           'text-base',
           'gap-x-1',
-          '[&_svg]:size-5'
+          '[&_svg]:size-4'
         ],
         size === 'small' && [
           'px-2',
           'block-8',
           'text-sm',
           'gap-x-0.5',
-          '[&_svg]:size-4'
+          '[&_svg]:size-3'
         ],
         className
       )}

@@ -3,7 +3,6 @@
 import {Children, cloneElement, isValidElement} from 'react'
 import {Checkbox} from '@/src/components/ui/checkbox'
 import {Input} from '@/src/components/ui/input'
-import {Label} from '@/src/components/ui/label'
 import {Textarea} from '@/src/components/ui/textarea'
 import {Typography} from '@/src/components/ui/typography'
 import {cn} from '@/src/lib/utils'
@@ -22,15 +21,6 @@ function FormControl({
 
   const renderedChildren = Children.map(children, (child) => {
     if (!isValidElement(child)) return child
-
-    if (child.type === Label) {
-      return cloneElement(
-        child as React.ReactElement<React.ComponentProps<typeof Label>>,
-        {
-          className: 'mb-1'
-        }
-      )
-    }
 
     if (
       child.type === Input ||
@@ -51,7 +41,7 @@ function FormControl({
 
   return (
     <div
-      className={cn('relative flex flex-col', className)}
+      className={cn('relative flex flex-col [&>label]:first:mb-1', className)}
       {...props}
     >
       {renderedChildren}

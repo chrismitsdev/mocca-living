@@ -1,6 +1,7 @@
 import type {KeyValueStore} from './store/kv'
 
-// Fixed-window attempt counters against guessing booking numbers/names
+// Fixed-window attempt counters against guessing booking numbers/names and
+// against flooding the admin login
 
 const RATE_LIMIT_KEY_PREFIX = 'guestAppRateLimit:'
 
@@ -8,7 +9,11 @@ export const LIMITS = {
   /** Verification attempts per IP address */
   ip: {limit: 10, windowSeconds: 15 * 60},
   /** Failed attempts per booking number */
-  reservationNumber: {limit: 5, windowSeconds: 15 * 60}
+  reservationNumber: {limit: 5, windowSeconds: 15 * 60},
+  /** Admin login link requests per IP address */
+  adminLoginIp: {limit: 5, windowSeconds: 15 * 60},
+  /** Admin login link requests per email address */
+  adminLoginEmail: {limit: 3, windowSeconds: 15 * 60}
 }
 
 /** Count one hit; true while the count is within the limit */

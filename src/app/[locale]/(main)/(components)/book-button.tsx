@@ -32,7 +32,7 @@ function BookButton() {
   return (
     <div className='flex gap-x-4 sm:gap-x-6'>
       <Button
-        className='bg-brand-8'
+        className='bg-brand-9 hover:bg-brand-10 focus-visible:bg-brand-10'
         size='small'
         asChild
       >

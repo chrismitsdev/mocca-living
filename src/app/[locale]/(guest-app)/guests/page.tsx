@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function GuestAppPage({
   params
-}: PageProps<'/[locale]/guest-app'>) {
+}: PageProps<'/[locale]/guests'>) {
   if (GUEST_APP_HIDDEN) notFound()
 
   const {locale} = (await params) as {locale: Locale}
@@ -26,7 +26,7 @@ export default async function GuestAppPage({
   // Already verified: go straight to the guest's property
   const guest = await getActiveGuest()
   if (guest) {
-    redirect({href: `/guest-app/${guest.property}`, locale})
+    redirect({href: `/guests/${guest.property}`, locale})
   }
 
   return (

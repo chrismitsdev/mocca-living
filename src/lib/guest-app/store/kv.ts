@@ -3,6 +3,8 @@
 
 export interface KeyValueStore {
   get<T>(key: string): Promise<T | null>
+  /** Read and delete in one step, so only one caller gets the value */
+  take<T>(key: string): Promise<T | null>
   /** expireAt: epoch seconds after which the key disappears */
   set(key: string, value: unknown, options?: {expireAt?: number}): Promise<void>
   del(key: string): Promise<void>
@@ -35,6 +37,11 @@ export function createMemoryStore(now: () => number = Date.now) {
   const store: KeyValueStore & {keys(): string[]} = {
     async get<T>(key: string) {
       const entry = live(key)
+      return entry ? (JSON.parse(entry.value) as T) : null
+    },
+    async take<T>(key: string) {
+      const entry = live(key)
+      values.delete(key)
       return entry ? (JSON.parse(entry.value) as T) : null
     },
     async set(key, value, options) {

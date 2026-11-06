@@ -1,3 +1,5 @@
+import {SITE_URL} from '@/src/lib/constants'
+
 // Guest-app configuration, read on demand so a missing variable fails the
 // request that needs it instead of the whole build
 
@@ -14,5 +16,20 @@ export const guestAppEnv = {
   inboundWebhookSecret: () => required('RESEND_INBOUND_WEBHOOK_SECRET'),
   inboundAddress: () => required('GUEST_APP_INBOUND_ADDRESS').toLowerCase(),
   alertEmail: () => required('GUEST_APP_ALERT_EMAIL'),
-  sessionSecret: () => required('GUEST_APP_SESSION_SECRET')
+  sessionSecret: () => required('GUEST_APP_SESSION_SECRET'),
+  /** Admin allowlist, lowercased */
+  adminEmails: () =>
+    required('GUEST_APP_ADMIN_EMAILS')
+      .split(',')
+      .map((email) => email.trim().toLowerCase())
+      .filter(Boolean),
+  /**
+   * Base URL for links in emails. Taken from Vercel's own variables, never
+   * from the request's Host header
+   */
+  appUrl: () => {
+    if (process.env.VERCEL_ENV === 'production') return SITE_URL
+    const host = process.env.VERCEL_BRANCH_URL || process.env.VERCEL_URL
+    return host ? `https://${host}` : 'http://localhost:3000'
+  }
 }

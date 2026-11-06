@@ -19,7 +19,7 @@ function SelectTrigger({
   return (
     <RadixSelect.Trigger
       className={cn(
-        'px-3 py-1.75 flex items-center gap-x-2 bg-surface-4 border border-surface-5 font-bold transition focus-ring hover:bg-surface-5 focus-visible:bg-surface-5 data-placeholder:[&>div>span]:text-sm data-placeholder:[&>div>span]:font-normal data-open:shadow-sm [&>div]:grow disabled:pointer-events-none disabled:opacity-35 group',
+        'px-3 py-1.75 flex items-center gap-x-2 bg-surface-4 border border-surface-5 font-bold transition focus-ring text-left hover:bg-surface-5 focus-visible:bg-surface-5 data-placeholder:[&>div>span]:text-sm data-placeholder:[&>div>span]:font-normal data-open:shadow-sm [&>span]:grow disabled:pointer-events-none disabled:opacity-35 group',
         className
       )}
       {...props}

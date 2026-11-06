@@ -6,7 +6,7 @@ import type {KeyValueStore} from './kv'
 
 // Reservations kept for guest-app access, one record per reservation number.
 // Records delete themselves a few days after the stay; an index sorted by
-// expiry lets the owner page list current and upcoming stays
+// expiry lets the admin dashboard list current and upcoming stays
 
 export type AuditEntry = {at: string; by: string; action: string}
 
@@ -47,6 +47,14 @@ export function accessEndsAt(reservation: Reservation): number {
     ? Date.parse(reservation.accessUntilOverride)
     : 0
   return Math.max(checkOut, override)
+}
+
+/**
+ * Whether the admin may still extend or revoke a booking: confirmed, and
+ * guest access not yet over (an upcoming or current stay)
+ */
+export function isChangeable(reservation: Reservation, now: number): boolean {
+  return reservation.status === 'confirmed' && now < accessEndsAt(reservation)
 }
 
 /** Epoch seconds when the record is deleted */
@@ -185,7 +193,7 @@ async function update(
   return updated
 }
 
-/** Owner action: block access for this booking */
+/** Admin action: block access for this booking */
 export function revokeReservation(
   store: KeyValueStore,
   reservationNumber: string,
@@ -202,7 +210,7 @@ export function revokeReservation(
   )
 }
 
-/** Owner action: allow access until a later moment (late checkout) */
+/** Admin action: allow access until a later moment (late checkout) */
 export function extendReservation(
   store: KeyValueStore,
   reservationNumber: string,
@@ -229,7 +237,7 @@ export type ManualReservationInput = {
   pax?: number | null
 }
 
-/** Owner action: add a booking that didn't arrive by email */
+/** Admin action: add a booking that didn't arrive by email */
 export async function addManualReservation(
   store: KeyValueStore,
   input: ManualReservationInput,

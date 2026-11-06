@@ -55,7 +55,7 @@ function Toast({id, title, description, status}: ToastProps) {
           size='small'
           onClick={() => sonnerToast.dismiss(id)}
         >
-          <IconX />
+          <IconX aria-hidden />
         </IconButton>
       </div>
     </div>

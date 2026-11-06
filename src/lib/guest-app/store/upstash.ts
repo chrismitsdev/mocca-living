@@ -30,6 +30,10 @@ export function createUpstashStore(): KeyValueStore {
       const value = await client().get<string>(key)
       return value === null ? null : (JSON.parse(value) as T)
     },
+    async take<T>(key: string) {
+      const value = await client().getdel<string>(key)
+      return value === null ? null : (JSON.parse(value) as T)
+    },
     async set(key, value, options) {
       const serialized = JSON.stringify(value)
       if (options?.expireAt) {

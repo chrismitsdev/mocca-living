@@ -1,16 +1,19 @@
 @theme {
-  --color-brand-1: #c6c4c3;
-  --color-brand-2: #c4bbb6;
-  --color-brand-3: #c2ab9f;
-  --color-brand-4: #bf9c88;
-  --color-brand-5: #ba8c71;
-  --color-brand-6: #af7c5f;
-  --color-brand-7: #a26844;
-  --color-brand-8: #934a16;
-  --color-brand-9: #3e2d23;
-  --color-brand-10: #33241b;
-  --color-brand-11: #281b14;
-  --color-brand-12: #1d130d;
+  /* Brand scale: OKLCH, hue ~51°, built around the rust (step 9).
+   * 1-2 backgrounds, 3-5 component backgrounds, 6-8 borders, 9 solid,
+   * 10 solid hover, 11 low-contrast text, 12 high-contrast text */
+  --color-brand-1: #fef9f6;
+  --color-brand-2: #fcf2ed;
+  --color-brand-3: #fae6db;
+  --color-brand-4: #f7d9c9;
+  --color-brand-5: #f3ccb5;
+  --color-brand-6: #ecbca1;
+  --color-brand-7: #e1a786;
+  --color-brand-8: #d08c64;
+  --color-brand-9: #934a16;
+  --color-brand-10: #833e07;
+  --color-brand-11: #773a0e;
+  --color-brand-12: #341c0d;
 
   --color-green-1: #fbfefc;
   --color-green-2: #f4fbf6;
@@ -38,6 +41,19 @@
   --color-red-11: #ce2c31;
   --color-red-12: #641723;
 
+  --color-blue-1: #fbfdff;
+  --color-blue-2: #f4faff;
+  --color-blue-3: #e6f4fe;
+  --color-blue-4: #d5efff;
+  --color-blue-5: #c2e5ff;
+  --color-blue-6: #acd8fc;
+  --color-blue-7: #8ec8f6;
+  --color-blue-8: #5eb1ef;
+  --color-blue-9: #0090ff;
+  --color-blue-10: #0588f0;
+  --color-blue-11: #0d74ce;
+  --color-blue-12: #113264;
+
   /* Surface colors */
   --color-surface-1: #e7d9be;
   --color-surface-2: #ddc8a2;
@@ -46,11 +62,14 @@
   --color-surface-5: #9b8c71;
 
   /* Semantic colors */
-  --color-foreground: var(--color-brand-12);
+  /* The dark browns (the former brand 9, 11 and 12) and the light text on
+   * them, kept as exact values: they also appear hard-coded in the emails,
+   * the image loader and the logo */
+  --color-foreground: #1d130d;
 
-  --color-primary: var(--color-brand-9);
-  --color-primary-foreground: var(--color-brand-2);
-  --color-primary-hover: var(--color-brand-11);
+  --color-primary: #3e2d23;
+  --color-primary-foreground: #c4bbb6;
+  --color-primary-hover: #281b14;
 
   --color-success: var(--color-green-9);
   --color-success-foreground: var(--color-green-2);
@@ -60,5 +79,9 @@
   --color-danger-foreground: var(--color-red-2);
   --color-danger-hover: var(--color-red-11);
 
-  --color-ring: var(--color-brand-12);
+  --color-info: var(--color-blue-9);
+  --color-info-foreground: var(--color-blue-2);
+  --color-info-hover: var(--color-blue-11);
+
+  --color-ring: var(--color-foreground);
 }

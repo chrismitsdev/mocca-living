@@ -1,11 +1,12 @@
 # Guest app: access & authentication
 
-Design for restricting the guest app (`/[locale]/guest-app`) to guests with an
+Design for restricting the guest app (`/[locale]/guests`) to guests with an
 active reservation. The guest-app **content** is out of scope here and will be
 designed once the owner finalises it.
 
 Status (31 Oct 2026): steps 1–3 implemented on branch `feat/guest-app-access`
-and verified on its Vercel preview. Step 4 (owner page) is next. See §12.
+and verified on its Vercel preview. Step 4 (admin) is built and waiting
+for its preview check. See §12.
 
 ## 1. Requirements
 
@@ -95,7 +96,7 @@ They have no guest name and are **ignored**.
 - Unknown: whether Hotelo sends a cancellation email for direct bookings. The
   parser already treats a heading containing "cancel" as a cancellation (and
   "confirm" as a confirmation; anything else is a parse failure). Until one
-  is seen, the owner page can revoke instead (§7).
+  is seen, the owner can revoke it in the admin instead (§7).
 
 ### 2.3 Property mapping (exact match only)
 
@@ -139,8 +140,8 @@ Hotelo website ───────┘                ├─► info@moccalivin
                            ├─ parse (Primal Res | Hotelo)
                            └─ upsert reservation ──► Upstash Redis (EU)
                                                     ▲
-Guest ─► /[locale]/guest-app (reservation no. + full name) ─┘
-Admin ─► /[locale]/admin/guest-app (magic-link login)
+Guest ─► /[locale]/guests (reservation no. + full name) ─┘
+Admin ─► /admin (magic-link login, no locale prefix)
 ```
 
 ### 3.1 Email intake
@@ -261,7 +262,7 @@ Implemented in `src/lib/guest-app/store/` behind a small key-value interface
 - **Channel**: Primal Res sets `booking`, `airbnb` or `expedia` from the
   channel label (Expedia isn't connected today, but the label is recognised in
   case it's added), and `other` for any unrecognised label. Hotelo emails are
-  `hotelo`; owner-page additions are `manual`.
+  `hotelo`; admin additions are `manual`.
 - **Updates**:
   - an email applies only if its `sourceUpdatedAt` is newer than the stored
     one, so duplicates and late older emails are no-ops;
@@ -270,10 +271,10 @@ Implemented in `src/lib/guest-app/store/` behind a small key-value interface
 - **TTL**: the record is deleted at 00:00 Athens, 3 days after access ends
   (11:00 on `checkOut`, or a later `accessUntilOverride`).
 - **Index**: the sorted set `guestAppReservationIndex` (score = deletion
-  time) lists current and upcoming stays for the owner page. Expired entries
-  are pruned on read.
+  time) lists current and upcoming stays for the admin dashboard. Expired
+  entries are pruned on read.
 - **Stored**: the booker's full name, used for matching and shown on the
-  owner page.
+  admin dashboard.
 - **Never stored**: guest email, phone, address, prices, or the raw email.
 - Concurrent emails for the same booking are rare. The read-then-write isn't
   atomic, and the `sourceUpdatedAt` rule lets the next email converge the
@@ -303,7 +304,7 @@ The guest enters:
   - Hint shown to the guest: _"Enter your full name exactly as it appears on
     your booking confirmation email."_
   - A guest who can't match contacts the owner directly (there's no contact
-    button in the guest app for now). The owner page shows the stored name;
+    button in the guest app for now). The admin dashboard shows the stored name;
     a "correct name" action may come later.
 
 Email and phone aren't used: Booking.com provides relay addresses, and
@@ -324,7 +325,7 @@ Airbnb's email field is empty.
 
 | Situation                                          | Response (`type`)                                                      |
 | -------------------------------------------------- | ---------------------------------------------------------------------- |
-| Booking confirmed, name matches, inside the window | Issue a session and redirect to `/guest-app/<property>`                |
+| Booking confirmed, name matches, inside the window | Issue a session and redirect to `/guests/<property>`                   |
 | Before `checkIn`                                   | "Not open yet" toast: "Your guest app opens on <date>" (`not-yet`)     |
 | After the window closes                            | "Stay ended" toast: "Thank you for staying with us!" (`ended`)         |
 | Unknown number, cancelled, revoked, or wrong name  | "Booking not found" toast (`not-found`). The owner can verify manually |
@@ -338,10 +339,11 @@ wrong or whether the number exists.
 All copy is translated (en/el/tr/bg) and can be edited later: page and
 toast copy under `Pages.guest-app.access`, schema errors in the action.
 
-**Form UI** (`src/app/[locale]/(guests)/guest-app/(components)/access-form.tsx`):
+**Form UI** (`src/app/[locale]/(guest-app)/guests/(components)/access-form.tsx`):
 
-- Fields: **Booking number** and **Name** (Greek: _Αριθμός κράτησης_,
-  _Όνομα_).
+- Fields: **Booking number** and **Full name on booking** (Greek:
+  _Αριθμός κράτησης_, _Ονοματεπώνυμο κράτησης_). The label says "full name"
+  because matching needs every word of the booker's name (§5.1).
 - Input is validated with a valibot schema in the server action
   (`src/lib/guest-app/actions.ts`, like the contact form in
   `src/lib/actions.ts`). Schema error messages are defined there per locale
@@ -368,13 +370,15 @@ toast copy under `Pages.guest-app.access`, schema errors in the action.
   (`src/lib/guest-app/session.ts`, `guest-session.ts`).
 - **Every request** re-checks the Redis record, so a cancellation, revoke or
   extend takes effect immediately.
-- A session only unlocks its own property (`/guest-app/<slug>`). Redirects,
+- A session only unlocks its own property (`/guests/<slug>`). Redirects,
   each in a single step:
-  - `/guest-app/<slug>` without a valid session → `/guest-app` (the form);
-  - `/guest-app/<other slug>` with a session for another property → that
-    guest's own `/guest-app/<property>`;
-  - `/guest-app` with a valid session → `/guest-app/<property>`.
-- The guest-app routes stay `noindex`.
+  - `/guests/<slug>` without a valid session → `/guests` (the form);
+  - `/guests/<other slug>` with a session for another property → that
+    guest's own `/guests/<property>`;
+  - `/guests` with a valid session → `/guests/<property>`.
+- Routes (route group `src/app/[locale]/(guest-app)/`, one layout and
+  header): `/guests` (verify form) and `/guests/<property>` (guest pages).
+  The layout is `noindex`. The admin lives outside `[locale]` (§7).
 - **Visibility while in development:** `GUEST_APP_HIDDEN =
   process.env.VERCEL_ENV === 'production'` (`src/lib/constants.ts`). The guest
   app returns 404 on the live site only, and works on Vercel previews and
@@ -408,32 +412,145 @@ in v1, but `pax` is stored so it can be added later.
 
 ## 6. Admin authentication
 
-- **Passwordless magic link.** The login form takes an email. If it's one of
-  the **two allowlisted addresses** (env var `GUEST_APP_ADMIN_EMAILS`), we
-  send a one-time link via Resend.
-  - The response is the same whether or not the email is allowlisted.
-  - The link token is random and single-use, stored in Redis with a
-    15-minute TTL.
+Implemented in `src/lib/guest-app/admin/` (`auth.ts` holds the Redis logic and
+is unit-tested; `admin-session.ts` the cookie; `actions.ts` the server
+actions; `login-email.ts` the email).
+
+- **Passwordless magic link.** The login page takes an email. If it's on the
+  allowlist (env var `GUEST_APP_ADMIN_EMAILS`), we send a link via Resend.
+  - The on-screen answer is the same whether or not the email is allowlisted.
+  - The link is
+    `<appUrl>/admin/login/verify?token=<random 32 bytes>`.
+    `appUrl` comes from Vercel's own variables: `SITE_URL` in production,
+    `VERCEL_BRANCH_URL` (or `VERCEL_URL`) on previews, `localhost:3000`
+    locally. It's never taken from the request's `Host` header.
+  - **Opening the link signs the admin in directly** (decided 1 Nov 2026,
+    replacing an earlier confirm-button page): the route handler
+    `src/app/admin/login/verify/route.ts` uses up the token, starts the
+    session and redirects to `/admin/dashboard`. A used, expired or unknown
+    token redirects to `/admin/login?error=expired`, which shows "the link
+    expired or was already used" as a toast.
+  - Accepted risk: a mail system that opens links ahead of the reader
+    (e.g. Outlook Safe Links) would use up the token first. Both admins use
+    Gmail, which doesn't; the only effect would be requesting a new link.
+  - Tokens are single-use (read and deleted atomically with `GETDEL`) and
+    expire after 15 minutes. Key `guestAppAdminLoginToken:<sha256(token)>`.
+  - Login requests are rate-limited: 5 per 15 minutes per IP and 3 per 15
+    minutes per email (`guestAppRateLimit:adminLoginIp:*` /
+    `adminLoginEmail:*`, both hashed).
 - **Sessions last 1 day per login and aren't extended by activity** (decided
   31 Oct 2026). A new login starts a new 1-day session.
-- Sessions are **stored in Redis** (random session id → admin email, 24 h
-  TTL). The `httpOnly` cookie only carries the id (random, so it isn't
-  signed), so logout really ends the session, and all admin sessions can be
-  cleared without touching guest sessions.
-- Login requests are rate-limited.
-- The admins' Gmail accounts become the keys to the owner page, so both
+- Sessions are **stored in Redis** (`guestAppAdminSession:<sha256(id)>` →
+  admin email, 24 h TTL). The cookie `guest_app_admin_session` (`httpOnly`,
+  `Secure` in production builds, `SameSite=Lax`, 24 h) only carries the
+  random id, so logout really ends the session, and all admin sessions can
+  be cleared without touching guest sessions.
+- Redis only stores hashes of tokens and session ids, never the raw values.
+- Every request also re-checks the allowlist, so removing an address from
+  `GUEST_APP_ADMIN_EMAILS` locks it out immediately.
+- The admins' Gmail accounts become the keys to the admin, so both
   should have 2-Step Verification enabled.
 
-## 7. Owner page (`/[locale]/admin/guest-app`)
+## 7. Admin (`/admin`)
 
-- **List** current and upcoming stays: channel, property, the **stored booker
-  name** (so the owner can tell a stuck guest exactly what to type), dates,
-  status. A "correct name" action may come later.
-- **Revoke**: e.g. a cancelled direct booking with no cancellation email.
-- **Add manually**: call-center bookings, missed or failed emails, Georgia.
-- **Extend**: late checkout (`accessUntilOverride`).
+- **Greek only** (hard-coded copy, no next-intl; decided 31 Oct 2026).
+- **Outside the `[locale]` segment** (decided 1 Nov 2026), in `src/app/admin/`
+  with its **own root layout**. Both root layouts (`src/app/[locale]/layout.tsx`
+  and `src/app/admin/layout.tsx`) render the shared `Shell`
+  (`src/components/shared/shell.tsx`): `<html lang>`, global styles, the
+  Inter font and the `Toaster`. The admin layout passes `lang="el"` and adds
+  its own header (without next-intl), the production guard and `noindex`.
+  URLs have no locale prefix and are written as plain strings
+  (`/admin/...`).
+  - The next-intl middleware skips it: `admin` is excluded in the matcher in
+    `src/proxy.ts` (like `api`), otherwise `/admin` would be redirected to
+    `/en/admin`.
+  - Moving between the site and `/admin` is a full page load (two root
+    layouts), which doesn't matter for this page.
+- **Hidden on the live site** with the same `GUEST_APP_HIDDEN` guard as the
+  guest app until go-live. `noindex`, and not linked from anywhere.
+- Routes:
+  - `/admin`: entry point only; redirects to `/admin/dashboard` when signed
+    in, otherwise to `/admin/login`.
+  - `/admin/login`: the email form (signed-in admins go to the dashboard).
+  - `/admin/login/verify`: route handler for the email link (§6), no page.
+  - `/admin/dashboard`: the list and the actions below; anyone not signed
+    in is sent to the login page.
+- **Page "Πρόσβαση επισκεπτών"** (rebuilt 1–6 Nov 2026). The page manages
+  guest-app **access**, not bookings, and the copy says so: actions are
+  "Προσθήκη / Παράταση / Ανάκληση πρόσβασης", never "νέα κράτηση".
+- **List**: every stored record (from `guestAppReservationIndex`, so stays
+  that ended stay listed until they're deleted, §4). One view model,
+  `toBookingRows` in `src/app/admin/dashboard/(components)/booking-row.ts`,
+  feeds two views with the same fields:
+  - desktop (`lg` and up): a table (`src/components/ui/table.tsx`), one row
+    per booking;
+  - mobile: one `Collapsible` per booking, the booker name in the trigger
+    and the rest in the content.
+
+  Fields: Αριθμός κράτησης, Ονοματεπώνυμο (the **stored booker name**, so the owner can tell
+  a stuck guest exactly what to type), Κατάλυμα, Διαμονή, Λήξη, Άτομα,
+  Προέλευση, Πρόσβαση, Ενέργειες. Times are in Europe/Athens. Both views
+  render and CSS shows one, so there's no layout jump.
+- **"Πρόσβαση" column**: what the guest app would do right now. Worked out
+  on read, never stored: a `confirmed` record is placed in the guest app's
+  own `accessWindow` (§5.2), so the dashboard and the guest app can't
+  disagree.
+
+  | Shown           | Rule                                     | Badge |
+  | --------------- | ---------------------------------------- | ----- |
+  | Ανοίγει σύντομα | `confirmed`, before 00:00 on arrival day | blue  |
+  | Ενεργή          | `confirmed`, inside the access window    | green |
+  | Έληξε           | `confirmed`, access ended                | red   |
+  | Ακυρώθηκε       | `cancelled`                              | red   |
+  | Ανακλήθηκε      | `revoked`                                | red   |
+
+  "Λήξη" shows the access end, with "(παράταση)" when extended, and "—" for
+  cancelled or revoked records. Order: active, then upcoming, then ended;
+  by arrival within each group.
+- **Which actions are allowed**: one rule, `isChangeable` in
+  `src/lib/guest-app/store/reservations.ts`: the record is `confirmed` and
+  access hasn't ended. The buttons use it to enable themselves and every
+  server action checks it again, since a record can change after the page
+  loads.
+- **Προσθήκη πρόσβασης** (`addAccessAction`): for a booking that didn't
+  arrive by email (a phone booking, a missed or failed email, Georgia).
+  A dialog opened from the page header:
+  - **Ονοματεπώνυμο**: required, at most 120 characters (the guest form reads no
+    more). The placeholder reminds the owner to type it as the guest will.
+  - **Αριθμός κράτησης**: normalised exactly as the guest form does (§5.1), then
+    8–20 characters, Latin letters and digits only. That covers every
+    platform (Hotelo 8 digits, Booking.com 10, Airbnb `HM` + 8), keeps
+    made-up numbers hard to guess, and rules out Greek look-alike letters.
+    Must not already exist. For a booking with no platform number the
+    owner makes one up and gives it to the guest (see §13).
+  - **Κατάλυμα**: one of the three properties.
+  - **Άφιξη – Αναχώρηση**: with a mouse or trackpad, one range calendar
+    (`src/components/ui/date-range-picker.tsx`, react-day-picker v9 in a
+    `Popup`, Greek, weeks from Monday); on touch screens, two native date
+    inputs. Both submit `YYYY-MM-DD` calendar days. Departure after arrival.
+    **Arrival may be in the past** (a guest already at the property); a
+    stay whose access has already ended is refused.
+  - **Άτομα**: required, a whole number from 1.
+
+  Errors appear under their field, including the store's (duplicate number;
+  departure; stay ended). The record is saved as `manual`, `confirmed`, with
+  "added manually" and the admin's email in `audit`. A later platform email
+  for the same number with a newer `Last Update` updates it (§4). Closing
+  the dialog clears it.
+- **Ανάκληση πρόσβασης** (`revokeReservationAction`): e.g. a cancelled
+  direct booking with no cancellation email. Behind a confirmation dialog;
+  it can't be undone from the page, and later emails for that number are
+  ignored (§4).
+- **Παράταση πρόσβασης**: late checkout. A local (Athens) date and time,
+  which must be later than the current access end (`accessUntilOverride`).
+  **Not wired up yet**: the button is a placeholder.
 - Every action is appended to the record's `audit` with the admin's email.
-- `noindex`, and not linked from anywhere.
+  The dashboard doesn't show the history yet.
+- Not in this version (decided 31 Oct 2026): restore a revoked booking,
+  correct the booker name, delete a record.
+- Every server action checks the admin session first (server actions are
+  public endpoints).
 
 ## 8. Privacy
 
@@ -465,7 +582,7 @@ in v1, but `pax` is stored so it can be added later.
 | `RESEND_INBOUND_WEBHOOK_SECRET`              | Svix signing secret for the inbound webhook                                    |
 | `GUEST_APP_INBOUND_ADDRESS`                  | The random inbound address (sanity check on the recipient)                     |
 | `GUEST_APP_SESSION_SECRET`                   | Signs the guest cookie and hashes IPs for rate limiting                        |
-| `GUEST_APP_ADMIN_EMAILS`                     | Comma-separated allowlist (2 addresses)                                        |
+| `GUEST_APP_ADMIN_EMAILS`                     | Comma-separated admin allowlist (2 addresses)                                  |
 | `GUEST_APP_ALERT_EMAIL`                      | Alert recipient                                                                |
 | `GUEST_APP_REDIS_KV_REST_API_URL` / `_TOKEN` | Upstash Redis (`mocca-guest-app`, Vercel Marketplace prefix `GUEST_APP_REDIS`) |
 
@@ -476,7 +593,10 @@ Environments (31 Oct 2026):
 - `RESEND_INBOUND_WEBHOOK_SECRET` is Preview + Development only until
   go-live.
 - The Redis variables are Production + Preview, marked sensitive.
-- `GUEST_APP_ADMIN_EMAILS` is added in step 4.
+- `GUEST_APP_ADMIN_EMAILS` is Preview + Development until go-live.
+- Links in login emails use Vercel's system variable `VERCEL_BRANCH_URL` on
+  previews ("Automatically expose System Environment Variables" must stay
+  on).
 - The local `.env` (git-ignored) mirrors the Preview values.
 - The function region is **Frankfurt (`fra1`)** only.
 
@@ -494,7 +614,7 @@ filter) are made manually from step-by-step instructions.
 - Fixtures are synthetic emails modelled on the real templates, with
   **invented** names, numbers and contacts. No real guest data goes in the
   repository.
-- Covered (84 tests):
+- Covered (101 tests):
   - both parsers, including cancellations, and the HTML-to-text step;
   - localised Hotelo dates;
   - origin verification (direct DKIM and the Hostinger ARC attestation);
@@ -503,16 +623,20 @@ filter) are made manually from step-by-step instructions.
   - reservation-number normalisation and full-name matching (accents, word
     order, case, Turkish i);
   - the access window across DST changes and at the 11:00 checkout boundary;
-  - the store: the `Last Update` ordering rule, revoke, retention and the
-    index;
-  - session tokens (signature, tampering, expiry) and rate limits.
-- Not covered by unit tests: the server action, pages and form UI. They're
-  checked manually on the preview (checklist below).
+  - the store: the `Last Update` ordering rule, revoke, retention, the
+    index, `isChangeable`, and manual additions (duplicates, past arrival
+    allowed, ended stay refused);
+  - session tokens (signature, tampering, expiry) and rate limits;
+  - admin auth: allowlist, single-use and expiring login tokens,
+    sessions, and that only hashes are stored.
+- Not covered by unit tests: the server actions, pages and form UI. They're
+  checked manually on the preview (checklists below).
 - Known gap: Renovate dependency updates don't run the hook. Add a
   (non-blocking) workflow later.
 
-**Manual test booking.** Until real reservations arrive, a test record can be
-inserted from the Upstash console CLI in the stored format. Set `EXAT` to
+**Manual test booking.** The simplest way is "Προσθήκη πρόσβασης" on
+`/admin/dashboard`. A record can also be inserted from the Upstash console
+CLI in the stored format. Set `EXAT` to
 00:00 Athens, 3 days after checkout, and add it to the index:
 
 ```
@@ -532,21 +656,41 @@ checked out yesterday).
 
 **Preview checklist** (all passed on 31 Oct 2026, with `TEST2026` /
 `Test Tester` at `mocca-city`; the other-property row then went through
-`/guest-app` in two redirects, now one):
+`/guests` in two redirects, now one):
 
-| Input                                                 | Expected                                                |
-| ----------------------------------------------------- | ------------------------------------------------------- |
-| Both fields empty                                     | "Mandatory field" under each, plus the validation toast |
-| `#` / correct name                                    | "Mandatory field" under the reservation number          |
-| Correct number, partial name                          | "Booking not found" toast                               |
-| `TESTSOON` / correct name                             | "Not open yet" toast with the opening date              |
-| `TESTPAST` / correct name                             | "Stay ended" toast                                      |
-| `test 2026` / `tester test`                           | Redirect to `/guest-app/mocca-city`                     |
-| Signed in, open `/guest-app/mocca-by-the-sea-dimitra` | Redirect to `/guest-app/mocca-city`                     |
-| 5 wrong names, then the correct one                   | "Too many attempts" toast (run last; 15-minute lockout) |
+| Input                                              | Expected                                                |
+| -------------------------------------------------- | ------------------------------------------------------- |
+| Both fields empty                                  | "Mandatory field" under each, plus the validation toast |
+| `#` / correct name                                 | "Mandatory field" under the reservation number          |
+| Correct number, partial name                       | "Booking not found" toast                               |
+| `TESTSOON` / correct name                          | "Not open yet" toast with the opening date              |
+| `TESTPAST` / correct name                          | "Stay ended" toast                                      |
+| `test 2026` / `tester test`                        | Redirect to `/guests/mocca-city`                        |
+| Signed in, open `/guests/mocca-by-the-sea-dimitra` | Redirect to `/guests/mocca-city`                        |
+| 5 wrong names, then the correct one                | "Too many attempts" toast (run last; 15-minute lockout) |
 
 To lift a lockout early, delete
 `guestAppRateLimit:reservationNumber:<number>`.
+
+**Admin checklist** (preview, `/admin`):
+
+| Step                                           | Expected                                                   |
+| ---------------------------------------------- | ---------------------------------------------------------- |
+| Open `/admin` or `/admin/dashboard` signed out | Login page                                                 |
+| Request a link for an allowlisted email        | Same message as for any email; the email arrives           |
+| Request a link for another email               | Same message; no email                                     |
+| Open the link                                  | Straight to `/admin/dashboard`, signed in                  |
+| Use the same link again, or after 15 minutes   | "The link expired or was already used" toast               |
+| List, desktop and phone width                  | Same bookings and fields in the table and the collapsibles |
+| Add `TESTADD01` for today                      | "Ενεργή" row appears; works on `/en/guests`                |
+| Add with a number of 7 characters, or `ΗΜ…`    | Error under "Αριθμός κράτησης"                             |
+| Add `TESTADD01` again                          | "Already exists" error under "Αριθμός κράτησης"            |
+| Add a stay that ended yesterday                | "Η διαμονή έχει ήδη λήξει." under the dates                |
+| Add with arrival yesterday, departure tomorrow | Accepted, "Ενεργή"                                         |
+| Extend a booking (once wired up)               | New access end; audit shows the admin email                |
+| Revoke `TESTADD01`                             | "Ανακλήθηκε"; the guest gets "Booking not found"           |
+| Log out                                        | Back to the login page; the session key is gone from Redis |
+| Request more than 3 links for one email        | "Too many attempts" toast                                  |
 
 ## 12. Build order
 
@@ -574,7 +718,11 @@ To lift a lockout early, delete
      `guest_app_session` cookie, `v2` session token.
    - The guest app is visible on previews (`VERCEL_ENV`).
    - Verified on the preview with the §11 checklist (31 Oct 2026).
-4. **Owner page.** Magic-link login, list, revoke, add, extend, audit.
+4. **Admin** (login built 31 Oct – 1 Nov 2026; dashboard rebuilt 1–6 Nov
+   2026). Magic-link login straight to `/admin/dashboard` (§6); the list,
+   "Προσθήκη πρόσβασης" and revoke work (§7).
+   - Still to do: wire up extend.
+   - To verify on the preview: the admin checklist in §11.
 5. **Privacy policy** update.
 6. **Content** (separate design, once the owner finalises it), then remove
    the production 404 guards.
@@ -604,3 +752,11 @@ alerts); 3 inboxes; 1 webhook endpoint.
 - If reservation emails start coming from `revplus.com`: add it to the
   Hostinger filter (§2.4).
 - Watch for a Resend API to delete received emails (they're kept 30 days).
+- "Προσθήκη πρόσβασης" for a booking with no platform number: for now the
+  owner makes a number up and gives it to the guest. Option: make the field
+  optional and generate a code (e.g. `ML-7K4Q9P`, no look-alike characters,
+  can't clash with platform formats), shown in the success toast and the
+  list.
+- Undo a revoke: waiting on the owner. If wanted, do it before go-live as a
+  separate `revokedAt` flag, so emails keep updating the record while it's
+  revoked; flipping the status back would restore stale data.

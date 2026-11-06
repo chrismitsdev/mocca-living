@@ -152,7 +152,7 @@ function Form() {
           isLoading={isPending}
         >
           <span>{t('button.label')}</span>
-          <IconSend2 />
+          <IconSend2 aria-hidden />
         </Button>
       </div>
     </form>

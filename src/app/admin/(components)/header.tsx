@@ -1,0 +1,34 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import moccaLogo from '@/public/logos/mocca-logo.svg'
+import {Container} from '@/src/components/shared/container'
+import {Typography} from '@/src/components/ui/typography'
+
+// Same look as the guest-app header, without next-intl (the admin is
+// outside the [locale] segment)
+function Header() {
+  return (
+    <header className='py-2 bg-surface-3'>
+      <Container>
+        <div className='flex flex-col items-center gap-2'>
+          <Link href='/el'>
+            <Image
+              width={64}
+              src={moccaLogo}
+              alt='Mocca living logo'
+              loading='eager'
+            />
+          </Link>
+          <Typography
+            className='sm:leading-4'
+            variant='tiny'
+          >
+            PREMIUM · STAY · PHILOSOPHY
+          </Typography>
+        </div>
+      </Container>
+    </header>
+  )
+}
+
+export {Header}

@@ -1,7 +1,5 @@
 'use server'
 
-import {createHmac} from 'node:crypto'
-import {headers} from 'next/headers'
 import type {Locale} from 'next-intl'
 import {
   type BaseIssue,
@@ -16,7 +14,7 @@ import {
 } from 'valibot'
 import {redirect} from '@/src/i18n/navigation'
 import {checkAccess} from './access'
-import {guestAppEnv} from './env'
+import {clientKey} from './client-key'
 import {startGuestSession} from './guest-session'
 import {normalizeReservationNumber} from './normalize'
 import {count, hit, LIMITS} from './rate-limit'
@@ -75,19 +73,6 @@ const VerifyGuestSchema = object({
   ),
   name: pipe(string(), trim(), nonEmpty(printIssueMessage('required')))
 })
-
-/** Client IP, hashed so raw addresses are never stored */
-async function clientKey(): Promise<string> {
-  const headerList = await headers()
-  const ip =
-    headerList.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-    headerList.get('x-real-ip') ||
-    'unknown'
-  return createHmac('sha256', guestAppEnv.sessionSecret())
-    .update(ip)
-    .digest('base64url')
-    .slice(0, 22)
-}
 
 export async function verifyGuestAction(
   locale: Locale,
@@ -174,5 +159,5 @@ export async function verifyGuestAction(
   }
 
   // Outside the try: redirect() works by throwing
-  return redirect({href: `/guest-app/${property}`, locale})
+  return redirect({href: `/guests/${property}`, locale})
 }

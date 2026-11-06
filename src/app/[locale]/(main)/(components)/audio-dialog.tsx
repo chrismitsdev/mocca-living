@@ -17,7 +17,7 @@ function AudioDialog() {
         asChild
       >
         <IconButton
-          className='bg-brand-8'
+          className='bg-brand-9'
           aria-label='Open music player'
         >
           <IconMusic aria-hidden />

@@ -336,17 +336,17 @@
             "hint": "You can find it in your Booking.com or Airbnb confirmation, or in your Hotelo email (#…)."
           },
           "name": {
-            "label": "Name",
+            "label": "Full name on booking",
             "placeholder": "e.g. Maria Papadopoulou",
             "hint": "Enter your full name exactly as it appears on your booking confirmation email."
           }
         },
-        "submit": "Open guest app",
+        "submit": "Enter",
         "toast": {
           "error": {
             "validation": {
-              "title": "Verification failed",
-              "description": "Please check the highlighted fields and try again."
+              "title": "Failed submission",
+              "description": "Please check the highlighted fields and correct any errors before resubmitting."
             },
             "rate-limited": {
               "title": "Too many attempts",

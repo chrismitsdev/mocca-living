@@ -68,11 +68,7 @@ function LocaleSwitcher({scrollTop = false}: LocaleSwitcherProps) {
       onValueChange={onValueChange}
       disabled={isPending}
     >
-      <SelectTrigger className='min-w-44'>
-        <span className='flex items-center gap-x-2 grow'>
-          {renderedTrigger}
-        </span>
-      </SelectTrigger>
+      <SelectTrigger className='min-w-44'>{renderedTrigger}</SelectTrigger>
       <SelectPortal>
         <SelectContent>
           <SelectViewport>

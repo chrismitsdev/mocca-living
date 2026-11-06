@@ -27,7 +27,7 @@ export async function generateMetadata({
 
 export default async function GuestAppSlugPage({
   params
-}: PageProps<'/[locale]/guest-app/[slug]'>) {
+}: PageProps<'/[locale]/guests/[slug]'>) {
   if (GUEST_APP_HIDDEN) notFound()
 
   const {locale, slug} = await (params as SlugParams)
@@ -35,9 +35,9 @@ export default async function GuestAppSlugPage({
   // Only a guest with an active stay at this property gets past here; a
   // guest of another property goes straight to their own
   const guest = await getActiveGuest()
-  if (!guest) return redirect({href: '/guest-app', locale})
+  if (!guest) return redirect({href: '/guests', locale})
   if (guest.property !== slug) {
-    return redirect({href: `/guest-app/${guest.property}`, locale})
+    return redirect({href: `/guests/${guest.property}`, locale})
   }
 
   return (

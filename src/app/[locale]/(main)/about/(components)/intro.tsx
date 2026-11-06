@@ -78,7 +78,10 @@ function IntroCard({
           {title}
         </Typography>
         <div className='flex items-center gap-x-2'>
-          <IconMapPin className='size-4' />
+          <IconMapPin
+            className='size-4'
+            aria-hidden
+          />
           <Typography
             variant='tiny'
             className='uppercase tracking-widest font-normal'
