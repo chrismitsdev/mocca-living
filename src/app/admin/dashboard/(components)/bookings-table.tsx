@@ -42,7 +42,7 @@ function BookingsTable({rows}: {rows: BookingRow[]}) {
                 {row.accessEnds}
                 {row.extended && ' (παράταση)'}
               </TableCell>
-              <TableCell>{row.pax}</TableCell>
+              <TableCell>{row.guestCount}</TableCell>
               <TableCell>{row.channel}</TableCell>
               <TableCell>
                 <Badge

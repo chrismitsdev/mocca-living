@@ -1,6 +1,6 @@
 import {normalizeReservationNumber} from '../normalize'
 import {mapPropertyName} from '../properties'
-import {parsePax, parseSlashDate, valueAfter} from './text'
+import {parseGuestCount, parseSlashDate, valueAfter} from './text'
 import type {Channel, ParseResult} from './types'
 
 // Reservation emails from the Primal Res channel manager (Booking.com, Airbnb).
@@ -69,7 +69,7 @@ export function parsePrimalRes(lines: string[]): ParseResult {
       bookerName,
       checkIn: checkIns[0],
       checkOut: checkOuts[checkOuts.length - 1],
-      pax: parsePax(valueAfter(lines, /^(Rooms|Units), Pax:/i)),
+      guestCount: parseGuestCount(valueAfter(lines, /^(Rooms|Units), Pax:/i)),
       sourceUpdatedAt: parseTimestamp(valueAfter(lines, /^Last Update:/i))
     }
   }

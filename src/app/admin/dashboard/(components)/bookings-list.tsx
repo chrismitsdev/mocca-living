@@ -50,7 +50,7 @@ function BookingsList({rows}: {rows: BookingRow[]}) {
                     {row.extended && ' (παράταση)'}
                   </dd>
                   <dt className='font-bold'>Άτομα</dt>
-                  <dd>{row.pax}</dd>
+                  <dd>{row.guestCount}</dd>
                   <dt className='font-bold'>Προέλευση</dt>
                   <dd>{row.channel}</dd>
                   <dt className='font-bold'>Πρόσβαση</dt>

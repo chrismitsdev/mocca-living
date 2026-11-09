@@ -33,7 +33,7 @@ export type BookingRow = {
   property: string
   checkIn: string
   checkOut: string
-  pax: string
+  guestCount: string
   channel: string
   status: DisplayStatus
   statusLabel: string
@@ -83,7 +83,8 @@ function toBookingRow(reservation: Reservation, now: number): BookingRow {
     property: PROPERTY_LABELS[reservation.property],
     checkIn: formatDate(reservation.checkIn),
     checkOut: formatDate(reservation.checkOut),
-    pax: reservation.pax === null ? '—' : String(reservation.pax),
+    guestCount:
+      reservation.guestCount === null ? '—' : String(reservation.guestCount),
     channel: CHANNEL_LABELS[reservation.channel],
     status,
     statusLabel: STATUS_LABELS[status],

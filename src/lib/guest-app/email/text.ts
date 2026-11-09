@@ -95,7 +95,7 @@ export function parseLongDate(value: string): string | null {
 }
 
 /** Total guests from texts like "3 Persons", "3 Adults + 1 Children", "2 adults , 2 children" */
-export function parsePax(value: string | undefined): number | null {
+export function parseGuestCount(value: string | undefined): number | null {
   if (!value) return null
   const persons = value.match(/(\d+)\s*persons?/i)
   if (persons) return +persons[1]

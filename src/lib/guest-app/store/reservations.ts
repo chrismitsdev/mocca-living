@@ -21,7 +21,7 @@ export type Reservation = {
   checkIn: string
   /** YYYY-MM-DD, property-local */
   checkOut: string
-  pax: number | null
+  guestCount: number | null
   /** ISO; orders updates (Last Update from the email, or when it arrived) */
   sourceUpdatedAt: string
   /** ISO; set by the owner to extend access (late checkout) */
@@ -132,7 +132,7 @@ export async function applyReservationEmail(
     bookerName: parsed.bookerName,
     checkIn: parsed.checkIn,
     checkOut: parsed.checkOut,
-    pax: parsed.pax,
+    guestCount: parsed.guestCount,
     sourceUpdatedAt,
     accessUntilOverride: existing?.accessUntilOverride,
     audit: [
@@ -234,7 +234,7 @@ export type ManualReservationInput = {
   bookerName: string
   checkIn: string
   checkOut: string
-  pax?: number | null
+  guestCount?: number | null
 }
 
 /** Admin action: add a booking that didn't arrive by email */
@@ -262,7 +262,7 @@ export async function addManualReservation(
     bookerName: input.bookerName.trim().replace(/\s+/g, ' '),
     checkIn: input.checkIn,
     checkOut: input.checkOut,
-    pax: input.pax ?? null,
+    guestCount: input.guestCount ?? null,
     sourceUpdatedAt: now.toISOString(),
     audit: [{at: now.toISOString(), by, action: 'added manually'}]
   }

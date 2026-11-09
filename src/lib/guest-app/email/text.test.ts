@@ -1,8 +1,8 @@
 import {describe, expect, it} from 'vitest'
 import {
   htmlToLines,
+  parseGuestCount,
   parseLongDate,
-  parsePax,
   parseSlashDate,
   valueAfter
 } from './text'
@@ -52,11 +52,11 @@ describe('dates', () => {
   })
 })
 
-describe('parsePax', () => {
+describe('parseGuestCount', () => {
   it('reads the different guest count formats', () => {
-    expect(parsePax('1 Rooms, 3 Persons')).toBe(3)
-    expect(parsePax('1 Unit, 3 Adults + 1 Children')).toBe(4)
-    expect(parsePax('2 adults , 2 children')).toBe(4)
-    expect(parsePax(undefined)).toBeNull()
+    expect(parseGuestCount('1 Rooms, 3 Persons')).toBe(3)
+    expect(parseGuestCount('1 Unit, 3 Adults + 1 Children')).toBe(4)
+    expect(parseGuestCount('2 adults , 2 children')).toBe(4)
+    expect(parseGuestCount(undefined)).toBeNull()
   })
 })

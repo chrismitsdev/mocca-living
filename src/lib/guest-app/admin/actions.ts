@@ -61,7 +61,7 @@ const messages = {
   reservationNumberLength: 'Από 8 έως 20 χαρακτήρες',
   reservationNumberCharacters: 'Μόνο λατινικά γράμματα και αριθμοί',
   bookerNameLength: 'Έως 120 χαρακτήρες',
-  pax: 'Από 1 και πάνω',
+  guestCount: 'Από 1 και πάνω',
   duplicate: 'Υπάρχει ήδη πρόσβαση για αυτόν τον αριθμό κράτησης.',
   checkOutBeforeCheckIn: 'Η αναχώρηση πρέπει να είναι μετά την άφιξη.',
   stayEnded: 'Η διαμονή έχει ήδη λήξει.'
@@ -221,7 +221,7 @@ type AddAccessData = {
   bookerName: string
   checkIn: string
   checkOut: string
-  pax: string
+  guestCount: string
 }
 
 const AddAccessSchema = object({
@@ -248,9 +248,9 @@ const AddAccessSchema = object({
   checkIn: dateString(),
   checkOut: dateString(),
   // Required: a whole number from 1
-  pax: pipe(
+  guestCount: pipe(
     requiredString(),
-    regex(/^[1-9]\d{0,2}$/, messages.pax),
+    regex(/^[1-9]\d{0,2}$/, messages.guestCount),
     transform(Number)
   )
 })
@@ -294,7 +294,7 @@ export async function addAccessAction(
     'bookerName',
     'checkIn',
     'checkOut',
-    'pax'
+    'guestCount'
   ])
   const {output, errors} = parseForm(AddAccessSchema, data)
   if (!output) {
@@ -320,7 +320,7 @@ export async function addAccessAction(
       bookerName: '',
       checkIn: '',
       checkOut: '',
-      pax: ''
+      guestCount: ''
     },
     errors: {},
     ok: true,

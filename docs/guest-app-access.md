@@ -249,7 +249,7 @@ type Reservation = {
   bookerName: string // booker's full name exactly as the platform saved it
   checkIn: string // YYYY-MM-DD (property-local date)
   checkOut: string // YYYY-MM-DD
-  pax: number | null // stored for a future device limit
+  guestCount: number | null // stored for a future device limit
   sourceUpdatedAt: string // ISO; Last Update from the email, or arrival time
   accessUntilOverride?: string // ISO; admin "extend" (late checkout)
   audit: {at: string; by: 'inbound' | string; action: string}[]
@@ -407,8 +407,8 @@ toast copy under `Pages.guest-app.access`, schema errors in the action.
 
 ### 5.6 Deferred: device limit
 
-Cap the number of devices per booking at `pax + 2`, with an owner reset. Not
-in v1, but `pax` is stored so it can be added later.
+Cap the number of devices per booking at `guestCount + 2`, with an owner reset. Not
+in v1, but `guestCount` is stored so it can be added later.
 
 ## 6. Admin authentication
 
@@ -640,7 +640,7 @@ CLI in the stored format. Set `EXAT` to
 00:00 Athens, 3 days after checkout, and add it to the index:
 
 ```
-SET guestAppReservation:TEST2026 '{"reservationNumber":"TEST2026","channel":"manual","property":"mocca-city","status":"confirmed","bookerName":"Test Tester","checkIn":"<YYYY-MM-DD>","checkOut":"<YYYY-MM-DD>","pax":2,"sourceUpdatedAt":"<ISO>","audit":[{"at":"<ISO>","by":"<admin email>","action":"added manually (test)"}]}' EXAT <epoch seconds>
+SET guestAppReservation:TEST2026 '{"reservationNumber":"TEST2026","channel":"manual","property":"mocca-city","status":"confirmed","bookerName":"Test Tester","checkIn":"<YYYY-MM-DD>","checkOut":"<YYYY-MM-DD>","guestCount":2,"sourceUpdatedAt":"<ISO>","audit":[{"at":"<ISO>","by":"<admin email>","action":"added manually (test)"}]}' EXAT <epoch seconds>
 ZADD guestAppReservationIndex <same epoch seconds> TEST2026
 ```
 

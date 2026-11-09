@@ -32,7 +32,7 @@ describe('Primal Res emails', () => {
       bookerName: 'Doe Jane',
       checkIn: '2026-10-02',
       checkOut: '2026-10-04',
-      pax: 3,
+      guestCount: 3,
       sourceUpdatedAt: '2026-10-01T06:05:00.000Z'
     })
   })
@@ -71,7 +71,7 @@ describe('Primal Res emails', () => {
       bookerName: 'Şahin Ayşe',
       checkIn: '2026-09-26',
       checkOut: '2026-09-28',
-      pax: 4,
+      guestCount: 4,
       sourceUpdatedAt: '2026-09-25T22:24:32.000Z'
     })
   })
@@ -112,7 +112,7 @@ describe('Hotelo emails', () => {
       bookerName: 'Maria Petrova',
       checkIn: '2026-09-14',
       checkOut: '2026-09-20',
-      pax: 4,
+      guestCount: 4,
       sourceUpdatedAt: null
     })
   })

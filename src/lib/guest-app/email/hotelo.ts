@@ -1,6 +1,6 @@
 import {normalizeReservationNumber} from '../normalize'
 import {mapPropertyName} from '../properties'
-import {parseLongDate, parsePax, valueAfter} from './text'
+import {parseGuestCount, parseLongDate, valueAfter} from './text'
 import type {ParseResult} from './types'
 
 // Direct-booking confirmation emails sent by Hotelo to the guest (owner in copy)
@@ -52,7 +52,9 @@ export function parseHotelo(lines: string[]): ParseResult {
       bookerName,
       checkIn,
       checkOut,
-      pax: parsePax(lines.find((line) => /\d+\s*adults?/i.test(line))),
+      guestCount: parseGuestCount(
+        lines.find((line) => /\d+\s*adults?/i.test(line))
+      ),
       sourceUpdatedAt: null
     }
   }

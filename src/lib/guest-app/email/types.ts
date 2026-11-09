@@ -15,7 +15,7 @@ export type ParsedReservation = {
   checkIn: string
   /** YYYY-MM-DD, property-local */
   checkOut: string
-  pax: number | null
+  guestCount: number | null
   /** ISO timestamp of the reservation's last update, when the email has one */
   sourceUpdatedAt: string | null
 }

@@ -25,7 +25,7 @@ const booking = (overrides: Partial<ParsedReservation> = {}) =>
     bookerName: 'Doe Jane',
     checkIn: '2026-10-02',
     checkOut: '2026-10-04',
-    pax: 3,
+    guestCount: 3,
     sourceUpdatedAt: '2026-10-01T06:05:00.000Z',
     ...overrides
   }) satisfies ParsedReservation

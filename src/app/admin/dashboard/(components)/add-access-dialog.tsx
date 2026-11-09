@@ -39,7 +39,7 @@ type AddAccessData = {
   bookerName: string
   checkIn: string
   checkOut: string
-  pax: string
+  guestCount: string
 }
 
 const emptyData: AddAccessData = {
@@ -48,7 +48,7 @@ const emptyData: AddAccessData = {
   property: '',
   checkIn: '',
   checkOut: '',
-  pax: ''
+  guestCount: ''
 }
 
 const initialState: AdminFormState<AddAccessData> = {
@@ -169,21 +169,21 @@ function AddAccessDialog() {
                   disabled={isPending}
                 />
                 <FormControl
-                  id='pax'
-                  error={errors.pax}
+                  id='guestCount'
+                  error={errors.guestCount}
                 >
-                  <Label htmlFor='pax'>Άτομα</Label>
+                  <Label htmlFor='guestCount'>Άτομα</Label>
                   <Input
-                    id='pax'
-                    name='pax'
+                    id='guestCount'
+                    name='guestCount'
                     type='number'
                     inputMode='numeric'
                     min={1}
                     step={1}
                     placeholder='π.χ. 1'
-                    defaultValue={data.pax}
+                    defaultValue={data.guestCount}
                     icon={IconUsers}
-                    error={Boolean(errors.pax)}
+                    error={Boolean(errors.guestCount)}
                     disabled={isPending}
                   />
                 </FormControl>
