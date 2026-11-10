@@ -63,6 +63,7 @@ function StayDatesField({
           id='checkIn'
           name='checkIn'
           type='date'
+          required
           defaultValue={defaultCheckIn}
           icon={IconCalendar}
           error={Boolean(errors.checkIn)}
@@ -78,6 +79,7 @@ function StayDatesField({
           id='checkOut'
           name='checkOut'
           type='date'
+          required
           defaultValue={defaultCheckOut}
           icon={IconCalendar}
           error={Boolean(errors.checkOut)}

@@ -151,6 +151,7 @@ function ExtendAccessDialog({
                   id='accessUntilTime'
                   name='accessUntilTime'
                   type='time'
+                  required
                   defaultValue={data.accessUntilTime}
                   icon={IconClock}
                   error={Boolean(errors.accessUntilTime)}
@@ -218,6 +219,7 @@ function AccessUntilDateField({
           id='accessUntilDate'
           name='accessUntilDate'
           type='date'
+          required
           min={minDate}
           defaultValue={defaultValue}
           icon={IconCalendar}
