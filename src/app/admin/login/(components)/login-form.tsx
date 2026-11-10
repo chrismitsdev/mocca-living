@@ -6,11 +6,11 @@ import {FormControl} from '@/src/components/shared/form-control'
 import {Button} from '@/src/components/ui/button'
 import {Input} from '@/src/components/ui/input'
 import {Label} from '@/src/components/ui/label'
+import {useResultToast} from '@/src/hooks/use-result-toast'
 import {
   type AdminFormState,
   requestLoginAction
 } from '@/src/lib/guest-app/admin/actions'
-import {useResultToast} from '../../(components)/use-result-toast'
 
 /** A message to show as a toast when the page opens, e.g. an expired link */
 function LoginForm({notice}: {notice?: string}) {

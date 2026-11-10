@@ -1,7 +1,7 @@
 import {IconCalendarPlus} from '@tabler/icons-react'
 import {IconButton} from '@/src/components/ui/icon-button'
 import type {BookingRow} from './booking-row'
-import {RevokeDialog} from './revoke-dialog'
+import {RevokeAccessDialog} from './revoke-access-dialog'
 
 function BookingActions({row}: {row: BookingRow}) {
   return (
@@ -16,7 +16,7 @@ function BookingActions({row}: {row: BookingRow}) {
       >
         <IconCalendarPlus aria-hidden />
       </IconButton>
-      <RevokeDialog
+      <RevokeAccessDialog
         reservationNumber={row.reservationNumber}
         bookerName={row.bookerName}
         canRevoke={row.canRevoke}

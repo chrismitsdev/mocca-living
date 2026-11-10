@@ -13,24 +13,24 @@ import {
   DialogTrigger
 } from '@/src/components/ui/dialog'
 import {IconButton} from '@/src/components/ui/icon-button'
+import {useResultToast} from '@/src/hooks/use-result-toast'
 import {
   type AdminFormState,
   revokeReservationAction
 } from '@/src/lib/guest-app/admin/actions'
-import {useResultToast} from '../../(components)/use-result-toast'
 import type {BookingRow} from './booking-row'
 
-type RevokeDialogProps = Pick<
+type RevokeAccessDialogProps = Pick<
   BookingRow,
   'reservationNumber' | 'bookerName' | 'canRevoke'
 >
 
 /** Revoke button with a confirmation step: revoking can't be undone */
-function RevokeDialog({
+function RevokeAccessDialog({
   reservationNumber,
   bookerName,
   canRevoke
-}: RevokeDialogProps) {
+}: RevokeAccessDialogProps) {
   const descriptionId = useId()
   const [open, setOpen] = useState(false)
   const initialState: AdminFormState<{reservationNumber: string}> = {
@@ -62,10 +62,7 @@ function RevokeDialog({
           <IconBan aria-hidden />
         </IconButton>
       </DialogTrigger>
-      <DialogContent
-        className='sm:max-inline-lg'
-        aria-describedby={descriptionId}
-      >
+      <DialogContent aria-describedby={descriptionId}>
         <DialogHeader>
           <DialogTitle>Ανάκληση πρόσβασης</DialogTitle>
           <DialogClose
@@ -89,7 +86,7 @@ function RevokeDialog({
             </p>
           </div>
           <form
-            className='flex flex-wrap justify-end gap-2'
+            className='pt-10 flex flex-wrap justify-end gap-2'
             action={action}
           >
             <input
@@ -119,4 +116,4 @@ function RevokeDialog({
   )
 }
 
-export {RevokeDialog}
+export {RevokeAccessDialog}

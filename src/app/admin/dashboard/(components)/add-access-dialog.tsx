@@ -25,11 +25,11 @@ import {
   SelectValue
 } from '@/src/components/ui/select'
 import {Typography} from '@/src/components/ui/typography'
+import {useResultToast} from '@/src/hooks/use-result-toast'
 import {
   type AdminFormState,
   addAccessAction
 } from '@/src/lib/guest-app/admin/actions'
-import {useResultToast} from '../../(components)/use-result-toast'
 import {PROPERTY_LABELS} from './labels'
 import {StayDatesField} from './stay-dates-field'
 
