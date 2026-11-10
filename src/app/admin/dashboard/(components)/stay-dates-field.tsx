@@ -1,36 +1,16 @@
 'use client'
 
 import {IconCalendar} from '@tabler/icons-react'
-import {useSyncExternalStore} from 'react'
 import {el} from 'react-day-picker/locale'
 import {FormControl} from '@/src/components/shared/form-control'
 import {DateRangePicker} from '@/src/components/ui/date-range-picker'
 import {Input} from '@/src/components/ui/input'
 import {Label} from '@/src/components/ui/label'
+import {SM_UP, useMediaQuery} from '@/src/hooks/use-media-query'
 
-// Arrival and departure. With a mouse or trackpad: one range calendar. On
-// touch screens: two native date inputs, so phones get the OS date picker.
+// Arrival and departure. From the sm breakpoint up: one range calendar.
+// Narrower screens: two native date inputs, so phones get the OS date picker.
 // Either way the form submits checkIn and checkOut as YYYY-MM-DD
-
-const FINE_POINTER = '(pointer: fine)'
-
-function subscribe(onChange: () => void) {
-  const query = window.matchMedia(FINE_POINTER)
-  query.addEventListener('change', onChange)
-  return () => query.removeEventListener('change', onChange)
-}
-
-/**
- * Whether the main input is a mouse or trackpad. The field only renders in
- * an opened dialog, in the browser, so the server value is never shown
- */
-function useFinePointer() {
-  return useSyncExternalStore(
-    subscribe,
-    () => window.matchMedia(FINE_POINTER).matches,
-    () => true
-  )
-}
 
 type StayDatesFieldProps = {
   defaultCheckIn: string
@@ -45,9 +25,9 @@ function StayDatesField({
   errors,
   disabled
 }: StayDatesFieldProps) {
-  const finePointer = useFinePointer()
+  const wide = useMediaQuery(SM_UP)
 
-  if (finePointer) {
+  if (wide) {
     const error = errors.checkIn ?? errors.checkOut
     return (
       <FormControl

@@ -22,16 +22,18 @@ import {
 import {clientKey, hashForKey} from '../client-key'
 import {guestAppEnv} from '../env'
 import {normalizeReservationNumber} from '../normalize'
-import {PROPERTY_TIMES} from '../properties'
+import {PROPERTY_TIMES, PROPERTY_TIMEZONE} from '../properties'
 import {hit, LIMITS} from '../rate-limit'
 import {
   addManualReservation,
+  extendReservation,
   getReservation,
   isChangeable,
   ReservationError,
   revokeReservation
 } from '../store/reservations'
 import {createUpstashStore} from '../store/upstash'
+import {zonedTimeToEpochMs} from '../time'
 import {endAdminSession, requireAdmin} from './admin-session'
 import {createLoginToken, isAllowedAdmin, normalizeEmail} from './auth'
 import {sendLoginEmail} from './login-email'
@@ -57,14 +59,17 @@ const messages = {
     'Η κράτηση δεν μπορεί πλέον να αλλάξει: έχει ολοκληρωθεί, ακυρωθεί ή ανακληθεί.',
   revoked: 'Η πρόσβαση ανακλήθηκε.',
   added: 'Η πρόσβαση προστέθηκε.',
+  extended: 'Η πρόσβαση παρατάθηκε.',
   date: 'Μη έγκυρη ημερομηνία',
+  time: 'Μη έγκυρη ώρα',
   reservationNumberLength: 'Από 8 έως 20 χαρακτήρες',
   reservationNumberCharacters: 'Μόνο λατινικά γράμματα και αριθμοί',
   bookerNameLength: 'Έως 120 χαρακτήρες',
   guestCount: 'Από 1 και πάνω',
   duplicate: 'Υπάρχει ήδη πρόσβαση για αυτόν τον αριθμό κράτησης.',
   checkOutBeforeCheckIn: 'Η αναχώρηση πρέπει να είναι μετά την άφιξη.',
-  stayEnded: 'Η διαμονή έχει ήδη λήξει.'
+  stayEnded: 'Η διαμονή έχει ήδη λήξει.',
+  endNotLater: 'Η νέα λήξη πρέπει να είναι μετά την τρέχουσα.'
 }
 
 // Same toast as every other form on the site (contact, guest access)
@@ -326,4 +331,77 @@ export async function addAccessAction(
     ok: true,
     message: messages.added
   }
+}
+
+type ExtendAccessData = {
+  reservationNumber: string
+  accessUntilDate: string
+  accessUntilTime: string
+}
+
+const ExtendAccessSchema = object({
+  reservationNumber: requiredString(),
+  accessUntilDate: dateString(),
+  accessUntilTime: pipe(
+    requiredString(),
+    regex(/^([01]\d|2[0-3]):[0-5]\d$/, messages.time)
+  )
+})
+
+/**
+ * Keep guest access open until a later moment (late checkout). The date and
+ * time are property-local, wherever the admin happens to be
+ */
+export async function extendAccessAction(
+  _prevState: AdminFormState<ExtendAccessData>,
+  formData: FormData
+): Promise<AdminFormState<ExtendAccessData>> {
+  const admin = await requireAdmin()
+  const data = formValues(formData, [
+    'reservationNumber',
+    'accessUntilDate',
+    'accessUntilTime'
+  ])
+  const {output, errors} = parseForm(ExtendAccessSchema, data)
+  if (!output) {
+    return {data, errors, ...validationError}
+  }
+
+  const until = new Date(
+    zonedTimeToEpochMs(
+      output.accessUntilDate,
+      output.accessUntilTime,
+      PROPERTY_TIMEZONE
+    )
+  )
+
+  try {
+    await extendReservation(
+      createUpstashStore(),
+      output.reservationNumber,
+      until,
+      admin
+    )
+  } catch (error) {
+    if (error instanceof ReservationError) {
+      if (/after the current end/i.test(error.message)) {
+        return {
+          data,
+          errors: {accessUntilDate: messages.endNotLater},
+          ...validationError
+        }
+      }
+      const message = /not found/i.test(error.message)
+        ? messages.notFound
+        : messages.notChangeable
+      return {data, errors: {}, ok: false, message}
+    }
+    console.error('guest-app admin extend failed', error)
+    return {data, errors: {}, ok: false, message: messages.unavailable}
+  } finally {
+    // Refresh in every case, so a stale row updates to its real status
+    revalidatePath(DASHBOARD_PATH)
+  }
+
+  return {data, errors: {}, ok: true, message: messages.extended}
 }

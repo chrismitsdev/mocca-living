@@ -6,7 +6,11 @@ import {
   isChangeable,
   type Reservation
 } from '@/src/lib/guest-app/store/reservations'
-import {zonedTimeToEpochMs} from '@/src/lib/guest-app/time'
+import {
+  zonedDate,
+  zonedTime,
+  zonedTimeToEpochMs
+} from '@/src/lib/guest-app/time'
 import {formatDate, formatDateTime} from './format'
 import {
   CHANNEL_LABELS,
@@ -42,6 +46,9 @@ export type BookingRow = {
   /** When access ends (check-out time, or the extension); "—" when the
    * booking has no access at all (cancelled or revoked) */
   accessEnds: string
+  /** The same moment as form values, property-local: "YYYY-MM-DD", "HH:MM" */
+  accessEndsDate: string
+  accessEndsTime: string
   /** True when the owner extended access past check-out */
   extended: boolean
   canExtend: boolean
@@ -91,6 +98,8 @@ function toBookingRow(reservation: Reservation, now: number): BookingRow {
     statusVariant: STATUS_VARIANTS[status],
     // Cancelled and revoked bookings never let the guest in
     accessEnds: confirmed ? formatDateTime(endsAt) : '—',
+    accessEndsDate: zonedDate(endsAt, PROPERTY_TIMEZONE),
+    accessEndsTime: zonedTime(endsAt, PROPERTY_TIMEZONE),
     extended: confirmed && endsAt > checkOutAt,
     canExtend: changeable,
     canRevoke: changeable

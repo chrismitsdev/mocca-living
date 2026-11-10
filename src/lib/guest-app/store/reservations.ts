@@ -210,7 +210,10 @@ export function revokeReservation(
   )
 }
 
-/** Admin action: allow access until a later moment (late checkout) */
+/**
+ * Admin action: allow access until a later moment (late checkout). Only for
+ * a booking that can still change, and only to later than the current end
+ */
 export function extendReservation(
   store: KeyValueStore,
   reservationNumber: string,
@@ -223,7 +226,15 @@ export function extendReservation(
     reservationNumber,
     by,
     `extended until ${until.toISOString()}`,
-    () => ({accessUntilOverride: until.toISOString()}),
+    (existing) => {
+      if (!isChangeable(existing, now.getTime())) {
+        throw new ReservationError('Reservation can no longer change')
+      }
+      if (until.getTime() <= accessEndsAt(existing)) {
+        throw new ReservationError('New end must be after the current end')
+      }
+      return {accessUntilOverride: until.toISOString()}
+    },
     now
   )
 }

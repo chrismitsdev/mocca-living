@@ -188,7 +188,8 @@ describe('retention', () => {
       store,
       '1234567890',
       at('2026-10-05T09:00:00Z'),
-      'owner@example.com'
+      'owner@example.com',
+      new Date(clock)
     )
 
     clock = Date.parse('2026-10-07T12:00:00Z')
@@ -213,7 +214,8 @@ describe('accessEndsAt', () => {
       store,
       '1234567890',
       at('2026-10-04T12:00:00Z'),
-      'owner@example.com'
+      'owner@example.com',
+      new Date(clock)
     )
 
     expect(new Date(accessEndsAt(extended)).toISOString()).toBe(
@@ -256,7 +258,8 @@ describe('isChangeable', () => {
       store,
       '1234567890',
       at('2026-10-04T12:00:00Z'),
-      'owner@example.com'
+      'owner@example.com',
+      new Date(clock)
     )
     expect(isChangeable(extended, ends + 1)).toBe(true)
   })
@@ -277,6 +280,80 @@ describe('isChangeable', () => {
       'owner@example.com'
     )
     expect(isChangeable(revoked, ends - 1)).toBe(false)
+  })
+})
+
+describe('extendReservation', () => {
+  // The default booking: access ends 2026-10-04 11:00 Athens (08:00Z)
+  const extend = (until: string, now = new Date(clock)) =>
+    extendReservation(store, '1234567890', at(until), 'owner@example.com', now)
+
+  beforeEach(async () => {
+    await applyReservationEmail(store, booking(), at('2026-10-01T06:06:20Z'))
+  })
+
+  it('records who extended it', async () => {
+    const extended = await extend('2026-10-04T12:00:00Z')
+    expect(extended.accessUntilOverride).toBe('2026-10-04T12:00:00.000Z')
+    expect(extended.audit.at(-1)?.by).toBe('owner@example.com')
+  })
+
+  it('refuses an end that is not after the current one', async () => {
+    const message = 'New end must be after the current end'
+    await expect(extend('2026-10-04T08:00:00Z')).rejects.toThrow(message)
+    await expect(extend('2026-10-03T12:00:00Z')).rejects.toThrow(message)
+
+    const reservation = await getReservation(store, '1234567890')
+    expect(reservation?.accessUntilOverride).toBeUndefined()
+  })
+
+  it('requires a second extension to go past the first', async () => {
+    await extend('2026-10-04T12:00:00Z')
+    await expect(extend('2026-10-04T10:00:00Z')).rejects.toThrow(
+      ReservationError
+    )
+    await expect(extend('2026-10-04T14:00:00Z')).resolves.toMatchObject({
+      accessUntilOverride: '2026-10-04T14:00:00.000Z'
+    })
+  })
+
+  it('refuses a booking whose access has ended', async () => {
+    await expect(
+      extend('2026-10-05T12:00:00Z', at('2026-10-04T08:00:00Z'))
+    ).rejects.toThrow('Reservation can no longer change')
+  })
+
+  it('refuses a revoked booking', async () => {
+    await revokeReservation(store, '1234567890', 'owner@example.com')
+    await expect(extend('2026-10-05T12:00:00Z')).rejects.toThrow(
+      'Reservation can no longer change'
+    )
+  })
+
+  it('refuses a cancelled booking', async () => {
+    await applyReservationEmail(
+      store,
+      booking({
+        status: 'cancelled',
+        sourceUpdatedAt: '2026-10-01T06:08:00.000Z'
+      }),
+      at('2026-10-01T06:08:20Z')
+    )
+    await expect(extend('2026-10-05T12:00:00Z')).rejects.toThrow(
+      'Reservation can no longer change'
+    )
+  })
+
+  it('throws for an unknown reservation', async () => {
+    await expect(
+      extendReservation(
+        store,
+        'NOPE',
+        at('2026-10-05T12:00:00Z'),
+        'owner@example.com',
+        new Date(clock)
+      )
+    ).rejects.toThrow('Reservation not found')
   })
 })
 

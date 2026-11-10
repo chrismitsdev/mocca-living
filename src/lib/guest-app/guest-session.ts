@@ -10,16 +10,22 @@ import {createUpstashStore} from './store/upstash'
 
 const COOKIE_NAME = 'guest_app_session'
 
+// The cookie outlives the access window on purpose, so a guest who's already
+// signed in stays in when an admin extends access. It grants nothing by
+// itself: getActiveGuest checks the stored booking's window on every request
+const SESSION_GRACE_MS = 30 * 24 * 60 * 60 * 1000
+
 export async function startGuestSession(
   reservationNumber: string,
   property: PropertySlug,
   endsAt: number
 ) {
+  const sessionEndsAt = endsAt + SESSION_GRACE_MS
   const token = createSessionToken(
     {
       reservationNumber,
       property,
-      expiresAt: Math.floor(endsAt / 1000)
+      expiresAt: Math.floor(sessionEndsAt / 1000)
     },
     guestAppEnv.sessionSecret()
   )
@@ -29,7 +35,7 @@ export async function startGuestSession(
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     path: '/',
-    expires: new Date(endsAt)
+    expires: new Date(sessionEndsAt)
   })
 }
 

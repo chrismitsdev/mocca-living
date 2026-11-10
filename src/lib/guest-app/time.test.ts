@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest'
-import {addDays, zonedDate, zonedTimeToEpochMs} from './time'
+import {addDays, zonedDate, zonedTime, zonedTimeToEpochMs} from './time'
 
 const ATHENS = 'Europe/Athens'
 const iso = (epochMs: number) => new Date(epochMs).toISOString()
@@ -44,6 +44,22 @@ describe('zonedDate', () => {
     expect(zonedDate(Date.parse('2026-08-15T22:30:00Z'), ATHENS)).toBe(
       '2026-08-16'
     )
+  })
+})
+
+describe('zonedTime', () => {
+  it('returns the local 24-hour time, in summer and in winter', () => {
+    expect(zonedTime(Date.parse('2026-08-15T12:05:00Z'), ATHENS)).toBe('15:05')
+    expect(zonedTime(Date.parse('2026-12-15T12:05:00Z'), ATHENS)).toBe('14:05')
+  })
+
+  it('writes midnight as 00:00', () => {
+    expect(zonedTime(Date.parse('2026-08-15T21:00:00Z'), ATHENS)).toBe('00:00')
+  })
+
+  it('round-trips with zonedTimeToEpochMs', () => {
+    const epochMs = zonedTimeToEpochMs('2026-11-15', '18:30', ATHENS)
+    expect(zonedTime(epochMs, ATHENS)).toBe('18:30')
   })
 })
 

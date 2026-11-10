@@ -17,15 +17,19 @@ import {cn} from '@/src/lib/utils'
 // are calendar days, built and read in local time, so they never shift by a
 // day through UTC
 
+/** The field's button, shared with the single-date picker */
+export const dateTriggerClassName =
+  'relative py-3.75 pl-9 pr-4 inline-full flex items-center bg-surface-3 border border-transparent text-left font-bold outline-0 transition cursor-pointer focus:border-surface-4 focus-visible:border-surface-4 disabled:pointer-events-none disabled:opacity-35'
+
 /** "YYYY-MM-DD" → a local Date at midnight */
-function parseDay(value: string | undefined): Date | undefined {
+export function parseDay(value: string | undefined): Date | undefined {
   const match = value?.match(/^(\d{4})-(\d{2})-(\d{2})$/)
   if (!match) return undefined
   return new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]))
 }
 
 /** A local Date → "YYYY-MM-DD" */
-function formatDay(date: Date | undefined): string {
+export function formatDay(date: Date | undefined): string {
   if (!date) return ''
   const month = String(date.getMonth() + 1).padStart(2, '0')
   const day = String(date.getDate()).padStart(2, '0')
@@ -97,7 +101,7 @@ function DateRangePicker({
           id={id}
           type='button'
           className={cn(
-            'relative py-3.75 pl-9 pr-4 inline-full flex items-center bg-surface-3 border border-transparent text-left font-bold outline-0 transition cursor-pointer focus:border-surface-4 focus-visible:border-surface-4 disabled:pointer-events-none disabled:opacity-35',
+            dateTriggerClassName,
             range?.from && 'border-surface-4',
             error && 'border-danger focus:border-danger',
             className

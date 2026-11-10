@@ -51,6 +51,16 @@ export function zonedDate(epochMs: number, timeZone: string): string {
   }).format(new Date(epochMs))
 }
 
+/** Local 24-hour time ("HH:MM") of an instant */
+export function zonedTime(epochMs: number, timeZone: string): string {
+  return new Intl.DateTimeFormat('en-GB', {
+    timeZone,
+    hourCycle: 'h23',
+    hour: '2-digit',
+    minute: '2-digit'
+  }).format(new Date(epochMs))
+}
+
 /** Add whole days to a "YYYY-MM-DD" date */
 export function addDays(date: string, days: number): string {
   const [year, month, day] = date.split('-').map(Number)

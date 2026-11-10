@@ -4,9 +4,9 @@ Design for restricting the guest app (`/[locale]/guests`) to guests with an
 active reservation. The guest-app **content** is out of scope here and will be
 designed once the owner finalises it.
 
-Status (31 Oct 2026): steps 1–3 implemented on branch `feat/guest-app-access`
-and verified on its Vercel preview. Step 4 (admin) is built and waiting
-for its preview check. See §12.
+Status (10 Nov 2026): steps 1–3 implemented on branch `feat/guest-app-access`
+and verified on its Vercel preview. Step 4 (admin), including extend, is
+built and waiting for its preview check. See §12.
 
 ## 1. Requirements
 
@@ -365,9 +365,12 @@ toast copy under `Pages.guest-app.access`, schema errors in the action.
 - The cookie `guest_app_session` is `httpOnly`, `Secure` (in production
   builds), `SameSite=Lax`, with path `/`. It holds a token `v2.<payload>.<HMAC-SHA256>`
   (signed with `GUEST_APP_SESSION_SECRET`) carrying `{reservationNumber,
-  property, expiresAt}` (`v1` tokens used `c`/`p`/`exp` and are rejected), and
-  expires when the access window closes
+  property, expiresAt}` (`v1` tokens used `c`/`p`/`exp` and are rejected)
   (`src/lib/guest-app/session.ts`, `guest-session.ts`).
+- The cookie and token last until **30 days after the access end known at
+  sign-in** (decided 10 Nov 2026), so a guest who's already signed in stays
+  in when an admin extends access. They grant nothing by themselves: the
+  Redis check below still closes access at the end of the window.
 - **Every request** re-checks the Redis record, so a cancellation, revoke or
   extend takes effect immediately.
 - A session only unlocks its own property (`/guests/<slug>`). Redirects,
@@ -525,10 +528,11 @@ actions; `login-email.ts` the email).
     Must not already exist. For a booking with no platform number the
     owner makes one up and gives it to the guest (see §13).
   - **Κατάλυμα**: one of the three properties.
-  - **Άφιξη – Αναχώρηση**: with a mouse or trackpad, one range calendar
-    (`src/components/ui/date-range-picker.tsx`, react-day-picker v9 in a
-    `Popup`, Greek, weeks from Monday); on touch screens, two native date
-    inputs. Both submit `YYYY-MM-DD` calendar days. Departure after arrival.
+  - **Άφιξη – Αναχώρηση**: from Tailwind's `sm` breakpoint up (40rem), one
+    range calendar (`src/components/ui/date-range-picker.tsx`,
+    react-day-picker v9 in a `Popup`, Greek, weeks from Monday); on narrower
+    screens, two native date inputs (`useMediaQuery` decides). Both submit
+    `YYYY-MM-DD` calendar days. Departure after arrival.
     **Arrival may be in the past** (a guest already at the property); a
     stay whose access has already ended is refused.
   - **Άτομα**: required, a whole number from 1.
@@ -542,9 +546,19 @@ actions; `login-email.ts` the email).
   direct booking with no cancellation email. Behind a confirmation dialog;
   it can't be undone from the page, and later emails for that number are
   ignored (§4).
-- **Παράταση πρόσβασης**: late checkout. A local (Athens) date and time,
-  which must be later than the current access end (`accessUntilOverride`).
-  **Not wired up yet**: the button is a placeholder.
+- **Παράταση πρόσβασης** (`extendAccessAction`): late checkout. A dialog on
+  each row, prefilled with the current access end:
+  - **Ημερομηνία λήξης**: from the `sm` breakpoint up, a single-date
+    calendar (`src/components/ui/date-picker.tsx`); on narrower screens, a
+    native date input. Days before the current end can't be picked.
+  - **Ώρα λήξης**: a native time input. Date and time are always Athens
+    local, wherever the admin is.
+
+  The new end must be later than the current access end, and the booking
+  must pass `isChangeable`; both are enforced in `extendReservation`. There's
+  no upper limit (an extra night is legitimate; a mistake can be revoked). It
+  writes `accessUntilOverride` and moves the record's deletion date (§4). An
+  extension can be extended again, to a later moment.
 - Every action is appended to the record's `audit` with the admin's email.
   The dashboard doesn't show the history yet.
 - Not in this version (decided 31 Oct 2026): restore a revoked booking,
@@ -614,7 +628,7 @@ filter) are made manually from step-by-step instructions.
 - Fixtures are synthetic emails modelled on the real templates, with
   **invented** names, numbers and contacts. No real guest data goes in the
   repository.
-- Covered (101 tests):
+- Covered (111 tests):
   - both parsers, including cancellations, and the HTML-to-text step;
   - localised Hotelo dates;
   - origin verification (direct DKIM and the Hostinger ARC attestation);
@@ -623,9 +637,10 @@ filter) are made manually from step-by-step instructions.
   - reservation-number normalisation and full-name matching (accents, word
     order, case, Turkish i);
   - the access window across DST changes and at the 11:00 checkout boundary;
-  - the store: the `Last Update` ordering rule, revoke, retention, the
-    index, `isChangeable`, and manual additions (duplicates, past arrival
-    allowed, ended stay refused);
+  - the store: the `Last Update` ordering rule, revoke, extend (later end
+    only, changeable bookings only), retention, the index, `isChangeable`,
+    and manual additions (duplicates, past arrival allowed, ended stay
+    refused);
   - session tokens (signature, tampering, expiry) and rate limits;
   - admin auth: allowlist, single-use and expiring login tokens,
     sessions, and that only hashes are stored.
@@ -687,7 +702,9 @@ To lift a lockout early, delete
 | Add `TESTADD01` again                          | "Already exists" error under "Αριθμός κράτησης"            |
 | Add a stay that ended yesterday                | "Η διαμονή έχει ήδη λήξει." under the dates                |
 | Add with arrival yesterday, departure tomorrow | Accepted, "Ενεργή"                                         |
-| Extend a booking (once wired up)               | New access end; audit shows the admin email                |
+| Extend a booking to a later date and time      | New end with "(παράταση)"; audit shows the admin email     |
+| Extend to the current end or earlier           | Error under "Ημερομηνία λήξης"; values kept                |
+| Signed-in guest, extend past the original end  | Guest stays signed in; sent to the form after the new end  |
 | Revoke `TESTADD01`                             | "Ανακλήθηκε"; the guest gets "Booking not found"           |
 | Log out                                        | Back to the login page; the session key is gone from Redis |
 | Request more than 3 links for one email        | "Too many attempts" toast                                  |
@@ -720,8 +737,7 @@ To lift a lockout early, delete
    - Verified on the preview with the §11 checklist (31 Oct 2026).
 4. **Admin** (login built 31 Oct – 1 Nov 2026; dashboard rebuilt 1–6 Nov
    2026). Magic-link login straight to `/admin/dashboard` (§6); the list,
-   "Προσθήκη πρόσβασης" and revoke work (§7).
-   - Still to do: wire up extend.
+   "Προσθήκη πρόσβασης", revoke and extend work (§7).
    - To verify on the preview: the admin checklist in §11.
 5. **Privacy policy** update.
 6. **Content** (separate design, once the owner finalises it), then remove
