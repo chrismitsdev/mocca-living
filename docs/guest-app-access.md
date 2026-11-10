@@ -238,7 +238,10 @@ within seconds, and the ARC attestation records the result at arrival.
 
 ## 4. Data model (Upstash Redis, EU region)
 
-`guestAppReservation:<normalisedReservationNumber>`:
+Keys are namespaced `guest:*` (guest app) and `admin:*` (admin), with `:`
+between levels (renamed from `guestApp*` on 10 Nov 2026).
+
+`guest:reservation:<normalisedReservationNumber>`:
 
 ```ts
 type Reservation = {
@@ -270,7 +273,7 @@ Implemented in `src/lib/guest-app/store/` behind a small key-value interface
   - an email for a stay already past retention isn't stored.
 - **TTL**: the record is deleted at 00:00 Athens, 3 days after access ends
   (11:00 on `checkOut`, or a later `accessUntilOverride`).
-- **Index**: the sorted set `guestAppReservationIndex` (score = deletion
+- **Index**: the sorted set `guest:reservationIndex` (score = deletion
   time) lists current and upcoming stays for the admin dashboard. Expired
   entries are pruned on read.
 - **Stored**: the booker's full name, used for matching and shown on the
@@ -392,7 +395,7 @@ toast copy under `Pages.guest-app.access`, schema errors in the action.
 ### 5.5 Abuse protection
 
 - Fixed-window counters in Redis (`kv.incr` with an expiry set on first use,
-  keys `guestAppRateLimit:ip:*` and `guestAppRateLimit:reservationNumber:*`),
+  keys `guest:rateLimit:ip:*` and `guest:rateLimit:reservationNumber:*`),
   in `src/lib/guest-app/rate-limit.ts`:
   - **10 attempts per 15 minutes per IP**, counting every attempt that
     passes schema validation (empty fields aren't counted). The IP is
@@ -437,13 +440,13 @@ actions; `login-email.ts` the email).
     (e.g. Outlook Safe Links) would use up the token first. Both admins use
     Gmail, which doesn't; the only effect would be requesting a new link.
   - Tokens are single-use (read and deleted atomically with `GETDEL`) and
-    expire after 15 minutes. Key `guestAppAdminLoginToken:<sha256(token)>`.
+    expire after 15 minutes. Key `admin:loginToken:<sha256(token)>`.
   - Login requests are rate-limited: 5 per 15 minutes per IP and 3 per 15
-    minutes per email (`guestAppRateLimit:adminLoginIp:*` /
-    `adminLoginEmail:*`, both hashed).
+    minutes per email (`admin:rateLimit:ip:*` /
+    `admin:rateLimit:email:*`, both hashed).
 - **Sessions last 1 day per login and aren't extended by activity** (decided
   31 Oct 2026). A new login starts a new 1-day session.
-- Sessions are **stored in Redis** (`guestAppAdminSession:<sha256(id)>` →
+- Sessions are **stored in Redis** (`admin:session:<sha256(id)>` →
   admin email, 24 h TTL). The cookie `guest_app_admin_session` (`httpOnly`,
   `Secure` in production builds, `SameSite=Lax`, 24 h) only carries the
   random id, so logout really ends the session, and all admin sessions can
@@ -482,7 +485,7 @@ actions; `login-email.ts` the email).
 - **Page "Πρόσβαση επισκεπτών"** (rebuilt 1–6 Nov 2026). The page manages
   guest-app **access**, not bookings, and the copy says so: actions are
   "Προσθήκη / Παράταση / Ανάκληση πρόσβασης", never "νέα κράτηση".
-- **List**: every stored record (from `guestAppReservationIndex`, so stays
+- **List**: every stored record (from `guest:reservationIndex`, so stays
   that ended stay listed until they're deleted, §4). One view model,
   `toBookingRows` in `src/app/admin/dashboard/(components)/booking-row.ts`,
   feeds two views with the same fields:
@@ -655,13 +658,13 @@ CLI in the stored format. Set `EXAT` to
 00:00 Athens, 3 days after checkout, and add it to the index:
 
 ```
-SET guestAppReservation:TEST2026 '{"reservationNumber":"TEST2026","channel":"manual","property":"mocca-city","status":"confirmed","bookerName":"Test Tester","checkIn":"<YYYY-MM-DD>","checkOut":"<YYYY-MM-DD>","guestCount":2,"sourceUpdatedAt":"<ISO>","audit":[{"at":"<ISO>","by":"<admin email>","action":"added manually (test)"}]}' EXAT <epoch seconds>
-ZADD guestAppReservationIndex <same epoch seconds> TEST2026
+SET guest:reservation:TEST2026 '{"reservationNumber":"TEST2026","channel":"manual","property":"mocca-city","status":"confirmed","bookerName":"Test Tester","checkIn":"<YYYY-MM-DD>","checkOut":"<YYYY-MM-DD>","guestCount":2,"sourceUpdatedAt":"<ISO>","audit":[{"at":"<ISO>","by":"<admin email>","action":"added manually (test)"}]}' EXAT <epoch seconds>
+ZADD guest:reservationIndex <same epoch seconds> TEST2026
 ```
 
 Run the `SET` and the `ZADD` as **separate commands**; pasted together on
 one line, the CLI returns `ERR syntax error`. Remove the record with
-`DEL guestAppReservation:TEST2026` and `ZREM guestAppReservationIndex
+`DEL guest:reservation:TEST2026` and `ZREM guest:reservationIndex
 TEST2026`. Records written in an older format (e.g. before `bookerName` or
 `reservationNumber`) must be re-inserted.
 
@@ -685,7 +688,7 @@ checked out yesterday).
 | 5 wrong names, then the correct one                | "Too many attempts" toast (run last; 15-minute lockout) |
 
 To lift a lockout early, delete
-`guestAppRateLimit:reservationNumber:<number>`.
+`guest:rateLimit:reservationNumber:<number>`.
 
 **Admin checklist** (preview, `/admin`):
 
@@ -731,7 +734,7 @@ To lift a lockout early, delete
      window checks, translations.
    - Full-name matching; valibot schema errors under the fields, booking
      outcomes in a single toast.
-   - Explicit names: `reservationNumber`, `guestApp*` Redis keys,
+   - Explicit names: `reservationNumber`, `guest:*` / `admin:*` Redis keys,
      `guest_app_session` cookie, `v2` session token.
    - The guest app is visible on previews (`VERCEL_ENV`).
    - Verified on the preview with the §11 checklist (31 Oct 2026).
@@ -748,8 +751,8 @@ To lift a lockout early, delete
      allows only one endpoint, so don't add a second one.
    - Add `RESEND_INBOUND_WEBHOOK_SECRET` for Production.
    - Remove the temporary Gmail condition from the Hostinger filter.
-   - Delete any manual test bookings (`guestAppReservation:TEST*` and their
-     `guestAppReservationIndex` entries) from the shared Upstash database
+   - Delete any manual test bookings (`guest:reservation:TEST*` and their
+     `guest:reservationIndex` entries) from the shared Upstash database
      (§11).
 
 Resend free plan limits to keep in mind: received emails count towards the

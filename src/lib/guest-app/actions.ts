@@ -107,10 +107,11 @@ export async function verifyGuestAction(
   let property: PropertySlug
 
   try {
-    const ipAllowed = await hit(store, `ip:${await clientKey()}`, LIMITS.ip)
+    const ipAllowed = await hit(store, LIMITS.ip, await clientKey())
     const reservationNumberFailures = await count(
       store,
-      `reservationNumber:${reservationNumber}`
+      LIMITS.reservationNumber,
+      reservationNumber
     )
     if (
       !ipAllowed ||
@@ -127,11 +128,7 @@ export async function verifyGuestAction(
         decision.reason === 'not-found' ||
         decision.reason === 'name-mismatch'
       ) {
-        await hit(
-          store,
-          `reservationNumber:${reservationNumber}`,
-          LIMITS.reservationNumber
-        )
+        await hit(store, LIMITS.reservationNumber, reservationNumber)
         // Same answer for both, so a booking number can't be probed
         return {data, errors: {}, ok: false, type: 'not-found'}
       }

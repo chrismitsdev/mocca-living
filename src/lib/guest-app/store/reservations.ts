@@ -30,8 +30,8 @@ export type Reservation = {
 }
 
 export const RETENTION_DAYS = 3
-const RESERVATION_KEY_PREFIX = 'guestAppReservation:'
-const RESERVATION_INDEX_KEY = 'guestAppReservationIndex'
+const RESERVATION_KEY_PREFIX = 'guest:reservation:'
+const RESERVATION_INDEX_KEY = 'guest:reservationIndex'
 
 const reservationKey = (reservationNumber: string) =>
   `${RESERVATION_KEY_PREFIX}${reservationNumber}`

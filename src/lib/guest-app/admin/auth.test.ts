@@ -60,7 +60,7 @@ describe('login tokens', () => {
     const keys = store.keys()
 
     expect(keys).toHaveLength(1)
-    expect(keys[0]).toMatch(/^guestAppAdminLoginToken:/)
+    expect(keys[0]).toMatch(/^admin:loginToken:/)
     expect(keys[0]).not.toContain(token)
   })
 })
@@ -99,7 +99,7 @@ describe('admin sessions', () => {
     )
     const keys = store.keys()
 
-    expect(keys[0]).toMatch(/^guestAppAdminSession:/)
+    expect(keys[0]).toMatch(/^admin:session:/)
     expect(keys[0]).not.toContain(sessionId)
     expect(await getAdminSessionEmail(store, undefined)).toBeNull()
   })

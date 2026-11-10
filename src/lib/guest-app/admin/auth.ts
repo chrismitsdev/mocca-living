@@ -8,8 +8,8 @@ import type {KeyValueStore} from '../store/kv'
 export const LOGIN_TOKEN_TTL_SECONDS = 15 * 60
 export const ADMIN_SESSION_TTL_SECONDS = 24 * 60 * 60
 
-const LOGIN_TOKEN_KEY_PREFIX = 'guestAppAdminLoginToken:'
-const ADMIN_SESSION_KEY_PREFIX = 'guestAppAdminSession:'
+const LOGIN_TOKEN_KEY_PREFIX = 'admin:loginToken:'
+const ADMIN_SESSION_KEY_PREFIX = 'admin:session:'
 
 const sha256 = (value: string) =>
   createHash('sha256').update(value).digest('base64url')

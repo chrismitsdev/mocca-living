@@ -146,15 +146,11 @@ export async function requestLoginAction(
   const address = normalizeEmail(output.email)
   try {
     const store = createUpstashStore()
-    const ipAllowed = await hit(
-      store,
-      `adminLoginIp:${await clientKey()}`,
-      LIMITS.adminLoginIp
-    )
+    const ipAllowed = await hit(store, LIMITS.adminLoginIp, await clientKey())
     const emailAllowed = await hit(
       store,
-      `adminLoginEmail:${hashForKey(address)}`,
-      LIMITS.adminLoginEmail
+      LIMITS.adminLoginEmail,
+      hashForKey(address)
     )
     if (!ipAllowed || !emailAllowed) {
       return {data, errors: {}, ok: false, message: messages.rateLimited}
