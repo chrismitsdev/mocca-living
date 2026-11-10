@@ -65,7 +65,6 @@ function ContactMap() {
               <Typography
                 className='underline text-primary'
                 variant='small'
-                asChild
               >
                 <a
                   className='text-inherit!'

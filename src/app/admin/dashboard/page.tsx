@@ -29,9 +29,9 @@ export default async function AdminDashboardPage() {
       <div className='mb-10 flex flex-wrap items-end justify-between gap-4'>
         <Typography
           variant='h1'
-          asChild
+          as='h1'
         >
-          <h1>Πρόσβαση επισκεπτών</h1>
+          Πρόσβαση επισκεπτών
         </Typography>
         <div className='flex flex-wrap gap-2'>
           <AddAccessDialog />

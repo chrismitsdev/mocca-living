@@ -11,68 +11,68 @@ function Content() {
         <article className='space-y-4'>
           <Typography
             variant='h4'
-            asChild
+            as='h2'
           >
-            <h2>{t('title-1')}</h2>
+            {t('title-1')}
           </Typography>
           <Typography>{t('content-1.description')}</Typography>
           <ul className='space-y-1'>
-            <Typography asChild>
-              <li>
+            <li>
+              <Typography>
                 {t.rich('content-1.bullet-1', {
                   strong: (chunks) => (
                     <span className='font-medium'>{chunks}</span>
                   )
                 })}
-              </li>
-            </Typography>
-            <Typography asChild>
-              <li>
+              </Typography>
+            </li>
+            <li>
+              <Typography>
                 {t.rich('content-1.bullet-2', {
                   strong: (chunks) => (
                     <span className='font-medium'>{chunks}</span>
                   )
                 })}
-              </li>
-            </Typography>
-            <Typography asChild>
-              <li>
+              </Typography>
+            </li>
+            <li>
+              <Typography>
                 {t.rich('content-1.bullet-3', {
                   strong: (chunks) => (
                     <span className='font-medium'>{chunks}</span>
                   )
                 })}
-              </li>
-            </Typography>
-            <Typography asChild>
-              <li>
+              </Typography>
+            </li>
+            <li>
+              <Typography>
                 {t.rich('content-1.bullet-4', {
                   strong: (chunks) => (
                     <span className='font-medium'>{chunks}</span>
                   )
                 })}
-              </li>
-            </Typography>
+              </Typography>
+            </li>
           </ul>
         </article>
         <article className='space-y-4'>
           <Typography
             variant='h4'
-            asChild
+            as='h2'
           >
-            <h2>{t('title-2')}</h2>
+            {t('title-2')}
           </Typography>
           <Typography>{t('content-2.description')}</Typography>
           <ul className='space-y-1'>
-            <Typography asChild>
-              <li>
+            <li>
+              <Typography>
                 {t.rich('content-2.bullet-1', {
                   strong: (chunks) => (
                     <span className='font-medium'>{chunks}</span>
                   )
                 })}
-              </li>
-            </Typography>
+              </Typography>
+            </li>
           </ul>
         </article>
       </div>

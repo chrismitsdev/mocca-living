@@ -1,7 +1,6 @@
-import {Slot} from 'radix-ui'
 import {cn} from '@/src/lib/utils'
 
-interface TypographyProps extends React.ComponentPropsWithRef<'span'> {
+interface TypographyProps extends React.ComponentPropsWithoutRef<'span'> {
   variant?:
     | 'display'
     | 'h1'
@@ -13,18 +12,16 @@ interface TypographyProps extends React.ComponentPropsWithRef<'span'> {
     | 'small'
     | 'tiny'
   serif?: boolean
-  asChild?: boolean
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'
 }
 
 function Typography({
   className,
   variant = 'p',
   serif,
-  asChild = false,
+  as: Comp = 'span',
   ...props
 }: TypographyProps) {
-  const Comp = asChild ? Slot.Root : 'span'
-
   return (
     <Comp
       className={cn(

@@ -28,9 +28,9 @@ function Reasons() {
         <Typography
           variant='display'
           serif
-          asChild
+          as='h2'
         >
-          <h2>{t('title')}</h2>
+          {t('title')}
         </Typography>
         <ul className='grid gap-4 sm:grid-cols-6'>
           {reasons.map(({key, Icon}, index) => (
@@ -76,9 +76,9 @@ function ReasonCard({
         <Typography
           variant='h4'
           serif
-          asChild
+          as='h3'
         >
-          <h3>{title}</h3>
+          {title}
         </Typography>
         <Typography>{description}</Typography>
       </div>

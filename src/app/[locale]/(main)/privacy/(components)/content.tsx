@@ -11,18 +11,18 @@ function Content() {
         <article className='space-y-4'>
           <Typography
             variant='h4'
-            asChild
+            as='h2'
           >
-            <h2>{t('terms.title')}</h2>
+            {t('terms.title')}
           </Typography>
           <Typography>{t('terms.description')}</Typography>
         </article>
         <article className='space-y-4'>
           <Typography
             variant='h4'
-            asChild
+            as='h2'
           >
-            <h2>{t('agreement.title')}</h2>
+            {t('agreement.title')}
           </Typography>
           <Typography>{t('agreement.description')}</Typography>
         </article>

@@ -17,9 +17,9 @@ export default function NotFound() {
         />
         <Typography
           variant='h3'
-          asChild
+          as='h2'
         >
-          <h2>{t('title')}</h2>
+          {t('title')}
         </Typography>
         <Typography>{t('subtitle')}</Typography>
         <Button

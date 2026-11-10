@@ -11,27 +11,27 @@ function Content() {
         <article className='space-y-4'>
           <Typography
             variant='h4'
-            asChild
+            as='h2'
           >
-            <h2>{t('item-1.title')}</h2>
+            {t('item-1.title')}
           </Typography>
           <Typography>{t('item-1.description')}</Typography>
         </article>
         <article className='space-y-4'>
           <Typography
             variant='h4'
-            asChild
+            as='h2'
           >
-            <h2>{t('item-2.title')}</h2>
+            {t('item-2.title')}
           </Typography>
           <Typography>{t('item-2.description')}</Typography>
         </article>
         <article className='space-y-4'>
           <Typography
             variant='h4'
-            asChild
+            as='h2'
           >
-            <h2>{t('item-3.title')}</h2>
+            {t('item-3.title')}
           </Typography>
           <Typography>{t('item-3.description')}</Typography>
         </article>
