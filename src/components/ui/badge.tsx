@@ -14,7 +14,7 @@ function Badge({
   return (
     <span
       className={cn(
-        'px-2 inline-flex flex-nowrap items-center justify-center text-sm font-semibold border *:shrink-0',
+        'px-2 inline-flex text-nowrap flex-nowrap items-center justify-center text-sm font-semibold border *:shrink-0',
         // VARIANT STYLES: tinted background, dark text, matching border
         variant === 'primary' && [
           'bg-brand-3',
