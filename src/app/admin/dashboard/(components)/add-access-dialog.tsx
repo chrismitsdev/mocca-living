@@ -161,7 +161,7 @@ function AddAccessDialog() {
                 error={errors.property}
                 disabled={isPending}
               />
-              <div className='grid gap-x-4 sm:grid-cols-4'>
+              <div className='grid gap-4 sm:grid-cols-4'>
                 <StayDatesField
                   defaultCheckIn={data.checkIn}
                   defaultCheckOut={data.checkOut}

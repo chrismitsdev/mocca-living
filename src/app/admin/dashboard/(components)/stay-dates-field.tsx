@@ -53,7 +53,7 @@ function StayDatesField({
   }
 
   return (
-    <div className='grid gap-x-4 sm:grid-cols-2 sm:col-span-3'>
+    <div className='grid gap-4'>
       <FormControl
         id='checkIn'
         error={errors.checkIn}
