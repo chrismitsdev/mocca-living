@@ -237,7 +237,7 @@ function PropertySelect({
       >
         <SelectTrigger
           id='property'
-          className='py-3.75 px-4 bg-surface-3 border-transparent hover:bg-surface-3 focus-visible:bg-surface-3 data-[state=open]:border-surface-4 aria-invalid:border-danger data-placeholder:[&>span]:text-sm data-placeholder:[&>span]:leading-6 data-placeholder:[&>span]:text-[color-mix(in_oklab,currentcolor_50%,transparent)]'
+          className='py-3.75 px-4 bg-surface-3 border-transparent hover:bg-surface-3 focus-visible:bg-surface-3 not-data-placeholder:border-surface-4 data-open:border-surface-4 aria-invalid:border-danger data-placeholder:[&>span]:text-sm data-placeholder:[&>span]:leading-6 data-placeholder:[&>span]:text-[color-mix(in_oklab,currentcolor_50%,transparent)]'
           aria-invalid={Boolean(error) || undefined}
           aria-describedby={error ? 'property-error' : undefined}
         >
