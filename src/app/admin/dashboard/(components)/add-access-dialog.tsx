@@ -22,7 +22,8 @@ import {
   SelectItemText,
   SelectPortal,
   SelectTrigger,
-  SelectValue
+  SelectValue,
+  SelectViewport
 } from '@/src/components/ui/select'
 import {Typography} from '@/src/components/ui/typography'
 import {useResultToast} from '@/src/hooks/use-result-toast'
@@ -244,14 +245,16 @@ function PropertySelect({
         </SelectTrigger>
         <SelectPortal>
           <SelectContent>
-            {Object.entries(PROPERTY_LABELS).map(([slug, label]) => (
-              <SelectItem
-                key={slug}
-                value={slug}
-              >
-                <SelectItemText>{label}</SelectItemText>
-              </SelectItem>
-            ))}
+            <SelectViewport>
+              {Object.entries(PROPERTY_LABELS).map(([slug, label]) => (
+                <SelectItem
+                  key={slug}
+                  value={slug}
+                >
+                  <SelectItemText>{label}</SelectItemText>
+                </SelectItem>
+              ))}
+            </SelectViewport>
           </SelectContent>
         </SelectPortal>
       </Select>
