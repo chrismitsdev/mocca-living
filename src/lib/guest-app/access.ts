@@ -1,6 +1,10 @@
 import {nameMatches} from './normalize'
 import {PROPERTY_TIMEZONE} from './properties'
-import {accessEndsAt, type Reservation} from './store/reservations'
+import {
+  accessEndsAt,
+  type Reservation,
+  recordCreatedAt
+} from './store/reservations'
 import {zonedTimeToEpochMs} from './time'
 
 // Whether a guest may use the guest app right now: an active booking, the
@@ -21,7 +25,7 @@ export function accessWindow(reservation: Reservation): AccessWindow {
 }
 
 export type AccessDecision =
-  | {ok: true; property: PropertySlug; endsAt: number}
+  | {ok: true; property: PropertySlug; endsAt: number; recordCreatedAt: string}
   | {ok: false; reason: 'not-found'}
   | {ok: false; reason: 'name-mismatch'}
   | {ok: false; reason: 'not-yet'; opensAt: number}
@@ -38,7 +42,12 @@ export function windowDecision(
   const {opensAt, endsAt} = accessWindow(reservation)
   if (now < opensAt) return {ok: false, reason: 'not-yet', opensAt}
   if (now >= endsAt) return {ok: false, reason: 'ended'}
-  return {ok: true, property: reservation.property, endsAt}
+  return {
+    ok: true,
+    property: reservation.property,
+    endsAt,
+    recordCreatedAt: recordCreatedAt(reservation)
+  }
 }
 
 /** Full check for a guest entering their booking details */

@@ -12,7 +12,7 @@ const reservation = (overrides: Partial<Reservation> = {}): Reservation => ({
   checkOut: '2026-10-04',
   guestCount: 3,
   sourceUpdatedAt: '2026-10-01T06:05:00.000Z',
-  audit: [],
+  audit: [{at: '2026-10-01T06:06:20.000Z', by: 'inbound', action: 'created'}],
   ...overrides
 })
 
@@ -25,7 +25,8 @@ describe('checkAccess', () => {
     ).toEqual({
       ok: true,
       property: 'mocca-city',
-      endsAt: at('2026-10-04T08:00:00Z')
+      endsAt: at('2026-10-04T08:00:00Z'),
+      recordCreatedAt: '2026-10-01T06:06:20.000Z'
     })
   })
 

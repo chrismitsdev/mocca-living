@@ -147,6 +147,7 @@ export async function verifyGuestAction(
     await startGuestSession(
       reservationNumber,
       decision.property,
+      decision.recordCreatedAt,
       decision.endsAt
     )
     property = decision.property

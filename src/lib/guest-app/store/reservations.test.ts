@@ -10,6 +10,7 @@ import {
   isChangeable,
   listReservations,
   ReservationError,
+  recordCreatedAt,
   revokeReservation
 } from './reservations'
 
@@ -280,6 +281,47 @@ describe('isChangeable', () => {
       'owner@example.com'
     )
     expect(isChangeable(revoked, ends - 1)).toBe(false)
+  })
+})
+
+describe('recordCreatedAt', () => {
+  it('stays the same through email updates and extensions', async () => {
+    await applyReservationEmail(store, booking(), at('2026-10-01T06:06:20Z'))
+    await applyReservationEmail(
+      store,
+      booking({guestCount: 2, sourceUpdatedAt: '2026-10-01T09:00:00.000Z'}),
+      at('2026-10-01T09:00:30Z')
+    )
+    const extended = await extendReservation(
+      store,
+      '1234567890',
+      at('2026-10-04T12:00:00Z'),
+      'owner@example.com',
+      new Date(clock)
+    )
+    expect(recordCreatedAt(extended)).toBe('2026-10-01T06:06:20.000Z')
+  })
+
+  it('changes when the number is deleted and added again', async () => {
+    await applyReservationEmail(store, booking(), at('2026-10-01T06:06:20Z'))
+    const first = await getReservation(store, '1234567890')
+    await store.del('guest:reservation:1234567890')
+
+    clock = Date.parse('2026-10-01T10:00:00Z')
+    const added = await addManualReservation(
+      store,
+      {
+        reservationNumber: '1234567890',
+        property: 'mocca-city',
+        bookerName: 'John Roe',
+        checkIn: '2026-10-02',
+        checkOut: '2026-10-04'
+      },
+      'owner@example.com',
+      new Date(clock)
+    )
+    expect(first?.audit[0]?.at).toBe('2026-10-01T06:06:20.000Z')
+    expect(recordCreatedAt(added)).toBe('2026-10-01T10:00:00.000Z')
   })
 })
 

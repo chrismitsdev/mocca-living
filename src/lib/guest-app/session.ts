@@ -1,19 +1,22 @@
 import {createHmac, timingSafeEqual} from 'node:crypto'
 
-// Compact signed session tokens: "v2.<payload>.<signature>", where payload is
-// base64url JSON and signature an HMAC-SHA256 over "v2.<payload>". The token
+// Compact signed session tokens: "v3.<payload>.<signature>", where payload is
+// base64url JSON and signature an HMAC-SHA256 over "v3.<payload>". The token
 // only proves who verified and until when; every request still re-checks the
-// stored reservation
+// stored reservation, including that it's the same record (recordCreatedAt)
 
 export type GuestSession = {
   reservationNumber: string
   property: PropertySlug
+  /** The record's creation time, so a re-added booking needs a new sign-in */
+  recordCreatedAt: string
   /** Epoch seconds */
   expiresAt: number
 }
 
-// v2: explicit field names (v1 used c/p/exp); v1 tokens are rejected
-const VERSION = 'v2'
+// v2: explicit field names (v1 used c/p/exp). v3: adds recordCreatedAt.
+// Tokens of older versions are rejected
+const VERSION = 'v3'
 
 function sign(data: string, secret: string): string {
   return createHmac('sha256', secret).update(data).digest('base64url')
@@ -51,6 +54,7 @@ export function verifySessionToken(
     if (
       typeof session.reservationNumber !== 'string' ||
       typeof session.property !== 'string' ||
+      typeof session.recordCreatedAt !== 'string' ||
       typeof session.expiresAt !== 'number' ||
       session.expiresAt * 1000 <= now
     ) {

@@ -367,16 +367,23 @@ toast copy under `Pages.guest-app.access`, schema errors in the action.
 ### 5.4 Session
 
 - The cookie `GUEST_SESSION` is `httpOnly`, `Secure` (in production
-  builds), `SameSite=Lax`, with path `/`. It holds a token `v2.<payload>.<HMAC-SHA256>`
+  builds), `SameSite=Lax`, with path `/`. It holds a token `v3.<payload>.<HMAC-SHA256>`
   (signed with `GUEST_APP_SESSION_SECRET`) carrying `{reservationNumber,
-  property, expiresAt}` (`v1` tokens used `c`/`p`/`exp` and are rejected)
-  (`src/lib/guest-app/session.ts`, `guest-session.ts`).
+  property, recordCreatedAt, expiresAt}` (`src/lib/guest-app/session.ts`,
+  `guest-session.ts`). Older tokens are rejected (`v1` used `c`/`p`/`exp`;
+  `v2` had no `recordCreatedAt`).
 - The cookie and token last until **30 days after the access end known at
   sign-in** (decided 10 Nov 2026), so a guest who's already signed in stays
   in when an admin extends access. They grant nothing by themselves: the
   Redis check below still closes access at the end of the window.
 - **Every request** re-checks the Redis record, so a cancellation, revoke or
   extend takes effect immediately.
+- The session is tied to **the record, not just its number** (decided
+  11 Nov 2026): `recordCreatedAt` is the record's first audit entry, and it
+  must match on every request. Email updates and extensions keep it; a record
+  deleted and added again under the same number gets a new one. Without this,
+  an old cookie for a reused number (e.g. one the owner made up for a manual
+  add) would open the new guest's stay without their name.
 - A session only unlocks its own property (`/guests/<slug>`). Redirects,
   each in a single step:
   - `/guests/<slug>` without a valid session → `/guests` (the form);
@@ -632,7 +639,7 @@ filter) are made manually from step-by-step instructions.
 - Fixtures are synthetic emails modelled on the real templates, with
   **invented** names, numbers and contacts. No real guest data goes in the
   repository.
-- Covered (111 tests):
+- Covered (116 tests):
   - both parsers, including cancellations, and the HTML-to-text step;
   - localised Hotelo dates;
   - origin verification (direct DKIM and the Hostinger ARC attestation);
@@ -645,7 +652,8 @@ filter) are made manually from step-by-step instructions.
     only, changeable bookings only), retention, the index, `isChangeable`,
     and manual additions (duplicates, past arrival allowed, ended stay
     refused);
-  - session tokens (signature, tampering, expiry) and rate limits;
+  - session tokens (signature, tampering, expiry, version, record binding)
+    and rate limits;
   - admin auth: allowlist, single-use and expiring login tokens,
     sessions, and that only hashes are stored.
 - Not covered by unit tests: the server actions, pages and form UI. They're
@@ -736,7 +744,7 @@ To lift a lockout early, delete
    - Full-name matching; valibot schema errors under the fields, booking
      outcomes in a single toast.
    - Explicit names: `reservationNumber`, `guest:*` / `admin:*` Redis keys,
-     `GUEST_SESSION` cookie, `v2` session token.
+     `GUEST_SESSION` cookie, `v3` session token.
    - The guest app is visible on previews (`VERCEL_ENV`).
    - Verified on the preview with the §11 checklist (31 Oct 2026).
 4. **Admin** (login built 31 Oct – 1 Nov 2026; dashboard rebuilt 1–6 Nov

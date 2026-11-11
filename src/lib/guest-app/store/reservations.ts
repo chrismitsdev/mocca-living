@@ -50,6 +50,14 @@ export function accessEndsAt(reservation: Reservation): number {
 }
 
 /**
+ * When this record was created: its first audit entry. A record deleted and
+ * added again under the same number gets a new one, which ends old sessions
+ */
+export function recordCreatedAt(reservation: Reservation): string {
+  return reservation.audit[0]?.at ?? ''
+}
+
+/**
  * Whether the admin may still extend or revoke a booking: confirmed, and
  * guest access not yet over (an upcoming or current stay)
  */

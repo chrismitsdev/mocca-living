@@ -18,6 +18,7 @@ const SESSION_GRACE_MS = 30 * 24 * 60 * 60 * 1000
 export async function startGuestSession(
   reservationNumber: string,
   property: PropertySlug,
+  recordCreatedAt: string,
   endsAt: number
 ) {
   const sessionEndsAt = endsAt + SESSION_GRACE_MS
@@ -25,6 +26,7 @@ export async function startGuestSession(
     {
       reservationNumber,
       property,
+      recordCreatedAt,
       expiresAt: Math.floor(sessionEndsAt / 1000)
     },
     guestAppEnv.sessionSecret()
@@ -58,7 +60,12 @@ export async function getActiveGuest(): Promise<ActiveGuest | null> {
     session.reservationNumber
   )
   const decision = windowDecision(reservation, Date.now())
-  if (!reservation || !decision.ok || decision.property !== session.property) {
+  if (
+    !reservation ||
+    !decision.ok ||
+    decision.property !== session.property ||
+    decision.recordCreatedAt !== session.recordCreatedAt
+  ) {
     return null
   }
   return {property: decision.property, reservation}
