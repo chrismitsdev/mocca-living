@@ -45,7 +45,7 @@ function DialogContent({
       <DialogOverlay />
       <RadixDialog.Content
         className={cn(
-          'fixed inset-bs-1/2 inset-s-1/2 -translate-1/2 origin-center z-50 inline-[calc(100%-24px)] block-auto max-block-[calc(100%-24px)] flex flex-col bg-surface-2 shadow-sm  data-open:animate-dialog-open data-closed:animate-dialog-close sm:max-inline-2xl',
+          'fixed inset-bs-1/2 inset-s-1/2 -translate-1/2 origin-center z-50 inline-[calc(100%-24px)] block-auto max-block-[calc(100%-24px)] flex flex-col bg-surface-2 shadow-sm data-open:animate-dialog-open data-closed:animate-dialog-close data-closed:pointer-events-none! sm:max-inline-2xl',
           className
         )}
         aria-describedby={ariaDescribedBy}
