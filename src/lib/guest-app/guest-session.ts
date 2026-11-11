@@ -8,7 +8,7 @@ import {createUpstashStore} from './store/upstash'
 // The guest's session cookie, and the check every guest page runs: a valid
 // signature, plus the stored booking still confirmed and inside its window
 
-const COOKIE_NAME = 'guest_app_session'
+const COOKIE_NAME = 'GUEST_SESSION'
 
 // The cookie outlives the access window on purpose, so a guest who's already
 // signed in stays in when an admin extends access. It grants nothing by

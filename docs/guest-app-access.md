@@ -365,7 +365,7 @@ toast copy under `Pages.guest-app.access`, schema errors in the action.
 
 ### 5.4 Session
 
-- The cookie `guest_app_session` is `httpOnly`, `Secure` (in production
+- The cookie `GUEST_SESSION` is `httpOnly`, `Secure` (in production
   builds), `SameSite=Lax`, with path `/`. It holds a token `v2.<payload>.<HMAC-SHA256>`
   (signed with `GUEST_APP_SESSION_SECRET`) carrying `{reservationNumber,
   property, expiresAt}` (`v1` tokens used `c`/`p`/`exp` and are rejected)
@@ -447,7 +447,7 @@ actions; `login-email.ts` the email).
 - **Sessions last 1 day per login and aren't extended by activity** (decided
   31 Oct 2026). A new login starts a new 1-day session.
 - Sessions are **stored in Redis** (`admin:session:<sha256(id)>` →
-  admin email, 24 h TTL). The cookie `guest_app_admin_session` (`httpOnly`,
+  admin email, 24 h TTL). The cookie `ADMIN_SESSION` (`httpOnly`,
   `Secure` in production builds, `SameSite=Lax`, 24 h) only carries the
   random id, so logout really ends the session, and all admin sessions can
   be cleared without touching guest sessions.
@@ -735,7 +735,7 @@ To lift a lockout early, delete
    - Full-name matching; valibot schema errors under the fields, booking
      outcomes in a single toast.
    - Explicit names: `reservationNumber`, `guest:*` / `admin:*` Redis keys,
-     `guest_app_session` cookie, `v2` session token.
+     `GUEST_SESSION` cookie, `v2` session token.
    - The guest app is visible on previews (`VERCEL_ENV`).
    - Verified on the preview with the §11 checklist (31 Oct 2026).
 4. **Admin** (login built 31 Oct – 1 Nov 2026; dashboard rebuilt 1–6 Nov

@@ -13,7 +13,7 @@ import {
 // The admin session cookie. It only carries a random id; the session
 // itself lives in Redis, so logging out really ends it
 
-const COOKIE_NAME = 'guest_app_admin_session'
+const COOKIE_NAME = 'ADMIN_SESSION'
 
 export async function startAdminSession(email: string) {
   const sessionId = await createAdminSession(createUpstashStore(), email)
