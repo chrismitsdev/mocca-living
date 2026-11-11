@@ -12,7 +12,7 @@ export type AuditEntry = {at: string; by: string; action: string}
 
 export type Reservation = {
   reservationNumber: string
-  channel: Channel | 'manual'
+  channel: Channel | 'admin'
   property: PropertySlug
   status: 'confirmed' | 'cancelled' | 'revoked'
   /** The booker's full name exactly as the platform saved it */
@@ -267,7 +267,7 @@ export async function addManualReservation(
 
   const reservation: Reservation = {
     reservationNumber,
-    channel: 'manual',
+    channel: 'admin',
     property: input.property,
     status: 'confirmed',
     bookerName: input.bookerName.trim().replace(/\s+/g, ' '),

@@ -11,10 +11,9 @@ export const PROPERTY_LABELS: Record<PropertySlug, string> = {
 export const CHANNEL_LABELS: Record<Reservation['channel'], string> = {
   booking: 'Booking.com',
   airbnb: 'Airbnb',
-  expedia: 'Expedia',
-  hotelo: 'Ιστοσελίδα (Hotelo)',
-  other: 'Άλλο κανάλι',
-  manual: 'Χειροκίνητη καταχώριση'
+  hotelo: 'Hotelo',
+  other: 'Άλλο',
+  admin: 'Διαχειριστής'
 }
 
 // What the dashboard shows. A stored "confirmed" booking is shown by where

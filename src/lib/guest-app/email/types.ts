@@ -2,7 +2,7 @@ import type {GuestAppProperty} from '../properties'
 
 export type ReservationSource = 'primal-res' | 'hotelo'
 
-export type Channel = 'booking' | 'airbnb' | 'expedia' | 'hotelo' | 'other'
+export type Channel = 'booking' | 'airbnb' | 'hotelo' | 'other'
 
 export type ParsedReservation = {
   reservationNumber: string

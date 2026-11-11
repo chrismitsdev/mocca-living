@@ -246,7 +246,7 @@ between levels (renamed from `guestApp*` on 10 Nov 2026).
 ```ts
 type Reservation = {
   reservationNumber: string // normalised: uppercase, no '#', spaces or dashes
-  channel: 'booking' | 'airbnb' | 'expedia' | 'hotelo' | 'other' | 'manual'
+  channel: 'booking' | 'airbnb' | 'hotelo' | 'other' | 'admin'
   property: PropertySlug // Georgia only through a manual add
   status: 'confirmed' | 'cancelled' | 'revoked'
   bookerName: string // booker's full name exactly as the platform saved it
@@ -262,10 +262,11 @@ type Reservation = {
 Implemented in `src/lib/guest-app/store/` behind a small key-value interface
 (an in-memory version for tests, Upstash in production).
 
-- **Channel**: Primal Res sets `booking`, `airbnb` or `expedia` from the
-  channel label (Expedia isn't connected today, but the label is recognised in
-  case it's added), and `other` for any unrecognised label. Hotelo emails are
-  `hotelo`; admin additions are `manual`.
+- **Channel**: Primal Res sets `booking` or `airbnb` from the channel label,
+  and `other` for any other label. Hotelo emails are `hotelo`; admin additions
+  are `admin`. The dashboard's "Προέλευση" shows them as Booking.com, Airbnb,
+  Hotelo, Άλλο and Διαχειριστής (decided 11 Nov 2026; Expedia was dropped, as
+  it isn't connected).
 - **Updates**:
   - an email applies only if its `sourceUpdatedAt` is newer than the stored
     one, so duplicates and late older emails are no-ops;
@@ -541,7 +542,7 @@ actions; `login-email.ts` the email).
   - **Άτομα**: required, a whole number from 1.
 
   Errors appear under their field, including the store's (duplicate number;
-  departure; stay ended). The record is saved as `manual`, `confirmed`, with
+  departure; stay ended). The record is saved as `admin`, `confirmed`, with
   "added manually" and the admin's email in `audit`. A later platform email
   for the same number with a newer `Last Update` updates it (§4). Closing
   the dialog clears it.
@@ -658,7 +659,7 @@ CLI in the stored format. Set `EXAT` to
 00:00 Athens, 3 days after checkout, and add it to the index:
 
 ```
-SET guest:reservation:TEST2026 '{"reservationNumber":"TEST2026","channel":"manual","property":"mocca-city","status":"confirmed","bookerName":"Test Tester","checkIn":"<YYYY-MM-DD>","checkOut":"<YYYY-MM-DD>","guestCount":2,"sourceUpdatedAt":"<ISO>","audit":[{"at":"<ISO>","by":"<admin email>","action":"added manually (test)"}]}' EXAT <epoch seconds>
+SET guest:reservation:TEST2026 '{"reservationNumber":"TEST2026","channel":"admin","property":"mocca-city","status":"confirmed","bookerName":"Test Tester","checkIn":"<YYYY-MM-DD>","checkOut":"<YYYY-MM-DD>","guestCount":2,"sourceUpdatedAt":"<ISO>","audit":[{"at":"<ISO>","by":"<admin email>","action":"added manually (test)"}]}' EXAT <epoch seconds>
 ZADD guest:reservationIndex <same epoch seconds> TEST2026
 ```
 

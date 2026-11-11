@@ -12,7 +12,6 @@ const TIMESTAMP = /(\d{2})\/(\d{2})\/(\d{4}) (\d{2}):(\d{2}):(\d{2})/
 function toChannel(label: string): Channel {
   if (/booking\.com/i.test(label)) return 'booking'
   if (/airbnb/i.test(label)) return 'airbnb'
-  if (/expedia/i.test(label)) return 'expedia'
   return 'other'
 }
 

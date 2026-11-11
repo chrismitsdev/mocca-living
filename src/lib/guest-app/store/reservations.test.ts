@@ -445,7 +445,7 @@ describe('addManualReservation', () => {
       'owner@example.com',
       new Date(clock)
     )
-    expect(added).toMatchObject({channel: 'manual', status: 'confirmed'})
+    expect(added).toMatchObject({channel: 'admin', status: 'confirmed'})
   })
 
   it('accepts a stay ending today before check-out time', async () => {
