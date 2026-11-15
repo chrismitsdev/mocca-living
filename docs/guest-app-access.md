@@ -540,9 +540,10 @@ actions; `login-email.ts` the email).
   arrive by email (a phone booking, a missed or failed email, Georgia).
   A dialog opened from the page header. Its description says how the dates
   become access ("Η πρόσβαση ανοίγει στις 00:00 την ημέρα άφιξης και λήγει
-  στις 11:00 την ημέρα αναχώρησης."); the date field keeps the booking's
-  wording, Άφιξη – Αναχώρηση, since the owner copies it from the booking
-  (decided 15 Nov 2026):
+  στις 11:00 την ημέρα αναχώρησης."). The date field is labelled in terms of
+  access, "Ημ. έναρξης/λήξης πρόσβασης", to match the dashboard columns
+  (decided 16 Nov 2026, replacing "Άφιξη – Αναχώρηση"). Submit buttons in the
+  add, extend and revoke dialogs are text only, no icon (16 Nov 2026):
   - **Ονοματεπώνυμο**: required, at most 120 characters (the guest form reads no
     more). The placeholder reminds the owner to type it as the guest will.
   - **Αριθμός κράτησης**: normalised exactly as the guest form does (§5.1), then
@@ -552,11 +553,13 @@ actions; `login-email.ts` the email).
     Must not already exist. For a booking with no platform number the
     owner makes one up and gives it to the guest (see §13).
   - **Κατάλυμα**: one of the three properties.
-  - **Άφιξη – Αναχώρηση**: from Tailwind's `sm` breakpoint up (40rem), one
+  - **Ημ. έναρξης/λήξης πρόσβασης**: from Tailwind's `sm` breakpoint up (40rem), one
     range calendar (`src/components/ui/date-range-picker.tsx`,
     react-day-picker v9 in a `Popup`, Greek, weeks from Monday); on narrower
-    screens, two native date inputs (`useMediaQuery` decides). Both submit
-    `YYYY-MM-DD` calendar days. Departure after arrival.
+    screens, two native date inputs, "Ημ. έναρξης πρόσβασης" and "Ημ. λήξης
+    πρόσβασης" (`useMediaQuery` decides). Both submit `YYYY-MM-DD` calendar
+    days (stored as `checkIn` / `checkOut`). The end must be after the start
+    ("Η λήξη πρέπει να είναι μετά την έναρξη.").
     **Arrival may be in the past** (a guest already at the property); a
     stay whose access has already ended is refused.
   - **Άτομα**: required, a whole number from 1.
@@ -572,10 +575,10 @@ actions; `login-email.ts` the email).
   ignored (§4).
 - **Παράταση πρόσβασης** (`extendAccessAction`): late checkout. A dialog on
   each row, prefilled with the current access end:
-  - **Ημερομηνία λήξης**: from the `sm` breakpoint up, a single-date
+  - **Ημ. λήξης πρόσβασης**: from the `sm` breakpoint up, a single-date
     calendar (`src/components/ui/date-picker.tsx`); on narrower screens, a
     native date input. Days before the current end can't be picked.
-  - **Ώρα λήξης**: a native time input. Date and time are always Athens
+  - **Ώρα λήξης πρόσβασης**: a native time input. Date and time are always Athens
     local, wherever the admin is.
 
   The new end must be later than the current access end, and the booking
@@ -728,7 +731,7 @@ To lift a lockout early, delete
 | Add a stay that ended yesterday                | "Η διαμονή έχει ήδη λήξει." under the dates                |
 | Add with arrival yesterday, departure tomorrow | Accepted, "Ενεργή"                                         |
 | Extend a booking to a later date and time      | New end with "(παράταση)"; audit shows the admin email     |
-| Extend to the current end or earlier           | Error under "Ημερομηνία λήξης"; values kept                |
+| Extend to the current end or earlier           | Error under "Ημ. λήξης πρόσβασης"; values kept             |
 | Signed-in guest, extend past the original end  | Guest stays signed in; sent to the form after the new end  |
 | Revoke `TESTADD01`                             | "Ανακλήθηκε"; the guest gets "Booking not found"           |
 | Log out                                        | Back to the login page; the session key is gone from Redis |

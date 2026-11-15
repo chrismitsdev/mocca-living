@@ -35,7 +35,7 @@ function StayDatesField({
         id='stay'
         error={error}
       >
-        <Label htmlFor='stay'>Άφιξη – Αναχώρηση</Label>
+        <Label htmlFor='stay'>Ημ. έναρξης/λήξης πρόσβασης</Label>
         <DateRangePicker
           id='stay'
           startName='checkIn'
@@ -58,7 +58,7 @@ function StayDatesField({
         id='checkIn'
         error={errors.checkIn}
       >
-        <Label htmlFor='checkIn'>Άφιξη</Label>
+        <Label htmlFor='checkIn'>Ημ. έναρξης πρόσβασης</Label>
         <Input
           id='checkIn'
           name='checkIn'
@@ -74,7 +74,7 @@ function StayDatesField({
         id='checkOut'
         error={errors.checkOut}
       >
-        <Label htmlFor='checkOut'>Αναχώρηση</Label>
+        <Label htmlFor='checkOut'>Ημ. λήξης πρόσβασης</Label>
         <Input
           id='checkOut'
           name='checkOut'

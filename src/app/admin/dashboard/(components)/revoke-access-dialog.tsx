@@ -107,7 +107,6 @@ function RevokeAccessDialog({
               isLoading={isPending}
             >
               Ανάκληση
-              <IconBan aria-hidden />
             </Button>
           </form>
         </DialogBody>

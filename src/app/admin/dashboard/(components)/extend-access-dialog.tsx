@@ -146,7 +146,7 @@ function ExtendAccessDialog({
                 id='accessUntilTime'
                 error={errors.accessUntilTime}
               >
-                <Label htmlFor='accessUntilTime'>Ώρα λήξης</Label>
+                <Label htmlFor='accessUntilTime'>Ώρα λήξης πρόσβασης</Label>
                 <Input
                   id='accessUntilTime'
                   name='accessUntilTime'
@@ -172,7 +172,6 @@ function ExtendAccessDialog({
                   isLoading={isPending}
                 >
                   Παράταση
-                  <IconCalendarPlus aria-hidden />
                 </Button>
               </div>
             </div>
@@ -202,7 +201,7 @@ function AccessUntilDateField({
       id='accessUntilDate'
       error={error}
     >
-      <Label htmlFor='accessUntilDate'>Ημερομηνία λήξης</Label>
+      <Label htmlFor='accessUntilDate'>Ημ. λήξης πρόσβασης</Label>
       {wide ? (
         <DatePicker
           id='accessUntilDate'

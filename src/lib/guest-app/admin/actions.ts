@@ -67,7 +67,7 @@ const messages = {
   bookerNameLength: 'Έως 120 χαρακτήρες',
   guestCount: 'Από 1 και πάνω',
   duplicate: 'Υπάρχει ήδη πρόσβαση για αυτόν τον αριθμό κράτησης.',
-  checkOutBeforeCheckIn: 'Η αναχώρηση πρέπει να είναι μετά την άφιξη.',
+  checkOutBeforeCheckIn: 'Η λήξη πρέπει να είναι μετά την έναρξη.',
   stayEnded: 'Η διαμονή έχει ήδη λήξει.',
   endNotLater: 'Η νέα λήξη πρέπει να είναι μετά την τρέχουσα.'
 }

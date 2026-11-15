@@ -204,7 +204,6 @@ function AddAccessDialog() {
                   isLoading={isPending}
                 >
                   Προσθήκη
-                  <IconPlus aria-hidden />
                 </Button>
               </div>
             </div>
