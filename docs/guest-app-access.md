@@ -786,8 +786,10 @@ alerts); 3 inboxes; 1 webhook endpoint.
 - Does Hotelo send cancellation or modification emails for direct bookings?
 - What does a Primal Res modification email look like?
 - Are Hotelo emails ever localised (en/el/tr/bg)?
-- Confirm the §3.3 ARC attestation with the first real Primal Res and Hotelo
-  emails forwarded through the filter.
+- Confirm the §3.3 ARC attestation with the first real Primal Res email
+  forwarded through the filter. Hotelo is confirmed: a real (non-reservation)
+  Hotelo email on 10 Nov 2026 passed the origin check on the preview and was
+  answered `ignored: no booking reference`, as designed.
 - After 22 Nov 2026: do revplus reservation emails keep the same sender and layout?
 - When Georgia gets a listing: add its exact property name(s) to the mapping.
 - If reservation emails start coming from `revplus.com`: add it to the
