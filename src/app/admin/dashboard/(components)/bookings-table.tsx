@@ -21,8 +21,8 @@ function BookingsTable({rows}: {rows: BookingRow[]}) {
             <TableHead>Ονοματεπώνυμο</TableHead>
             <TableHead>Αριθμός κράτησης</TableHead>
             <TableHead>Κατάλυμα</TableHead>
-            <TableHead>Διαμονή</TableHead>
-            <TableHead>Λήξη</TableHead>
+            <TableHead>Έναρξη πρόσβασης</TableHead>
+            <TableHead>Λήξη πρόσβασης</TableHead>
             <TableHead>Άτομα</TableHead>
             <TableHead>Προέλευση</TableHead>
             <TableHead>Πρόσβαση</TableHead>
@@ -36,7 +36,7 @@ function BookingsTable({rows}: {rows: BookingRow[]}) {
               <TableCell>{row.reservationNumber}</TableCell>
               <TableCell>{row.property}</TableCell>
               <TableCell className='whitespace-nowrap'>
-                {row.checkIn} – {row.checkOut}
+                {row.accessStarts}
               </TableCell>
               <TableCell className='whitespace-nowrap'>
                 {row.accessEnds}

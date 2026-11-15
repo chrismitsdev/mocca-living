@@ -2,7 +2,6 @@ import type {Badge} from '@/src/components/ui/badge'
 import {accessWindow} from '@/src/lib/guest-app/access'
 import {PROPERTY_TIMES, PROPERTY_TIMEZONE} from '@/src/lib/guest-app/properties'
 import {
-  accessEndsAt,
   isChangeable,
   type Reservation
 } from '@/src/lib/guest-app/store/reservations'
@@ -11,7 +10,7 @@ import {
   zonedTime,
   zonedTimeToEpochMs
 } from '@/src/lib/guest-app/time'
-import {formatDate, formatDateTime} from './format'
+import {formatDateTime} from './format'
 import {
   CHANNEL_LABELS,
   type DisplayStatus,
@@ -35,16 +34,17 @@ export type BookingRow = {
   reservationNumber: string
   bookerName: string
   property: string
-  checkIn: string
-  checkOut: string
   guestCount: string
   channel: string
   status: DisplayStatus
   statusLabel: string
   /** Badge colour for the status */
   statusVariant: React.ComponentProps<typeof Badge>['variant']
-  /** When access ends (check-out time, or the extension); "—" when the
-   * booking has no access at all (cancelled or revoked) */
+  /** The guest-app access window as date and time, from the same
+   * accessWindow the guest app uses: opens 00:00 on arrival day, ends at
+   * check-out or the extension. Both "—" when the booking has no access at
+   * all (cancelled or revoked) */
+  accessStarts: string
   accessEnds: string
   /** The same moment as form values, property-local: "YYYY-MM-DD", "HH:MM" */
   accessEndsDate: string
@@ -74,7 +74,7 @@ function toBookingRow(reservation: Reservation, now: number): BookingRow {
     PROPERTY_TIMES[reservation.property].checkOut,
     PROPERTY_TIMEZONE
   )
-  const endsAt = accessEndsAt(reservation)
+  const {opensAt, endsAt} = accessWindow(reservation)
   const confirmed = reservation.status === 'confirmed'
   // Worked out on read, never stored
   const status: DisplayStatus =
@@ -88,8 +88,6 @@ function toBookingRow(reservation: Reservation, now: number): BookingRow {
     reservationNumber: reservation.reservationNumber,
     bookerName: reservation.bookerName,
     property: PROPERTY_LABELS[reservation.property],
-    checkIn: formatDate(reservation.checkIn),
-    checkOut: formatDate(reservation.checkOut),
     guestCount:
       reservation.guestCount === null ? '—' : String(reservation.guestCount),
     channel: CHANNEL_LABELS[reservation.channel],
@@ -97,6 +95,7 @@ function toBookingRow(reservation: Reservation, now: number): BookingRow {
     statusLabel: STATUS_LABELS[status],
     statusVariant: STATUS_VARIANTS[status],
     // Cancelled and revoked bookings never let the guest in
+    accessStarts: confirmed ? formatDateTime(opensAt) : '—',
     accessEnds: confirmed ? formatDateTime(endsAt) : '—',
     accessEndsDate: zonedDate(endsAt, PROPERTY_TIMEZONE),
     accessEndsTime: zonedTime(endsAt, PROPERTY_TIMEZONE),

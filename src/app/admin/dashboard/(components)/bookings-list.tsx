@@ -40,11 +40,9 @@ function BookingsList({rows}: {rows: BookingRow[]}) {
                   <dd>{row.reservationNumber}</dd>
                   <dt className='font-bold'>Κατάλυμα</dt>
                   <dd>{row.property}</dd>
-                  <dt className='font-bold'>Διαμονή</dt>
-                  <dd className='whitespace-nowrap'>
-                    {row.checkIn} – {row.checkOut}
-                  </dd>
-                  <dt className='font-bold'>Λήξη</dt>
+                  <dt className='font-bold'>Έναρξη πρόσβασης</dt>
+                  <dd>{row.accessStarts}</dd>
+                  <dt className='font-bold'>Λήξη πρόσβασης</dt>
                   <dd>
                     {row.accessEnds}
                     {row.extended && ' (παράταση)'}

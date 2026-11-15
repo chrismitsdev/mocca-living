@@ -503,7 +503,7 @@ actions; `login-email.ts` the email).
     and the rest in the content.
 
   Fields: Αριθμός κράτησης, Ονοματεπώνυμο (the **stored booker name**, so the owner can tell
-  a stuck guest exactly what to type), Κατάλυμα, Διαμονή, Λήξη, Άτομα,
+  a stuck guest exactly what to type), Κατάλυμα, Έναρξη πρόσβασης, Λήξη πρόσβασης, Άτομα,
   Προέλευση, Πρόσβαση, Ενέργειες. Times are in Europe/Athens. Both views
   render and CSS shows one, so there's no layout jump.
 - **"Πρόσβαση" column**: what the guest app would do right now. Worked out
@@ -519,9 +519,18 @@ actions; `login-email.ts` the email).
   | Ακυρώθηκε       | `cancelled`                              | red   |
   | Ανακλήθηκε      | `revoked`                                | red   |
 
-  "Λήξη" shows the access end, with "(παράταση)" when extended, and "—" for
-  cancelled or revoked records. Order: active, then upcoming, then ended;
-  by arrival within each group.
+  The two access columns show the guest-app access window from
+  `accessWindow`, not the booking dates (decided 14 Nov 2026; they replaced
+  "Διαμονή" and "Λήξη"). "Έναρξη πρόσβασης" is when access opens (00:00 on
+  arrival day; the time is shown because the owner may not know it isn't the
+  check-in time). "Λήξη πρόσβασης" is when it ends (check-out, or the
+  extension, marked "(παράταση)"). Both show "—" for cancelled or revoked
+  records. An extended booking's original departure isn't shown; it's still
+  in the record and the audit. Order: active, then upcoming, then ended; by
+  arrival within each group.
+- **Times** in the dashboard use a 24-hour clock (`hourCycle: 'h23'` in
+  `format.ts`, decided 15 Nov 2026): midnight is 00:00, not the Greek
+  default "12:00 π.μ.", and not 24:00 as `h24` would show.
 - **Which actions are allowed**: one rule, `isChangeable` in
   `src/lib/guest-app/store/reservations.ts`: the record is `confirmed` and
   access hasn't ended. The buttons use it to enable themselves and every
