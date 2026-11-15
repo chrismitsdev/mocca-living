@@ -25,7 +25,7 @@ function BookingsList({rows}: {rows: BookingRow[]}) {
                 aria-hidden
               />
               <Typography
-                className='col-span-2 font-mono'
+                className='col-span-2'
                 variant='small'
               >
                 {row.reservationNumber}
