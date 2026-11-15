@@ -32,7 +32,7 @@ function BookingsTable({rows}: {rows: BookingRow[]}) {
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.reservationNumber}>
-              <TableCell className='font-semibold'>{row.bookerName}</TableCell>
+              <TableCell>{row.bookerName}</TableCell>
               <TableCell>{row.reservationNumber}</TableCell>
               <TableCell>{row.property}</TableCell>
               <TableCell className='whitespace-nowrap'>
