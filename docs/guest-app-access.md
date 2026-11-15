@@ -538,7 +538,11 @@ actions; `login-email.ts` the email).
   loads.
 - **Προσθήκη πρόσβασης** (`addAccessAction`): for a booking that didn't
   arrive by email (a phone booking, a missed or failed email, Georgia).
-  A dialog opened from the page header:
+  A dialog opened from the page header. Its description says how the dates
+  become access ("Η πρόσβαση ανοίγει στις 00:00 την ημέρα άφιξης και λήγει
+  στις 11:00 την ημέρα αναχώρησης."); the date field keeps the booking's
+  wording, Άφιξη – Αναχώρηση, since the owner copies it from the booking
+  (decided 15 Nov 2026):
   - **Ονοματεπώνυμο**: required, at most 120 characters (the guest form reads no
     more). The placeholder reminds the owner to type it as the guest will.
   - **Αριθμός κράτησης**: normalised exactly as the guest form does (§5.1), then
