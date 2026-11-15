@@ -16,7 +16,7 @@
   "devDependencies": {
     "@adamscybot/react-leaflet-component-marker": "^2.0.3",
     "@biomejs/biome": "^2.6.7",
-    "@eloqnt/cli": "^0.7.0",
+    "@eloqnt/cli": "^0.7.1",
     "@react-email/ui": "^6.11.11",
     "@sina_byn/re-audio": "^2.1.3",
     "@tabler/icons-react": "^3.51.0",
