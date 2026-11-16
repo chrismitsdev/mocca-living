@@ -1,10 +1,7 @@
-import {IconLogout} from '@tabler/icons-react'
 import {notFound} from 'next/navigation'
 import {Section} from '@/src/components/shared/section'
-import {Button} from '@/src/components/ui/button'
 import {Typography} from '@/src/components/ui/typography'
 import {GUEST_APP_HIDDEN} from '@/src/lib/constants'
-import {logoutAction} from '@/src/lib/guest-app/admin/actions'
 import {requireAdmin} from '@/src/lib/guest-app/admin/admin-session'
 import {listReservations} from '@/src/lib/guest-app/store/reservations'
 import {createUpstashStore} from '@/src/lib/guest-app/store/upstash'
@@ -12,6 +9,7 @@ import {AddAccessDialog} from './(components)/add-access-dialog'
 import {toBookingRows} from './(components)/booking-row'
 import {BookingsList} from './(components)/bookings-list'
 import {BookingsTable} from './(components)/bookings-table'
+import {LogoutButton} from './(components)/logout-button'
 
 export default async function AdminDashboardPage() {
   if (GUEST_APP_HIDDEN) notFound()
@@ -35,15 +33,7 @@ export default async function AdminDashboardPage() {
         </Typography>
         <div className='flex flex-wrap gap-2'>
           <AddAccessDialog />
-          <form action={logoutAction}>
-            <Button
-              type='submit'
-              variant='secondary'
-            >
-              Αποσύνδεση
-              <IconLogout aria-hidden />
-            </Button>
-          </form>
+          <LogoutButton />
         </div>
       </div>
 
