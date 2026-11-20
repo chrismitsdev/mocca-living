@@ -33,7 +33,7 @@ describe('Primal Res emails', () => {
       checkIn: '2026-10-02',
       checkOut: '2026-10-04',
       guestCount: 3,
-      sourceUpdatedAt: '2026-10-01T06:05:00.000Z'
+      sourceUpdatedAt: '2026-10-01T03:05:00.000Z'
     })
   })
 
@@ -51,7 +51,7 @@ describe('Primal Res emails', () => {
       property: 'mocca-city',
       checkIn: '2026-10-02',
       checkOut: '2026-10-04',
-      sourceUpdatedAt: '2026-10-01T19:37:51.000Z'
+      sourceUpdatedAt: '2026-10-01T16:37:51.000Z'
     })
   })
 
@@ -72,8 +72,18 @@ describe('Primal Res emails', () => {
       checkIn: '2026-09-26',
       checkOut: '2026-09-28',
       guestCount: 4,
-      sourceUpdatedAt: '2026-09-25T22:24:32.000Z'
+      sourceUpdatedAt: '2026-09-25T19:24:32.000Z'
     })
+  })
+
+  it('reads Last Update as Athens time in winter too', () => {
+    const html = fixture('primal-res-booking-reservation').replace(
+      'Last Update:&nbsp;01/10/2026 06:05:00',
+      'Last Update:&nbsp;19/11/2026 18:06:12'
+    )
+    const reservation = reservationOf(parseReservationBody('primal-res', html))
+
+    expect(reservation.sourceUpdatedAt).toBe('2026-11-19T16:06:12.000Z')
   })
 
   it('fails on an unknown property instead of guessing', () => {

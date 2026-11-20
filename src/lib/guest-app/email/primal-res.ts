@@ -1,10 +1,12 @@
 import {normalizeReservationNumber} from '../normalize'
-import {mapPropertyName} from '../properties'
+import {mapPropertyName, PROPERTY_TIMEZONE} from '../properties'
+import {zonedTimeToEpochMs} from '../time'
 import {parseGuestCount, parseSlashDate, valueAfter} from './text'
 import type {Channel, ParseResult} from './types'
 
 // Reservation emails from the Primal Res channel manager (Booking.com, Airbnb).
-// Timestamps carry no zone; they match the UTC send time of the email
+// Timestamps carry no zone and are Athens local time (a real email stamped
+// 18:06:12 arrived at 16:06:24 UTC in November)
 
 const STAY_LINE = /^(\d{2}\/\d{2}\/\d{4})\s*-\s*(\d{2}\/\d{2}\/\d{4})$/
 const TIMESTAMP = /(\d{2})\/(\d{2})\/(\d{4}) (\d{2}):(\d{2}):(\d{2})/
@@ -19,7 +21,12 @@ function parseTimestamp(value: string | undefined): string | null {
   const match = value?.match(TIMESTAMP)
   if (!match) return null
   const [, day, month, year, hours, minutes, seconds] = match
-  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.000Z`
+  const epochMs = zonedTimeToEpochMs(
+    `${year}-${month}-${day}`,
+    `${hours}:${minutes}`,
+    PROPERTY_TIMEZONE
+  )
+  return new Date(epochMs + Number(seconds) * 1000).toISOString()
 }
 
 export function parsePrimalRes(lines: string[]): ParseResult {
