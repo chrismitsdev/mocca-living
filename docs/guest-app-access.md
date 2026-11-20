@@ -4,9 +4,11 @@ Design for restricting the guest app (`/[locale]/guests`) to guests with an
 active reservation. The guest-app **content** is out of scope here and will be
 designed once the owner finalises it.
 
-Status (10 Nov 2026): steps 1–3 implemented on branch `feat/guest-app-access`
-and verified on its Vercel preview. Step 4 (admin), including extend, is
-built and waiting for its preview check. See §12.
+Status (21 Nov 2026): steps 1–3 implemented on branch `feat/guest-app-access`
+and verified on its Vercel preview. The first real reservation (Airbnb, 19 Nov
+2026) went through intake, origin check, parsing and storage, and the guest
+could sign in. Step 4 (admin), including extend, is built and waiting for its
+preview check. See §12.
 
 ## 1. Requirements
 
@@ -78,8 +80,10 @@ They have no guest name and are **ignored**.
   - `Booked By` is always the **booker** and is the only name stored and
     matched. `Guest Info` can name someone else (a booking made for another
     person), and the `Client Comments` guest list isn't used.
-  - `Res ID` / `Last Update` timestamps have no zone. They match the UTC send
-    time, so they're treated as UTC.
+  - `Res ID` / `Last Update` timestamps have no zone. They're **Athens local
+    time**: the first real email (19 Nov 2026) was stamped 18:06:12 and
+    arrived at 16:06:24 UTC. They're converted from Europe/Athens to UTC
+    (until 21 Nov 2026 they were wrongly read as UTC).
 - The two channel layouts differ slightly. Parse only the shared fields.
 - Modification emails haven't been seen yet. Treat any email with a newer
   `Last Update` for the same ID as replacing the previous state.
@@ -228,8 +232,9 @@ Together these prove the body was signed by the allowed sender and hasn't
 changed since. A forged email can't carry a valid seal from our domain's
 Hostinger key. Replaying a genuine email is harmless (idempotent upsert).
 
-Still to confirm with real emails: Primal Res (`c=relaxed/simple` body) and
-Hotelo (`c=relaxed/relaxed`) forwarded through the filter.
+Confirmed with real emails forwarded through the filter: Hotelo
+(`c=relaxed/relaxed`) on 10 Nov 2026 and Primal Res (`c=relaxed/simple`
+body) on 19 Nov 2026.
 
 Unforwarded samples saved from the mailbox pass direct DKIM for Primal Res.
 Hotelo's Google Workspace signatures carry a **7-day expiry** (`x=`), so an
@@ -753,7 +758,8 @@ To lift a lockout early, delete
    - The Resend webhook (`email.received`) points at the branch preview.
      Verified end to end with a forwarded test email: the ARC seal checked
      out, and the sender was ignored as not allowed.
-   - Still to see: the first real reservation stored.
+   - First real reservation stored on 19 Nov 2026 (an Airbnb booking via
+     Primal Res); the guest signed in with it on 20 Nov 2026.
 3. **Guest access** ✅ (31 Oct 2026).
    - Verify page, server action, rate limiting, session cookie, property and
      window checks, translations.
@@ -789,10 +795,6 @@ alerts); 3 inboxes; 1 webhook endpoint.
 - Does Hotelo send cancellation or modification emails for direct bookings?
 - What does a Primal Res modification email look like?
 - Are Hotelo emails ever localised (en/el/tr/bg)?
-- Confirm the §3.3 ARC attestation with the first real Primal Res email
-  forwarded through the filter. Hotelo is confirmed: a real (non-reservation)
-  Hotelo email on 10 Nov 2026 passed the origin check on the preview and was
-  answered `ignored: no booking reference`, as designed.
 - After 22 Nov 2026: do revplus reservation emails keep the same sender and layout?
 - When Georgia gets a listing: add its exact property name(s) to the mapping.
 - If reservation emails start coming from `revplus.com`: add it to the
