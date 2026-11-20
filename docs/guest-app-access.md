@@ -4,11 +4,10 @@ Design for restricting the guest app (`/[locale]/guests`) to guests with an
 active reservation. The guest-app **content** is out of scope here and will be
 designed once the owner finalises it.
 
-Status (21 Nov 2026): steps 1–3 implemented on branch `feat/guest-app-access`
+Status (21 Nov 2026): steps 1–4 implemented on branch `feat/guest-app-access`
 and verified on its Vercel preview. The first real reservation (Airbnb, 19 Nov
 2026) went through intake, origin check, parsing and storage, and the guest
-could sign in. Step 4 (admin), including extend, is built and waiting for its
-preview check. See §12.
+could sign in. Next: the privacy policy (step 5). See §12.
 
 ## 1. Requirements
 
@@ -660,7 +659,7 @@ filter) are made manually from step-by-step instructions.
 - Fixtures are synthetic emails modelled on the real templates, with
   **invented** names, numbers and contacts. No real guest data goes in the
   repository.
-- Covered (116 tests):
+- Covered (117 tests):
   - both parsers, including cancellations, and the HTML-to-text step;
   - localised Hotelo dates;
   - origin verification (direct DKIM and the Hostinger ARC attestation);
@@ -720,27 +719,31 @@ checked out yesterday).
 To lift a lockout early, delete
 `guest:rateLimit:reservationNumber:<number>`.
 
-**Admin checklist** (preview, `/admin`):
+**Admin checklist** (preview, `/admin`; all passed on 21 Nov 2026):
 
-| Step                                           | Expected                                                   |
-| ---------------------------------------------- | ---------------------------------------------------------- |
-| Open `/admin` or `/admin/dashboard` signed out | Login page                                                 |
-| Request a link for an allowlisted email        | Same message as for any email; the email arrives           |
-| Request a link for another email               | Same message; no email                                     |
-| Open the link                                  | Straight to `/admin/dashboard`, signed in                  |
-| Use the same link again, or after 15 minutes   | "The link expired or was already used" toast               |
-| List, desktop and phone width                  | Same bookings and fields in the table and the collapsibles |
-| Add `TESTADD01` for today                      | "Ενεργή" row appears; works on `/en/guests`                |
-| Add with a number of 7 characters, or `ΗΜ…`    | Error under "Αριθμός κράτησης"                             |
-| Add `TESTADD01` again                          | "Already exists" error under "Αριθμός κράτησης"            |
-| Add a stay that ended yesterday                | "Η διαμονή έχει ήδη λήξει." under the dates                |
-| Add with arrival yesterday, departure tomorrow | Accepted, "Ενεργή"                                         |
-| Extend a booking to a later date and time      | New end with "(παράταση)"; audit shows the admin email     |
-| Extend to the current end or earlier           | Error under "Ημ. λήξης πρόσβασης"; values kept             |
-| Signed-in guest, extend past the original end  | Guest stays signed in; sent to the form after the new end  |
-| Revoke `TESTADD01`                             | "Ανακλήθηκε"; the guest gets "Booking not found"           |
-| Log out                                        | Back to the login page; the session key is gone from Redis |
-| Request more than 3 links for one email        | "Too many attempts" toast                                  |
+| Step                                                                     | Expected                                                   |
+| ------------------------------------------------------------------------ | ---------------------------------------------------------- |
+| Open `/admin` or `/admin/dashboard` signed out                           | Login page                                                 |
+| Request a link for an allowlisted email                                  | Same message as for any email; the email arrives           |
+| Request a link for another email                                         | Same message; no email                                     |
+| Open the link                                                            | Straight to `/admin/dashboard`, signed in                  |
+| Signed out, use the same link again or after 15 min                      | "The link expired or was already used" toast               |
+| List, desktop and phone width                                            | Same bookings and fields in the table and the collapsibles |
+| Add `TESTADD01` for today                                                | "Ενεργή" row appears; works on `/en/guests`                |
+| Add with a number of 7 characters, or `ΗΜ…`                              | Error under "Αριθμός κράτησης"                             |
+| Add `TESTADD01` again                                                    | "Already exists" error under "Αριθμός κράτησης"            |
+| Add a stay that ended yesterday                                          | "Η διαμονή έχει ήδη λήξει." under the dates                |
+| Add with arrival yesterday, departure tomorrow                           | Accepted, "Ενεργή"                                         |
+| Extend a booking to a later date and time                                | New end with "(παράταση)"; audit shows the admin email     |
+| Extend to the current end or earlier                                     | Error under "Ημ. λήξης πρόσβασης"; values kept             |
+| Signed-in guest, extend past the original end                            | Guest stays signed in; sent to the form after the new end  |
+| Revoke `TESTADD01`                                                       | "Ανακλήθηκε"; the guest gets "Booking not found"           |
+| Log out                                                                  | Back to the login page; the session key is gone from Redis |
+| Request more than 3 links for one email                                  | "Too many attempts" toast                                  |
+| Signed-in guest; delete the record in Upstash, add the same number again | Guest is sent back to the form on reload                   |
+
+Opening a used link while still signed in lands on the dashboard: the link
+fails, but the login page forwards the existing session. That's expected.
 
 ## 12. Build order
 
@@ -769,10 +772,10 @@ To lift a lockout early, delete
      `GUEST_SESSION` cookie, `v3` session token.
    - The guest app is visible on previews (`VERCEL_ENV`).
    - Verified on the preview with the §11 checklist (31 Oct 2026).
-4. **Admin** (login built 31 Oct – 1 Nov 2026; dashboard rebuilt 1–6 Nov
-   2026). Magic-link login straight to `/admin/dashboard` (§6); the list,
-   "Προσθήκη πρόσβασης", revoke and extend work (§7).
-   - To verify on the preview: the admin checklist in §11.
+4. **Admin** ✅ (21 Nov 2026; login built 31 Oct – 1 Nov 2026, dashboard
+   rebuilt 1–6 Nov 2026). Magic-link login straight to `/admin/dashboard`
+   (§6); the list, "Προσθήκη πρόσβασης", revoke and extend work (§7).
+   - Verified on the preview with the §11 admin checklist (21 Nov 2026).
 5. **Privacy policy** update.
 6. **Content** (separate design, once the owner finalises it), then remove
    the production 404 guards.
