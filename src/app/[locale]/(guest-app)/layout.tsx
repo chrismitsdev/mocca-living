@@ -1,6 +1,7 @@
 import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
 import {Header} from '@/src/app/[locale]/(guest-app)/(components)/header'
+import {SlidePageTransition} from '@/src/components/shared/page-transition'
 import {GUEST_APP_HIDDEN} from '@/src/lib/constants'
 
 export const metadata: Metadata = {
@@ -25,7 +26,9 @@ export default function GuestAppLayout({children}: React.PropsWithChildren) {
   return (
     <div className='flex flex-col min-h-dvh'>
       <Header />
-      <main className='bg-surface-1 flex-1'>{children}</main>
+      <main className='bg-surface-1 flex-1 flex flex-col'>
+        <SlidePageTransition>{children}</SlidePageTransition>
+      </main>
     </div>
   )
 }

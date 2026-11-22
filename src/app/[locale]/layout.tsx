@@ -2,7 +2,7 @@ import {Analytics} from '@vercel/analytics/next'
 import type {Metadata} from 'next'
 import {NextIntlClientProvider} from 'next-intl'
 import {getLocale} from 'next-intl/server'
-import {PageTransition} from '@/src/components/shared/page-transition'
+import {LogoPageTransition} from '@/src/components/shared/page-transition'
 import {Shell} from '@/src/components/shared/shell'
 import {routing} from '@/src/i18n/routing'
 import {IS_PRODUCTION, SITE_URL} from '@/src/lib/constants'
@@ -29,7 +29,7 @@ export default async function LocaleLayout({
   return (
     <Shell lang={locale}>
       <NextIntlClientProvider>
-        <PageTransition>{children}</PageTransition>
+        <LogoPageTransition>{children}</LogoPageTransition>
       </NextIntlClientProvider>
       {IS_PRODUCTION && <Analytics />}
     </Shell>

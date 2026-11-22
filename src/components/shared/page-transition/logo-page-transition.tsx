@@ -44,9 +44,18 @@ const anim = (variants: Variants) => ({
   variants
 })
 
-function PageTransition({children}: React.PropsWithChildren) {
+/**
+ * Site-wide page transition: a full-screen panel with the Mocca logo slides
+ * up over the old page while it shrinks back, then fades to the new page
+ */
+function LogoPageTransition({children}: React.PropsWithChildren) {
   const pathname = usePathname()
   const reduceMotion = useReducedMotion()
+  // The guest app counts as one page here: it has its own sideways
+  // transition (SlidePageTransition), so this one only plays on the way in
+  // and out of it
+  const inGuestApp = pathname === '/guests' || pathname.startsWith('/guests/')
+  const routeKey = inGuestApp ? '/guests' : pathname
 
   if (reduceMotion) return children
 
@@ -54,7 +63,7 @@ function PageTransition({children}: React.PropsWithChildren) {
     <>
       <AnimatePresence initial={false}>
         <motion.div
-          key={pathname}
+          key={routeKey}
           aria-hidden
           className='fixed inset-0 bg-surface-3 z-100 flex justify-center items-center'
           {...anim(slide)}
@@ -72,7 +81,7 @@ function PageTransition({children}: React.PropsWithChildren) {
         initial={false}
       >
         <div
-          key={pathname}
+          key={routeKey}
           className='bg-black'
         >
           <motion.div
@@ -87,4 +96,4 @@ function PageTransition({children}: React.PropsWithChildren) {
   )
 }
 
-export {PageTransition}
+export {LogoPageTransition}
