@@ -294,6 +294,10 @@
       "agreement": {
         "title": "Terms of Use",
         "description": "Use of the moccaliving.com website and its services constitutes acceptance of these terms of use, which apply to all content, pages, graphics, images, photographs, and files available on the website. Visitors should carefully read these terms before accessing or using the website. If they do not agree with them, they should refrain from using the website's services and content. The content of these pages may be amended from time to time without prior notice. Continued use of the website following any changes constitutes unconditional acceptance of the revised terms."
+      },
+      "guest-app": {
+        "title": "Guest app",
+        "description": "Guests staying at our properties can use the guest app on our website during their stay. So that only guests with a valid booking get access, we keep the following details for each booking, taken from the reservation emails we receive from booking platforms and our booking engine, or entered by us: the reservation number, the full name of the person who made the booking, the property, the arrival and departure dates, the number of guests and the booking channel. We do not keep email addresses, phone numbers, postal addresses or payment details. We use these details only to give access to the guest app during the stay (performance of the contract), and they are deleted automatically three days after access ends. When you sign in, a necessary cookie keeps you signed in until access ends, and an irreversibly encoded (hashed) form of your IP address is kept for 15 minutes to prevent abuse. The data is stored in the European Union by our processors Upstash (Frankfurt) and Vercel (hosting, Frankfurt). Reservation emails are received through Resend (Ireland), which keeps a copy of each email for 30 days. You can ask us at info@moccaliving.com to see or delete your details."
       }
     },
     "cookies": {

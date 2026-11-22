@@ -26,6 +26,15 @@ function Content() {
           </Typography>
           <Typography>{t('agreement.description')}</Typography>
         </article>
+        <article className='space-y-4'>
+          <Typography
+            variant='h4'
+            as='h2'
+          >
+            {t('guest-app.title')}
+          </Typography>
+          <Typography>{t('guest-app.description')}</Typography>
+        </article>
       </div>
     </Section>
   )
