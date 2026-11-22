@@ -23,9 +23,9 @@ export default function GuestAppLayout({children}: React.PropsWithChildren) {
   if (GUEST_APP_HIDDEN) notFound()
 
   return (
-    <>
+    <div className='flex flex-col min-h-dvh'>
       <Header />
-      <main className='bg-surface-1'>{children}</main>
-    </>
+      <main className='bg-surface-1 flex-1'>{children}</main>
+    </div>
   )
 }

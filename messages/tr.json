@@ -373,6 +373,339 @@
             }
           }
         }
+      },
+      "back": "Geri",
+      "home": {
+        "title": "{property} misafir uygulamasına hoş geldiniz",
+        "description": "Konaklamanız için ihtiyacınız olan her şey tek bir yerde."
+      },
+      "sections": {
+        "wifi": {
+          "title": "Wi-Fi"
+        },
+        "devices": {
+          "title": "Cihazlar"
+        },
+        "check-out": {
+          "title": "Çıkış"
+        },
+        "emergency": {
+          "title": "Telefonlar"
+        }
+      },
+      "wifi": {
+        "network": "Ağ adı",
+        "password": "Şifre",
+        "copy": "Şifreyi kopyala",
+        "copied": "Şifre kopyalandı",
+        "copy-failed": "Kopyalanamadı",
+        "copy-failed-hint": "Seçmek için şifreye dokunun, ardından kopyalayın.",
+        "missing": "Wi-Fi bilgileri burada henüz mevcut değil. Lütfen bizimle iletişime geçin, size gönderelim."
+      },
+      "devices": {
+        "description": "Açıklama",
+        "how-to": "Kullanım",
+        "safety": "Güvenlik",
+        "cleaning": "Temizlik"
+      },
+      "check-out": {
+        "deadline": "Çıkışınız",
+        "checklist": "Ayrılmadan önce",
+        "item-1": "Eşyalarınızı toplayın: dolapları, çekmeceleri ve şarj aletlerini kontrol edin.",
+        "item-2": "Klimayı, ışıkları ve cihazları kapatın.",
+        "item-3": "Pencereleri ve balkon kapılarını kapatın.",
+        "item-4": "Anahtarları kararlaştırdığımız şekilde bırakın ve kapıyı arkanızdan kapatın.",
+        "thanks": "Bizi tercih ettiğiniz için teşekkür ederiz. İyi yolculuklar!"
+      },
+      "emergency": {
+        "numbers": "Acil durum numaraları",
+        "general": "Avrupa acil çağrı numarası",
+        "police": "Polis",
+        "fire": "İtfaiye",
+        "ambulance": "Ambulans",
+        "coast-guard": "Sahil Güvenlik",
+        "note": "112 her telefondan ücretsiz aranabilir."
+      },
+      "device-guides": {
+        "mocca-by-the-sea-dimitra": {
+          "mini-pool": {
+            "name": "Mini havuz",
+            "model": "Miskakis Spa · özel yapım",
+            "description": "Hidromasajlı, ayarlanabilir hava akışlı ve su altı renkli aydınlatmalı özel mini havuz.",
+            "step-1": "Girmeden önce duş alın ve suyun jetleri örttüğünden emin olun.",
+            "step-2": "Hidromasajı başlatmak için üstteki mavi düğmeye bir kez basın.",
+            "step-3": "Renkli ışıkları açmak için alttaki mavi düğmeye basın; değiştirmek veya kapatmak için tekrar basın.",
+            "step-4": "Daha güçlü veya daha hafif kabarcıklar için siyah hava ayarını çevirin. Kullanımdan sonra her şeyi kapatın.",
+            "safety": "Sabun, yağ, cam eşya, suya atlamak ve dalmak yasaktır. Çocuklar her zaman bir yetişkinin gözetiminde olmalıdır.",
+            "cleaning": "Sudan yalnızca yaprakları çıkarın. Su bakımı, filtreleme ve suyun yenilenmesiyle biz ilgileniyoruz."
+          },
+          "smart-tv": {
+            "name": "Akıllı TV",
+            "model": "LG Smart TV",
+            "description": "Yayın uygulamaları ve HDMI girişleri olan bir LG televizyon.",
+            "step-1": "Kumandadaki POWER düğmesine basın.",
+            "step-2": "Uygulamaları açmak için HOME düğmesine basın.",
+            "step-3": "INPUT düğmesini yalnızca HDMI ile bir cihaz bağladığınızda kullanın.",
+            "step-4": "Sesi VOL + ve VOL − ile ayarlayın ve kullanımdan sonra televizyonu kapatın.",
+            "safety": "Lütfen kabloları çıkarmayın, evin hesaplarından çıkış yapmayın ve ağ ayarlarını değiştirmeyin.",
+            "cleaning": "Televizyonu kapatın ve kuru bir mikrofiber bezle silin. Ekrana asla temizleyici püskürtmeyin."
+          },
+          "bluetooth-speaker": {
+            "name": "Bluetooth hoparlör",
+            "model": "Marshall Acton II Bluetooth",
+            "description": "Bluetooth, AUX girişi ve ses, bas ve tiz ayarları olan bir ev hoparlörü.",
+            "step-1": "Pirinç renkli POWER anahtarını ON konumuna getirin.",
+            "step-2": "Bluetooth ışığı yanana kadar SOURCE düğmesine basın.",
+            "step-3": "Bluetooth ışığı yanıp sönene kadar SOURCE düğmesini iki saniye basılı tutun.",
+            "step-4": "Telefonunuzda Bluetooth’u açın ve ACTON II’yi seçin. Ardından ses, bas ve tiz ayarlarını hoparlörden yapın.",
+            "safety": "Hoparlörü sudan uzak tutun ve sessizlik saatlerinde sesi kısık tutun.",
+            "cleaning": "Hoparlörü kapatıp fişini çekin, ardından kuru ve yumuşak bir bezle temizleyin."
+          },
+          "coffee-machine": {
+            "name": "Kahve makinesi",
+            "model": "Nespresso Essenza Mini",
+            "description": "Otomatik ısınma ve kapanma özellikli, espresso ve lungo için kapsüllü kahve makinesi.",
+            "step-1": "Su haznesini taze içme suyuyla doldurun.",
+            "step-2": "Espresso veya Lungo düğmesine basın ve iki ışık da sabit yanana kadar bekleyin.",
+            "step-3": "Kolu kaldırın, bir Original kapsül yerleştirin ve kolu kapatın.",
+            "step-4": "Çıkışın altına bir fincan koyun ve Espresso veya Lungo düğmesine basın.",
+            "safety": "Kahve akarken kolu kaldırmayın. Çıkış ve kullanılmış kapsüller sıcak olabilir.",
+            "cleaning": "Kullanılmış kapsül haznesini ve damlama tepsisini boşaltın. Makineyi nemli bir bezle silin; asla suya batırmayın."
+          },
+          "ceramic-hob": {
+            "name": "Seramik ocak",
+            "model": "Candy CDH30 · iki pişirme alanı",
+            "description": "İki pişirme alanı, dokuz güç seviyesi, zamanlayıcı ve çocuk kilidi olan cam seramik ocak.",
+            "step-1": "ON/OFF tuşuna dokunup basılı tutun.",
+            "step-2": "Üst veya alt pişirme alanını seçin.",
+            "step-3": "Güç seviyesini − ve + ile ayarlayın.",
+            "step-4": "Pişirmeden sonra ON/OFF tuşuna basın ve kalan ısı göstergesi sönene kadar bekleyin.",
+            "safety": "Düz tabanlı tencere ve tava kullanın. Cam, ocak kapatıldıktan sonra da sıcak kalır.",
+            "cleaning": "Camın tamamen soğumasını bekleyin, ardından yumuşak bir bez ve seramik ocak temizleyicisiyle silin. Tel veya aşındırıcı sünger kullanmayın."
+          },
+          "cooker-hood": {
+            "name": "Davlumbaz",
+            "model": "Davoline · silindir duvar tipi",
+            "description": "Üç fan kademesi ve ocak aydınlatması olan davlumbaz.",
+            "step-1": "Düşük, orta veya yüksek emiş için I, II veya III’e basın.",
+            "step-2": "Kızartma yaparken veya çok buhar olduğunda III. kademeyi kullanın.",
+            "step-3": "Ocağı aydınlatmak için ışık simgesine basın.",
+            "step-4": "Pişirmeden sonra fanı beş dakika çalışır bırakın, ardından kapatın.",
+            "safety": "Fan çalışırken filtreleri asla çıkarmayın veya onlara dokunmayın.",
+            "cleaning": "Davlumbaz soğuduğunda dışını yumuşak, nemli bir bezle silin. Filtreleri biz temizliyoruz."
+          },
+          "airfryer": {
+            "name": "Airfryer",
+            "model": "Philips 3000 Series HD9252/90 · 4,1 L",
+            "description": "Yedi hazır programı, sıcak tutma modu olan ve 200 °C’ye kadar çıkan dijital airfryer.",
+            "step-1": "Etrafında en az 10 cm boşluk kalacak şekilde sabit bir yüzeye yerleştirin.",
+            "step-2": "Yiyecekleri sepete MAX çizgisinin altına kadar koyun. Hazneye asla yağ dökmeyin.",
+            "step-3": "POWER’a basın, bir program seçin veya sıcaklık ve süreyi ayarlayın, ardından START’a basın.",
+            "step-4": "Sürenin yarısında sepeti sallayın. Kullanımdan sonra fişini çekin.",
+            "safety": "Arka kısımdan sıcak buhar çıkar. Hava deliklerini açık tutun ve sepeti dikkatle tutun.",
+            "cleaning": "Yaklaşık 30 dakika soğumasını bekleyin. Sepeti ve hazneyi yumuşak bir sünger ve bulaşık deterjanıyla yıkayın."
+          },
+          "microwave": {
+            "name": "Mikrodalga fırın",
+            "model": "Morris Retro MWRS-20703B/2 · 20 L",
+            "description": "Izgara, kombine pişirme ve 35 dakikalık zamanlayıcısı olan mikrodalga fırın.",
+            "step-1": "Yiyeceği mikrodalgaya uygun cam veya seramik bir kaba koyun.",
+            "step-2": "Alt düğmeyle mikrodalga gücü, ızgara veya kombine modu seçin.",
+            "step-3": "Üst zamanlayıcı düğmesiyle pişirme süresini ayarlayın.",
+            "step-4": "Süre ayarlanınca fırın çalışmaya başlar. Durdurmak için kapağı açın veya süreyi 0’a getirin.",
+            "safety": "Asla metal, alüminyum folyo veya kapalı kap kullanmayın ve fırını boş çalıştırmayın.",
+            "cleaning": "Fişini çekin ve soğumasını bekleyin. İçini, kapağı ve döner tabağı yumuşak, nemli bir bezle silin."
+          },
+          "contact-grill": {
+            "name": "Izgara tost makinesi",
+            "model": "Life Asado 221-0439",
+            "description": "Ayarlanabilir sıcaklığı, yağ tepsisi ve düz açılan plakaları olan ızgara.",
+            "step-1": "Yağ tepsisinin yerinde olduğundan emin olun.",
+            "step-2": "Termostatı istediğiniz ısıya getirin ve plakaların ısınmasını bekleyin.",
+            "step-3": "Yiyeceği alt plakaya koyun ve üst plakayı dikkatlice kapatın.",
+            "step-4": "Pişirmeden sonra düğmeyi OFF konumuna getirin, fişini çekin ve soğumasını bekleyin.",
+            "safety": "Plakalar çok ısınır. Metal mutfak aletleri kullanmayın ve cihazı asla suya batırmayın.",
+            "cleaning": "Soğuduğunda plakaları yumuşak, nemli bir bezle silin ve yağ tepsisini boşaltın."
+          },
+          "kettle": {
+            "name": "Su ısıtıcısı",
+            "model": "Morris Retro R20831WKK/2 · 1,7 L",
+            "description": "Sıcaklık göstergeli, kablosuz tabanlı ve otomatik kapanan retro su ısıtıcısı.",
+            "step-1": "Kapağı açın ve MIN ile MAX arasında su doldurun.",
+            "step-2": "Kapağı kapatın ve ısıtıcıyı tabanına sağlamca yerleştirin.",
+            "step-3": "ON/OFF düğmesine basın.",
+            "step-4": "Kendiliğinden kapanmasını bekleyin, ardından yalnızca sapından tutarak dökün.",
+            "safety": "Fazla doldurmayın, su kaynarken kapağı açmayın ve sıcak metal gövdeye dokunmayın.",
+            "cleaning": "Fişini çekin ve soğumasını bekleyin. Dışını silin; ısıtıcıyı veya tabanını asla suya batırmayın."
+          },
+          "fridge-freezer": {
+            "name": "Buzdolabı",
+            "model": "Morris · alttan dondurucu",
+            "description": "Üstte buzdolabı, altta dondurucu bölümü olan iki kapılı buzdolabı.",
+            "step-1": "Soğuk saklanacak yiyecek ve içecekler için üst bölümü kullanın.",
+            "step-2": "Donmuş yiyecekler için alt bölümü kullanın.",
+            "step-3": "Soğuk havanın dolaşması için yiyeceklerin etrafında boşluk bırakın.",
+            "step-4": "İki kapıyı da sıkıca kapatın ve sıcaklık ayarını değiştirmeyin.",
+            "safety": "İçine sıcak kap koymayın ve sıvı dolu kapalı cam şişeleri asla dondurucuya koymayın.",
+            "cleaning": "Dökülenleri hemen yumuşak, nemli bir bezle silin. Buzu çıkarmak için asla bıçak kullanmayın."
+          },
+          "washing-machine": {
+            "name": "Çamaşır makinesi",
+            "model": "Candy · önden yüklemeli, dokunmatik",
+            "description": "Hızlı programları ve kapı kilidi olan önden yüklemeli çamaşır makinesi.",
+            "step-1": "Çamaşırları tambura gevşek yerleştirin ve kapağı sıkıca kapatın.",
+            "step-2": "Deterjanı II numaralı bölmeye, yumuşatıcıyı çiçek simgeli bölmeye koyun.",
+            "step-3": "POWER’a basın ve bir program seçin.",
+            "step-4": "START/PAUSE’a basın. Kapağı yalnızca kilit simgesi söndükten sonra açın.",
+            "safety": "Tüm cepleri boşaltın. Ayakkabı veya kumlu eşya yıkamayın.",
+            "cleaning": "Kullanımdan sonra kapağı biraz aralık bırakın ve lastik contayı silin."
+          },
+          "safe": {
+            "name": "Kasa",
+            "model": "Yale · elektronik, LCD tuş takımı",
+            "description": "Tuş takımı, ekranı ve döner kolu olan elektronik kasa.",
+            "step-1": "Kapı açıkken kendi şifrenizi belirlemek için ekrandaki talimatları izleyin.",
+            "step-2": "Kapıyı kapatın ve kilitlemek için kolu çevirin.",
+            "step-3": "Açmak için şifrenizi girin ve onay tuşuna basın.",
+            "step-4": "Yeşil ışık yandığında kolu çevirin ve kapıyı açın.",
+            "safety": "Hata mesajı tekrar tekrar görünürse lütfen bizimle iletişime geçin.",
+            "cleaning": "Tuş takımını ve kolu kuru bir bezle silin. Elektronik parçaların yakınında sıvı temizleyici kullanmayın."
+          }
+        },
+        "mocca-city": {
+          "air-conditioner": {
+            "name": "Klima",
+            "model": "Fujitsu · duvar tipi",
+            "description": "Kumandayla kullanılan, soğutma ve ısıtma yapan duvar tipi klima.",
+            "step-1": "Kumandadaki START/STOP düğmesine basın.",
+            "step-2": "Soğutma, ısıtma, nem alma veya fan için MODE düğmesine basın.",
+            "step-3": "Sıcaklığı ok düğmeleriyle ayarlayın.",
+            "step-4": "Dışarı çıkarken kapatmak için START/STOP düğmesine tekrar basın.",
+            "safety": "Klima çalışırken pencereleri ve kapıları kapalı tutun.",
+            "cleaning": "Temizlik gerekmez. Su damlatırsa veya alışılmadık bir koku gelirse lütfen bize haber verin."
+          },
+          "smart-tv": {
+            "name": "Akıllı TV",
+            "model": "TCL Smart TV",
+            "description": "Yayın uygulamaları olan bir TCL televizyon.",
+            "step-1": "Kumandadaki POWER düğmesine basın.",
+            "step-2": "Uygulamaları açmak için HOME düğmesine basın.",
+            "step-3": "SOURCE düğmesini yalnızca HDMI ile bir cihaz bağladığınızda kullanın.",
+            "step-4": "Sesi VOL + ve VOL − ile ayarlayın ve kullanımdan sonra televizyonu kapatın.",
+            "safety": "Lütfen kabloları çıkarmayın, evin hesaplarından çıkış yapmayın ve ağ ayarlarını değiştirmeyin.",
+            "cleaning": "Televizyonu kapatın ve kuru bir mikrofiber bezle silin. Ekrana asla temizleyici püskürtmeyin."
+          },
+          "coffee-machine": {
+            "name": "Kahve makinesi",
+            "model": "De'Longhi Nespresso",
+            "description": "Nespresso Original kapsüllerle espresso ve lungo hazırlayan kapsüllü kahve makinesi.",
+            "step-1": "Su haznesini taze içme suyuyla doldurun.",
+            "step-2": "Bir kahve düğmesine basın ve ışıkların yanıp sönmesi bitene kadar bekleyin.",
+            "step-3": "Kolu kaldırın, bir kapsül yerleştirin ve kolu kapatın.",
+            "step-4": "Çıkışın altına bir fincan koyun ve espresso (küçük fincan) veya lungo (büyük fincan) düğmesine basın.",
+            "safety": "Kahve akarken kolu kaldırmayın. Çıkış ve kullanılmış kapsüller sıcak olabilir.",
+            "cleaning": "Kullanılmış kapsül haznesini ve damlama tepsisini boşaltın. Makineyi nemli bir bezle silin; asla suya batırmayın."
+          },
+          "turkish-coffee": {
+            "name": "Türk kahvesi makinesi",
+            "model": "Arzum Okka Minio Jet",
+            "description": "Geleneksel Türk kahvesini kendi cezvesinde pişiren makine.",
+            "step-1": "Cezveyi fincan sayısına göre işarete kadar soğuk suyla doldurun.",
+            "step-2": "Her fincan için bir tepeleme tatlı kaşığı Türk kahvesi ve isterseniz şeker ekleyip karıştırın.",
+            "step-3": "Cezveyi makineye yerleştirin ve başlat düğmesine basın.",
+            "step-4": "Kahvenin hazır olduğunu bildiren sinyali bekleyin, ardından fincanlara yavaşça dökün.",
+            "safety": "Cezve ısınır. Kahve pişerken cezveyi çıkarmayın.",
+            "cleaning": "Her kullanımdan sonra cezveyi suyla durulayın. Makineyi nemli bir bezle silin; asla suya batırmayın."
+          },
+          "kettle": {
+            "name": "Su ısıtıcısı",
+            "model": "Gruppe · sıcaklık ayarlı",
+            "description": "Dokunmatik ekranlı; süt, yeşil çay, kahve, bal ve siyah çay için hazır sıcaklıkları olan su ısıtıcısı.",
+            "step-1": "MIN ile MAX arasında su doldurun ve tabanına yerleştirin.",
+            "step-2": "Açmak için güç simgesine dokunun.",
+            "step-3": "Yeşil çay veya kahve gibi bir ayar seçin ya da suyu kaynatmak için BOIL’i seçin.",
+            "step-4": "Su istenen sıcaklığa ulaşınca kendiliğinden kapanır.",
+            "safety": "Fazla doldurmayın ve su sıcakken kapağı açmayın.",
+            "cleaning": "Fişini çekin ve soğumasını bekleyin. Dışını silin; ısıtıcıyı veya tabanını asla suya batırmayın."
+          },
+          "oven": {
+            "name": "Fırın",
+            "model": "Pitsos · ankastre",
+            "description": "Pişirme fonksiyonları, sıcaklık düğmesi ve dijital zamanlayıcısı olan ankastre elektrikli fırın.",
+            "step-1": "Fanlı veya alt-üst ısıtma gibi bir fonksiyon seçmek için sol düğmeyi çevirin.",
+            "step-2": "Sıcaklığı ayarlamak için sağ düğmeyi çevirin.",
+            "step-3": "Yiyeceği koymadan önce fırını yaklaşık 10 dakika ısıtın.",
+            "step-4": "İşiniz bitince iki düğmeyi de 0’a getirin.",
+            "safety": "Kapak ve tepsiler çok ısınır. Fırın eldiveni kullanın.",
+            "cleaning": "Soğuduğunda içini yumuşak, nemli bir bezle silin. Tel veya aşındırıcı sünger kullanmayın."
+          },
+          "microwave": {
+            "name": "Mikrodalga fırın",
+            "model": "Candy · iki düğmeli",
+            "description": "Güç düğmesi ve süre düğmesi olan mikrodalga fırın.",
+            "step-1": "Yiyeceği mikrodalgaya uygun cam veya seramik bir kaba koyun.",
+            "step-2": "Üst düğmeyle gücü seçin.",
+            "step-3": "Alt düğmeyi çevirerek süreyi ayarlayın; fırın hemen çalışmaya başlar.",
+            "step-4": "Durdurmak için kapağı açın veya süreyi 0’a getirin.",
+            "safety": "Asla metal, alüminyum folyo veya kapalı kap kullanmayın ve fırını boş çalıştırmayın.",
+            "cleaning": "Fişini çekin ve soğumasını bekleyin. İçini, kapağı ve döner tabağı yumuşak, nemli bir bezle silin."
+          },
+          "contact-grill": {
+            "name": "Izgara tost makinesi",
+            "model": "Life",
+            "description": "Ayarlanabilir sıcaklığı ve yağ tepsisi olan ızgara.",
+            "step-1": "Yağ tepsisinin yerinde olduğundan emin olun.",
+            "step-2": "Düğmeyi istediğiniz ısıya getirin ve plakaların ısınmasını bekleyin.",
+            "step-3": "Yiyeceği alt plakaya koyun ve üst plakayı dikkatlice kapatın.",
+            "step-4": "Pişirmeden sonra düğmeyi OFF konumuna getirin, fişini çekin ve soğumasını bekleyin.",
+            "safety": "Plakalar çok ısınır. Metal mutfak aletleri kullanmayın ve cihazı asla suya batırmayın.",
+            "cleaning": "Soğuduğunda plakaları yumuşak, nemli bir bezle silin ve yağ tepsisini boşaltın."
+          },
+          "fridge-freezer": {
+            "name": "Buzdolabı",
+            "model": "Whirlpool · alttan dondurucu",
+            "description": "Üstte buzdolabı, altta dondurucu bölümü olan buzdolabı.",
+            "step-1": "Soğuk saklanacak yiyecek ve içecekler için üst bölümü kullanın.",
+            "step-2": "Donmuş yiyecekler için alt bölümü kullanın.",
+            "step-3": "Soğuk havanın dolaşması için yiyeceklerin etrafında boşluk bırakın.",
+            "step-4": "İki kapıyı da sıkıca kapatın ve sıcaklık ayarını değiştirmeyin.",
+            "safety": "İçine sıcak kap koymayın ve sıvı dolu kapalı cam şişeleri asla dondurucuya koymayın.",
+            "cleaning": "Dökülenleri hemen yumuşak, nemli bir bezle silin. Buzu çıkarmak için asla bıçak kullanmayın."
+          },
+          "dishwasher": {
+            "name": "Bulaşık makinesi",
+            "model": "Pitsos · ankastre",
+            "description": "Eko ve hızlı dahil birçok programı olan ankastre bulaşık makinesi.",
+            "step-1": "Yemek artıklarını temizleyin ve sepetleri, püskürtme kolları serbestçe dönebilecek şekilde doldurun.",
+            "step-2": "Deterjan bölmesine bir tablet koyun ve bölmeyi kapatın.",
+            "step-3": "Güç düğmesine basın ve bir program seçin; normal yükler için Eco yeterlidir.",
+            "step-4": "Kapağı kapatın ve başlat düğmesine basın. Kapağı yalnızca program bitince açın.",
+            "safety": "Ahşap eşyaları veya bulaşık makinesine uygun olmayan tencereleri yıkamayın. Boşaltmadan önce buharın çıkmasını bekleyin.",
+            "cleaning": "Program bitince kurusun diye kapağı biraz aralık bırakın."
+          },
+          "washing-machine": {
+            "name": "Kurutmalı çamaşır makinesi",
+            "model": "Hisense · 8 kg yıkama, 5 kg kurutma",
+            "description": "Program düğmesi, buhar ve kurutma özelliği olan önden yüklemeli kurutmalı çamaşır makinesi.",
+            "step-1": "Çamaşırları tambura gevşek yerleştirin ve kapağı sıkıca kapatın.",
+            "step-2": "Deterjanı ve yumuşatıcıyı çekmecedeki bölmelere koyun.",
+            "step-3": "Bir program seçmek için düğmeyi çevirin; kurutma için bir kurutma ayarı seçin.",
+            "step-4": "Start/Pause’a basın. Kapağı yalnızca kilit simgesi söndükten sonra açın.",
+            "safety": "Tüm cepleri boşaltın. Ayakkabı veya kumlu eşya yıkamayın.",
+            "cleaning": "Kullanımdan sonra kapağı biraz aralık bırakın ve lastik contayı silin."
+          },
+          "safe": {
+            "name": "Kasa",
+            "model": "Yale · elektronik, LCD tuş takımı",
+            "description": "Tuş takımı, ekranı ve döner kolu olan elektronik kasa.",
+            "step-1": "Kapı açıkken kendi şifrenizi belirlemek için ekrandaki talimatları izleyin.",
+            "step-2": "Kapıyı kapatın ve kilitlemek için kolu çevirin.",
+            "step-3": "Açmak için şifrenizi girin ve onay tuşuna basın.",
+            "step-4": "Yeşil ışık yandığında kolu çevirin ve kapıyı açın.",
+            "safety": "Hata mesajı tekrar tekrar görünürse lütfen bizimle iletişime geçin.",
+            "cleaning": "Tuş takımını ve kolu kuru bir bezle silin. Elektronik parçaların yakınında sıvı temizleyici kullanmayın."
+          }
+        }
       }
     },
     "not-found": {

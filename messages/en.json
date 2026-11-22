@@ -373,6 +373,339 @@
             }
           }
         }
+      },
+      "back": "Back",
+      "home": {
+        "title": "Welcome to {property}",
+        "description": "Everything you need for your stay, in one place."
+      },
+      "sections": {
+        "wifi": {
+          "title": "Wi-Fi"
+        },
+        "devices": {
+          "title": "Devices"
+        },
+        "check-out": {
+          "title": "Check-out"
+        },
+        "emergency": {
+          "title": "Phone numbers"
+        }
+      },
+      "wifi": {
+        "network": "Network name",
+        "password": "Password",
+        "copy": "Copy password",
+        "copied": "Password copied",
+        "copy-failed": "Couldn't copy",
+        "copy-failed-hint": "Tap the password to select it, then copy it.",
+        "missing": "The Wi-Fi details aren't available here yet. Please contact us and we'll send them to you."
+      },
+      "devices": {
+        "description": "Description",
+        "how-to": "How to use",
+        "safety": "Safety",
+        "cleaning": "Cleaning"
+      },
+      "check-out": {
+        "deadline": "Your check-out",
+        "checklist": "Before you leave",
+        "item-1": "Pack your belongings: check the wardrobes, drawers and chargers.",
+        "item-2": "Switch off the air conditioning, lights and appliances.",
+        "item-3": "Close the windows and balcony doors.",
+        "item-4": "Leave the keys as agreed with us and close the door behind you.",
+        "thanks": "Thank you for staying with us. Have a safe trip!"
+      },
+      "emergency": {
+        "numbers": "Emergency numbers",
+        "general": "European emergency number",
+        "police": "Police",
+        "fire": "Fire service",
+        "ambulance": "Ambulance",
+        "coast-guard": "Coast Guard",
+        "note": "112 is free to call from any phone."
+      },
+      "device-guides": {
+        "mocca-by-the-sea-dimitra": {
+          "mini-pool": {
+            "name": "Mini pool",
+            "model": "Miskakis Spa · custom installation",
+            "description": "A private mini pool with hydromassage, adjustable air flow and underwater colour lighting.",
+            "step-1": "Shower before entering and make sure the water covers the jets.",
+            "step-2": "Press the upper blue button once to start the hydromassage.",
+            "step-3": "Press the lower blue button to switch on the colour lights; press it again to change or stop them.",
+            "step-4": "Turn the black air control for stronger or softer bubbles. Switch everything off after use.",
+            "safety": "No soap, oils, glassware, diving or jumping. Children must be supervised by an adult at all times.",
+            "cleaning": "Remove only loose leaves from the water. We take care of the water treatment, filtration and refills."
+          },
+          "smart-tv": {
+            "name": "Smart TV",
+            "model": "LG Smart TV",
+            "description": "An LG television with streaming apps and HDMI inputs.",
+            "step-1": "Press POWER on the remote control.",
+            "step-2": "Press HOME to open the apps.",
+            "step-3": "Use INPUT only when you connect a device by HDMI.",
+            "step-4": "Adjust the sound with VOL + and VOL −, and switch the TV off after use.",
+            "safety": "Please don't unplug cables, sign out of the house accounts or change the network settings.",
+            "cleaning": "Switch the TV off and use a dry microfibre cloth. Never spray cleaner on the screen."
+          },
+          "bluetooth-speaker": {
+            "name": "Bluetooth speaker",
+            "model": "Marshall Acton II Bluetooth",
+            "description": "A home speaker with Bluetooth, an AUX input and controls for volume, bass and treble.",
+            "step-1": "Move the brass POWER switch to ON.",
+            "step-2": "Press SOURCE until the Bluetooth light comes on.",
+            "step-3": "Hold SOURCE for two seconds until the Bluetooth light flashes.",
+            "step-4": "On your phone, open Bluetooth and choose ACTON II. Then set the volume, bass and treble on the speaker.",
+            "safety": "Keep the speaker away from water and keep the volume low during quiet hours.",
+            "cleaning": "Switch off and unplug the speaker, then clean it with a dry soft cloth."
+          },
+          "coffee-machine": {
+            "name": "Coffee machine",
+            "model": "Nespresso Essenza Mini",
+            "description": "A capsule machine for espresso and lungo, with automatic heat-up and power-off.",
+            "step-1": "Fill the water tank with fresh drinking water.",
+            "step-2": "Press Espresso or Lungo and wait until both lights stay on.",
+            "step-3": "Lift the lever, insert one Original capsule and close the lever.",
+            "step-4": "Place a cup under the outlet and press Espresso or Lungo.",
+            "safety": "Don't lift the lever while coffee is flowing. The outlet and used capsules can be hot.",
+            "cleaning": "Empty the used-capsule container and the drip tray. Wipe the machine with a damp cloth; never put it in water."
+          },
+          "ceramic-hob": {
+            "name": "Ceramic hob",
+            "model": "Candy CDH30 · two cooking zones",
+            "description": "A glass ceramic hob with two zones, nine power levels, a timer and a child lock.",
+            "step-1": "Touch and hold the ON/OFF control.",
+            "step-2": "Select the upper or lower cooking zone.",
+            "step-3": "Set the power level with − and +.",
+            "step-4": "After cooking, press ON/OFF and wait until the residual-heat indicator goes off.",
+            "safety": "Use flat-bottomed cookware. The glass stays hot after the hob is switched off.",
+            "cleaning": "Let the glass cool fully, then wipe it with a soft cloth and ceramic hob cleaner. Don't use scouring pads."
+          },
+          "cooker-hood": {
+            "name": "Cooker hood",
+            "model": "Davoline · cylindrical wall hood",
+            "description": "An extractor hood with three fan levels and a light over the hob.",
+            "step-1": "Press I, II or III for low, medium or high extraction.",
+            "step-2": "Use level III when frying or when there is a lot of steam.",
+            "step-3": "Press the light symbol to light the hob.",
+            "step-4": "Leave the fan on for five minutes after cooking, then switch it off.",
+            "safety": "Never remove or touch the filters while the fan is running.",
+            "cleaning": "When the hood is cool, wipe the outside with a soft damp cloth. We clean the filters."
+          },
+          "airfryer": {
+            "name": "Air fryer",
+            "model": "Philips 3000 Series HD9252/90 · 4.1 L",
+            "description": "A digital air fryer with seven presets, a keep-warm mode and temperatures up to 200 °C.",
+            "step-1": "Place it on a stable surface with at least 10 cm of free space around it.",
+            "step-2": "Put the food in the basket below the MAX line. Never pour oil into the pan.",
+            "step-3": "Press POWER, choose a preset or set the temperature and time, then press START.",
+            "step-4": "Shake the basket halfway through. Unplug the air fryer after use.",
+            "safety": "Hot steam comes out at the back. Keep the air openings clear and handle the basket with care.",
+            "cleaning": "Let it cool for about 30 minutes. Wash the basket and pan with a soft sponge and washing-up liquid."
+          },
+          "microwave": {
+            "name": "Microwave",
+            "model": "Morris Retro MWRS-20703B/2 · 20 L",
+            "description": "A microwave with grill, combination cooking and a 35-minute timer.",
+            "step-1": "Put the food in a microwave-safe glass or ceramic dish.",
+            "step-2": "Use the lower dial to choose microwave power, grill or combination.",
+            "step-3": "Set the cooking time with the upper timer dial.",
+            "step-4": "The microwave starts when the timer is set. To stop it, open the door or turn the timer to 0.",
+            "safety": "Never use metal, foil or sealed containers, and never run it empty.",
+            "cleaning": "Unplug it and let it cool. Wipe the inside, the door and the turntable with a soft damp cloth."
+          },
+          "contact-grill": {
+            "name": "Contact grill",
+            "model": "Life Asado 221-0439",
+            "description": "A contact grill with adjustable temperature, a grease tray and plates that open flat.",
+            "step-1": "Make sure the grease tray is in place.",
+            "step-2": "Turn the thermostat to the heat you need and let the plates preheat.",
+            "step-3": "Place the food on the lower plate and close the upper plate carefully.",
+            "step-4": "After cooking, turn the control to OFF, unplug the grill and let it cool.",
+            "safety": "The plates get very hot. Don't use metal utensils and never put the grill in water.",
+            "cleaning": "When it's cool, wipe the plates with a soft damp cloth and empty the grease tray."
+          },
+          "kettle": {
+            "name": "Kettle",
+            "model": "Morris Retro R20831WKK/2 · 1.7 L",
+            "description": "A retro kettle with a temperature gauge, a cordless base and automatic switch-off.",
+            "step-1": "Open the lid and fill with water between MIN and MAX.",
+            "step-2": "Close the lid and place the kettle firmly on its base.",
+            "step-3": "Press the ON/OFF switch.",
+            "step-4": "Wait until it switches off by itself, then pour holding only the handle.",
+            "safety": "Don't overfill it, don't open the lid while the water boils and don't touch the hot metal body.",
+            "cleaning": "Unplug it and let it cool. Wipe the outside; never put the kettle or its base in water."
+          },
+          "fridge-freezer": {
+            "name": "Fridge-freezer",
+            "model": "Morris · bottom freezer",
+            "description": "A two-door fridge with the fridge above and the freezer below.",
+            "step-1": "Use the upper compartment for chilled food and drinks.",
+            "step-2": "Use the lower compartment for frozen food.",
+            "step-3": "Leave space around the food so the cold air can circulate.",
+            "step-4": "Close both doors firmly and leave the temperature setting as it is.",
+            "safety": "Don't put hot dishes inside, and never freeze sealed glass bottles with liquid.",
+            "cleaning": "Wipe spills straight away with a soft damp cloth. Never use a knife to remove ice."
+          },
+          "washing-machine": {
+            "name": "Washing machine",
+            "model": "Candy · front-loading, touch controls",
+            "description": "A front-loading washing machine with quick programmes and a door lock.",
+            "step-1": "Load the drum loosely and close the door firmly.",
+            "step-2": "Put detergent in compartment II and softener in the flower compartment.",
+            "step-3": "Press POWER and choose a programme.",
+            "step-4": "Press START/PAUSE. Open the door only after the lock symbol goes off.",
+            "safety": "Empty all pockets. Don't wash shoes or anything covered in sand.",
+            "cleaning": "After use, leave the door slightly open and wipe the rubber seal."
+          },
+          "safe": {
+            "name": "Safe",
+            "model": "Yale · electronic, LCD keypad",
+            "description": "An electronic safe with a keypad, a display and a turning handle.",
+            "step-1": "With the door open, follow the prompt on the display to set your own code.",
+            "step-2": "Close the door and turn the handle to lock it.",
+            "step-3": "To open it, enter your code and press the confirm key.",
+            "step-4": "When the green light comes on, turn the handle and open the door.",
+            "safety": "If an error message keeps appearing, please contact us.",
+            "cleaning": "Wipe the keypad and handle with a dry cloth. Don't use liquid cleaners near the electronics."
+          }
+        },
+        "mocca-city": {
+          "air-conditioner": {
+            "name": "Air conditioning",
+            "model": "Fujitsu · wall unit",
+            "description": "A wall air conditioner for cooling and heating, controlled with the remote.",
+            "step-1": "Press START/STOP on the remote control.",
+            "step-2": "Press MODE to choose cooling, heating, dry or fan.",
+            "step-3": "Set the temperature with the arrow buttons.",
+            "step-4": "Press START/STOP again to switch it off when you go out.",
+            "safety": "Keep the windows and doors closed while it's running.",
+            "cleaning": "No cleaning needed. Please tell us if it drips or smells unusual."
+          },
+          "smart-tv": {
+            "name": "Smart TV",
+            "model": "TCL Smart TV",
+            "description": "A TCL television with streaming apps.",
+            "step-1": "Press POWER on the remote control.",
+            "step-2": "Press HOME to open the apps.",
+            "step-3": "Use SOURCE only when you connect a device by HDMI.",
+            "step-4": "Adjust the sound with VOL + and VOL −, and switch the TV off after use.",
+            "safety": "Please don't unplug cables, sign out of the house accounts or change the network settings.",
+            "cleaning": "Switch the TV off and use a dry microfibre cloth. Never spray cleaner on the screen."
+          },
+          "coffee-machine": {
+            "name": "Coffee machine",
+            "model": "De'Longhi Nespresso",
+            "description": "A capsule machine for espresso and lungo with Nespresso Original capsules.",
+            "step-1": "Fill the water tank with fresh drinking water.",
+            "step-2": "Press a coffee button and wait until the lights stop flashing.",
+            "step-3": "Lift the lever, insert one capsule and close the lever.",
+            "step-4": "Place a cup under the outlet and press the espresso (small cup) or lungo (large cup) button.",
+            "safety": "Don't lift the lever while coffee is flowing. The outlet and used capsules can be hot.",
+            "cleaning": "Empty the used-capsule container and the drip tray. Wipe the machine with a damp cloth; never put it in water."
+          },
+          "turkish-coffee": {
+            "name": "Turkish coffee machine",
+            "model": "Arzum Okka Minio Jet",
+            "description": "A machine that makes traditional Turkish coffee in its own pot.",
+            "step-1": "Fill the pot with cold water up to the mark for the number of cups.",
+            "step-2": "Add one heaped teaspoon of Turkish coffee per cup, and sugar if you like, and stir.",
+            "step-3": "Place the pot in the machine and press the start button.",
+            "step-4": "Wait for the signal that the coffee is ready, then pour it slowly into the cups.",
+            "safety": "The pot gets hot. Don't remove it while the coffee is brewing.",
+            "cleaning": "Rinse the pot with water after each use. Wipe the machine with a damp cloth; never put it in water."
+          },
+          "kettle": {
+            "name": "Kettle",
+            "model": "Gruppe · temperature control",
+            "description": "A kettle with a touch display and preset temperatures for milk, green tea, coffee, honey and black tea.",
+            "step-1": "Fill it with water between MIN and MAX and place it on its base.",
+            "step-2": "Touch the power symbol to switch it on.",
+            "step-3": "Choose a setting, such as green tea or coffee, or BOIL to boil the water.",
+            "step-4": "It switches off by itself when the water reaches the temperature.",
+            "safety": "Don't overfill it and don't open the lid while the water is hot.",
+            "cleaning": "Unplug it and let it cool. Wipe the outside; never put the kettle or its base in water."
+          },
+          "oven": {
+            "name": "Oven",
+            "model": "Pitsos · built-in oven",
+            "description": "A built-in electric oven with several cooking functions, a temperature dial and a digital timer.",
+            "step-1": "Turn the left dial to choose a function, such as fan or top and bottom heat.",
+            "step-2": "Turn the right dial to set the temperature.",
+            "step-3": "Let the oven preheat for about 10 minutes before putting the food in.",
+            "step-4": "When you have finished, turn both dials back to 0.",
+            "safety": "The door and the trays get very hot. Use oven gloves.",
+            "cleaning": "When it's cool, wipe the inside with a soft damp cloth. Don't use scouring pads."
+          },
+          "microwave": {
+            "name": "Microwave",
+            "model": "Candy · two dials",
+            "description": "A microwave with a power dial and a timer dial.",
+            "step-1": "Put the food in a microwave-safe glass or ceramic dish.",
+            "step-2": "Use the upper dial to choose the power.",
+            "step-3": "Turn the lower dial to set the time; the microwave starts straight away.",
+            "step-4": "To stop it, open the door or turn the timer to 0.",
+            "safety": "Never use metal, foil or sealed containers, and never run it empty.",
+            "cleaning": "Unplug it and let it cool. Wipe the inside, the door and the turntable with a soft damp cloth."
+          },
+          "contact-grill": {
+            "name": "Contact grill",
+            "model": "Life",
+            "description": "A contact grill with adjustable temperature and a grease tray.",
+            "step-1": "Make sure the grease tray is in place.",
+            "step-2": "Turn the dial to the heat you need and let the plates preheat.",
+            "step-3": "Place the food on the lower plate and close the upper plate carefully.",
+            "step-4": "After cooking, turn the dial to OFF, unplug the grill and let it cool.",
+            "safety": "The plates get very hot. Don't use metal utensils and never put the grill in water.",
+            "cleaning": "When it's cool, wipe the plates with a soft damp cloth and empty the grease tray."
+          },
+          "fridge-freezer": {
+            "name": "Fridge-freezer",
+            "model": "Whirlpool · bottom freezer",
+            "description": "A fridge with the fridge above and the freezer below.",
+            "step-1": "Use the upper compartment for chilled food and drinks.",
+            "step-2": "Use the lower compartment for frozen food.",
+            "step-3": "Leave space around the food so the cold air can circulate.",
+            "step-4": "Close both doors firmly and leave the temperature setting as it is.",
+            "safety": "Don't put hot dishes inside, and never freeze sealed glass bottles with liquid.",
+            "cleaning": "Wipe spills straight away with a soft damp cloth. Never use a knife to remove ice."
+          },
+          "dishwasher": {
+            "name": "Dishwasher",
+            "model": "Pitsos · built-in",
+            "description": "A built-in dishwasher with several programmes, including eco and quick.",
+            "step-1": "Scrape off leftovers and load the baskets so the spray arms can turn freely.",
+            "step-2": "Put one dishwasher tablet in the detergent compartment and close it.",
+            "step-3": "Press the power button and choose a programme; Eco suits normal loads.",
+            "step-4": "Close the door and press start. Open it only when the programme has finished.",
+            "safety": "Don't wash wooden items or pans that aren't dishwasher-safe. Let the steam out before you unload.",
+            "cleaning": "After the programme, leave the door slightly open so it can dry."
+          },
+          "washing-machine": {
+            "name": "Washer-dryer",
+            "model": "Hisense · 8 kg wash, 5 kg dry",
+            "description": "A front-loading washer-dryer with a programme dial, steam and drying.",
+            "step-1": "Load the drum loosely and close the door firmly.",
+            "step-2": "Put detergent and softener in the drawer compartments.",
+            "step-3": "Turn the dial to choose a programme; for drying, choose a drying setting.",
+            "step-4": "Press Start/Pause. Open the door only after the lock symbol goes off.",
+            "safety": "Empty all pockets. Don't wash shoes or anything covered in sand.",
+            "cleaning": "After use, leave the door slightly open and wipe the rubber seal."
+          },
+          "safe": {
+            "name": "Safe",
+            "model": "Yale · electronic, LCD keypad",
+            "description": "An electronic safe with a keypad, a display and a turning handle.",
+            "step-1": "With the door open, follow the prompt on the display to set your own code.",
+            "step-2": "Close the door and turn the handle to lock it.",
+            "step-3": "To open it, enter your code and press the confirm key.",
+            "step-4": "When the green light comes on, turn the handle and open the door.",
+            "safety": "If an error message keeps appearing, please contact us.",
+            "cleaning": "Wipe the keypad and handle with a dry cloth. Don't use liquid cleaners near the electronics."
+          }
+        }
       }
     },
     "not-found": {

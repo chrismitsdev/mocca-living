@@ -1,12 +1,14 @@
 import type {Metadata} from 'next'
-import {notFound} from 'next/navigation'
 import type {Locale} from 'next-intl'
 import {getTranslations} from 'next-intl/server'
-import {redirect} from '@/src/i18n/navigation'
-import {GUEST_APP_HIDDEN} from '@/src/lib/constants'
-import {getActiveGuest} from '@/src/lib/guest-app/guest-session'
-import type {GuestAppProperty} from '@/src/lib/guest-app/properties'
-import {Heading} from './(components)/heading'
+import {Heading} from '@/src/app/[locale]/(guest-app)/guests/[slug]/(components)/heading'
+import {SectionGrid} from '@/src/app/[locale]/(guest-app)/guests/[slug]/(components)/section-grid'
+import {Welcome} from '@/src/app/[locale]/(guest-app)/guests/[slug]/(components)/welcome'
+import {
+  type GuestAppProperty,
+  isGuestAppProperty
+} from '@/src/lib/guest-app/properties'
+import {requireGuest} from '@/src/lib/guest-app/require-guest'
 
 type SlugParams = Promise<{
   locale: Locale
@@ -19,6 +21,7 @@ export async function generateMetadata({
   params: SlugParams
 }): Promise<Metadata> {
   const {slug} = await params
+  if (!isGuestAppProperty(slug)) return {}
   const t = await getTranslations('Metadata')
 
   return {
@@ -29,22 +32,14 @@ export async function generateMetadata({
 export default async function GuestAppSlugPage({
   params
 }: PageProps<'/[locale]/guests/[slug]'>) {
-  if (GUEST_APP_HIDDEN) notFound()
-
   const {locale, slug} = await (params as SlugParams)
-
-  // Only a guest with an active stay at this property gets past here; a
-  // guest of another property goes straight to their own
-  const guest = await getActiveGuest()
-  if (!guest) return redirect({href: '/guests', locale})
-  if (guest.property !== slug) {
-    return redirect({href: `/guests/${guest.property}`, locale})
-  }
+  await requireGuest(locale, slug)
 
   return (
     <>
       <Heading slug={slug} />
-      <p>You are in {slug} page</p>
+      <Welcome slug={slug} />
+      <SectionGrid slug={slug} />
     </>
   )
 }

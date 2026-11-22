@@ -19,6 +19,11 @@ export const PROPERTY_TIMES: Record<
   'mocca-city': {checkIn: '15:00', checkOut: '11:00'}
 }
 
+/** Whether a URL segment is a property the guest app serves */
+export function isGuestAppProperty(value: string): value is GuestAppProperty {
+  return Object.hasOwn(PROPERTY_TIMES, value)
+}
+
 const PROPERTY_NAMES: Record<string, GuestAppProperty> = {
   // Primal Res (Booking.com / Airbnb)
   'mocca living': 'mocca-by-the-sea-dimitra',
