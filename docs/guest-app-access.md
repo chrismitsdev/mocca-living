@@ -108,9 +108,12 @@ They have no guest name and are **ignored**.
 | --------------------------------------------------------------------------------------------------- | -------------------------- |
 | `Mocca Living` (Primal Res), `MOCCA Living Premium Stay` / `Villa Dimitra by Mocca Living` (Hotelo) | `mocca-by-the-sea-dimitra` |
 | `Mocca City`                                                                                        | `mocca-city`               |
-- Georgia isn't listed on any platform yet, so it isn't mapped. Its future
-  name is probably `Villa Georgia by Mocca Living`, which **contains "Mocca
-  Living"**. Matching must therefore be exact, never by substring.
+- **Georgia isn't rentable** (owner's decision, confirmed 22 Nov 2026): it's
+  on the public site but on no platform, and the guest app and the admin
+  don't know it (`GuestAppProperty` covers Dimitra and Mocca City only).
+  Adding it back needs the owner's go-ahead. Its future name is probably
+  `Villa Georgia by Mocca Living`, which **contains "Mocca Living"**, so
+  matching must stay exact, never by substring.
 - An unknown property name raises an alert and is not stored.
 
 ### 2.4 revplus rebrand
@@ -252,7 +255,7 @@ between levels (renamed from `guestApp*` on 10 Nov 2026).
 type Reservation = {
   reservationNumber: string // normalised: uppercase, no '#', spaces or dashes
   channel: 'booking' | 'airbnb' | 'hotelo' | 'other' | 'admin'
-  property: PropertySlug // Georgia only through a manual add
+  property: GuestAppProperty // Dimitra or Mocca City
   status: 'confirmed' | 'cancelled' | 'revoked'
   bookerName: string // booker's full name exactly as the platform saved it
   checkIn: string // YYYY-MM-DD (property-local date)
@@ -545,7 +548,7 @@ actions; `login-email.ts` the email).
   server action checks it again, since a record can change after the page
   loads.
 - **Προσθήκη πρόσβασης** (`addAccessAction`): for a booking that didn't
-  arrive by email (a phone booking, a missed or failed email, Georgia).
+  arrive by email (a phone booking, a missed or failed email).
   A dialog opened from the page header. Its description says how the dates
   become access ("Η πρόσβαση ανοίγει στις 00:00 την ημέρα άφιξης και λήγει
   στις 11:00 την ημέρα αναχώρησης."). The date field is labelled in terms of
@@ -631,15 +634,16 @@ actions; `login-email.ts` the email).
 
 ## 10. Configuration
 
-| Env var                                      | Purpose                                                                        |
-| -------------------------------------------- | ------------------------------------------------------------------------------ |
-| `RESEND_API_KEY`                             | Existing. Sending email and the Receiving API                                  |
-| `RESEND_INBOUND_WEBHOOK_SECRET`              | Svix signing secret for the inbound webhook                                    |
-| `GUEST_APP_INBOUND_ADDRESS`                  | The random inbound address (sanity check on the recipient)                     |
-| `GUEST_APP_SESSION_SECRET`                   | Signs the guest cookie and hashes IPs for rate limiting                        |
-| `GUEST_APP_ADMIN_EMAILS`                     | Comma-separated admin allowlist (2 addresses)                                  |
-| `GUEST_APP_ALERT_EMAIL`                      | Alert recipient                                                                |
-| `GUEST_APP_REDIS_KV_REST_API_URL` / `_TOKEN` | Upstash Redis (`mocca-guest-app`, Vercel Marketplace prefix `GUEST_APP_REDIS`) |
+| Env var                                      | Purpose                                                                                                |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `RESEND_API_KEY`                             | Existing. Sending email and the Receiving API                                                          |
+| `RESEND_INBOUND_WEBHOOK_SECRET`              | Svix signing secret for the inbound webhook                                                            |
+| `GUEST_APP_INBOUND_ADDRESS`                  | The random inbound address (sanity check on the recipient)                                             |
+| `GUEST_APP_SESSION_SECRET`                   | Signs the guest cookie and hashes IPs for rate limiting                                                |
+| `GUEST_APP_ADMIN_EMAILS`                     | Comma-separated admin allowlist (2 addresses)                                                          |
+| `GUEST_APP_ALERT_EMAIL`                      | Alert recipient                                                                                        |
+| `GUEST_APP_REDIS_KV_REST_API_URL` / `_TOKEN` | Upstash Redis (`mocca-guest-app`, Vercel Marketplace prefix `GUEST_APP_REDIS`)                         |
+| `GUEST_APP_WIFI_<KEY>_NETWORK` / `_PASSWORD` | Wi-Fi shown to guests; `<KEY>` = `DIMITRA` or `MOCCA_CITY` (optional; see `docs/guest-app-content.md`) |
 
 Environments (31 Oct 2026):
 
@@ -649,6 +653,8 @@ Environments (31 Oct 2026):
   go-live.
 - The Redis variables are Production + Preview, marked sensitive.
 - `GUEST_APP_ADMIN_EMAILS` is Preview + Development until go-live.
+- The Wi-Fi variables (22 Nov 2026) are Preview + Development, marked
+  sensitive, until go-live. They're never written into the repo.
 - Links in login emails use Vercel's system variable `VERCEL_BRANCH_URL` on
   previews ("Automatically expose System Environment Variables" must stay
   on).
@@ -669,7 +675,7 @@ filter) are made manually from step-by-step instructions.
 - Fixtures are synthetic emails modelled on the real templates, with
   **invented** names, numbers and contacts. No real guest data goes in the
   repository.
-- Covered (117 tests):
+- Covered (120 tests):
   - both parsers, including cancellations, and the HTML-to-text step;
   - localised Hotelo dates;
   - origin verification (direct DKIM and the Hostinger ARC attestation);
@@ -684,6 +690,7 @@ filter) are made manually from step-by-step instructions.
     refused);
   - session tokens (signature, tampering, expiry, version, record binding)
     and rate limits;
+  - the Wi-Fi env variables (per property, blank or missing values);
   - admin auth: allowlist, single-use and expiring login tokens,
     sessions, and that only hashes are stored.
 - Not covered by unit tests: the server actions, pages and form UI. They're
@@ -788,13 +795,16 @@ fails, but the login page forwards the existing session. That's expected.
    - Verified on the preview with the §11 admin checklist (21 Nov 2026).
 5. **Privacy policy** update: written 22 Nov 2026 (§8); to review on the
    preview, Turkish and Bulgarian ideally by a native speaker.
-6. **Content** (separate design, once the owner finalises it), then remove
-   the production 404 guards.
+6. **Content**, then remove the production 404 guards. Round 1 (home,
+   Wi-Fi, devices, check-out, emergency) built 22 Nov 2026 on
+   `feat/guest-app-content`, waiting for the owner's review; see
+   `docs/guest-app-content.md`.
 7. **Go-live.**
    - Change the existing Resend webhook's URL to
      `https://www.moccaliving.com/api/guest-app/inbound`. The free plan
      allows only one endpoint, so don't add a second one.
    - Add `RESEND_INBOUND_WEBHOOK_SECRET` for Production.
+   - Add the four `GUEST_APP_WIFI_*` variables for Production.
    - Remove the temporary Gmail condition from the Hostinger filter.
    - Delete any manual test bookings (`guest:reservation:TEST*` and their
      `guest:reservationIndex` entries) from the shared Upstash database
@@ -810,7 +820,9 @@ alerts); 3 inboxes; 1 webhook endpoint.
 - What does a Primal Res modification email look like?
 - Are Hotelo emails ever localised (en/el/tr/bg)?
 - After 22 Nov 2026: do revplus reservation emails keep the same sender and layout?
-- When Georgia gets a listing: add its exact property name(s) to the mapping.
+- If the owner makes Georgia rentable: add it to `GuestAppProperty`,
+  `PROPERTY_TIMES`, the admin labels and the Wi-Fi keys, and its exact
+  listing name(s) to the mapping.
 - If reservation emails start coming from `revplus.com`: add it to the
   Hostinger filter (§2.4).
 - Watch for a Resend API to delete received emails (they're kept 30 days).
