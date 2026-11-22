@@ -15,7 +15,8 @@ could sign in. Next: the privacy policy (step 5). See §12.
   access the guest app.
 - Knowing the URL must not be enough. A shared link (e.g. a guest forwarding
   it to a friend) must not grant access outside that guest's stay.
-- The content will include **sensitive information** (e.g. lockbox codes).
+- The content may include **sensitive information**. Lockbox codes are left
+  out for now (owner's decision, 22 Nov 2026; see §5.2).
 - Verification must be **automated**: read reservation data, then allow or deny.
 - The owner and the developer need a way to handle exceptions.
 
@@ -322,10 +323,13 @@ Airbnb's email field is empty.
 
 - **Opens**: 00:00 on `checkIn`.
 - **Closes**: 11:00 on `checkOut`, or `accessUntilOverride` if set.
-- **Sensitive items** (lockbox/door codes) have a separate, configurable
-  reveal time (default: check-in time, 15:00 on `checkIn`), because of
-  turnover days. The final value is decided together with the content.
-  **Not implemented yet**: added with the content (step 6).
+- **Lockbox codes are not in the guest app** (owner's decision, 22 Nov
+  2026). The owner changes them by hand, often and possibly between guests,
+  and handles them outside the guest app. So there's no reveal time and
+  nothing to store. If codes are added later: a separate reveal time (default check-in,
+  15:00 on `checkIn`, because of turnover days), the code served from the
+  server only to a valid session, never written into the repo, and a way
+  for the admin to set it if it changes per guest.
 - Property times are kept per property in config: check-in 15:00, check-out
   11:00 for both.
 
