@@ -1,7 +1,7 @@
 import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
+import {Header} from '@/src/app/[locale]/(guest-app)/(components)/header'
 import {GUEST_APP_HIDDEN} from '@/src/lib/constants'
-import {Header} from './(components)/header'
 
 export const metadata: Metadata = {
   robots: {

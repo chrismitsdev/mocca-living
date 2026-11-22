@@ -1,8 +1,8 @@
 import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
+import {Header} from '@/src/app/admin/(components)/header'
 import {Shell} from '@/src/components/shared/shell'
 import {GUEST_APP_HIDDEN} from '@/src/lib/constants'
-import {Header} from './(components)/header'
 
 // Root layout of the guest-app admin. It sits outside the [locale]
 // segment because the page is Greek only; the i18n middleware skips /admin
