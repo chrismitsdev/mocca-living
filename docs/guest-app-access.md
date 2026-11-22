@@ -608,7 +608,13 @@ actions; `login-email.ts` the email).
   received emails, so they can't be removed automatically after processing;
   manual deletion in the dashboard may be possible. Our store keeps only the
   fields in §4.
-- Add a privacy-policy paragraph in all four locales.
+- Privacy-policy section "Guest app" (`Pages.privacy.guest-app` in all four
+  locales, the last section of `/privacy`; written 22 Nov 2026). It lists the stored fields and their source, what isn't kept, the
+  purpose and legal basis, deletion 3 days after access ends, the session
+  cookie, the hashed IP kept 15 minutes (rate limits), the processors and
+  regions, Resend's 30-day copy, and `info@moccaliving.com` for access or
+  deletion requests. It's public now, not behind `GUEST_APP_HIDDEN`,
+  because real reservations are already being stored.
 
 ## 9. Alerts
 
@@ -776,7 +782,8 @@ fails, but the login page forwards the existing session. That's expected.
    rebuilt 1–6 Nov 2026). Magic-link login straight to `/admin/dashboard`
    (§6); the list, "Προσθήκη πρόσβασης", revoke and extend work (§7).
    - Verified on the preview with the §11 admin checklist (21 Nov 2026).
-5. **Privacy policy** update.
+5. **Privacy policy** update: written 22 Nov 2026 (§8); to review on the
+   preview, Turkish and Bulgarian ideally by a native speaker.
 6. **Content** (separate design, once the owner finalises it), then remove
    the production 404 guards.
 7. **Go-live.**
