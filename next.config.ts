@@ -2,7 +2,7 @@ import type {NextConfig} from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ['172.20.10.11'],
+  allowedDevOrigins: ['192.168.178.22'],
   images: {
     qualities: [60, 75]
   },
