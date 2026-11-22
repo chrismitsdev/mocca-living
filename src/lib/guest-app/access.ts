@@ -1,5 +1,5 @@
 import {nameMatches} from './normalize'
-import {PROPERTY_TIMEZONE} from './properties'
+import {type GuestAppProperty, PROPERTY_TIMEZONE} from './properties'
 import {
   accessEndsAt,
   type Reservation,
@@ -25,7 +25,12 @@ export function accessWindow(reservation: Reservation): AccessWindow {
 }
 
 export type AccessDecision =
-  | {ok: true; property: PropertySlug; endsAt: number; recordCreatedAt: string}
+  | {
+      ok: true
+      property: GuestAppProperty
+      endsAt: number
+      recordCreatedAt: string
+    }
   | {ok: false; reason: 'not-found'}
   | {ok: false; reason: 'name-mismatch'}
   | {ok: false; reason: 'not-yet'; opensAt: number}

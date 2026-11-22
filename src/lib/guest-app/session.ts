@@ -1,4 +1,5 @@
 import {createHmac, timingSafeEqual} from 'node:crypto'
+import type {GuestAppProperty} from './properties'
 
 // Compact signed session tokens: "v3.<payload>.<signature>", where payload is
 // base64url JSON and signature an HMAC-SHA256 over "v3.<payload>". The token
@@ -7,7 +8,7 @@ import {createHmac, timingSafeEqual} from 'node:crypto'
 
 export type GuestSession = {
   reservationNumber: string
-  property: PropertySlug
+  property: GuestAppProperty
   /** The record's creation time, so a re-added booking needs a new sign-in */
   recordCreatedAt: string
   /** Epoch seconds */

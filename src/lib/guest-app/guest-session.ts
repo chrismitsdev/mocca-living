@@ -1,6 +1,7 @@
 import {cookies} from 'next/headers'
 import {windowDecision} from './access'
 import {guestAppEnv} from './env'
+import type {GuestAppProperty} from './properties'
 import {createSessionToken, verifySessionToken} from './session'
 import {getReservation, type Reservation} from './store/reservations'
 import {createUpstashStore} from './store/upstash'
@@ -17,7 +18,7 @@ const SESSION_GRACE_MS = 30 * 24 * 60 * 60 * 1000
 
 export async function startGuestSession(
   reservationNumber: string,
-  property: PropertySlug,
+  property: GuestAppProperty,
   recordCreatedAt: string,
   endsAt: number
 ) {
@@ -42,7 +43,7 @@ export async function startGuestSession(
 }
 
 export type ActiveGuest = {
-  property: PropertySlug
+  property: GuestAppProperty
   reservation: Reservation
 }
 

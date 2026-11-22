@@ -1,10 +1,10 @@
+import type {GuestAppProperty} from '@/src/lib/guest-app/properties'
 import type {Reservation} from '@/src/lib/guest-app/store/reservations'
 
 // Greek labels for the admin
 
-export const PROPERTY_LABELS: Record<PropertySlug, string> = {
+export const PROPERTY_LABELS: Record<GuestAppProperty, string> = {
   'mocca-by-the-sea-dimitra': 'Mocca by the Sea · Dimitra',
-  'mocca-by-the-sea-georgia': 'Mocca by the Sea · Georgia',
   'mocca-city': 'Mocca City'
 }
 

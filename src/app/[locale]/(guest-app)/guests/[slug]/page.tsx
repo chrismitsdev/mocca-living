@@ -5,11 +5,12 @@ import {getTranslations} from 'next-intl/server'
 import {redirect} from '@/src/i18n/navigation'
 import {GUEST_APP_HIDDEN} from '@/src/lib/constants'
 import {getActiveGuest} from '@/src/lib/guest-app/guest-session'
+import type {GuestAppProperty} from '@/src/lib/guest-app/properties'
 import {Heading} from './(components)/heading'
 
 type SlugParams = Promise<{
   locale: Locale
-  slug: PropertySlug
+  slug: GuestAppProperty
 }>
 
 export async function generateMetadata({

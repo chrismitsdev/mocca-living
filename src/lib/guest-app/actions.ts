@@ -17,6 +17,7 @@ import {checkAccess} from './access'
 import {clientKey} from './client-key'
 import {startGuestSession} from './guest-session'
 import {normalizeReservationNumber} from './normalize'
+import type {GuestAppProperty} from './properties'
 import {count, hit, LIMITS} from './rate-limit'
 import {getReservation} from './store/reservations'
 import {createUpstashStore} from './store/upstash'
@@ -104,7 +105,7 @@ export async function verifyGuestAction(
 
   const {reservationNumber, name} = result.output
   const store = createUpstashStore()
-  let property: PropertySlug
+  let property: GuestAppProperty
 
   try {
     const ipAllowed = await hit(store, LIMITS.ip, await clientKey())

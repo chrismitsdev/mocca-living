@@ -417,7 +417,7 @@ describe('listReservations', () => {
       store,
       {
         reservationNumber: 'call-001',
-        property: 'mocca-by-the-sea-georgia',
+        property: 'mocca-city',
         bookerName: 'John Roe',
         checkIn: '2026-10-10',
         checkOut: '2026-10-12'

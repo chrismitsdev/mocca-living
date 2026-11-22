@@ -9,13 +9,13 @@ export type GuestAppProperty = Extract<
 
 export const PROPERTY_TIMEZONE = 'Europe/Athens'
 
-// Includes Georgia: never matched from emails, but it can be added manually
+// Georgia is on the public site but not rentable (owner's decision), so the
+// guest app and the admin don't know it
 export const PROPERTY_TIMES: Record<
-  PropertySlug,
+  GuestAppProperty,
   {checkIn: string; checkOut: string}
 > = {
   'mocca-by-the-sea-dimitra': {checkIn: '15:00', checkOut: '11:00'},
-  'mocca-by-the-sea-georgia': {checkIn: '15:00', checkOut: '11:00'},
   'mocca-city': {checkIn: '15:00', checkOut: '11:00'}
 }
 

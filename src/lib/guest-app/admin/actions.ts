@@ -22,7 +22,11 @@ import {
 import {clientKey, hashForKey} from '../client-key'
 import {guestAppEnv} from '../env'
 import {normalizeReservationNumber} from '../normalize'
-import {PROPERTY_TIMES, PROPERTY_TIMEZONE} from '../properties'
+import {
+  type GuestAppProperty,
+  PROPERTY_TIMES,
+  PROPERTY_TIMEZONE
+} from '../properties'
 import {hit, LIMITS} from '../rate-limit'
 import {
   addManualReservation,
@@ -240,7 +244,7 @@ const AddAccessSchema = object({
     maxLength(20, messages.reservationNumberLength)
   ),
   property: picklist(
-    Object.keys(PROPERTY_TIMES) as PropertySlug[],
+    Object.keys(PROPERTY_TIMES) as GuestAppProperty[],
     messages.required
   ),
   // The guest form reads at most 120 characters of the name, so a longer one

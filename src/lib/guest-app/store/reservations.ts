@@ -1,6 +1,10 @@
 import type {Channel, ParsedReservation} from '../email/types'
 import {normalizeReservationNumber} from '../normalize'
-import {PROPERTY_TIMES, PROPERTY_TIMEZONE} from '../properties'
+import {
+  type GuestAppProperty,
+  PROPERTY_TIMES,
+  PROPERTY_TIMEZONE
+} from '../properties'
 import {addDays, zonedDate, zonedTimeToEpochMs} from '../time'
 import type {KeyValueStore} from './kv'
 
@@ -13,7 +17,7 @@ export type AuditEntry = {at: string; by: string; action: string}
 export type Reservation = {
   reservationNumber: string
   channel: Channel | 'admin'
-  property: PropertySlug
+  property: GuestAppProperty
   status: 'confirmed' | 'cancelled' | 'revoked'
   /** The booker's full name exactly as the platform saved it */
   bookerName: string
@@ -249,7 +253,7 @@ export function extendReservation(
 
 export type ManualReservationInput = {
   reservationNumber: string
-  property: PropertySlug
+  property: GuestAppProperty
   bookerName: string
   checkIn: string
   checkOut: string
