@@ -54,6 +54,19 @@
   --color-blue-11: #0d74ce;
   --color-blue-12: #113264;
 
+  --color-amber-1: #fefdfb;
+  --color-amber-2: #fefbe9;
+  --color-amber-3: #fff7c2;
+  --color-amber-4: #ffee9c;
+  --color-amber-5: #fbe577;
+  --color-amber-6: #f3d673;
+  --color-amber-7: #e9c162;
+  --color-amber-8: #e2a336;
+  --color-amber-9: #ffc53d;
+  --color-amber-10: #ffba18;
+  --color-amber-11: #ab6400;
+  --color-amber-12: #4f3422;
+
   /* Surface colors */
   --color-surface-1: #e7d9be;
   --color-surface-2: #ddc8a2;
@@ -82,6 +95,12 @@
   --color-info: var(--color-blue-9);
   --color-info-foreground: var(--color-blue-2);
   --color-info-hover: var(--color-blue-11);
+
+  /* Amber is a bright scale: its solid step takes dark text (step 12) and
+   * hovers to step 10, unlike the scales above */
+  --color-warning: var(--color-amber-9);
+  --color-warning-foreground: var(--color-amber-12);
+  --color-warning-hover: var(--color-amber-10);
 
   --color-ring: var(--color-foreground);
 }

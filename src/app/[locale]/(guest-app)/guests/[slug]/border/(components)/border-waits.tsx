@@ -24,9 +24,9 @@ import {PROPERTY_TIMEZONE} from '@/src/lib/guest-app/properties'
 const STORAGE_KEY = 'guest-app:border-direction'
 const DIRECTIONS: BorderDirection[] = ['turkey', 'bulgaria']
 
-const LEVEL_BADGE: Record<WaitLevel, 'success' | 'primary' | 'error'> = {
+const LEVEL_BADGE: Record<WaitLevel, 'success' | 'warning' | 'error'> = {
   low: 'success',
-  medium: 'primary',
+  medium: 'warning',
   high: 'error'
 }
 
