@@ -739,8 +739,17 @@
       },
       "currency": {
         "eur": "Euro",
-        "try": "Turkish lira",
-        "source": "European Central Bank rate on {date}.",
+        "currency-label": "Currency",
+        "currencies": {
+          "TRY": "Turkish lira",
+          "RSD": "Serbian dinar",
+          "RON": "Romanian leu",
+          "GBP": "British pound",
+          "USD": "US dollar"
+        },
+        "source-ecb": "European Central Bank rate on {date}.",
+        "source-nbs": "National Bank of Serbia rate on {date}.",
+        "currency-unavailable": "The rate for this currency isn't available right now. Please try again later.",
         "disclaimer": "The rate is indicative. Banks and exchange offices apply their own rates.",
         "invalid": "Enter an amount, e.g. 25.50.",
         "unavailable": "The exchange rate isn't available right now. Please try again later."

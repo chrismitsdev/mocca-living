@@ -53,7 +53,7 @@ motion".
 | `devices`                      | List of devices: icon, name, model, chevron                                                                                                                                   |
 | `devices/<id>`                 | Name with the model under it, the device icon, "Περιγραφή", four numbered steps, safety, cleaning                                                                             |
 | `border`                       | "Σύνορα": estimated waits leaving Greece, tabs Τουρκία / Βουλγαρία (default by language, choice kept on the device)                                                           |
-| `currency`                     | "Συνάλλαγμα": EUR ↔ TRY converter at the ECB daily rate, with the rate's date and a note that banks use their own rates                                                       |
+| `currency`                     | "Συνάλλαγμα": euro converter for TRY, RSD, RON, GBP, USD at central-bank daily rates, with the bank, the date and a note that banks use their own rates                       |
 | `check-out`                    | "Η αναχώρησή σας": end of access (so an extension shows), then the checklist                                                                                                  |
 | `emergency`                    | "Τηλέφωνα": 112, Police 100, Fire 199, Ambulance 166, Coast Guard 108 (tap to call)                                                                                           |
 
@@ -123,17 +123,25 @@ motion".
     language picks the default tab (tr → Turkey, bg → Bulgaria, el/en →
     Turkey); nationality isn't known or stored.
   - No guest data goes to nakordoni: the requests carry only our key.
-- **Συνάλλαγμα (EUR ↔ TRY)** (26 Nov 2026): the European Central Bank's
-  daily reference rate through the Frankfurter API (`api.frankfurter.dev`,
-  free, no key). Code in `src/lib/guest-app/currency.ts`.
-  - Fetched on the server, cached an hour (the ECB publishes once a working
-    day, around 16:00 CET). A rate older than 7 days or a malformed response
-    shows "not available" instead of a number.
-  - Two linked fields, € first for every language (prices in Greece are in
-    euros), starting at 100 €; typing in either updates the other. Comma or
-    dot as the decimal mark; anything else shows a hint under the field.
-  - The page shows the rate's date and that banks and exchange offices apply
-    their own rates.
+- **Συνάλλαγμα** (26 Nov 2026): euro against TRY, RSD, RON, GBP and USD
+  (RSD for the occasional Serbian guests, as the owner mentioned). Code in
+  `src/lib/guest-app/currency.ts`. Two central-bank sources, both free and
+  without a key:
+  - TRY, RON, GBP, USD: the European Central Bank's daily reference rates,
+    through the Frankfurter API (`api.frankfurter.dev`);
+  - RSD (not published by the ECB): the National Bank of Serbia's official
+    middle rate, through `kurs.resenje.org`.
+  - Fetched on the server, cached an hour (both publish once a working day).
+    A rate older than 7 days or a malformed response leaves that currency
+    "not available"; a source that fails only affects its own currencies.
+  - Layout: the € field (first for every language, since prices in Greece
+    are in euros; starts at 100 €), a currency picker (₺ preselected, the
+    choice kept on the device), then the amount in that currency. Typing in
+    either field updates the other; comma or dot as the decimal mark,
+    anything else shows a hint under the field.
+  - Under the fields: "1 € = 55,62 ₺" with fixed symbols (₺, din, lei, £, $;
+    Intl's differ by language), the bank and date of the rate, and that
+    banks and exchange offices apply their own rates.
 
 ## Later rounds
 

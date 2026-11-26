@@ -739,8 +739,17 @@
       },
       "currency": {
         "eur": "Euro",
-        "try": "Türk lirası",
-        "source": "Avrupa Merkez Bankası'nın {date} tarihli kuru.",
+        "currency-label": "Para birimi",
+        "currencies": {
+          "TRY": "Türk lirası",
+          "RSD": "Sırp dinarı",
+          "RON": "Rumen leyi",
+          "GBP": "İngiliz sterlini",
+          "USD": "ABD doları"
+        },
+        "source-ecb": "Avrupa Merkez Bankası'nın {date} tarihli kuru.",
+        "source-nbs": "Sırbistan Ulusal Bankası'nın {date} tarihli kuru.",
+        "currency-unavailable": "Bu para biriminin kuru şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.",
         "disclaimer": "Kur yalnızca bilgi amaçlıdır. Bankalar ve döviz büroları kendi kurlarını uygular.",
         "invalid": "Bir tutar girin, ör. 25,50.",
         "unavailable": "Döviz kuru şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin."

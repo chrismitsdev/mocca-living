@@ -3,7 +3,7 @@ import type {Locale} from 'next-intl'
 import {getTranslations} from 'next-intl/server'
 import {CurrencyConverter} from '@/src/app/[locale]/(guest-app)/guests/[slug]/currency/(components)/currency-converter'
 import {Heading} from '@/src/app/[locale]/(guest-app)/guests/[slug]/currency/(components)/heading'
-import {fetchEurTryRate} from '@/src/lib/guest-app/currency'
+import {fetchRates} from '@/src/lib/guest-app/currency'
 import {
   type GuestAppProperty,
   isGuestAppProperty
@@ -38,7 +38,7 @@ export default async function GuestCurrencyPage({
   return (
     <>
       <Heading slug={slug} />
-      <CurrencyConverter rate={await fetchEurTryRate()} />
+      <CurrencyConverter rates={await fetchRates()} />
     </>
   )
 }
