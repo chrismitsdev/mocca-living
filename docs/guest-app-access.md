@@ -9,6 +9,11 @@ and verified on its Vercel preview. The first real reservation (Airbnb, 19 Nov
 2026) went through intake, origin check, parsing and storage, and the guest
 could sign in. Next: the privacy policy (step 5). See §12.
 
+Branches (27 Nov 2026): `feat/guest-app-access` was deleted; all of it lives
+on in `feat/guest-app-content`, which carries the guest app until go-live. The
+Resend webhook now points at that branch's preview
+(`mocca-living-git-feat-guest-app-content-chrismitsdev.vercel.app`).
+
 ## 1. Requirements
 
 - Only guests with an **active reservation** at one of the properties may
@@ -776,7 +781,8 @@ fails, but the login page forwards the existing session. That's expected.
    - Vitest, fixtures, parsers, origin verification, the Redis store, the
      inbound route and alerts.
    - Upstash `mocca-guest-app` (`fra1`) is connected.
-   - The Resend webhook (`email.received`) points at the branch preview.
+   - The Resend webhook (`email.received`) points at the branch preview
+     (since 27 Nov 2026 the `feat/guest-app-content` one).
      Verified end to end with a forwarded test email: the ARC seal checked
      out, and the sender was ignored as not allowed.
    - First real reservation stored on 19 Nov 2026 (an Airbnb booking via
