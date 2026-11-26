@@ -37,6 +37,8 @@ export const guestAppEnv = {
       .split(',')
       .map((email) => email.trim().toLowerCase())
       .filter(Boolean),
+  /** nakordoni.eu API key for border waiting times; null when not set */
+  nakordoniApiKey: () => optional('NAKORDONI_API_KEY'),
   /** Wi-Fi of a property; either field is null when not configured */
   wifi: (property: GuestAppProperty): WifiDetails => {
     const key = WIFI_ENV_KEYS[property]

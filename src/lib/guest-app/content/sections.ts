@@ -2,11 +2,17 @@ import {
   IconDoorExit,
   IconPhone,
   IconPlug,
+  IconRoad,
   IconWifi,
   type TablerIcon
 } from '@tabler/icons-react'
 
-export type GuestSection = 'wifi' | 'devices' | 'emergency' | 'check-out'
+export type GuestSection =
+  | 'wifi'
+  | 'devices'
+  | 'emergency'
+  | 'border'
+  | 'check-out'
 
 /**
  * Sections of /guests/<property>, in display order, with the icon used on the
@@ -17,6 +23,7 @@ export const GUEST_SECTIONS: {id: GuestSection; icon: TablerIcon}[] = [
   {id: 'wifi', icon: IconWifi},
   {id: 'devices', icon: IconPlug},
   {id: 'emergency', icon: IconPhone},
+  {id: 'border', icon: IconRoad},
   {id: 'check-out', icon: IconDoorExit}
 ]
 

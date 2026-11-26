@@ -386,6 +386,9 @@
         "devices": {
           "title": "Cihazlar"
         },
+        "border": {
+          "title": "Sınırlar"
+        },
         "check-out": {
           "title": "Çıkış"
         },
@@ -705,6 +708,30 @@
             "safety": "Hata mesajı tekrar tekrar görünürse lütfen bizimle iletişime geçin.",
             "cleaning": "Tuş takımını ve kolu kuru bir bezle silin. Elektronik parçaların yakınında sıvı temizleyici kullanmayın."
           }
+        }
+      },
+      "border": {
+        "tabs-label": "Gidilecek ülke",
+        "tab-turkey": "Türkiye",
+        "tab-bulgaria": "Bulgaristan",
+        "minutes": "{minutes} dk",
+        "estimate": "Tahmin",
+        "just-now": "az önce",
+        "level": {
+          "low": "Kısa bekleme",
+          "medium": "Orta bekleme",
+          "high": "Uzun bekleme"
+        },
+        "no-reading": "Yakın zamanlı tahmin yok.",
+        "details": "Ayrıntılar",
+        "unavailable": "Bekleme süreleri şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.",
+        "disclaimer": "Bu süreler resmî bilgi değil, tahmindir ve hızla değişir. Yola çıkmadan önce resmî kaynakları da kontrol edin.",
+        "crossings": {
+          "kipi": "Kipi – İpsala",
+          "kastanies": "Kastanies – Pazarkule",
+          "nymfaia": "Nymfaia – Makaza",
+          "kyprinos": "Kyprinos – İvaylovgrad",
+          "ormenio": "Ormenio – Kapitan Petko Voyvoda"
         }
       }
     },

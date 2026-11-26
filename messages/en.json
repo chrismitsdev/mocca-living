@@ -386,6 +386,9 @@
         "devices": {
           "title": "Devices"
         },
+        "border": {
+          "title": "Borders"
+        },
         "check-out": {
           "title": "Check-out"
         },
@@ -705,6 +708,30 @@
             "safety": "If an error message keeps appearing, please contact us.",
             "cleaning": "Wipe the keypad and handle with a dry cloth. Don't use liquid cleaners near the electronics."
           }
+        }
+      },
+      "border": {
+        "tabs-label": "Destination country",
+        "tab-turkey": "Turkey",
+        "tab-bulgaria": "Bulgaria",
+        "minutes": "{minutes} min",
+        "estimate": "Estimate",
+        "just-now": "just now",
+        "level": {
+          "low": "Short wait",
+          "medium": "Moderate wait",
+          "high": "Long wait"
+        },
+        "no-reading": "No recent estimate.",
+        "details": "Details",
+        "unavailable": "Waiting times aren't available right now. Please try again later.",
+        "disclaimer": "These times are estimates, not official information, and they change quickly. Check official sources too before you set off.",
+        "crossings": {
+          "kipi": "Kipi – İpsala",
+          "kastanies": "Kastanies – Pazarkule",
+          "nymfaia": "Nymfaia – Makaza",
+          "kyprinos": "Kyprinos – Ivaylovgrad",
+          "ormenio": "Ormenio – Kapitan Petko Voyvoda"
         }
       }
     },
