@@ -46,15 +46,16 @@ back down when the browser restores a scrolled page). 0.5 s, ease-in-out
 (`[0.4, 0, 0.2, 1]`); the header stays still; no animation with "reduce
 motion".
 
-| Route (`/guests/<property>/…`) | Content                                                                                                                                         |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| (home)                         | Welcome over the property's cover photo (`public/images/covers`), then five tiles: Wi-Fi, Συσκευές, Τηλέφωνα, Σύνορα, Αναχώρηση                 |
-| `wifi`                         | Network name and password (tap to select), copy button: Clipboard API on HTTPS, a selection fallback on plain http, an error toast if both fail |
-| `devices`                      | List of devices: icon, name, model, chevron                                                                                                     |
-| `devices/<id>`                 | Name with the model under it, the device icon, "Περιγραφή", four numbered steps, safety, cleaning                                               |
-| `border`                       | "Σύνορα": estimated waits leaving Greece, tabs Τουρκία / Βουλγαρία (default by language, choice kept on the device)                             |
-| `check-out`                    | "Η αναχώρησή σας": end of access (so an extension shows), then the checklist                                                                    |
-| `emergency`                    | "Τηλέφωνα": 112, Police 100, Fire 199, Ambulance 166, Coast Guard 108 (tap to call)                                                             |
+| Route (`/guests/<property>/…`) | Content                                                                                                                                                                       |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| (home)                         | Welcome over the property's cover photo (`public/images/covers`), then six tiles (2 columns on phones, 3 from `sm`): Wi-Fi, Συσκευές, Τηλέφωνα, Σύνορα, Συνάλλαγμα, Αναχώρηση |
+| `wifi`                         | Network name and password (tap to select), copy button: Clipboard API on HTTPS, a selection fallback on plain http, an error toast if both fail                               |
+| `devices`                      | List of devices: icon, name, model, chevron                                                                                                                                   |
+| `devices/<id>`                 | Name with the model under it, the device icon, "Περιγραφή", four numbered steps, safety, cleaning                                                                             |
+| `border`                       | "Σύνορα": estimated waits leaving Greece, tabs Τουρκία / Βουλγαρία (default by language, choice kept on the device)                                                           |
+| `currency`                     | "Συνάλλαγμα": EUR ↔ TRY converter at the ECB daily rate, with the rate's date and a note that banks use their own rates                                                       |
+| `check-out`                    | "Η αναχώρησή σας": end of access (so an extension shows), then the checklist                                                                                                  |
+| `emergency`                    | "Τηλέφωνα": 112, Police 100, Fire 199, Ambulance 166, Coast Guard 108 (tap to call)                                                                                           |
 
 - **Text** is in `messages/*.json` under `Pages.guest-app` (`home`,
   `sections`, `wifi`, `devices`, `check-out`, `emergency`, `device-guides`).
@@ -122,15 +123,23 @@ motion".
     language picks the default tab (tr → Turkey, bg → Bulgaria, el/en →
     Turkey); nationality isn't known or stored.
   - No guest data goes to nakordoni: the requests carry only our key.
+- **Συνάλλαγμα (EUR ↔ TRY)** (26 Nov 2026): the European Central Bank's
+  daily reference rate through the Frankfurter API (`api.frankfurter.dev`,
+  free, no key). Code in `src/lib/guest-app/currency.ts`.
+  - Fetched on the server, cached an hour (the ECB publishes once a working
+    day, around 16:00 CET). A rate older than 7 days or a malformed response
+    shows "not available" instead of a number.
+  - Two linked fields, € first for every language (prices in Greece are in
+    euros), starting at 100 €; typing in either updates the other. Comma or
+    dot as the decimal mark; anything else shows a hint under the field.
+  - The page shows the rate's date and that banks and exchange offices apply
+    their own rates.
 
 ## Later rounds
 
 - Map sections: pharmacies, places to eat, attractions, parking, ATMs. Leaflet
   is already used on the contact page; the owner must provide the places (the
   wireframe's places are placeholders).
-- EUR/TRY converter: daily ECB rates (e.g. Frankfurter API). Bulgaria uses the
-  euro, so it's mainly for Turkish guests.
-- Border wait times (Kipoi, Kastanies): no reliable public source found yet.
 - Not planned: music player, key box. Wooden gym only if there are videos.
 
 ## Questions for the owner

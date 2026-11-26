@@ -389,6 +389,9 @@
         "border": {
           "title": "Sınırlar"
         },
+        "currency": {
+          "title": "Döviz"
+        },
         "check-out": {
           "title": "Çıkış"
         },
@@ -733,6 +736,14 @@
           "kyprinos": "Kyprinos – İvaylovgrad",
           "ormenio": "Ormenio – Kapitan Petko Voyvoda"
         }
+      },
+      "currency": {
+        "eur": "Euro",
+        "try": "Türk lirası",
+        "source": "Avrupa Merkez Bankası'nın {date} tarihli kuru.",
+        "disclaimer": "Kur yalnızca bilgi amaçlıdır. Bankalar ve döviz büroları kendi kurlarını uygular.",
+        "invalid": "Bir tutar girin, ör. 25,50.",
+        "unavailable": "Döviz kuru şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin."
       }
     },
     "not-found": {

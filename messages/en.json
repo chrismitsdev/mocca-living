@@ -389,6 +389,9 @@
         "border": {
           "title": "Borders"
         },
+        "currency": {
+          "title": "Currency"
+        },
         "check-out": {
           "title": "Check-out"
         },
@@ -733,6 +736,14 @@
           "kyprinos": "Kyprinos – Ivaylovgrad",
           "ormenio": "Ormenio – Kapitan Petko Voyvoda"
         }
+      },
+      "currency": {
+        "eur": "Euro",
+        "try": "Turkish lira",
+        "source": "European Central Bank rate on {date}.",
+        "disclaimer": "The rate is indicative. Banks and exchange offices apply their own rates.",
+        "invalid": "Enter an amount, e.g. 25.50.",
+        "unavailable": "The exchange rate isn't available right now. Please try again later."
       }
     },
     "not-found": {

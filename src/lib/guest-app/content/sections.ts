@@ -1,4 +1,5 @@
 import {
+  IconArrowsExchange,
   IconDoorExit,
   IconPhone,
   IconPlug,
@@ -12,6 +13,7 @@ export type GuestSection =
   | 'devices'
   | 'emergency'
   | 'border'
+  | 'currency'
   | 'check-out'
 
 /**
@@ -24,6 +26,7 @@ export const GUEST_SECTIONS: {id: GuestSection; icon: TablerIcon}[] = [
   {id: 'devices', icon: IconPlug},
   {id: 'emergency', icon: IconPhone},
   {id: 'border', icon: IconRoad},
+  {id: 'currency', icon: IconArrowsExchange},
   {id: 'check-out', icon: IconDoorExit}
 ]
 

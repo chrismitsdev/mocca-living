@@ -15,7 +15,7 @@ function SectionGrid({slug}: {slug: GuestAppProperty}) {
 
   return (
     <Section className='pt-8 sm:pt-12'>
-      <ul className='grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4'>
+      <ul className='grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4'>
         {visible.map(({id, icon: Icon}) => (
           <li key={id}>
             <Link
