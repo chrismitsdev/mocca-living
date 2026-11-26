@@ -8,8 +8,6 @@ import {Link} from '@/src/i18n/navigation'
 
 type SubpageHeaderProps = {
   title: string
-  /** Optional line directly under the title, e.g. a device's model */
-  subtitle?: string
   /** Where the back link goes, e.g. /guests/mocca-city */
   backHref: string
   /** Shown under the title on phones only */
@@ -18,12 +16,7 @@ type SubpageHeaderProps = {
 
 // Header of a guest-app subpage. Phones: back chevron and centred title on
 // one row, then the section's icon. From sm: "‹ Back" above the title
-function SubpageHeader({
-  title,
-  subtitle,
-  backHref,
-  icon: Icon
-}: SubpageHeaderProps) {
+function SubpageHeader({title, backHref, icon: Icon}: SubpageHeaderProps) {
   const t = useTranslations('Pages.guest-app')
 
   return (
@@ -39,38 +32,28 @@ function SubpageHeader({
           {t('back')}
         </Link>
       </Button>
-      <div className='space-y-1 text-center sm:text-left'>
-        {/* Phones: the chevron is pinned left so the title stays centred */}
-        <div className='relative px-10 sm:px-0'>
-          <IconButton
-            className='absolute left-0 top-1/2 -translate-y-1/2 sm:hidden'
-            variant='ghost'
-            size='normal'
-            aria-label={t('back')}
-            asChild
-          >
-            <Link href={backHref}>
-              <IconChevronLeft aria-hidden />
-            </Link>
-          </IconButton>
-          <Typography
-            variant='h3'
-            as='h1'
-          >
-            {title}
-          </Typography>
-        </div>
-        {subtitle && (
-          <Typography
-            className='text-surface-5'
-            variant='small'
-          >
-            {subtitle}
-          </Typography>
-        )}
+      {/* Phones: the chevron is pinned left so the title stays centred */}
+      <div className='relative px-10 text-center sm:px-0 sm:text-left'>
+        <IconButton
+          className='absolute left-0 top-1/2 -translate-y-1/2 sm:hidden'
+          variant='ghost'
+          size='normal'
+          aria-label={t('back')}
+          asChild
+        >
+          <Link href={backHref}>
+            <IconChevronLeft aria-hidden />
+          </Link>
+        </IconButton>
+        <Typography
+          variant='h3'
+          as='h1'
+        >
+          {title}
+        </Typography>
       </div>
       <Icon
-        className='mt-4 mx-auto size-24 sm:hidden'
+        className='mt-6 mx-auto size-24 sm:hidden'
         stroke={1}
         aria-hidden
       />

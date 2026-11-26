@@ -1,7 +1,7 @@
 'use client'
 
 import {IconCopy} from '@tabler/icons-react'
-import {Button} from '@/src/components/ui/button'
+import {IconButton} from '@/src/components/ui/icon-button'
 import {toast} from '@/src/components/ui/toast'
 
 type CopyButtonProps = {
@@ -62,13 +62,15 @@ function CopyButton({
   }
 
   return (
-    <Button
-      variant='secondary'
+    <IconButton
+      variant='ghost'
+      size='small'
+      aria-label={label}
+      title={label}
       onClick={copy}
     >
-      {label}
       <IconCopy />
-    </Button>
+    </IconButton>
   )
 }
 

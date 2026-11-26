@@ -49,9 +49,9 @@ motion".
 | Route (`/guests/<property>/…`) | Content                                                                                                                                                                       |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | (home)                         | Welcome over the property's cover photo (`public/images/covers`), then six tiles (2 columns on phones, 3 from `sm`): Wi-Fi, Συσκευές, Τηλέφωνα, Σύνορα, Συνάλλαγμα, Αναχώρηση |
-| `wifi`                         | Network name and password (tap to select), copy button: Clipboard API on HTTPS, a selection fallback on plain http, an error toast if both fail                               |
+| `wifi`                         | Network name and password (tap to select), a copy icon next to it: Clipboard API on HTTPS, a selection fallback on plain http, an error toast if both fail                    |
 | `devices`                      | List of devices: icon, name, model, chevron                                                                                                                                   |
-| `devices/<id>`                 | Name with the model under it, the device icon, "Περιγραφή", four numbered steps, safety, cleaning                                                                             |
+| `devices/<id>`                 | Name (the model is only in the list), the device icon, "Περιγραφή", four numbered steps, safety, cleaning                                                                     |
 | `border`                       | "Σύνορα": estimated waits leaving Greece, tabs Τουρκία / Βουλγαρία (default by language, choice kept on the device)                                                           |
 | `currency`                     | "Συνάλλαγμα": euro converter for TRY, RSD, RON, GBP, USD at central-bank daily rates, with the bank, the date and a note that banks use their own rates                       |
 | `check-out`                    | "Η αναχώρησή σας": end of access (so an extension shows), then the checklist                                                                                                  |

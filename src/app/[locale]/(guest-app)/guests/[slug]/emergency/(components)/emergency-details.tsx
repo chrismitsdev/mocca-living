@@ -18,12 +18,6 @@ function EmergencyDetails() {
   return (
     <Section className='pt-8 sm:pt-12'>
       <div className='space-y-4'>
-        <Typography
-          variant='h4'
-          as='h2'
-        >
-          {t('numbers')}
-        </Typography>
         <Card>
           <CardContent className='p-0 sm:p-0'>
             <ul className='divide-y divide-surface-3'>

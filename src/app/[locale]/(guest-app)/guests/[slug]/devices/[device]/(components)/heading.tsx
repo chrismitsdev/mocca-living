@@ -16,7 +16,6 @@ function Heading({slug, id, icon}: HeadingProps) {
   return (
     <SubpageHeader
       title={t(`${slug}.${id}.name` as DeviceTextKey)}
-      subtitle={t(`${slug}.${id}.model` as DeviceTextKey)}
       backHref={`/guests/${slug}/devices`}
       icon={icon}
     />

@@ -42,7 +42,7 @@ function CheckOutDetails({reservation}: {reservation: Reservation}) {
         </Card>
         <div className='space-y-4'>
           <Typography
-            variant='h4'
+            variant='large'
             as='h2'
           >
             {t('checklist')}

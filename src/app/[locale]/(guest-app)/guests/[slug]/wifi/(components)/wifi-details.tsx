@@ -35,20 +35,22 @@ function WifiDetails({slug}: {slug: GuestAppProperty}) {
                 >
                   {t('password')}
                 </Typography>
-                <Typography
-                  className='font-mono break-all select-all'
-                  variant='h4'
-                >
-                  {password}
-                </Typography>
+                <div className='flex items-center gap-2'>
+                  <Typography
+                    className='font-mono break-all select-all'
+                    variant='h4'
+                  >
+                    {password}
+                  </Typography>
+                  <CopyButton
+                    value={password}
+                    label={t('copy')}
+                    copiedLabel={t('copied')}
+                    failedLabel={t('copy-failed')}
+                    failedDescription={t('copy-failed-hint')}
+                  />
+                </div>
               </div>
-              <CopyButton
-                value={password}
-                label={t('copy')}
-                copiedLabel={t('copied')}
-                failedLabel={t('copy-failed')}
-                failedDescription={t('copy-failed-hint')}
-              />
             </>
           ) : (
             <Typography>{t('missing')}</Typography>

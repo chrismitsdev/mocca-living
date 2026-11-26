@@ -424,7 +424,6 @@
         "thanks": "Thank you for staying with us. Have a safe trip!"
       },
       "emergency": {
-        "numbers": "Emergency numbers",
         "general": "European emergency number",
         "police": "Police",
         "fire": "Fire service",
@@ -744,7 +743,7 @@
           "TRY": "Turkish lira",
           "RSD": "Serbian dinar",
           "RON": "Romanian leu",
-          "GBP": "British pound",
+          "GBP": "Pound sterling",
           "USD": "US dollar"
         },
         "source-ecb": "European Central Bank rate on {date}.",
