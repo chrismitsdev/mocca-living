@@ -48,10 +48,11 @@ motion".
 
 | Route (`/guests/<property>/…`) | Content                                                                                                                                         |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| (home)                         | Welcome over the property's cover photo (`public/images/covers`), then four tiles: Wi-Fi, Συσκευές, Τηλέφωνα, Αναχώρηση                         |
+| (home)                         | Welcome over the property's cover photo (`public/images/covers`), then five tiles: Wi-Fi, Συσκευές, Τηλέφωνα, Σύνορα, Αναχώρηση                 |
 | `wifi`                         | Network name and password (tap to select), copy button: Clipboard API on HTTPS, a selection fallback on plain http, an error toast if both fail |
 | `devices`                      | List of devices: icon, name, model, chevron                                                                                                     |
 | `devices/<id>`                 | Name with the model under it, the device icon, "Περιγραφή", four numbered steps, safety, cleaning                                               |
+| `border`                       | "Σύνορα": estimated waits leaving Greece, tabs Τουρκία / Βουλγαρία (default by language, choice kept on the device)                             |
 | `check-out`                    | "Η αναχώρησή σας": end of access (so an extension shows), then the checklist                                                                    |
 | `emergency`                    | "Τηλέφωνα": 112, Police 100, Fire 199, Ambulance 166, Coast Guard 108 (tap to call)                                                             |
 
@@ -95,6 +96,32 @@ motion".
 - **Τηλέφωνα**: emergency numbers only. The host's WhatsApp, call and email
   links were removed (22 Nov 2026).
 - **Lockbox codes**: not in the app (owner's decision, 22 Nov 2026).
+- **Σύνορα (border waits)** (24 Nov 2026): from the nakordoni.eu developer
+  API, free Explorer plan (key `NAKORDONI_API_KEY`, account in the
+  developer's name; markets declared: Greece, Turkey, Bulgaria). Code in
+  `src/lib/guest-app/border.ts`.
+  - Crossings, leaving Greece by car: Kipi–İpsala (`id_487`),
+    Kastanies–Pazarkule (`id_901`); Nymfaia–Makaza (`id_818`),
+    Kyprinos–Ivaylovgrad (`id_820`), Ormenio–Kapitan Petko Voyvoda
+    (`id_824`). The second Kipi entry (`id_549`) is observed data but
+    marked inactive, so it isn't used.
+  - Fetched on the server, cached 30 minutes: the border endpoint counts as
+    a "heavy" call, 200 a day on the free plan; two directions use 96.
+  - Their terms, all applied: key on the server only; free data is a
+    15–30 minute old snapshot, refreshed in steps (in testing, still 00:33
+    at 01:04 while their website showed 00:44); each value shows its age
+    ("πριν από 33 λεπτά", updated every minute; the exact time in the
+    tooltip), the label "Εκτίμηση" and "nakordoni.eu"; a disclaimer that these aren't
+    official; a visible, followed "Data by nakordoni.eu" link. A missing,
+    stale (their flag, or older than 2 hours) or malformed value shows "no
+    recent estimate", never a number.
+  - **Data quality**: for our crossings the values are modelled
+    (`data_quality: low`) and look generic (e.g. 66 min at both Turkish
+    crossings at 00:33, 36–42 min at all Bulgarian ones). The owner was
+    told; his checks against reality decide whether this stays. The
+    language picks the default tab (tr → Turkey, bg → Bulgaria, el/en →
+    Turkey); nationality isn't known or stored.
+  - No guest data goes to nakordoni: the requests carry only our key.
 
 ## Later rounds
 

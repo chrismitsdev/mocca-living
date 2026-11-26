@@ -643,6 +643,7 @@ actions; `login-email.ts` the email).
 | `GUEST_APP_ADMIN_EMAILS`                     | Comma-separated admin allowlist (2 addresses)                                                          |
 | `GUEST_APP_ALERT_EMAIL`                      | Alert recipient                                                                                        |
 | `GUEST_APP_REDIS_KV_REST_API_URL` / `_TOKEN` | Upstash Redis (`mocca-guest-app`, Vercel Marketplace prefix `GUEST_APP_REDIS`)                         |
+| `NAKORDONI_API_KEY`                          | Border waiting times (nakordoni.eu, free plan; see `docs/guest-app-content.md`)                        |
 | `GUEST_APP_WIFI_<KEY>_NETWORK` / `_PASSWORD` | Wi-Fi shown to guests; `<KEY>` = `DIMITRA` or `MOCCA_CITY` (optional; see `docs/guest-app-content.md`) |
 
 Environments (31 Oct 2026):
@@ -804,7 +805,8 @@ fails, but the login page forwards the existing session. That's expected.
      `https://www.moccaliving.com/api/guest-app/inbound`. The free plan
      allows only one endpoint, so don't add a second one.
    - Add `RESEND_INBOUND_WEBHOOK_SECRET` for Production.
-   - Add the four `GUEST_APP_WIFI_*` variables for Production.
+   - Add the four `GUEST_APP_WIFI_*` variables and `NAKORDONI_API_KEY` for
+     Production.
    - Remove the temporary Gmail condition from the Hostinger filter.
    - Delete any manual test bookings (`guest:reservation:TEST*` and their
      `guest:reservationIndex` entries) from the shared Upstash database
