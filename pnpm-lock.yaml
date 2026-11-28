@@ -15,8 +15,8 @@ importers:
         specifier: ^2.6.9
         version: 2.6.9
       '@eloqnt/cli':
-        specifier: ^0.7.3
-        version: 0.7.3(@swc/helpers@0.5.23)
+        specifier: ^0.8.0
+        version: 0.8.0(@swc/helpers@0.5.23)(ai@7.0.150(zod@4.6.7))
       '@react-email/ui':
         specifier: ^6.11.16
         version: 6.11.16(@types/node@26.6.7)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -264,9 +264,14 @@ packages:
     resolution: {integrity: sha512-dlT1m5e/0yUL0kRNcQn7yGLVThkgbB0Ga/1AmfDDC/8ik6AIiSf2QLQO2zPYvefsHP0aFgxO93cVLCCfDp7kzQ==}
     engines: {node: '>= 20.12.0'}
 
-  '@eloqnt/cli@0.7.3':
-    resolution: {integrity: sha512-qGOposiK48ijf9D75/oDhHZOdBgxWxki0kU6uX9ScQQm0uN2U1NOrkVm1+SMCs13zG5Z5e8g6wdLAtDnF/woWQ==}
+  '@eloqnt/cli@0.8.0':
+    resolution: {integrity: sha512-Bpgz0ITVqlTsVY8gsDVoU8PT6EtYfgwKzLbBzNMRMFm5vEFUAMoBVWlSLpvugAs/aySJ7y5dWE3mgcUe2fliXA==}
     hasBin: true
+    peerDependencies:
+      ai: ^7.0.8
+    peerDependenciesMeta:
+      ai:
+        optional: true
 
   '@eloqnt/config@0.1.2':
     resolution: {integrity: sha512-0pdjiCFur3M1fxuoPIoLS/ElTNerOdmkjToiLi399ITOLE/HRvHxJ5OjuOPQqPIZcbYXr2+WAWu3dnXMjt/WZg==}
@@ -283,8 +288,13 @@ packages:
   '@eloqnt/messages@0.1.0':
     resolution: {integrity: sha512-/YIr/bPaRCJmPGR5OrqVoado0j5ijcD7q95jZlkIzd0ipmEM4s+805c9PafoLUKCrudMEI4gqIUsZ24hZ0d2pQ==}
 
-  '@eloqnt/sdk@0.7.2':
-    resolution: {integrity: sha512-00X1GAugine1MFEYWmb8tMGMxKnY/zBKjqPYzCLZxubAQkxZFnCx1QSpEv0/FuEAJoqOb5+NdbVZ+66gqlvFzQ==}
+  '@eloqnt/sdk@0.8.0':
+    resolution: {integrity: sha512-hu1Egs9rT05McV+i5vmYY7K+fz9DIIfBHpH8rH7BBGEAXL0yKU/pNZ4ReOtlSpYSQkeTbU+W5JJizUV+3lzjDQ==}
+    peerDependencies:
+      ai: ^7.0.8
+    peerDependenciesMeta:
+      ai:
+        optional: true
 
   '@emnapi/runtime@1.11.3':
     resolution: {integrity: sha512-Xz4Tpyki7XyrpbUK1jR1AhdAdaXyhhY4lZ3neLodmhpuWfy2PAQN5B46sAiU4liOXGLkHypn/qU+jvfWSCYYLA==}
@@ -2842,6 +2852,7 @@ snapshots:
       '@ai-sdk/provider-utils': 5.0.67(zod@4.6.7)
       '@vercel/oidc': 3.2.0
       zod: 4.6.7
+    optional: true
 
   '@ai-sdk/provider-utils@5.0.67(zod@4.6.7)':
     dependencies:
@@ -2851,10 +2862,12 @@ snapshots:
       eventsource-parser: 3.1.1
       undici: 7.30.1
       zod: 4.6.7
+    optional: true
 
   '@ai-sdk/provider@4.0.33':
     dependencies:
       json-schema: 0.4.0
+    optional: true
 
   '@alloc/quick-lru@5.3.0': {}
 
@@ -2964,13 +2977,15 @@ snapshots:
       fast-wrap-ansi: 0.2.2
       sisteransi: 1.0.5
 
-  '@eloqnt/cli@0.7.3(@swc/helpers@0.5.23)':
+  '@eloqnt/cli@0.8.0(@swc/helpers@0.5.23)(ai@7.0.150(zod@4.6.7))':
     dependencies:
       '@clack/prompts': 1.8.1
-      '@eloqnt/sdk': 0.7.2(@swc/helpers@0.5.23)
+      '@eloqnt/sdk': 0.8.0(@swc/helpers@0.5.23)(ai@7.0.150(zod@4.6.7))
       citty: 0.1.6
       open: 11.0.4
       picocolors: 1.1.1
+    optionalDependencies:
+      ai: 7.0.150(zod@4.6.7)
     transitivePeerDependencies:
       - '@swc/helpers'
 
@@ -2999,7 +3014,7 @@ snapshots:
       '@eloqnt/format-json': 0.1.1
       '@eloqnt/format-po': 0.1.2
 
-  '@eloqnt/sdk@0.7.2(@swc/helpers@0.5.23)':
+  '@eloqnt/sdk@0.8.0(@swc/helpers@0.5.23)(ai@7.0.150(zod@4.6.7))':
     dependencies:
       '@eloqnt/config': 0.1.2
       '@eloqnt/extractor': 0.1.0(@swc/helpers@0.5.23)
@@ -3008,13 +3023,14 @@ snapshots:
       '@eloqnt/messages': 0.1.0
       '@formatjs/icu-messageformat-parser': 3.5.22
       '@swc/core': 1.16.20(@swc/helpers@0.5.23)
-      ai: 7.0.150(zod@4.6.7)
       jiti: 2.7.0
       magic-string: 0.30.21
       next-intl-swc-plugin-extractor: 4.14.9
       tinyglobby: 0.2.17
       yaml: 2.9.1
       zod: 4.6.7
+    optionalDependencies:
+      ai: 7.0.150(zod@4.6.7)
     transitivePeerDependencies:
       - '@swc/helpers'
 
@@ -4145,7 +4161,8 @@ snapshots:
 
   '@stablelib/base64@1.0.1': {}
 
-  '@standard-schema/spec@1.1.0': {}
+  '@standard-schema/spec@1.1.0':
+    optional: true
 
   '@swc/core-darwin-arm64@1.16.20':
     optional: true
@@ -4379,9 +4396,11 @@ snapshots:
       next: 16.4.6(@types/node@26.6.7)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       react: 19.3.1
 
-  '@vercel/oidc@3.2.0': {}
+  '@vercel/oidc@3.2.0':
+    optional: true
 
-  '@workflow/serde@4.1.0': {}
+  '@workflow/serde@4.1.0':
+    optional: true
 
   accepts@1.3.8:
     dependencies:
@@ -4394,6 +4413,7 @@ snapshots:
       '@ai-sdk/provider': 4.0.33
       '@ai-sdk/provider-utils': 5.0.67(zod@4.6.7)
       zod: 4.6.7
+    optional: true
 
   ajv-formats@3.0.1(ajv@8.20.0):
     optionalDependencies:
@@ -4598,7 +4618,8 @@ snapshots:
       '@esbuild/win32-ia32': 0.28.2
       '@esbuild/win32-x64': 0.28.2
 
-  eventsource-parser@3.1.1: {}
+  eventsource-parser@3.1.1:
+    optional: true
 
   fast-deep-equal@3.1.3: {}
 
@@ -4699,7 +4720,8 @@ snapshots:
 
   json-schema-typed@8.0.2: {}
 
-  json-schema@0.4.0: {}
+  json-schema@0.4.0:
+    optional: true
 
   json5@2.2.3: {}
 
@@ -5254,7 +5276,8 @@ snapshots:
 
   undici-types@8.9.0: {}
 
-  undici@7.30.1: {}
+  undici@7.30.1:
+    optional: true
 
   use-callback-ref@1.3.3(@types/react@19.3.1)(react@19.3.1):
     dependencies:
